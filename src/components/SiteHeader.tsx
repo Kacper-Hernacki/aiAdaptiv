@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { calendlyUrl, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 import type { Dictionary } from "@/i18n/dictionaries";
+import { CalendlyButton } from "@/components/CalendlyButton";
 
 export function SiteHeader({
   lang,
@@ -14,9 +15,7 @@ export function SiteHeader({
       <Link href={`/${lang}`} rel="home">
         <strong>{siteConfig.name}</strong>
       </Link>
-      <a href={calendlyUrl} target="_blank" rel="noopener noreferrer">
-        {dict.header.cta}
-      </a>
+      <CalendlyButton>{dict.header.cta}</CalendlyButton>
     </header>
   );
 }

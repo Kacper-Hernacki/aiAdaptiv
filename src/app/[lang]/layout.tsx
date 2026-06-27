@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import {
@@ -118,6 +119,15 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body>
+        {/* Calendly popup widget assets — see components/CalendlyButton.tsx. */}
+        <link
+          rel="stylesheet"
+          href="https://assets.calendly.com/assets/external/widget.css"
+        />
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="afterInteractive"
+        />
         <a href="#main">{dict.skipToContent}</a>
         <SiteHeader lang={lang} dict={dict} />
         {children}

@@ -15,7 +15,7 @@ export const siteUrl = (
 
 /** Calendly (or any booking) link used by every CTA. */
 export const calendlyUrl =
-  process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/aiadaptiv/intro";
+  process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/d/dzz5-bt2-xyk";
 
 export const siteConfig = {
   name: "aiAdaptiv",
