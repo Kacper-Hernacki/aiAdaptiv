@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "aiAdaptiv — Prywatna, zgodna z RODO platforma AI dla firm",
+    "description": "Uruchom prywatną, hostowaną w UE platformę AI (Koyeb + Dify.ai) z modelami open-source (Llama, Mistral). Zgodność z RODO i EU AI Act. Umów rozmowę."
+  },
+  "skipToContent": "Przejdź do treści głównej",
+  "header": {
+    "cta": "Umów rozmowę"
+  },
+  "hero": {
+    "h1": "Prywatna platforma AI w Twojej firmie. W 100% zgodna z RODO i EU AI Act.",
+    "subhead": "Uruchom własny, bezpieczny ekosystem sztucznej inteligencji dla swojego zespołu. Wykorzystaj moc modeli open-source (Llama, Mistral) i zaawansowanych agentów AI (Dify.ai) bez ryzyka wycieku danych klientów i bez potrzeby zatrudniania własnych programistów. Wdrażamy, aktualizujemy i dbamy o infrastrukturę w UE (Koyeb).",
+    "cta": "Umów krótką rozmowę wdrożeniową",
+    "trust": [
+      "Hosting wyłącznie w UE (Koyeb)",
+      "Zgodność z EU AI Act",
+      "Zero trenowania publicznych modeli na Twoich danych"
+    ]
+  },
+  "problem": {
+    "h2": "Chcesz wdrożyć AI i podnieść produktywność zespołu, ale blokują Cię przepisy i strach o dane?",
+    "subhead": "Średni przedsiębiorcy stoją dziś przed tzw. „pułapką regulacyjną”. Publiczne narzędzia to gigantyczne ryzyko dla biznesu.",
+    "points": [
+      {
+        "title": "Strach przed karami (EU AI Act i RODO)",
+        "body": "Wykorzystywanie publicznych wersji ChatGPT do analizy danych klientów lub finansów firmy to prosta droga do naruszeń prawa i ogromnych kar finansowych."
+      },
+      {
+        "title": "Wyciek własności intelektualnej",
+        "body": "Dane wpisywane do standardowych narzędzi SaaS często zasilają publiczne zbiory treningowe. Twoje sekrety biznesowe mogą trafić w ręce konkurencji."
+      },
+      {
+        "title": "Brak wewnętrznych inżynierów",
+        "body": "Rynek AI zmienia się co tydzień. Firmy nie mają budżetów ani czasu na zatrudnianie dedykowanych zespołów AI DevOps, które nadążałyby za zmianami."
+      }
+    ]
+  },
+  "solution": {
+    "h2": "aiAdaptiv: Twoje gotowe, prywatne środowisko AI pod klucz.",
+    "subhead": "Nie sprzedajemy kolejnego prostego loginu do aplikacji. Dostarczamy pełną technologię i zostajemy Twoim długoterminowym partnerem.",
+    "pillars": [
+      {
+        "title": "Twoja własna platforma (Whitelabel)",
+        "body": "Otrzymujesz gotową, w pełni brandowaną aplikację AI dla swoich pracowników, opartą o potężny i elastyczny silnik Dify.ai."
+      },
+      {
+        "title": "Wizualne agenty AI i automatyzacje",
+        "body": "Twój zespół zyskuje dostęp do zaawansowanych agentów AI, którzy potrafią analizować dokumenty, automatyzować obsługę klienta i przetwarzać wewnętrzne procesy firmy."
+      },
+      {
+        "title": "Bezpieczny hosting w UE (Koyeb)",
+        "body": "Całość wdrażamy w nowoczesnej, suwerennej infrastrukturze europejskiej na platformie Koyeb. Dane nigdy nie opuszczają granic Unii Europejskiej."
+      },
+      {
+        "title": "Długoterminowe partnerstwo i aktualizacje",
+        "body": "Sztuczna inteligencja to maraton. My dbamy o to, aby Twoje modele open-source (Llama, Mistral) były zawsze aktualne, bezpieczne i zgodne z najnowszymi wytycznymi prawnymi."
+      }
+    ]
+  },
+  "process": {
+    "h2": "Od rozmowy do bezpiecznego AI w kilka dni.",
+    "steps": [
+      {
+        "title": "Krótka konsultacja (Calendly)",
+        "body": "Rozmawiamy o procesach w Twojej firmie i identyfikujemy miejsca, gdzie AI przyniesie największy i najszybszy zwrot z inwestycji."
+      },
+      {
+        "title": "Wdrożenie dedykowanej instancji",
+        "body": "Podpinamy platformę pod Twoją domenę, konfigurujemy infrastrukturę na Koyeb i uruchamiamy silnik Dify.ai z wybranymi modelami open-source."
+      },
+      {
+        "title": "Ciągły rozwój i wsparcie",
+        "body": "Działamy w modelu partnerskim. Dostarczamy wiedzę, szkolimy zespół z nowych funkcji i pilnujemy zgodności z EU AI Act, podczas gdy Ty skupiasz się na skalowaniu biznesu."
+      }
+    ]
+  },
+  "finalCta": {
+    "h2": "Przestań ryzykować. Wdróż AI we właściwy sposób.",
+    "body": "Zamiast blokować rozwój firmy lub ryzykować kary, wybierz suwerenne rozwiązanie dostosowane do europejskich realiów prawnych. Wybierz dogodny termin i porozmawiajmy o wdrożeniu AI w Twoim biznesie.",
+    "cta": "Zarezerwuj termin konsultacji"
+  },
+  "footer": {
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "languageLabel": "Język"
+  }
+}

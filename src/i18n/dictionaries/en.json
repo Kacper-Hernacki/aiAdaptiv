@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "aiAdaptiv — Private, GDPR-Compliant AI Platform for Your Business",
+    "description": "Launch a private, EU-hosted AI platform (Koyeb + Dify.ai) with open-source LLMs like Llama and Mistral. Fully GDPR and EU AI Act compliant. Book a call."
+  },
+  "skipToContent": "Skip to main content",
+  "header": {
+    "cta": "Book a call"
+  },
+  "hero": {
+    "h1": "Private AI Platform for Your Business. 100% GDPR and EU AI Act Compliant.",
+    "subhead": "Launch your own secure Artificial Intelligence ecosystem for your team. Leverage the power of open-source models (Llama, Mistral) and advanced AI agents (Dify.ai) without data leak risks or the need for internal developers. We deploy, update, and manage your infrastructure entirely in the EU (Koyeb).",
+    "cta": "Schedule a Brief Implementation Call",
+    "trust": [
+      "EU-Only Hosting (Koyeb)",
+      "EU AI Act Compliant",
+      "Zero Public Training on Your Data"
+    ]
+  },
+  "problem": {
+    "h2": "Want to implement AI and boost team productivity, but compliance and data privacy fears are holding you back?",
+    "subhead": "Mid-market entrepreneurs face a “regulatory trap.” Public AI tools are a massive liability for your business.",
+    "points": [
+      {
+        "title": "Fear of Penalties (EU AI Act & GDPR)",
+        "body": "Using public versions of ChatGPT to analyze client data or corporate finances violates compliance regulations, risking severe legal penalties."
+      },
+      {
+        "title": "Intellectual Property Leaks",
+        "body": "Data entered into standard SaaS tools often feeds public training sets. Your trade secrets could accidentally end up in your competitors' hands."
+      },
+      {
+        "title": "No In-House AI Engineers",
+        "body": "The AI landscape shifts weekly. Most companies lack the budget or time to hire dedicated AI DevOps teams to keep pace with these changes."
+      }
+    ]
+  },
+  "solution": {
+    "h2": "aiAdaptiv: Your Ready-to-Use, Private Turnkey AI Environment.",
+    "subhead": "We don't just sell another software login. We provide the complete technology stack and become your long-term technology partner.",
+    "pillars": [
+      {
+        "title": "Your Own Platform (White-label)",
+        "body": "Get a fully branded, custom AI application for your employees, powered by the robust and flexible Dify.ai engine."
+      },
+      {
+        "title": "Visual AI Agents & Automations",
+        "body": "Empower your team with advanced AI agents capable of analyzing documents, automating customer support, and streamlining internal workflows."
+      },
+      {
+        "title": "Secure EU Hosting (Koyeb)",
+        "body": "We deploy everything onto a modern, sovereign European infrastructure using the Koyeb platform. Your data never leaves the EU borders."
+      },
+      {
+        "title": "Long-term Partnership & Updates",
+        "body": "AI is a marathon. We make sure your open-source models (Llama, Mistral) are always up to date, secure, and aligned with the latest legal frameworks."
+      }
+    ]
+  },
+  "process": {
+    "h2": "From an introductory call to secure enterprise AI in just a few days.",
+    "steps": [
+      {
+        "title": "Short Consultation (Calendly)",
+        "body": "We look into your business workflows and identify the exact areas where AI will deliver the fastest and highest ROI."
+      },
+      {
+        "title": "Dedicated Instance Deployment",
+        "body": "We map the platform to your custom domain, configure the infrastructure on Koyeb, and launch the Dify.ai engine with chosen open-source LLMs."
+      },
+      {
+        "title": "Continuous Growth & Support",
+        "body": "We operate as your long-term partner. We provide ongoing insights, train your team on new features, and handle EU AI Act compliance while you focus on scaling."
+      }
+    ]
+  },
+  "finalCta": {
+    "h2": "Stop risking. Deploy AI the right way.",
+    "body": "Instead of stalling your company's growth or risking severe fines, choose a sovereign solution tailored to European legal realities. Pick a convenient time and let's talk about deploying AI in your business.",
+    "cta": "Book Your Consultation Time"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "languageLabel": "Language"
+  }
+}

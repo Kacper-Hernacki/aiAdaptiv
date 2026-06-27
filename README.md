@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# aiAdaptiv
 
-## Getting Started
+Marketing site for **aiAdaptiv** — adaptive AI systems and automation for modern
+teams. Built with Next.js 16 (App Router + Turbopack), React 19, Tailwind v4, and
+TypeScript. SEO-first and agent-friendly from day one.
 
-First, run the development server:
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local   # set NEXT_PUBLIC_SITE_URL to your domain
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command         | Description                          |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the dev server (Turbopack)     |
+| `npm run build` | Production build                     |
+| `npm run start` | Serve the production build           |
+| `npm run lint`  | Lint with ESLint                     |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## SEO & agent-readiness
 
-## Learn More
+Everything is driven from `src/config/site.ts` (the single source of truth):
 
-To learn more about Next.js, take a look at the following resources:
+- **Metadata** — title templates, description, canonical, Open Graph, Twitter
+  cards, robots directives (`src/app/layout.tsx`).
+- **Dynamic OG image** — generated with `next/og` (`src/app/opengraph-image.tsx`),
+  reused for Twitter.
+- **Structured data** — `Organization` + `WebSite` JSON-LD
+  (`src/components/seo/JsonLd.tsx`).
+- **`robots.txt`, `sitemap.xml`, `manifest.webmanifest`** — generated routes.
+- **`llms.txt`** — machine-readable site map for LLMs/AI agents
+  ([llmstxt.org](https://llmstxt.org)), generated from config.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Before deploying
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Set `NEXT_PUBLIC_SITE_URL` to the real domain so canonical URLs, the sitemap,
+and Open Graph tags resolve correctly.
 
-## Deploy on Vercel
+## Project structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+  app/            # routes, metadata routes, layout
+  components/
+    seo/          # JSON-LD
+    sections/     # landing-page blocks
+  config/site.ts  # single source of truth for SEO/nav
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Roadmap
+
+- [ ] Confirm production domain + finalize brand copy
+- [ ] Higgsfield MCP integration for modern animations
+- [ ] Additional routes (blog, pricing, docs) — remember to extend the sitemap
