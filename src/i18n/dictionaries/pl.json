@@ -8,7 +8,7 @@
     "cta": "Umów rozmowę"
   },
   "hero": {
-    "h1": "Prywatna platforma AI w Twojej firmie. W 100% zgodna z RODO i EU AI Act.",
+    "h1": "Prywatny ChatGPT dla Twojej firmy — bez oddawania danych Big Techom.",
     "subhead": "Uruchom własny, bezpieczny ekosystem sztucznej inteligencji dla swojego zespołu. Wykorzystaj moc modeli open-source (Llama, Mistral) i zaawansowanych agentów AI (Dify.ai) bez ryzyka wycieku danych klientów i bez potrzeby zatrudniania własnych programistów. Wdrażamy, aktualizujemy i dbamy o infrastrukturę w UE (Koyeb).",
     "cta": "Umów krótką rozmowę wdrożeniową",
     "trust": [
@@ -18,58 +18,58 @@
     ]
   },
   "problem": {
-    "h2": "Chcesz wdrożyć AI i podnieść produktywność zespołu, ale blokują Cię przepisy i strach o dane?",
+    "h2": "Chcesz mieć AI w firmie. Nie chcesz wycieku danych — ani kary.",
     "subhead": "Średni przedsiębiorcy stoją dziś przed tzw. „pułapką regulacyjną”. Publiczne narzędzia to gigantyczne ryzyko dla biznesu.",
     "points": [
       {
-        "title": "Strach przed karami (EU AI Act i RODO)",
+        "title": "Wkleisz nie te dane — zapłacisz karę",
         "body": "Wykorzystywanie publicznych wersji ChatGPT do analizy danych klientów lub finansów firmy to prosta droga do naruszeń prawa i ogromnych kar finansowych."
       },
       {
-        "title": "Wyciek własności intelektualnej",
+        "title": "Twoje sekrety trenują cudze AI",
         "body": "Dane wpisywane do standardowych narzędzi SaaS często zasilają publiczne zbiory treningowe. Twoje sekrety biznesowe mogą trafić w ręce konkurencji."
       },
       {
-        "title": "Brak wewnętrznych inżynierów",
+        "title": "Nie zatrudnisz zespołu AI na czas",
         "body": "Rynek AI zmienia się co tydzień. Firmy nie mają budżetów ani czasu na zatrudnianie dedykowanych zespołów AI DevOps, które nadążałyby za zmianami."
       }
     ]
   },
   "solution": {
-    "h2": "aiAdaptiv: Twoje gotowe, prywatne środowisko AI pod klucz.",
+    "h2": "Twoja własna platforma AI — zbudowana, zabezpieczona i prowadzona za Ciebie.",
     "subhead": "Nie sprzedajemy kolejnego prostego loginu do aplikacji. Dostarczamy pełną technologię i zostajemy Twoim długoterminowym partnerem.",
     "pillars": [
       {
-        "title": "Twoja własna platforma (Whitelabel)",
+        "title": "Twoja marka, Twoja aplikacja AI",
         "body": "Otrzymujesz gotową, w pełni brandowaną aplikację AI dla swoich pracowników, opartą o potężny i elastyczny silnik Dify.ai."
       },
       {
-        "title": "Wizualne agenty AI i automatyzacje",
+        "title": "Agenci AI, którzy odwalają nudną robotę",
         "body": "Twój zespół zyskuje dostęp do zaawansowanych agentów AI, którzy potrafią analizować dokumenty, automatyzować obsługę klienta i przetwarzać wewnętrzne procesy firmy."
       },
       {
-        "title": "Bezpieczny hosting w UE (Koyeb)",
+        "title": "Twoje dane nie opuszczają UE",
         "body": "Całość wdrażamy w nowoczesnej, suwerennej infrastrukturze europejskiej na platformie Koyeb. Dane nigdy nie opuszczają granic Unii Europejskiej."
       },
       {
-        "title": "Długoterminowe partnerstwo i aktualizacje",
+        "title": "My to prowadzimy — Ty rozwijasz firmę",
         "body": "Sztuczna inteligencja to maraton. My dbamy o to, aby Twoje modele open-source (Llama, Mistral) były zawsze aktualne, bezpieczne i zgodne z najnowszymi wytycznymi prawnymi."
       }
     ]
   },
   "process": {
-    "h2": "Od rozmowy do bezpiecznego AI w kilka dni.",
+    "h2": "Gotowe w kilka dni, nie miesięcy.",
     "steps": [
       {
-        "title": "Krótka konsultacja (Calendly)",
+        "title": "1. Rozmawiamy",
         "body": "Rozmawiamy o procesach w Twojej firmie i identyfikujemy miejsca, gdzie AI przyniesie największy i najszybszy zwrot z inwestycji."
       },
       {
-        "title": "Wdrożenie dedykowanej instancji",
+        "title": "2. Budujemy i wdrażamy",
         "body": "Podpinamy platformę pod Twoją domenę, konfigurujemy infrastrukturę na Koyeb i uruchamiamy silnik Dify.ai z wybranymi modelami open-source."
       },
       {
-        "title": "Ciągły rozwój i wsparcie",
+        "title": "3. Pilnujemy i rozwijamy",
         "body": "Działamy w modelu partnerskim. Dostarczamy wiedzę, szkolimy zespół z nowych funkcji i pilnujemy zgodności z EU AI Act, podczas gdy Ty skupiasz się na skalowaniu biznesu."
       }
     ]
