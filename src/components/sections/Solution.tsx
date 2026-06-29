@@ -4,7 +4,6 @@ export function Solution({ solution }: { solution: Dictionary["solution"] }) {
   return (
     <section id="solution" aria-labelledby="solution-heading">
       <h2 id="solution-heading">{solution.h2}</h2>
-      <p>{solution.subhead}</p>
       <ul>
         {solution.pillars.map((pillar) => (
           <li key={pillar.title}>

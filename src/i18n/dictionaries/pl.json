@@ -1,86 +1,102 @@
 {
   "meta": {
-    "title": "aiAdaptiv — Prywatna, zgodna z RODO platforma AI dla firm",
-    "description": "Uruchom prywatną, hostowaną w UE platformę AI (Koyeb + Dify.ai) z modelami open-source (Llama, Mistral). Zgodność z RODO i EU AI Act. Umów rozmowę."
+    "title": "aiAdaptiv — Twój prywatny mózg firmy. Na własność, nie w wynajmie.",
+    "description": "W pełni white-label platforma AI do analizy dokumentów, wdrożona w Twoim własnym, bezpiecznym koncie chmurowym w UE (Koyeb). Ty jesteś właścicielem infrastruktury, kluczy i danych. Bezpieczna wobec RODO i EU AI Act. Tylko 6 partnerów założycielskich."
   },
   "skipToContent": "Przejdź do treści głównej",
   "header": {
-    "cta": "Umów rozmowę"
+    "programLabel": "Prywatne Suwerenne AI",
+    "cta": "Aplikuj →"
   },
   "hero": {
-    "h1": "Prywatny ChatGPT dla Twojej firmy — bez oddawania danych Big Techom.",
-    "subhead": "Uruchom własny, bezpieczny ekosystem sztucznej inteligencji dla swojego zespołu. Wykorzystaj moc modeli open-source (Llama, Mistral) i zaawansowanych agentów AI (Dify.ai) bez ryzyka wycieku danych klientów i bez potrzeby zatrudniania własnych programistów. Wdrażamy, aktualizujemy i dbamy o infrastrukturę w UE (Koyeb).",
-    "cta": "Umów krótką rozmowę wdrożeniową",
-    "trust": [
-      "Hosting wyłącznie w UE (Koyeb)",
-      "Zgodność z EU AI Act",
-      "Zero trenowania publicznych modeli na Twoich danych"
-    ]
+    "badge": "🔒 Tylko 6 partnerów założycielskich w tym kwartale",
+    "headline": [
+      { "text": "Twój prywatny mózg firmy." },
+      { "text": "Na własność, nie w wynajmie.", "accent": true }
+    ],
+    "subhead": "Wdrażamy w pełni white-label platformę AI bezpośrednio w Twoim własnym, bezpiecznym koncie chmurowym w UE (Koyeb). Ty jesteś właścicielem infrastruktury, kluczy i danych. Całą ciężką pracę bierzemy na siebie.",
+    "tagline": "Koniec z wklejaniem wrażliwych danych klientów do publicznych narzędzi.",
+    "cta": "Uruchom 60-sekundowy test kwalifikacji →"
   },
   "problem": {
-    "h2": "Chcesz mieć AI w firmie. Nie chcesz wycieku danych — ani kary.",
-    "subhead": "Średni przedsiębiorcy stoją dziś przed tzw. „pułapką regulacyjną”. Publiczne narzędzia to gigantyczne ryzyko dla biznesu.",
+    "h2": "Publiczne AI to ogromne ryzyko",
     "points": [
-      {
-        "title": "Wkleisz nie te dane — zapłacisz karę",
-        "body": "Wykorzystywanie publicznych wersji ChatGPT do analizy danych klientów lub finansów firmy to prosta droga do naruszeń prawa i ogromnych kar finansowych."
-      },
-      {
-        "title": "Twoje sekrety trenują cudze AI",
-        "body": "Dane wpisywane do standardowych narzędzi SaaS często zasilają publiczne zbiory treningowe. Twoje sekrety biznesowe mogą trafić w ręce konkurencji."
-      },
-      {
-        "title": "Nie zatrudnisz zespołu AI na czas",
-        "body": "Rynek AI zmienia się co tydzień. Firmy nie mają budżetów ani czasu na zatrudnianie dedykowanych zespołów AI DevOps, które nadążałyby za zmianami."
-      }
+      "Kary regulacyjne do 4% (RODO) lub 7% (EU AI Act).",
+      "Twoje umowy i dane klientów mogą trenować publiczne modele.",
+      "Małe zespoły nie nadążają za infrastrukturą i aktualizacjami."
     ]
   },
   "solution": {
-    "h2": "Twoja własna platforma AI — zbudowana, zabezpieczona i prowadzona za Ciebie.",
-    "subhead": "Nie sprzedajemy kolejnego prostego loginu do aplikacji. Dostarczamy pełną technologię i zostajemy Twoim długoterminowym partnerem.",
+    "h2": "My wdrażamy. Ty jesteś właścicielem.",
     "pillars": [
       {
-        "title": "Twoja marka, Twoja aplikacja AI",
-        "body": "Otrzymujesz gotową, w pełni brandowaną aplikację AI dla swoich pracowników, opartą o potężny i elastyczny silnik Dify.ai."
+        "title": "Bezpieczna analiza dokumentów",
+        "body": "Wgrywaj 200-stronicowe umowy lub dokumenty due diligence. Bezpiecznie wychwytuj ryzyka, porównuj wersje i otrzymuj podsumowania — bez wycieku danych."
       },
       {
-        "title": "Agenci AI, którzy odwalają nudną robotę",
-        "body": "Twój zespół zyskuje dostęp do zaawansowanych agentów AI, którzy potrafią analizować dokumenty, automatyzować obsługę klienta i przetwarzać wewnętrzne procesy firmy."
+        "title": "100% White-Label",
+        "body": "ai.twojafirma.pl z Twoim brandingiem. Realne aktywo wewnętrzne."
       },
       {
-        "title": "Twoje dane nie opuszczają UE",
-        "body": "Całość wdrażamy w nowoczesnej, suwerennej infrastrukturze europejskiej na platformie Koyeb. Dane nigdy nie opuszczają granic Unii Europejskiej."
+        "title": "Twoje własne konto chmurowe",
+        "body": "Wdrożone w Twoim własnym koncie Koyeb. Ty kontrolujesz wszystko."
       },
       {
-        "title": "My to prowadzimy — Ty rozwijasz firmę",
-        "body": "Sztuczna inteligencja to maraton. My dbamy o to, aby Twoje modele open-source (Llama, Mistral) były zawsze aktualne, bezpieczne i zgodne z najnowszymi wytycznymi prawnymi."
+        "title": "Zero narzutu",
+        "body": "My zajmujemy się aktualizacjami modeli, bezpieczeństwem i utrzymaniem."
       }
     ]
   },
-  "process": {
-    "h2": "Gotowe w kilka dni, nie miesięcy.",
+  "pricing": {
+    "h2": "Cennik dla partnerów założycielskich",
+    "plans": [
+      {
+        "label": "Jednorazowe wdrożenie i konfiguracja",
+        "price": "€1 999"
+      },
+      {
+        "label": "Miesięczne utrzymanie i wsparcie",
+        "price": "€249"
+      }
+    ],
+    "note": "Jesteśmy elastyczni wobec poważnych partnerów wdrożeniowych — jeśli Twój zespół ma konkretne preferencje co do modeli open-source lub specjalistyczne potrzeby w zakresie procesów, dostosujemy wdrożenie podczas konfiguracji."
+  },
+  "howItWorks": {
+    "h2": "Jak to działa",
+    "intro": "Upraszczamy prywatne AI, wdrażając wszystko w obrębie Twojego własnego konta chmurowego.",
     "steps": [
       {
-        "title": "1. Rozmawiamy",
-        "body": "Rozmawiamy o procesach w Twojej firmie i identyfikujemy miejsca, gdzie AI przyniesie największy i najszybszy zwrot z inwestycji."
+        "title": "1. Zakładasz konto",
+        "body": "Rejestrujesz konto Koyeb (region UE — Paryż lub Frankfurt). Kontrolujesz rozliczenia i jesteś właścicielem infrastruktury."
       },
       {
-        "title": "2. Budujemy i wdrażamy",
-        "body": "Podpinamy platformę pod Twoją domenę, konfigurujemy infrastrukturę na Koyeb i uruchamiamy silnik Dify.ai z wybranymi modelami open-source."
+        "title": "2. Budujemy i brandujemy",
+        "body": "Logujemy się (za Twoją zgodą), wdrażamy Open WebUI + zoptymalizowane modele open-source, nakładamy Twoje logo i branding oraz podpinamy Twoją domenę (ai.twojafirma.pl)."
       },
       {
-        "title": "3. Pilnujemy i rozwijamy",
-        "body": "Działamy w modelu partnerskim. Dostarczamy wiedzę, szkolimy zespół z nowych funkcji i pilnujemy zgodności z EU AI Act, podczas gdy Ty skupiasz się na skalowaniu biznesu."
+        "title": "3. Otrzymujesz pełny dostęp",
+        "body": "Twój zespół loguje się na własne konta. Całe przetwarzanie odbywa się w obrębie Twojego bezpiecznego środowiska."
+      },
+      {
+        "title": "4. My zajmujemy się utrzymaniem",
+        "body": "Co miesiąc dbamy o aktualizacje modeli, łatki bezpieczeństwa i optymalizację wydajności."
       }
-    ]
+    ],
+    "flowLabel": "Podsumowanie wizualne (prosty 4-etapowy przepływ)",
+    "flow": "Twoje konto Koyeb (UE)\n        ↓\nWdrażamy Open WebUI + modele\n        ↓\nWhite-label na ai.twojafirma.pl\n        ↓\nTwój zespół korzysta bezpiecznie\n   (My utrzymujemy co miesiąc)",
+    "outro": "Ty jesteś właścicielem konta. Ty jesteś właścicielem danych. My wykonujemy pracę techniczną."
   },
-  "finalCta": {
-    "h2": "Przestań ryzykować. Wdróż AI we właściwy sposób.",
-    "body": "Zamiast blokować rozwój firmy lub ryzykować kary, wybierz suwerenne rozwiązanie dostosowane do europejskich realiów prawnych. Wybierz dogodny termin i porozmawiajmy o wdrożeniu AI w Twoim biznesie.",
-    "cta": "Zarezerwuj termin konsultacji"
+  "qualifier": {
+    "h2": "Czy to dopasowanie?",
+    "yesLabel": "Tak, jeśli",
+    "yes": "codziennie pracujesz z wrażliwymi dokumentami prawnymi, finansowymi lub klientów.",
+    "noLabel": "Nie, jeśli",
+    "no": "potrzebujesz po prostu taniego, ogólnego narzędzia AI.",
+    "cta": "Uruchom 60-sekundowy test kwalifikacji →"
   },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
-    "languageLabel": "Język"
+    "languageLabel": "Język",
+    "disclaimer": "aiAdaptiv świadczy usługi konfiguracji i utrzymania w obrębie własnego środowiska chmurowego Klienta. Klient jest właścicielem konta i ponosi wyłączną odpowiedzialność za wprowadzane dane oraz zgodność z przepisami. Usługa świadczona „w stanie, w jakim jest” (as-is). Odpowiedzialność ograniczona do wysokości uiszczonych opłat."
   }
 }

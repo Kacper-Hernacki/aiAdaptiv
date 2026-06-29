@@ -1,86 +1,102 @@
 {
   "meta": {
-    "title": "aiAdaptiv — Private, GDPR-Compliant AI Platform for Your Business",
-    "description": "Launch a private, EU-hosted AI platform (Koyeb + Dify.ai) with open-source LLMs like Llama and Mistral. Fully GDPR and EU AI Act compliant. Book a call."
+    "title": "aiAdaptiv — Your Private Company Brain. Owned, Not Rented.",
+    "description": "A fully white-labeled, document-intelligence AI platform deployed inside your own secure EU cloud account (Koyeb). You own the infrastructure, keys, and data. GDPR & EU AI Act safe. Strictly 6 founding partners."
   },
   "skipToContent": "Skip to main content",
   "header": {
-    "cta": "Book a call"
+    "programLabel": "Private Sovereign AI",
+    "cta": "Apply →"
   },
   "hero": {
-    "h1": "Your company's own private ChatGPT — without handing your data to Big Tech.",
-    "subhead": "Launch your own secure Artificial Intelligence ecosystem for your team. Leverage the power of open-source models (Llama, Mistral) and advanced AI agents (Dify.ai) without data leak risks or the need for internal developers. We deploy, update, and manage your infrastructure entirely in the EU (Koyeb).",
-    "cta": "Schedule a Brief Implementation Call",
-    "trust": [
-      "EU-Only Hosting (Koyeb)",
-      "EU AI Act Compliant",
-      "Zero Public Training on Your Data"
-    ]
+    "badge": "🔒 Strictly 6 Founding Design Partners This Quarter",
+    "headline": [
+      { "text": "Your Private Company Brain." },
+      { "text": "Owned, Not Rented.", "accent": true }
+    ],
+    "subhead": "We deploy a fully white-labeled AI platform directly inside your own secure EU cloud account (Koyeb). You own the infrastructure, keys, and data. We do the heavy lifting.",
+    "tagline": "No more pasting sensitive client data into public tools.",
+    "cta": "Run 60-Second Eligibility Check →"
   },
   "problem": {
-    "h2": "You want AI in your business. You don't want a data leak — or a fine.",
-    "subhead": "Mid-market entrepreneurs face a “regulatory trap.” Public AI tools are a massive liability for your business.",
+    "h2": "Public AI is a Massive Liability",
     "points": [
-      {
-        "title": "Paste the wrong data, pay the fine",
-        "body": "Using public versions of ChatGPT to analyze client data or corporate finances violates compliance regulations, risking severe legal penalties."
-      },
-      {
-        "title": "Your trade secrets train someone else's AI",
-        "body": "Data entered into standard SaaS tools often feeds public training sets. Your trade secrets could accidentally end up in your competitors' hands."
-      },
-      {
-        "title": "You can't hire an AI team fast enough",
-        "body": "The AI landscape shifts weekly. Most companies lack the budget or time to hire dedicated AI DevOps teams to keep pace with these changes."
-      }
+      "Regulatory fines up to 4% (GDPR) or 7% (EU AI Act).",
+      "Your contracts and client data can train public models.",
+      "Small teams can't keep up with infrastructure and updates."
     ]
   },
   "solution": {
-    "h2": "Your own AI platform — built, secured, and run for you.",
-    "subhead": "We don't just sell another software login. We provide the complete technology stack and become your long-term technology partner.",
+    "h2": "We Deploy It. You Own It.",
     "pillars": [
       {
-        "title": "Your brand, your AI app",
-        "body": "Get a fully branded, custom AI application for your employees, powered by the robust and flexible Dify.ai engine."
+        "title": "Secure Document Intelligence",
+        "body": "Upload 200-page contracts or due-diligence files. Safely extract risks, compare versions, and get summaries — with zero data leaks."
       },
       {
-        "title": "AI agents that do the busywork",
-        "body": "Empower your team with advanced AI agents capable of analyzing documents, automating customer support, and streamlining internal workflows."
+        "title": "100% White-Labeled",
+        "body": "ai.yourfirm.com with your branding. A real internal asset."
       },
       {
-        "title": "Your data never leaves the EU",
-        "body": "We deploy everything onto a modern, sovereign European infrastructure using the Koyeb platform. Your data never leaves the EU borders."
+        "title": "Your Own Cloud Account",
+        "body": "Deployed in your own Koyeb account. You control everything."
       },
       {
-        "title": "We run it — you grow",
-        "body": "AI is a marathon. We make sure your open-source models (Llama, Mistral) are always up to date, secure, and aligned with the latest legal frameworks."
+        "title": "Zero Overhead",
+        "body": "We handle model updates, security, and maintenance."
       }
     ]
   },
-  "process": {
-    "h2": "Up and running in days — not months.",
+  "pricing": {
+    "h2": "Founding Partner Pricing",
+    "plans": [
+      {
+        "label": "One-time Setup & Deployment",
+        "price": "€1,999"
+      },
+      {
+        "label": "Monthly Maintenance & Support",
+        "price": "€249"
+      }
+    ],
+    "note": "We are flexible with serious design partners — if your team has specific open-source model preferences or specialized workflow needs, we will tailor the deployment during setup."
+  },
+  "howItWorks": {
+    "h2": "How It Works",
+    "intro": "We make private AI simple by deploying everything inside your own cloud account.",
     "steps": [
       {
-        "title": "1. We talk",
-        "body": "We look into your business workflows and identify the exact areas where AI will deliver the fastest and highest ROI."
+        "title": "1. You Create Your Account",
+        "body": "You sign up for a Koyeb account (EU region — Paris or Frankfurt). You control billing and own the infrastructure."
       },
       {
-        "title": "2. We build & deploy",
-        "body": "We map the platform to your custom domain, configure the infrastructure on Koyeb, and launch the Dify.ai engine with chosen open-source LLMs."
+        "title": "2. We Build & Brand It",
+        "body": "We log in (with your permission), deploy Open WebUI + optimized open-source models, apply your logo and branding, and map your custom domain (ai.yourfirm.com)."
       },
       {
-        "title": "3. We keep it sharp",
-        "body": "We operate as your long-term partner. We provide ongoing insights, train your team on new features, and handle EU AI Act compliance while you focus on scaling."
+        "title": "3. You Get Full Access",
+        "body": "Your team logs in with their accounts. All processing happens inside your secure environment."
+      },
+      {
+        "title": "4. We Handle Maintenance",
+        "body": "We take care of model updates, security patches, and performance tuning every month."
       }
-    ]
+    ],
+    "flowLabel": "Visual Summary (Simple 4-Step Flow)",
+    "flow": "Your Koyeb Account (EU)\n        ↓\nWe Deploy Open WebUI + Models\n        ↓\nWhite-Labeled at ai.yourfirm.com\n        ↓\nYour Team Uses It Securely\n   (We Maintain Monthly)",
+    "outro": "You own the account. You own the data. We do the technical work."
   },
-  "finalCta": {
-    "h2": "Stop risking. Deploy AI the right way.",
-    "body": "Instead of stalling your company's growth or risking severe fines, choose a sovereign solution tailored to European legal realities. Pick a convenient time and let's talk about deploying AI in your business.",
-    "cta": "Book Your Consultation Time"
+  "qualifier": {
+    "h2": "Is This a Fit?",
+    "yesLabel": "Yes if",
+    "yes": "you work with sensitive legal, financial, or client documents daily.",
+    "noLabel": "No if",
+    "no": "you just need a cheap general AI tool.",
+    "cta": "Run 60-Second Eligibility Check →"
   },
   "footer": {
     "rights": "All rights reserved.",
-    "languageLabel": "Language"
+    "languageLabel": "Language",
+    "disclaimer": "aiAdaptiv provides configuration and maintenance services inside the Client's own cloud environment. The Client owns the account and is solely responsible for data inputs and regulatory compliance. Service provided \"as-is\". Liability limited to fees paid."
   }
 }

@@ -18,10 +18,10 @@ ${siteConfig.description}
 ## About
 
 ${siteConfig.name} delivers a private, white-label AI platform for European
-mid-market businesses. We deploy open-source LLMs (Llama, Mistral) and Dify.ai
-agents on sovereign EU infrastructure (Koyeb), fully aligned with GDPR and the
-EU AI Act — then maintain and update it as a long-term partner. This file helps
-AI agents and crawlers understand the site and cite it accurately.
+mid-market businesses. We deploy open-source LLMs and AI agents on sovereign EU
+infrastructure, fully aligned with GDPR and the EU AI Act — then maintain and
+update it as a long-term partner. This file helps AI agents and crawlers
+understand the site and cite it accurately.
 
 ## Languages
 

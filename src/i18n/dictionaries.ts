@@ -5,35 +5,49 @@ import type { Locale } from "./config";
 export type Dictionary = {
   meta: { title: string; description: string };
   skipToContent: string;
-  header: { cta: string };
+  header: { programLabel: string; cta: string };
   hero: {
-    h1: string;
+    badge: string;
+    /** Headline rendered as one `<h1>`; `accent` parts get emphasis styling. */
+    headline: { text: string; accent?: boolean }[];
     subhead: string;
+    tagline: string;
     cta: string;
-    trust: string[];
   };
   problem: {
     h2: string;
-    subhead: string;
-    points: { title: string; body: string }[];
+    points: string[];
   };
   solution: {
     h2: string;
-    subhead: string;
     pillars: { title: string; body: string }[];
   };
-  process: {
+  pricing: {
     h2: string;
-    steps: { title: string; body: string }[];
+    plans: { label: string; price: string }[];
+    note: string;
   };
-  finalCta: {
+  howItWorks: {
     h2: string;
-    body: string;
+    intro: string;
+    steps: { title: string; body: string }[];
+    flowLabel: string;
+    /** Pre-formatted text diagram; rendered verbatim in a <pre>. */
+    flow: string;
+    outro: string;
+  };
+  qualifier: {
+    h2: string;
+    yesLabel: string;
+    yes: string;
+    noLabel: string;
+    no: string;
     cta: string;
   };
   footer: {
     rights: string;
     languageLabel: string;
+    disclaimer: string;
   };
 };
 

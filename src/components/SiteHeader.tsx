@@ -13,7 +13,7 @@ export function SiteHeader({
   return (
     <header>
       <Link href={`/${lang}`} rel="home">
-        <strong>{siteConfig.name}</strong>
+        <strong>{siteConfig.name}</strong> <span>// {dict.header.programLabel}</span>
       </Link>
       <CalendlyButton>{dict.header.cta}</CalendlyButton>
     </header>

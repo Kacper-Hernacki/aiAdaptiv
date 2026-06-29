@@ -24,7 +24,7 @@ export const siteConfig = {
   // English fallback metadata (per-locale values come from the dictionaries).
   title: "aiAdaptiv — Private, GDPR-Compliant AI Platform for Your Business",
   description:
-    "Launch a private, EU-hosted AI platform (Koyeb + Dify.ai) with open-source LLMs like Llama and Mistral. Fully GDPR and EU AI Act compliant. Book a call.",
+    "Launch a private, EU-hosted AI platform powered by open-source models. Fully GDPR and EU AI Act compliant. We deploy, manage, and update it for you. Book a call.",
   tagline: "Private, sovereign AI for European businesses.",
   twitter: "@aiadaptiv",
   keywords: [
@@ -33,11 +33,7 @@ export const siteConfig = {
     "EU AI Act",
     "sovereign AI",
     "self-hosted LLM",
-    "Dify.ai",
-    "Koyeb",
     "open source LLM",
-    "Llama",
-    "Mistral",
     "AI agents",
     "whitelabel AI",
     "aiAdaptiv",

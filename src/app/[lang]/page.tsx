@@ -4,8 +4,9 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { Hero } from "@/components/sections/Hero";
 import { Problem } from "@/components/sections/Problem";
 import { Solution } from "@/components/sections/Solution";
-import { Process } from "@/components/sections/Process";
-import { FinalCta } from "@/components/sections/FinalCta";
+import { Pricing } from "@/components/sections/Pricing";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Qualifier } from "@/components/sections/Qualifier";
 
 type PageParams = { params: Promise<{ lang: string }> };
 
@@ -20,8 +21,9 @@ export default async function Home({ params }: PageParams) {
       <Hero hero={dict.hero} />
       <Problem problem={dict.problem} />
       <Solution solution={dict.solution} />
-      <Process process={dict.process} />
-      <FinalCta finalCta={dict.finalCta} />
+      <Pricing pricing={dict.pricing} />
+      <HowItWorks howItWorks={dict.howItWorks} />
+      <Qualifier qualifier={dict.qualifier} />
     </main>
   );
 }
