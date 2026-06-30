@@ -32,6 +32,13 @@ export type Dictionary = {
     h2: string;
     intro: string;
     steps: { title: string; body: string }[];
+    timeline: string;
+    roadmap: {
+      label: string;
+      days: { label: string; body: string }[];
+      resultLabel: string;
+      result: string;
+    };
     flowLabel: string;
     /** Pre-formatted text diagram; rendered verbatim in a <pre>. */
     flow: string;

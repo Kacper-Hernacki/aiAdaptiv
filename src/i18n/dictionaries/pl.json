@@ -67,7 +67,7 @@
     "intro": "Upraszczamy prywatne AI, wdrażając wszystko w obrębie Twojego własnego konta chmurowego.",
     "steps": [
       {
-        "title": "1. Zakładasz konto",
+        "title": "1. Zakładasz konto (lub zakładamy je za Ciebie)",
         "body": "Rejestrujesz konto Koyeb (region UE). Kontrolujesz rozliczenia."
       },
       {
@@ -76,13 +76,33 @@
       },
       {
         "title": "3. Otrzymujesz pełny dostęp",
-        "body": "Twój zespół korzysta bezpiecznie."
+        "body": "Twój zespół loguje się i zaczyna korzystać."
       },
       {
         "title": "4. My zajmujemy się utrzymaniem",
         "body": "Comiesięczne aktualizacje i wsparcie."
       }
     ],
+    "timeline": "Typowy czas: 3–7 dni roboczych od płatności do uruchomienia.",
+    "roadmap": {
+      "label": "Twój harmonogram",
+      "days": [
+        {
+          "label": "Dzień 1–2",
+          "body": "Zakładasz (lub zakładamy) konto Koyeb i nadajesz dostęp."
+        },
+        {
+          "label": "Dzień 3–5",
+          "body": "Wdrażamy, brandujemy i optymalizujemy platformę pod Twoje procesy."
+        },
+        {
+          "label": "Dzień 6–7",
+          "body": "Szkolenie wdrożeniowe + Twój zespół rusza na żywo."
+        }
+      ],
+      "resultLabel": "Efekt",
+      "result": "W pełni brandowana, bezpieczna prywatna platforma AI działająca w Twoim własnym środowisku w niecały tydzień."
+    },
     "flowLabel": "Podsumowanie wizualne (prosty 4-etapowy przepływ)",
     "flow": "Twoje konto Koyeb (UE)\n        ↓\nWdrażamy Open WebUI + modele\n        ↓\nWhite-label na ai.twojafirma.pl\n        ↓\nTwój zespół korzysta bezpiecznie\n   (My utrzymujemy co miesiąc)",
     "outro": "Ty jesteś właścicielem konta. Ty jesteś właścicielem danych. My wykonujemy pracę techniczną."
@@ -111,7 +131,7 @@
       },
       {
         "q": "Ile trwa wdrożenie?",
-        "a": "Zazwyczaj 7–10 dni roboczych od momentu wypełnienia listy onboardingowej."
+        "a": "Zazwyczaj 3–7 dni roboczych od płatności do uruchomienia, po wypełnieniu listy onboardingowej."
       },
       {
         "q": "Czy mogę zrezygnować?",

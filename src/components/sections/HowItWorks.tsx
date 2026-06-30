@@ -17,6 +17,21 @@ export function HowItWorks({
           </li>
         ))}
       </ol>
+      <p>
+        <strong>{howItWorks.timeline}</strong>
+      </p>
+      <h3>{howItWorks.roadmap.label}</h3>
+      <ul>
+        {howItWorks.roadmap.days.map((day) => (
+          <li key={day.label}>
+            <strong>{day.label}</strong> — {day.body}
+          </li>
+        ))}
+      </ul>
+      <p>
+        <strong>{howItWorks.roadmap.resultLabel}:</strong>{" "}
+        {howItWorks.roadmap.result}
+      </p>
       <figure aria-label={howItWorks.flowLabel}>
         <figcaption>{howItWorks.flowLabel}</figcaption>
         <pre>{howItWorks.flow}</pre>

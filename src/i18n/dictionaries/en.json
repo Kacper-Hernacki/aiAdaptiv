@@ -67,7 +67,7 @@
     "intro": "We make private AI simple by deploying everything inside your own cloud account.",
     "steps": [
       {
-        "title": "1. You Create Your Account",
+        "title": "1. You Create Your Account (or we create it for you)",
         "body": "Sign up for Koyeb (EU region). You control billing."
       },
       {
@@ -76,13 +76,33 @@
       },
       {
         "title": "3. You Get Full Access",
-        "body": "Your team uses it securely."
+        "body": "Your team logs in and starts using it."
       },
       {
         "title": "4. We Handle Maintenance",
         "body": "Monthly updates and support."
       }
     ],
+    "timeline": "Typical timeline: 3–7 business days from payment to live.",
+    "roadmap": {
+      "label": "Your Client Roadmap",
+      "days": [
+        {
+          "label": "Day 1–2",
+          "body": "You create (or we create) the Koyeb account and grant access."
+        },
+        {
+          "label": "Day 3–5",
+          "body": "We deploy, brand, and optimize the platform for your workflows."
+        },
+        {
+          "label": "Day 6–7",
+          "body": "Handover training + your team goes live."
+        }
+      ],
+      "resultLabel": "Result",
+      "result": "A fully branded, secure private AI platform running inside your own environment in under a week."
+    },
     "flowLabel": "Visual Summary (Simple 4-Step Flow)",
     "flow": "Your Koyeb Account (EU)\n        ↓\nWe Deploy Open WebUI + Models\n        ↓\nWhite-Labeled at ai.yourfirm.com\n        ↓\nYour Team Uses It Securely\n   (We Maintain Monthly)",
     "outro": "You own the account. You own the data. We do the technical work."
@@ -111,7 +131,7 @@
       },
       {
         "q": "How long does setup take?",
-        "a": "Usually 7–10 business days from when you complete the onboarding checklist."
+        "a": "Usually 3–7 business days from payment to live, once you complete the onboarding checklist."
       },
       {
         "q": "Can I cancel?",
