@@ -119,13 +119,9 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body>
-        {/* Calendly popup widget assets — see components/CalendlyButton.tsx. */}
-        <link
-          rel="stylesheet"
-          href="https://assets.calendly.com/assets/external/widget.css"
-        />
+        {/* Tally popup widget script — see components/TallyButton.tsx. */}
         <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
+          src="https://tally.so/widgets/embed.js"
           strategy="afterInteractive"
         />
         <a href="#main">{dict.skipToContent}</a>

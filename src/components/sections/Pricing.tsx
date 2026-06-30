@@ -12,6 +12,11 @@ export function Pricing({ pricing }: { pricing: Dictionary["pricing"] }) {
         ))}
       </ul>
       <p>{pricing.note}</p>
+      <ul aria-label="Trust signals">
+        {pricing.trust.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
     </section>
   );
 }

@@ -6,6 +6,8 @@ import { Problem } from "@/components/sections/Problem";
 import { Solution } from "@/components/sections/Solution";
 import { Pricing } from "@/components/sections/Pricing";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { BehindTheArchitecture } from "@/components/sections/BehindTheArchitecture";
+import { Faq } from "@/components/sections/Faq";
 import { Qualifier } from "@/components/sections/Qualifier";
 
 type PageParams = { params: Promise<{ lang: string }> };
@@ -23,6 +25,8 @@ export default async function Home({ params }: PageParams) {
       <Solution solution={dict.solution} />
       <Pricing pricing={dict.pricing} />
       <HowItWorks howItWorks={dict.howItWorks} />
+      <BehindTheArchitecture behindTheArchitecture={dict.behindTheArchitecture} />
+      <Faq faq={dict.faq} />
       <Qualifier qualifier={dict.qualifier} />
     </main>
   );

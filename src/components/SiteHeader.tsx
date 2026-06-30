@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { CalendlyButton } from "@/components/CalendlyButton";
+import { TallyButton } from "@/components/TallyButton";
 
 export function SiteHeader({
   lang,
@@ -15,7 +15,7 @@ export function SiteHeader({
       <Link href={`/${lang}`} rel="home">
         <strong>{siteConfig.name}</strong> <span>// {dict.header.programLabel}</span>
       </Link>
-      <CalendlyButton>{dict.header.cta}</CalendlyButton>
+      <TallyButton>{dict.header.cta}</TallyButton>
     </header>
   );
 }

@@ -21,8 +21,8 @@
   "problem": {
     "h2": "Publiczne AI to ogromne ryzyko",
     "points": [
-      "Kary regulacyjne do 4% (RODO) lub 7% (EU AI Act).",
-      "Twoje umowy i dane klientów mogą trenować publiczne modele.",
+      "Kary do 4% (RODO) lub 7% (EU AI Act) obrotu.",
+      "Twoje umowy i dane klientów mogą trenować publiczne modele i wyciec do konkurencji.",
       "Małe zespoły nie nadążają za infrastrukturą i aktualizacjami."
     ]
   },
@@ -59,7 +59,8 @@
         "price": "€249"
       }
     ],
-    "note": "Jesteśmy elastyczni wobec poważnych partnerów wdrożeniowych — jeśli Twój zespół ma konkretne preferencje co do modeli open-source lub specjalistyczne potrzeby w zakresie procesów, dostosujemy wdrożenie podczas konfiguracji."
+    "note": "Jesteśmy elastyczni wobec poważnych partnerów wdrożeniowych — jeśli Twój zespół ma konkretne preferencje co do modeli open-source lub specjalistyczne potrzeby w zakresie procesów, dostosujemy wdrożenie podczas konfiguracji.",
+    "trust": ["Hosting w UE", "Modele open-source", "Zgodność z RODO"]
   },
   "howItWorks": {
     "h2": "Jak to działa",
@@ -67,24 +68,56 @@
     "steps": [
       {
         "title": "1. Zakładasz konto",
-        "body": "Rejestrujesz konto Koyeb (region UE — Paryż lub Frankfurt). Kontrolujesz rozliczenia i jesteś właścicielem infrastruktury."
+        "body": "Rejestrujesz konto Koyeb (region UE). Kontrolujesz rozliczenia."
       },
       {
         "title": "2. Budujemy i brandujemy",
-        "body": "Logujemy się (za Twoją zgodą), wdrażamy Open WebUI + zoptymalizowane modele open-source, nakładamy Twoje logo i branding oraz podpinamy Twoją domenę (ai.twojafirma.pl)."
+        "body": "Wdrażamy Open WebUI + zoptymalizowane modele, nakładamy Twoje logo i podpinamy ai.twojafirma.pl."
       },
       {
         "title": "3. Otrzymujesz pełny dostęp",
-        "body": "Twój zespół loguje się na własne konta. Całe przetwarzanie odbywa się w obrębie Twojego bezpiecznego środowiska."
+        "body": "Twój zespół korzysta bezpiecznie."
       },
       {
         "title": "4. My zajmujemy się utrzymaniem",
-        "body": "Co miesiąc dbamy o aktualizacje modeli, łatki bezpieczeństwa i optymalizację wydajności."
+        "body": "Comiesięczne aktualizacje i wsparcie."
       }
     ],
     "flowLabel": "Podsumowanie wizualne (prosty 4-etapowy przepływ)",
     "flow": "Twoje konto Koyeb (UE)\n        ↓\nWdrażamy Open WebUI + modele\n        ↓\nWhite-label na ai.twojafirma.pl\n        ↓\nTwój zespół korzysta bezpiecznie\n   (My utrzymujemy co miesiąc)",
     "outro": "Ty jesteś właścicielem konta. Ty jesteś właścicielem danych. My wykonujemy pracę techniczną."
+  },
+  "behindTheArchitecture": {
+    "h2": "Za architekturą",
+    "lead": "Cześć, jestem założycielem aiAdaptiv.",
+    "body": [
+      "Zbudowałem to, ponieważ butikowe firmy potrzebują potężnego AI do umów i pracy z klientami — ale publiczne narzędzia rodzą poważne ryzyko. Pracuję jednocześnie tylko z 6 partnerami, aby każdemu poświęcić pełną uwagę."
+    ]
+  },
+  "faq": {
+    "h2": "Najczęściej zadawane pytania",
+    "items": [
+      {
+        "q": "Dlaczego wdrożenie w moim własnym koncie Koyeb?",
+        "a": "Prawdziwa własność. Kontrolujesz konto, rozliczenia i klucze. Jeśli kiedykolwiek przestaniesz z nami współpracować, cała platforma pozostaje Twoja — bez uzależnienia od dostawcy."
+      },
+      {
+        "q": "Czy widzicie nasze wrażliwe dane?",
+        "a": "Nie. Całe przetwarzanie odbywa się w obrębie Twojego bezpiecznego środowiska. Nigdy nie mamy dostępu do Twoich zapytań ani dokumentów."
+      },
+      {
+        "q": "Jakie są koszty GPU w Koyeb?",
+        "a": "Płacisz Koyeb bezpośrednio. Typowy zakres to €400–€800/miesiąc w zależności od użycia. Pomagamy dobrać i zoptymalizować odpowiedni rozmiar podczas konfiguracji."
+      },
+      {
+        "q": "Ile trwa wdrożenie?",
+        "a": "Zazwyczaj 7–10 dni roboczych od momentu wypełnienia listy onboardingowej."
+      },
+      {
+        "q": "Czy mogę zrezygnować?",
+        "a": "Tak. Miesięczne utrzymanie można wypowiedzieć z 30-dniowym wyprzedzeniem. Zachowujesz platformę, której jesteś właścicielem."
+      }
+    ]
   },
   "qualifier": {
     "h2": "Czy to dopasowanie?",
@@ -97,6 +130,11 @@
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
     "languageLabel": "Język",
-    "disclaimer": "aiAdaptiv świadczy usługi konfiguracji i utrzymania w obrębie własnego środowiska chmurowego Klienta. Klient jest właścicielem konta i ponosi wyłączną odpowiedzialność za wprowadzane dane oraz zgodność z przepisami. Usługa świadczona „w stanie, w jakim jest” (as-is). Odpowiedzialność ograniczona do wysokości uiszczonych opłat."
+    "disclaimer": "Zastrzeżenie prawne: aiAdaptiv świadczy usługi indywidualnej konfiguracji i utrzymania w obrębie własnego środowiska chmurowego Klienta. Klient jest właścicielem konta i ponosi wyłączną odpowiedzialność za wprowadzane dane oraz zgodność z przepisami (RODO / EU AI Act). Usługa świadczona „w stanie, w jakim jest” (as-is). Odpowiedzialność ograniczona do wysokości uiszczonych opłat.",
+    "nav": {
+      "eligibility": "Test kwalifikacji",
+      "howItWorks": "Jak to działa",
+      "terms": "Regulamin"
+    }
   }
 }

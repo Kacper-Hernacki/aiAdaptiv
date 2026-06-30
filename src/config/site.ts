@@ -13,9 +13,16 @@ export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ?? PLACEHOLDER_URL
 ).replace(/\/$/, "");
 
-/** Calendly (or any booking) link used by every CTA. */
+/** Calendly (or any booking) link. Now reached via the Tally form's ending
+ * screen, so it's no longer triggered directly from the page. */
 export const calendlyUrl =
   process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/d/dzz5-bt2-xyk";
+
+/** Tally eligibility form. Every primary CTA opens this as a popup. */
+export const tallyFormId =
+  process.env.NEXT_PUBLIC_TALLY_FORM_ID ?? "0Ql1X9";
+
+export const tallyUrl = `https://tally.so/r/${tallyFormId}`;
 
 export const siteConfig = {
   name: "aiAdaptiv",

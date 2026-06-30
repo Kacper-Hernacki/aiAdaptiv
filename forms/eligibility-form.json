@@ -1,0 +1,131 @@
+{
+  "$schema": "internal://aiadaptiv/eligibility-form",
+  "meta": {
+    "name": "Founding Design Partner Qualification",
+    "internalName": "aiAdaptiv — 60-Second Eligibility Check",
+    "calendlyUrl": "https://calendly.com/d/dzz5-bt2-xyk",
+    "notes": "Single source of truth for the eligibility form. Import the questions, then set up the `logic` rules and `endings` manually in your form builder (Tally/Typeform). See README in this folder."
+  },
+  "settings": {
+    "progressBar": true,
+    "oneQuestionPerPage": true,
+    "emailNotificationsTo": "hello@aiadaptiv.ai",
+    "disqualifyPersonalEmails": true,
+    "disqualifyNote": "Tally free cannot auto-block consumer domains; screen Gmail/Outlook/Proton/iCloud manually or enforce in a native build."
+  },
+  "welcome": {
+    "title": "Founding Design Partner Qualification",
+    "text": "We only accept 6 Founding Design Partners this quarter. This quick 60-second form helps us see if we're a great fit — before we invest engineering time in your setup.",
+    "buttonText": "Start →"
+  },
+  "questions": [
+    {
+      "ref": "work_type",
+      "type": "multiple_choice",
+      "required": true,
+      "title": "What is the main type of sensitive work your team does?",
+      "options": [
+        { "ref": "legal", "label": "Legal contracts & document review" },
+        { "ref": "financial", "label": "Financial reports & analysis" },
+        { "ref": "due_diligence", "label": "Client due diligence & research" },
+        { "ref": "internal_kb", "label": "Internal knowledge base & strategy docs" },
+        { "ref": "other", "label": "Other (please describe)", "openText": true }
+      ]
+    },
+    {
+      "ref": "team_size",
+      "type": "multiple_choice",
+      "required": true,
+      "title": "How many people in your firm would actively use the private AI?",
+      "options": [
+        { "ref": "s1_5", "label": "1–5" },
+        { "ref": "s6_15", "label": "6–15" },
+        { "ref": "s16_30", "label": "16–30" },
+        { "ref": "s31_50", "label": "31–50" }
+      ]
+    },
+    {
+      "ref": "hesitation",
+      "type": "multiple_choice",
+      "required": true,
+      "title": "Have you or your team hesitated to use public AI tools (ChatGPT, Claude, etc.) with client or sensitive data?",
+      "options": [
+        { "ref": "yes_frequently", "label": "Yes, frequently" },
+        { "ref": "yes_occasionally", "label": "Yes, occasionally" },
+        { "ref": "concerned", "label": "No, but we're getting concerned" },
+        { "ref": "no", "label": "No" }
+      ]
+    },
+    {
+      "ref": "bottleneck",
+      "type": "long_text",
+      "required": true,
+      "title": "What is your biggest current bottleneck that AI could help solve?",
+      "placeholder": "e.g. \"reviewing 100+ page contracts\", \"summarizing due diligence files\"…"
+    }
+  ],
+  "contact": {
+    "heading": "Almost done — where do we send your fit assessment?",
+    "fields": [
+      { "ref": "full_name", "type": "short_text", "label": "Full Name", "required": true },
+      { "ref": "email", "type": "email", "label": "Business Email (we don't review personal Gmail/Outlook addresses)", "required": true },
+      { "ref": "company", "type": "short_text", "label": "Company Name", "required": true },
+      { "ref": "job_title", "type": "short_text", "label": "Job Title", "required": true }
+    ]
+  },
+  "logic": {
+    "description": "Evaluate rules top-down; first match wins. If no rule matches, fall through to 'potential_fit'.",
+    "rules": [
+      {
+        "outcome": "excellent_match",
+        "match": "all",
+        "conditions": [
+          { "field": "work_type", "operator": "is_any_of", "value": ["legal", "financial", "due_diligence"] },
+          { "field": "hesitation", "operator": "is_any_of", "value": ["yes_frequently", "yes_occasionally", "concerned"] },
+          { "field": "team_size", "operator": "is_any_of", "value": ["s6_15", "s16_30", "s31_50"] }
+        ]
+      },
+      {
+        "outcome": "waitlist",
+        "match": "any",
+        "conditions": [
+          { "field": "hesitation", "operator": "is", "value": "no" },
+          {
+            "match": "all",
+            "conditions": [
+              { "field": "work_type", "operator": "is", "value": "internal_kb" },
+              { "field": "team_size", "operator": "is", "value": "s1_5" }
+            ]
+          }
+        ]
+      }
+    ],
+    "default": "potential_fit"
+  },
+  "endings": [
+    {
+      "ref": "excellent_match",
+      "title": "Excellent Match. ✅",
+      "text": "You look like a strong Founding Design Partner. Let's get you set up before the 6 slots fill.",
+      "button": {
+        "text": "Book a 15-min Qualification Call →",
+        "url": "https://calendly.com/d/dzz5-bt2-xyk?name=@full_name&email=@email"
+      }
+    },
+    {
+      "ref": "potential_fit",
+      "title": "Potential Fit.",
+      "text": "We'd like to learn more about your workflows before we deploy. Grab a slot and let's talk.",
+      "button": {
+        "text": "Book a 15-min Qualification Call →",
+        "url": "https://calendly.com/d/dzz5-bt2-xyk?name=@full_name&email=@email"
+      }
+    },
+    {
+      "ref": "waitlist",
+      "title": "Thank you.",
+      "text": "We're currently focusing on firms with regular sensitive-document workflows. We'll keep your details and reach out if that changes — no spam.",
+      "button": null
+    }
+  ]
+}

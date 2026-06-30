@@ -1,5 +1,5 @@
 import type { Dictionary } from "@/i18n/dictionaries";
-import { CalendlyButton } from "@/components/CalendlyButton";
+import { TallyButton } from "@/components/TallyButton";
 
 export function Hero({ hero }: { hero: Dictionary["hero"] }) {
   return (
@@ -18,7 +18,7 @@ export function Hero({ hero }: { hero: Dictionary["hero"] }) {
         <strong>{hero.tagline}</strong>
       </p>
       <p>
-        <CalendlyButton>{hero.cta}</CalendlyButton>
+        <TallyButton>{hero.cta}</TallyButton>
       </p>
     </section>
   );

@@ -21,8 +21,8 @@
   "problem": {
     "h2": "Public AI is a Massive Liability",
     "points": [
-      "Regulatory fines up to 4% (GDPR) or 7% (EU AI Act).",
-      "Your contracts and client data can train public models.",
+      "Fines up to 4% (GDPR) or 7% (EU AI Act) of turnover.",
+      "Your contracts and client data can train public models and leak to competitors.",
       "Small teams can't keep up with infrastructure and updates."
     ]
   },
@@ -31,7 +31,7 @@
     "pillars": [
       {
         "title": "Secure Document Intelligence",
-        "body": "Upload 200-page contracts or due-diligence files. Safely extract risks, compare versions, and get summaries — with zero data leaks."
+        "body": "Upload 200-page contracts or due diligence files. Safely extract risks, compare versions, and get summaries — with zero data leaks."
       },
       {
         "title": "100% White-Labeled",
@@ -59,7 +59,8 @@
         "price": "€249"
       }
     ],
-    "note": "We are flexible with serious design partners — if your team has specific open-source model preferences or specialized workflow needs, we will tailor the deployment during setup."
+    "note": "We are flexible with serious design partners — if your team has specific open-source model preferences or specialized workflow needs, we will tailor the deployment during setup.",
+    "trust": ["EU Hosted", "Open Source Models", "GDPR Ready"]
   },
   "howItWorks": {
     "h2": "How It Works",
@@ -67,24 +68,56 @@
     "steps": [
       {
         "title": "1. You Create Your Account",
-        "body": "You sign up for a Koyeb account (EU region — Paris or Frankfurt). You control billing and own the infrastructure."
+        "body": "Sign up for Koyeb (EU region). You control billing."
       },
       {
         "title": "2. We Build & Brand It",
-        "body": "We log in (with your permission), deploy Open WebUI + optimized open-source models, apply your logo and branding, and map your custom domain (ai.yourfirm.com)."
+        "body": "We deploy Open WebUI + optimized models, apply your logo, and map ai.yourfirm.com."
       },
       {
         "title": "3. You Get Full Access",
-        "body": "Your team logs in with their accounts. All processing happens inside your secure environment."
+        "body": "Your team uses it securely."
       },
       {
         "title": "4. We Handle Maintenance",
-        "body": "We take care of model updates, security patches, and performance tuning every month."
+        "body": "Monthly updates and support."
       }
     ],
     "flowLabel": "Visual Summary (Simple 4-Step Flow)",
     "flow": "Your Koyeb Account (EU)\n        ↓\nWe Deploy Open WebUI + Models\n        ↓\nWhite-Labeled at ai.yourfirm.com\n        ↓\nYour Team Uses It Securely\n   (We Maintain Monthly)",
     "outro": "You own the account. You own the data. We do the technical work."
+  },
+  "behindTheArchitecture": {
+    "h2": "Behind the Architecture",
+    "lead": "Hi, I'm the founder of aiAdaptiv.",
+    "body": [
+      "I built this because boutique firms need powerful AI for contracts and client work — but public tools create serious risks. I only work with 6 partners at a time so I can give each one dedicated attention."
+    ]
+  },
+  "faq": {
+    "h2": "Frequently Asked Questions",
+    "items": [
+      {
+        "q": "Why deploy inside my own Koyeb account?",
+        "a": "True ownership. You control the account, billing, and keys. If you ever stop working with us, the entire platform stays yours — no vendor lock-in."
+      },
+      {
+        "q": "Do you see our sensitive data?",
+        "a": "No. All processing happens inside your secure environment. We never have access to your prompts or documents."
+      },
+      {
+        "q": "What are the Koyeb GPU costs?",
+        "a": "You pay Koyeb directly. Typical range is €400–€800/month depending on usage. We help you choose and optimize the right size during setup."
+      },
+      {
+        "q": "How long does setup take?",
+        "a": "Usually 7–10 business days from when you complete the onboarding checklist."
+      },
+      {
+        "q": "Can I cancel?",
+        "a": "Yes. The monthly maintenance is cancelable with 30 days notice. You keep the platform you own."
+      }
+    ]
   },
   "qualifier": {
     "h2": "Is This a Fit?",
@@ -97,6 +130,11 @@
   "footer": {
     "rights": "All rights reserved.",
     "languageLabel": "Language",
-    "disclaimer": "aiAdaptiv provides configuration and maintenance services inside the Client's own cloud environment. The Client owns the account and is solely responsible for data inputs and regulatory compliance. Service provided \"as-is\". Liability limited to fees paid."
+    "disclaimer": "Legal Disclaimer: aiAdaptiv provides custom configuration and maintenance services inside the Client's own cloud environment. The Client owns the account and is solely responsible for data inputs and regulatory compliance (GDPR / EU AI Act). Service provided \"as-is\". Liability limited to fees paid.",
+    "nav": {
+      "eligibility": "Eligibility Check",
+      "howItWorks": "How It Works",
+      "terms": "Terms"
+    }
   }
 }

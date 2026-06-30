@@ -1,5 +1,5 @@
 import type { Dictionary } from "@/i18n/dictionaries";
-import { CalendlyButton } from "@/components/CalendlyButton";
+import { TallyButton } from "@/components/TallyButton";
 
 export function Qualifier({ qualifier }: { qualifier: Dictionary["qualifier"] }) {
   return (
@@ -14,7 +14,7 @@ export function Qualifier({ qualifier }: { qualifier: Dictionary["qualifier"] })
         </li>
       </ul>
       <p>
-        <CalendlyButton>{qualifier.cta}</CalendlyButton>
+        <TallyButton>{qualifier.cta}</TallyButton>
       </p>
     </section>
   );

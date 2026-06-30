@@ -26,6 +26,7 @@ export type Dictionary = {
     h2: string;
     plans: { label: string; price: string }[];
     note: string;
+    trust: string[];
   };
   howItWorks: {
     h2: string;
@@ -35,6 +36,15 @@ export type Dictionary = {
     /** Pre-formatted text diagram; rendered verbatim in a <pre>. */
     flow: string;
     outro: string;
+  };
+  behindTheArchitecture: {
+    h2: string;
+    lead: string;
+    body: string[];
+  };
+  faq: {
+    h2: string;
+    items: { q: string; a: string }[];
   };
   qualifier: {
     h2: string;
@@ -48,6 +58,7 @@ export type Dictionary = {
     rights: string;
     languageLabel: string;
     disclaimer: string;
+    nav: { eligibility: string; howItWorks: string; terms: string };
   };
 };
 
