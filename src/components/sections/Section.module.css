@@ -1,0 +1,325 @@
+/* Shared Dala section primitives — imported by every landing section. */
+
+.section {
+  position: relative;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: clamp(60px, 9vw, 120px) 24px;
+}
+
+.center {
+  text-align: center;
+}
+
+.h2 {
+  margin: 0 0 var(--space-36);
+  max-width: 16ch;
+  font-weight: 200;
+  font-size: clamp(34px, 5.4vw, 78px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--color-bone);
+}
+
+.center .h2 {
+  max-width: none;
+}
+
+.lead {
+  max-width: 60ch;
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.35;
+  letter-spacing: 0.021em;
+  color: var(--color-bone);
+}
+
+.body {
+  max-width: 60ch;
+  margin-top: var(--space-18);
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+  color: var(--color-ash);
+}
+
+.emphasis {
+  max-width: 60ch;
+  margin-top: var(--space-30);
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.4;
+  color: var(--color-bone);
+  font-weight: 400;
+}
+
+.accent {
+  color: var(--color-plum);
+}
+
+/* ── Cards / grid ──────────────────────────────────────────── */
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-18);
+}
+
+.card {
+  height: 100%;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--space-24);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.cardTitle {
+  margin: 0 0 var(--space-12);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.021em;
+  color: var(--color-bone);
+}
+
+.cardBody {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-ash);
+}
+
+/* ── Plain statement list (Problem) ────────────────────────── */
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 70ch;
+}
+
+.point {
+  display: flex;
+  gap: 16px;
+  padding: var(--space-18) 0;
+  border-top: 1px solid var(--hairline);
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.4;
+  color: var(--color-bone);
+}
+
+.point::before {
+  content: "—";
+  color: var(--color-plum);
+  flex: none;
+}
+
+/* ── Pricing ───────────────────────────────────────────────── */
+.plans {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 620px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: var(--space-24) 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.priceRow:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.priceLabel {
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--color-ash);
+}
+
+.price {
+  font-weight: 200;
+  font-size: clamp(28px, 3.6vw, 48px);
+  letter-spacing: -0.04em;
+  color: var(--color-bone);
+  white-space: nowrap;
+}
+
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-30) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  border: 1px solid var(--color-amber);
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-bone);
+}
+
+/* ── Steps / roadmap (HowItWorks) ──────────────────────────── */
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-30) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-18);
+}
+
+.subheading {
+  margin: var(--space-60) 0 var(--space-24);
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 600;
+  letter-spacing: 0.021em;
+  color: var(--color-bone);
+}
+
+.roadmap {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 70ch;
+}
+
+.roadmapItem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  padding: var(--space-18) 0;
+  border-top: 1px solid var(--hairline);
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--color-ash);
+}
+
+.dayLabel {
+  flex: none;
+  min-width: 84px;
+  color: var(--color-plum);
+  font-weight: 600;
+}
+
+.flow {
+  margin: var(--space-36) 0 0;
+  max-width: 520px;
+}
+
+.flowCaption {
+  margin-bottom: var(--space-12);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-smoke);
+}
+
+.flowPre {
+  margin: 0;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--space-24);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: 0;
+  color: var(--color-ash);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ── FAQ ───────────────────────────────────────────────────── */
+.faq {
+  margin: 0;
+  max-width: 80ch;
+}
+
+.faqItem {
+  padding: var(--space-24) 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.faqItem:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.faqQ {
+  margin: 0 0 var(--space-12);
+  font-size: clamp(16px, 1.6vw, 18px);
+  font-weight: 600;
+  letter-spacing: 0.021em;
+  color: var(--color-bone);
+}
+
+.faqA {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-ash);
+}
+
+/* ── Qualifier fit list ────────────────────────────────────── */
+.fitList {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 60ch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-18);
+}
+
+.fitItem {
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.4;
+  color: var(--color-ash);
+}
+
+.fitLabel {
+  color: var(--color-bone);
+  font-weight: 600;
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btnPrimary {
+  display: inline-block;
+  background: var(--color-plum);
+  color: var(--color-bone);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btnLarge {
+  font-size: 14px;
+  padding: 16px 30px;
+}
+
+.btnPrimary:hover {
+  opacity: 0.9;
+}
+
+.ctaWrap {
+  margin-top: var(--space-36);
+}

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { notFound } from "next/navigation";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import {
   locales,
   defaultLocale,
@@ -14,6 +14,8 @@ import { siteConfig, siteUrl } from "@/config/site";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { CosmicField } from "@/components/CosmicField";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -25,6 +27,15 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Acronym substitute (per the Dala style spec) — carries the hero's thin
+// weight-200 display type through to weight-600/700 nav and buttons.
+const acronym = Inter({
+  variable: "--font-acronym",
+  subsets: ["latin"],
+  weight: ["200", "400", "600", "700"],
   display: "swap",
 });
 
@@ -96,10 +107,7 @@ export async function generateMetadata({
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
 };
@@ -116,7 +124,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lang}
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${acronym.variable}`}
     >
       <body>
         {/* Tally popup widget script — see components/TallyButton.tsx. */}
@@ -124,6 +132,9 @@ export default async function RootLayout({
           src="https://tally.so/widgets/embed.js"
           strategy="afterInteractive"
         />
+        {/* Persistent scroll-morphing constellation behind all content. */}
+        <CosmicField />
+        <ScrollReveal />
         <a href="#main">{dict.skipToContent}</a>
         <SiteHeader lang={lang} dict={dict} />
         {children}

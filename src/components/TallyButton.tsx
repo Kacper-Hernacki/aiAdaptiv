@@ -20,12 +20,19 @@ declare global {
  * in-page popup instead. The popup forwards the page URL + query params to the
  * form (Tally captures them via hidden fields).
  */
-export function TallyButton({ children }: { children: React.ReactNode }) {
+export function TallyButton({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <a
       href={tallyUrl}
       target="_blank"
       rel="noopener noreferrer"
+      className={className}
       onClick={(event) => {
         if (typeof window !== "undefined" && window.Tally) {
           event.preventDefault();

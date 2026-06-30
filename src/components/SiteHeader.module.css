@@ -1,0 +1,68 @@
+.header {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  width: calc(100% - 36px);
+  max-width: var(--page-max);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 11px 11px 11px 22px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--color-bone);
+  min-width: 0;
+}
+
+.brandName {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.021em;
+}
+
+.brandLabel {
+  font-size: 12px;
+  letter-spacing: 0.021em;
+  color: var(--color-smoke);
+  white-space: nowrap;
+}
+
+.cta {
+  flex: none;
+  display: inline-block;
+  background: var(--color-plum);
+  color: var(--color-bone);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 13px 18px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.cta:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 560px) {
+  .brandLabel {
+    display: none;
+  }
+}
