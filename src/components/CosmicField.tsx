@@ -184,20 +184,21 @@ float sdTri(vec2 p, float r){
 
 void main(){
   vec2 p = gl_PointCoord * 2.0 - 1.0;
-  p.y = -p.y;
+  float r = length(p);
   float a;
+  vec3 col = v_color;
   if (v_flame > 0.01) {
-    a = smoothstep(1.0, 0.0, length(p)); // soft filled ember
+    a = smoothstep(1.0, 0.0, r); // soft filled ember
   } else {
-    float d;
-    if (v_shape < 0.5) d = sdTri(p, 0.85);
-    else if (v_shape < 1.5) d = (abs(p.x) + abs(p.y)) - 0.82;
-    else if (v_shape < 2.5) d = length(p) - 0.72;
-    else d = max(abs(p.x), abs(p.y)) - 0.68;
-    a = smoothstep(0.17, 0.0, abs(d));
+    // Little sphere: soft-edged filled dot with a brighter core and a subtle
+    // upper-left highlight so each particle reads as a tiny lit ball.
+    a = smoothstep(0.92, 0.30, r);
+    float core = smoothstep(0.55, 0.0, r);
+    float hl = smoothstep(0.7, 0.0, length(p - vec2(-0.28, -0.28)));
+    col += (core * 0.18 + hl * 0.14);
   }
   if (a <= 0.003) discard;
-  gl_FragColor = vec4(v_color, a * v_alpha);
+  gl_FragColor = vec4(col, a * v_alpha);
 }
 `;
 
