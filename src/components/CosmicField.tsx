@@ -546,6 +546,7 @@ export function CosmicField() {
     }
 
     // ── Buffers ──
+    const buffers: Record<string, WebGLBuffer | null> = {};
     const bind = (name: string, data: Float32Array, size: number) => {
       const buf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buf);
@@ -553,6 +554,7 @@ export function CosmicField() {
       const loc = gl.getAttribLocation(prog, name);
       gl.enableVertexAttribArray(loc);
       gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
+      buffers[name] = buf;
     };
     bind("a_brain", aBrain, 3);
     bind("a_normal", aNormal, 3);
@@ -565,6 +567,55 @@ export function CosmicField() {
     bind("a_scatter", aScatter, 3);
     bind("a_meta", aMeta, 4);
     bind("a_flame", aFlame, 1);
+
+    // Replace the procedural handshake with a point cloud sampled from the
+    // reference silhouette (/hand-map.png) once it loads — reads as a real
+    // handshake, with a soft bulge + outward normals for lighting.
+    const handImg = new Image();
+    handImg.onload = () => {
+      const iw = handImg.naturalWidth;
+      const ih = handImg.naturalHeight;
+      const oc = document.createElement("canvas");
+      oc.width = iw;
+      oc.height = ih;
+      const octx = oc.getContext("2d");
+      if (!octx) return;
+      octx.drawImage(handImg, 0, 0);
+      const d = octx.getImageData(0, 0, iw, ih).data;
+      const fx: number[] = [];
+      const fy: number[] = [];
+      for (let y = 0; y < ih; y++) {
+        for (let x = 0; x < iw; x++) {
+          if (d[(y * iw + x) * 4] > 110) {
+            fx.push(x);
+            fy.push(y);
+          }
+        }
+      }
+      if (fx.length === 0) return;
+      const half = ih / 2;
+      const sc = 0.82;
+      for (let i = 0; i < COUNT; i++) {
+        const k = Math.floor(rand() * fx.length);
+        const nx = ((fx[k] + rand() - 0.5 - iw / 2) / half) * sc;
+        const ny = (-(fy[k] + rand() - 0.5 - ih / 2) / half) * sc;
+        const rr = Math.min(1, Math.hypot(nx / 1.5, ny));
+        aHand[i * 3] = nx;
+        aHand[i * 3 + 1] = ny;
+        aHand[i * 3 + 2] = 0.16 * Math.sqrt(Math.max(0, 1 - rr * rr));
+        let nnx = nx * 0.55;
+        let nny = ny * 0.55;
+        const nl = Math.hypot(nnx, nny, 1) || 1;
+        aHnorm[i * 3] = nnx / nl;
+        aHnorm[i * 3 + 1] = nny / nl;
+        aHnorm[i * 3 + 2] = 1 / nl;
+      }
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffers["a_hand"]);
+      gl.bufferData(gl.ARRAY_BUFFER, aHand, gl.STATIC_DRAW);
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffers["a_hnorm"]);
+      gl.bufferData(gl.ARRAY_BUFFER, aHnorm, gl.STATIC_DRAW);
+    };
+    handImg.src = "/hand-map.png";
 
     const U = (n: string) => gl.getUniformLocation(prog, n);
     const uRes = U("u_res");
