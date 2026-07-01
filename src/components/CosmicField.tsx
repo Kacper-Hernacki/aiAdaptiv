@@ -46,6 +46,10 @@ attribute vec3 a_brain;
 attribute vec3 a_normal;
 attribute vec3 a_rocket;
 attribute vec3 a_normal2;
+attribute vec3 a_hand;
+attribute vec3 a_hnorm;
+attribute vec3 a_shield;
+attribute vec3 a_snorm;
 attribute vec3 a_scatter;
 attribute vec4 a_meta; // bright, size, seed, shape
 attribute float a_flame; // 1 for engine-flame particles
@@ -81,17 +85,24 @@ void main(){
   float seed = a_meta.z;
   v_shape = a_meta.w;
 
-  float mB = clamp(u_morph, 0.0, 1.0);       // brain -> rocket
-  float mS = clamp(u_morph - 1.0, 0.0, 1.0); // rocket -> scatter
+  // Morph chain: brain -> rocket -> handshake -> shield -> scatter.
+  float mB = clamp(u_morph, 0.0, 1.0);
+  float m2 = clamp(u_morph - 1.0, 0.0, 1.0);
+  float m3 = clamp(u_morph - 2.0, 0.0, 1.0);
+  float m4 = clamp(u_morph - 3.0, 0.0, 1.0);
   vec3 p = mix(a_brain, a_rocket, mB);
-  p = mix(p, a_scatter, mS);
+  p = mix(p, a_hand, m2);
+  p = mix(p, a_shield, m3);
+  p = mix(p, a_scatter, m4);
   p = mix(a_scatter, p, u_intro);
-  vec3 n = normalize(mix(a_normal, a_normal2, mB));
+  vec3 n = mix(a_normal, a_normal2, mB);
+  n = mix(n, a_hnorm, m2);
+  n = mix(n, a_snorm, m3);
+  n = normalize(n);
 
-  // Engine flame: only for flame particles once the rocket has formed. On
-  // launch the flame streams downward, spreads and flickers.
+  // Engine flame: only while it is the rocket (not yet morphing to hand).
   float flick = 0.5 + 0.5 * sin(u_time * 22.0 + seed * 40.0);
-  float flameOn = a_flame * step(0.5, mB);
+  float flameOn = a_flame * step(0.5, mB) * (1.0 - m2);
   float burn = flameOn * u_launch;
   p.y -= burn * (0.2 + 1.1 * flick);
   p.xz *= (1.0 + burn * 0.7 * flick);
@@ -128,7 +139,8 @@ void main(){
   v_flame = 0.0;
   if (flameOn > 0.5) {
     float core = clamp(1.0 - length(p.xz) * 3.0, 0.0, 1.0);
-    v_color = mix(vec3(1.0, 0.45, 0.05), vec3(1.0, 0.95, 0.72), core);
+    // Same purple family as the brain/rocket, but lighter (lavender -> white).
+    v_color = mix(vec3(0.66, 0.5, 1.0), vec3(0.97, 0.94, 1.0), core);
     v_flame = burn;
     v_alpha = clamp(burn * (0.55 + 0.45 * flick) * u_galpha, 0.0, 1.0);
     gl_PointSize *= 1.0 + burn * 1.6;
@@ -225,6 +237,10 @@ export function CosmicField() {
     const aNormal = new Float32Array(COUNT * 3);
     const aRocket = new Float32Array(COUNT * 3);
     const aNormal2 = new Float32Array(COUNT * 3);
+    const aHand = new Float32Array(COUNT * 3);
+    const aHnorm = new Float32Array(COUNT * 3);
+    const aShield = new Float32Array(COUNT * 3);
+    const aSnorm = new Float32Array(COUNT * 3);
     const aScatter = new Float32Array(COUNT * 3);
     const aMeta = new Float32Array(COUNT * 4);
     const aFlame = new Float32Array(COUNT);
@@ -342,71 +358,173 @@ export function CosmicField() {
       aNormal[i * 3 + 2] = Math.sin(a);
     }
 
-    // ── Rocket geometry (pointing +y): chunky body, tall nose, 4 swept fins,
-    //    nozzle, flame — a cartoon rocket. ──
-    const rBody = Math.floor(COUNT * 0.4);
+    // ── Rocket geometry (pointing +y): chunky body, ROUNDED dome nose, three
+    //    ROUNDED (leaf) fins, nozzle, flame. ──
+    const rBody = Math.floor(COUNT * 0.42);
     const rNose = Math.floor(COUNT * 0.16);
-    const rFin = Math.floor(COUNT * 0.24);
-    const rNoz = Math.floor(COUNT * 0.06);
+    const rFin = Math.floor(COUNT * 0.26);
+    const rNoz = Math.floor(COUNT * 0.05);
     const setN = (i: number, x: number, y: number, z: number) => {
       const l = Math.hypot(x, y, z) || 1;
       aNormal2[i * 3] = x / l;
       aNormal2[i * 3 + 1] = y / l;
       aNormal2[i * 3 + 2] = z / l;
     };
-    for (let i = 0; i < COUNT; i++) {
-      if (i < rBody) {
-        // Barrel body with rounded shoulders.
-        const a = golden * i;
-        const yv = -0.35 + (i / rBody) * 0.77;
-        const rb = 0.34 * (1 - 0.2 * Math.max(0, (yv - 0.18) / 0.24));
-        aRocket[i * 3] = Math.cos(a) * rb;
-        aRocket[i * 3 + 1] = yv;
-        aRocket[i * 3 + 2] = Math.sin(a) * rb;
-        setN(i, Math.cos(a), 0, Math.sin(a));
-      } else if (i < rBody + rNose) {
-        // Tall ogive nose.
-        const j = i - rBody;
-        const a = golden * j;
-        const t = j / rNose;
-        const rr = 0.34 * Math.pow(1 - t, 0.72);
-        aRocket[i * 3] = Math.cos(a) * rr;
-        aRocket[i * 3 + 1] = 0.42 + t * 0.63;
-        aRocket[i * 3 + 2] = Math.sin(a) * rr;
-        setN(i, Math.cos(a) * 0.7, 0.7, Math.sin(a) * 0.7);
-      } else if (i < rBody + rNose + rFin) {
-        // Four swept-back fins (triangular sheets).
-        const j = i - rBody - rNose;
-        const ang = (j % 4) * (Math.PI / 2);
-        const t = rand();
-        const rr = 0.3 + t * 0.36;
-        const tx = -Math.sin(ang);
-        const tz = Math.cos(ang);
-        const wj = (rand() - 0.5) * 0.05;
-        aRocket[i * 3] = Math.cos(ang) * rr + tx * wj;
-        aRocket[i * 3 + 1] = -0.05 - t * 0.55 - rand() * 0.06;
-        aRocket[i * 3 + 2] = Math.sin(ang) * rr + tz * wj;
-        setN(i, tx, 0.12, tz);
-      } else if (i < rBody + rNose + rFin + rNoz) {
-        // Nozzle.
-        const j = i - rBody - rNose - rFin;
-        const a = golden * j;
-        const t = j / rNoz;
-        const rr = 0.13 * (1 - 0.35 * t);
-        aRocket[i * 3] = Math.cos(a) * rr;
-        aRocket[i * 3 + 1] = -0.35 - t * 0.12;
-        aRocket[i * 3 + 2] = Math.sin(a) * rr;
-        setN(i, Math.cos(a), -0.2, Math.sin(a));
+    let ci = 0;
+    for (let k = 0; k < rBody; k++, ci++) {
+      // Barrel body with softly rounded shoulders.
+      const a = golden * k;
+      const yv = -0.35 + (k / rBody) * 0.75;
+      const rb = 0.32 * (1 - 0.16 * Math.max(0, (yv - 0.16) / 0.24));
+      aRocket[ci * 3] = Math.cos(a) * rb;
+      aRocket[ci * 3 + 1] = yv;
+      aRocket[ci * 3 + 2] = Math.sin(a) * rb;
+      setN(ci, Math.cos(a), 0, Math.sin(a));
+    }
+    for (let k = 0; k < rNose; k++, ci++) {
+      // Rounded dome nose (hemisphere), not pointed — "zaokrąglony czubek".
+      const a = golden * k;
+      const t = k / rNose;
+      const rr = 0.32 * Math.sqrt(Math.max(0, 1 - t * t));
+      aRocket[ci * 3] = Math.cos(a) * rr;
+      aRocket[ci * 3 + 1] = 0.4 + t * 0.4;
+      aRocket[ci * 3 + 2] = Math.sin(a) * rr;
+      setN(ci, Math.cos(a) * 0.5, 0.85, Math.sin(a) * 0.5);
+    }
+    for (let k = 0; k < rFin; k++, ci++) {
+      // Rounded leaf fins that read flat from the front: left + right (in the
+      // screen plane) and one front fin (toward the viewer).
+      const g = k % 3;
+      const t = rand();
+      const hw = 0.1 * Math.sqrt(Math.max(0, 1 - t * t)) * (0.6 + 0.4 * (1 - t));
+      const wj = (rand() * 2 - 1) * hw;
+      if (g === 0 || g === 1) {
+        const sgn = g === 0 ? 1 : -1;
+        const bx = 0.26 * sgn;
+        const by = -0.05;
+        const tx = 0.64 * sgn;
+        const ty = -0.55;
+        let dx = tx - bx;
+        let dy = ty - by;
+        const dl = Math.hypot(dx, dy) || 1;
+        dx /= dl;
+        dy /= dl;
+        aRocket[ci * 3] = bx + (tx - bx) * t + -dy * wj;
+        aRocket[ci * 3 + 1] = by + (ty - by) * t + dx * wj;
+        aRocket[ci * 3 + 2] = (rand() - 0.5) * 0.06;
+        setN(ci, sgn * 0.4, 0.12, 0.9);
       } else {
-        // Flame plume below the nozzle.
-        const t = rand();
-        const a = rand() * Math.PI * 2;
-        const rr = Math.sqrt(rand()) * 0.16 * (1 - t * 0.5);
-        aRocket[i * 3] = Math.cos(a) * rr;
-        aRocket[i * 3 + 1] = -0.48 - t * 0.3;
-        aRocket[i * 3 + 2] = Math.sin(a) * rr;
-        setN(i, 0, -1, 0);
-        aFlame[i] = 1;
+        const bz = 0.26;
+        const by = -0.05;
+        const tz = 0.62;
+        const ty = -0.55;
+        let dz = tz - bz;
+        let dy = ty - by;
+        const dl = Math.hypot(dz, dy) || 1;
+        dz /= dl;
+        dy /= dl;
+        aRocket[ci * 3] = (rand() - 0.5) * 0.06;
+        aRocket[ci * 3 + 1] = by + (ty - by) * t + dz * wj;
+        aRocket[ci * 3 + 2] = bz + (tz - bz) * t + -dy * wj;
+        setN(ci, 0, 0.12, 1);
+      }
+    }
+    for (let k = 0; k < rNoz; k++, ci++) {
+      const a = golden * k;
+      const t = k / rNoz;
+      const rr = 0.12 * (1 - 0.35 * t);
+      aRocket[ci * 3] = Math.cos(a) * rr;
+      aRocket[ci * 3 + 1] = -0.35 - t * 0.12;
+      aRocket[ci * 3 + 2] = Math.sin(a) * rr;
+      setN(ci, Math.cos(a), -0.2, Math.sin(a));
+    }
+    for (; ci < COUNT; ci++) {
+      // Flame plume below the nozzle.
+      const t = rand();
+      const a = rand() * Math.PI * 2;
+      const rr = Math.sqrt(rand()) * 0.16 * (1 - t * 0.5);
+      aRocket[ci * 3] = Math.cos(a) * rr;
+      aRocket[ci * 3 + 1] = -0.48 - t * 0.3;
+      aRocket[ci * 3 + 2] = Math.sin(a) * rr;
+      setN(ci, 0, -1, 0);
+      aFlame[ci] = 1;
+    }
+
+    // ── Handshake: two forearms clasped at the centre ──
+    {
+      const hn = (i: number, x: number, y: number, z: number) => {
+        const l = Math.hypot(x, y, z) || 1;
+        aHnorm[i * 3] = x / l;
+        aHnorm[i * 3 + 1] = y / l;
+        aHnorm[i * 3 + 2] = z / l;
+      };
+      const arm = (i: number, p0: number[], p1: number[]) => {
+        const tt = rand();
+        const cxp = p0[0] + (p1[0] - p0[0]) * tt;
+        const cyp = p0[1] + (p1[1] - p0[1]) * tt;
+        let dx = p1[0] - p0[0];
+        let dy = p1[1] - p0[1];
+        const dl = Math.hypot(dx, dy) || 1;
+        dx /= dl;
+        dy /= dl;
+        const p1x = -dy;
+        const p1y = dx;
+        const ang = rand() * Math.PI * 2;
+        const rad = 0.15 * (0.6 + 0.4 * Math.sqrt(rand()));
+        const c = Math.cos(ang);
+        const s = Math.sin(ang);
+        aHand[i * 3] = cxp + p1x * rad * c;
+        aHand[i * 3 + 1] = cyp + p1y * rad * c;
+        aHand[i * 3 + 2] = rad * s;
+        hn(i, p1x * c, p1y * c, s);
+      };
+      const nArmL = Math.floor(COUNT * 0.34);
+      const nArmR = Math.floor(COUNT * 0.34);
+      for (let i = 0; i < COUNT; i++) {
+        if (i < nArmL) arm(i, [-1.08, -0.5], [-0.08, 0.04]);
+        else if (i < nArmL + nArmR) arm(i, [1.08, -0.5], [0.08, 0.04]);
+        else {
+          // Clasp: rounded cluster where the hands meet.
+          const rr = Math.cbrt(rand());
+          const a1 = rand() * Math.PI * 2;
+          const b1 = Math.acos(2 * rand() - 1);
+          const ex = Math.sin(b1) * Math.cos(a1);
+          const ey = Math.cos(b1);
+          const ez = Math.sin(b1) * Math.sin(a1);
+          aHand[i * 3] = ex * 0.3 * rr;
+          aHand[i * 3 + 1] = 0.04 + ey * 0.2 * rr;
+          aHand[i * 3 + 2] = ez * 0.24 * rr;
+          hn(i, ex, ey * 0.6, ez + 0.3);
+        }
+      }
+    }
+
+    // ── Shield: convex heraldic shield (rounded top, point bottom) ──
+    {
+      const halfWidth = (y: number) => {
+        const nb = (0.52 - y) / 1.14; // 0 top .. 1 bottom point
+        let hw = 0.38 * Math.sqrt(Math.max(0, 1 - Math.pow(nb, 1.7)));
+        hw *= 1 - 0.28 * Math.max(0, (y - 0.4) / 0.12); // round the top corners
+        return Math.max(0, hw);
+      };
+      for (let i = 0; i < COUNT; i++) {
+        const y = -0.62 + rand() * 1.14;
+        const hw = halfWidth(y);
+        const x = (rand() * 2 - 1) * hw;
+        const edge = hw > 0.001 ? x / hw : 0;
+        const bulge =
+          0.24 * Math.sqrt(Math.max(0, 1 - edge * edge)) * (0.55 + 0.45 * ((y + 0.62) / 1.14));
+        const side = rand() < 0.72 ? 1 : -0.55; // mostly the front face
+        aShield[i * 3] = x;
+        aShield[i * 3 + 1] = y;
+        aShield[i * 3 + 2] = bulge * side;
+        const nx = edge * 0.9;
+        const ny = -0.15;
+        const nz = side > 0 ? 1 : -0.9;
+        const nl = Math.hypot(nx, ny, nz) || 1;
+        aSnorm[i * 3] = nx / nl;
+        aSnorm[i * 3 + 1] = ny / nl;
+        aSnorm[i * 3 + 2] = nz / nl;
       }
     }
 
@@ -440,6 +558,10 @@ export function CosmicField() {
     bind("a_normal", aNormal, 3);
     bind("a_rocket", aRocket, 3);
     bind("a_normal2", aNormal2, 3);
+    bind("a_hand", aHand, 3);
+    bind("a_hnorm", aHnorm, 3);
+    bind("a_shield", aShield, 3);
+    bind("a_snorm", aSnorm, 3);
     bind("a_scatter", aScatter, 3);
     bind("a_meta", aMeta, 4);
     bind("a_flame", aFlame, 1);
@@ -475,7 +597,7 @@ export function CosmicField() {
     let anchors: number[] = [0];
     const computeAnchors = () => {
       anchors = [0];
-      for (const id of ["problem", "solution", "pricing"]) {
+      for (const id of ["problem", "solution", "pricing", "how-it-works", "faq"]) {
         const el = document.getElementById(id);
         if (el) {
           const top = el.getBoundingClientRect().top + window.scrollY;
@@ -517,17 +639,22 @@ export function CosmicField() {
 
     // Phase → composition. Hero(0) right brain → Problem(1) left brain →
     // Solution(2) rocket (right) → Pricing(3)+ dissolve to scatter.
+    // phase: 0 hero, 1 problem, 2 solution, 3 pricing, 4 how-it-works, 5 faq
     const cxFrames: [number, number][] = [
-      [0.0, 0.66],
-      [1.0, 0.3],
-      [2.0, 0.6],
-      [3.0, 0.5],
+      [0.0, 0.66], // brain right
+      [1.0, 0.3], // brain left
+      [2.0, 0.55], // rocket centre
+      [3.0, 0.68], // handshake right
+      [4.0, 0.68], // shield right
+      [5.0, 0.5],
     ];
     const scaleFrames: [number, number][] = [
       [0.0, 1.05],
       [1.0, 1.2],
       [2.0, 1.25],
-      [3.0, 1.05],
+      [3.0, 1.15],
+      [4.0, 1.2],
+      [5.0, 1.0],
     ];
 
     let t = 0;
@@ -540,14 +667,18 @@ export function CosmicField() {
       const introEase = 1 - Math.pow(1 - intro, 3);
       const phase = getPhase();
 
-      // Brain→rocket over phase 1→2. Hold the rocket while it LAUNCHES
-      // (phase 2→2.8), then dissolve to scatter (2.8→3.2).
+      // Morph timeline: brain→rocket (1→2), rocket launch (2→2.6),
+      // rocket→handshake (2.6→3), handshake→shield (3→4), shield→scatter (4→5).
       let morph = 0;
-      if (phase >= 2.8) morph = 1 + Math.min(1, (phase - 2.8) / 0.4);
+      if (phase >= 4) morph = 3 + Math.min(1, phase - 4);
+      else if (phase >= 3) morph = 2 + (phase - 3);
+      else if (phase >= 2.6) morph = 1 + (phase - 2.6) / 0.4;
       else if (phase >= 2) morph = 1;
       else if (phase >= 1) morph = phase - 1;
-      // Engine ignition + climb as you scroll through the Solution section.
-      const launch = Math.min(1, Math.max(0, (phase - 2) / 0.8));
+      // Engine ignites then fades as the rocket morphs to the handshake.
+      const launch =
+        Math.min(1, Math.max(0, (phase - 2) / 0.6)) *
+        Math.min(1, Math.max(0, (2.9 - phase) / 0.3));
 
       const cxFrac = narrow ? 0.5 : keyframe(phase, cxFrames);
       const cyFrac = (narrow ? 0.34 : 0.5) - launch * 0.55; // rise on launch
@@ -559,7 +690,7 @@ export function CosmicField() {
       const rotY = idle * (1 - rocketness * 0.92) + phase * 0.2 * (1 - rocketness * 0.85);
       const rotX =
         (0.16 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.06)) * (1 - rocketness * 0.7);
-      const fade = Math.max(0, 1 - Math.max(0, phase - 2.9) / 0.5);
+      const fade = Math.max(0, 1 - Math.max(0, phase - 4.6) / 0.6);
       const globalAlpha = 0.9 * fade;
 
       gl.uniform2f(uCenter, w * cxFrac * dpr, h * cyFrac * dpr);
