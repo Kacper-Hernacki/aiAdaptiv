@@ -665,37 +665,43 @@ export function CosmicField() {
         }
       }
 
-      // Height field: sqrt(distance) rounds each limb into a cylinder-like
-      // cross-section (steep at the silhouette edge, plateaued in the middle).
+      // Height field. Depth is proportional to the limb's own half-thickness
+      // (distance to the edge), so a thick forearm becomes a fat cylinder and a
+      // finger a thin one — genuine, correctly-scaled 3D volume. `zUnit` is the
+      // model-space size of one pixel, so z lives in the same units as x/y.
       const half = ih / 2;
-      const sc = 0.58; // decreased handshake
-      const zScale = 0.34 / half; // depth per pixel, in model units
+      const sc = 0.5; // decreased handshake
+      const zUnit = sc / half; // model units per source pixel
+      const zGain = 1.15;
       const depthAt = (x: number, y: number) => {
         if (x < 0 || y < 0 || x >= iw || y >= ih) return 0;
-        return Math.sqrt(dist[y * iw + x]) * zScale;
+        // pow<1 rounds the medial ridge into a dome instead of a sharp tent.
+        return zGain * zUnit * Math.pow(dist[y * iw + x], 0.92);
       };
 
       for (let i = 0; i < COUNT; i++) {
         const k = Math.floor(rand() * fx.length);
         const px = fx[k];
         const py = fy[k];
-        const nx = ((px - iw / 2) / half) * sc;
-        const ny = (-(py - ih / 2) / half) * sc;
-        // Randomly place particles between the back (0) and front surface so
-        // the form reads as a solid volume, not just a front shell.
+        const nx = (px - iw / 2) * zUnit;
+        const ny = -(py - ih / 2) * zUnit;
+        // Fill from the back surface to the front so the form reads as a solid
+        // volume, not just a front shell.
         const zSurf = depthAt(px, py);
-        const front = rand() < 0.72; // bias toward the lit front face
+        const front = rand() < 0.78; // bias toward the lit front face
         aHand[i * 3] = nx;
         aHand[i * 3 + 1] = ny;
-        aHand[i * 3 + 2] = front ? zSurf : -zSurf * (0.4 + rand() * 0.6);
-        // Surface normal from the gradient of the height field (finger ridges).
-        const gx = depthAt(px + 2, py) - depthAt(px - 2, py);
-        const gy = depthAt(px, py + 2) - depthAt(px, py - 2);
-        const scaledGx = (gx / (4 / half)) * sc;
-        const scaledGy = (gy / (4 / half)) * sc;
-        let nnx = -scaledGx;
-        let nny = scaledGy; // image y is flipped relative to model y
-        let nnz = front ? 1 : -1;
+        aHand[i * 3 + 2] = front
+          ? zSurf * (0.7 + rand() * 0.3)
+          : -zSurf * (0.35 + rand() * 0.55);
+        // Surface normal from the height-field gradient (catches finger ridges
+        // and knuckles under the top-left light once the form rotates).
+        const ddx = (depthAt(px + 2, py) - depthAt(px - 2, py)) / (4 * zUnit);
+        const ddyImg = (depthAt(px, py + 2) - depthAt(px, py - 2)) / (4 * zUnit);
+        const fsign = front ? 1 : -1;
+        let nnx = -ddx * fsign;
+        let nny = ddyImg * fsign; // image y is flipped relative to model y
+        let nnz = fsign;
         const nl = Math.hypot(nnx, nny, nnz) || 1;
         aHnorm[i * 3] = nnx / nl;
         aHnorm[i * 3 + 1] = nny / nl;
@@ -794,7 +800,7 @@ export function CosmicField() {
       [0.0, 0.86],
       [1.0, 1.2],
       [2.0, 1.02], // smaller rocket
-      [3.0, 0.92], // smaller handshake
+      [3.0, 0.8], // smaller handshake
       [4.0, 1.2],
       [5.0, 1.0],
     ];
@@ -833,12 +839,33 @@ export function CosmicField() {
       const cyFrac = (narrow ? 0.34 : 0.5) - launch * 0.55; // rise on launch
       const scale = narrow ? 0.95 : keyframe(phase, scaleFrames);
 
-      // As the brain becomes a rocket, damp rotation so it stands upright.
-      const rocketness = Math.min(1, Math.max(0, phase - 1));
-      const idle = reduceMotion ? 0.3 : Math.sin(t * 0.00022) * 0.7;
-      const rotY = idle * (1 - rocketness * 0.92) + phase * 0.2 * (1 - rocketness * 0.85);
+      // Only the rocket must stand still and upright; the brain, handshake and
+      // shield rotate so their 3D relief actually reads. `upright` peaks over
+      // the rocket beat (phase ~2.3) and releases before and after it.
+      const upright = Math.max(0, 1 - Math.abs(phase - 2.3) / 0.7);
+      // Standing yaw per beat: hands and shield sit at a 3/4 angle so their
+      // depth is visible; the rocket and brain face front.
+      const baseYaw = keyframe(phase, [
+        [0.0, 0.0],
+        [2.0, 0.0], // rocket: face front
+        [2.7, 0.1],
+        [3.0, 0.62], // handshake: ~35° three-quarter view
+        [4.0, 0.5], // shield: slight three-quarter view
+        [5.0, 0.0],
+      ]);
+      // How much slow idle sway to layer on (reveals depth as it rocks).
+      const sway = keyframe(phase, [
+        [0.0, 0.7], // brain sways
+        [2.0, 0.0], // rocket steady
+        [3.0, 0.26], // hands gently rock
+        [4.0, 0.24], // shield gently rocks
+        [5.0, 0.4],
+      ]);
+      const rotY =
+        baseYaw + (reduceMotion ? 0 : Math.sin(t * 0.00022) * sway);
       const rotX =
-        (0.16 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.06)) * (1 - rocketness * 0.7);
+        (0.15 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.05)) *
+        (1 - upright * 0.85);
       const fade = Math.max(0, 1 - Math.max(0, phase - 4.6) / 0.6);
       const globalAlpha = 0.9 * fade;
 
