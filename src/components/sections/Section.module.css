@@ -27,6 +27,13 @@
     max-width: none;
     margin-left: 0;
   }
+
+  /* Mobile: the particle visual sits in the top of the viewport; push each
+     section's content below it so nothing is hidden behind the particles. */
+  .section {
+    justify-content: flex-start;
+    padding-top: 40svh;
+  }
 }
 
 .h2 {

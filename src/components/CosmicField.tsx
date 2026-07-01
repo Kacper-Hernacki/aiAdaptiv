@@ -71,6 +71,8 @@ uniform float u_galpha;
 uniform float u_launch;  // 0 engine off -> 1 full burn
 uniform vec3 u_light;
 uniform float u_dpr;
+uniform float u_maxSeed; // cull particles with seed above this (mobile density)
+uniform float u_ptScale; // global point-size multiplier (smaller on mobile)
 varying vec3 v_color;
 varying float v_alpha;
 varying float v_shape;
@@ -90,6 +92,16 @@ void main(){
   float size = a_meta.y;
   float seed = a_meta.z;
   v_shape = a_meta.w;
+
+  // Thin the field on small screens: drop particles whose (uniform) seed is
+  // above the cutoff. Culls evenly across every shape so nothing is truncated.
+  if (seed > u_maxSeed) {
+    gl_Position = vec4(2.0, 2.0, 2.0, 1.0); // outside the clip volume
+    gl_PointSize = 0.0;
+    v_alpha = 0.0;
+    v_flame = 0.0;
+    return;
+  }
 
   // Morph chain: brain -> rocket -> handshake -> shield -> scatter.
   float mB = clamp(u_morph, 0.0, 1.0);
@@ -130,7 +142,7 @@ void main(){
   float sxp = u_center.x + x1 * u_radius * persp;
   float syp = u_center.y - y1 * u_radius * persp;
   gl_Position = vec4(sxp / u_res.x * 2.0 - 1.0, 1.0 - syp / u_res.y * 2.0, 0.0, 1.0);
-  gl_PointSize = max(1.0, size * (0.4 + depthN * 1.0) * persp * u_dpr);
+  gl_PointSize = max(1.0, size * (0.4 + depthN * 1.0) * persp * u_dpr * u_ptScale);
 
   float lambert = max(dot(vec3(nx1, ny1, nz2), u_light), 0.0);
   float v = 0.3 + lambert * 0.58 + bright * lambert * 0.3 - (1.0 - bright) * 0.1;
@@ -587,6 +599,8 @@ export function CosmicField() {
     const uLaunch = U("u_launch");
     const uLight = U("u_light");
     const uDpr = U("u_dpr");
+    const uMaxSeed = U("u_maxSeed");
+    const uPtScale = U("u_ptScale");
 
     const ll = Math.hypot(-0.5, 0.62, 0.6);
     gl.uniform3f(uLight, -0.5 / ll, 0.62 / ll, 0.6 / ll);
@@ -624,8 +638,14 @@ export function CosmicField() {
       canvas.style.height = h + "px";
       gl.viewport(0, 0, canvas.width, canvas.height);
       narrow = w < 900;
+      const phone = w < 640;
       gl.uniform2f(uRes, canvas.width, canvas.height);
       gl.uniform1f(uDpr, dpr);
+      // Thin + shrink the field on smaller screens so it doesn't read as a
+      // dense blob. seed is uniform in [0.5, 2.1]; keep ~48% on phones, ~65%
+      // on tablets, all on desktop.
+      gl.uniform1f(uMaxSeed, phone ? 1.27 : narrow ? 1.54 : 10.0);
+      gl.uniform1f(uPtScale, phone ? 0.62 : narrow ? 0.78 : 1.0);
       computeAnchors();
     };
 
@@ -695,9 +715,13 @@ export function CosmicField() {
         es(Math.min(1, Math.max(0, (phase - 2) / 0.6))) *
         es(Math.min(1, Math.max(0, (2.9 - phase) / 0.3)));
 
+      // On mobile the visual sits in the TOP portion of the viewport (centred
+      // horizontally) so the text below it stays clear; on desktop it uses the
+      // per-section left/right choreography.
       const cxFrac = narrow ? 0.5 : keyframe(phase, cxFrames);
-      const cyFrac = (narrow ? 0.34 : 0.5) - launch * 0.55; // rise on launch
-      const scale = narrow ? 0.95 : keyframe(phase, scaleFrames);
+      const cyFrac =
+        (narrow ? 0.21 : 0.5) - launch * (narrow ? 0.12 : 0.55); // rise on launch
+      const scale = narrow ? 0.6 : keyframe(phase, scaleFrames);
 
       // Only the rocket must stand still and upright; the brain, handshake and
       // shield rotate so their 3D relief actually reads. `upright` peaks over

@@ -52,6 +52,16 @@
   display: block;
 }
 
+/* Mobile: the particle brain occupies the top of the viewport, so drop the
+   hero copy below it instead of centring it behind the brain. */
+@media (max-width: 900px) {
+  .hero {
+    align-items: flex-start;
+    padding-top: 42svh;
+    padding-bottom: 8vh;
+  }
+}
+
 @media (max-width: 640px) {
   .headline {
     font-size: clamp(34px, 10vw, 60px);
