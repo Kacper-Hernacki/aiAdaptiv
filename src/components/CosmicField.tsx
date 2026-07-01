@@ -461,9 +461,9 @@ export function CosmicField() {
       aFlame[ci] = 1;
     }
 
-    // ── Handshake: two round 3D forearms gripping, fingers wrapping the clasp.
-    // Fully volumetric — cylinders + an ellipsoidal hand mass + curved finger
-    // tubes — so depth is intrinsic to the geometry, not a rotated silhouette. ──
+    // ── Bust: head + shoulders in a suit, with a shirt collar and tie. Fully
+    // volumetric (ellipsoid head, elliptical-section torso, raised lapel/tie
+    // relief) so depth is intrinsic to the geometry, not an extruded picture. ──
     {
       const hset = (
         i: number,
@@ -482,128 +482,87 @@ export function CosmicField() {
         aHnorm[i * 3 + 1] = ny / nl;
         aHnorm[i * 3 + 2] = nz / nl;
       };
-      // Orthonormal frame for a limb axis (dir + two perpendiculars u,v).
-      const basis = (dx: number, dy: number, dz: number) => {
-        const dl = Math.hypot(dx, dy, dz) || 1;
-        dx /= dl;
-        dy /= dl;
-        dz /= dl;
-        let hx = 0,
-          hy = 1,
-          hz = 0;
-        if (Math.abs(dy) > 0.9) {
-          hx = 1;
-          hy = 0;
-          hz = 0;
-        }
-        let ux = dy * hz - dz * hy;
-        let uy = dz * hx - dx * hz;
-        let uz = dx * hy - dy * hx;
-        const ul = Math.hypot(ux, uy, uz) || 1;
-        ux /= ul;
-        uy /= ul;
-        uz /= ul;
-        const vx = dy * uz - dz * uy;
-        const vy = dz * ux - dx * uz;
-        const vz = dx * uy - dy * ux;
-        return { ux, uy, uz, vx, vy, vz };
-      };
-      // A straight round limb (forearm) from p0 to p1, radius r0→r1.
-      const cyl = (
-        i: number,
-        p0: number[],
-        p1: number[],
-        r0: number,
-        r1: number,
-      ) => {
-        const tt = rand();
-        const cx = p0[0] + (p1[0] - p0[0]) * tt;
-        const cy = p0[1] + (p1[1] - p0[1]) * tt;
-        const cz = p0[2] + (p1[2] - p0[2]) * tt;
-        const b = basis(p1[0] - p0[0], p1[1] - p0[1], p1[2] - p0[2]);
-        const a = rand() * Math.PI * 2;
-        const ca = Math.cos(a);
-        const sa = Math.sin(a);
-        const r = (r0 + (r1 - r0) * tt) * (0.74 + 0.26 * Math.sqrt(rand()));
-        const nx = b.ux * ca + b.vx * sa;
-        const ny = b.uy * ca + b.vy * sa;
-        const nz = b.uz * ca + b.vz * sa;
-        hset(i, cx + nx * r, cy + ny * r, cz + nz * r, nx, ny, nz);
-      };
-      // A curved round finger — quadratic-bezier spine P0→P1→P2, radius r.
-      const tube = (i: number, P0: number[], P1: number[], P2: number[], r: number) => {
-        const t = rand();
-        const mt = 1 - t;
-        const cx = mt * mt * P0[0] + 2 * mt * t * P1[0] + t * t * P2[0];
-        const cy = mt * mt * P0[1] + 2 * mt * t * P1[1] + t * t * P2[1];
-        const cz = mt * mt * P0[2] + 2 * mt * t * P1[2] + t * t * P2[2];
-        const dx = 2 * mt * (P1[0] - P0[0]) + 2 * t * (P2[0] - P1[0]);
-        const dy = 2 * mt * (P1[1] - P0[1]) + 2 * t * (P2[1] - P1[1]);
-        const dz = 2 * mt * (P1[2] - P0[2]) + 2 * t * (P2[2] - P1[2]);
-        const b = basis(dx, dy, dz);
-        const a = rand() * Math.PI * 2;
-        const ca = Math.cos(a);
-        const sa = Math.sin(a);
-        const rr = r * (0.74 + 0.26 * Math.sqrt(rand()));
-        const nx = b.ux * ca + b.vx * sa;
-        const ny = b.uy * ca + b.vy * sa;
-        const nz = b.uz * ca + b.vz * sa;
-        hset(i, cx + nx * rr, cy + ny * rr, cz + nz * rr, nx, ny, nz);
-      };
-      // The gripped-hand mass at the centre (ellipsoid shell, real normals).
-      const Rx = 0.25,
-        Ry = 0.32,
-        Rz = 0.26;
-      const grip = (i: number) => {
-        const a = rand() * Math.PI * 2;
-        const ct = 2 * rand() - 1;
-        const st = Math.sqrt(1 - ct * ct);
-        const x = st * Math.cos(a) * Rx;
-        const y = ct * Ry;
-        const z = st * Math.sin(a) * Rz;
-        hset(i, x, y, z, x / (Rx * Rx), y / (Ry * Ry), z / (Rz * Rz));
-      };
-      // Four fingers of each hand curling over the clasp (near hand over the
-      // front +z, far hand over the back −z), plus a prominent near thumb.
-      const fingersNear: number[][][] = [];
-      const fingersFar: number[][][] = [];
-      for (let j = 0; j < 4; j++) {
-        const yF = 0.18 - j * 0.075;
-        fingersNear.push([
-          [-0.16, yF, 0.13],
-          [0.02, yF - 0.03, 0.32],
-          [0.22, yF - 0.07, 0.1],
-        ]);
-        fingersFar.push([
-          [0.16, yF, -0.13],
-          [-0.02, yF - 0.03, -0.32],
-          [-0.22, yF - 0.07, -0.1],
-        ]);
-      }
-      const thumbNear: number[][] = [
-        [0.0, 0.18, 0.16],
-        [0.07, 0.36, 0.24],
-        [0.14, 0.46, 0.12],
-      ];
 
-      const nAL = Math.floor(COUNT * 0.19);
-      const nAR = Math.floor(COUNT * 0.19);
-      const nGrip = Math.floor(COUNT * 0.24);
-      const nFN = Math.floor(COUNT * 0.19);
-      const nFF = Math.floor(COUNT * 0.11);
-      let fi = 0;
+      // Torso profile: half-width flares from the neck out to broad shoulders,
+      // then tapers gently to the (bust-cut) bottom. Depth is ~half the width.
+      const neckY = 0.34;
+      const shoulderY = 0.06;
+      const botY = -0.82;
+      const bodyW = (y: number) => {
+        if (y >= shoulderY) {
+          const f = Math.min(1, (y - shoulderY) / (neckY - shoulderY));
+          return 0.64 - (0.64 - 0.13) * Math.pow(f, 0.85); // shoulder → neck
+        }
+        const f = (shoulderY - y) / (shoulderY - botY);
+        return 0.64 - f * 0.14; // gentle taper to the cut
+      };
+      const bodyD = (y: number) =>
+        0.28 + 0.05 * Math.max(0, 1 - Math.abs(y + 0.25) / 0.6);
+
+      // Head ellipsoid.
+      const Hx = 0.25,
+        Hy = 0.31,
+        Hz = 0.25;
+      const HcY = 0.52;
+
+      const nHead = Math.floor(COUNT * 0.19);
+      const nNeck = Math.floor(COUNT * 0.04);
+      const nBody = Math.floor(COUNT * 0.53);
+      const nTie = Math.floor(COUNT * 0.09);
+      const nLapel = Math.floor(COUNT * 0.11);
+      // remainder → collar
+
       for (let i = 0; i < COUNT; i++) {
-        if (i < nAL) cyl(i, [-1.06, -0.17, 0.0], [-0.2, -0.02, 0.0], 0.13, 0.18);
-        else if (i < nAL + nAR) cyl(i, [1.06, 0.17, 0.0], [0.2, 0.02, 0.0], 0.13, 0.18);
-        else if (i < nAL + nAR + nGrip) grip(i);
-        else if (i < nAL + nAR + nGrip + nFN) {
-          const f = fingersNear[fi++ & 3];
-          tube(i, f[0], f[1], f[2], 0.052);
-        } else if (i < nAL + nAR + nGrip + nFN + nFF) {
-          const f = fingersFar[fi++ & 3];
-          tube(i, f[0], f[1], f[2], 0.05);
+        if (i < nHead) {
+          // Head — ellipsoid shell with true outward normals.
+          const a = rand() * Math.PI * 2;
+          const ct = 2 * rand() - 1;
+          const st = Math.sqrt(1 - ct * ct);
+          const x = st * Math.cos(a) * Hx;
+          const y = HcY + ct * Hy;
+          const z = st * Math.sin(a) * Hz;
+          hset(i, x, y, z, x / (Hx * Hx), (y - HcY) / (Hy * Hy), z / (Hz * Hz));
+        } else if (i < nHead + nNeck) {
+          // Neck — short vertical cylinder.
+          const y = 0.18 + rand() * 0.2;
+          const a = rand() * Math.PI * 2;
+          const r = 0.12 * (0.8 + 0.2 * rand());
+          hset(i, Math.cos(a) * r, y, Math.sin(a) * r * 0.9, Math.cos(a), 0.1, Math.sin(a));
+        } else if (i < nHead + nNeck + nBody) {
+          // Torso — elliptical-section suit, shell with a little inward fill.
+          const y = botY + rand() * (0.32 - botY);
+          const w = bodyW(y);
+          const dd = bodyD(y);
+          const a = rand() * Math.PI * 2;
+          const rf = 0.82 + 0.18 * rand();
+          const x = Math.cos(a) * w * rf;
+          const z = Math.sin(a) * dd * rf;
+          const slope = y > shoulderY ? 0.5 : 0.08; // shoulders slope inward/up
+          hset(i, x, y, z, Math.cos(a) / w, slope, Math.sin(a) / dd);
+        } else if (i < nHead + nNeck + nBody + nTie) {
+          // Tie — raised strip down the shirt front, knot at top, point at base.
+          const ty = -0.34 + rand() * (0.28 - -0.34);
+          const knot = ty > 0.16;
+          let tw = knot ? 0.06 : 0.055 * Math.min(1, (ty + 0.34) / 0.14);
+          const tx = (rand() * 2 - 1) * tw;
+          const z = bodyD(ty) * 0.99 + (knot ? 0.055 : 0.035);
+          hset(i, tx, ty, z, tx * 3, 0.15, 1);
+        } else if (i < nHead + nNeck + nBody + nTie + nLapel) {
+          // Lapels — two raised ridges forming the jacket's collar V.
+          const s = rand() < 0.5 ? -1 : 1;
+          const u = rand();
+          const lx = s * (0.1 + u * (0.32 - 0.1)) + (rand() - 0.5) * 0.03;
+          const ly = 0.3 - u * (0.3 - -0.18);
+          const z = bodyD(ly) * 0.99 + 0.03;
+          hset(i, lx, ly, z, s * 0.7, 0.2, 1);
         } else {
-          tube(i, thumbNear[0], thumbNear[1], thumbNear[2], 0.055);
+          // Shirt collar — small raised wings either side of the tie knot.
+          const s = rand() < 0.5 ? -1 : 1;
+          const u = rand();
+          const cx = s * (0.04 + u * 0.12);
+          const cy = 0.3 - u * 0.12;
+          const z = bodyD(cy) * 0.99 + 0.04;
+          hset(i, cx, cy, z, s * 0.5, 0.25, 1);
         }
       }
     }
@@ -834,16 +793,16 @@ export function CosmicField() {
       const baseYaw = keyframe(phase, [
         [0.0, 0.0],
         [2.0, 0.0], // rocket: face front
-        [2.7, 0.1],
-        [3.0, 0.62], // handshake: ~35° three-quarter view
-        [4.0, 0.5], // shield: slight three-quarter view
+        [2.7, 0.06],
+        [3.0, 0.34], // bust: slight turn so head/shoulders read 3D
+        [4.0, 0.5], // shield: three-quarter view
         [5.0, 0.0],
       ]);
       // How much slow idle sway to layer on (reveals depth as it rocks).
       const sway = keyframe(phase, [
         [0.0, 0.7], // brain sways
         [2.0, 0.0], // rocket steady
-        [3.0, 0.26], // hands gently rock
+        [3.0, 0.18], // bust gently turns
         [4.0, 0.24], // shield gently rocks
         [5.0, 0.4],
       ]);
