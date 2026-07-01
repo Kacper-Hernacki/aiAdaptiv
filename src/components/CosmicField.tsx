@@ -48,6 +48,7 @@ attribute vec3 a_rocket;
 attribute vec3 a_normal2;
 attribute vec3 a_scatter;
 attribute vec4 a_meta; // bright, size, seed, shape
+attribute float a_flame; // 1 for engine-flame particles
 uniform vec2 u_res;
 uniform vec2 u_center;
 uniform float u_radius;
@@ -57,11 +58,13 @@ uniform float u_rotY;
 uniform float u_rotX;
 uniform float u_time;
 uniform float u_galpha;
+uniform float u_launch;  // 0 engine off -> 1 full burn
 uniform vec3 u_light;
 uniform float u_dpr;
 varying vec3 v_color;
 varying float v_alpha;
 varying float v_shape;
+varying float v_flame;
 
 vec3 ramp(float v){
   vec3 c0 = vec3(0.047, 0.027, 0.117);
@@ -84,6 +87,14 @@ void main(){
   p = mix(p, a_scatter, mS);
   p = mix(a_scatter, p, u_intro);
   vec3 n = normalize(mix(a_normal, a_normal2, mB));
+
+  // Engine flame: only for flame particles once the rocket has formed. On
+  // launch the flame streams downward, spreads and flickers.
+  float flick = 0.5 + 0.5 * sin(u_time * 22.0 + seed * 40.0);
+  float flameOn = a_flame * step(0.5, mB);
+  float burn = flameOn * u_launch;
+  p.y -= burn * (0.2 + 1.1 * flick);
+  p.xz *= (1.0 + burn * 0.7 * flick);
 
   float cy = cos(u_rotY), sy = sin(u_rotY), cx = cos(u_rotX), sx = sin(u_rotX);
   float x1 = p.x * cy + p.z * sy;
@@ -111,6 +122,17 @@ void main(){
   float faceFactor = 0.6 + 0.4 * clamp(nz2 + 0.3, 0.0, 1.0);
   float tw = 0.75 + 0.25 * sin(u_time * seed * 2.0 + seed * 12.0);
   v_alpha = clamp((0.62 + depthN * 0.38) * faceFactor * (0.66 + bright * 0.34) * tw * u_galpha, 0.0, 1.0);
+
+  // Flame overrides colour (amber -> white core) and its own alpha (hidden
+  // until the engine ignites), and gets a bigger, softer sprite.
+  v_flame = 0.0;
+  if (flameOn > 0.5) {
+    float core = clamp(1.0 - length(p.xz) * 3.0, 0.0, 1.0);
+    v_color = mix(vec3(1.0, 0.45, 0.05), vec3(1.0, 0.95, 0.72), core);
+    v_flame = burn;
+    v_alpha = clamp(burn * (0.55 + 0.45 * flick) * u_galpha, 0.0, 1.0);
+    gl_PointSize *= 1.0 + burn * 1.6;
+  }
 }
 `;
 
@@ -119,6 +141,7 @@ precision highp float;
 varying vec3 v_color;
 varying float v_alpha;
 varying float v_shape;
+varying float v_flame;
 
 float sdTri(vec2 p, float r){
   const float k = 1.7320508;
@@ -132,12 +155,17 @@ float sdTri(vec2 p, float r){
 void main(){
   vec2 p = gl_PointCoord * 2.0 - 1.0;
   p.y = -p.y;
-  float d;
-  if (v_shape < 0.5) d = sdTri(p, 0.85);
-  else if (v_shape < 1.5) d = (abs(p.x) + abs(p.y)) - 0.82;
-  else if (v_shape < 2.5) d = length(p) - 0.72;
-  else d = max(abs(p.x), abs(p.y)) - 0.68;
-  float a = smoothstep(0.17, 0.0, abs(d));
+  float a;
+  if (v_flame > 0.01) {
+    a = smoothstep(1.0, 0.0, length(p)); // soft filled ember
+  } else {
+    float d;
+    if (v_shape < 0.5) d = sdTri(p, 0.85);
+    else if (v_shape < 1.5) d = (abs(p.x) + abs(p.y)) - 0.82;
+    else if (v_shape < 2.5) d = length(p) - 0.72;
+    else d = max(abs(p.x), abs(p.y)) - 0.68;
+    a = smoothstep(0.17, 0.0, abs(d));
+  }
   if (a <= 0.003) discard;
   gl_FragColor = vec4(v_color, a * v_alpha);
 }
@@ -199,6 +227,7 @@ export function CosmicField() {
     const aNormal2 = new Float32Array(COUNT * 3);
     const aScatter = new Float32Array(COUNT * 3);
     const aMeta = new Float32Array(COUNT * 4);
+    const aFlame = new Float32Array(COUNT);
     const bright = new Float32Array(COUNT);
 
     const nCereb = Math.floor(COUNT * 0.82);
@@ -313,10 +342,12 @@ export function CosmicField() {
       aNormal[i * 3 + 2] = Math.sin(a);
     }
 
-    // ── Rocket geometry (pointing +y): body, nose, fins, flame ──
-    const rBody = Math.floor(COUNT * 0.5);
-    const rNose = Math.floor(COUNT * 0.18);
-    const rFin = Math.floor(COUNT * 0.2);
+    // ── Rocket geometry (pointing +y): chunky body, tall nose, 4 swept fins,
+    //    nozzle, flame — a cartoon rocket. ──
+    const rBody = Math.floor(COUNT * 0.4);
+    const rNose = Math.floor(COUNT * 0.16);
+    const rFin = Math.floor(COUNT * 0.24);
+    const rNoz = Math.floor(COUNT * 0.06);
     const setN = (i: number, x: number, y: number, z: number) => {
       const l = Math.hypot(x, y, z) || 1;
       aNormal2[i * 3] = x / l;
@@ -325,40 +356,57 @@ export function CosmicField() {
     };
     for (let i = 0; i < COUNT; i++) {
       if (i < rBody) {
+        // Barrel body with rounded shoulders.
         const a = golden * i;
-        const frac = i / rBody;
-        const rb = 0.24;
+        const yv = -0.35 + (i / rBody) * 0.77;
+        const rb = 0.34 * (1 - 0.2 * Math.max(0, (yv - 0.18) / 0.24));
         aRocket[i * 3] = Math.cos(a) * rb;
-        aRocket[i * 3 + 1] = -0.45 + frac * 0.95;
+        aRocket[i * 3 + 1] = yv;
         aRocket[i * 3 + 2] = Math.sin(a) * rb;
         setN(i, Math.cos(a), 0, Math.sin(a));
       } else if (i < rBody + rNose) {
+        // Tall ogive nose.
         const j = i - rBody;
         const a = golden * j;
         const t = j / rNose;
-        const rr = 0.24 * (1 - t);
+        const rr = 0.34 * Math.pow(1 - t, 0.72);
         aRocket[i * 3] = Math.cos(a) * rr;
-        aRocket[i * 3 + 1] = 0.5 + t * 0.42;
+        aRocket[i * 3 + 1] = 0.42 + t * 0.63;
         aRocket[i * 3 + 2] = Math.sin(a) * rr;
         setN(i, Math.cos(a) * 0.7, 0.7, Math.sin(a) * 0.7);
       } else if (i < rBody + rNose + rFin) {
+        // Four swept-back fins (triangular sheets).
         const j = i - rBody - rNose;
-        const fin = j % 3;
-        const ang = (fin * Math.PI * 2) / 3;
+        const ang = (j % 4) * (Math.PI / 2);
         const t = rand();
-        const out = 0.24 + t * 0.32 * (0.4 + 0.6 * rand());
-        aRocket[i * 3] = Math.cos(ang) * out;
-        aRocket[i * 3 + 1] = -0.16 - t * 0.42;
-        aRocket[i * 3 + 2] = Math.sin(ang) * out;
-        setN(i, -Math.sin(ang), 0.15, Math.cos(ang));
+        const rr = 0.3 + t * 0.36;
+        const tx = -Math.sin(ang);
+        const tz = Math.cos(ang);
+        const wj = (rand() - 0.5) * 0.05;
+        aRocket[i * 3] = Math.cos(ang) * rr + tx * wj;
+        aRocket[i * 3 + 1] = -0.05 - t * 0.55 - rand() * 0.06;
+        aRocket[i * 3 + 2] = Math.sin(ang) * rr + tz * wj;
+        setN(i, tx, 0.12, tz);
+      } else if (i < rBody + rNose + rFin + rNoz) {
+        // Nozzle.
+        const j = i - rBody - rNose - rFin;
+        const a = golden * j;
+        const t = j / rNoz;
+        const rr = 0.13 * (1 - 0.35 * t);
+        aRocket[i * 3] = Math.cos(a) * rr;
+        aRocket[i * 3 + 1] = -0.35 - t * 0.12;
+        aRocket[i * 3 + 2] = Math.sin(a) * rr;
+        setN(i, Math.cos(a), -0.2, Math.sin(a));
       } else {
+        // Flame plume below the nozzle.
         const t = rand();
         const a = rand() * Math.PI * 2;
-        const rr = Math.sqrt(rand()) * 0.2 * (1 - t * 0.6);
+        const rr = Math.sqrt(rand()) * 0.16 * (1 - t * 0.5);
         aRocket[i * 3] = Math.cos(a) * rr;
-        aRocket[i * 3 + 1] = -0.5 - t * 0.42;
+        aRocket[i * 3 + 1] = -0.48 - t * 0.3;
         aRocket[i * 3 + 2] = Math.sin(a) * rr;
         setN(i, 0, -1, 0);
+        aFlame[i] = 1;
       }
     }
 
@@ -394,6 +442,7 @@ export function CosmicField() {
     bind("a_normal2", aNormal2, 3);
     bind("a_scatter", aScatter, 3);
     bind("a_meta", aMeta, 4);
+    bind("a_flame", aFlame, 1);
 
     const U = (n: string) => gl.getUniformLocation(prog, n);
     const uRes = U("u_res");
@@ -405,6 +454,7 @@ export function CosmicField() {
     const uRotX = U("u_rotX");
     const uTime = U("u_time");
     const uGAlpha = U("u_galpha");
+    const uLaunch = U("u_launch");
     const uLight = U("u_light");
     const uDpr = U("u_dpr");
 
@@ -490,19 +540,27 @@ export function CosmicField() {
       const introEase = 1 - Math.pow(1 - intro, 3);
       const phase = getPhase();
 
-      // morph 0..2: brain→rocket over phase 1→2, rocket→scatter over 2→3.
+      // Brain→rocket over phase 1→2. Hold the rocket while it LAUNCHES
+      // (phase 2→2.8), then dissolve to scatter (2.8→3.2).
       let morph = 0;
-      if (phase >= 2) morph = 1 + Math.min(1, phase - 2);
+      if (phase >= 2.8) morph = 1 + Math.min(1, (phase - 2.8) / 0.4);
+      else if (phase >= 2) morph = 1;
       else if (phase >= 1) morph = phase - 1;
+      // Engine ignition + climb as you scroll through the Solution section.
+      const launch = Math.min(1, Math.max(0, (phase - 2) / 0.8));
 
       const cxFrac = narrow ? 0.5 : keyframe(phase, cxFrames);
-      const cyFrac = narrow ? 0.34 : 0.5;
+      const cyFrac = (narrow ? 0.34 : 0.5) - launch * 0.55; // rise on launch
       const scale = narrow ? 0.95 : keyframe(phase, scaleFrames);
 
-      const rotY = (reduceMotion ? 0.35 : Math.sin(t * 0.00022) * 0.7) + phase * 0.25;
-      const rotX = 0.16 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.06);
-      const fade = Math.max(0, 1 - Math.max(0, phase - 2.4) / 0.6);
-      const globalAlpha = (narrow ? 0.9 : 0.9) * fade;
+      // As the brain becomes a rocket, damp rotation so it stands upright.
+      const rocketness = Math.min(1, Math.max(0, phase - 1));
+      const idle = reduceMotion ? 0.3 : Math.sin(t * 0.00022) * 0.7;
+      const rotY = idle * (1 - rocketness * 0.92) + phase * 0.2 * (1 - rocketness * 0.85);
+      const rotX =
+        (0.16 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.06)) * (1 - rocketness * 0.7);
+      const fade = Math.max(0, 1 - Math.max(0, phase - 2.9) / 0.5);
+      const globalAlpha = 0.9 * fade;
 
       gl.uniform2f(uCenter, w * cxFrac * dpr, h * cyFrac * dpr);
       gl.uniform1f(uRadius, Math.min(w, h) * (narrow ? 0.4 : 0.36) * scale * dpr);
@@ -512,6 +570,7 @@ export function CosmicField() {
       gl.uniform1f(uRotX, rotX);
       gl.uniform1f(uTime, t * 0.001);
       gl.uniform1f(uGAlpha, globalAlpha);
+      gl.uniform1f(uLaunch, reduceMotion ? 0 : launch);
 
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.drawArrays(gl.POINTS, 0, COUNT);
