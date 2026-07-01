@@ -382,14 +382,14 @@ export function CosmicField() {
       setN(ci, Math.cos(a), 0, Math.sin(a));
     }
     for (let k = 0; k < rNose; k++, ci++) {
-      // Rounded dome nose (hemisphere), not pointed — "zaokrąglony czubek".
+      // Pointed ogive nose — "bardziej spiczasty czubek".
       const a = golden * k;
       const t = k / rNose;
-      const rr = 0.32 * Math.sqrt(Math.max(0, 1 - t * t));
+      const rr = 0.32 * Math.pow(1 - t, 1.15);
       aRocket[ci * 3] = Math.cos(a) * rr;
-      aRocket[ci * 3 + 1] = 0.4 + t * 0.4;
+      aRocket[ci * 3 + 1] = 0.4 + t * 0.62;
       aRocket[ci * 3 + 2] = Math.sin(a) * rr;
-      setN(ci, Math.cos(a) * 0.5, 0.85, Math.sin(a) * 0.5);
+      setN(ci, Math.cos(a) * 0.4, 0.92, Math.sin(a) * 0.4);
     }
     for (let k = 0; k < rFin; k++, ci++) {
       // Rounded leaf fins that read flat from the front: left + right (in the
