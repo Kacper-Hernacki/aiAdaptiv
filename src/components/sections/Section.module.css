@@ -12,6 +12,19 @@
   text-align: center;
 }
 
+/* Push a section's content to the right half (opposite the left-side visual). */
+.alignRight {
+  max-width: 560px;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .alignRight {
+    max-width: none;
+    margin-left: 0;
+  }
+}
+
 .h2 {
   margin: 0 0 var(--space-36);
   max-width: 16ch;

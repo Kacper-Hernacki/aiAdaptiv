@@ -3,19 +3,19 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Persistent cosmic particle field — a GPU (WebGL) 3D particle brain.
+ * Persistent GPU (WebGL) particle field that tells a story across sections.
  *
- * The brain is real 3D geometry (noise-displaced ellipsoid cerebrum with gyri,
- * cerebellum, brainstem). Every particle carries a surface normal; the vertex
- * shader lights it with a fixed studio light so gyri crests read bright/white
- * and sulci fall into shadow, and colours a single purple ramp by that value.
- * Additive blending gives the luminous Dala bloom for free (and makes draw
- * order irrelevant, so no CPU sort). Position/scale are scroll-driven (drifts
- * right, swings left) and the geometry morphs brain -> flower -> scatter deeper
- * down. Runs tens of thousands of particles at 60fps on the visitor's GPU.
+ * The same particles form a lit 3D BRAIN in the hero (right side), slide LEFT
+ * for the Problem section, then MORPH INTO A ROCKET at the Solution section,
+ * before dissolving to an ambient scatter deeper down. Progress is driven by
+ * the real on-page positions of the sections (#problem, #solution, #pricing),
+ * so the choreography stays in sync with the layout.
  *
- * Honors prefers-reduced-motion and is DPR-aware. If WebGL is unavailable the
- * field simply stays empty (the rest of the page is unaffected).
+ * Each particle carries brain + rocket + scatter target positions and brain +
+ * rocket normals; the vertex shader morphs between them, lights the surface
+ * (bright lit crests, shadowed valleys) and colours a purple depth ramp.
+ * Additive blending gives the luminous bloom (no depth sort needed). Honors
+ * prefers-reduced-motion; DPR-aware; no-op if WebGL is unavailable.
  */
 
 const COUNT = 24000;
@@ -44,13 +44,14 @@ const VERT = `
 precision highp float;
 attribute vec3 a_brain;
 attribute vec3 a_normal;
-attribute vec3 a_flower;
+attribute vec3 a_rocket;
+attribute vec3 a_normal2;
 attribute vec3 a_scatter;
 attribute vec4 a_meta; // bright, size, seed, shape
 uniform vec2 u_res;
 uniform vec2 u_center;
 uniform float u_radius;
-uniform float u_morph;
+uniform float u_morph;   // 0 brain -> 1 rocket -> 2 scatter
 uniform float u_intro;
 uniform float u_rotY;
 uniform float u_rotX;
@@ -77,10 +78,12 @@ void main(){
   float seed = a_meta.z;
   v_shape = a_meta.w;
 
-  vec3 p = mix(a_brain, a_flower, clamp(u_morph, 0.0, 1.0));
-  p = mix(p, a_scatter, clamp(u_morph - 1.0, 0.0, 1.0));
+  float mB = clamp(u_morph, 0.0, 1.0);       // brain -> rocket
+  float mS = clamp(u_morph - 1.0, 0.0, 1.0); // rocket -> scatter
+  vec3 p = mix(a_brain, a_rocket, mB);
+  p = mix(p, a_scatter, mS);
   p = mix(a_scatter, p, u_intro);
-  vec3 n = a_normal;
+  vec3 n = normalize(mix(a_normal, a_normal2, mB));
 
   float cy = cos(u_rotY), sy = sin(u_rotY), cx = cos(u_rotX), sx = sin(u_rotX);
   float x1 = p.x * cy + p.z * sy;
@@ -131,10 +134,10 @@ void main(){
   p.y = -p.y;
   float d;
   if (v_shape < 0.5) d = sdTri(p, 0.85);
-  else if (v_shape < 1.5) d = (abs(p.x) + abs(p.y)) - 0.82; // diamond
-  else if (v_shape < 2.5) d = length(p) - 0.72;             // circle
-  else d = max(abs(p.x), abs(p.y)) - 0.68;                  // square
-  float a = smoothstep(0.17, 0.0, abs(d));                  // outline ring
+  else if (v_shape < 1.5) d = (abs(p.x) + abs(p.y)) - 0.82;
+  else if (v_shape < 2.5) d = length(p) - 0.72;
+  else d = max(abs(p.x), abs(p.y)) - 0.68;
+  float a = smoothstep(0.17, 0.0, abs(d));
   if (a <= 0.003) discard;
   gl_FragColor = vec4(v_color, a * v_alpha);
 }
@@ -169,7 +172,6 @@ export function CosmicField() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    // ── Program ──
     const vs = compile(gl, gl.VERTEX_SHADER, VERT);
     const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
     if (!vs || !fs) return;
@@ -183,7 +185,7 @@ export function CosmicField() {
     }
     gl.useProgram(prog);
 
-    // ── Geometry (same procedural brain as before) ──
+    // ── Geometry ──
     let seed = 9241;
     const rand = () => {
       seed = (seed * 16807) % 2147483647;
@@ -193,7 +195,8 @@ export function CosmicField() {
 
     const aBrain = new Float32Array(COUNT * 3);
     const aNormal = new Float32Array(COUNT * 3);
-    const aFlower = new Float32Array(COUNT * 3);
+    const aRocket = new Float32Array(COUNT * 3);
+    const aNormal2 = new Float32Array(COUNT * 3);
     const aScatter = new Float32Array(COUNT * 3);
     const aMeta = new Float32Array(COUNT * 4);
     const bright = new Float32Array(COUNT);
@@ -204,7 +207,7 @@ export function CosmicField() {
     const gyri = (dx: number, dy: number, dz: number) =>
       Math.max(0, 1 - Math.abs(noise3(dx * 2.1, dy * 2.1, dz * 2.1)) * 1.25);
 
-    // Cerebrum — density weighted to gyri crests.
+    // Cerebrum (crest-weighted density + fold normals).
     {
       const M = nCereb * 3;
       const cdf = new Float64Array(M);
@@ -276,7 +279,6 @@ export function CosmicField() {
         aNormal[i * 3 + 2] = nz / nl;
       }
     }
-    // Cerebellum.
     for (let j = 0; j < nCbl; j++) {
       const i = nCereb + j;
       const yy = 1 - ((j + 0.5) / nCbl) * 2;
@@ -297,7 +299,6 @@ export function CosmicField() {
       aNormal[i * 3 + 1] = dy / cl;
       aNormal[i * 3 + 2] = dz / cl;
     }
-    // Brainstem.
     for (let j = 0; j < nStem; j++) {
       const i = nCereb + nCbl + j;
       const tt = j / Math.max(1, nStem);
@@ -312,15 +313,57 @@ export function CosmicField() {
       aNormal[i * 3 + 2] = Math.sin(a);
     }
 
-    // Flower + scatter + meta.
+    // ── Rocket geometry (pointing +y): body, nose, fins, flame ──
+    const rBody = Math.floor(COUNT * 0.5);
+    const rNose = Math.floor(COUNT * 0.18);
+    const rFin = Math.floor(COUNT * 0.2);
+    const setN = (i: number, x: number, y: number, z: number) => {
+      const l = Math.hypot(x, y, z) || 1;
+      aNormal2[i * 3] = x / l;
+      aNormal2[i * 3 + 1] = y / l;
+      aNormal2[i * 3 + 2] = z / l;
+    };
     for (let i = 0; i < COUNT; i++) {
-      const a = golden * i;
-      const petal = 0.55 + 0.45 * Math.abs(Math.cos(2.5 * a));
-      const rr = Math.sqrt((i + 0.5) / COUNT) * petal * 1.15;
-      aFlower[i * 3] = Math.cos(a) * rr;
-      aFlower[i * 3 + 1] = Math.sin(a) * rr;
-      aFlower[i * 3 + 2] = (rand() - 0.5) * 0.12;
+      if (i < rBody) {
+        const a = golden * i;
+        const frac = i / rBody;
+        const rb = 0.24;
+        aRocket[i * 3] = Math.cos(a) * rb;
+        aRocket[i * 3 + 1] = -0.45 + frac * 0.95;
+        aRocket[i * 3 + 2] = Math.sin(a) * rb;
+        setN(i, Math.cos(a), 0, Math.sin(a));
+      } else if (i < rBody + rNose) {
+        const j = i - rBody;
+        const a = golden * j;
+        const t = j / rNose;
+        const rr = 0.24 * (1 - t);
+        aRocket[i * 3] = Math.cos(a) * rr;
+        aRocket[i * 3 + 1] = 0.5 + t * 0.42;
+        aRocket[i * 3 + 2] = Math.sin(a) * rr;
+        setN(i, Math.cos(a) * 0.7, 0.7, Math.sin(a) * 0.7);
+      } else if (i < rBody + rNose + rFin) {
+        const j = i - rBody - rNose;
+        const fin = j % 3;
+        const ang = (fin * Math.PI * 2) / 3;
+        const t = rand();
+        const out = 0.24 + t * 0.32 * (0.4 + 0.6 * rand());
+        aRocket[i * 3] = Math.cos(ang) * out;
+        aRocket[i * 3 + 1] = -0.16 - t * 0.42;
+        aRocket[i * 3 + 2] = Math.sin(ang) * out;
+        setN(i, -Math.sin(ang), 0.15, Math.cos(ang));
+      } else {
+        const t = rand();
+        const a = rand() * Math.PI * 2;
+        const rr = Math.sqrt(rand()) * 0.2 * (1 - t * 0.6);
+        aRocket[i * 3] = Math.cos(a) * rr;
+        aRocket[i * 3 + 1] = -0.5 - t * 0.42;
+        aRocket[i * 3 + 2] = Math.sin(a) * rr;
+        setN(i, 0, -1, 0);
+      }
+    }
 
+    // ── Scatter + meta ──
+    for (let i = 0; i < COUNT; i++) {
       const sa = rand() * Math.PI * 2;
       const sr = Math.sqrt(rand()) * 1.2;
       aScatter[i * 3] = Math.cos(sa) * sr * 1.3;
@@ -336,7 +379,7 @@ export function CosmicField() {
       aMeta[i * 4 + 3] = shape;
     }
 
-    // ── Buffers / attributes ──
+    // ── Buffers ──
     const bind = (name: string, data: Float32Array, size: number) => {
       const buf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buf);
@@ -347,7 +390,8 @@ export function CosmicField() {
     };
     bind("a_brain", aBrain, 3);
     bind("a_normal", aNormal, 3);
-    bind("a_flower", aFlower, 3);
+    bind("a_rocket", aRocket, 3);
+    bind("a_normal2", aNormal2, 3);
     bind("a_scatter", aScatter, 3);
     bind("a_meta", aMeta, 4);
 
@@ -364,19 +408,32 @@ export function CosmicField() {
     const uLight = U("u_light");
     const uDpr = U("u_dpr");
 
-    // normalize light
     const ll = Math.hypot(-0.5, 0.62, 0.6);
     gl.uniform3f(uLight, -0.5 / ll, 0.62 / ll, 0.6 / ll);
 
     gl.disable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE); // additive → luminous bloom, order-free
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
     gl.clearColor(0, 0, 0, 1);
 
     let w = 0;
     let h = 0;
     let dpr = 1;
     let narrow = false;
+
+    // Scroll positions (in scrollY) where each section is centred → phases.
+    let anchors: number[] = [0];
+    const computeAnchors = () => {
+      anchors = [0];
+      for (const id of ["problem", "solution", "pricing"]) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          anchors.push(top + el.offsetHeight / 2 - window.innerHeight / 2);
+        }
+      }
+    };
+
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       w = window.innerWidth;
@@ -389,28 +446,38 @@ export function CosmicField() {
       narrow = w < 900;
       gl.uniform2f(uRes, canvas.width, canvas.height);
       gl.uniform1f(uDpr, dpr);
+      computeAnchors();
     };
 
-    const getProgress = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      return max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    const getPhase = () => {
+      const y = window.scrollY;
+      if (anchors.length < 2) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        return max > 0 ? (y / max) * 3 : 0;
+      }
+      if (y <= anchors[0]) return 0;
+      for (let i = 0; i < anchors.length - 1; i++) {
+        if (y <= anchors[i + 1]) {
+          const span = anchors[i + 1] - anchors[i] || 1;
+          return i + (y - anchors[i]) / span;
+        }
+      }
+      return anchors.length - 1;
     };
 
+    // Phase → composition. Hero(0) right brain → Problem(1) left brain →
+    // Solution(2) rocket (right) → Pricing(3)+ dissolve to scatter.
     const cxFrames: [number, number][] = [
       [0.0, 0.66],
-      [0.1, 0.84],
-      [0.2, 0.28],
-      [0.45, 0.5],
-      [0.7, 0.64],
-      [1.0, 0.5],
+      [1.0, 0.3],
+      [2.0, 0.6],
+      [3.0, 0.5],
     ];
     const scaleFrames: [number, number][] = [
       [0.0, 1.05],
-      [0.1, 1.12],
-      [0.2, 1.5],
-      [0.45, 1.7],
-      [0.7, 1.3],
-      [1.0, 1.05],
+      [1.0, 1.2],
+      [2.0, 1.25],
+      [3.0, 1.05],
     ];
 
     let t = 0;
@@ -421,25 +488,21 @@ export function CosmicField() {
       if (introStart < 0) introStart = now;
       const intro = reduceMotion ? 1 : Math.min(1, (now - introStart) / 1500);
       const introEase = 1 - Math.pow(1 - intro, 3);
-      const p = getProgress();
+      const phase = getPhase();
 
+      // morph 0..2: brain→rocket over phase 1→2, rocket→scatter over 2→3.
       let morph = 0;
-      if (p >= 0.72) morph = 1 + (p - 0.72) / 0.28;
-      else if (p >= 0.5) morph = (p - 0.5) / 0.22;
+      if (phase >= 2) morph = 1 + Math.min(1, phase - 2);
+      else if (phase >= 1) morph = phase - 1;
 
-      const cxFrac = narrow ? 0.5 : keyframe(p, cxFrames);
+      const cxFrac = narrow ? 0.5 : keyframe(phase, cxFrames);
       const cyFrac = narrow ? 0.34 : 0.5;
-      const scale = narrow
-        ? keyframe(p, [
-            [0, 0.95],
-            [0.5, 1.05],
-            [1, 0.95],
-          ])
-        : keyframe(p, scaleFrames);
+      const scale = narrow ? 0.95 : keyframe(phase, scaleFrames);
 
-      const rotY = (reduceMotion ? 0.35 : Math.sin(t * 0.00022) * 0.7) + p * 0.4;
+      const rotY = (reduceMotion ? 0.35 : Math.sin(t * 0.00022) * 0.7) + phase * 0.25;
       const rotX = 0.16 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.06);
-      const globalAlpha = narrow ? 0.9 : 0.82 + (1 - Math.min(1, p * 1.3)) * 0.28;
+      const fade = Math.max(0, 1 - Math.max(0, phase - 2.4) / 0.6);
+      const globalAlpha = (narrow ? 0.9 : 0.9) * fade;
 
       gl.uniform2f(uCenter, w * cxFrac * dpr, h * cyFrac * dpr);
       gl.uniform1f(uRadius, Math.min(w, h) * (narrow ? 0.4 : 0.36) * scale * dpr);
@@ -466,6 +529,8 @@ export function CosmicField() {
       });
     };
     window.addEventListener("resize", onResize);
+    // Recompute anchors once layout/fonts settle.
+    const settle = window.setTimeout(computeAnchors, 600);
 
     if (reduceMotion) {
       const onScroll = () => render(performance.now());
@@ -474,6 +539,7 @@ export function CosmicField() {
         window.removeEventListener("resize", onResize);
         window.removeEventListener("scroll", onScroll);
         cancelAnimationFrame(resizeRaf);
+        clearTimeout(settle);
       };
     }
 
@@ -488,6 +554,7 @@ export function CosmicField() {
       cancelAnimationFrame(raf);
       cancelAnimationFrame(resizeRaf);
       window.removeEventListener("resize", onResize);
+      clearTimeout(settle);
     };
   }, []);
 

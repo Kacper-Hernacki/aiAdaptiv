@@ -1,11 +1,13 @@
 import type { Dictionary } from "@/i18n/dictionaries";
 import { TallyButton } from "@/components/TallyButton";
+import { ScrollExit } from "@/components/ScrollExit";
 import styles from "./Hero.module.css";
 
 export function Hero({ hero }: { hero: Dictionary["hero"] }) {
   return (
     <section id="hero" aria-labelledby="hero-heading" className={styles.hero}>
       <div className={styles.inner}>
+        <ScrollExit>
         <div className={styles.content}>
           <p className={styles.eyebrow} data-reveal>
             {hero.badge}
@@ -27,6 +29,7 @@ export function Hero({ hero }: { hero: Dictionary["hero"] }) {
             <TallyButton className={styles.cta}>{hero.cta}</TallyButton>
           </div>
         </div>
+        </ScrollExit>
       </div>
     </section>
   );
