@@ -722,7 +722,7 @@ export function CosmicField() {
     // Solution(2) rocket (right) → Pricing(3)+ dissolve to scatter.
     // phase: 0 hero, 1 problem, 2 solution, 3 pricing, 4 how-it-works, 5 faq
     const cxFrames: [number, number][] = [
-      [0.0, 0.66], // brain right
+      [0.0, 0.75], // brain right (smaller, out of the wider headline's way)
       [1.0, 0.3], // brain left
       [2.0, 0.55], // rocket centre
       [3.0, 0.68], // handshake right
@@ -730,7 +730,7 @@ export function CosmicField() {
       [5.0, 0.5],
     ];
     const scaleFrames: [number, number][] = [
-      [0.0, 1.05],
+      [0.0, 0.86],
       [1.0, 1.2],
       [2.0, 1.25],
       [3.0, 1.15],
