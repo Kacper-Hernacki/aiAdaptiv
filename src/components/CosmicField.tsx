@@ -28,6 +28,12 @@ function noise3(x: number, y: number, z: number): number {
   );
 }
 
+// smoothstep easing → transitions ease in/out (zero slope at the ends).
+function es(x: number): number {
+  x = x < 0 ? 0 : x > 1 ? 1 : x;
+  return x * x * (3 - 2 * x);
+}
+
 function keyframe(p: number, frames: [number, number][]): number {
   if (p <= frames[0][0]) return frames[0][1];
   const last = frames[frames.length - 1];
@@ -35,7 +41,7 @@ function keyframe(p: number, frames: [number, number][]): number {
   for (let i = 0; i < frames.length - 1; i++) {
     const [p0, v0] = frames[i];
     const [p1, v1] = frames[i + 1];
-    if (p >= p0 && p <= p1) return v0 + (v1 - v0) * ((p - p0) / (p1 - p0));
+    if (p >= p0 && p <= p1) return v0 + (v1 - v0) * es((p - p0) / (p1 - p0));
   }
   return last[1];
 }
@@ -735,25 +741,32 @@ export function CosmicField() {
     let t = 0;
     let raf = 0;
     let introStart = -1;
+    let smoothPhase = -1;
 
     const render = (now: number) => {
       if (introStart < 0) introStart = now;
       const intro = reduceMotion ? 1 : Math.min(1, (now - introStart) / 1500);
       const introEase = 1 - Math.pow(1 - intro, 3);
-      const phase = getPhase();
 
-      // Morph timeline: brain→rocket (1→2), rocket launch (2→2.6),
-      // rocket→handshake (2.6→3), handshake→shield (3→4), shield→scatter (4→5).
+      // Damp the phase toward the scroll target so morphs glide (inertia)
+      // instead of snapping frame-to-frame with jerky wheel scrolling.
+      const target = getPhase();
+      if (smoothPhase < 0) smoothPhase = target;
+      smoothPhase += (target - smoothPhase) * (reduceMotion ? 1 : 0.09);
+      const phase = smoothPhase;
+
+      // Morph timeline (each segment eased): brain→rocket (1→2), rocket launch
+      // (2→2.6), rocket→handshake (2.6→3), handshake→shield (3→4), →scatter (4→5).
       let morph = 0;
-      if (phase >= 4) morph = 3 + Math.min(1, phase - 4);
-      else if (phase >= 3) morph = 2 + (phase - 3);
-      else if (phase >= 2.6) morph = 1 + (phase - 2.6) / 0.4;
+      if (phase >= 4) morph = 3 + es(phase - 4);
+      else if (phase >= 3) morph = 2 + es(phase - 3);
+      else if (phase >= 2.6) morph = 1 + es((phase - 2.6) / 0.4);
       else if (phase >= 2) morph = 1;
-      else if (phase >= 1) morph = phase - 1;
+      else if (phase >= 1) morph = es(phase - 1);
       // Engine ignites then fades as the rocket morphs to the handshake.
       const launch =
-        Math.min(1, Math.max(0, (phase - 2) / 0.6)) *
-        Math.min(1, Math.max(0, (2.9 - phase) / 0.3));
+        es(Math.min(1, Math.max(0, (phase - 2) / 0.6))) *
+        es(Math.min(1, Math.max(0, (2.9 - phase) / 0.3)));
 
       const cxFrac = narrow ? 0.5 : keyframe(phase, cxFrames);
       const cyFrac = (narrow ? 0.34 : 0.5) - launch * 0.55; // rise on launch
