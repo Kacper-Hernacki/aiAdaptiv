@@ -616,33 +616,90 @@ export function CosmicField() {
       if (!octx) return;
       octx.drawImage(handImg, 0, 0);
       const d = octx.getImageData(0, 0, iw, ih).data;
+
+      // Binary mask of the silhouette.
+      const mask = new Uint8Array(iw * ih);
       const fx: number[] = [];
       const fy: number[] = [];
       for (let y = 0; y < ih; y++) {
         for (let x = 0; x < iw; x++) {
           if (d[(y * iw + x) * 4] > 110) {
+            mask[y * iw + x] = 1;
             fx.push(x);
             fy.push(y);
           }
         }
       }
       if (fx.length === 0) return;
+
+      // Chamfer distance transform: for every filled pixel, distance to the
+      // nearest edge (background). This lets each finger / forearm bulge into a
+      // rounded tube — real 3D volume and contour detail, not one flat dome.
+      const INF = 1e9;
+      const dist = new Float32Array(iw * ih);
+      for (let i = 0; i < iw * ih; i++) dist[i] = mask[i] ? INF : 0;
+      const dO = 1;
+      const dD = 1.4142;
+      for (let y = 0; y < ih; y++) {
+        for (let x = 0; x < iw; x++) {
+          const i = y * iw + x;
+          if (!mask[i]) continue;
+          let v = dist[i];
+          if (x > 0) v = Math.min(v, dist[i - 1] + dO);
+          if (y > 0) v = Math.min(v, dist[i - iw] + dO);
+          if (x > 0 && y > 0) v = Math.min(v, dist[i - iw - 1] + dD);
+          if (x < iw - 1 && y > 0) v = Math.min(v, dist[i - iw + 1] + dD);
+          dist[i] = v;
+        }
+      }
+      for (let y = ih - 1; y >= 0; y--) {
+        for (let x = iw - 1; x >= 0; x--) {
+          const i = y * iw + x;
+          if (!mask[i]) continue;
+          let v = dist[i];
+          if (x < iw - 1) v = Math.min(v, dist[i + 1] + dO);
+          if (y < ih - 1) v = Math.min(v, dist[i + iw] + dO);
+          if (x < iw - 1 && y < ih - 1) v = Math.min(v, dist[i + iw + 1] + dD);
+          if (x > 0 && y < ih - 1) v = Math.min(v, dist[i + iw - 1] + dD);
+          dist[i] = v;
+        }
+      }
+
+      // Height field: sqrt(distance) rounds each limb into a cylinder-like
+      // cross-section (steep at the silhouette edge, plateaued in the middle).
       const half = ih / 2;
-      const sc = 0.82;
+      const sc = 0.58; // decreased handshake
+      const zScale = 0.34 / half; // depth per pixel, in model units
+      const depthAt = (x: number, y: number) => {
+        if (x < 0 || y < 0 || x >= iw || y >= ih) return 0;
+        return Math.sqrt(dist[y * iw + x]) * zScale;
+      };
+
       for (let i = 0; i < COUNT; i++) {
         const k = Math.floor(rand() * fx.length);
-        const nx = ((fx[k] + rand() - 0.5 - iw / 2) / half) * sc;
-        const ny = (-(fy[k] + rand() - 0.5 - ih / 2) / half) * sc;
-        const rr = Math.min(1, Math.hypot(nx / 1.5, ny));
+        const px = fx[k];
+        const py = fy[k];
+        const nx = ((px - iw / 2) / half) * sc;
+        const ny = (-(py - ih / 2) / half) * sc;
+        // Randomly place particles between the back (0) and front surface so
+        // the form reads as a solid volume, not just a front shell.
+        const zSurf = depthAt(px, py);
+        const front = rand() < 0.72; // bias toward the lit front face
         aHand[i * 3] = nx;
         aHand[i * 3 + 1] = ny;
-        aHand[i * 3 + 2] = 0.16 * Math.sqrt(Math.max(0, 1 - rr * rr));
-        let nnx = nx * 0.55;
-        let nny = ny * 0.55;
-        const nl = Math.hypot(nnx, nny, 1) || 1;
+        aHand[i * 3 + 2] = front ? zSurf : -zSurf * (0.4 + rand() * 0.6);
+        // Surface normal from the gradient of the height field (finger ridges).
+        const gx = depthAt(px + 2, py) - depthAt(px - 2, py);
+        const gy = depthAt(px, py + 2) - depthAt(px, py - 2);
+        const scaledGx = (gx / (4 / half)) * sc;
+        const scaledGy = (gy / (4 / half)) * sc;
+        let nnx = -scaledGx;
+        let nny = scaledGy; // image y is flipped relative to model y
+        let nnz = front ? 1 : -1;
+        const nl = Math.hypot(nnx, nny, nnz) || 1;
         aHnorm[i * 3] = nnx / nl;
         aHnorm[i * 3 + 1] = nny / nl;
-        aHnorm[i * 3 + 2] = 1 / nl;
+        aHnorm[i * 3 + 2] = nnz / nl;
       }
       gl.bindBuffer(gl.ARRAY_BUFFER, buffers["a_hand"]);
       gl.bufferData(gl.ARRAY_BUFFER, aHand, gl.STATIC_DRAW);
@@ -737,7 +794,7 @@ export function CosmicField() {
       [0.0, 0.86],
       [1.0, 1.2],
       [2.0, 1.02], // smaller rocket
-      [3.0, 1.15],
+      [3.0, 0.92], // smaller handshake
       [4.0, 1.2],
       [5.0, 1.0],
     ];
