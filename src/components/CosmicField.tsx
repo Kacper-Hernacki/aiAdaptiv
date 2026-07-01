@@ -372,24 +372,25 @@ export function CosmicField() {
     };
     let ci = 0;
     for (let k = 0; k < rBody; k++, ci++) {
-      // Barrel body with softly rounded shoulders.
+      // Straight body (constant width up top so the nose blends seamlessly).
       const a = golden * k;
-      const yv = -0.35 + (k / rBody) * 0.75;
-      const rb = 0.32 * (1 - 0.16 * Math.max(0, (yv - 0.16) / 0.24));
+      const yv = -0.35 + (k / rBody) * 0.73;
+      const rb = 0.32;
       aRocket[ci * 3] = Math.cos(a) * rb;
       aRocket[ci * 3 + 1] = yv;
       aRocket[ci * 3 + 2] = Math.sin(a) * rb;
       setN(ci, Math.cos(a), 0, Math.sin(a));
     }
     for (let k = 0; k < rNose; k++, ci++) {
-      // Pointed ogive nose — "bardziej spiczasty czubek".
+      // Smooth pointed ogive: base matches the body width (0.32) and overlaps
+      // it slightly, tapering to a sharp tip — one continuous form.
       const a = golden * k;
       const t = k / rNose;
-      const rr = 0.32 * Math.pow(1 - t, 1.15);
+      const rr = 0.32 * Math.pow(1 - t, 0.8);
       aRocket[ci * 3] = Math.cos(a) * rr;
-      aRocket[ci * 3 + 1] = 0.4 + t * 0.62;
+      aRocket[ci * 3 + 1] = 0.34 + t * 0.56;
       aRocket[ci * 3 + 2] = Math.sin(a) * rr;
-      setN(ci, Math.cos(a) * 0.4, 0.92, Math.sin(a) * 0.4);
+      setN(ci, Math.cos(a) * (1 - t * 0.7) * 0.6, 0.5 + 0.5 * t, Math.sin(a) * (1 - t * 0.7) * 0.6);
     }
     for (let k = 0; k < rFin; k++, ci++) {
       // Rounded leaf fins that read flat from the front: left + right (in the
@@ -499,7 +500,7 @@ export function CosmicField() {
       }
     }
 
-    // ── Shield: convex heraldic shield (rounded top, point bottom) ──
+    // ── Shield with a padlock on its face ──
     {
       const halfWidth = (y: number) => {
         const nb = (0.52 - y) / 1.14; // 0 top .. 1 bottom point
@@ -507,24 +508,47 @@ export function CosmicField() {
         hw *= 1 - 0.28 * Math.max(0, (y - 0.4) / 0.12); // round the top corners
         return Math.max(0, hw);
       };
-      for (let i = 0; i < COUNT; i++) {
-        const y = -0.62 + rand() * 1.14;
-        const hw = halfWidth(y);
-        const x = (rand() * 2 - 1) * hw;
-        const edge = hw > 0.001 ? x / hw : 0;
-        const bulge =
-          0.24 * Math.sqrt(Math.max(0, 1 - edge * edge)) * (0.55 + 0.45 * ((y + 0.62) / 1.14));
-        const side = rand() < 0.72 ? 1 : -0.55; // mostly the front face
+      const setS = (i: number, x: number, y: number, z: number, nx: number, ny: number, nz: number) => {
         aShield[i * 3] = x;
         aShield[i * 3 + 1] = y;
-        aShield[i * 3 + 2] = bulge * side;
-        const nx = edge * 0.9;
-        const ny = -0.15;
-        const nz = side > 0 ? 1 : -0.9;
+        aShield[i * 3 + 2] = z;
         const nl = Math.hypot(nx, ny, nz) || 1;
         aSnorm[i * 3] = nx / nl;
         aSnorm[i * 3 + 1] = ny / nl;
         aSnorm[i * 3 + 2] = nz / nl;
+      };
+      const nLock = Math.floor(COUNT * 0.16);
+      const nShield = COUNT - nLock;
+      const nBody = Math.floor(nLock * 0.62);
+      for (let i = 0; i < COUNT; i++) {
+        if (i < nShield) {
+          const y = -0.62 + rand() * 1.14;
+          const hw = halfWidth(y);
+          const x = (rand() * 2 - 1) * hw;
+          const edge = hw > 0.001 ? x / hw : 0;
+          const bulge =
+            0.24 * Math.sqrt(Math.max(0, 1 - edge * edge)) * (0.55 + 0.45 * ((y + 0.62) / 1.14));
+          const side = rand() < 0.72 ? 1 : -0.55;
+          setS(i, x, y, bulge * side, edge * 0.9, -0.15, side > 0 ? 1 : -0.9);
+        } else if (i < nShield + nBody) {
+          // Padlock body: rounded rectangle, raised in front of the shield.
+          let bx = 0;
+          let by = 0;
+          do {
+            bx = (rand() * 2 - 1) * 0.15;
+            by = -0.16 + rand() * 0.24;
+          } while (Math.abs(bx) > 0.15 - Math.max(0, Math.abs(by + 0.04) - 0.08) * 0.9);
+          const kh = Math.hypot(bx, by + 0.02) < 0.035; // keyhole gap
+          if (kh) by += 0.14;
+          bright[i] = 0.95;
+          setS(i, bx, by, 0.3, bx * 0.3, by * 0.3, 1);
+        } else {
+          // Padlock shackle: upper semicircle arc.
+          const ang = rand() * Math.PI;
+          const rr = 0.1 + (rand() - 0.5) * 0.045;
+          bright[i] = 0.95;
+          setS(i, Math.cos(ang) * rr, 0.08 + Math.sin(ang) * rr, 0.3, Math.cos(ang) * 0.4, 0.2, 1);
+        }
       }
     }
 
