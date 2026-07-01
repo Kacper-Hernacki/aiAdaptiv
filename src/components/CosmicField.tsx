@@ -3,98 +3,29 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Persistent cosmic particle field — a genuinely 3D particle brain that moves.
+ * Persistent cosmic particle field — a GPU (WebGL) 3D particle brain.
  *
- * The brain is REAL 3D geometry (not a flat image): an ellipsoidal cerebrum
- * shell displaced by 3D ridged noise to form gyri/sulci, plus a cerebellum
- * bulge and a brainstem. Every particle sits on the true 3D surface, so the
- * brain has real depth — it rotates around the vertical axis and you see volume,
- * with perspective scaling, depth shading, back-to-front draw order, and an
- * amber bloom on the fold ridges (Dala style). Its position + scale are
- * scroll-driven (drifts right, swings large to the left), morphing to a flower
- * then a diffuse scatter deeper down. Particles assemble out of a scatter on
- * load. Honors prefers-reduced-motion; DPR-aware.
+ * The brain is real 3D geometry (noise-displaced ellipsoid cerebrum with gyri,
+ * cerebellum, brainstem). Every particle carries a surface normal; the vertex
+ * shader lights it with a fixed studio light so gyri crests read bright/white
+ * and sulci fall into shadow, and colours a single purple ramp by that value.
+ * Additive blending gives the luminous Dala bloom for free (and makes draw
+ * order irrelevant, so no CPU sort). Position/scale are scroll-driven (drifts
+ * right, swings left) and the geometry morphs brain -> flower -> scatter deeper
+ * down. Runs tens of thousands of particles at 60fps on the visitor's GPU.
+ *
+ * Honors prefers-reduced-motion and is DPR-aware. If WebGL is unavailable the
+ * field simply stays empty (the rest of the page is unaffected).
  */
 
-type Shape = "triangle" | "circle" | "diamond" | "square";
+const COUNT = 24000;
 
-const COUNT = 14000;
-
-// Monochrome purple ramp: dark violet (far / in shadow) → Plum Voltage →
-// light lavender (near / on ridge crests). Lightness encodes 3D depth, so the
-// brain reads as a solid form lit against the void.
-const PURPLE_STOPS: [number, number, number][] = [
-  [12, 7, 30], // near-black violet — deep sulci recede into the void
-  [128, 82, 255], // #8052ff Plum Voltage — the mid tone
-  [252, 250, 255], // white lavender — lit ridge crests / specular highlights
-];
-
-// Fixed studio light in view space (upper-left, toward the viewer).
-const LX = -0.5;
-const LY = 0.62;
-const LZ = 0.6;
-const RAMP: string[] = (() => {
-  const N = 40;
-  const out: string[] = [];
-  for (let i = 0; i < N; i++) {
-    const v = i / (N - 1);
-    const seg = v < 0.5 ? 0 : 1;
-    const lt = v < 0.5 ? v / 0.5 : (v - 0.5) / 0.5;
-    const a = PURPLE_STOPS[seg];
-    const b = PURPLE_STOPS[seg + 1];
-    const r = Math.round(a[0] + (b[0] - a[0]) * lt);
-    const g = Math.round(a[1] + (b[1] - a[1]) * lt);
-    const bl = Math.round(a[2] + (b[2] - a[2]) * lt);
-    out.push(`rgb(${r},${g},${bl})`);
-  }
-  return out;
-})();
-
-// Cheap deterministic 3D ridged noise (sum of sines) for gyri.
 function noise3(x: number, y: number, z: number): number {
   return (
     Math.sin(x * 3.1 + y * 2.3 + 1.7) * Math.cos(z * 2.7 - 0.6) +
     0.5 * Math.sin(x * 6.3 - z * 5.1 + 2.1) * Math.cos(y * 5.7 + 0.3) +
     0.25 * Math.sin(y * 11 + z * 9 + 1.1) * Math.cos(x * 10.2 - 0.8)
   );
-}
-
-function drawShape(
-  ctx: CanvasRenderingContext2D,
-  shape: Shape,
-  x: number,
-  y: number,
-  s: number,
-  outline: boolean,
-) {
-  switch (shape) {
-    case "circle":
-      ctx.beginPath();
-      ctx.arc(x, y, s, 0, Math.PI * 2);
-      outline ? ctx.stroke() : ctx.fill();
-      break;
-    case "square":
-      if (outline) ctx.strokeRect(x - s, y - s, s * 2, s * 2);
-      else ctx.fillRect(x - s, y - s, s * 2, s * 2);
-      break;
-    case "diamond":
-      ctx.beginPath();
-      ctx.moveTo(x, y - s);
-      ctx.lineTo(x + s, y);
-      ctx.lineTo(x, y + s);
-      ctx.lineTo(x - s, y);
-      ctx.closePath();
-      outline ? ctx.stroke() : ctx.fill();
-      break;
-    case "triangle":
-      ctx.beginPath();
-      ctx.moveTo(x, y - s * 1.1);
-      ctx.lineTo(x + s, y + s * 0.8);
-      ctx.lineTo(x - s, y + s * 0.8);
-      ctx.closePath();
-      outline ? ctx.stroke() : ctx.fill();
-      break;
-  }
 }
 
 function keyframe(p: number, frames: [number, number][]): number {
@@ -104,12 +35,120 @@ function keyframe(p: number, frames: [number, number][]): number {
   for (let i = 0; i < frames.length - 1; i++) {
     const [p0, v0] = frames[i];
     const [p1, v1] = frames[i + 1];
-    if (p >= p0 && p <= p1) {
-      const t = (p - p0) / (p1 - p0);
-      return v0 + (v1 - v0) * t;
-    }
+    if (p >= p0 && p <= p1) return v0 + (v1 - v0) * ((p - p0) / (p1 - p0));
   }
   return last[1];
+}
+
+const VERT = `
+precision highp float;
+attribute vec3 a_brain;
+attribute vec3 a_normal;
+attribute vec3 a_flower;
+attribute vec3 a_scatter;
+attribute vec4 a_meta; // bright, size, seed, shape
+uniform vec2 u_res;
+uniform vec2 u_center;
+uniform float u_radius;
+uniform float u_morph;
+uniform float u_intro;
+uniform float u_rotY;
+uniform float u_rotX;
+uniform float u_time;
+uniform float u_galpha;
+uniform vec3 u_light;
+uniform float u_dpr;
+varying vec3 v_color;
+varying float v_alpha;
+varying float v_shape;
+
+vec3 ramp(float v){
+  vec3 c0 = vec3(0.047, 0.027, 0.117);
+  vec3 c1 = vec3(0.502, 0.322, 1.0);
+  vec3 c2 = vec3(0.988, 0.980, 1.0);
+  v = clamp(v, 0.0, 1.0);
+  if (v < 0.5) return mix(c0, c1, v / 0.5);
+  return mix(c1, c2, (v - 0.5) / 0.5);
+}
+
+void main(){
+  float bright = a_meta.x;
+  float size = a_meta.y;
+  float seed = a_meta.z;
+  v_shape = a_meta.w;
+
+  vec3 p = mix(a_brain, a_flower, clamp(u_morph, 0.0, 1.0));
+  p = mix(p, a_scatter, clamp(u_morph - 1.0, 0.0, 1.0));
+  p = mix(a_scatter, p, u_intro);
+  vec3 n = a_normal;
+
+  float cy = cos(u_rotY), sy = sin(u_rotY), cx = cos(u_rotX), sx = sin(u_rotX);
+  float x1 = p.x * cy + p.z * sy;
+  float z1 = -p.x * sy + p.z * cy;
+  float y1 = p.y * cx - z1 * sx;
+  float z2 = p.y * sx + z1 * cx;
+  float nx1 = n.x * cy + n.z * sy;
+  float nz1 = -n.x * sy + n.z * cy;
+  float ny1 = n.y * cx - nz1 * sx;
+  float nz2 = n.y * sx + nz1 * cx;
+
+  float FOV = 3.4;
+  float persp = FOV / (FOV - z2);
+  float depthN = clamp((z2 + 1.2) / 2.4, 0.0, 1.0);
+
+  float sxp = u_center.x + x1 * u_radius * persp;
+  float syp = u_center.y - y1 * u_radius * persp;
+  gl_Position = vec4(sxp / u_res.x * 2.0 - 1.0, 1.0 - syp / u_res.y * 2.0, 0.0, 1.0);
+  gl_PointSize = max(1.0, size * (0.4 + depthN * 1.0) * persp * u_dpr);
+
+  float lambert = max(dot(vec3(nx1, ny1, nz2), u_light), 0.0);
+  float v = 0.3 + lambert * 0.58 + bright * lambert * 0.3 - (1.0 - bright) * 0.1;
+  v_color = ramp(v);
+
+  float faceFactor = 0.6 + 0.4 * clamp(nz2 + 0.3, 0.0, 1.0);
+  float tw = 0.75 + 0.25 * sin(u_time * seed * 2.0 + seed * 12.0);
+  v_alpha = clamp((0.62 + depthN * 0.38) * faceFactor * (0.66 + bright * 0.34) * tw * u_galpha, 0.0, 1.0);
+}
+`;
+
+const FRAG = `
+precision highp float;
+varying vec3 v_color;
+varying float v_alpha;
+varying float v_shape;
+
+float sdTri(vec2 p, float r){
+  const float k = 1.7320508;
+  p.x = abs(p.x) - r;
+  p.y = p.y + r / k;
+  if (p.x + k * p.y > 0.0) p = vec2(p.x - k * p.y, -k * p.x - p.y) / 2.0;
+  p.x -= clamp(p.x, -2.0 * r, 0.0);
+  return -length(p) * sign(p.y);
+}
+
+void main(){
+  vec2 p = gl_PointCoord * 2.0 - 1.0;
+  p.y = -p.y;
+  float d;
+  if (v_shape < 0.5) d = sdTri(p, 0.85);
+  else if (v_shape < 1.5) d = (abs(p.x) + abs(p.y)) - 0.82; // diamond
+  else if (v_shape < 2.5) d = length(p) - 0.72;             // circle
+  else d = max(abs(p.x), abs(p.y)) - 0.68;                  // square
+  float a = smoothstep(0.17, 0.0, abs(d));                  // outline ring
+  if (a <= 0.003) discard;
+  gl_FragColor = vec4(v_color, a * v_alpha);
+}
+`;
+
+function compile(gl: WebGLRenderingContext, type: number, src: string) {
+  const sh = gl.createShader(type)!;
+  gl.shaderSource(sh, src);
+  gl.compileShader(sh);
+  if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+    console.error("shader error:", gl.getShaderInfoLog(sh));
+    return null;
+  }
+  return sh;
 }
 
 export function CosmicField() {
@@ -118,35 +157,54 @@ export function CosmicField() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const gl = canvas.getContext("webgl", {
+      alpha: false,
+      antialias: true,
+      premultipliedAlpha: false,
+      powerPreference: "high-performance",
+    });
+    if (!gl) return;
 
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
+    // ── Program ──
+    const vs = compile(gl, gl.VERTEX_SHADER, VERT);
+    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
+    if (!vs || !fs) return;
+    const prog = gl.createProgram()!;
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+      console.error("link error:", gl.getProgramInfoLog(prog));
+      return;
+    }
+    gl.useProgram(prog);
+
+    // ── Geometry (same procedural brain as before) ──
     let seed = 9241;
     const rand = () => {
       seed = (seed * 16807) % 2147483647;
       return (seed - 1) / 2147483646;
     };
-
     const golden = Math.PI * (3 - Math.sqrt(5));
 
-    // ── Build the 3D brain geometry ───────────────────────────────
-    const brain = new Float32Array(COUNT * 3);
+    const aBrain = new Float32Array(COUNT * 3);
+    const aNormal = new Float32Array(COUNT * 3);
+    const aFlower = new Float32Array(COUNT * 3);
+    const aScatter = new Float32Array(COUNT * 3);
+    const aMeta = new Float32Array(COUNT * 4);
     const bright = new Float32Array(COUNT);
-    const nrm = new Float32Array(COUNT * 3); // surface normals for lighting
+
     const nCereb = Math.floor(COUNT * 0.82);
     const nCbl = Math.floor(COUNT * 0.12);
     const nStem = COUNT - nCereb - nCbl;
-
-    // gyri strength at a surface direction: 1 on a ridge crest, 0 in a sulcus.
     const gyri = (dx: number, dy: number, dz: number) =>
       Math.max(0, 1 - Math.abs(noise3(dx * 2.1, dy * 2.1, dz * 2.1)) * 1.25);
 
-    // Cerebrum: sample DENSITY weighted toward the gyri crests (sparse sulci),
-    // and displace ridges outward / sulci inward for real fold relief.
+    // Cerebrum — density weighted to gyri crests.
     {
       const M = nCereb * 3;
       const cdf = new Float64Array(M);
@@ -155,8 +213,7 @@ export function CosmicField() {
         const yy = 1 - ((m + 0.5) / M) * 2;
         const r = Math.sqrt(Math.max(0, 1 - yy * yy));
         const th = golden * m;
-        const g = gyri(Math.cos(th) * r, yy, Math.sin(th) * r);
-        total += Math.pow(0.18 + g, 2.6); // crest-heavy density
+        total += Math.pow(0.18 + gyri(Math.cos(th) * r, yy, Math.sin(th) * r), 2.6);
         cdf[m] = total;
       }
       for (let i = 0; i < nCereb; i++) {
@@ -171,26 +228,23 @@ export function CosmicField() {
         const yy = 1 - ((lo + 0.5) / M) * 2;
         const r = Math.sqrt(Math.max(0, 1 - yy * yy));
         const th = golden * lo;
-        let dx = Math.cos(th) * r + (rand() - 0.5) * 0.05;
-        let dy = yy + (rand() - 0.5) * 0.05;
-        let dz = Math.sin(th) * r + (rand() - 0.5) * 0.05;
-        const ax = 1.18 * (dx > 0 ? 1.0 : 0.92); // frontal bulge (+x = right)
-        const ay = 0.82 * (dy < 0 ? 0.82 : 1.0); // flatter underside
+        const dx = Math.cos(th) * r + (rand() - 0.5) * 0.05;
+        const dy = yy + (rand() - 0.5) * 0.05;
+        const dz = Math.sin(th) * r + (rand() - 0.5) * 0.05;
+        const ax = 1.18 * (dx > 0 ? 1.0 : 0.92);
+        const ay = 0.82 * (dy < 0 ? 0.82 : 1.0);
         const az = 0.82;
         const ng = noise3(dx * 2.1, dy * 2.1, dz * 2.1);
-        const ridge = 1 - Math.abs(ng) * 0.34; // deep folds: sulci recede
-        brain[i * 3] = dx * ax * ridge;
-        brain[i * 3 + 1] = dy * ay * ridge + 0.08;
-        brain[i * 3 + 2] = dz * az * ridge;
+        const ridge = 1 - Math.abs(ng) * 0.34;
+        aBrain[i * 3] = dx * ax * ridge;
+        aBrain[i * 3 + 1] = dy * ay * ridge + 0.08;
+        aBrain[i * 3 + 2] = dz * az * ridge;
         bright[i] = Math.max(0, Math.min(1, 1 - Math.abs(ng) * 1.25));
 
-        // Surface normal = radial, tilted by the local fold slope so gyri
-        // walls face different directions and catch/lose the light.
         let nl = Math.hypot(dx, dy, dz) || 1;
         const n0x = dx / nl;
         const n0y = dy / nl;
         const n0z = dz / nl;
-        // tangent basis
         const ref = Math.abs(n0y) < 0.9 ? [0, 1, 0] : [1, 0, 0];
         let t1x = ref[1] * n0z - ref[2] * n0y;
         let t1y = ref[2] * n0x - ref[0] * n0z;
@@ -210,20 +264,19 @@ export function CosmicField() {
         const gB = Math.abs(
           noise3((dx + t2x * eps) * 2.1, (dy + t2y * eps) * 2.1, (dz + t2z * eps) * 2.1),
         );
-        const k = 2.2; // fold-normal strength
+        const k = 2.2;
         const s1 = ((gA - g0) / eps) * -0.34 * k;
         const s2 = ((gB - g0) / eps) * -0.34 * k;
         let nx = n0x - t1x * s1 - t2x * s2;
         let ny = n0y - t1y * s1 - t2y * s2;
         let nz = n0z - t1z * s1 - t2z * s2;
         nl = Math.hypot(nx, ny, nz) || 1;
-        nrm[i * 3] = nx / nl;
-        nrm[i * 3 + 1] = ny / nl;
-        nrm[i * 3 + 2] = nz / nl;
+        aNormal[i * 3] = nx / nl;
+        aNormal[i * 3 + 1] = ny / nl;
+        aNormal[i * 3 + 2] = nz / nl;
       }
     }
-
-    // Cerebellum: small textured ellipsoid, back-bottom.
+    // Cerebellum.
     for (let j = 0; j < nCbl; j++) {
       const i = nCereb + j;
       const yy = 1 - ((j + 0.5) / nCbl) * 2;
@@ -235,103 +288,107 @@ export function CosmicField() {
       const ng = noise3(dx * 6, dy * 6, dz * 6);
       const ridge = 1 - Math.abs(ng) * 0.32;
       const s = 0.36;
-      brain[i * 3] = -0.74 + dx * s * 1.05 * ridge;
-      brain[i * 3 + 1] = -0.48 + dy * s * 0.78 * ridge;
-      brain[i * 3 + 2] = dz * s * 0.95 * ridge;
+      aBrain[i * 3] = -0.74 + dx * s * 1.05 * ridge;
+      aBrain[i * 3 + 1] = -0.48 + dy * s * 0.78 * ridge;
+      aBrain[i * 3 + 2] = dz * s * 0.95 * ridge;
       bright[i] = Math.max(0, Math.min(1, 1 - Math.abs(ng) * 1.5));
       const cl = Math.hypot(dx, dy, dz) || 1;
-      nrm[i * 3] = dx / cl;
-      nrm[i * 3 + 1] = dy / cl;
-      nrm[i * 3 + 2] = dz / cl;
+      aNormal[i * 3] = dx / cl;
+      aNormal[i * 3 + 1] = dy / cl;
+      aNormal[i * 3 + 2] = dz / cl;
     }
-
-    // Brainstem: tapering stalk hanging down.
+    // Brainstem.
     for (let j = 0; j < nStem; j++) {
       const i = nCereb + nCbl + j;
       const tt = j / Math.max(1, nStem);
       const a = golden * j;
       const rr = 0.07 * (1 - tt * 0.5);
-      brain[i * 3] = -0.42 + Math.cos(a) * rr;
-      brain[i * 3 + 1] = -0.52 - tt * 0.6;
-      brain[i * 3 + 2] = Math.sin(a) * rr;
+      aBrain[i * 3] = -0.42 + Math.cos(a) * rr;
+      aBrain[i * 3 + 1] = -0.52 - tt * 0.6;
+      aBrain[i * 3 + 2] = Math.sin(a) * rr;
       bright[i] = 0.32;
-      nrm[i * 3] = Math.cos(a);
-      nrm[i * 3 + 1] = 0;
-      nrm[i * 3 + 2] = Math.sin(a);
+      aNormal[i * 3] = Math.cos(a);
+      aNormal[i * 3 + 1] = 0;
+      aNormal[i * 3 + 2] = Math.sin(a);
     }
 
-    // Per-particle visual props (coloured by ridge brightness).
-    const shapes = new Array<Shape>(COUNT);
-    const outline = new Array<boolean>(COUNT);
-    const baseSize = new Float32Array(COUNT);
-    const twk = new Float32Array(COUNT);
-    const phase = new Float32Array(COUNT);
-    for (let i = 0; i < COUNT; i++) {
-      const r = rand();
-      const shape: Shape =
-        r < 0.66 ? "triangle" : r < 0.8 ? "diamond" : r < 0.91 ? "circle" : "square";
-      shapes[i] = shape;
-      outline[i] = shape === "triangle" || shape === "diamond" || rand() < 0.5;
-      const isEdge = bright[i] > 0.5;
-      baseSize[i] = (isEdge ? 1.7 : 1.3) + rand() * (isEdge ? 3 : 2.4);
-      twk[i] = 0.5 + rand() * 1.6;
-      phase[i] = rand() * Math.PI * 2;
-    }
-
-    // ── Other formations (3D; flower/scatter live on z≈0) ─────────
-    const flower = new Float32Array(COUNT * 3);
+    // Flower + scatter + meta.
     for (let i = 0; i < COUNT; i++) {
       const a = golden * i;
       const petal = 0.55 + 0.45 * Math.abs(Math.cos(2.5 * a));
       const rr = Math.sqrt((i + 0.5) / COUNT) * petal * 1.15;
-      flower[i * 3] = Math.cos(a) * rr;
-      flower[i * 3 + 1] = Math.sin(a) * rr;
-      flower[i * 3 + 2] = (rand() - 0.5) * 0.12;
-    }
-    const scatter = new Float32Array(COUNT * 3);
-    for (let i = 0; i < COUNT; i++) {
-      const a = rand() * Math.PI * 2;
-      const rr = Math.sqrt(rand()) * 1.2;
-      scatter[i * 3] = Math.cos(a) * rr * 1.3;
-      scatter[i * 3 + 1] = Math.sin(a) * rr;
-      scatter[i * 3 + 2] = (rand() - 0.5) * 0.6;
+      aFlower[i * 3] = Math.cos(a) * rr;
+      aFlower[i * 3 + 1] = Math.sin(a) * rr;
+      aFlower[i * 3 + 2] = (rand() - 0.5) * 0.12;
+
+      const sa = rand() * Math.PI * 2;
+      const sr = Math.sqrt(rand()) * 1.2;
+      aScatter[i * 3] = Math.cos(sa) * sr * 1.3;
+      aScatter[i * 3 + 1] = Math.sin(sa) * sr;
+      aScatter[i * 3 + 2] = (rand() - 0.5) * 0.6;
+
+      const isEdge = bright[i] > 0.5;
+      const rshape = rand();
+      const shape = rshape < 0.66 ? 0 : rshape < 0.8 ? 1 : rshape < 0.91 ? 2 : 3;
+      aMeta[i * 4] = bright[i];
+      aMeta[i * 4 + 1] = (isEdge ? 3.8 : 2.8) + rand() * (isEdge ? 5 : 3.6);
+      aMeta[i * 4 + 2] = 0.5 + rand() * 1.6;
+      aMeta[i * 4 + 3] = shape;
     }
 
-    // Depth-sort buffers.
-    const sxA = new Float32Array(COUNT);
-    const syA = new Float32Array(COUNT);
-    const szA = new Float32Array(COUNT);
-    const ssA = new Float32Array(COUNT);
-    const saA = new Float32Array(COUNT);
-    const svA = new Float32Array(COUNT); // lit colour value → ramp index
+    // ── Buffers / attributes ──
+    const bind = (name: string, data: Float32Array, size: number) => {
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+      const loc = gl.getAttribLocation(prog, name);
+      gl.enableVertexAttribArray(loc);
+      gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
+    };
+    bind("a_brain", aBrain, 3);
+    bind("a_normal", aNormal, 3);
+    bind("a_flower", aFlower, 3);
+    bind("a_scatter", aScatter, 3);
+    bind("a_meta", aMeta, 4);
 
-    // Amber bloom sprite (cheap glow vs shadowBlur).
-    const glowIdx: number[] = [];
-    for (let i = 0; i < COUNT; i++) if (bright[i] > 0.62) glowIdx.push(i);
-    const glow = document.createElement("canvas");
-    glow.width = 64;
-    glow.height = 64;
-    const gx = glow.getContext("2d")!;
-    const grd = gx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    grd.addColorStop(0, "rgba(150,110,255,0.8)");
-    grd.addColorStop(0.35, "rgba(128,82,255,0.3)");
-    grd.addColorStop(1, "rgba(128,82,255,0)");
-    gx.fillStyle = grd;
-    gx.fillRect(0, 0, 64, 64);
+    const U = (n: string) => gl.getUniformLocation(prog, n);
+    const uRes = U("u_res");
+    const uCenter = U("u_center");
+    const uRadius = U("u_radius");
+    const uMorph = U("u_morph");
+    const uIntro = U("u_intro");
+    const uRotY = U("u_rotY");
+    const uRotX = U("u_rotX");
+    const uTime = U("u_time");
+    const uGAlpha = U("u_galpha");
+    const uLight = U("u_light");
+    const uDpr = U("u_dpr");
+
+    // normalize light
+    const ll = Math.hypot(-0.5, 0.62, 0.6);
+    gl.uniform3f(uLight, -0.5 / ll, 0.62 / ll, 0.6 / ll);
+
+    gl.disable(gl.DEPTH_TEST);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE); // additive → luminous bloom, order-free
+    gl.clearColor(0, 0, 0, 1);
 
     let w = 0;
     let h = 0;
+    let dpr = 1;
     let narrow = false;
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
       w = window.innerWidth;
       h = window.innerHeight;
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       canvas.style.width = w + "px";
       canvas.style.height = h + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      gl.viewport(0, 0, canvas.width, canvas.height);
       narrow = w < 900;
+      gl.uniform2f(uRes, canvas.width, canvas.height);
+      gl.uniform1f(uDpr, dpr);
     };
 
     const getProgress = () => {
@@ -339,7 +396,7 @@ export function CosmicField() {
       return max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
     };
 
-    const cxFramesWide: [number, number][] = [
+    const cxFrames: [number, number][] = [
       [0.0, 0.66],
       [0.1, 0.84],
       [0.2, 0.28],
@@ -347,7 +404,7 @@ export function CosmicField() {
       [0.7, 0.64],
       [1.0, 0.5],
     ];
-    const scaleFramesWide: [number, number][] = [
+    const scaleFrames: [number, number][] = [
       [0.0, 1.05],
       [0.1, 1.12],
       [0.2, 1.5],
@@ -366,24 +423,11 @@ export function CosmicField() {
       const introEase = 1 - Math.pow(1 - intro, 3);
       const p = getProgress();
 
-      let fa: Float32Array;
-      let fb: Float32Array;
-      let blend: number;
-      if (p < 0.5) {
-        fa = brain;
-        fb = brain;
-        blend = 0;
-      } else if (p < 0.72) {
-        fa = brain;
-        fb = flower;
-        blend = (p - 0.5) / 0.22;
-      } else {
-        fa = flower;
-        fb = scatter;
-        blend = (p - 0.72) / 0.28;
-      }
+      let morph = 0;
+      if (p >= 0.72) morph = 1 + (p - 0.72) / 0.28;
+      else if (p >= 0.5) morph = (p - 0.5) / 0.22;
 
-      const cxFrac = narrow ? 0.5 : keyframe(p, cxFramesWide);
+      const cxFrac = narrow ? 0.5 : keyframe(p, cxFrames);
       const cyFrac = narrow ? 0.34 : 0.5;
       const scale = narrow
         ? keyframe(p, [
@@ -391,109 +435,23 @@ export function CosmicField() {
             [0.5, 1.05],
             [1, 0.95],
           ])
-        : keyframe(p, scaleFramesWide);
+        : keyframe(p, scaleFrames);
 
-      const cx = w * cxFrac;
-      const cy = h * cyFrac;
-      const radius = Math.min(w, h) * (narrow ? 0.4 : 0.36) * scale;
-
-      // 3D rotation: clear turn around the vertical axis + top tilt.
       const rotY = (reduceMotion ? 0.35 : Math.sin(t * 0.00022) * 0.7) + p * 0.4;
       const rotX = 0.16 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.06);
-      const cosY = Math.cos(rotY);
-      const sinY = Math.sin(rotY);
-      const cosX = Math.cos(rotX);
-      const sinX = Math.sin(rotX);
-      const FOV = 3.4;
-      const globalAlpha = narrow ? 0.66 : 0.55 + (1 - Math.min(1, p * 1.3)) * 0.45;
+      const globalAlpha = narrow ? 0.9 : 0.82 + (1 - Math.min(1, p * 1.3)) * 0.28;
 
-      for (let i = 0; i < COUNT; i++) {
-        const i3 = i * 3;
-        let x = fa[i3] + (fb[i3] - fa[i3]) * blend;
-        let y = fa[i3 + 1] + (fb[i3 + 1] - fa[i3 + 1]) * blend;
-        let z = fa[i3 + 2] + (fb[i3 + 2] - fa[i3 + 2]) * blend;
-        if (introEase < 1) {
-          x = scatter[i3] + (x - scatter[i3]) * introEase;
-          y = scatter[i3 + 1] + (y - scatter[i3 + 1]) * introEase;
-          z = scatter[i3 + 2] + (z - scatter[i3 + 2]) * introEase;
-        }
+      gl.uniform2f(uCenter, w * cxFrac * dpr, h * cyFrac * dpr);
+      gl.uniform1f(uRadius, Math.min(w, h) * (narrow ? 0.4 : 0.36) * scale * dpr);
+      gl.uniform1f(uMorph, morph);
+      gl.uniform1f(uIntro, introEase);
+      gl.uniform1f(uRotY, rotY);
+      gl.uniform1f(uRotX, rotX);
+      gl.uniform1f(uTime, t * 0.001);
+      gl.uniform1f(uGAlpha, globalAlpha);
 
-        const x1 = x * cosY + z * sinY;
-        const z1 = -x * sinY + z * cosY;
-        const y1 = y * cosX - z1 * sinX;
-        const z2 = y * sinX + z1 * cosX;
-
-        const persp = FOV / (FOV - z2);
-        const depthN = Math.min(1, Math.max(0, (z2 + 1.2) / 2.4));
-        const tw = reduceMotion
-          ? 1
-          : 0.62 + 0.38 * Math.sin(t * 0.002 * twk[i] + phase[i]);
-
-        // Rotate the surface normal the same way, then light it.
-        const nx0 = nrm[i3];
-        const ny0 = nrm[i3 + 1];
-        const nz0 = nrm[i3 + 2];
-        const Nx1 = nx0 * cosY + nz0 * sinY;
-        const Nz1 = -nx0 * sinY + nz0 * cosY;
-        const Ny1 = ny0 * cosX - Nz1 * sinX;
-        const Nz2 = ny0 * sinX + Nz1 * cosX;
-        let lambert = Nx1 * LX + Ny1 * LY + Nz2 * LZ;
-        if (lambert < 0) lambert = 0;
-        const facing = Nz2; // >0 → faces the viewer
-
-        sxA[i] = cx + x1 * radius * persp;
-        syA[i] = cy - y1 * radius * persp; // flip: model +y is up, canvas y is down
-        szA[i] = z2;
-        ssA[i] = baseSize[i] * (0.4 + depthN * 1.0) * persp;
-
-        // Colour value carries the 3D: lit crests bright/white, sulci dark
-        // violet — but with a raised floor so shadowed particles stay visible.
-        svA[i] =
-          0.28 + lambert * 0.55 + bright[i] * lambert * 0.28 - (1 - bright[i]) * 0.1;
-
-        // Keep it DENSE: every particle stays readable; depth comes from colour,
-        // not from hiding particles. Back-facing ones only dim a little.
-        const faceFactor = 0.55 + 0.45 * Math.min(1, Math.max(0, facing + 0.3));
-        const ridgeDim = 0.62 + bright[i] * 0.38;
-        saA[i] =
-          (0.52 + depthN * 0.38) *
-          faceFactor *
-          ridgeDim *
-          tw *
-          globalAlpha *
-          (0.4 + 0.6 * introEase);
-      }
-
-      ctx.clearRect(0, 0, w, h);
-
-      // Bloom (additive amber halos on bright ridge particles).
-      ctx.globalCompositeOperation = "lighter";
-      for (let gi = 0; gi < glowIdx.length; gi++) {
-        const i = glowIdx[gi];
-        const depthN = Math.min(1, Math.max(0, (szA[i] + 1.2) / 2.4));
-        const r = ssA[i] * 3 + 3;
-        ctx.globalAlpha = Math.min(0.24, saA[i] * 0.5 * (0.4 + depthN * 0.6));
-        ctx.drawImage(glow, sxA[i] - r, syA[i] - r, r * 2, r * 2);
-      }
-      ctx.globalCompositeOperation = "source-over";
-
-      // Depth reads from per-particle size + alpha + bloom, so we skip an
-      // every-frame back-to-front sort (too costly at this particle count).
-      const rampMax = RAMP.length - 1;
-      for (let i = 0; i < COUNT; i++) {
-        ctx.globalAlpha = saA[i];
-        const ol = outline[i];
-        const size = ssA[i];
-        const col = RAMP[Math.max(0, Math.min(rampMax, (svA[i] * rampMax) | 0))];
-        if (ol) {
-          ctx.strokeStyle = col;
-          ctx.lineWidth = Math.max(0.6, size * 0.26);
-        } else {
-          ctx.fillStyle = col;
-        }
-        drawShape(ctx, shapes[i], sxA[i], syA[i], size, ol);
-      }
-      ctx.globalAlpha = 1;
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.drawArrays(gl.POINTS, 0, COUNT);
     };
 
     resize();
