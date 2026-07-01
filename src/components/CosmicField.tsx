@@ -461,109 +461,24 @@ export function CosmicField() {
       aFlame[ci] = 1;
     }
 
-    // ── Bust: head + shoulders in a suit, with a shirt collar and tie. Fully
-    // volumetric (ellipsoid head, elliptical-section torso, raised lapel/tie
-    // relief) so depth is intrinsic to the geometry, not an extruded picture. ──
+    // ── Partners section: a soft dispersed particle cloud (placeholder). No
+    // recognisable form yet — just scattered particles gently lit. ──
     {
-      const hset = (
-        i: number,
-        x: number,
-        y: number,
-        z: number,
-        nx: number,
-        ny: number,
-        nz: number,
-      ) => {
+      for (let i = 0; i < COUNT; i++) {
+        const a = rand() * Math.PI * 2;
+        const ct = 2 * rand() - 1;
+        const st = Math.sqrt(1 - ct * ct);
+        const rr = Math.cbrt(rand()); // fill the ball evenly
+        const x = st * Math.cos(a) * rr * 1.15;
+        const y = ct * rr * 0.95;
+        const z = st * Math.sin(a) * rr * 0.9;
         aHand[i * 3] = x;
         aHand[i * 3 + 1] = y;
         aHand[i * 3 + 2] = z;
-        const nl = Math.hypot(nx, ny, nz) || 1;
-        aHnorm[i * 3] = nx / nl;
-        aHnorm[i * 3 + 1] = ny / nl;
-        aHnorm[i * 3 + 2] = nz / nl;
-      };
-
-      // Torso profile: half-width flares from the neck out to broad shoulders,
-      // then tapers gently to the (bust-cut) bottom. Depth is ~half the width.
-      const neckY = 0.34;
-      const shoulderY = 0.06;
-      const botY = -0.82;
-      const bodyW = (y: number) => {
-        if (y >= shoulderY) {
-          const f = Math.min(1, (y - shoulderY) / (neckY - shoulderY));
-          return 0.64 - (0.64 - 0.13) * Math.pow(f, 0.85); // shoulder → neck
-        }
-        const f = (shoulderY - y) / (shoulderY - botY);
-        return 0.64 - f * 0.14; // gentle taper to the cut
-      };
-      const bodyD = (y: number) =>
-        0.28 + 0.05 * Math.max(0, 1 - Math.abs(y + 0.25) / 0.6);
-
-      // Head ellipsoid.
-      const Hx = 0.25,
-        Hy = 0.31,
-        Hz = 0.25;
-      const HcY = 0.52;
-
-      const nHead = Math.floor(COUNT * 0.19);
-      const nNeck = Math.floor(COUNT * 0.04);
-      const nBody = Math.floor(COUNT * 0.53);
-      const nTie = Math.floor(COUNT * 0.09);
-      const nLapel = Math.floor(COUNT * 0.11);
-      // remainder → collar
-
-      for (let i = 0; i < COUNT; i++) {
-        if (i < nHead) {
-          // Head — ellipsoid shell with true outward normals.
-          const a = rand() * Math.PI * 2;
-          const ct = 2 * rand() - 1;
-          const st = Math.sqrt(1 - ct * ct);
-          const x = st * Math.cos(a) * Hx;
-          const y = HcY + ct * Hy;
-          const z = st * Math.sin(a) * Hz;
-          hset(i, x, y, z, x / (Hx * Hx), (y - HcY) / (Hy * Hy), z / (Hz * Hz));
-        } else if (i < nHead + nNeck) {
-          // Neck — short vertical cylinder.
-          const y = 0.18 + rand() * 0.2;
-          const a = rand() * Math.PI * 2;
-          const r = 0.12 * (0.8 + 0.2 * rand());
-          hset(i, Math.cos(a) * r, y, Math.sin(a) * r * 0.9, Math.cos(a), 0.1, Math.sin(a));
-        } else if (i < nHead + nNeck + nBody) {
-          // Torso — elliptical-section suit, shell with a little inward fill.
-          const y = botY + rand() * (0.32 - botY);
-          const w = bodyW(y);
-          const dd = bodyD(y);
-          const a = rand() * Math.PI * 2;
-          const rf = 0.82 + 0.18 * rand();
-          const x = Math.cos(a) * w * rf;
-          const z = Math.sin(a) * dd * rf;
-          const slope = y > shoulderY ? 0.5 : 0.08; // shoulders slope inward/up
-          hset(i, x, y, z, Math.cos(a) / w, slope, Math.sin(a) / dd);
-        } else if (i < nHead + nNeck + nBody + nTie) {
-          // Tie — raised strip down the shirt front, knot at top, point at base.
-          const ty = -0.34 + rand() * (0.28 - -0.34);
-          const knot = ty > 0.16;
-          let tw = knot ? 0.06 : 0.055 * Math.min(1, (ty + 0.34) / 0.14);
-          const tx = (rand() * 2 - 1) * tw;
-          const z = bodyD(ty) * 0.99 + (knot ? 0.055 : 0.035);
-          hset(i, tx, ty, z, tx * 3, 0.15, 1);
-        } else if (i < nHead + nNeck + nBody + nTie + nLapel) {
-          // Lapels — two raised ridges forming the jacket's collar V.
-          const s = rand() < 0.5 ? -1 : 1;
-          const u = rand();
-          const lx = s * (0.1 + u * (0.32 - 0.1)) + (rand() - 0.5) * 0.03;
-          const ly = 0.3 - u * (0.3 - -0.18);
-          const z = bodyD(ly) * 0.99 + 0.03;
-          hset(i, lx, ly, z, s * 0.7, 0.2, 1);
-        } else {
-          // Shirt collar — small raised wings either side of the tie knot.
-          const s = rand() < 0.5 ? -1 : 1;
-          const u = rand();
-          const cx = s * (0.04 + u * 0.12);
-          const cy = 0.3 - u * 0.12;
-          const z = bodyD(cy) * 0.99 + 0.04;
-          hset(i, cx, cy, z, s * 0.5, 0.25, 1);
-        }
+        const nl = Math.hypot(x, y, z) || 1;
+        aHnorm[i * 3] = x / nl;
+        aHnorm[i * 3 + 1] = y / nl;
+        aHnorm[i * 3 + 2] = z / nl;
       }
     }
 
