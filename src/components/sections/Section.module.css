@@ -32,10 +32,10 @@
 .h2 {
   margin: 0 0 var(--space-36);
   max-width: 16ch;
-  font-weight: 200;
+  font-weight: 500;
   font-size: clamp(34px, 5.4vw, 78px);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  line-height: 1;
+  letter-spacing: -0.035em;
   color: var(--color-bone);
 }
 

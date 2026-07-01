@@ -35,7 +35,7 @@ const geistMono = Geist_Mono({
 const acronym = Inter({
   variable: "--font-acronym",
   subsets: ["latin"],
-  weight: ["200", "400", "600", "700"],
+  weight: ["200", "400", "500", "600", "700"],
   display: "swap",
 });
 

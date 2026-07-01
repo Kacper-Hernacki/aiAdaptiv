@@ -25,7 +25,7 @@
 
 .content {
   width: 100%;
-  max-width: 480px;
+  max-width: 600px;
 }
 
 .eyebrow {
@@ -40,10 +40,10 @@
 
 .headline {
   margin: 0;
-  font-weight: 200;
-  font-size: clamp(40px, 7vw, 100px);
-  line-height: 0.88;
-  letter-spacing: -0.04em;
+  font-weight: 500;
+  font-size: clamp(44px, 8vw, 113px);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
   color: #ffffff;
   overflow-wrap: break-word;
 }
