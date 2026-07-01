@@ -376,27 +376,31 @@ export function CosmicField() {
       aNormal2[i * 3 + 1] = y / l;
       aNormal2[i * 3 + 2] = z / l;
     };
+    // Tall, slim rocket. Body cylinder + a TANGENT OGIVE nose so the nose edge
+    // meets the body edge with a vertical tangent — no shoulder / step.
+    const RKT_R = 0.26;
+    const shoulderY = 0.2;
+    const tipY = 1.18;
+    const noseL = tipY - shoulderY;
+    const rho = (RKT_R * RKT_R + noseL * noseL) / (2 * RKT_R);
     let ci = 0;
     for (let k = 0; k < rBody; k++, ci++) {
-      // Straight body (constant width up top so the nose blends seamlessly).
       const a = golden * k;
-      const yv = -0.35 + (k / rBody) * 0.73;
-      const rb = 0.32;
-      aRocket[ci * 3] = Math.cos(a) * rb;
+      const yv = -0.55 + (k / rBody) * (shoulderY + 0.55);
+      aRocket[ci * 3] = Math.cos(a) * RKT_R;
       aRocket[ci * 3 + 1] = yv;
-      aRocket[ci * 3 + 2] = Math.sin(a) * rb;
+      aRocket[ci * 3 + 2] = Math.sin(a) * RKT_R;
       setN(ci, Math.cos(a), 0, Math.sin(a));
     }
     for (let k = 0; k < rNose; k++, ci++) {
-      // Smooth pointed ogive: base matches the body width (0.32) and overlaps
-      // it slightly, tapering to a sharp tip — one continuous form.
       const a = golden * k;
-      const t = k / rNose;
-      const rr = 0.32 * Math.pow(1 - t, 0.8);
+      const h = (k / rNose) * noseL; // height above the base
+      const rr = Math.sqrt(Math.max(0, rho * rho - h * h)) - (rho - RKT_R);
+      const slope = h / Math.sqrt(Math.max(1e-4, rho * rho - h * h)); // -dr/dy
       aRocket[ci * 3] = Math.cos(a) * rr;
-      aRocket[ci * 3 + 1] = 0.34 + t * 0.56;
+      aRocket[ci * 3 + 1] = shoulderY + h;
       aRocket[ci * 3 + 2] = Math.sin(a) * rr;
-      setN(ci, Math.cos(a) * (1 - t * 0.7) * 0.6, 0.5 + 0.5 * t, Math.sin(a) * (1 - t * 0.7) * 0.6);
+      setN(ci, Math.cos(a), slope, Math.sin(a));
     }
     for (let k = 0; k < rFin; k++, ci++) {
       // Rounded leaf fins that read flat from the front: left + right (in the
@@ -407,10 +411,10 @@ export function CosmicField() {
       const wj = (rand() * 2 - 1) * hw;
       if (g === 0 || g === 1) {
         const sgn = g === 0 ? 1 : -1;
-        const bx = 0.26 * sgn;
-        const by = -0.05;
-        const tx = 0.64 * sgn;
-        const ty = -0.55;
+        const bx = 0.24 * sgn;
+        const by = -0.22;
+        const tx = 0.56 * sgn;
+        const ty = -0.66;
         let dx = tx - bx;
         let dy = ty - by;
         const dl = Math.hypot(dx, dy) || 1;
@@ -421,10 +425,10 @@ export function CosmicField() {
         aRocket[ci * 3 + 2] = (rand() - 0.5) * 0.06;
         setN(ci, sgn * 0.4, 0.12, 0.9);
       } else {
-        const bz = 0.26;
-        const by = -0.05;
-        const tz = 0.62;
-        const ty = -0.55;
+        const bz = 0.24;
+        const by = -0.22;
+        const tz = 0.56;
+        const ty = -0.66;
         let dz = tz - bz;
         let dy = ty - by;
         const dl = Math.hypot(dz, dy) || 1;
@@ -439,9 +443,9 @@ export function CosmicField() {
     for (let k = 0; k < rNoz; k++, ci++) {
       const a = golden * k;
       const t = k / rNoz;
-      const rr = 0.12 * (1 - 0.35 * t);
+      const rr = 0.1 * (1 - 0.35 * t);
       aRocket[ci * 3] = Math.cos(a) * rr;
-      aRocket[ci * 3 + 1] = -0.35 - t * 0.12;
+      aRocket[ci * 3 + 1] = -0.55 - t * 0.1;
       aRocket[ci * 3 + 2] = Math.sin(a) * rr;
       setN(ci, Math.cos(a), -0.2, Math.sin(a));
     }
@@ -449,9 +453,9 @@ export function CosmicField() {
       // Flame plume below the nozzle.
       const t = rand();
       const a = rand() * Math.PI * 2;
-      const rr = Math.sqrt(rand()) * 0.16 * (1 - t * 0.5);
+      const rr = Math.sqrt(rand()) * 0.14 * (1 - t * 0.5);
       aRocket[ci * 3] = Math.cos(a) * rr;
-      aRocket[ci * 3 + 1] = -0.48 - t * 0.3;
+      aRocket[ci * 3 + 1] = -0.66 - t * 0.32;
       aRocket[ci * 3 + 2] = Math.sin(a) * rr;
       setN(ci, 0, -1, 0);
       aFlame[ci] = 1;
@@ -732,7 +736,7 @@ export function CosmicField() {
     const scaleFrames: [number, number][] = [
       [0.0, 0.86],
       [1.0, 1.2],
-      [2.0, 1.25],
+      [2.0, 1.02], // smaller rocket
       [3.0, 1.15],
       [4.0, 1.2],
       [5.0, 1.0],
