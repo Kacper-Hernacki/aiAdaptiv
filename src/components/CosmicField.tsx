@@ -461,51 +461,149 @@ export function CosmicField() {
       aFlame[ci] = 1;
     }
 
-    // ── Handshake: two forearms clasped at the centre ──
+    // ── Handshake: two round 3D forearms gripping, fingers wrapping the clasp.
+    // Fully volumetric — cylinders + an ellipsoidal hand mass + curved finger
+    // tubes — so depth is intrinsic to the geometry, not a rotated silhouette. ──
     {
-      const hn = (i: number, x: number, y: number, z: number) => {
-        const l = Math.hypot(x, y, z) || 1;
-        aHnorm[i * 3] = x / l;
-        aHnorm[i * 3 + 1] = y / l;
-        aHnorm[i * 3 + 2] = z / l;
+      const hset = (
+        i: number,
+        x: number,
+        y: number,
+        z: number,
+        nx: number,
+        ny: number,
+        nz: number,
+      ) => {
+        aHand[i * 3] = x;
+        aHand[i * 3 + 1] = y;
+        aHand[i * 3 + 2] = z;
+        const nl = Math.hypot(nx, ny, nz) || 1;
+        aHnorm[i * 3] = nx / nl;
+        aHnorm[i * 3 + 1] = ny / nl;
+        aHnorm[i * 3 + 2] = nz / nl;
       };
-      const arm = (i: number, p0: number[], p1: number[]) => {
-        const tt = rand();
-        const cxp = p0[0] + (p1[0] - p0[0]) * tt;
-        const cyp = p0[1] + (p1[1] - p0[1]) * tt;
-        let dx = p1[0] - p0[0];
-        let dy = p1[1] - p0[1];
-        const dl = Math.hypot(dx, dy) || 1;
+      // Orthonormal frame for a limb axis (dir + two perpendiculars u,v).
+      const basis = (dx: number, dy: number, dz: number) => {
+        const dl = Math.hypot(dx, dy, dz) || 1;
         dx /= dl;
         dy /= dl;
-        const p1x = -dy;
-        const p1y = dx;
-        const ang = rand() * Math.PI * 2;
-        const rad = 0.15 * (0.6 + 0.4 * Math.sqrt(rand()));
-        const c = Math.cos(ang);
-        const s = Math.sin(ang);
-        aHand[i * 3] = cxp + p1x * rad * c;
-        aHand[i * 3 + 1] = cyp + p1y * rad * c;
-        aHand[i * 3 + 2] = rad * s;
-        hn(i, p1x * c, p1y * c, s);
+        dz /= dl;
+        let hx = 0,
+          hy = 1,
+          hz = 0;
+        if (Math.abs(dy) > 0.9) {
+          hx = 1;
+          hy = 0;
+          hz = 0;
+        }
+        let ux = dy * hz - dz * hy;
+        let uy = dz * hx - dx * hz;
+        let uz = dx * hy - dy * hx;
+        const ul = Math.hypot(ux, uy, uz) || 1;
+        ux /= ul;
+        uy /= ul;
+        uz /= ul;
+        const vx = dy * uz - dz * uy;
+        const vy = dz * ux - dx * uz;
+        const vz = dx * uy - dy * ux;
+        return { ux, uy, uz, vx, vy, vz };
       };
-      const nArmL = Math.floor(COUNT * 0.34);
-      const nArmR = Math.floor(COUNT * 0.34);
+      // A straight round limb (forearm) from p0 to p1, radius r0→r1.
+      const cyl = (
+        i: number,
+        p0: number[],
+        p1: number[],
+        r0: number,
+        r1: number,
+      ) => {
+        const tt = rand();
+        const cx = p0[0] + (p1[0] - p0[0]) * tt;
+        const cy = p0[1] + (p1[1] - p0[1]) * tt;
+        const cz = p0[2] + (p1[2] - p0[2]) * tt;
+        const b = basis(p1[0] - p0[0], p1[1] - p0[1], p1[2] - p0[2]);
+        const a = rand() * Math.PI * 2;
+        const ca = Math.cos(a);
+        const sa = Math.sin(a);
+        const r = (r0 + (r1 - r0) * tt) * (0.74 + 0.26 * Math.sqrt(rand()));
+        const nx = b.ux * ca + b.vx * sa;
+        const ny = b.uy * ca + b.vy * sa;
+        const nz = b.uz * ca + b.vz * sa;
+        hset(i, cx + nx * r, cy + ny * r, cz + nz * r, nx, ny, nz);
+      };
+      // A curved round finger — quadratic-bezier spine P0→P1→P2, radius r.
+      const tube = (i: number, P0: number[], P1: number[], P2: number[], r: number) => {
+        const t = rand();
+        const mt = 1 - t;
+        const cx = mt * mt * P0[0] + 2 * mt * t * P1[0] + t * t * P2[0];
+        const cy = mt * mt * P0[1] + 2 * mt * t * P1[1] + t * t * P2[1];
+        const cz = mt * mt * P0[2] + 2 * mt * t * P1[2] + t * t * P2[2];
+        const dx = 2 * mt * (P1[0] - P0[0]) + 2 * t * (P2[0] - P1[0]);
+        const dy = 2 * mt * (P1[1] - P0[1]) + 2 * t * (P2[1] - P1[1]);
+        const dz = 2 * mt * (P1[2] - P0[2]) + 2 * t * (P2[2] - P1[2]);
+        const b = basis(dx, dy, dz);
+        const a = rand() * Math.PI * 2;
+        const ca = Math.cos(a);
+        const sa = Math.sin(a);
+        const rr = r * (0.74 + 0.26 * Math.sqrt(rand()));
+        const nx = b.ux * ca + b.vx * sa;
+        const ny = b.uy * ca + b.vy * sa;
+        const nz = b.uz * ca + b.vz * sa;
+        hset(i, cx + nx * rr, cy + ny * rr, cz + nz * rr, nx, ny, nz);
+      };
+      // The gripped-hand mass at the centre (ellipsoid shell, real normals).
+      const Rx = 0.25,
+        Ry = 0.32,
+        Rz = 0.26;
+      const grip = (i: number) => {
+        const a = rand() * Math.PI * 2;
+        const ct = 2 * rand() - 1;
+        const st = Math.sqrt(1 - ct * ct);
+        const x = st * Math.cos(a) * Rx;
+        const y = ct * Ry;
+        const z = st * Math.sin(a) * Rz;
+        hset(i, x, y, z, x / (Rx * Rx), y / (Ry * Ry), z / (Rz * Rz));
+      };
+      // Four fingers of each hand curling over the clasp (near hand over the
+      // front +z, far hand over the back −z), plus a prominent near thumb.
+      const fingersNear: number[][][] = [];
+      const fingersFar: number[][][] = [];
+      for (let j = 0; j < 4; j++) {
+        const yF = 0.18 - j * 0.075;
+        fingersNear.push([
+          [-0.16, yF, 0.13],
+          [0.02, yF - 0.03, 0.32],
+          [0.22, yF - 0.07, 0.1],
+        ]);
+        fingersFar.push([
+          [0.16, yF, -0.13],
+          [-0.02, yF - 0.03, -0.32],
+          [-0.22, yF - 0.07, -0.1],
+        ]);
+      }
+      const thumbNear: number[][] = [
+        [0.0, 0.18, 0.16],
+        [0.07, 0.36, 0.24],
+        [0.14, 0.46, 0.12],
+      ];
+
+      const nAL = Math.floor(COUNT * 0.19);
+      const nAR = Math.floor(COUNT * 0.19);
+      const nGrip = Math.floor(COUNT * 0.24);
+      const nFN = Math.floor(COUNT * 0.19);
+      const nFF = Math.floor(COUNT * 0.11);
+      let fi = 0;
       for (let i = 0; i < COUNT; i++) {
-        if (i < nArmL) arm(i, [-1.08, -0.5], [-0.08, 0.04]);
-        else if (i < nArmL + nArmR) arm(i, [1.08, -0.5], [0.08, 0.04]);
-        else {
-          // Clasp: rounded cluster where the hands meet.
-          const rr = Math.cbrt(rand());
-          const a1 = rand() * Math.PI * 2;
-          const b1 = Math.acos(2 * rand() - 1);
-          const ex = Math.sin(b1) * Math.cos(a1);
-          const ey = Math.cos(b1);
-          const ez = Math.sin(b1) * Math.sin(a1);
-          aHand[i * 3] = ex * 0.3 * rr;
-          aHand[i * 3 + 1] = 0.04 + ey * 0.2 * rr;
-          aHand[i * 3 + 2] = ez * 0.24 * rr;
-          hn(i, ex, ey * 0.6, ez + 0.3);
+        if (i < nAL) cyl(i, [-1.06, -0.17, 0.0], [-0.2, -0.02, 0.0], 0.13, 0.18);
+        else if (i < nAL + nAR) cyl(i, [1.06, 0.17, 0.0], [0.2, 0.02, 0.0], 0.13, 0.18);
+        else if (i < nAL + nAR + nGrip) grip(i);
+        else if (i < nAL + nAR + nGrip + nFN) {
+          const f = fingersNear[fi++ & 3];
+          tube(i, f[0], f[1], f[2], 0.052);
+        } else if (i < nAL + nAR + nGrip + nFN + nFF) {
+          const f = fingersFar[fi++ & 3];
+          tube(i, f[0], f[1], f[2], 0.05);
+        } else {
+          tube(i, thumbNear[0], thumbNear[1], thumbNear[2], 0.055);
         }
       }
     }
@@ -601,118 +699,6 @@ export function CosmicField() {
     bind("a_scatter", aScatter, 3);
     bind("a_meta", aMeta, 4);
     bind("a_flame", aFlame, 1);
-
-    // Replace the procedural handshake with a point cloud sampled from the
-    // reference silhouette (/hand-map.png) once it loads — reads as a real
-    // handshake, with a soft bulge + outward normals for lighting.
-    const handImg = new Image();
-    handImg.onload = () => {
-      const iw = handImg.naturalWidth;
-      const ih = handImg.naturalHeight;
-      const oc = document.createElement("canvas");
-      oc.width = iw;
-      oc.height = ih;
-      const octx = oc.getContext("2d");
-      if (!octx) return;
-      octx.drawImage(handImg, 0, 0);
-      const d = octx.getImageData(0, 0, iw, ih).data;
-
-      // Binary mask of the silhouette.
-      const mask = new Uint8Array(iw * ih);
-      const fx: number[] = [];
-      const fy: number[] = [];
-      for (let y = 0; y < ih; y++) {
-        for (let x = 0; x < iw; x++) {
-          if (d[(y * iw + x) * 4] > 110) {
-            mask[y * iw + x] = 1;
-            fx.push(x);
-            fy.push(y);
-          }
-        }
-      }
-      if (fx.length === 0) return;
-
-      // Chamfer distance transform: for every filled pixel, distance to the
-      // nearest edge (background). This lets each finger / forearm bulge into a
-      // rounded tube — real 3D volume and contour detail, not one flat dome.
-      const INF = 1e9;
-      const dist = new Float32Array(iw * ih);
-      for (let i = 0; i < iw * ih; i++) dist[i] = mask[i] ? INF : 0;
-      const dO = 1;
-      const dD = 1.4142;
-      for (let y = 0; y < ih; y++) {
-        for (let x = 0; x < iw; x++) {
-          const i = y * iw + x;
-          if (!mask[i]) continue;
-          let v = dist[i];
-          if (x > 0) v = Math.min(v, dist[i - 1] + dO);
-          if (y > 0) v = Math.min(v, dist[i - iw] + dO);
-          if (x > 0 && y > 0) v = Math.min(v, dist[i - iw - 1] + dD);
-          if (x < iw - 1 && y > 0) v = Math.min(v, dist[i - iw + 1] + dD);
-          dist[i] = v;
-        }
-      }
-      for (let y = ih - 1; y >= 0; y--) {
-        for (let x = iw - 1; x >= 0; x--) {
-          const i = y * iw + x;
-          if (!mask[i]) continue;
-          let v = dist[i];
-          if (x < iw - 1) v = Math.min(v, dist[i + 1] + dO);
-          if (y < ih - 1) v = Math.min(v, dist[i + iw] + dO);
-          if (x < iw - 1 && y < ih - 1) v = Math.min(v, dist[i + iw + 1] + dD);
-          if (x > 0 && y < ih - 1) v = Math.min(v, dist[i + iw - 1] + dD);
-          dist[i] = v;
-        }
-      }
-
-      // Height field. Depth is proportional to the limb's own half-thickness
-      // (distance to the edge), so a thick forearm becomes a fat cylinder and a
-      // finger a thin one — genuine, correctly-scaled 3D volume. `zUnit` is the
-      // model-space size of one pixel, so z lives in the same units as x/y.
-      const half = ih / 2;
-      const sc = 0.5; // decreased handshake
-      const zUnit = sc / half; // model units per source pixel
-      const zGain = 1.15;
-      const depthAt = (x: number, y: number) => {
-        if (x < 0 || y < 0 || x >= iw || y >= ih) return 0;
-        // pow<1 rounds the medial ridge into a dome instead of a sharp tent.
-        return zGain * zUnit * Math.pow(dist[y * iw + x], 0.92);
-      };
-
-      for (let i = 0; i < COUNT; i++) {
-        const k = Math.floor(rand() * fx.length);
-        const px = fx[k];
-        const py = fy[k];
-        const nx = (px - iw / 2) * zUnit;
-        const ny = -(py - ih / 2) * zUnit;
-        // Fill from the back surface to the front so the form reads as a solid
-        // volume, not just a front shell.
-        const zSurf = depthAt(px, py);
-        const front = rand() < 0.78; // bias toward the lit front face
-        aHand[i * 3] = nx;
-        aHand[i * 3 + 1] = ny;
-        aHand[i * 3 + 2] = front
-          ? zSurf * (0.7 + rand() * 0.3)
-          : -zSurf * (0.35 + rand() * 0.55);
-        // Surface normal from the height-field gradient (catches finger ridges
-        // and knuckles under the top-left light once the form rotates).
-        const ddx = (depthAt(px + 2, py) - depthAt(px - 2, py)) / (4 * zUnit);
-        const ddyImg = (depthAt(px, py + 2) - depthAt(px, py - 2)) / (4 * zUnit);
-        const fsign = front ? 1 : -1;
-        let nnx = -ddx * fsign;
-        let nny = ddyImg * fsign; // image y is flipped relative to model y
-        let nnz = fsign;
-        const nl = Math.hypot(nnx, nny, nnz) || 1;
-        aHnorm[i * 3] = nnx / nl;
-        aHnorm[i * 3 + 1] = nny / nl;
-        aHnorm[i * 3 + 2] = nnz / nl;
-      }
-      gl.bindBuffer(gl.ARRAY_BUFFER, buffers["a_hand"]);
-      gl.bufferData(gl.ARRAY_BUFFER, aHand, gl.STATIC_DRAW);
-      gl.bindBuffer(gl.ARRAY_BUFFER, buffers["a_hnorm"]);
-      gl.bufferData(gl.ARRAY_BUFFER, aHnorm, gl.STATIC_DRAW);
-    };
-    handImg.src = "/hand-map.png";
 
     const U = (n: string) => gl.getUniformLocation(prog, n);
     const uRes = U("u_res");
