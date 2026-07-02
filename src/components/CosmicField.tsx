@@ -21,7 +21,7 @@ import { useEffect, useRef } from "react";
  * prefers-reduced-motion; DPR-aware; no-op if WebGL is unavailable.
  */
 
-const COUNT = 6000;
+const COUNT = 7000;
 
 function noise3(x: number, y: number, z: number): number {
   return (
@@ -155,14 +155,18 @@ void main(){
   vec3 gv = vec3(a_vert.x * c1 + a_vert.z * s1, a_vert.y, -a_vert.x * s1 + a_vert.z * c1);
   float c2 = cos(ra), s2 = sin(ra);
   gv = vec3(gv.x * c2 - gv.y * s2, gv.x * s2 + gv.y * c2, gv.z);
-  // On the BRAIN the pyramids sit ORDERED on the cortex — base tangent to the
-  // surface, apex along the normal — instead of tumbling randomly, so they
-  // tile the folds like the reference. Rocket/scatter keep the lively tumble.
-  vec3 Ns = normalize(vec3(nx1, ny1, nz2));
-  vec3 Ts = normalize(cross(vec3(0.0, 1.0, 0.0), Ns) + vec3(1e-4, 0.0, 0.0));
-  vec3 Bs = cross(Ns, Ts);
-  vec3 gvOrd = a_vert.x * Ts + a_vert.y * Bs + a_vert.z * Ns;
-  gv = mix(gv, gvOrd, 1.0 - clamp(u_morph, 0.0, 1.0));
+  // On the BRAIN every pyramid slowly TUMBLES in 3D — all in unison, the same
+  // angle at the same time, so they spin together in one direction (a visible
+  // rotation, not the invisible in-plane spin of a symmetric tetra). The whole
+  // brain also turns (u_rotY), so the field both spins and orbits. Built in
+  // view space, so the tumble stays uniform on screen. Rocket/scatter keep the
+  // per-particle random tumble.
+  float ua = u_time * 0.5;                    // shared spin angle (~13s / turn)
+  float uc = cos(ua), us = sin(ua);
+  vec3 gvUni = vec3(a_vert.x * uc + a_vert.z * us, a_vert.y, -a_vert.x * us + a_vert.z * uc);
+  float tc = cos(0.6), ts = sin(0.6);         // fixed tilt so it never views flat
+  gvUni = vec3(gvUni.x, gvUni.y * tc - gvUni.z * ts, gvUni.y * ts + gvUni.z * tc);
+  gv = mix(gv, gvUni, 1.0 - clamp(u_morph, 0.0, 1.0));
   float ws = size * (0.4 + depthN) * u_dpr * u_ptScale * (1.0 + burn * 1.6) * 0.5 / u_radius;
   vec3 q = vec3(x1, y1, z2) + gv * ws;
 
@@ -239,11 +243,12 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
 type BrainPoints = {
   pos: Float32Array; // COUNT * 3, world units
   nrm: Float32Array; // COUNT * 3, unit normals
+  pick: Float32Array; // COUNT, lobe colour (palette pick 0..1)
   bright: Float32Array; // COUNT, 1 = gyral crest, 0 = sulcal floor
 };
 
-// Binary layout: 'BPT1', uint32 count, float32 posScale, then count * 11 bytes
-// { int16 x,y,z (× posScale) ; int8 nx,ny,nz (÷127) ; uint8 bright ; int8 pad }.
+// Binary layout 'BPT3': uint32 count, float32 posScale, then count * 11 bytes
+// { int16 x,y,z (× posScale) ; int8 nx,ny,nz (÷127) ; uint8 pick ; uint8 bright }.
 function parseBrainPoints(buf: ArrayBuffer): BrainPoints | null {
   const dv = new DataView(buf);
   if (
@@ -251,7 +256,7 @@ function parseBrainPoints(buf: ArrayBuffer): BrainPoints | null {
     dv.getUint8(0) !== 0x42 || // 'B'
     dv.getUint8(1) !== 0x50 || // 'P'
     dv.getUint8(2) !== 0x54 || // 'T'
-    dv.getUint8(3) !== 0x31 // '1'
+    dv.getUint8(3) !== 0x33 // '3'
   ) {
     return null;
   }
@@ -261,6 +266,7 @@ function parseBrainPoints(buf: ArrayBuffer): BrainPoints | null {
   if (dv.byteLength < 12 + count * STRIDE) return null;
   const pos = new Float32Array(count * 3);
   const nrm = new Float32Array(count * 3);
+  const pick = new Float32Array(count);
   const bright = new Float32Array(count);
   for (let i = 0; i < count; i++) {
     const o = 12 + i * STRIDE;
@@ -270,9 +276,10 @@ function parseBrainPoints(buf: ArrayBuffer): BrainPoints | null {
     nrm[i * 3] = dv.getInt8(o + 6) / 127;
     nrm[i * 3 + 1] = dv.getInt8(o + 7) / 127;
     nrm[i * 3 + 2] = dv.getInt8(o + 8) / 127;
-    bright[i] = dv.getUint8(o + 9) / 255;
+    pick[i] = dv.getUint8(o + 9) / 255;
+    bright[i] = dv.getUint8(o + 10) / 255;
   }
-  return { pos, nrm, bright };
+  return { pos, nrm, pick, bright };
 }
 
 export function CosmicField() {
@@ -369,20 +376,16 @@ export function CosmicField() {
         aNormal[i * 3 + 2] = pts.nrm[i * 3 + 2];
         const b = pts.bright[i];
         bright[i] = b;
-        // Small, fairly uniform pyramids tiling the surface like the reference;
-        // crests a touch larger, a little fine dust between.
+        // Large pyramids that tile edge-to-edge into continuous lobe/gyrus
+        // planes like the reference; crests larger still, a little fine dust in
+        // the sparse grooves.
         pSize[i] =
-          rand() < 0.08
-            ? 2 + rand() * 2
-            : (7 + rand() * 4) * (0.7 + 0.55 * b);
-        // Gold rides the gyral crests (with a white share); the sulci carry
-        // spatially-clustered violet/teal/blue — the reference's colour story.
-        pPick[i] =
-          b > 0.6 && rand() < 0.62
-            ? 0.86 + rand() * 0.14
-            : rand() < 0.4
-              ? rand() * 0.28
-              : clusterPick(x, y, z);
+          rand() < 0.06
+            ? 3 + rand() * 2.5
+            : (21 + rand() * 9) * (0.6 + 0.6 * b);
+        // Colour comes from the baked lobe field (large frontal/parietal/
+        // temporal/occipital regions), so the brain reads as lobes.
+        pPick[i] = pts.pick[i];
       }
       return true;
     };
@@ -775,8 +778,8 @@ export function CosmicField() {
       [5.0, 0.5],
     ];
     const scaleFrames: [number, number][] = [
-      [0.0, 1.1], // large, whole silhouette visible with margins
-      [1.0, 1.2],
+      [0.0, 1.45], // large — spreads the glyphs so they stop overlapping
+      [1.0, 1.55],
       [2.0, 1.02], // smaller rocket
       [3.0, 0.8], // smaller handshake
       [4.0, 1.2],
@@ -850,16 +853,26 @@ export function CosmicField() {
       ]);
       // How much slow idle sway to layer on (reveals depth as it rocks).
       const sway = keyframe(phase, [
-        [0.0, 0.18], // brain sways gently (keeps the silhouette readable)
+        [0.0, 0.0], // brain uses a continuous spin instead (below)
         [2.0, 0.0], // rocket steady
         [3.0, 0.18], // bust gently turns
         [4.0, 0.24], // shield gently rocks
         [5.0, 0.4],
       ]);
+      // The whole brain slowly and continuously turns in one direction, so the
+      // pyramids orbit together (fades out before the rocket phase).
+      const spin = keyframe(phase, [
+        [0.0, 1.0],
+        [1.0, 1.0],
+        [1.8, 0.0],
+      ]);
+      const brainSpin = reduceMotion ? 0 : spin * t * 0.001 * 0.16;
       pmx += (tpx - pmx) * 0.06;
       pmy += (tpy - pmy) * 0.06;
       const rotY =
-        baseYaw + (reduceMotion ? 0 : Math.sin(t * 0.00022) * sway + pmx * 0.12);
+        baseYaw +
+        brainSpin +
+        (reduceMotion ? 0 : Math.sin(t * 0.00022) * sway + pmx * 0.12);
       const rotX =
         (0.15 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.05)) *
           (1 - upright * 0.85) +
