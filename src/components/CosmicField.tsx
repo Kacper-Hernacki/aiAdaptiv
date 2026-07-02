@@ -12,13 +12,16 @@ import { useEffect, useRef } from "react";
  * so the choreography stays in sync with the layout.
  *
  * Each particle carries brain + rocket + scatter target positions and brain +
- * rocket normals; the vertex shader morphs between them, lights the surface
- * (bright lit crests, shadowed valleys) and colours a purple depth ramp.
+ * rocket normals; the vertex shader morphs between them and lights the surface
+ * (bright lit crests, shadowed valleys). Particles render as OUTLINED
+ * TRIANGLES in a confetti palette (white / violet / teal / pink / blue / gold)
+ * that clusters into same-coloured patches across the surface, with a golden
+ * rim on the silhouette; the smallest particles render as dust specks.
  * Additive blending gives the luminous bloom (no depth sort needed). Honors
  * prefers-reduced-motion; DPR-aware; no-op if WebGL is unavailable.
  */
 
-const COUNT = 24000;
+const COUNT = 6000;
 
 function noise3(x: number, y: number, z: number): number {
   return (
@@ -48,6 +51,8 @@ function keyframe(p: number, frames: [number, number][]): number {
 
 const VERT = `
 precision highp float;
+attribute vec3 a_vert;   // tetrahedron vertex, glyph-local (divisor 0)
+attribute vec3 a_bary;   // barycentric corner of the face (divisor 0)
 attribute vec3 a_brain;
 attribute vec3 a_normal;
 attribute vec3 a_rocket;
@@ -57,7 +62,7 @@ attribute vec3 a_hnorm;
 attribute vec3 a_shield;
 attribute vec3 a_snorm;
 attribute vec3 a_scatter;
-attribute vec4 a_meta; // bright, size, seed, shape
+attribute vec4 a_meta; // bright, size, seed, palette-pick
 attribute float a_flame; // 1 for engine-flame particles
 uniform vec2 u_res;
 uniform vec2 u_center;
@@ -72,34 +77,37 @@ uniform float u_launch;  // 0 engine off -> 1 full burn
 uniform vec3 u_light;
 uniform float u_dpr;
 uniform float u_maxSeed; // cull particles with seed above this (mobile density)
-uniform float u_ptScale; // global point-size multiplier (smaller on mobile)
+uniform float u_ptScale; // global glyph-size multiplier (smaller on mobile)
 varying vec3 v_color;
 varying float v_alpha;
-varying float v_shape;
+varying vec3 v_bary;
 varying float v_flame;
 
-vec3 ramp(float v){
-  vec3 c0 = vec3(0.047, 0.027, 0.117);
-  vec3 c1 = vec3(0.502, 0.322, 1.0);
-  vec3 c2 = vec3(0.988, 0.980, 1.0);
-  v = clamp(v, 0.0, 1.0);
-  if (v < 0.5) return mix(c0, c1, v / 0.5);
-  return mix(c1, c2, (v - 0.5) / 0.5);
+// Confetti palette picked by a clustered value in [0,1] (patches of the same
+// colour sit next to each other, like the reference brain).
+vec3 palette(float pick){
+  if (pick < 0.34) return vec3(0.95, 0.95, 1.0);  // white
+  if (pick < 0.54) return vec3(0.58, 0.36, 1.0);  // violet
+  if (pick < 0.63) return vec3(0.24, 0.82, 0.68); // teal
+  if (pick < 0.72) return vec3(1.0, 0.58, 0.78);  // pink
+  if (pick < 0.80) return vec3(0.3, 0.52, 1.0);   // blue
+  return vec3(1.0, 0.74, 0.2);                    // gold
 }
 
 void main(){
   float bright = a_meta.x;
   float size = a_meta.y;
-  float seed = a_meta.z;
-  v_shape = a_meta.w;
+  float seed = abs(a_meta.z);
+  float pick = a_meta.w;
+  v_bary = a_bary;
 
   // Thin the field on small screens: drop particles whose (uniform) seed is
   // above the cutoff. Culls evenly across every shape so nothing is truncated.
   if (seed > u_maxSeed) {
     gl_Position = vec4(2.0, 2.0, 2.0, 1.0); // outside the clip volume
-    gl_PointSize = 0.0;
     v_alpha = 0.0;
     v_flame = 0.0;
+    v_color = vec3(0.0);
     return;
   }
 
@@ -136,69 +144,83 @@ void main(){
   float nz2 = n.y * sx + nz1 * cx;
 
   float FOV = 3.4;
-  float persp = FOV / (FOV - z2);
   float depthN = clamp((z2 + 1.2) / 2.4, 0.0, 1.0);
 
-  float sxp = u_center.x + x1 * u_radius * persp;
-  float syp = u_center.y - y1 * u_radius * persp;
+  // Each glyph is a small 3D TETRAHEDRON (like the reference's pyramids). The
+  // offset is applied in rotated view space BEFORE the perspective divide, so
+  // glyphs inherit real perspective — near ones render bigger than far ones.
+  float rb = fract(seed * 9.13) * 6.2832;
+  float ra = fract(seed * 5.71) * 6.2832 + u_time * (fract(seed * 3.31) - 0.5) * 0.55;
+  float c1 = cos(rb), s1 = sin(rb);
+  vec3 gv = vec3(a_vert.x * c1 + a_vert.z * s1, a_vert.y, -a_vert.x * s1 + a_vert.z * c1);
+  float c2 = cos(ra), s2 = sin(ra);
+  gv = vec3(gv.x * c2 - gv.y * s2, gv.x * s2 + gv.y * c2, gv.z);
+  // On the BRAIN the pyramids sit ORDERED on the cortex — base tangent to the
+  // surface, apex along the normal — instead of tumbling randomly, so they
+  // tile the folds like the reference. Rocket/scatter keep the lively tumble.
+  vec3 Ns = normalize(vec3(nx1, ny1, nz2));
+  vec3 Ts = normalize(cross(vec3(0.0, 1.0, 0.0), Ns) + vec3(1e-4, 0.0, 0.0));
+  vec3 Bs = cross(Ns, Ts);
+  vec3 gvOrd = a_vert.x * Ts + a_vert.y * Bs + a_vert.z * Ns;
+  gv = mix(gv, gvOrd, 1.0 - clamp(u_morph, 0.0, 1.0));
+  float ws = size * (0.4 + depthN) * u_dpr * u_ptScale * (1.0 + burn * 1.6) * 0.5 / u_radius;
+  vec3 q = vec3(x1, y1, z2) + gv * ws;
+
+  float persp = FOV / (FOV - q.z);
+  float sxp = u_center.x + q.x * u_radius * persp;
+  float syp = u_center.y - q.y * u_radius * persp;
   gl_Position = vec4(sxp / u_res.x * 2.0 - 1.0, 1.0 - syp / u_res.y * 2.0, 0.0, 1.0);
-  gl_PointSize = max(1.0, size * (0.4 + depthN * 1.0) * persp * u_dpr * u_ptScale);
 
   float lambert = max(dot(vec3(nx1, ny1, nz2), u_light), 0.0);
-  float v = 0.3 + lambert * 0.58 + bright * lambert * 0.3 - (1.0 - bright) * 0.1;
-  v_color = ramp(v);
+  vec3 base = palette(pick);
+  float shade = 0.62 + lambert * 0.4 + bright * 0.25;
+  v_color = base * min(shade, 1.2);
 
-  float faceFactor = 0.6 + 0.4 * clamp(nz2 + 0.3, 0.0, 1.0);
-  float tw = 0.75 + 0.25 * sin(u_time * seed * 2.0 + seed * 12.0);
-  v_alpha = clamp((0.62 + depthN * 0.38) * faceFactor * (0.66 + bright * 0.34) * tw * u_galpha, 0.0, 1.0);
+  // Dim the far side of the shell so the interior stays dark enough for the
+  // front glyphs to read individually.
+  float front = smoothstep(-0.2, 0.4, nz2);
+  float vis = mix(0.25, 0.9, front);
+  float tw = 0.93 + 0.07 * sin(u_time * seed * 2.0 + seed * 12.0);
+  // bright ≈ 1 on gyri crests, ≈ 0 in sulci grooves — grooves go dark so the
+  // fold pattern carves visibly through the tiled surface.
+  v_alpha = clamp((0.7 + depthN * 0.3) * vis * (0.14 + bright * 0.86) * tw * u_galpha, 0.0, 1.0);
 
-  // Flame overrides colour (amber -> white core) and its own alpha (hidden
-  // until the engine ignites), and gets a bigger, softer sprite.
+  // Flame overrides colour (lavender -> white core) and its own alpha
+  // (hidden until the engine ignites).
   v_flame = 0.0;
   if (flameOn > 0.5) {
     float core = clamp(1.0 - length(p.xz) * 3.0, 0.0, 1.0);
-    // Same purple family as the brain/rocket, but lighter (lavender -> white).
     v_color = mix(vec3(0.66, 0.5, 1.0), vec3(0.97, 0.94, 1.0), core);
     v_flame = burn;
     v_alpha = clamp(burn * (0.55 + 0.45 * flick) * u_galpha, 0.0, 1.0);
-    gl_PointSize *= 1.0 + burn * 1.6;
   }
 }
 `;
 
-const FRAG = `
+// Fragment shader: outlined tetrahedron faces via barycentric edge distance.
+// Rendered additively with no depth test, so back edges show through the
+// front face — the nested-triangle look of the reference's pyramids.
+const FRAG = (deriv: boolean) => `
+${deriv ? "#extension GL_OES_standard_derivatives : enable" : ""}
 precision highp float;
 varying vec3 v_color;
 varying float v_alpha;
-varying float v_shape;
+varying vec3 v_bary;
 varying float v_flame;
 
-float sdTri(vec2 p, float r){
-  const float k = 1.7320508;
-  p.x = abs(p.x) - r;
-  p.y = p.y + r / k;
-  if (p.x + k * p.y > 0.0) p = vec2(p.x - k * p.y, -k * p.x - p.y) / 2.0;
-  p.x -= clamp(p.x, -2.0 * r, 0.0);
-  return -length(p) * sign(p.y);
-}
-
 void main(){
-  vec2 p = gl_PointCoord * 2.0 - 1.0;
-  float r = length(p);
+  float e = min(v_bary.x, min(v_bary.y, v_bary.z));
   float a;
-  vec3 col = v_color;
   if (v_flame > 0.01) {
-    a = smoothstep(1.0, 0.0, r); // soft filled ember
+    a = 0.85; // filled ember faces
   } else {
-    // Little sphere: soft-edged filled dot with a brighter core and a subtle
-    // upper-left highlight so each particle reads as a tiny lit ball.
-    a = smoothstep(0.92, 0.30, r);
-    float core = smoothstep(0.55, 0.0, r);
-    float hl = smoothstep(0.7, 0.0, length(p - vec2(-0.28, -0.28)));
-    col += (core * 0.18 + hl * 0.14);
+    ${deriv ? "float w = fwidth(e) * 1.4 + 0.015;" : "float w = 0.07;"}
+    a = 1.0 - smoothstep(0.07, 0.07 + w, e); // crisp edge outline
+    a = max(a, 0.05);                         // faint face fill
   }
-  if (a <= 0.003) discard;
-  gl_FragColor = vec4(col, a * v_alpha);
+  a *= v_alpha;
+  if (a <= 0.004) discard;
+  gl_FragColor = vec4(v_color, a);
 }
 `;
 
@@ -213,12 +235,58 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
   return sh;
 }
 
+// Baked cortex point cloud (public/brain-points.bin — see scripts/bake_brain.py).
+type BrainPoints = {
+  pos: Float32Array; // COUNT * 3, world units
+  nrm: Float32Array; // COUNT * 3, unit normals
+  bright: Float32Array; // COUNT, 1 = gyral crest, 0 = sulcal floor
+};
+
+// Binary layout: 'BPT1', uint32 count, float32 posScale, then count * 11 bytes
+// { int16 x,y,z (× posScale) ; int8 nx,ny,nz (÷127) ; uint8 bright ; int8 pad }.
+function parseBrainPoints(buf: ArrayBuffer): BrainPoints | null {
+  const dv = new DataView(buf);
+  if (
+    dv.byteLength < 12 ||
+    dv.getUint8(0) !== 0x42 || // 'B'
+    dv.getUint8(1) !== 0x50 || // 'P'
+    dv.getUint8(2) !== 0x54 || // 'T'
+    dv.getUint8(3) !== 0x31 // '1'
+  ) {
+    return null;
+  }
+  const count = dv.getUint32(4, true);
+  const scale = dv.getFloat32(8, true);
+  const STRIDE = 11;
+  if (dv.byteLength < 12 + count * STRIDE) return null;
+  const pos = new Float32Array(count * 3);
+  const nrm = new Float32Array(count * 3);
+  const bright = new Float32Array(count);
+  for (let i = 0; i < count; i++) {
+    const o = 12 + i * STRIDE;
+    pos[i * 3] = dv.getInt16(o, true) * scale;
+    pos[i * 3 + 1] = dv.getInt16(o + 2, true) * scale;
+    pos[i * 3 + 2] = dv.getInt16(o + 4, true) * scale;
+    nrm[i * 3] = dv.getInt8(o + 6) / 127;
+    nrm[i * 3 + 1] = dv.getInt8(o + 7) / 127;
+    nrm[i * 3 + 2] = dv.getInt8(o + 8) / 127;
+    bright[i] = dv.getUint8(o + 9) / 255;
+  }
+  return { pos, nrm, bright };
+}
+
 export function CosmicField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    let cancelled = false;
+    let cleanup: (() => void) | undefined;
+
+    // All geometry + GL setup lives in init(); it runs once the baked cortex
+    // point cloud has loaded (or immediately with null as a fallback).
+    const init = (pts: BrainPoints | null): (() => void) | undefined => {
     const gl = canvas.getContext("webgl", {
       alpha: false,
       antialias: true,
@@ -227,12 +295,18 @@ export function CosmicField() {
     });
     if (!gl) return;
 
+    // Instanced rendering (one tetrahedron per particle) — universally
+    // available on WebGL1 as an extension.
+    const inst = gl.getExtension("ANGLE_instanced_arrays");
+    if (!inst) return;
+    const deriv = !!gl.getExtension("OES_standard_derivatives");
+
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
     const vs = compile(gl, gl.VERTEX_SHADER, VERT);
-    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
+    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG(deriv));
     if (!vs || !fs) return;
     const prog = gl.createProgram()!;
     gl.attachShader(prog, vs);
@@ -265,117 +339,79 @@ export function CosmicField() {
     const aFlame = new Float32Array(COUNT);
     const bright = new Float32Array(COUNT);
 
-    const nCereb = Math.floor(COUNT * 0.82);
-    const nCbl = Math.floor(COUNT * 0.12);
-    const nStem = COUNT - nCereb - nCbl;
-    const gyri = (dx: number, dy: number, dz: number) =>
-      Math.max(0, 1 - Math.abs(noise3(dx * 2.1, dy * 2.1, dz * 2.1)) * 1.25);
+    // Per-particle style, filled by the brain generators and read by the
+    // final meta loop (so the shield's later bright[] tweaks still apply).
+    const pSize = new Float32Array(COUNT);
+    const pPick = new Float32Array(COUNT);
 
-    // Cerebrum (crest-weighted density + fold normals).
-    {
-      const M = nCereb * 3;
-      const cdf = new Float64Array(M);
-      let total = 0;
-      for (let m = 0; m < M; m++) {
-        const yy = 1 - ((m + 0.5) / M) * 2;
-        const r = Math.sqrt(Math.max(0, 1 - yy * yy));
-        const th = golden * m;
-        total += Math.pow(0.18 + gyri(Math.cos(th) * r, yy, Math.sin(th) * r), 2.6);
-        cdf[m] = total;
-      }
-      for (let i = 0; i < nCereb; i++) {
-        const target = rand() * total;
-        let lo = 0;
-        let hi = M - 1;
-        while (lo < hi) {
-          const mid = (lo + hi) >> 1;
-          if (cdf[mid] < target) lo = mid + 1;
-          else hi = mid;
-        }
-        const yy = 1 - ((lo + 0.5) / M) * 2;
-        const r = Math.sqrt(Math.max(0, 1 - yy * yy));
-        const th = golden * lo;
-        const dx = Math.cos(th) * r + (rand() - 0.5) * 0.05;
-        const dy = yy + (rand() - 0.5) * 0.05;
-        const dz = Math.sin(th) * r + (rand() - 0.5) * 0.05;
-        const ax = 1.18 * (dx > 0 ? 1.0 : 0.92);
-        const ay = 0.82 * (dy < 0 ? 0.82 : 1.0);
-        const az = 0.82;
-        const ng = noise3(dx * 2.1, dy * 2.1, dz * 2.1);
-        const ridge = 1 - Math.abs(ng) * 0.34;
-        aBrain[i * 3] = dx * ax * ridge;
-        aBrain[i * 3 + 1] = dy * ay * ridge + 0.08;
-        aBrain[i * 3 + 2] = dz * az * ridge;
-        bright[i] = Math.max(0, Math.min(1, 1 - Math.abs(ng) * 1.25));
+    const clusterPick = (x: number, y: number, z: number) => {
+      const cn = noise3(x * 1.15 + 7.3, y * 1.15 - 2.1, z * 1.15 + 4.7);
+      return Math.min(1, Math.max(0, cn * 0.29 + 0.5 + (rand() - 0.5) * 0.22));
+    };
 
-        let nl = Math.hypot(dx, dy, dz) || 1;
-        const n0x = dx / nl;
-        const n0y = dy / nl;
-        const n0z = dz / nl;
-        const ref = Math.abs(n0y) < 0.9 ? [0, 1, 0] : [1, 0, 0];
-        let t1x = ref[1] * n0z - ref[2] * n0y;
-        let t1y = ref[2] * n0x - ref[0] * n0z;
-        let t1z = ref[0] * n0y - ref[1] * n0x;
-        const t1l = Math.hypot(t1x, t1y, t1z) || 1;
-        t1x /= t1l;
-        t1y /= t1l;
-        t1z /= t1l;
-        const t2x = n0y * t1z - n0z * t1y;
-        const t2y = n0z * t1x - n0x * t1z;
-        const t2z = n0x * t1y - n0y * t1x;
-        const eps = 0.07;
-        const g0 = Math.abs(ng);
-        const gA = Math.abs(
-          noise3((dx + t1x * eps) * 2.1, (dy + t1y * eps) * 2.1, (dz + t1z * eps) * 2.1),
-        );
-        const gB = Math.abs(
-          noise3((dx + t2x * eps) * 2.1, (dy + t2y * eps) * 2.1, (dz + t2z * eps) * 2.1),
-        );
-        const k = 2.2;
-        const s1 = ((gA - g0) / eps) * -0.34 * k;
-        const s2 = ((gB - g0) / eps) * -0.34 * k;
-        let nx = n0x - t1x * s1 - t2x * s2;
-        let ny = n0y - t1y * s1 - t2y * s2;
-        let nz = n0z - t1z * s1 - t2z * s2;
-        nl = Math.hypot(nx, ny, nz) || 1;
-        aNormal[i * 3] = nx / nl;
-        aNormal[i * 3 + 1] = ny / nl;
-        aNormal[i * 3 + 2] = nz / nl;
+    // ── Brain from a REAL cortex mesh ─────────────────────────────────────
+    // Points are baked offline from the FreeSurfer fsaverage pial surface
+    // (both hemispheres), with FreeSurfer's own sulcal-depth map as the
+    // brightness. Because they sit on genuine cortex geometry, the gyri catch
+    // light and the sulci fall into shadow at EVERY rotation — a real 3D form,
+    // not a drawing wrapped on a smooth dome. Baked by scripts/bake_brain.py.
+    const genBrainFromPoints = (pts: BrainPoints): boolean => {
+      if (pts.bright.length !== COUNT) return false;
+      for (let i = 0; i < COUNT; i++) {
+        const x = pts.pos[i * 3];
+        const y = pts.pos[i * 3 + 1];
+        const z = pts.pos[i * 3 + 2];
+        aBrain[i * 3] = x;
+        aBrain[i * 3 + 1] = y;
+        aBrain[i * 3 + 2] = z;
+        aNormal[i * 3] = pts.nrm[i * 3];
+        aNormal[i * 3 + 1] = pts.nrm[i * 3 + 1];
+        aNormal[i * 3 + 2] = pts.nrm[i * 3 + 2];
+        const b = pts.bright[i];
+        bright[i] = b;
+        // Small, fairly uniform pyramids tiling the surface like the reference;
+        // crests a touch larger, a little fine dust between.
+        pSize[i] =
+          rand() < 0.08
+            ? 2 + rand() * 2
+            : (7 + rand() * 4) * (0.7 + 0.55 * b);
+        // Gold rides the gyral crests (with a white share); the sulci carry
+        // spatially-clustered violet/teal/blue — the reference's colour story.
+        pPick[i] =
+          b > 0.6 && rand() < 0.62
+            ? 0.86 + rand() * 0.14
+            : rand() < 0.4
+              ? rand() * 0.28
+              : clusterPick(x, y, z);
       }
-    }
-    for (let j = 0; j < nCbl; j++) {
-      const i = nCereb + j;
-      const yy = 1 - ((j + 0.5) / nCbl) * 2;
-      const r = Math.sqrt(Math.max(0, 1 - yy * yy));
-      const a = golden * j;
-      const dx = Math.cos(a) * r;
-      const dy = yy;
-      const dz = Math.sin(a) * r;
-      const ng = noise3(dx * 6, dy * 6, dz * 6);
-      const ridge = 1 - Math.abs(ng) * 0.32;
-      const s = 0.36;
-      aBrain[i * 3] = -0.74 + dx * s * 1.05 * ridge;
-      aBrain[i * 3 + 1] = -0.48 + dy * s * 0.78 * ridge;
-      aBrain[i * 3 + 2] = dz * s * 0.95 * ridge;
-      bright[i] = Math.max(0, Math.min(1, 1 - Math.abs(ng) * 1.5));
-      const cl = Math.hypot(dx, dy, dz) || 1;
-      aNormal[i * 3] = dx / cl;
-      aNormal[i * 3 + 1] = dy / cl;
-      aNormal[i * 3 + 2] = dz / cl;
-    }
-    for (let j = 0; j < nStem; j++) {
-      const i = nCereb + nCbl + j;
-      const tt = j / Math.max(1, nStem);
-      const a = golden * j;
-      const rr = 0.07 * (1 - tt * 0.5);
-      aBrain[i * 3] = -0.42 + Math.cos(a) * rr;
-      aBrain[i * 3 + 1] = -0.52 - tt * 0.6;
-      aBrain[i * 3 + 2] = Math.sin(a) * rr;
-      bright[i] = 0.32;
-      aNormal[i * 3] = Math.cos(a);
-      aNormal[i * 3 + 1] = 0;
-      aNormal[i * 3 + 2] = Math.sin(a);
-    }
+      return true;
+    };
+
+    // ── Procedural fallback (only if the baked point cloud fails to load) ──
+    const genBrainProcedural = () => {
+      for (let i = 0; i < COUNT; i++) {
+        const yy = 1 - ((i + 0.5) / COUNT) * 2;
+        const r = Math.sqrt(Math.max(0, 1 - yy * yy));
+        const th = golden * i;
+        const dx = Math.cos(th) * r;
+        const dy = yy;
+        const dz = Math.sin(th) * r;
+        const ng = noise3(dx * 1.5, dy * 3.4, dz * 2.4);
+        const ridge = 1 - Math.abs(ng) * 0.18;
+        aBrain[i * 3] = dx * 1.08 * ridge;
+        aBrain[i * 3 + 1] = dy * 0.9 * ridge;
+        aBrain[i * 3 + 2] = dz * 0.82 * ridge;
+        bright[i] = Math.max(0, Math.min(1, 1 - Math.abs(ng) * 1.4));
+        const nl = Math.hypot(dx, dy, dz) || 1;
+        aNormal[i * 3] = dx / nl;
+        aNormal[i * 3 + 1] = dy / nl;
+        aNormal[i * 3 + 2] = dz / nl;
+        pSize[i] = rand() < 0.15 ? 2.2 + rand() * 1.6 : 9 + rand() * 4;
+        pPick[i] = clusterPick(aBrain[i * 3], aBrain[i * 3 + 1], aBrain[i * 3 + 2]);
+      }
+    };
+
+    if (!(pts && genBrainFromPoints(pts))) genBrainProcedural();
 
     // ── Rocket geometry (pointing +y): chunky body, ROUNDED dome nose, three
     //    ROUNDED (leaf) fins, nozzle, flame. ──
@@ -555,37 +591,98 @@ export function CosmicField() {
       aScatter[i * 3 + 1] = Math.sin(sa) * sr;
       aScatter[i * 3 + 2] = (rand() - 0.5) * 0.6;
 
-      const isEdge = bright[i] > 0.5;
-      const rshape = rand();
-      const shape = rshape < 0.66 ? 0 : rshape < 0.8 ? 1 : rshape < 0.91 ? 2 : 3;
+      // Style (size + palette pick) was decided per-class by the brain
+      // generators; bright[] is read here so later shape tweaks still land.
       aMeta[i * 4] = bright[i];
-      aMeta[i * 4 + 1] = (isEdge ? 3.8 : 2.8) + rand() * (isEdge ? 5 : 3.6);
+      aMeta[i * 4 + 1] = pSize[i];
       aMeta[i * 4 + 2] = 0.5 + rand() * 1.6;
-      aMeta[i * 4 + 3] = shape;
+      aMeta[i * 4 + 3] = pPick[i];
+    }
+
+    // ── Ambient floaters: a few large, faint triangles drifting around (and
+    // behind) the main form. They keep the SAME position through every morph
+    // target, so they read as a persistent background layer with depth, like
+    // the reference. Overrides the tail of every shape array. ──
+    {
+      const nAmbient = Math.floor(COUNT * 0.045);
+      for (let j = 0; j < nAmbient; j++) {
+        const i = COUNT - 1 - j;
+        const a = rand() * Math.PI * 2;
+        const ct = 2 * rand() - 1;
+        const st = Math.sqrt(1 - ct * ct);
+        const rr = 1.25 + rand() * 1.1;
+        const x = st * Math.cos(a) * rr * 1.5;
+        const y = ct * rr;
+        const z = (rand() - 0.5) * 1.4;
+        for (const arr of [aBrain, aRocket, aHand, aShield, aScatter]) {
+          arr[i * 3] = x;
+          arr[i * 3 + 1] = y;
+          arr[i * 3 + 2] = z;
+        }
+        const nl = Math.hypot(x, y, z) || 1;
+        for (const arr of [aNormal, aNormal2, aHnorm, aSnorm]) {
+          arr[i * 3] = x / nl;
+          arr[i * 3 + 1] = y / nl;
+          arr[i * 3 + 2] = z / nl;
+        }
+        aFlame[i] = 0;
+        aMeta[i * 4] = 0.12; // dim
+        aMeta[i * 4 + 1] = 14 + rand() * 22; // large soft outlines
+      }
+    }
+
+    // ── Glyph geometry: a regular tetrahedron (4 outlined faces, 12 verts),
+    // scaled so the glyph spans ~1 unit — `size` then maps to pixels. ──
+    const TQ = [
+      [1, 1, 1],
+      [1, -1, -1],
+      [-1, 1, -1],
+      [-1, -1, 1],
+    ];
+    const TF = [0, 1, 2, 0, 3, 1, 0, 2, 3, 1, 3, 2];
+    const vertArr = new Float32Array(36);
+    const baryArr = new Float32Array(36);
+    // A rotated tetra projects smaller than its circumsphere — oversize it
+    // so `size` still reads as the glyph's apparent pixel span.
+    const tScale = 0.42;
+    for (let vi = 0; vi < 12; vi++) {
+      vertArr[vi * 3] = TQ[TF[vi]][0] * tScale;
+      vertArr[vi * 3 + 1] = TQ[TF[vi]][1] * tScale;
+      vertArr[vi * 3 + 2] = TQ[TF[vi]][2] * tScale;
+      baryArr[vi * 3 + (vi % 3)] = 1;
     }
 
     // ── Buffers ──
     const buffers: Record<string, WebGLBuffer | null> = {};
-    const bind = (name: string, data: Float32Array, size: number) => {
+    const bind = (
+      name: string,
+      data: Float32Array,
+      size: number,
+      perInstance: boolean,
+    ) => {
+      const loc = gl.getAttribLocation(prog, name);
+      if (loc < 0) return;
       const buf = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buf);
       gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
-      const loc = gl.getAttribLocation(prog, name);
       gl.enableVertexAttribArray(loc);
       gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
+      if (perInstance) inst.vertexAttribDivisorANGLE(loc, 1);
       buffers[name] = buf;
     };
-    bind("a_brain", aBrain, 3);
-    bind("a_normal", aNormal, 3);
-    bind("a_rocket", aRocket, 3);
-    bind("a_normal2", aNormal2, 3);
-    bind("a_hand", aHand, 3);
-    bind("a_hnorm", aHnorm, 3);
-    bind("a_shield", aShield, 3);
-    bind("a_snorm", aSnorm, 3);
-    bind("a_scatter", aScatter, 3);
-    bind("a_meta", aMeta, 4);
-    bind("a_flame", aFlame, 1);
+    bind("a_vert", vertArr, 3, false);
+    bind("a_bary", baryArr, 3, false);
+    bind("a_brain", aBrain, 3, true);
+    bind("a_normal", aNormal, 3, true);
+    bind("a_rocket", aRocket, 3, true);
+    bind("a_normal2", aNormal2, 3, true);
+    bind("a_hand", aHand, 3, true);
+    bind("a_hnorm", aHnorm, 3, true);
+    bind("a_shield", aShield, 3, true);
+    bind("a_snorm", aSnorm, 3, true);
+    bind("a_scatter", aScatter, 3, true);
+    bind("a_meta", aMeta, 4, true);
+    bind("a_flame", aFlame, 1, true);
 
     const U = (n: string) => gl.getUniformLocation(prog, n);
     const uRes = U("u_res");
@@ -670,7 +767,7 @@ export function CosmicField() {
     // Solution(2) rocket (right) → Pricing(3)+ dissolve to scatter.
     // phase: 0 hero, 1 problem, 2 solution, 3 pricing, 4 how-it-works, 5 faq
     const cxFrames: [number, number][] = [
-      [0.0, 0.75], // brain right (smaller, out of the wider headline's way)
+      [0.0, 0.7], // brain right, large but FULLY in frame like Dala
       [1.0, 0.3], // brain left
       [2.0, 0.55], // rocket centre
       [3.0, 0.68], // handshake right
@@ -678,7 +775,7 @@ export function CosmicField() {
       [5.0, 0.5],
     ];
     const scaleFrames: [number, number][] = [
-      [0.0, 0.86],
+      [0.0, 1.1], // large, whole silhouette visible with margins
       [1.0, 1.2],
       [2.0, 1.02], // smaller rocket
       [3.0, 0.8], // smaller handshake
@@ -690,6 +787,19 @@ export function CosmicField() {
     let raf = 0;
     let introStart = -1;
     let smoothPhase = -1;
+
+    // Mouse parallax (eased) — the subtle camera response that sells the 3D.
+    let pmx = 0;
+    let pmy = 0;
+    let tpx = 0;
+    let tpy = 0;
+    const onPointerMove = (e: PointerEvent) => {
+      tpx = (e.clientX / Math.max(1, w) - 0.5) * 2;
+      tpy = (e.clientY / Math.max(1, h) - 0.5) * 2;
+    };
+    if (!reduceMotion) {
+      window.addEventListener("pointermove", onPointerMove, { passive: true });
+    }
 
     const render = (now: number) => {
       if (introStart < 0) introStart = now;
@@ -740,19 +850,23 @@ export function CosmicField() {
       ]);
       // How much slow idle sway to layer on (reveals depth as it rocks).
       const sway = keyframe(phase, [
-        [0.0, 0.7], // brain sways
+        [0.0, 0.18], // brain sways gently (keeps the silhouette readable)
         [2.0, 0.0], // rocket steady
         [3.0, 0.18], // bust gently turns
         [4.0, 0.24], // shield gently rocks
         [5.0, 0.4],
       ]);
+      pmx += (tpx - pmx) * 0.06;
+      pmy += (tpy - pmy) * 0.06;
       const rotY =
-        baseYaw + (reduceMotion ? 0 : Math.sin(t * 0.00022) * sway);
+        baseYaw + (reduceMotion ? 0 : Math.sin(t * 0.00022) * sway + pmx * 0.12);
       const rotX =
         (0.15 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.05)) *
-        (1 - upright * 0.85);
+          (1 - upright * 0.85) +
+        (reduceMotion ? 0 : pmy * 0.07);
       const fade = Math.max(0, 1 - Math.max(0, phase - 4.6) / 0.6);
-      const globalAlpha = 0.9 * fade;
+      // Far fewer, bigger particles now — crisp outlines need more alpha.
+      const globalAlpha = 0.95 * fade;
 
       gl.uniform2f(uCenter, w * cxFrac * dpr, h * cyFrac * dpr);
       gl.uniform1f(uRadius, Math.min(w, h) * (narrow ? 0.4 : 0.36) * scale * dpr);
@@ -765,7 +879,7 @@ export function CosmicField() {
       gl.uniform1f(uLaunch, reduceMotion ? 0 : launch);
 
       gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.drawArrays(gl.POINTS, 0, COUNT);
+      inst.drawArraysInstancedANGLE(gl.TRIANGLES, 0, 12, COUNT);
     };
 
     resize();
@@ -805,7 +919,27 @@ export function CosmicField() {
       cancelAnimationFrame(raf);
       cancelAnimationFrame(resizeRaf);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("pointermove", onPointerMove);
       clearTimeout(settle);
+    };
+    };
+
+    // Fetch the baked cortex point cloud and hand it to init(). The asset is
+    // baked offline from a real FreeSurfer brain surface — see
+    // scripts/bake_brain.py. Any failure falls back to the procedural sphere.
+    fetch("/brain-points.bin")
+      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
+      .then((buf) => {
+        if (cancelled) return;
+        cleanup = init(parseBrainPoints(buf));
+      })
+      .catch(() => {
+        if (!cancelled) cleanup = init(null);
+      });
+
+    return () => {
+      cancelled = true;
+      cleanup?.();
     };
   }, []);
 
