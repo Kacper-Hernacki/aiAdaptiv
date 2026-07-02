@@ -161,7 +161,7 @@ void main(){
   // brain also turns (u_rotY), so the field both spins and orbits. Built in
   // view space, so the tumble stays uniform on screen. Rocket/scatter keep the
   // per-particle random tumble.
-  float ua = u_time * 0.5;                    // shared spin angle (~13s / turn)
+  float ua = u_time * 0.13;                   // shared spin angle (slow, ~48s / turn)
   float uc = cos(ua), us = sin(ua);
   vec3 gvUni = vec3(a_vert.x * uc + a_vert.z * us, a_vert.y, -a_vert.x * us + a_vert.z * uc);
   float tc = cos(0.6), ts = sin(0.6);         // fixed tilt so it never views flat
@@ -183,7 +183,7 @@ void main(){
   // Dim the far side of the shell so the interior stays dark enough for the
   // front glyphs to read individually.
   float front = smoothstep(-0.2, 0.4, nz2);
-  float vis = mix(0.25, 0.9, front);
+  float vis = mix(0.08, 0.95, front);
   float tw = 0.93 + 0.07 * sin(u_time * seed * 2.0 + seed * 12.0);
   // bright ≈ 1 on gyri crests, ≈ 0 in sulci grooves — grooves go dark so the
   // fold pattern carves visibly through the tiled surface.
@@ -743,10 +743,11 @@ export function CosmicField() {
       gl.uniform2f(uRes, canvas.width, canvas.height);
       gl.uniform1f(uDpr, dpr);
       // Thin + shrink the field on smaller screens so it doesn't read as a
-      // dense blob. seed is uniform in [0.5, 2.1]; keep ~48% on phones, ~65%
-      // on tablets, all on desktop.
-      gl.uniform1f(uMaxSeed, phone ? 1.27 : narrow ? 1.54 : 10.0);
-      gl.uniform1f(uPtScale, phone ? 0.62 : narrow ? 0.78 : 1.0);
+      // dense blob. seed is uniform in [0.5, 2.1]; keep ~34% on phones, ~56%
+      // on tablets, all on desktop. Glyphs are large now, so shrink them hard
+      // on phones or they mush the small brain into a clump.
+      gl.uniform1f(uMaxSeed, phone ? 0.95 : narrow ? 1.3 : 10.0);
+      gl.uniform1f(uPtScale, phone ? 0.27 : narrow ? 0.5 : 1.0);
       computeAnchors();
     };
 
@@ -770,8 +771,8 @@ export function CosmicField() {
     // Solution(2) rocket (right) → Pricing(3)+ dissolve to scatter.
     // phase: 0 hero, 1 problem, 2 solution, 3 pricing, 4 how-it-works, 5 faq
     const cxFrames: [number, number][] = [
-      [0.0, 0.7], // brain right, large but FULLY in frame like Dala
-      [1.0, 0.3], // brain left
+      [0.0, 0.86], // brain far right so it never covers the hero text
+      [1.0, 0.14], // brain far left so it never covers the problem-section text
       [2.0, 0.55], // rocket centre
       [3.0, 0.68], // handshake right
       [4.0, 0.68], // shield right
@@ -866,7 +867,7 @@ export function CosmicField() {
         [1.0, 1.0],
         [1.8, 0.0],
       ]);
-      const brainSpin = reduceMotion ? 0 : spin * t * 0.001 * 0.16;
+      const brainSpin = reduceMotion ? 0 : spin * t * 0.001 * 0.05;
       pmx += (tpx - pmx) * 0.06;
       pmy += (tpy - pmy) * 0.06;
       const rotY =
