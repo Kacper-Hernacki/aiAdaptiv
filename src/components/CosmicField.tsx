@@ -78,6 +78,8 @@ uniform vec3 u_light;
 uniform float u_dpr;
 uniform float u_maxSeed; // cull particles with seed above this (mobile density)
 uniform float u_ptScale; // global glyph-size multiplier (smaller on mobile)
+uniform vec2 u_mouse;    // cursor position (device px; far offscreen when idle)
+uniform float u_mouseR;  // cursor influence radius (device px)
 varying vec3 v_color;
 varying float v_alpha;
 varying vec3 v_bary;
@@ -166,13 +168,31 @@ void main(){
   vec3 gvUni = vec3(a_vert.x * uc + a_vert.z * us, a_vert.y, -a_vert.x * us + a_vert.z * uc);
   float tc = cos(0.6), ts = sin(0.6);         // fixed tilt so it never views flat
   gvUni = vec3(gvUni.x, gvUni.y * tc - gvUni.z * ts, gvUni.y * ts + gvUni.z * tc);
-  gv = mix(gv, gvUni, 1.0 - clamp(u_morph, 0.0, 1.0));
+  // Uniform orientation for the BRAIN and the ROCKET (morph 0..2); the later
+  // shapes (handshake/shield) keep the random tumble.
+  gv = mix(gv, gvUni, 1.0 - clamp(u_morph - 2.0, 0.0, 1.0));
   float ws = size * (0.4 + depthN) * u_dpr * u_ptScale * (1.0 + burn * 1.6) * 0.5 / u_radius;
   vec3 q = vec3(x1, y1, z2) + gv * ws;
 
-  float persp = FOV / (FOV - q.z);
+  // Clamp perspective so a particle that rotates close to the camera plane
+  // can't blow its glyph up into a screen-wide streak. Legit front glyphs sit
+  // around ~1.5, so the cap never touches them.
+  float persp = min(FOV / (FOV - q.z), 1.9);
   float sxp = u_center.x + q.x * u_radius * persp;
   float syp = u_center.y - q.y * u_radius * persp;
+
+  // Cursor repulsion computed from the glyph CENTRE (not per-vertex), so the
+  // same offset is added to every vertex — the glyph MOVES rigidly, it doesn't
+  // stretch or distort. Gentle, brain only.
+  float perspC = FOV / (FOV - z2);
+  vec2 ctr = vec2(u_center.x + x1 * u_radius * perspC, u_center.y - y1 * u_radius * perspC);
+  vec2 toM = ctr - u_mouse;
+  float md = length(toM);
+  float pushAmt = smoothstep(u_mouseR, 0.0, md) * (1.0 - clamp(u_morph, 0.0, 1.0));
+  vec2 off = (toM / max(md, 1.0)) * pushAmt * u_mouseR * 0.16;
+  sxp += off.x;
+  syp += off.y;
+
   gl_Position = vec4(sxp / u_res.x * 2.0 - 1.0, 1.0 - syp / u_res.y * 2.0, 0.0, 1.0);
 
   float lambert = max(dot(vec3(nx1, ny1, nz2), u_light), 0.0);
@@ -420,8 +440,8 @@ export function CosmicField() {
     //    ROUNDED (leaf) fins, nozzle, flame. ──
     const rBody = Math.floor(COUNT * 0.42);
     const rNose = Math.floor(COUNT * 0.16);
-    const rFin = Math.floor(COUNT * 0.26);
-    const rNoz = Math.floor(COUNT * 0.05);
+    const rFin = Math.floor(COUNT * 0.12); // thinner fins — the bottom was a dense clump
+    const rNoz = Math.floor(COUNT * 0.04);
     const setN = (i: number, x: number, y: number, z: number) => {
       const l = Math.hypot(x, y, z) || 1;
       aNormal2[i * 3] = x / l;
@@ -438,7 +458,9 @@ export function CosmicField() {
     let ci = 0;
     for (let k = 0; k < rBody; k++, ci++) {
       const a = golden * k;
-      const yv = -0.55 + (k / rBody) * (shoulderY + 0.55);
+      // Taper density toward the base so the bottom isn't a dense clump: the
+      // power < 1 spreads particles apart low down, keeps them denser up top.
+      const yv = -0.55 + Math.pow(k / rBody, 0.6) * (shoulderY + 0.55);
       aRocket[ci * 3] = Math.cos(a) * RKT_R;
       aRocket[ci * 3 + 1] = yv;
       aRocket[ci * 3 + 2] = Math.sin(a) * RKT_R;
@@ -702,6 +724,8 @@ export function CosmicField() {
     const uDpr = U("u_dpr");
     const uMaxSeed = U("u_maxSeed");
     const uPtScale = U("u_ptScale");
+    const uMouse = U("u_mouse");
+    const uMouseR = U("u_mouseR");
 
     const ll = Math.hypot(-0.5, 0.62, 0.6);
     gl.uniform3f(uLight, -0.5 / ll, 0.62 / ll, 0.6 / ll);
@@ -773,7 +797,7 @@ export function CosmicField() {
     const cxFrames: [number, number][] = [
       [0.0, 0.86], // brain far right so it never covers the hero text
       [1.0, 0.14], // brain far left so it never covers the problem-section text
-      [2.0, 0.55], // rocket centre
+      [2.0, 0.78], // rocket right, clear of the text
       [3.0, 0.68], // handshake right
       [4.0, 0.68], // shield right
       [5.0, 0.5],
@@ -781,10 +805,17 @@ export function CosmicField() {
     const scaleFrames: [number, number][] = [
       [0.0, 1.45], // large — spreads the glyphs so they stop overlapping
       [1.0, 1.55],
-      [2.0, 1.02], // smaller rocket
+      [2.0, 1.4], // bigger rocket — spreads the particles apart
       [3.0, 0.8], // smaller handshake
       [4.0, 1.2],
       [5.0, 1.0],
+    ];
+    // Vertical centre (fraction from top). Most shapes sit mid-screen; the tall
+    // rocket sits lower so its nose isn't cut off at the top.
+    const cyFrames: [number, number][] = [
+      [0.0, 0.5],
+      [2.0, 0.62], // rocket lower
+      [3.0, 0.5],
     ];
 
     let t = 0;
@@ -797,12 +828,32 @@ export function CosmicField() {
     let pmy = 0;
     let tpx = 0;
     let tpy = 0;
+    // Raw cursor in CSS px, and the eased position the repulsion follows.
+    let cursorX = -1e5;
+    let cursorY = -1e5;
+    let mouseX = -1e5;
+    let mouseY = -1e5;
+    let hovering = false;
     const onPointerMove = (e: PointerEvent) => {
       tpx = (e.clientX / Math.max(1, w) - 0.5) * 2;
       tpy = (e.clientY / Math.max(1, h) - 0.5) * 2;
+      cursorX = e.clientX;
+      cursorY = e.clientY;
+      if (!hovering) {
+        // jump the eased position to the cursor on first move (no swoop-in)
+        mouseX = cursorX;
+        mouseY = cursorY;
+        hovering = true;
+      }
+    };
+    const onPointerLeave = () => {
+      hovering = false;
+      cursorX = -1e5;
+      cursorY = -1e5;
     };
     if (!reduceMotion) {
       window.addEventListener("pointermove", onPointerMove, { passive: true });
+      document.addEventListener("pointerleave", onPointerLeave, { passive: true });
     }
 
     const render = (now: number) => {
@@ -825,17 +876,14 @@ export function CosmicField() {
       else if (phase >= 2.6) morph = 1 + es((phase - 2.6) / 0.4);
       else if (phase >= 2) morph = 1;
       else if (phase >= 1) morph = es(phase - 1);
-      // Engine ignites then fades as the rocket morphs to the handshake.
-      const launch =
-        es(Math.min(1, Math.max(0, (phase - 2) / 0.6))) *
-        es(Math.min(1, Math.max(0, (2.9 - phase) / 0.3)));
+      // Engine fire removed — the rocket no longer ignites or lifts off.
+      const launch = 0;
 
       // On mobile the visual sits in the TOP portion of the viewport (centred
       // horizontally) so the text below it stays clear; on desktop it uses the
       // per-section left/right choreography.
       const cxFrac = narrow ? 0.5 : keyframe(phase, cxFrames);
-      const cyFrac =
-        (narrow ? 0.21 : 0.5) - launch * (narrow ? 0.12 : 0.55); // rise on launch
+      const cyFrac = narrow ? 0.21 : keyframe(phase, cyFrames);
       const scale = narrow ? 0.6 : keyframe(phase, scaleFrames);
 
       // Only the rocket must stand still and upright; the brain, handshake and
@@ -892,6 +940,13 @@ export function CosmicField() {
       gl.uniform1f(uGAlpha, globalAlpha);
       gl.uniform1f(uLaunch, reduceMotion ? 0 : launch);
 
+      // Ease the repulsion origin toward the cursor (or offscreen when idle)
+      // and hand it to the shader in device pixels.
+      mouseX += (cursorX - mouseX) * 0.18;
+      mouseY += (cursorY - mouseY) * 0.18;
+      gl.uniform2f(uMouse, mouseX * dpr, mouseY * dpr);
+      gl.uniform1f(uMouseR, Math.min(w, h) * 0.13 * dpr);
+
       gl.clear(gl.COLOR_BUFFER_BIT);
       inst.drawArraysInstancedANGLE(gl.TRIANGLES, 0, 12, COUNT);
     };
@@ -934,6 +989,7 @@ export function CosmicField() {
       cancelAnimationFrame(resizeRaf);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onPointerMove);
+      document.removeEventListener("pointerleave", onPointerLeave);
       clearTimeout(settle);
     };
     };
