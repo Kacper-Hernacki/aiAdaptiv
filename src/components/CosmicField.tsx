@@ -61,6 +61,8 @@ attribute vec3 a_hand;
 attribute vec3 a_hnorm;
 attribute vec3 a_shield;
 attribute vec3 a_snorm;
+attribute vec3 a_car;
+attribute vec3 a_cnorm;
 attribute vec3 a_scatter;
 attribute vec4 a_meta; // bright, size, seed, palette-pick
 attribute float a_flame; // 1 for engine-flame particles
@@ -113,19 +115,22 @@ void main(){
     return;
   }
 
-  // Morph chain: brain -> rocket -> handshake -> shield -> scatter.
+  // Morph chain: brain -> rocket -> tie -> shield -> car -> scatter.
   float mB = clamp(u_morph, 0.0, 1.0);
   float m2 = clamp(u_morph - 1.0, 0.0, 1.0);
   float m3 = clamp(u_morph - 2.0, 0.0, 1.0);
   float m4 = clamp(u_morph - 3.0, 0.0, 1.0);
+  float m5 = clamp(u_morph - 4.0, 0.0, 1.0);
   vec3 p = mix(a_brain, a_rocket, mB);
   p = mix(p, a_hand, m2);
   p = mix(p, a_shield, m3);
-  p = mix(p, a_scatter, m4);
+  p = mix(p, a_car, m4);
+  p = mix(p, a_scatter, m5);
   p = mix(a_scatter, p, u_intro);
   vec3 n = mix(a_normal, a_normal2, mB);
   n = mix(n, a_hnorm, m2);
   n = mix(n, a_snorm, m3);
+  n = mix(n, a_cnorm, m4);
   n = normalize(n);
 
   // Engine flame: only while it is the rocket (not yet morphing to hand).
@@ -168,16 +173,16 @@ void main(){
   vec3 gvUni = vec3(a_vert.x * uc + a_vert.z * us, a_vert.y, -a_vert.x * us + a_vert.z * uc);
   float tc = cos(0.6), ts = sin(0.6);         // fixed tilt so it never views flat
   gvUni = vec3(gvUni.x, gvUni.y * tc - gvUni.z * ts, gvUni.y * ts + gvUni.z * tc);
-  // Uniform orientation for the BRAIN and the ROCKET (morph 0..2); the later
-  // shapes (handshake/shield) keep the random tumble.
-  gv = mix(gv, gvUni, 1.0 - clamp(u_morph - 2.0, 0.0, 1.0));
+  // Every formed shape (brain, rocket, shield, …) uses the same uniform
+  // tumbling orientation — the particles all point one direction together.
+  gv = gvUni;
   float ws = size * (0.4 + depthN) * u_dpr * u_ptScale * (1.0 + burn * 1.6) * 0.5 / u_radius;
   vec3 q = vec3(x1, y1, z2) + gv * ws;
 
-  // Clamp perspective so a particle that rotates close to the camera plane
-  // can't blow its glyph up into a screen-wide streak. Legit front glyphs sit
-  // around ~1.5, so the cap never touches them.
-  float persp = min(FOV / (FOV - q.z), 1.9);
+  // Floor the denominator so a particle near/behind the camera plane can't blow
+  // its glyph into a streak (huge persp) or flip to negative. Legit front
+  // glyphs sit around ~1.5, so this cap (max 2.0) never touches them.
+  float persp = FOV / max(FOV - q.z, FOV * 0.5);
   float sxp = u_center.x + q.x * u_radius * persp;
   float syp = u_center.y - q.y * u_radius * persp;
 
@@ -361,6 +366,8 @@ export function CosmicField() {
     const aHnorm = new Float32Array(COUNT * 3);
     const aShield = new Float32Array(COUNT * 3);
     const aSnorm = new Float32Array(COUNT * 3);
+    const aCar = new Float32Array(COUNT * 3);
+    const aCnorm = new Float32Array(COUNT * 3);
     const aScatter = new Float32Array(COUNT * 3);
     const aMeta = new Float32Array(COUNT * 4);
     const aFlame = new Float32Array(COUNT);
@@ -535,24 +542,58 @@ export function CosmicField() {
       aFlame[ci] = 1;
     }
 
-    // ── Partners section: a soft dispersed particle cloud (placeholder). No
-    // recognisable form yet — just scattered particles gently lit. ──
+    // ── Pricing section: a NECKTIE in 3D — chunky knot at the top, blade that
+    // widens then comes to a point, with a centre fold (a thin front+back slab
+    // so it reads as a real 3D tie when it turns). ──
     {
-      for (let i = 0; i < COUNT; i++) {
-        const a = rand() * Math.PI * 2;
-        const ct = 2 * rand() - 1;
-        const st = Math.sqrt(1 - ct * ct);
-        const rr = Math.cbrt(rand()); // fill the ball evenly
-        const x = st * Math.cos(a) * rr * 1.15;
-        const y = ct * rr * 0.95;
-        const z = st * Math.sin(a) * rr * 0.9;
+      const setH = (i: number, x: number, y: number, z: number, nx: number, ny: number, nz: number) => {
         aHand[i * 3] = x;
         aHand[i * 3 + 1] = y;
         aHand[i * 3 + 2] = z;
-        const nl = Math.hypot(x, y, z) || 1;
-        aHnorm[i * 3] = x / nl;
-        aHnorm[i * 3 + 1] = y / nl;
-        aHnorm[i * 3 + 2] = z / nl;
+        const nl = Math.hypot(nx, ny, nz) || 1;
+        aHnorm[i * 3] = nx / nl;
+        aHnorm[i * 3 + 1] = ny / nl;
+        aHnorm[i * 3 + 2] = nz / nl;
+      };
+      // Blade half-width along t (0 just below the knot .. 1 the pointed tip):
+      // widens to a maximum around 78% down, then tapers to a point.
+      const bladeHW = (t: number) =>
+        t < 0.78
+          ? 0.1 + 0.24 * Math.sin((t / 0.78) * Math.PI * 0.5)
+          : 0.34 * (1 - (t - 0.78) / 0.22);
+      // Only ~42% form the tie so the particles sit well apart; the knot is a
+      // fifth of that, and the rest fly out of frame.
+      const nActive = Math.floor(COUNT * 0.42);
+      const nKnot = Math.floor(nActive * 0.2);
+      for (let i = 0; i < COUNT; i++) {
+        if (i < nKnot) {
+          // Knot: chunky rounded block at the top, wider toward its base.
+          const kt = rand();
+          const kw = 0.19 - 0.06 * kt;
+          const x = (rand() * 2 - 1) * kw;
+          const y = 0.62 + kt * 0.28;
+          const front = rand() < 0.68;
+          const z = (front ? 1 : -1) * (0.09 + rand() * 0.05);
+          setH(i, x, y, z, x * 0.6, 0.1, front ? 1 : -1);
+        } else if (i < nActive) {
+          // Blade: front + back surfaces with a centre fold (V dimple).
+          const t = rand();
+          const y = 0.62 - t * 1.5; // knot base (0.62) down to the tip (-0.88)
+          const hw = Math.max(0, bladeHW(t));
+          const ex = rand() * 2 - 1; // -1..1 across the width
+          const x = ex * hw;
+          const fold = 0.07 * (1 - ex * ex); // raised at the centre, flat at edges
+          const front = rand() < 0.7;
+          const z = front ? fold : fold - 0.06;
+          setH(i, x, y, z, ex * 0.5, 0.12, front ? 1 : -1);
+        } else {
+          // Surplus flies far out of frame so the tie reads sparse.
+          const a = rand() * Math.PI * 2;
+          const ct = 2 * rand() - 1;
+          const st = Math.sqrt(1 - ct * ct);
+          const rr = 2.6 + rand() * 2.2;
+          setH(i, st * Math.cos(a) * rr, ct * rr, st * Math.sin(a) * rr, st * Math.cos(a), ct, st * Math.sin(a));
+        }
       }
     }
 
@@ -560,7 +601,7 @@ export function CosmicField() {
     {
       const halfWidth = (y: number) => {
         const nb = (0.52 - y) / 1.14; // 0 top .. 1 bottom point
-        let hw = 0.38 * Math.sqrt(Math.max(0, 1 - Math.pow(nb, 1.7)));
+        let hw = 0.52 * Math.sqrt(Math.max(0, 1 - Math.pow(nb, 1.7))); // wider shield
         hw *= 1 - 0.28 * Math.max(0, (y - 0.4) / 0.12); // round the top corners
         return Math.max(0, hw);
       };
@@ -573,8 +614,11 @@ export function CosmicField() {
         aSnorm[i * 3 + 1] = ny / nl;
         aSnorm[i * 3 + 2] = nz / nl;
       };
-      const nLock = Math.floor(COUNT * 0.16);
-      const nShield = COUNT - nLock;
+      // Sparse fill: only ~46% form the shield face so gaps open up and the
+      // padlock shows through; ~26% are the (larger) padlock so it reads
+      // clearly; the rest fly out of frame.
+      const nShield = Math.floor(COUNT * 0.46);
+      const nLock = Math.floor(COUNT * 0.26);
       const nBody = Math.floor(nLock * 0.62);
       for (let i = 0; i < COUNT; i++) {
         if (i < nShield) {
@@ -587,23 +631,119 @@ export function CosmicField() {
           const side = rand() < 0.72 ? 1 : -0.55;
           setS(i, x, y, bulge * side, edge * 0.9, -0.15, side > 0 ? 1 : -0.9);
         } else if (i < nShield + nBody) {
-          // Padlock body: rounded rectangle, raised in front of the shield.
+          // Padlock body: rounded rectangle, raised well in front of the shield.
           let bx = 0;
           let by = 0;
           do {
-            bx = (rand() * 2 - 1) * 0.15;
-            by = -0.16 + rand() * 0.24;
-          } while (Math.abs(bx) > 0.15 - Math.max(0, Math.abs(by + 0.04) - 0.08) * 0.9);
-          const kh = Math.hypot(bx, by + 0.02) < 0.035; // keyhole gap
-          if (kh) by += 0.14;
+            bx = (rand() * 2 - 1) * 0.22;
+            by = -0.22 + rand() * 0.34;
+          } while (Math.abs(bx) > 0.22 - Math.max(0, Math.abs(by + 0.05) - 0.11) * 0.9);
+          const kh = Math.hypot(bx, by + 0.02) < 0.05; // keyhole gap
+          if (kh) by += 0.2;
           bright[i] = 0.95;
-          setS(i, bx, by, 0.3, bx * 0.3, by * 0.3, 1);
-        } else {
+          setS(i, bx, by, 0.42, bx * 0.3, by * 0.3, 1);
+        } else if (i < nShield + nLock) {
           // Padlock shackle: upper semicircle arc.
           const ang = rand() * Math.PI;
-          const rr = 0.1 + (rand() - 0.5) * 0.045;
+          const rr = 0.15 + (rand() - 0.5) * 0.06;
           bright[i] = 0.95;
-          setS(i, Math.cos(ang) * rr, 0.08 + Math.sin(ang) * rr, 0.3, Math.cos(ang) * 0.4, 0.2, 1);
+          setS(i, Math.cos(ang) * rr, 0.14 + Math.sin(ang) * rr, 0.42, Math.cos(ang) * 0.4, 0.2, 1);
+        } else {
+          // Surplus particles fly far out of frame so the shield reads sparse.
+          const a = rand() * Math.PI * 2;
+          const ct = 2 * rand() - 1;
+          const st = Math.sqrt(1 - ct * ct);
+          const rr = 2.6 + rand() * 2.2;
+          setS(i, st * Math.cos(a) * rr, ct * rr, st * Math.sin(a) * rr, st * Math.cos(a), ct, st * Math.sin(a));
+        }
+      }
+    }
+
+    // ── Client Roadmap section: a simple 3D CAR (side profile) — body + cabin
+    // + four wheels, as box shells so it reads when it turns. ──
+    {
+      const setC = (i: number, x: number, y: number, z: number, nx: number, ny: number, nz: number) => {
+        aCar[i * 3] = x;
+        aCar[i * 3 + 1] = y;
+        aCar[i * 3 + 2] = z;
+        const nl = Math.hypot(nx, ny, nz) || 1;
+        aCnorm[i * 3] = nx / nl;
+        aCnorm[i * 3 + 1] = ny / nl;
+        aCnorm[i * 3 + 2] = nz / nl;
+      };
+      // A point on the shell of an axis-aligned box (centre c, half-extents h).
+      const boxShell = (
+        i: number,
+        cx: number,
+        cy: number,
+        cz: number,
+        hx: number,
+        hy: number,
+        hz: number,
+      ) => {
+        const u = rand() * 2 - 1;
+        const v = rand() * 2 - 1;
+        const f = Math.floor(rand() * 6);
+        let x = 0;
+        let y = 0;
+        let z = 0;
+        let nx = 0;
+        let ny = 0;
+        let nz = 0;
+        if (f < 2) {
+          const s = f === 0 ? 1 : -1;
+          x = cx + s * hx;
+          y = cy + u * hy;
+          z = cz + v * hz;
+          nx = s;
+        } else if (f < 4) {
+          const s = f === 2 ? 1 : -1;
+          y = cy + s * hy;
+          x = cx + u * hx;
+          z = cz + v * hz;
+          ny = s;
+        } else {
+          const s = f === 4 ? 1 : -1;
+          z = cz + s * hz;
+          x = cx + u * hx;
+          y = cy + v * hy;
+          nz = s;
+        }
+        setC(i, x, y, z, nx, ny, nz);
+      };
+      const nCarBody = Math.floor(COUNT * 0.4);
+      const nCabin = Math.floor(COUNT * 0.18);
+      const nWheels = Math.floor(COUNT * 0.28);
+      for (let i = 0; i < COUNT; i++) {
+        if (i < nCarBody) {
+          // Lower body: long low box.
+          boxShell(i, 0, -0.02, 0, 0.82, 0.14, 0.3);
+        } else if (i < nCarBody + nCabin) {
+          // Cabin/roof: shorter box, set slightly back, on top of the body.
+          boxShell(i, -0.06, 0.28, 0, 0.4, 0.16, 0.26);
+        } else if (i < nCarBody + nCabin + nWheels) {
+          // Four wheels: filled discs in the x/y plane at the corners.
+          const wi = i % 4;
+          const wx = (wi % 2 === 0 ? 1 : -1) * 0.5;
+          const wz = (wi < 2 ? 1 : -1) * 0.31;
+          const ang = rand() * Math.PI * 2;
+          const rr = 0.19 * Math.sqrt(rand());
+          setC(
+            i,
+            wx + Math.cos(ang) * rr,
+            -0.18 + Math.sin(ang) * rr,
+            wz + (rand() - 0.5) * 0.06,
+            Math.cos(ang) * 0.3,
+            Math.sin(ang) * 0.3,
+            wz > 0 ? 1 : -1,
+          );
+        } else {
+          // Surplus flies out of frame so the car reads sparse.
+          const a = rand() * Math.PI * 2;
+          const ct = 2 * rand() - 1;
+          const st = Math.sqrt(1 - ct * ct);
+          const rr = 2.6 + rand() * 2.2;
+          setC(i, st * Math.cos(a) * rr, ct * rr, st * Math.sin(a) * rr, st * Math.cos(a), ct, st * Math.sin(a));
         }
       }
     }
@@ -705,6 +845,8 @@ export function CosmicField() {
     bind("a_hnorm", aHnorm, 3, true);
     bind("a_shield", aShield, 3, true);
     bind("a_snorm", aSnorm, 3, true);
+    bind("a_car", aCar, 3, true);
+    bind("a_cnorm", aCnorm, 3, true);
     bind("a_scatter", aScatter, 3, true);
     bind("a_meta", aMeta, 4, true);
     bind("a_flame", aFlame, 1, true);
@@ -744,7 +886,7 @@ export function CosmicField() {
     let anchors: number[] = [0];
     const computeAnchors = () => {
       anchors = [0];
-      for (const id of ["problem", "solution", "pricing", "how-it-works", "faq"]) {
+      for (const id of ["problem", "solution", "pricing", "how-it-works", "client-roadmap", "faq"]) {
         const el = document.getElementById(id);
         if (el) {
           const top = el.getBoundingClientRect().top + window.scrollY;
@@ -791,24 +933,26 @@ export function CosmicField() {
       return anchors.length - 1;
     };
 
-    // Phase → composition. Hero(0) right brain → Problem(1) left brain →
-    // Solution(2) rocket (right) → Pricing(3)+ dissolve to scatter.
-    // phase: 0 hero, 1 problem, 2 solution, 3 pricing, 4 how-it-works, 5 faq
+    // Phase → composition.
+    // phase: 0 hero, 1 problem, 2 solution, 3 pricing, 4 how-it-works,
+    //        5 client-roadmap (car), 6 faq
     const cxFrames: [number, number][] = [
       [0.0, 0.86], // brain far right so it never covers the hero text
       [1.0, 0.14], // brain far left so it never covers the problem-section text
       [2.0, 0.78], // rocket right, clear of the text
-      [3.0, 0.68], // handshake right
-      [4.0, 0.68], // shield right
-      [5.0, 0.5],
+      [3.0, 0.68], // tie right
+      [4.0, 0.82], // shield far right
+      [5.0, 0.72], // car right
+      [6.0, 0.5],
     ];
     const scaleFrames: [number, number][] = [
       [0.0, 1.45], // large — spreads the glyphs so they stop overlapping
       [1.0, 1.55],
       [2.0, 1.4], // bigger rocket — spreads the particles apart
-      [3.0, 0.8], // smaller handshake
-      [4.0, 1.2],
-      [5.0, 1.0],
+      [3.0, 1.5], // big tie — spreads the particles apart
+      [4.0, 2.0], // big shield — spreads the particles so the shape reads
+      [5.0, 1.35], // car
+      [6.0, 1.0],
     ];
     // Vertical centre (fraction from top). Most shapes sit mid-screen; the tall
     // rocket sits lower so its nose isn't cut off at the top.
@@ -869,9 +1013,11 @@ export function CosmicField() {
       const phase = smoothPhase;
 
       // Morph timeline (each segment eased): brain→rocket (1→2), rocket launch
-      // (2→2.6), rocket→handshake (2.6→3), handshake→shield (3→4), →scatter (4→5).
+      // (2→2.6), rocket→tie (2.6→3), tie→shield (3→4), shield→car (4→5),
+      // car→scatter (5→6).
       let morph = 0;
-      if (phase >= 4) morph = 3 + es(phase - 4);
+      if (phase >= 5) morph = 4 + es(phase - 5);
+      else if (phase >= 4) morph = 3 + es(phase - 4);
       else if (phase >= 3) morph = 2 + es(phase - 3);
       else if (phase >= 2.6) morph = 1 + es((phase - 2.6) / 0.4);
       else if (phase >= 2) morph = 1;
@@ -896,17 +1042,19 @@ export function CosmicField() {
         [0.0, 0.0],
         [2.0, 0.0], // rocket: face front
         [2.7, 0.06],
-        [3.0, 0.34], // bust: slight turn so head/shoulders read 3D
+        [3.0, 0.34], // tie: slight turn so it reads 3D
         [4.0, 0.5], // shield: three-quarter view
-        [5.0, 0.0],
+        [5.0, 0.42], // car: three-quarter so the side + front read
+        [6.0, 0.0],
       ]);
       // How much slow idle sway to layer on (reveals depth as it rocks).
       const sway = keyframe(phase, [
         [0.0, 0.0], // brain uses a continuous spin instead (below)
         [2.0, 0.0], // rocket steady
-        [3.0, 0.18], // bust gently turns
+        [3.0, 0.18], // tie gently turns
         [4.0, 0.24], // shield gently rocks
-        [5.0, 0.4],
+        [5.0, 0.22], // car gently rocks
+        [6.0, 0.4],
       ]);
       // The whole brain slowly and continuously turns in one direction, so the
       // pyramids orbit together (fades out before the rocket phase).
@@ -926,7 +1074,7 @@ export function CosmicField() {
         (0.15 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.05)) *
           (1 - upright * 0.85) +
         (reduceMotion ? 0 : pmy * 0.07);
-      const fade = Math.max(0, 1 - Math.max(0, phase - 4.6) / 0.6);
+      const fade = Math.max(0, 1 - Math.max(0, phase - 5.6) / 0.6);
       // Far fewer, bigger particles now — crisp outlines need more alpha.
       const globalAlpha = 0.95 * fade;
 
