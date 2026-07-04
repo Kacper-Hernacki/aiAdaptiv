@@ -737,12 +737,14 @@ export function CosmicField() {
         aSnorm[i * 3 + 1] = ny / nl;
         aSnorm[i * 3 + 2] = nz / nl;
       };
-      // Sparse fill: only ~46% form the shield face so gaps open up and the
-      // padlock shows through; ~26% are the (larger) padlock so it reads
-      // clearly; the rest fly out of frame.
-      const nShield = Math.floor(COUNT * 0.46);
-      const nLock = Math.floor(COUNT * 0.26);
-      const nBody = Math.floor(nLock * 0.62);
+      // Sparse fill: only ~40% form the shield face so gaps open up and the
+      // padlock shows through; the padlock is drawn as OUTLINES (body perimeter
+      // + keyhole + shackle arc) rather than a filled blob, so it reads crisp
+      // instead of blowing out to white; the rest fly out of frame.
+      const nShield = Math.floor(COUNT * 0.4);
+      const nBody = Math.floor(COUNT * 0.09); // rounded-rect perimeter
+      const nKey = Math.floor(COUNT * 0.02); // keyhole ring
+      const nLock = nBody + nKey + Math.floor(COUNT * 0.05); // + shackle arc
       for (let i = 0; i < COUNT; i++) {
         if (i < nShield) {
           const y = -0.62 + rand() * 1.14;
@@ -754,23 +756,43 @@ export function CosmicField() {
           const side = rand() < 0.72 ? 1 : -0.55;
           setS(i, x, y, bulge * side, edge * 0.9, -0.15, side > 0 ? 1 : -0.9);
         } else if (i < nShield + nBody) {
-          // Padlock body: rounded rectangle, raised well in front of the shield.
-          let bx = 0;
-          let by = 0;
-          do {
-            bx = (rand() * 2 - 1) * 0.22;
-            by = -0.22 + rand() * 0.34;
-          } while (Math.abs(bx) > 0.22 - Math.max(0, Math.abs(by + 0.05) - 0.11) * 0.9);
-          const kh = Math.hypot(bx, by + 0.02) < 0.05; // keyhole gap
-          if (kh) by += 0.2;
-          bright[i] = 0.95;
-          setS(i, bx, by, 0.42, bx * 0.3, by * 0.3, 1);
+          // Padlock body OUTLINE: points on the rounded-rect perimeter so the
+          // lock reads as a crisp shape, not a solid white block.
+          const bw = 0.2;
+          const bh = 0.16;
+          const cy = -0.05;
+          const per = rand() * 4;
+          let bx: number;
+          let by: number;
+          if (per < 1) {
+            bx = -bw + 2 * bw * per;
+            by = cy + bh;
+          } else if (per < 2) {
+            bx = bw;
+            by = cy + bh - 2 * bh * (per - 1);
+          } else if (per < 3) {
+            bx = bw - 2 * bw * (per - 2);
+            by = cy - bh;
+          } else {
+            bx = -bw;
+            by = cy - bh + 2 * bh * (per - 3);
+          }
+          bx += (rand() - 0.5) * 0.012;
+          by += (rand() - 0.5) * 0.012;
+          bright[i] = 0.85;
+          setS(i, bx, by, 0.4, bx * 0.3, by * 0.3, 1);
+        } else if (i < nShield + nBody + nKey) {
+          // Keyhole ring in the centre of the lock body.
+          const ang = rand() * Math.PI * 2;
+          const rr = 0.045;
+          bright[i] = 0.85;
+          setS(i, Math.cos(ang) * rr, -0.03 + Math.sin(ang) * rr, 0.41, 0, 0, 1);
         } else if (i < nShield + nLock) {
-          // Padlock shackle: upper semicircle arc.
+          // Padlock shackle: upper semicircle arc (ring, front + back).
           const ang = rand() * Math.PI;
-          const rr = 0.15 + (rand() - 0.5) * 0.06;
-          bright[i] = 0.95;
-          setS(i, Math.cos(ang) * rr, 0.14 + Math.sin(ang) * rr, 0.42, Math.cos(ang) * 0.4, 0.2, 1);
+          const rr = 0.15 + (rand() - 0.5) * 0.04;
+          bright[i] = 0.85;
+          setS(i, Math.cos(ang) * rr, 0.16 + Math.sin(ang) * rr, 0.4, Math.cos(ang) * 0.4, 0.2, 1);
         } else {
           // Surplus parks far offscreen (stable spot per index across shapes).
           const [fx, fy, fz] = farPos(i);
@@ -791,77 +813,104 @@ export function CosmicField() {
         aCnorm[i * 3 + 1] = ny / nl;
         aCnorm[i * 3 + 2] = nz / nl;
       };
-      // A point on the shell of an axis-aligned box (centre c, half-extents h).
-      const boxShell = (
-        i: number,
-        cx: number,
-        cy: number,
-        cz: number,
-        hx: number,
-        hy: number,
-        hz: number,
+      // The car is drawn like the brain/tie: ORDERED beads, not random box
+      // shells (which blew out into a white blob under the filled glyphs). A
+      // side-profile SILHOUETTE traced as evenly spaced beads on a front + back
+      // layer (so it reads 3D when it turns), two wheel rings, and a light body
+      // fill. Far fewer active particles → sparse + crisp, like the brain.
+      const carZ = 0.24; // half-depth of the body slab
+
+      // Evenly spaced beads along a polyline; every other bead sits on the back
+      // layer so the edge reads as a thin slab, not a flat line.
+      const traceC = (
+        path: [number, number][],
+        from: number,
+        count: number,
+        z0: number,
       ) => {
-        const u = rand() * 2 - 1;
-        const v = rand() * 2 - 1;
-        const f = Math.floor(rand() * 6);
-        let x = 0;
-        let y = 0;
-        let z = 0;
-        let nx = 0;
-        let ny = 0;
-        let nz = 0;
-        if (f < 2) {
-          const s = f === 0 ? 1 : -1;
-          x = cx + s * hx;
-          y = cy + u * hy;
-          z = cz + v * hz;
-          nx = s;
-        } else if (f < 4) {
-          const s = f === 2 ? 1 : -1;
-          y = cy + s * hy;
-          x = cx + u * hx;
-          z = cz + v * hz;
-          ny = s;
-        } else {
-          const s = f === 4 ? 1 : -1;
-          z = cz + s * hz;
-          x = cx + u * hx;
-          y = cy + v * hy;
-          nz = s;
+        const seg: number[] = [];
+        let total = 0;
+        for (let s = 0; s < path.length - 1; s++) {
+          const l = Math.hypot(path[s + 1][0] - path[s][0], path[s + 1][1] - path[s][1]);
+          seg.push(l);
+          total += l;
         }
-        setC(i, x, y, z, nx, ny, nz);
+        for (let k = 0; k < count; k++) {
+          let d = ((k + 0.5) / count) * total;
+          let s = 0;
+          while (s < seg.length - 1 && d > seg[s]) {
+            d -= seg[s];
+            s++;
+          }
+          const t = seg[s] > 0 ? d / seg[s] : 0;
+          const x = path[s][0] + (path[s + 1][0] - path[s][0]) * t + (rand() - 0.5) * 0.008;
+          const y = path[s][1] + (path[s + 1][1] - path[s][1]) * t + (rand() - 0.5) * 0.008;
+          const back = k % 2 === 1;
+          setC(from + k, x, y, back ? -z0 : z0, 0, 0, back ? -1 : 1);
+        }
       };
-      const nCarBody = Math.floor(COUNT * 0.4);
-      const nCabin = Math.floor(COUNT * 0.18);
-      const nWheels = Math.floor(COUNT * 0.28);
-      for (let i = 0; i < COUNT; i++) {
-        if (i < nCarBody) {
-          // Lower body: long low box.
-          boxShell(i, 0, -0.02, 0, 0.82, 0.14, 0.3);
-        } else if (i < nCarBody + nCabin) {
-          // Cabin/roof: shorter box, set slightly back, on top of the body.
-          boxShell(i, -0.06, 0.28, 0, 0.4, 0.16, 0.26);
-        } else if (i < nCarBody + nCabin + nWheels) {
-          // Four wheels: filled discs in the x/y plane at the corners.
-          const wi = i % 4;
-          const wx = (wi % 2 === 0 ? 1 : -1) * 0.5;
-          const wz = (wi < 2 ? 1 : -1) * 0.31;
-          const ang = rand() * Math.PI * 2;
-          const rr = 0.19 * Math.sqrt(rand());
+      // A wheel: a tyre ring plus a smaller hub ring, front + back layers.
+      const wheelC = (from: number, count: number, cx: number, cy: number, r: number) => {
+        for (let k = 0; k < count; k++) {
+          const ang = (k / count) * Math.PI * 2 * 4; // several laps around
+          const rr = k % 3 === 0 ? r * 0.5 : r; // ~1/3 on the inner hub
+          const back = k % 2 === 1;
           setC(
-            i,
-            wx + Math.cos(ang) * rr,
-            -0.18 + Math.sin(ang) * rr,
-            wz + (rand() - 0.5) * 0.06,
-            Math.cos(ang) * 0.3,
-            Math.sin(ang) * 0.3,
-            wz > 0 ? 1 : -1,
+            from + k,
+            cx + Math.cos(ang) * rr,
+            cy + Math.sin(ang) * rr,
+            back ? -carZ * 0.9 : carZ * 0.9,
+            Math.cos(ang) * 0.4,
+            Math.sin(ang) * 0.4,
+            back ? -1 : 1,
           );
-        } else {
-          // Surplus parks far offscreen (stable spot per index across shapes).
-          const [fx, fy, fz] = farPos(i);
-          setC(i, fx, fy, fz, fx, fy, fz);
         }
+      };
+
+      // Coupe side profile (x = length, y = height), traced clockwise from the
+      // front bumper, closed along the sill.
+      const body: [number, number][] = [
+        [-0.92, -0.13],
+        [-0.95, 0.05],
+        [-0.8, 0.13],
+        [-0.4, 0.15],
+        [-0.13, 0.42],
+        [0.22, 0.44],
+        [0.47, 0.17],
+        [0.86, 0.13],
+        [0.95, 0.0],
+        [0.92, -0.13],
+        [-0.92, -0.13],
+      ];
+      // Beltline + A/C pillars so the greenhouse reads as glazing, not a slab.
+      const belt: [number, number][] = [[-0.78, 0.13], [0.86, 0.13]];
+
+      let idx = 0;
+      const nBody = 1000;
+      traceC(body, idx, nBody, carZ);
+      idx += nBody;
+      const nBelt = 150;
+      traceC(belt, idx, nBelt, carZ);
+      idx += nBelt;
+      const nWheel = 320;
+      wheelC(idx, nWheel, -0.5, -0.2, 0.22);
+      idx += nWheel;
+      wheelC(idx, nWheel, 0.54, -0.2, 0.22);
+      idx += nWheel;
+      // Light body fill (lower body band only) so it has some mass without
+      // clumping — kept sparse and spread through the depth.
+      const nFill = 620;
+      for (let k = 0; k < nFill; k++) {
+        const x = -0.8 + rand() * 1.66;
+        const y = -0.11 + rand() * 0.22;
+        const z = (rand() * 2 - 1) * carZ;
+        setC(idx + k, x, y, z, 0, 0, z > 0 ? 1 : -1);
+      }
+      idx += nFill;
+      // Everything else parks far offscreen (stable spot per index).
+      for (let i = idx; i < COUNT; i++) {
+        const [fx, fy, fz] = farPos(i);
+        setC(i, fx, fy, fz, fx, fy, fz);
       }
     }
 
@@ -1060,8 +1109,8 @@ export function CosmicField() {
       [1.0, 0.14], // brain far left so it never covers the problem-section text
       [2.0, 0.78], // rocket right, clear of the text
       [3.0, 0.68], // tie right
-      [4.0, 0.82], // shield far right
-      [5.0, 0.72], // car right
+      [4.0, 0.76], // shield right (pulled in so the padlock reads fully)
+      [5.0, 0.78], // car right, clear of the text column
       [6.0, 0.5],
     ];
     const scaleFrames: [number, number][] = [
@@ -1069,8 +1118,8 @@ export function CosmicField() {
       [1.0, 1.55],
       [2.0, 1.4], // bigger rocket — spreads the particles apart
       [3.0, 1.28], // tie sized so the knot clears the top of the viewport
-      [4.0, 2.0], // big shield — spreads the particles so the shape reads
-      [5.0, 1.35], // car
+      [4.0, 1.7], // shield — big enough to spread, small enough to stay on-screen
+      [5.0, 1.15], // car (wide profile — a touch smaller so it clears the copy)
       [6.0, 1.0],
     ];
     // Vertical centre (fraction from top). Most shapes sit mid-screen; the tall
