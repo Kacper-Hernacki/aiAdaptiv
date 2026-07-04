@@ -38,6 +38,14 @@
   color: #8052ff;
 }
 
+.eyebrowIcon {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: 0.5em;
+  vertical-align: -0.22em;
+}
+
 .headline {
   margin: 0;
   font-weight: 500;
@@ -52,13 +60,62 @@
   display: block;
 }
 
-/* Mobile: the particle brain occupies the top of the viewport, so drop the
-   hero copy below it instead of centring it behind the brain. */
+/* Mobile (Dala composition): the brain bleeds off the upper-right, and the
+   headline stacks left underneath it. Pull the copy up near the header and let
+   the particle field overlap its top-right, instead of shoving copy below a
+   centred blob. */
 @media (max-width: 900px) {
   .hero {
     align-items: flex-start;
-    padding-top: 42svh;
-    padding-bottom: 8vh;
+    padding-top: 30svh;
+    padding-bottom: 12vh;
+  }
+  .content {
+    max-width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  /* Legibility scrim: over the pure-black canvas this is invisible — it only
+     darkens the brain particles sitting behind the copy, so the text stays
+     readable. Fades out to the right so the bright part of the brain keeps its
+     crispness instead of ending on a hard edge. */
+  .content::before {
+    content: "";
+    position: absolute;
+    inset: -20px -24px -28px -26px;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      100deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.85) 52%,
+      rgba(0, 0, 0, 0.5) 76%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  .content > * {
+    position: relative;
+    z-index: 1;
+  }
+  /* Dala order: headline first (under the brain), then the eyebrow badge sits
+     below it in the clear zone rather than being washed out by the particles. */
+  .headline {
+    order: 1;
+  }
+  .eyebrow {
+    order: 2;
+    margin: 22px 0 0;
+  }
+  .subhead {
+    order: 3;
+  }
+  .tagline {
+    order: 4;
+  }
+  .content > div:last-child {
+    order: 5;
   }
 }
 

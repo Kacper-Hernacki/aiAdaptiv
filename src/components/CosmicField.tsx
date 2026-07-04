@@ -214,6 +214,11 @@ void main(){
   // fold pattern carves visibly through the tiled surface.
   v_alpha = clamp((0.7 + depthN * 0.3) * vis * (0.14 + bright * 0.86) * tw * u_galpha, 0.0, 1.0);
 
+  // Surplus particles park far out of frame while a shape is formed — fade
+  // them out entirely so they never read as bright background confetti on any
+  // screen size (ambient floaters stay within ~3.6 of the origin).
+  v_alpha *= 1.0 - smoothstep(4.2, 4.9, length(p));
+
   // Flame overrides colour (lavender -> white core) and its own alpha
   // (hidden until the engine ignites).
   v_flame = 0.0;
@@ -542,9 +547,23 @@ export function CosmicField() {
       aFlame[ci] = 1;
     }
 
-    // ── Pricing section: a NECKTIE in 3D — chunky knot at the top, blade that
-    // widens then comes to a point, with a centre fold (a thin front+back slab
-    // so it reads as a real 3D tie when it turns). ──
+    // Deterministic far-out parking spot for a shape's surplus particles.
+    // Length is always >= 5, so the shader's far-fade hides them on every
+    // screen size, and the spot is stable per index — a particle that is
+    // surplus in two consecutive shapes doesn't streak across the frame
+    // during the morph.
+    const farPos = (i: number): [number, number, number] => {
+      const a = i * golden;
+      const rr = 5.2 + (((i * 131) % 100) / 100) * 1.5;
+      return [Math.cos(a) * rr * 1.6, Math.sin(a) * rr, ((i * 37) % 100) / 100 - 0.5];
+    };
+
+    // ── Pricing section: a NECKTIE drawn with ORDERED particles. The knot and
+    // blade silhouettes are traced as evenly spaced beads (front/back layers)
+    // so the edges read as crisp lines, and the blade fills with diagonal
+    // regimental stripes flowing down-right — flowing fabric, not noise. The
+    // brightest (largest) particles are assigned to the outlines so the edges
+    // pop; the dimmest park far offscreen. ──
     {
       const setH = (i: number, x: number, y: number, z: number, nx: number, ny: number, nz: number) => {
         aHand[i * 3] = x;
@@ -561,39 +580,136 @@ export function CosmicField() {
         t < 0.78
           ? 0.1 + 0.24 * Math.sin((t / 0.78) * Math.PI * 0.5)
           : 0.34 * (1 - (t - 0.78) / 0.22);
-      // Only ~42% form the tie so the particles sit well apart; the knot is a
-      // fifth of that, and the rest fly out of frame.
-      const nActive = Math.floor(COUNT * 0.42);
-      const nKnot = Math.floor(nActive * 0.2);
-      for (let i = 0; i < COUNT; i++) {
-        if (i < nKnot) {
-          // Knot: chunky rounded block at the top, wider toward its base.
-          const kt = rand();
-          const kw = 0.19 - 0.06 * kt;
-          const x = (rand() * 2 - 1) * kw;
-          const y = 0.62 + kt * 0.28;
-          const front = rand() < 0.68;
-          const z = (front ? 1 : -1) * (0.09 + rand() * 0.05);
-          setH(i, x, y, z, x * 0.6, 0.1, front ? 1 : -1);
-        } else if (i < nActive) {
-          // Blade: front + back surfaces with a centre fold (V dimple).
-          const t = rand();
-          const y = 0.62 - t * 1.5; // knot base (0.62) down to the tip (-0.88)
-          const hw = Math.max(0, bladeHW(t));
-          const ex = rand() * 2 - 1; // -1..1 across the width
-          const x = ex * hw;
-          const fold = 0.07 * (1 - ex * ex); // raised at the centre, flat at edges
-          const front = rand() < 0.7;
-          const z = front ? fold : fold - 0.06;
-          setH(i, x, y, z, ex * 0.5, 0.12, front ? 1 : -1);
-        } else {
-          // Surplus flies far out of frame so the tie reads sparse.
-          const a = rand() * Math.PI * 2;
-          const ct = 2 * rand() - 1;
-          const st = Math.sqrt(1 - ct * ct);
-          const rr = 2.6 + rand() * 2.2;
-          setH(i, st * Math.cos(a) * rr, ct * rr, st * Math.sin(a) * rr, st * Math.cos(a), ct, st * Math.sin(a));
+      const yTop = 0.62;
+      const yTip = -0.88;
+      const span = yTop - yTip;
+      const hwAt = (y: number) => Math.max(0, bladeHW((yTop - y) / span));
+      // Knot: inverted trapezoid — wide at the top, tapering into the blade.
+      const knotT = yTop + 0.3;
+      const knotHW = (y: number) => 0.13 + 0.09 * ((y - yTop) / (knotT - yTop));
+
+      // Brightest particles first: outlines get the big lit glyphs, the fill
+      // gets the mid range, and the dim tail is parked offscreen. The ambient
+      // floaters (last ~4.5%, overridden later) are kept out of the pool.
+      const pool = COUNT - Math.floor(COUNT * 0.045);
+      const order = Array.from({ length: pool }, (_, i) => i).sort(
+        (a, b) => bright[b] - bright[a],
+      );
+
+      // Evenly spaced beads along a polyline; every third bead sits on the
+      // back layer so the edge reads as a thin 3D slab, not a flat line.
+      const tracePath = (path: [number, number][], from: number, count: number) => {
+        const segLen: number[] = [];
+        let total = 0;
+        for (let s = 0; s < path.length - 1; s++) {
+          const l = Math.hypot(path[s + 1][0] - path[s][0], path[s + 1][1] - path[s][1]);
+          segLen.push(l);
+          total += l;
         }
+        for (let k = 0; k < count; k++) {
+          let d = ((k + 0.5) / count) * total;
+          let s = 0;
+          while (s < segLen.length - 1 && d > segLen[s]) {
+            d -= segLen[s];
+            s++;
+          }
+          const t = segLen[s] > 0 ? d / segLen[s] : 0;
+          const x = path[s][0] + (path[s + 1][0] - path[s][0]) * t + (rand() - 0.5) * 0.012;
+          const y = path[s][1] + (path[s + 1][1] - path[s][1]) * t + (rand() - 0.5) * 0.012;
+          const back = k % 3 === 2;
+          setH(order[from + k], x, y, back ? -0.06 : 0.02, x * 1.4, 0.1, back ? -1 : 1);
+        }
+      };
+
+      // Blade silhouette: down the left edge, through the tip, up the right.
+      const blade: [number, number][] = [];
+      for (let s = 0; s <= 24; s++) {
+        const y = yTop - (s / 24) * span;
+        blade.push([-hwAt(y), y]);
+      }
+      for (let s = 23; s >= 0; s--) {
+        const y = yTop - (s / 24) * span;
+        blade.push([hwAt(y), y]);
+      }
+      const knot: [number, number][] = [
+        [-knotHW(knotT), knotT],
+        [knotHW(knotT), knotT],
+        [knotHW(yTop), yTop],
+        [-knotHW(yTop), yTop],
+        [-knotHW(knotT), knotT],
+      ];
+
+      // Diagonal 45° stripes clipped to the blade: beads march in order along
+      // each band, so the fill has a clear flowing direction.
+      const stripePts: [number, number][] = [];
+      const inv = Math.SQRT1_2;
+      for (let o = -0.9; o <= 0.72; o += 0.15) {
+        for (let s = -0.72; s <= 0.9; s += 0.042) {
+          const x = (o + s) * inv;
+          const y = (o - s) * inv;
+          if (y < yTip + 0.02 || y > yTop) continue;
+          if (Math.abs(x) > hwAt(y) * 0.9) continue; // keep clear of the edge beads
+          stripePts.push([x, y]);
+        }
+      }
+
+      const nEdge = 260;
+      const nKnot = 240;
+      const nFill = Math.min(stripePts.length * 2, 2100);
+      const nActive = nEdge + nKnot + nFill;
+
+      tracePath(blade, 0, nEdge);
+      // Knot: traced outline + a dense MIRRORED diagonal weave inside (the
+      // opposite direction to the blade stripes), so it reads as a solid
+      // woven block rather than loose bars.
+      const nKnotEdge = Math.floor(nKnot * 0.38);
+      tracePath(knot, nEdge, nKnotEdge);
+      const knotPts: [number, number][] = [];
+      for (let o = -0.82; o <= -0.26; o += 0.05) {
+        for (let s = 0.26; s <= 0.82; s += 0.022) {
+          const x = (o + s) * inv;
+          const y = (s - o) * inv;
+          if (y < yTop + 0.015 || y > knotT - 0.01) continue;
+          if (Math.abs(x) > knotHW(y) * 0.85) continue;
+          knotPts.push([x, y]);
+        }
+      }
+      for (let k = 0; k < nKnot - nKnotEdge; k++) {
+        const [px, py] = knotPts[k % knotPts.length];
+        const front = Math.floor(k / knotPts.length) % 2 === 0;
+        setH(
+          order[nEdge + nKnotEdge + k],
+          px + (rand() - 0.5) * 0.01,
+          py + (rand() - 0.5) * 0.01,
+          front ? 0.1 : -0.08,
+          px * 0.6,
+          0.1,
+          front ? 1 : -1,
+        );
+      }
+      // Blade fill: cycle the stripe beads — first lap on the front face,
+      // second on the back — with the centre fold (V crease) kept.
+      for (let k = 0; k < nFill; k++) {
+        const [px, py] = stripePts[k % stripePts.length];
+        const back = Math.floor(k / stripePts.length) % 2 === 1;
+        const hw = hwAt(py);
+        const ex = hw > 0.001 ? px / hw : 0;
+        const fold = 0.07 * (1 - ex * ex); // raised at the centre, flat at edges
+        setH(
+          order[nEdge + nKnot + k],
+          px + (rand() - 0.5) * 0.014,
+          py + (rand() - 0.5) * 0.014,
+          back ? fold - 0.06 : fold,
+          ex * 0.5,
+          0.12,
+          back ? -1 : 1,
+        );
+      }
+      // The dim surplus parks far offscreen.
+      for (let s = nActive; s < pool; s++) {
+        const i = order[s];
+        const [fx, fy, fz] = farPos(i);
+        setH(i, fx, fy, fz, fx, fy, fz);
       }
     }
 
@@ -649,12 +765,9 @@ export function CosmicField() {
           bright[i] = 0.95;
           setS(i, Math.cos(ang) * rr, 0.14 + Math.sin(ang) * rr, 0.42, Math.cos(ang) * 0.4, 0.2, 1);
         } else {
-          // Surplus particles fly far out of frame so the shield reads sparse.
-          const a = rand() * Math.PI * 2;
-          const ct = 2 * rand() - 1;
-          const st = Math.sqrt(1 - ct * ct);
-          const rr = 2.6 + rand() * 2.2;
-          setS(i, st * Math.cos(a) * rr, ct * rr, st * Math.sin(a) * rr, st * Math.cos(a), ct, st * Math.sin(a));
+          // Surplus parks far offscreen (stable spot per index across shapes).
+          const [fx, fy, fz] = farPos(i);
+          setS(i, fx, fy, fz, fx, fy, fz);
         }
       }
     }
@@ -738,12 +851,9 @@ export function CosmicField() {
             wz > 0 ? 1 : -1,
           );
         } else {
-          // Surplus flies out of frame so the car reads sparse.
-          const a = rand() * Math.PI * 2;
-          const ct = 2 * rand() - 1;
-          const st = Math.sqrt(1 - ct * ct);
-          const rr = 2.6 + rand() * 2.2;
-          setC(i, st * Math.cos(a) * rr, ct * rr, st * Math.sin(a) * rr, st * Math.cos(a), ct, st * Math.sin(a));
+          // Surplus parks far offscreen (stable spot per index across shapes).
+          const [fx, fy, fz] = farPos(i);
+          setC(i, fx, fy, fz, fx, fy, fz);
         }
       }
     }
@@ -779,13 +889,13 @@ export function CosmicField() {
         const x = st * Math.cos(a) * rr * 1.5;
         const y = ct * rr;
         const z = (rand() - 0.5) * 1.4;
-        for (const arr of [aBrain, aRocket, aHand, aShield, aScatter]) {
+        for (const arr of [aBrain, aRocket, aHand, aShield, aCar, aScatter]) {
           arr[i * 3] = x;
           arr[i * 3 + 1] = y;
           arr[i * 3 + 2] = z;
         }
         const nl = Math.hypot(x, y, z) || 1;
-        for (const arr of [aNormal, aNormal2, aHnorm, aSnorm]) {
+        for (const arr of [aNormal, aNormal2, aHnorm, aSnorm, aCnorm]) {
           arr[i * 3] = x / nl;
           arr[i * 3 + 1] = y / nl;
           arr[i * 3 + 2] = z / nl;
@@ -949,7 +1059,7 @@ export function CosmicField() {
       [0.0, 1.45], // large — spreads the glyphs so they stop overlapping
       [1.0, 1.55],
       [2.0, 1.4], // bigger rocket — spreads the particles apart
-      [3.0, 1.5], // big tie — spreads the particles apart
+      [3.0, 1.28], // tie sized so the knot clears the top of the viewport
       [4.0, 2.0], // big shield — spreads the particles so the shape reads
       [5.0, 1.35], // car
       [6.0, 1.0],
@@ -959,7 +1069,28 @@ export function CosmicField() {
     const cyFrames: [number, number][] = [
       [0.0, 0.5],
       [2.0, 0.62], // rocket lower
-      [3.0, 0.5],
+      [3.0, 0.55], // tie a touch lower so the knot isn't clipped
+      [4.0, 0.5],
+    ];
+
+    // Mobile choreography (Dala-style): the hero brain sits UPPER-RIGHT and
+    // bleeds off the right edge, with the headline stacked left underneath it —
+    // rather than a small centred blob pushing all the copy far down. Later
+    // sections keep their shapes near-centre so single-column text stays clear.
+    const mobileCxFrames: [number, number][] = [
+      [0.0, 0.9], // hero: brain overhangs the right edge
+      [1.0, 0.44],
+      [2.0, 0.5],
+      [6.0, 0.5],
+    ];
+    const mobileCyFrames: [number, number][] = [
+      [0.0, 0.34], // hero: upper third, overlapping the headline's top-right
+      [1.0, 0.22],
+      [2.0, 0.28],
+    ];
+    const mobileScaleFrames: [number, number][] = [
+      [0.0, 0.98], // hero: big enough to spill past the right edge
+      [1.0, 0.6],
     ];
 
     let t = 0;
@@ -1028,9 +1159,9 @@ export function CosmicField() {
       // On mobile the visual sits in the TOP portion of the viewport (centred
       // horizontally) so the text below it stays clear; on desktop it uses the
       // per-section left/right choreography.
-      const cxFrac = narrow ? 0.5 : keyframe(phase, cxFrames);
-      const cyFrac = narrow ? 0.21 : keyframe(phase, cyFrames);
-      const scale = narrow ? 0.6 : keyframe(phase, scaleFrames);
+      const cxFrac = narrow ? keyframe(phase, mobileCxFrames) : keyframe(phase, cxFrames);
+      const cyFrac = narrow ? keyframe(phase, mobileCyFrames) : keyframe(phase, cyFrames);
+      const scale = narrow ? keyframe(phase, mobileScaleFrames) : keyframe(phase, scaleFrames);
 
       // Only the rocket must stand still and upright; the brain, handshake and
       // shield rotate so their 3D relief actually reads. `upright` peaks over
