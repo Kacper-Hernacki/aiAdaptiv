@@ -1135,19 +1135,22 @@ export function CosmicField() {
     // bleeds off the right edge, with the headline stacked left underneath it —
     // rather than a small centred blob pushing all the copy far down. Later
     // sections keep their shapes near-centre so single-column text stays clear.
+    // Sections put the shape on the LEFT and vertically CENTRED (a backdrop the
+    // copy reads over via text-shadow), rather than jammed at the top where it
+    // collided with the header + headings. Hero keeps its upper-right brain.
     const mobileCxFrames: [number, number][] = [
       [0.0, 0.74], // hero: brain right, more visible
-      [1.0, 0.24], // problem: brain LEFT (text is align-right) — mirror of hero
-      [2.0, 0.76], // solution: right
-      [3.0, 0.72], // pricing: right
-      [4.0, 0.78], // how-it-works: right
-      [5.0, 0.74], // roadmap: right
+      [1.0, 0.28], // problem: left
+      [2.0, 0.3], // solution: left
+      [3.0, 0.3], // pricing: left
+      [4.0, 0.3], // how-it-works: left
+      [5.0, 0.32], // roadmap: left
       [6.0, 0.5], // faq: centre
     ];
     const mobileCyFrames: [number, number][] = [
       [0.0, 0.3], // hero: upper third, overlapping the headline's top-right
-      [1.0, 0.2], // sections: sit high in the top so the copy below stays clear
-      [2.0, 0.22],
+      [1.0, 0.58], // sections: lower-centre, a backdrop below the heading
+      [2.0, 0.58],
     ];
     const mobileScaleFrames: [number, number][] = [
       [0.0, 1.05], // hero: full brain silhouette, spilling just past the edge

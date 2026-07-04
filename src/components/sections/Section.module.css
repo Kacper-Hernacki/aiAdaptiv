@@ -28,11 +28,12 @@
     margin-left: 0;
   }
 
-  /* Mobile: the particle visual sits in the top of the viewport; push each
-     section's content below it so nothing is hidden behind the particles. */
+  /* Mobile: the heading sits in the upper area (clear of the header); the
+     particle shape sits LOWER as a left-side backdrop over the body content —
+     dimmed behind cards, legible over bullets via text-shadow. */
   .section {
     justify-content: flex-start;
-    padding-top: 40svh;
+    padding-top: 34svh;
   }
 }
 
@@ -44,9 +45,9 @@
   line-height: 1;
   letter-spacing: -0.035em;
   color: var(--color-bone);
-  /* Dala's p{} legibility trick: keeps copy readable where the particle field
-     drifts behind it. */
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
+  /* Dala's p{} legibility trick, strengthened: keeps copy readable where the
+     centred particle field drifts behind it. */
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 6px rgba(0, 0, 0, 0.9);
 }
 
 .center .h2 {
@@ -59,6 +60,7 @@
   line-height: 1.35;
   letter-spacing: 0.021em;
   color: var(--color-bone);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 6px rgba(0, 0, 0, 0.9);
 }
 
 .body {
@@ -98,9 +100,11 @@
   border: 1px solid var(--hairline);
   border-radius: var(--radius);
   padding: var(--space-24);
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  /* Opaque enough that the centred particle backdrop is dimmed behind the card
+     and the card reads as floating over it. */
+  background: rgba(0, 0, 0, 0.66);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 }
 
 .cardTitle {
@@ -134,7 +138,7 @@
   font-size: clamp(16px, 1.6vw, 20px);
   line-height: 1.4;
   color: var(--color-bone);
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 6px rgba(0, 0, 0, 0.9);
 }
 
 .point::before {
@@ -167,6 +171,7 @@
 .priceLabel {
   font-size: clamp(15px, 1.4vw, 18px);
   color: var(--color-ash);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 6px rgba(0, 0, 0, 0.9);
 }
 
 .price {
@@ -175,6 +180,7 @@
   letter-spacing: -0.04em;
   color: var(--color-bone);
   white-space: nowrap;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 6px rgba(0, 0, 0, 0.9);
 }
 
 .tags {
@@ -230,6 +236,7 @@
   border-top: 1px solid var(--hairline);
   font-size: clamp(15px, 1.4vw, 18px);
   color: var(--color-ash);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 0 6px rgba(0, 0, 0, 0.9);
 }
 
 .dayLabel {
