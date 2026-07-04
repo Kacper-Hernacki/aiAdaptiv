@@ -1087,19 +1087,24 @@ export function CosmicField() {
     // rather than a small centred blob pushing all the copy far down. Later
     // sections keep their shapes near-centre so single-column text stays clear.
     const mobileCxFrames: [number, number][] = [
-      [0.0, 0.74], // hero: more of the brain visible (was 0.9 = too cut off)
-      [1.0, 0.44],
-      [2.0, 0.5],
-      [6.0, 0.5],
+      [0.0, 0.74], // hero: brain right, more visible
+      [1.0, 0.24], // problem: brain LEFT (text is align-right) — mirror of hero
+      [2.0, 0.76], // solution: right
+      [3.0, 0.72], // pricing: right
+      [4.0, 0.78], // how-it-works: right
+      [5.0, 0.74], // roadmap: right
+      [6.0, 0.5], // faq: centre
     ];
     const mobileCyFrames: [number, number][] = [
       [0.0, 0.3], // hero: upper third, overlapping the headline's top-right
-      [1.0, 0.22],
-      [2.0, 0.28],
+      [1.0, 0.2], // sections: sit high in the top so the copy below stays clear
+      [2.0, 0.22],
     ];
     const mobileScaleFrames: [number, number][] = [
       [0.0, 1.05], // hero: full brain silhouette, spilling just past the edge
-      [1.0, 0.6],
+      [1.0, 1.0], // sections: big + spread like the hero (was 0.6 = tiny/dense)
+      [2.0, 0.95],
+      [6.0, 0.9],
     ];
 
     let t = 0;

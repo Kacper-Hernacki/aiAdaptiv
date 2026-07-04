@@ -44,6 +44,9 @@
   line-height: 1;
   letter-spacing: -0.035em;
   color: var(--color-bone);
+  /* Dala's p{} legibility trick: keeps copy readable where the particle field
+     drifts behind it. */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
 }
 
 .center .h2 {
@@ -131,6 +134,7 @@
   font-size: clamp(16px, 1.6vw, 20px);
   line-height: 1.4;
   color: var(--color-bone);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
 }
 
 .point::before {
