@@ -137,7 +137,10 @@
   font-size: clamp(15px, 1.3vw, 18px);
   line-height: 1.5;
   letter-spacing: 0.025em;
+  /* #bdbdbd is Dala's grey-4; the text-shadow is their exact p{} legibility
+     trick (0 0 8px rgba(0,0,0,.8)) so copy reads over the particle field. */
   color: #bdbdbd;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
 }
 
 .tagline {
@@ -147,6 +150,7 @@
   line-height: 1.5;
   letter-spacing: 0.025em;
   color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
 }
 
 .cta {

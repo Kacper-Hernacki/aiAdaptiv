@@ -14,8 +14,8 @@ import { useEffect, useRef } from "react";
  * Each particle carries brain + rocket + scatter target positions and brain +
  * rocket normals; the vertex shader morphs between them and lights the surface
  * (bright lit crests, shadowed valleys). Particles render as OUTLINED
- * TRIANGLES in a confetti palette (white / violet / teal / pink / blue / gold)
- * that clusters into same-coloured patches across the surface, with a golden
+ * TRIANGLES in the Dala brand palette (white / purple / purple-light / green /
+ * yellow) that clusters into same-coloured patches across the surface, with a golden
  * rim on the silhouette; the smallest particles render as dust specks.
  * Additive blending gives the luminous bloom (no depth sort needed). Honors
  * prefers-reduced-motion; DPR-aware; no-op if WebGL is unavailable.
@@ -88,14 +88,15 @@ varying vec3 v_bary;
 varying float v_flame;
 
 // Confetti palette picked by a clustered value in [0,1] (patches of the same
-// colour sit next to each other, like the reference brain).
+// colour sit next to each other, like the reference brain). Colours match the
+// Dala brand set exactly: white, purple #8052ff, purple-light #ecd6ff, green
+// #189b81 (lifted for additive glow), yellow #ffb829 — no generic pink/blue.
 vec3 palette(float pick){
-  if (pick < 0.34) return vec3(0.95, 0.95, 1.0);  // white
-  if (pick < 0.54) return vec3(0.58, 0.36, 1.0);  // violet
-  if (pick < 0.63) return vec3(0.24, 0.82, 0.68); // teal
-  if (pick < 0.72) return vec3(1.0, 0.58, 0.78);  // pink
-  if (pick < 0.80) return vec3(0.3, 0.52, 1.0);   // blue
-  return vec3(1.0, 0.74, 0.2);                    // gold
+  if (pick < 0.34) return vec3(0.96, 0.96, 1.0);  // white
+  if (pick < 0.62) return vec3(1.0, 0.72, 0.16);  // yellow  #ffb829 (gold-forward, like Dala)
+  if (pick < 0.78) return vec3(0.50, 0.32, 1.0);  // purple  #8052ff
+  if (pick < 0.90) return vec3(0.14, 0.74, 0.58); // green   #189b81
+  return vec3(0.93, 0.84, 1.0);                   // purple-light #ecd6ff
 }
 
 void main(){
@@ -202,8 +203,10 @@ void main(){
 
   float lambert = max(dot(vec3(nx1, ny1, nz2), u_light), 0.0);
   vec3 base = palette(pick);
-  float shade = 0.62 + lambert * 0.4 + bright * 0.25;
-  v_color = base * min(shade, 1.2);
+  // Brighter crests + a slightly higher ceiling read as bloom once the dense
+  // additive glyphs overlap (closer to Dala's luminous brain).
+  float shade = 0.66 + lambert * 0.42 + bright * 0.42;
+  v_color = base * min(shade, 1.4);
 
   // Dim the far side of the shell so the interior stays dark enough for the
   // front glyphs to read individually.
@@ -249,8 +252,12 @@ void main(){
     a = 0.85; // filled ember faces
   } else {
     ${deriv ? "float w = fwidth(e) * 1.4 + 0.015;" : "float w = 0.07;"}
-    a = 1.0 - smoothstep(0.07, 0.07 + w, e); // crisp edge outline
-    a = max(a, 0.05);                         // faint face fill
+    // Filled, glowing pyramid face (was a thin outline): a bright crisp rim
+    // over a soft body fill that brightens toward the edges. Under additive
+    // blending the dense overlaps read as bloom — the Dala look, our geometry.
+    float rim = 1.0 - smoothstep(0.06, 0.06 + w, e);
+    float body = 0.16 + 0.16 * (1.0 - smoothstep(0.0, 0.34, e)); // glowing interior
+    a = max(rim, body);
   }
   a *= v_alpha;
   if (a <= 0.004) discard;
@@ -1022,8 +1029,10 @@ export function CosmicField() {
       // dense blob. seed is uniform in [0.5, 2.1]; keep ~34% on phones, ~56%
       // on tablets, all on desktop. Glyphs are large now, so shrink them hard
       // on phones or they mush the small brain into a clump.
-      gl.uniform1f(uMaxSeed, phone ? 0.95 : narrow ? 1.3 : 10.0);
-      gl.uniform1f(uPtScale, phone ? 0.27 : narrow ? 0.5 : 1.0);
+      // Denser + finer grain on small screens so the brain reads as a solid
+      // Dala-style silhouette rather than a loose scatter (was 0.95/1.3).
+      gl.uniform1f(uMaxSeed, phone ? 1.75 : narrow ? 1.9 : 10.0);
+      gl.uniform1f(uPtScale, phone ? 0.26 : narrow ? 0.42 : 1.0);
       computeAnchors();
     };
 
@@ -1078,18 +1087,18 @@ export function CosmicField() {
     // rather than a small centred blob pushing all the copy far down. Later
     // sections keep their shapes near-centre so single-column text stays clear.
     const mobileCxFrames: [number, number][] = [
-      [0.0, 0.9], // hero: brain overhangs the right edge
+      [0.0, 0.74], // hero: more of the brain visible (was 0.9 = too cut off)
       [1.0, 0.44],
       [2.0, 0.5],
       [6.0, 0.5],
     ];
     const mobileCyFrames: [number, number][] = [
-      [0.0, 0.34], // hero: upper third, overlapping the headline's top-right
+      [0.0, 0.3], // hero: upper third, overlapping the headline's top-right
       [1.0, 0.22],
       [2.0, 0.28],
     ];
     const mobileScaleFrames: [number, number][] = [
-      [0.0, 0.98], // hero: big enough to spill past the right edge
+      [0.0, 1.05], // hero: full brain silhouette, spilling just past the edge
       [1.0, 0.6],
     ];
 
