@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * Persistent GPU (WebGL) particle field that tells a story across sections.
@@ -329,10 +330,24 @@ function parseBrainPoints(buf: ArrayBuffer): BrainPoints | null {
 
 export function CosmicField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Re-evaluate on client-side navigation: the layout (and this canvas)
+  // persists across routes, but the choreography only exists on the landing
+  // page.
+  const pathname = usePathname();
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    // The constellation is choreographed against the landing sections. On
+    // any other route (e.g. /terms) there is nothing to anchor to — hide the
+    // canvas and skip all GL work.
+    if (!document.getElementById("problem")) {
+      canvas.style.display = "none";
+      return;
+    }
+    canvas.style.display = "";
+
     let cancelled = false;
     let cleanup: (() => void) | undefined;
 
@@ -1520,7 +1535,7 @@ export function CosmicField() {
       cancelled = true;
       cleanup?.();
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <canvas

@@ -11,8 +11,13 @@
   "hero": {
     "badge": "Strictly 6 Founding Design Partners This Quarter",
     "headline": [
-      { "text": "Your Private Company Brain." },
-      { "text": "Owned, Not Rented.", "accent": true }
+      {
+        "text": "Your Private Company Brain."
+      },
+      {
+        "text": "Owned, Not Rented.",
+        "accent": true
+      }
     ],
     "subhead": "We deploy a fully white-labeled AI platform directly inside your own secure EU cloud account (Koyeb). You own the infrastructure, keys, and data. We do the heavy lifting.",
     "tagline": "No more pasting sensitive client data into public tools.",
@@ -60,7 +65,11 @@
       }
     ],
     "note": "We are flexible with serious design partners — if your team has specific open-source model preferences or specialized workflow needs, we will tailor the deployment during setup.",
-    "trust": ["EU Hosted", "Open Source Models", "GDPR Ready"]
+    "trust": [
+      "EU Hosted",
+      "Open Source Models",
+      "GDPR Ready"
+    ]
   },
   "howItWorks": {
     "h2": "How It Works",
@@ -85,7 +94,7 @@
     ],
     "timeline": "Typical timeline: 3–7 business days from payment to live.",
     "roadmap": {
-      "label": "Your Client Roadmap",
+      "label": "Client Roadmap",
       "days": [
         {
           "label": "Day 1–2",
@@ -156,5 +165,80 @@
       "howItWorks": "How It Works",
       "terms": "Terms"
     }
+  },
+  "terms": {
+    "metaTitle": "Terms of Service — aiAdaptiv",
+    "metaDescription": "The terms governing aiAdaptiv's setup and maintenance services: ownership, fees, data handling, cancellation, and liability.",
+    "h1": "Terms of Service",
+    "updated": "Last updated: July 5, 2026",
+    "intro": "These terms govern the services aiAdaptiv (\"we\", \"us\") provides to the client (\"Client\", \"you\"). By ordering the setup service or paying the monthly maintenance fee, you agree to these terms.",
+    "sections": [
+      {
+        "h": "1. What we provide",
+        "body": [
+          "aiAdaptiv provides custom configuration and maintenance services inside the Client's own cloud environment. We deploy an open-source AI platform (Open WebUI plus selected open-source models) into the Client's own cloud account (Koyeb, EU region), white-label it under the Client's domain (e.g. ai.yourfirm.com), and provide ongoing maintenance: model updates, security patches, and support.",
+          "We are flexible with serious design partners — specific open-source model preferences or specialized workflow needs are tailored during setup."
+        ]
+      },
+      {
+        "h": "2. Ownership",
+        "body": [
+          "The Client owns the cloud account, the infrastructure, the keys, and the data. The platform is deployed inside the Client's own account, and it remains the Client's if the engagement ends. There is no vendor lock-in: if you stop working with us, the entire platform stays yours."
+        ]
+      },
+      {
+        "h": "3. Fees",
+        "body": [
+          "One-time Setup & Deployment: €1,999, due before deployment begins.",
+          "Monthly Maintenance & Support: €249 per month, billed monthly.",
+          "Cloud infrastructure costs (e.g. Koyeb GPU usage, typically €400–€800 per month depending on usage) are paid by the Client directly to the cloud provider and are not part of our fees. We help choose and optimize the right instance size during setup."
+        ]
+      },
+      {
+        "h": "4. Data and confidentiality",
+        "body": [
+          "All processing happens inside the Client's secure environment. We do not have access to the Client's prompts or documents in the running platform. Any access credentials granted to us for deployment or maintenance are used solely to provide the services and are treated as confidential."
+        ]
+      },
+      {
+        "h": "5. Client responsibilities",
+        "body": [
+          "The Client is solely responsible for data inputs and for regulatory compliance applicable to the Client's use of the platform, including GDPR and the EU AI Act.",
+          "The Client is responsible for the cloud account itself, including billing with the cloud provider, and for completing the onboarding checklist needed to go live."
+        ]
+      },
+      {
+        "h": "6. Timeline",
+        "body": [
+          "Typical deployment takes 3–7 business days from payment to live, once the onboarding checklist is complete. Timelines are estimates, not guarantees."
+        ]
+      },
+      {
+        "h": "7. Term and cancellation",
+        "body": [
+          "The monthly maintenance service is cancelable by either party with 30 days' notice. After cancellation the Client keeps the platform, the account, and the data; ongoing updates and support end with the notice period.",
+          "The one-time setup fee is non-refundable once deployment has been completed."
+        ]
+      },
+      {
+        "h": "8. Warranty disclaimer",
+        "body": [
+          "The service is provided \"as-is\", without warranties of any kind, express or implied, including fitness for a particular purpose. AI model outputs are probabilistic; the Client is responsible for reviewing outputs before relying on them."
+        ]
+      },
+      {
+        "h": "9. Limitation of liability",
+        "body": [
+          "To the maximum extent permitted by law, our total aggregate liability arising out of or related to the services is limited to the fees the Client has paid to us. We are not liable for indirect, incidental, or consequential damages, or for costs charged by third-party providers."
+        ]
+      },
+      {
+        "h": "10. Changes to these terms",
+        "body": [
+          "We may update these terms from time to time. The current version is always published on this page; material changes will be communicated to active clients. Continued use of the maintenance service after a change constitutes acceptance."
+        ]
+      }
+    ],
+    "backHome": "← Back to home"
   }
 }

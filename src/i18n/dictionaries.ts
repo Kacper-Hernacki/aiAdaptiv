@@ -67,6 +67,15 @@ export type Dictionary = {
     disclaimer: string;
     nav: { eligibility: string; howItWorks: string; terms: string };
   };
+  terms: {
+    metaTitle: string;
+    metaDescription: string;
+    h1: string;
+    updated: string;
+    intro: string;
+    sections: { h: string; body: string[] }[];
+    backHome: string;
+  };
 };
 
 /**

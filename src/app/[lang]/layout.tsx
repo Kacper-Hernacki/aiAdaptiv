@@ -138,7 +138,7 @@ export default async function RootLayout({
         <a href="#main">{dict.skipToContent}</a>
         <SiteHeader lang={lang} dict={dict} />
         {children}
-        <SiteFooter dict={dict} />
+        <SiteFooter lang={lang} dict={dict} />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
       </body>

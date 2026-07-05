@@ -11,8 +11,13 @@
   "hero": {
     "badge": "Tylko 6 partnerów założycielskich w tym kwartale",
     "headline": [
-      { "text": "Twój prywatny mózg firmy." },
-      { "text": "Na własność, nie w wynajmie.", "accent": true }
+      {
+        "text": "Twój prywatny mózg firmy."
+      },
+      {
+        "text": "Na własność, nie w wynajmie.",
+        "accent": true
+      }
     ],
     "subhead": "Wdrażamy w pełni white-label platformę AI bezpośrednio w Twoim własnym, bezpiecznym koncie chmurowym w UE (Koyeb). Ty jesteś właścicielem infrastruktury, kluczy i danych. Całą ciężką pracę bierzemy na siebie.",
     "tagline": "Koniec z wklejaniem wrażliwych danych klientów do publicznych narzędzi.",
@@ -60,7 +65,11 @@
       }
     ],
     "note": "Jesteśmy elastyczni wobec poważnych partnerów wdrożeniowych — jeśli Twój zespół ma konkretne preferencje co do modeli open-source lub specjalistyczne potrzeby w zakresie procesów, dostosujemy wdrożenie podczas konfiguracji.",
-    "trust": ["Hosting w UE", "Modele open-source", "Zgodność z RODO"]
+    "trust": [
+      "Hosting w UE",
+      "Modele open-source",
+      "Zgodność z RODO"
+    ]
   },
   "howItWorks": {
     "h2": "Jak to działa",
@@ -85,7 +94,7 @@
     ],
     "timeline": "Typowy czas: 3–7 dni roboczych od płatności do uruchomienia.",
     "roadmap": {
-      "label": "Twój harmonogram",
+      "label": "Harmonogram",
       "days": [
         {
           "label": "Dzień 1–2",
@@ -156,5 +165,80 @@
       "howItWorks": "Jak to działa",
       "terms": "Regulamin"
     }
+  },
+  "terms": {
+    "metaTitle": "Regulamin — aiAdaptiv",
+    "metaDescription": "Warunki świadczenia usług aiAdaptiv: własność, opłaty, dane, rezygnacja i odpowiedzialność.",
+    "h1": "Regulamin",
+    "updated": "Ostatnia aktualizacja: 5 lipca 2026",
+    "intro": "Niniejszy regulamin określa zasady świadczenia usług przez aiAdaptiv (\"my\") na rzecz klienta (\"Klient\"). Zamawiając usługę wdrożenia lub opłacając miesięczny abonament utrzymaniowy, akceptujesz te warunki.",
+    "sections": [
+      {
+        "h": "1. Co zapewniamy",
+        "body": [
+          "aiAdaptiv świadczy usługi konfiguracji i utrzymania wewnątrz własnego środowiska chmurowego Klienta. Wdrażamy open-source'ową platformę AI (Open WebUI wraz z wybranymi modelami open-source) na własnym koncie chmurowym Klienta (Koyeb, region UE), oznaczamy ją marką Klienta pod jego domeną (np. ai.twojafirma.com) i zapewniamy bieżące utrzymanie: aktualizacje modeli, poprawki bezpieczeństwa i wsparcie.",
+          "Dla poważnych partnerów jesteśmy elastyczni — preferencje dotyczące konkretnych modeli open-source lub wyspecjalizowanych przepływów pracy uwzględniamy podczas wdrożenia."
+        ]
+      },
+      {
+        "h": "2. Własność",
+        "body": [
+          "Klient jest właścicielem konta chmurowego, infrastruktury, kluczy i danych. Platforma jest wdrażana na koncie Klienta i pozostaje jego własnością po zakończeniu współpracy. Brak vendor lock-inu: jeśli zakończysz współpracę, cała platforma pozostaje Twoja."
+        ]
+      },
+      {
+        "h": "3. Opłaty",
+        "body": [
+          "Jednorazowe wdrożenie: 1 999 €, płatne przed rozpoczęciem wdrożenia.",
+          "Miesięczne utrzymanie i wsparcie: 249 € miesięcznie.",
+          "Koszty infrastruktury chmurowej (np. GPU w Koyeb, zwykle 400–800 € miesięcznie w zależności od użycia) Klient opłaca bezpośrednio u dostawcy chmury; nie są one częścią naszych opłat. Podczas wdrożenia pomagamy dobrać i zoptymalizować odpowiedni rozmiar instancji."
+        ]
+      },
+      {
+        "h": "4. Dane i poufność",
+        "body": [
+          "Całość przetwarzania odbywa się w bezpiecznym środowisku Klienta. Nie mamy dostępu do promptów ani dokumentów Klienta w działającej platformie. Dane dostępowe przekazane nam na potrzeby wdrożenia lub utrzymania służą wyłącznie realizacji usług i są traktowane jako poufne."
+        ]
+      },
+      {
+        "h": "5. Obowiązki Klienta",
+        "body": [
+          "Klient ponosi wyłączną odpowiedzialność za wprowadzane dane oraz za zgodność z przepisami mającymi zastosowanie do korzystania z platformy, w tym RODO i unijnym aktem o AI (EU AI Act).",
+          "Klient odpowiada za konto chmurowe, w tym rozliczenia z dostawcą chmury, oraz za wypełnienie checklisty onboardingowej niezbędnej do uruchomienia."
+        ]
+      },
+      {
+        "h": "6. Harmonogram",
+        "body": [
+          "Typowe wdrożenie trwa 3–7 dni roboczych od płatności do uruchomienia, po skompletowaniu checklisty onboardingowej. Terminy mają charakter szacunkowy."
+        ]
+      },
+      {
+        "h": "7. Okres obowiązywania i rezygnacja",
+        "body": [
+          "Usługę miesięcznego utrzymania każda ze stron może wypowiedzieć z 30-dniowym okresem wypowiedzenia. Po rezygnacji Klient zachowuje platformę, konto i dane; aktualizacje i wsparcie kończą się wraz z okresem wypowiedzenia.",
+          "Jednorazowa opłata wdrożeniowa nie podlega zwrotowi po zakończonym wdrożeniu."
+        ]
+      },
+      {
+        "h": "8. Wyłączenie gwarancji",
+        "body": [
+          "Usługa świadczona jest w formule \"as-is\", bez jakichkolwiek gwarancji, wyraźnych lub dorozumianych, w tym przydatności do określonego celu. Wyniki modeli AI mają charakter probabilistyczny; Klient odpowiada za weryfikację wyników przed ich wykorzystaniem."
+        ]
+      },
+      {
+        "h": "9. Ograniczenie odpowiedzialności",
+        "body": [
+          "W maksymalnym zakresie dozwolonym przez prawo nasza łączna odpowiedzialność związana z usługami ograniczona jest do wysokości opłat zapłaconych nam przez Klienta. Nie odpowiadamy za szkody pośrednie, uboczne ani następcze, ani za koszty naliczane przez zewnętrznych dostawców."
+        ]
+      },
+      {
+        "h": "10. Zmiany regulaminu",
+        "body": [
+          "Regulamin może być okresowo aktualizowany. Aktualna wersja jest zawsze opublikowana na tej stronie; o istotnych zmianach informujemy aktywnych klientów. Dalsze korzystanie z usługi utrzymania po zmianie oznacza jej akceptację."
+        ]
+      }
+    ],
+    "backHome": "← Wróć na stronę główną"
   }
 }

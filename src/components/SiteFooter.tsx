@@ -1,11 +1,14 @@
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { TallyButton } from "@/components/TallyButton";
 import styles from "./SiteFooter.module.css";
 
 export function SiteFooter({
+  lang,
   dict,
 }: {
+  lang: string;
   dict: Dictionary;
 }) {
   const year = new Date().getFullYear();
@@ -29,9 +32,9 @@ export function SiteFooter({
               </a>
             </li>
             <li>
-              <a href="#legal" className={styles.navLink}>
+              <Link href={`/${lang}/terms`} className={styles.navLink}>
                 {dict.footer.nav.terms}
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

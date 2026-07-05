@@ -1,0 +1,68 @@
+/* Terms of Service — a quiet legal prose page over the particle canvas. */
+
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(120px, 16vh, 180px) clamp(24px, 3vw, 48px)
+    clamp(60px, 9vw, 120px);
+  /* Same legibility trick as the hero copy over the particle field. */
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+.h1 {
+  margin: 0 0 var(--space-12);
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 200;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  color: var(--color-bone);
+}
+
+.updated {
+  margin: 0 0 var(--space-36);
+  font-size: 13px;
+  letter-spacing: 0.021em;
+  color: var(--color-smoke);
+}
+
+.intro {
+  margin: 0 0 var(--space-36);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--color-ash);
+}
+
+.section {
+  margin: 0 0 var(--space-36);
+}
+
+.h2 {
+  margin: 0 0 var(--space-12);
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 600;
+  letter-spacing: 0.021em;
+  color: var(--color-bone);
+}
+
+.body {
+  margin: 0 0 var(--space-12);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-ash);
+}
+
+.back {
+  font-size: 14px;
+  letter-spacing: 0.021em;
+  color: var(--color-smoke);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--color-bone);
+}

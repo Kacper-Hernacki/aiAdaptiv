@@ -12,12 +12,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const languages = Object.fromEntries(
     locales.map((l) => [l, `${siteUrl}/${l}`]),
   );
+  const termsLanguages = Object.fromEntries(
+    locales.map((l) => [l, `${siteUrl}/${l}/terms`]),
+  );
 
-  return locales.map((lang) => ({
-    url: `${siteUrl}/${lang}`,
-    lastModified,
-    changeFrequency: "weekly",
-    priority: lang === defaultLocale ? 1 : 0.8,
-    alternates: { languages },
-  }));
+  return [
+    ...locales.map(
+      (lang): MetadataRoute.Sitemap[number] => ({
+        url: `${siteUrl}/${lang}`,
+        lastModified,
+        changeFrequency: "weekly",
+        priority: lang === defaultLocale ? 1 : 0.8,
+        alternates: { languages },
+      }),
+    ),
+    ...locales.map(
+      (lang): MetadataRoute.Sitemap[number] => ({
+        url: `${siteUrl}/${lang}/terms`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.3,
+        alternates: { languages: termsLanguages },
+      }),
+    ),
+  ];
 }
