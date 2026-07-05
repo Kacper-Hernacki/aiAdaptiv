@@ -1267,9 +1267,10 @@ export function CosmicField() {
     ];
     const mobileScaleFrames: [number, number][] = [
       [0.0, 1.05], // hero: full brain silhouette, spilling just past the edge
-      [1.0, 1.0], // sections: big + spread like the hero (was 0.6 = tiny/dense)
-      [2.0, 0.95],
-      [8.0, 0.9],
+      [1.0, 1.35], // sections: ~1.35× bigger per feedback — shapes dominate
+      [2.0, 1.3], //  the clear upper zone and bleed off the edges
+      [8.0, 1.25],
+      [9.0, 1.15], // qualify scatter: large but contained behind the CTA
     ];
 
     let t = 0;
