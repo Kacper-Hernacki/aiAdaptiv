@@ -1262,13 +1262,19 @@ export function CosmicField() {
     const mobileCyFrames: [number, number][] = [
       [0.0, 0.3], // hero: upper third, overlapping the headline's top-right
       [1.0, 0.3], // sections: same upper zone — shape visible above the copy
+      [2.0, 0.42], // rocket is TALL and top-heavy: sit lower, clear the header
+      [3.0, 0.4], // tie: knot down from under the header
+      [4.0, 0.38], // shield
+      [5.0, 0.3], // stream + later shapes back to the upper zone
       [8.0, 0.3],
       [9.0, 0.5], // qualify: centred behind the centred CTA
     ];
     const mobileScaleFrames: [number, number][] = [
       [0.0, 1.05], // hero: full brain silhouette, spilling just past the edge
       [1.0, 1.35], // sections: ~1.35× bigger per feedback — shapes dominate
-      [2.0, 1.3], //  the clear upper zone and bleed off the edges
+      [2.0, 1.45], // rocket / tie / shield: a touch bigger still, they are
+      [4.0, 1.45], //  slim silhouettes and can take it
+      [5.0, 1.3], // stream + later shapes
       [8.0, 1.25],
       [9.0, 1.15], // qualify scatter: large but contained behind the CTA
     ];
