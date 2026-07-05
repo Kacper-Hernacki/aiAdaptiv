@@ -63,9 +63,13 @@ attribute vec3 a_shield;
 attribute vec3 a_snorm;
 attribute vec3 a_car;
 attribute vec3 a_cnorm;
+attribute vec3 a_logo;
+attribute vec3 a_lnorm;
 attribute vec3 a_scatter;
-attribute vec4 a_meta; // bright, size, seed, palette-pick
-attribute float a_flame; // 1 for engine-flame particles
+// bright, size, seed (NEGATIVE marks an engine-flame particle), palette-pick.
+// The flame flag lives in the seed's sign because 16 vertex attributes is the
+// common WebGL limit and every slot is taken.
+attribute vec4 a_meta;
 uniform vec2 u_res;
 uniform vec2 u_center;
 uniform float u_radius;
@@ -116,27 +120,31 @@ void main(){
     return;
   }
 
-  // Morph chain: brain -> rocket -> tie -> shield -> car -> scatter.
+  // Morph chain: brain -> rocket -> tie -> shield -> stream -> logo -> scatter
+  // (a_car carries the roadmap stream; the attribute name is historical).
   float mB = clamp(u_morph, 0.0, 1.0);
   float m2 = clamp(u_morph - 1.0, 0.0, 1.0);
   float m3 = clamp(u_morph - 2.0, 0.0, 1.0);
   float m4 = clamp(u_morph - 3.0, 0.0, 1.0);
   float m5 = clamp(u_morph - 4.0, 0.0, 1.0);
+  float m6 = clamp(u_morph - 5.0, 0.0, 1.0);
   vec3 p = mix(a_brain, a_rocket, mB);
   p = mix(p, a_hand, m2);
   p = mix(p, a_shield, m3);
   p = mix(p, a_car, m4);
-  p = mix(p, a_scatter, m5);
+  p = mix(p, a_logo, m5);
+  p = mix(p, a_scatter, m6);
   p = mix(a_scatter, p, u_intro);
   vec3 n = mix(a_normal, a_normal2, mB);
   n = mix(n, a_hnorm, m2);
   n = mix(n, a_snorm, m3);
   n = mix(n, a_cnorm, m4);
+  n = mix(n, a_lnorm, m5);
   n = normalize(n);
 
   // Engine flame: only while it is the rocket (not yet morphing to hand).
   float flick = 0.5 + 0.5 * sin(u_time * 22.0 + seed * 40.0);
-  float flameOn = a_flame * step(0.5, mB) * (1.0 - m2);
+  float flameOn = (a_meta.z < 0.0 ? 1.0 : 0.0) * step(0.5, mB) * (1.0 - m2);
   float burn = flameOn * u_launch;
   p.y -= burn * (0.2 + 1.1 * flick);
   p.xz *= (1.0 + burn * 0.7 * flick);
@@ -329,8 +337,9 @@ export function CosmicField() {
     let cleanup: (() => void) | undefined;
 
     // All geometry + GL setup lives in init(); it runs once the baked cortex
-    // point cloud has loaded (or immediately with null as a fallback).
-    const init = (pts: BrainPoints | null): (() => void) | undefined => {
+    // point cloud and the rasterised logo mask have loaded (either may be
+    // null as a fallback).
+    const init = (pts: BrainPoints | null, logo: ImageData | null): (() => void) | undefined => {
     const gl = canvas.getContext("webgl", {
       alpha: false,
       antialias: true,
@@ -380,6 +389,8 @@ export function CosmicField() {
     const aSnorm = new Float32Array(COUNT * 3);
     const aCar = new Float32Array(COUNT * 3);
     const aCnorm = new Float32Array(COUNT * 3);
+    const aLogo = new Float32Array(COUNT * 3);
+    const aLnorm = new Float32Array(COUNT * 3);
     const aScatter = new Float32Array(COUNT * 3);
     const aMeta = new Float32Array(COUNT * 4);
     const aFlame = new Float32Array(COUNT);
@@ -801,8 +812,11 @@ export function CosmicField() {
       }
     }
 
-    // ── Client Roadmap section: a simple 3D CAR (side profile) — body + cabin
-    // + four wheels, as box shells so it reads when it turns. ──
+    // ── Client Roadmap section: a STREAM — braided streamlines flowing along
+    // a gentle S-curve from the TOP RIGHT of the viewport down to the BOTTOM
+    // MIDDLE, widening downstream and breaking into spray at the mouth.
+    // Drawn like the brain/tie: ORDERED beads on thin front/back layers, so
+    // it reads as a luminous flowing ribbon rather than a blob. ──
     {
       const setC = (i: number, x: number, y: number, z: number, nx: number, ny: number, nz: number) => {
         aCar[i * 3] = x;
@@ -813,100 +827,78 @@ export function CosmicField() {
         aCnorm[i * 3 + 1] = ny / nl;
         aCnorm[i * 3 + 2] = nz / nl;
       };
-      // The car is drawn like the brain/tie: ORDERED beads, not random box
-      // shells (which blew out into a white blob under the filled glyphs). A
-      // side-profile SILHOUETTE traced as evenly spaced beads on a front + back
-      // layer (so it reads 3D when it turns), two wheel rings, and a light body
-      // fill. Far fewer active particles → sparse + crisp, like the brain.
-      const carZ = 0.24; // half-depth of the body slab
-
-      // Evenly spaced beads along a polyline; every other bead sits on the back
-      // layer so the edge reads as a thin slab, not a flat line.
-      const traceC = (
-        path: [number, number][],
-        from: number,
-        count: number,
-        z0: number,
-      ) => {
-        const seg: number[] = [];
-        let total = 0;
-        for (let s = 0; s < path.length - 1; s++) {
-          const l = Math.hypot(path[s + 1][0] - path[s][0], path[s + 1][1] - path[s][1]);
-          seg.push(l);
-          total += l;
-        }
-        for (let k = 0; k < count; k++) {
-          let d = ((k + 0.5) / count) * total;
-          let s = 0;
-          while (s < seg.length - 1 && d > seg[s]) {
-            d -= seg[s];
-            s++;
-          }
-          const t = seg[s] > 0 ? d / seg[s] : 0;
-          const x = path[s][0] + (path[s + 1][0] - path[s][0]) * t + (rand() - 0.5) * 0.008;
-          const y = path[s][1] + (path[s + 1][1] - path[s][1]) * t + (rand() - 0.5) * 0.008;
-          const back = k % 2 === 1;
-          setC(from + k, x, y, back ? -z0 : z0, 0, 0, back ? -1 : 1);
-        }
+      // Cubic bezier spine in shape-local units. The phase-5 frames anchor the
+      // shape on the right of the screen, so t=0 bleeds off the top-right
+      // corner and t=1 lands at the bottom middle of the viewport.
+      const p0: [number, number] = [1.1, 1.32];
+      const p1: [number, number] = [0.42, 0.3];
+      const p2: [number, number] = [-1.0, 0.1];
+      const p3: [number, number] = [-1.15, -1.42];
+      const spine = (t: number): [number, number] => {
+        const u = 1 - t;
+        return [
+          u * u * u * p0[0] + 3 * u * u * t * p1[0] + 3 * u * t * t * p2[0] + t * t * t * p3[0],
+          u * u * u * p0[1] + 3 * u * u * t * p1[1] + 3 * u * t * t * p2[1] + t * t * t * p3[1],
+        ];
       };
-      // A wheel: a tyre ring plus a smaller hub ring, front + back layers.
-      const wheelC = (from: number, count: number, cx: number, cy: number, r: number) => {
-        for (let k = 0; k < count; k++) {
-          const ang = (k / count) * Math.PI * 2 * 4; // several laps around
-          const rr = k % 3 === 0 ? r * 0.5 : r; // ~1/3 on the inner hub
-          const back = k % 2 === 1;
-          setC(
-            from + k,
-            cx + Math.cos(ang) * rr,
-            cy + Math.sin(ang) * rr,
-            back ? -carZ * 0.9 : carZ * 0.9,
-            Math.cos(ang) * 0.4,
-            Math.sin(ang) * 0.4,
-            back ? -1 : 1,
-          );
-        }
+      const lateral = (t: number): [number, number] => {
+        const u = 1 - t;
+        const dx = 3 * u * u * (p1[0] - p0[0]) + 6 * u * t * (p2[0] - p1[0]) + 3 * t * t * (p3[0] - p2[0]);
+        const dy = 3 * u * u * (p1[1] - p0[1]) + 6 * u * t * (p2[1] - p1[1]) + 3 * t * t * (p3[1] - p2[1]);
+        const l = Math.hypot(dx, dy) || 1;
+        return [-dy / l, dx / l]; // unit normal to the flow direction
       };
-
-      // Coupe side profile (x = length, y = height), traced clockwise from the
-      // front bumper, closed along the sill.
-      const body: [number, number][] = [
-        [-0.92, -0.13],
-        [-0.95, 0.05],
-        [-0.8, 0.13],
-        [-0.4, 0.15],
-        [-0.13, 0.42],
-        [0.22, 0.44],
-        [0.47, 0.17],
-        [0.86, 0.13],
-        [0.95, 0.0],
-        [0.92, -0.13],
-        [-0.92, -0.13],
-      ];
-      // Beltline + A/C pillars so the greenhouse reads as glazing, not a slab.
-      const belt: [number, number][] = [[-0.78, 0.13], [0.86, 0.13]];
+      const halfW = (t: number) => 0.09 + 0.24 * t; // narrow source, wide mouth
 
       let idx = 0;
-      const nBody = 1000;
-      traceC(body, idx, nBody, carZ);
-      idx += nBody;
-      const nBelt = 150;
-      traceC(belt, idx, nBelt, carZ);
-      idx += nBelt;
-      const nWheel = 320;
-      wheelC(idx, nWheel, -0.5, -0.2, 0.22);
-      idx += nWheel;
-      wheelC(idx, nWheel, 0.54, -0.2, 0.22);
-      idx += nWheel;
-      // Light body fill (lower body band only) so it has some mass without
-      // clumping — kept sparse and spread through the depth.
-      const nFill = 620;
-      for (let k = 0; k < nFill; k++) {
-        const x = -0.8 + rand() * 1.66;
-        const y = -0.11 + rand() * 0.22;
-        const z = (rand() * 2 - 1) * carZ;
-        setC(idx + k, x, y, z, 0, 0, z > 0 ? 1 : -1);
+      // Streamlines TWIST around the spine like a loose SPIRAL: each line
+      // starts at its own angle around the tube and corkscrews as it flows
+      // downstream, so the stream reads as a braided helix rather than flat
+      // lanes. The rear half of each turn faces away and dims (back-facing
+      // normals), which is what sells the twist in 2D. A few strands get the
+      // bright outline treatment so the spiral is traced candy-cane style.
+      const nLines = 13;
+      const nPer = 170;
+      const turns = 2.6; // corkscrew turns from source to mouth
+      for (let j = 0; j < nLines; j++) {
+        const phase0 = (j / nLines) * Math.PI * 2;
+        const traced = j % 4 === 0; // bright strands that trace the spiral
+        for (let k = 0; k < nPer; k++, idx++) {
+          const t = (k + 0.5) / nPer;
+          const [sx, sy] = spine(t);
+          const [ux, uy] = lateral(t);
+          const ang = phase0 + t * turns * Math.PI * 2;
+          const r = halfW(t) * (0.88 + (rand() - 0.5) * 0.14);
+          const ca = Math.cos(ang);
+          const sa = Math.sin(ang);
+          const x = sx + ux * ca * r + (rand() - 0.5) * 0.012;
+          const y = sy + uy * ca * r + (rand() - 0.5) * 0.012;
+          if (traced) bright[idx] = 0.85;
+          setC(idx, x, y, sa * r * 0.9, ux * ca * 0.7, uy * ca * 0.7, sa);
+        }
       }
-      idx += nFill;
+      // Spray at the mouth: past t=1 the stream fans out and fades (dimmer
+      // bright[] → lower alpha), so it dissolves off the bottom edge instead
+      // of ending in a hard line.
+      const nSpray = 300;
+      const [mx, my] = spine(1);
+      const dl = Math.hypot(p3[0] - p2[0], p3[1] - p2[1]) || 1;
+      const tx = (p3[0] - p2[0]) / dl;
+      const ty = (p3[1] - p2[1]) / dl;
+      for (let k = 0; k < nSpray; k++, idx++) {
+        const d = rand() * 0.5; // distance past the mouth
+        const s = (rand() * 2 - 1) * (halfW(1) + d * 0.7); // widening fan
+        bright[idx] = Math.max(0.08, bright[idx] * (1 - d * 1.6));
+        setC(
+          idx,
+          mx + tx * d - ty * s,
+          my + ty * d + tx * s,
+          (rand() * 2 - 1) * 0.1,
+          -ty * 0.3,
+          tx * 0.3,
+          1,
+        );
+      }
       // Everything else parks far offscreen (stable spot per index).
       for (let i = idx; i < COUNT; i++) {
         const [fx, fy, fz] = farPos(i);
@@ -914,19 +906,118 @@ export function CosmicField() {
       }
     }
 
+    // ── Behind-the-Architecture (founder) section: the aiAdaptiv LOGO MARK —
+    // the rounded-A silhouette sampled from public/logo-mark.svg (rasterised
+    // to an offscreen canvas at load). Edge pixels become outline beads on
+    // front/back layers so the contour reads crisp — including the wave
+    // cutout — and the interior gets a sparse fill (dense additive fill
+    // would blow out to white, like the early car did). ──
+    {
+      const setL = (i: number, x: number, y: number, z: number, nx: number, ny: number, nz: number) => {
+        aLogo[i * 3] = x;
+        aLogo[i * 3 + 1] = y;
+        aLogo[i * 3 + 2] = z;
+        const nl = Math.hypot(nx, ny, nz) || 1;
+        aLnorm[i * 3] = nx / nl;
+        aLnorm[i * 3 + 1] = ny / nl;
+        aLnorm[i * 3 + 2] = nz / nl;
+      };
+      let placed = 0;
+      if (logo) {
+        const mw = logo.width;
+        const mh = logo.height;
+        const filled = (x: number, y: number) =>
+          x >= 0 &&
+          y >= 0 &&
+          x < mw &&
+          y < mh &&
+          logo.data[(y * mw + x) * 4 + 3] > 128;
+        // Classify mask pixels: contour (a 4-neighbour is empty) vs interior.
+        const edges: [number, number, number, number][] = []; // x, y, outward nx, ny
+        const inner: [number, number][] = [];
+        for (let y = 0; y < mh; y++) {
+          for (let x = 0; x < mw; x++) {
+            if (!filled(x, y)) continue;
+            const l = !filled(x - 1, y);
+            const r = !filled(x + 1, y);
+            const u = !filled(x, y - 1);
+            const d = !filled(x, y + 1);
+            if (l || r || u || d) {
+              edges.push([x, y, (r ? 1 : 0) - (l ? 1 : 0), (d ? 1 : 0) - (u ? 1 : 0)]);
+            } else {
+              inner.push([x, y]);
+            }
+          }
+        }
+        const half = 1.05; // logo half-height in shape units
+        const px2 = (2 * half) / mh; // one mask pixel in shape units
+        const toLocal = (x: number, y: number): [number, number] => [
+          (((x + 0.5) / mw) * 2 - 1) * half * (mw / mh),
+          -(((y + 0.5) / mh) * 2 - 1) * half,
+        ];
+        // Contour: two beads per edge pixel (front + back layer) — the crisp
+        // outline treatment, same as the car silhouette had.
+        for (const [ex, ey, nx, ny] of edges) {
+          for (let s = 0; s < 2 && placed < COUNT; s++, placed++) {
+            const [lx, ly] = toLocal(ex, ey);
+            setL(
+              placed,
+              lx + (rand() - 0.5) * px2 * 0.8,
+              ly + (rand() - 0.5) * px2 * 0.8,
+              s === 0 ? 0.06 : -0.06,
+              nx,
+              -ny, // mask y grows downward; shape y grows upward
+              s === 0 ? 0.9 : -0.9,
+            );
+          }
+        }
+        // Sparse interior fill so the mark has mass while the counterform
+        // stays readable.
+        const nFill = Math.min(1500, inner.length * 2);
+        for (let k = 0; k < nFill && placed < COUNT; k++, placed++) {
+          const [ix, iy] = inner[Math.floor(rand() * inner.length)];
+          const [lx, ly] = toLocal(ix, iy);
+          const zf = (rand() * 2 - 1) * 0.1;
+          setL(
+            placed,
+            lx + (rand() - 0.5) * px2,
+            ly + (rand() - 0.5) * px2,
+            zf,
+            0,
+            0,
+            zf >= 0 ? 1 : -1,
+          );
+        }
+      }
+      // Surplus (or everything, if the mask failed to load) parks far
+      // offscreen at the stable per-index spot.
+      for (let i = placed; i < COUNT; i++) {
+        const [fx, fy, fz] = farPos(i);
+        setL(i, fx, fy, fz, fx, fy, fz);
+      }
+    }
+
     // ── Scatter + meta ──
     for (let i = 0; i < COUNT; i++) {
+      // The scatter is a 3D cloud, squashed in depth: enough z-spread that
+      // the slow yaw it inherits on the closing screen only makes it breathe
+      // gently (a flat slab would collapse to a column edge-on), but shallow
+      // enough that no glyph swings close to the camera and blows up huge —
+      // the blob keeps the calm, uniform grain of the original disc.
+      const su = rand() * 2 - 1;
       const sa = rand() * Math.PI * 2;
-      const sr = Math.sqrt(rand()) * 1.2;
-      aScatter[i * 3] = Math.cos(sa) * sr * 1.3;
-      aScatter[i * 3 + 1] = Math.sin(sa) * sr;
-      aScatter[i * 3 + 2] = (rand() - 0.5) * 0.6;
+      const sr = Math.cbrt(rand()) * 1.2;
+      const sxz = Math.sqrt(1 - su * su);
+      aScatter[i * 3] = Math.cos(sa) * sxz * sr * 1.3;
+      aScatter[i * 3 + 1] = su * sr;
+      aScatter[i * 3 + 2] = Math.sin(sa) * sxz * sr * 0.55;
 
       // Style (size + palette pick) was decided per-class by the brain
       // generators; bright[] is read here so later shape tweaks still land.
       aMeta[i * 4] = bright[i];
       aMeta[i * 4 + 1] = pSize[i];
-      aMeta[i * 4 + 2] = 0.5 + rand() * 1.6;
+      // Seed; the sign carries the engine-flame flag (no attribute slot left).
+      aMeta[i * 4 + 2] = (0.5 + rand() * 1.6) * (aFlame[i] ? -1 : 1);
       aMeta[i * 4 + 3] = pPick[i];
     }
 
@@ -945,13 +1036,13 @@ export function CosmicField() {
         const x = st * Math.cos(a) * rr * 1.5;
         const y = ct * rr;
         const z = (rand() - 0.5) * 1.4;
-        for (const arr of [aBrain, aRocket, aHand, aShield, aCar, aScatter]) {
+        for (const arr of [aBrain, aRocket, aHand, aShield, aCar, aLogo, aScatter]) {
           arr[i * 3] = x;
           arr[i * 3 + 1] = y;
           arr[i * 3 + 2] = z;
         }
         const nl = Math.hypot(x, y, z) || 1;
-        for (const arr of [aNormal, aNormal2, aHnorm, aSnorm, aCnorm]) {
+        for (const arr of [aNormal, aNormal2, aHnorm, aSnorm, aCnorm, aLnorm]) {
           arr[i * 3] = x / nl;
           arr[i * 3 + 1] = y / nl;
           arr[i * 3 + 2] = z / nl;
@@ -959,6 +1050,7 @@ export function CosmicField() {
         aFlame[i] = 0;
         aMeta[i * 4] = 0.12; // dim
         aMeta[i * 4 + 1] = 14 + rand() * 22; // large soft outlines
+        aMeta[i * 4 + 2] = Math.abs(aMeta[i * 4 + 2]); // never a flame
       }
     }
 
@@ -1013,9 +1105,10 @@ export function CosmicField() {
     bind("a_snorm", aSnorm, 3, true);
     bind("a_car", aCar, 3, true);
     bind("a_cnorm", aCnorm, 3, true);
+    bind("a_logo", aLogo, 3, true);
+    bind("a_lnorm", aLnorm, 3, true);
     bind("a_scatter", aScatter, 3, true);
     bind("a_meta", aMeta, 4, true);
-    bind("a_flame", aFlame, 1, true);
 
     const U = (n: string) => gl.getUniformLocation(prog, n);
     const uRes = U("u_res");
@@ -1052,7 +1145,9 @@ export function CosmicField() {
     let anchors: number[] = [0];
     const computeAnchors = () => {
       anchors = [0];
-      for (const id of ["problem", "solution", "pricing", "how-it-works", "client-roadmap", "faq"]) {
+      // "qualify" (the last section) gets its own beat so the scatter can
+      // fade out completely before the closing CTA + footer screen.
+      for (const id of ["problem", "solution", "pricing", "how-it-works", "client-roadmap", "visual-summary", "founder", "faq", "qualify"]) {
         const el = document.getElementById(id);
         if (el) {
           const top = el.getBoundingClientRect().top + window.scrollY;
@@ -1103,15 +1198,22 @@ export function CosmicField() {
 
     // Phase → composition.
     // phase: 0 hero, 1 problem, 2 solution, 3 pricing, 4 how-it-works,
-    //        5 client-roadmap (car), 6 faq
+    //        5 client-roadmap (stream: top right → bottom middle),
+    //        6 visual-summary (stream swings to: top middle → bottom right),
+    //        7 founder (aiAdaptiv logo mark, right),
+    //        8 faq (logo slides LEFT and spins like the hero brain),
+    //        9 qualify (scatter + full fade)
     const cxFrames: [number, number][] = [
       [0.0, 0.86], // brain far right so it never covers the hero text
       [1.0, 0.14], // brain far left so it never covers the problem-section text
       [2.0, 0.78], // rocket right, clear of the text
       [3.0, 0.68], // tie right
       [4.0, 0.76], // shield right (pulled in so the padlock reads fully)
-      [5.0, 0.78], // car right, clear of the text column
-      [6.0, 0.5],
+      [5.0, 0.78], // stream anchored right: top-right corner → bottom middle
+      [6.0, 0.71], // mirrored stream: source lands top-middle, mouth bottom-right
+      [7.0, 0.74], // logo mark right, clear of the founder copy
+      [8.0, 0.24], // faq: logo crosses to the left, copy sits right
+      [9.0, 0.5], // qualify: scatter centred behind the closing CTA
     ];
     const scaleFrames: [number, number][] = [
       [0.0, 1.45], // large — spreads the glyphs so they stop overlapping
@@ -1119,8 +1221,11 @@ export function CosmicField() {
       [2.0, 1.4], // bigger rocket — spreads the particles apart
       [3.0, 1.28], // tie sized so the knot clears the top of the viewport
       [4.0, 1.7], // shield — big enough to spread, small enough to stay on-screen
-      [5.0, 1.15], // car (wide profile — a touch smaller so it clears the copy)
-      [6.0, 1.0],
+      [5.0, 1.3], // stream — spans corner-to-corner, so it needs the reach
+      [6.0, 1.3],
+      [7.0, 1.05], // logo mark — fills the right column without clipping
+      [8.0, 1.0],
+      [9.0, 0.95], // qualify: the compact scatter cloud, centred behind the CTA
     ];
     // Vertical centre (fraction from top). Most shapes sit mid-screen; the tall
     // rocket sits lower so its nose isn't cut off at the top.
@@ -1145,7 +1250,10 @@ export function CosmicField() {
       [3.0, 0.3], // pricing: left
       [4.0, 0.3], // how-it-works: left
       [5.0, 0.32], // roadmap: left
-      [6.0, 0.5], // faq: centre
+      [6.0, 0.55], // visual summary: swung stream, slightly right of centre
+      [7.0, 0.35], // founder: logo as a left backdrop
+      [8.0, 0.3], // faq: spinning logo stays a left backdrop
+      [9.0, 0.5], // qualify: centre (fading out)
     ];
     const mobileCyFrames: [number, number][] = [
       [0.0, 0.3], // hero: upper third, overlapping the headline's top-right
@@ -1156,13 +1264,15 @@ export function CosmicField() {
       [0.0, 1.05], // hero: full brain silhouette, spilling just past the edge
       [1.0, 1.0], // sections: big + spread like the hero (was 0.6 = tiny/dense)
       [2.0, 0.95],
-      [6.0, 0.9],
+      [8.0, 0.9],
     ];
 
     let t = 0;
     let raf = 0;
     let introStart = -1;
     let smoothPhase = -1;
+    // Accumulated spin angle for the FAQ logo (see the render loop).
+    let logoSpin = 0;
 
     // Mouse parallax (eased) — the subtle camera response that sells the 3D.
     let pmx = 0;
@@ -1209,14 +1319,20 @@ export function CosmicField() {
       smoothPhase += (target - smoothPhase) * (reduceMotion ? 1 : 0.09);
       const phase = smoothPhase;
 
-      // Morph timeline (each segment eased): brain→rocket (1→2), rocket launch
-      // (2→2.6), rocket→tie (2.6→3), tie→shield (3→4), shield→car (4→5),
-      // car→scatter (5→6).
+      // Morph timeline (each segment eased): brain→rocket (1→2),
+      // rocket→tie (2.3→3 — a wide window; the old 2.6→3 remainder of the
+      // removed launch beat made this morph snap), tie→shield (3→4),
+      // shield→stream (4→5), stream holds while it swings across (5→6),
+      // stream→logo (6→7), logo holds while it crosses to the left and
+      // spins (7→8), logo→scatter (8→9).
       let morph = 0;
-      if (phase >= 5) morph = 4 + es(phase - 5);
+      if (phase >= 8) morph = 5 + es(phase - 8);
+      else if (phase >= 7) morph = 5;
+      else if (phase >= 6) morph = 4 + es(phase - 6);
+      else if (phase >= 5) morph = 4;
       else if (phase >= 4) morph = 3 + es(phase - 4);
       else if (phase >= 3) morph = 2 + es(phase - 3);
-      else if (phase >= 2.6) morph = 1 + es((phase - 2.6) / 0.4);
+      else if (phase >= 2.3) morph = 1 + es((phase - 2.3) / 0.7);
       else if (phase >= 2) morph = 1;
       else if (phase >= 1) morph = es(phase - 1);
       // Engine fire removed — the rocket no longer ignites or lifts off.
@@ -1238,11 +1354,16 @@ export function CosmicField() {
       const baseYaw = keyframe(phase, [
         [0.0, 0.0],
         [2.0, 0.0], // rocket: face front
-        [2.7, 0.06],
+        [2.3, 0.02], // ease into the turn across the whole rocket→tie morph
         [3.0, 0.34], // tie: slight turn so it reads 3D
         [4.0, 0.5], // shield: three-quarter view
-        [5.0, 0.42], // car: three-quarter so the side + front read
-        [6.0, 0.0],
+        [5.0, 0.04], // stream: face-on so the diagonal spans the screen
+        // Half-turn to the visual-summary beat: mirrors the curve so the
+        // source swings to the top middle and the mouth to the bottom right.
+        [6.0, Math.PI],
+        // Complete the revolution while morphing into the logo mark, ending
+        // face-on (2π ≡ 0) so the "A" reads upright and unmirrored.
+        [7.0, Math.PI * 2],
       ]);
       // How much slow idle sway to layer on (reveals depth as it rocks).
       const sway = keyframe(phase, [
@@ -1250,8 +1371,10 @@ export function CosmicField() {
         [2.0, 0.0], // rocket steady
         [3.0, 0.18], // tie gently turns
         [4.0, 0.24], // shield gently rocks
-        [5.0, 0.22], // car gently rocks
-        [6.0, 0.4],
+        [5.0, 0.07], // stream: barely sways — the ribbon must hold its line
+        [6.0, 0.05], // still a stream on the visual-summary beat
+        [7.0, 0.12], // logo gently rocks, enough to show its slab depth
+        [8.0, 0.0], // faq: the continuous spin replaces the sway
       ]);
       // The whole brain slowly and continuously turns in one direction, so the
       // pyramids orbit together (fades out before the rocket phase).
@@ -1261,17 +1384,29 @@ export function CosmicField() {
         [1.8, 0.0],
       ]);
       const brainSpin = reduceMotion ? 0 : spin * t * 0.001 * 0.05;
+      // FAQ beat: the logo spins continuously like the hero brain. The ANGLE
+      // accumulates from a speed that ramps in with the phase (rather than
+      // multiplying spin × elapsed time), so scrolling into the section spins
+      // it up smoothly instead of jumping several turns at once.
+      if (!reduceMotion) {
+        logoSpin += 0.0036 * es(Math.min(1, Math.max(0, phase - 7.3) / 0.7));
+      }
       pmx += (tpx - pmx) * 0.06;
       pmy += (tpy - pmy) * 0.06;
       const rotY =
         baseYaw +
         brainSpin +
+        logoSpin +
         (reduceMotion ? 0 : Math.sin(t * 0.00022) * sway + pmx * 0.12);
       const rotX =
         (0.15 + (reduceMotion ? 0 : Math.sin(t * 0.0003) * 0.05)) *
           (1 - upright * 0.85) +
         (reduceMotion ? 0 : pmy * 0.07);
-      const fade = Math.max(0, 1 - Math.max(0, phase - 5.6) / 0.6);
+      // The scatter stays as a centred backdrop on the closing (qualify)
+      // screen — dimmed well below the formed shapes so the CTA copy reads.
+      // The ramp must COMPLETE at phase 9.0: that is the scroll ceiling (the
+      // last anchor), so a ramp ending past it would never reach its floor.
+      const fade = 1 - Math.min(1, Math.max(0, phase - 8.5) / 0.5) * 0.72;
       // Far fewer, bigger particles now — crisp outlines need more alpha.
       const globalAlpha = 0.95 * fade;
 
@@ -1339,18 +1474,35 @@ export function CosmicField() {
     };
     };
 
-    // Fetch the baked cortex point cloud and hand it to init(). The asset is
-    // baked offline from a real FreeSurfer brain surface — see
-    // scripts/bake_brain.py. Any failure falls back to the procedural sphere.
-    fetch("/brain-points.bin")
+    // Fetch the baked cortex point cloud (scripts/bake_brain.py; failure
+    // falls back to the procedural sphere) and rasterise the logo mark to a
+    // small offscreen canvas (failure just parks the logo shape offscreen),
+    // then hand both to init().
+    const brainP: Promise<BrainPoints | null> = fetch("/brain-points.bin")
       .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
-      .then((buf) => {
-        if (cancelled) return;
-        cleanup = init(parseBrainPoints(buf));
-      })
-      .catch(() => {
-        if (!cancelled) cleanup = init(null);
-      });
+      .then((buf) => parseBrainPoints(buf))
+      .catch(() => null);
+    const logoP = new Promise<ImageData | null>((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        try {
+          const c = document.createElement("canvas");
+          c.width = 144;
+          c.height = 144;
+          const ctx = c.getContext("2d");
+          if (!ctx) return resolve(null);
+          ctx.drawImage(img, 0, 0, 144, 144);
+          resolve(ctx.getImageData(0, 0, 144, 144));
+        } catch {
+          resolve(null);
+        }
+      };
+      img.onerror = () => resolve(null);
+      img.src = "/logo-mark.svg";
+    });
+    Promise.all([brainP, logoP]).then(([pts, logo]) => {
+      if (!cancelled) cleanup = init(pts, logo);
+    });
 
     return () => {
       cancelled = true;

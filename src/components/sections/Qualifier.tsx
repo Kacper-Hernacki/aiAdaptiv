@@ -7,7 +7,7 @@ export function Qualifier({ qualifier }: { qualifier: Dictionary["qualifier"] })
     <section
       id="qualify"
       aria-labelledby="qualify-heading"
-      className={`${s.section} ${s.center}`}
+      className={`${s.section} ${s.center} ${s.last}`}
     >
       <h2 id="qualify-heading" className={s.h2} data-reveal>
         {qualifier.h2}

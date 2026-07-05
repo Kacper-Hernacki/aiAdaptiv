@@ -16,6 +16,16 @@
   text-align: center;
 }
 
+/* The LAST section shares its viewport with the footer: shrink it by the
+   footer's height (incl. its top margin) so the final screen reads as one
+   composition — content centred, footer at the bottom. */
+.last {
+  min-height: calc(100svh - 356px);
+  /* The scatter stays as a centred backdrop here — same legibility trick as
+     the hero copy over the particle field. */
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
 /* Push a section's content to the right half (opposite the left-side visual). */
 .alignRight {
   max-width: 560px;
@@ -34,6 +44,15 @@
   .section {
     justify-content: flex-start;
     padding-top: 34svh;
+  }
+
+  /* The last section keeps its content centred even on mobile — there is no
+     particle shape parked above it, and the footer (taller when stacked)
+     still needs to fit in the same viewport. */
+  .last {
+    justify-content: center;
+    padding-top: clamp(60px, 9vw, 120px);
+    min-height: calc(100svh - 413px);
   }
 }
 

@@ -3,6 +3,9 @@
   z-index: 1;
   border-top: 1px solid var(--hairline);
   margin-top: var(--space-60);
+  /* Scrim over the particle field so the small print stays readable now
+     that the closing screen keeps its scatter backdrop. */
+  background: rgba(0, 0, 0, 0.78);
 }
 
 .inner {
