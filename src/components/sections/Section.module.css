@@ -26,6 +26,29 @@
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
 }
 
+/* Legibility scrim for the LAST section, on every viewport: over the
+   pure-black canvas it is invisible — it only darkens the scatter sitting
+   behind the centred copy, fading out radially so the cloud keeps its bright
+   rim. Doubled class so it beats the mobile .section::before rule. */
+.section.last::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 44% 54% at 50% 50%,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.6) 48%,
+    rgba(0, 0, 0, 0) 74%
+  );
+}
+
+.section.last > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Push a section's content to the right half (opposite the left-side visual). */
 .alignRight {
   max-width: 560px;
@@ -53,6 +76,33 @@
     justify-content: center;
     padding-top: clamp(60px, 9vw, 120px);
     min-height: calc(100svh - 413px);
+  }
+
+  /* Legibility scrim on EVERY mobile section (same trick as the hero's
+     .content::before): invisible over the black canvas, it dims the particle
+     shape ONLY across the band where the copy sits (content starts at
+     ~34svh), leaving the top of the section clear so the upper body of the
+     3D shape stays fully visible — like the hero brain above its headline. */
+  .section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 24%,
+      rgba(0, 0, 0, 0.78) 34%,
+      rgba(0, 0, 0, 0.78) 82%,
+      rgba(0, 0, 0, 0.2) 96%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  .section > * {
+    position: relative;
+    z-index: 1;
   }
 }
 

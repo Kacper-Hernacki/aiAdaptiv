@@ -1243,22 +1243,27 @@ export function CosmicField() {
     // Sections put the shape on the LEFT and vertically CENTRED (a backdrop the
     // copy reads over via text-shadow), rather than jammed at the top where it
     // collided with the header + headings. Hero keeps its upper-right brain.
+    // Mobile sections mirror the HERO composition (per explicit feedback):
+    // the shape rides the clear UPPER zone, mostly visible above the copy
+    // (section text starts at ~34svh, under the band scrim), alternating
+    // right/left a little so the story doesn't feel static.
     const mobileCxFrames: [number, number][] = [
       [0.0, 0.74], // hero: brain right, more visible
-      [1.0, 0.28], // problem: left
-      [2.0, 0.3], // solution: left
-      [3.0, 0.3], // pricing: left
-      [4.0, 0.3], // how-it-works: left
-      [5.0, 0.32], // roadmap: left
-      [6.0, 0.55], // visual summary: swung stream, slightly right of centre
-      [7.0, 0.35], // founder: logo as a left backdrop
-      [8.0, 0.3], // faq: spinning logo stays a left backdrop
+      [1.0, 0.64], // problem
+      [2.0, 0.6], // solution
+      [3.0, 0.62], // pricing
+      [4.0, 0.62], // how-it-works
+      [5.0, 0.6], // roadmap
+      [6.0, 0.55], // visual summary: swung stream
+      [7.0, 0.62], // founder logo
+      [8.0, 0.6], // faq: spinning logo
       [9.0, 0.5], // qualify: centre (fading out)
     ];
     const mobileCyFrames: [number, number][] = [
       [0.0, 0.3], // hero: upper third, overlapping the headline's top-right
-      [1.0, 0.58], // sections: lower-centre, a backdrop below the heading
-      [2.0, 0.58],
+      [1.0, 0.3], // sections: same upper zone — shape visible above the copy
+      [8.0, 0.3],
+      [9.0, 0.5], // qualify: centred behind the centred CTA
     ];
     const mobileScaleFrames: [number, number][] = [
       [0.0, 1.05], // hero: full brain silhouette, spilling just past the edge
