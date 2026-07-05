@@ -60,6 +60,11 @@
   display: block;
 }
 
+/* Breathing room between the plain line and the accent line. */
+.headline .accent {
+  margin-top: 0.22em;
+}
+
 /* Mobile (Dala composition): the brain bleeds off the upper-right, and the
    headline stacks left underneath it. Pull the copy up near the header and let
    the particle field overlap its top-right, instead of shoving copy below a
