@@ -316,7 +316,7 @@
 }
 
 .flow {
-  margin: var(--space-36) 0 0;
+  margin: var(--space-36) auto 0;
   max-width: 520px;
 }
 
@@ -343,6 +343,7 @@
   letter-spacing: 0;
   color: var(--color-ash);
   white-space: pre;
+  text-align: center;
   overflow-x: auto;
 }
 

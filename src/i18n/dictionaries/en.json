@@ -113,7 +113,7 @@
       "result": "A fully branded, secure private AI platform running inside your own environment in under a week."
     },
     "flowLabel": "Visual Summary (Simple 4-Step Flow)",
-    "flow": "Your Koyeb Account (EU)\n        ↓\nWe Deploy Open WebUI + Models\n        ↓\nWhite-Labeled at ai.yourfirm.com\n        ↓\nYour Team Uses It Securely\n   (We Maintain Monthly)",
+    "flow": "Your Koyeb Account (EU)\n↓\nWe Deploy Open WebUI + Models\n↓\nWhite-Labeled at ai.yourfirm.com\n↓\nYour Team Uses It Securely\n(We Maintain Monthly)",
     "outro": "You own the account. You own the data. We do the technical work."
   },
   "behindTheArchitecture": {
