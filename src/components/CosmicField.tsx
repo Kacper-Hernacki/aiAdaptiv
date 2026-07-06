@@ -1277,10 +1277,12 @@ export function CosmicField() {
     const mobileCyFrames: [number, number][] = [
       [0.0, 0.3], // hero: upper third, overlapping the headline's top-right
       [1.0, 0.3], // sections: same upper zone — shape visible above the copy
-      [2.0, 0.42], // rocket is TALL and top-heavy: sit lower, clear the header
-      [3.0, 0.4], // tie: knot down from under the header
-      [4.0, 0.38], // shield
-      [5.0, 0.3], // stream + later shapes back to the upper zone
+      [2.0, 0.5], // rocket is TALL and top-heavy: sit lower, clear the header
+      [3.0, 0.48], // tie: knot down from under the header
+      [4.0, 0.46], // shield
+      [5.0, 0.3], // stream back to the upper zone
+      [6.0, 0.3],
+      [7.0, 0.38], // founder logo: down a touch, clear of the header
       [8.0, 0.3],
       [9.0, 0.5], // qualify: centred behind the centred CTA
     ];
