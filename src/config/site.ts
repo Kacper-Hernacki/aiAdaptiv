@@ -7,7 +7,7 @@
  * (see .env.example) to point at the real domain / booking link.
  */
 
-const PLACEHOLDER_URL = "https://www.aiadaptiv.ai";
+const PLACEHOLDER_URL = "https://www.aiadaptiv.com";
 
 export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ?? PLACEHOLDER_URL
