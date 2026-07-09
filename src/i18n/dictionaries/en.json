@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "aiAdaptiv — Your Private Company Brain. Owned, Not Rented.",
-    "description": "A fully white-labeled, document-intelligence AI platform deployed inside your own secure EU cloud account (Koyeb). You own the infrastructure, keys, and data. GDPR & EU AI Act safe. Strictly 6 founding partners."
+    "description": "A fully white-labeled, document-intelligence AI platform deployed inside your own secure EU cloud account. You own the infrastructure, keys, and data. GDPR & EU AI Act safe. Strictly 6 founding partners."
   },
   "skipToContent": "Skip to main content",
   "header": {
@@ -19,7 +19,7 @@
         "accent": true
       }
     ],
-    "subhead": "We deploy a fully white-labeled AI platform directly inside your own secure EU cloud account (Koyeb). You own the infrastructure, keys, and data. We do the heavy lifting.",
+    "subhead": "We deploy a fully white-labeled AI platform directly inside your own secure EU cloud account. You own the infrastructure, keys, and data. We do the heavy lifting.",
     "tagline": "No more pasting sensitive client data into public tools.",
     "cta": "Run 60-Second Eligibility Check →"
   },
@@ -44,7 +44,7 @@
       },
       {
         "title": "Your Own Cloud Account",
-        "body": "Deployed in your own Koyeb account. You control everything."
+        "body": "Deployed in your own cloud account. You control everything."
       },
       {
         "title": "Zero Overhead",
@@ -77,7 +77,7 @@
     "steps": [
       {
         "title": "1. You Create Your Account (or we create it for you)",
-        "body": "Sign up for Koyeb (EU region). You control billing."
+        "body": "Sign up for an EU-region cloud account. You control billing."
       },
       {
         "title": "2. We Build & Brand It",
@@ -98,7 +98,7 @@
       "days": [
         {
           "label": "Day 1–2",
-          "body": "You create (or we create) the Koyeb account and grant access."
+          "body": "You create (or we create) the cloud account and grant access."
         },
         {
           "label": "Day 3–5",
@@ -113,7 +113,7 @@
       "result": "A fully branded, secure private AI platform running inside your own environment in under a week."
     },
     "flowLabel": "Visual Summary (Simple 4-Step Flow)",
-    "flow": "Your Koyeb Account (EU)\n↓\nWe Deploy Open WebUI + Models\n↓\nWhite-Labeled at ai.yourfirm.com\n↓\nYour Team Uses It Securely\n(We Maintain Monthly)",
+    "flow": "Your Own Cloud Account (EU)\n↓\nWe Deploy Open WebUI + Models\n↓\nWhite-Labeled at ai.yourfirm.com\n↓\nYour Team Uses It Securely\n(We Maintain Monthly)",
     "outro": "You own the account. You own the data. We do the technical work."
   },
   "behindTheArchitecture": {
@@ -127,7 +127,7 @@
     "h2": "Frequently Asked Questions",
     "items": [
       {
-        "q": "Why deploy inside my own Koyeb account?",
+        "q": "Why deploy inside my own cloud account?",
         "a": "True ownership. You control the account, billing, and keys. If you ever stop working with us, the entire platform stays yours — no vendor lock-in."
       },
       {
@@ -135,8 +135,8 @@
         "a": "No. All processing happens inside your secure environment. We never have access to your prompts or documents."
       },
       {
-        "q": "What are the Koyeb GPU costs?",
-        "a": "You pay Koyeb directly. Typical range is €400–€800/month depending on usage. We help you choose and optimize the right size during setup."
+        "q": "What are the GPU compute costs?",
+        "a": "You pay the cloud provider directly — never us. We stay elastic and can use different GPU providers, choosing and re-optimizing the right size for your usage. GPU compute typically runs a few hundred euros per month depending on how heavily you use it."
       },
       {
         "q": "How long does setup take?",
@@ -176,7 +176,7 @@
       {
         "h": "1. What we provide",
         "body": [
-          "aiAdaptiv provides custom configuration and maintenance services inside the Client's own cloud environment. We deploy an open-source AI platform (Open WebUI plus selected open-source models) into the Client's own cloud account (Koyeb, EU region), white-label it under the Client's domain (e.g. ai.yourfirm.com), and provide ongoing maintenance: model updates, security patches, and support.",
+          "aiAdaptiv provides custom configuration and maintenance services inside the Client's own cloud environment. We deploy an open-source AI platform (Open WebUI plus selected open-source models) into the Client's own EU-region cloud account, white-label it under the Client's domain (e.g. ai.yourfirm.com), and provide ongoing maintenance: model updates, security patches, and support.",
           "We are flexible with serious design partners — specific open-source model preferences or specialized workflow needs are tailored during setup."
         ]
       },
@@ -191,7 +191,7 @@
         "body": [
           "One-time Setup & Deployment: €1,999, due before deployment begins.",
           "Monthly Maintenance & Support: €249 per month, billed monthly.",
-          "Cloud infrastructure costs (e.g. Koyeb GPU usage, typically €400–€800 per month depending on usage) are paid by the Client directly to the cloud provider and are not part of our fees. We help choose and optimize the right instance size during setup."
+          "GPU and cloud infrastructure costs are paid by the Client directly to the cloud provider(s) and are not part of our fees. We remain provider-agnostic and help choose and optimize the right instance size for the Client's usage."
         ]
       },
       {

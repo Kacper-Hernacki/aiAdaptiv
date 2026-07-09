@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "aiAdaptiv — Twój prywatny mózg firmy. Na własność, nie w wynajmie.",
-    "description": "W pełni white-label platforma AI do analizy dokumentów, wdrożona w Twoim własnym, bezpiecznym koncie chmurowym w UE (Koyeb). Ty jesteś właścicielem infrastruktury, kluczy i danych. Bezpieczna wobec RODO i EU AI Act. Tylko 6 partnerów założycielskich."
+    "description": "W pełni white-label platforma AI do analizy dokumentów, wdrożona w Twoim własnym, bezpiecznym koncie chmurowym w UE. Ty jesteś właścicielem infrastruktury, kluczy i danych. Bezpieczna wobec RODO i EU AI Act. Tylko 6 partnerów założycielskich."
   },
   "skipToContent": "Przejdź do treści głównej",
   "header": {
@@ -19,7 +19,7 @@
         "accent": true
       }
     ],
-    "subhead": "Wdrażamy w pełni white-label platformę AI bezpośrednio w Twoim własnym, bezpiecznym koncie chmurowym w UE (Koyeb). Ty jesteś właścicielem infrastruktury, kluczy i danych. Całą ciężką pracę bierzemy na siebie.",
+    "subhead": "Wdrażamy w pełni white-label platformę AI bezpośrednio w Twoim własnym, bezpiecznym koncie chmurowym w UE. Ty jesteś właścicielem infrastruktury, kluczy i danych. Całą ciężką pracę bierzemy na siebie.",
     "tagline": "Koniec z wklejaniem wrażliwych danych klientów do publicznych narzędzi.",
     "cta": "Uruchom 60-sekundowy test kwalifikacji →"
   },
@@ -44,7 +44,7 @@
       },
       {
         "title": "Twoje własne konto chmurowe",
-        "body": "Wdrożone w Twoim własnym koncie Koyeb. Ty kontrolujesz wszystko."
+        "body": "Wdrożone w Twoim własnym koncie chmurowym. Ty kontrolujesz wszystko."
       },
       {
         "title": "Zero narzutu",
@@ -77,7 +77,7 @@
     "steps": [
       {
         "title": "1. Zakładasz konto (lub zakładamy je za Ciebie)",
-        "body": "Rejestrujesz konto Koyeb (region UE). Kontrolujesz rozliczenia."
+        "body": "Rejestrujesz konto chmurowe (region UE). Kontrolujesz rozliczenia."
       },
       {
         "title": "2. Budujemy i brandujemy",
@@ -98,7 +98,7 @@
       "days": [
         {
           "label": "Dzień 1–2",
-          "body": "Zakładasz (lub zakładamy) konto Koyeb i nadajesz dostęp."
+          "body": "Zakładasz (lub zakładamy) konto chmurowe i nadajesz dostęp."
         },
         {
           "label": "Dzień 3–5",
@@ -113,7 +113,7 @@
       "result": "W pełni brandowana, bezpieczna prywatna platforma AI działająca w Twoim własnym środowisku w niecały tydzień."
     },
     "flowLabel": "Podsumowanie wizualne (prosty 4-etapowy przepływ)",
-    "flow": "Twoje konto Koyeb (UE)\n↓\nWdrażamy Open WebUI + modele\n↓\nWhite-label na ai.twojafirma.pl\n↓\nTwój zespół korzysta bezpiecznie\n(My utrzymujemy co miesiąc)",
+    "flow": "Twoje własne konto chmurowe (UE)\n↓\nWdrażamy Open WebUI + modele\n↓\nWhite-label na ai.twojafirma.pl\n↓\nTwój zespół korzysta bezpiecznie\n(My utrzymujemy co miesiąc)",
     "outro": "Ty jesteś właścicielem konta. Ty jesteś właścicielem danych. My wykonujemy pracę techniczną."
   },
   "behindTheArchitecture": {
@@ -127,7 +127,7 @@
     "h2": "Najczęściej zadawane pytania",
     "items": [
       {
-        "q": "Dlaczego wdrożenie w moim własnym koncie Koyeb?",
+        "q": "Dlaczego wdrożenie w moim własnym koncie chmurowym?",
         "a": "Prawdziwa własność. Kontrolujesz konto, rozliczenia i klucze. Jeśli kiedykolwiek przestaniesz z nami współpracować, cała platforma pozostaje Twoja — bez uzależnienia od dostawcy."
       },
       {
@@ -135,8 +135,8 @@
         "a": "Nie. Całe przetwarzanie odbywa się w obrębie Twojego bezpiecznego środowiska. Nigdy nie mamy dostępu do Twoich zapytań ani dokumentów."
       },
       {
-        "q": "Jakie są koszty GPU w Koyeb?",
-        "a": "Płacisz Koyeb bezpośrednio. Typowy zakres to €400–€800/miesiąc w zależności od użycia. Pomagamy dobrać i zoptymalizować odpowiedni rozmiar podczas konfiguracji."
+        "q": "Jakie są koszty GPU?",
+        "a": "Płacisz dostawcy chmury bezpośrednio — nigdy nam. Pozostajemy elastyczni i możemy korzystać z różnych dostawców GPU, dobierając i optymalizując odpowiedni rozmiar pod Twoje użycie. Moc GPU to zwykle kilkaset euro miesięcznie, w zależności od intensywności korzystania."
       },
       {
         "q": "Ile trwa wdrożenie?",
@@ -176,7 +176,7 @@
       {
         "h": "1. Co zapewniamy",
         "body": [
-          "aiAdaptiv świadczy usługi konfiguracji i utrzymania wewnątrz własnego środowiska chmurowego Klienta. Wdrażamy open-source'ową platformę AI (Open WebUI wraz z wybranymi modelami open-source) na własnym koncie chmurowym Klienta (Koyeb, region UE), oznaczamy ją marką Klienta pod jego domeną (np. ai.twojafirma.com) i zapewniamy bieżące utrzymanie: aktualizacje modeli, poprawki bezpieczeństwa i wsparcie.",
+          "aiAdaptiv świadczy usługi konfiguracji i utrzymania wewnątrz własnego środowiska chmurowego Klienta. Wdrażamy open-source'ową platformę AI (Open WebUI wraz z wybranymi modelami open-source) na własnym koncie chmurowym Klienta w regionie UE, oznaczamy ją marką Klienta pod jego domeną (np. ai.twojafirma.com) i zapewniamy bieżące utrzymanie: aktualizacje modeli, poprawki bezpieczeństwa i wsparcie.",
           "Dla poważnych partnerów jesteśmy elastyczni — preferencje dotyczące konkretnych modeli open-source lub wyspecjalizowanych przepływów pracy uwzględniamy podczas wdrożenia."
         ]
       },
@@ -191,7 +191,7 @@
         "body": [
           "Jednorazowe wdrożenie: 1 999 €, płatne przed rozpoczęciem wdrożenia.",
           "Miesięczne utrzymanie i wsparcie: 249 € miesięcznie.",
-          "Koszty infrastruktury chmurowej (np. GPU w Koyeb, zwykle 400–800 € miesięcznie w zależności od użycia) Klient opłaca bezpośrednio u dostawcy chmury; nie są one częścią naszych opłat. Podczas wdrożenia pomagamy dobrać i zoptymalizować odpowiedni rozmiar instancji."
+          "Koszty GPU i infrastruktury chmurowej Klient opłaca bezpośrednio u dostawcy (dostawców) chmury; nie są one częścią naszych opłat. Pozostajemy niezależni od dostawcy i pomagamy dobrać oraz zoptymalizować odpowiedni rozmiar instancji pod użycie Klienta."
         ]
       },
       {
