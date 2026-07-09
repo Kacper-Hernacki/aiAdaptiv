@@ -76,6 +76,12 @@ export type Dictionary = {
     sections: { h: string; body: string[] }[];
     backHome: string;
   };
+  cookies: {
+    message: string;
+    accept: string;
+    decline: string;
+    learnMore: string;
+  };
 };
 
 /**

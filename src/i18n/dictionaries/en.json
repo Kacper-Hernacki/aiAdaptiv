@@ -240,5 +240,11 @@
       }
     ],
     "backHome": "← Back to home"
+  },
+  "cookies": {
+    "message": "We use cookies to measure traffic and improve your experience. You decide what we may store.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "learnMore": "Learn more"
   }
 }

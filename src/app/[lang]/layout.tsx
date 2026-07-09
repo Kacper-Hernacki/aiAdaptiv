@@ -23,6 +23,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CosmicField } from "@/components/CosmicField";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { CookieConsent } from "@/components/CookieConsent";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -137,19 +138,18 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${acronym.variable}`}
     >
       <body>
+        {/* Google Consent Mode v2 — deny all storage by default until the
+            visitor accepts via the cookie banner (see CookieConsent). Must run
+            before GA loads, hence beforeInteractive. */}
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});`}
+        </Script>
         {/* Tally popup widget script — see components/TallyButton.tsx. */}
         <Script
           src="https://tally.so/widgets/embed.js"
           strategy="afterInteractive"
         />
-        {/* Leadsy.ai visitor-identification pixel. */}
-        <Script
-          id="vtag-ai-js"
-          src="https://r2.leadsy.ai/tag.js"
-          data-pid="1avdjXH59Tn2VO6Om"
-          data-version="062024"
-          strategy="afterInteractive"
-        />
+        {/* Leadsy.ai pixel is loaded by CookieConsent only after consent. */}
         {/* Persistent scroll-morphing constellation behind all content. */}
         <CosmicField />
         <ScrollReveal />
@@ -163,6 +163,8 @@ export default async function RootLayout({
         <Analytics />
         {/* Google Analytics 4 — only mounted when NEXT_PUBLIC_GA_ID is set. */}
         {gaMeasurementId && <GoogleAnalytics gaId={gaMeasurementId} />}
+        {/* Cookie consent banner — gates GA4 + Leadsy behind opt-in. */}
+        <CookieConsent lang={lang} dict={dict.cookies} />
       </body>
     </html>
   );

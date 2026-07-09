@@ -240,5 +240,11 @@
       }
     ],
     "backHome": "← Wróć na stronę główną"
+  },
+  "cookies": {
+    "message": "Używamy plików cookie, aby mierzyć ruch i ulepszać Twoje doświadczenia. To Ty decydujesz, co możemy przechowywać.",
+    "accept": "Akceptuję",
+    "decline": "Odrzuć",
+    "learnMore": "Dowiedz się więcej"
   }
 }
