@@ -317,34 +317,116 @@
 
 .flow {
   margin: var(--space-36) auto 0;
-  max-width: 520px;
+  width: 100%;
+  max-width: 560px;
 }
 
-.flowCaption {
-  margin-bottom: var(--space-12);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+.flowList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Each stage of the deployment flow — a glassmorphic node card. */
+.flowNode {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 40px;
+  padding: clamp(14px, 2vw, 20px) clamp(20px, 3vw, 32px);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  text-align: center;
+}
+
+.flowNode:first-child {
+  margin-top: 0;
+}
+
+/* Bookend the flow: plum-tinted borders + faint glow on the first (input)
+ * and last (outcome) nodes signal where the flow starts and ends. */
+.flowNode:first-child,
+.flowNode:last-child {
+  border-color: rgba(128, 82, 255, 0.4);
+  box-shadow: 0 0 24px -8px rgba(128, 82, 255, 0.45);
+}
+
+/* Connector: a fading vertical line into a plum chevron, drawn in the gap
+ * above every node but the first. */
+.flowNode:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(
+    to bottom,
+    var(--hairline),
+    rgba(128, 82, 255, 0.55)
+  );
+}
+
+.flowNode:not(:first-child)::after {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid var(--color-plum);
+  border-bottom: 1.5px solid var(--color-plum);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.flowNodeMain {
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: var(--color-bone);
+}
+
+.flowNodeSub {
+  font-size: clamp(12px, 1.15vw, 13px);
+  line-height: 1.4;
   color: var(--color-smoke);
 }
 
-.flowPre {
-  margin: 0;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius);
-  padding: var(--space-24);
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 13px;
-  line-height: 1.7;
-  letter-spacing: 0;
-  color: var(--color-ash);
-  white-space: pre;
-  text-align: center;
-  overflow-x: auto;
+/* Roomier and larger on desktop, where there's space to let it breathe. */
+@media (min-width: 768px) {
+  .flow {
+    max-width: 660px;
+  }
+
+  .flowNode {
+    margin-top: 52px;
+    padding: 24px 40px;
+    border-radius: 18px;
+  }
+
+  .flowNode:not(:first-child)::before {
+    top: -52px;
+    height: 52px;
+  }
+
+  .flowNodeMain {
+    font-size: 20px;
+  }
+
+  .flowNodeSub {
+    font-size: 14px;
+  }
 }
 
 /* ── FAQ ───────────────────────────────────────────────────── */

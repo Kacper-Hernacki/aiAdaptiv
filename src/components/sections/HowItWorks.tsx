@@ -77,7 +77,27 @@ export function HowItWorks({
           {howItWorks.flowLabel}
         </h2>
         <figure className={s.flow} data-reveal>
-          <pre className={s.flowPre}>{howItWorks.flow}</pre>
+          <ol className={s.flowList}>
+            {howItWorks.flow
+              .split("↓")
+              .map((node) => node.trim())
+              .filter(Boolean)
+              .map((node) => node.split("\n").map((line) => line.trim()))
+              .map((lines, i) => (
+                <li
+                  key={lines[0]}
+                  className={s.flowNode}
+                  style={{ "--rd": `${i * 90}ms` } as React.CSSProperties}
+                >
+                  <span className={s.flowNodeMain}>{lines[0]}</span>
+                  {lines.slice(1).map((line) => (
+                    <span key={line} className={s.flowNodeSub}>
+                      {line}
+                    </span>
+                  ))}
+                </li>
+              ))}
+          </ol>
         </figure>
         <p className={s.emphasis} data-reveal>
           {howItWorks.outro}
