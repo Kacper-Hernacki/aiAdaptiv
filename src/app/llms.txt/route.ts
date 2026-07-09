@@ -32,6 +32,7 @@ ${locales.map((l) => `- ${localeNames[l]}: ${siteUrl}/${l}`).join("\n")}
 - Home (default): ${siteUrl}/${defaultLocale}
 - Sitemap: ${siteUrl}/sitemap.xml
 - Contact: ${siteConfig.contactEmail}
+- Support: ${siteConfig.supportEmail}
 
 ## Topics
 

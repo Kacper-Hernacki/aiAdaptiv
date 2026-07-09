@@ -65,7 +65,8 @@ export const siteConfig = {
       "https://github.com/aiadaptiv",
     ],
   },
-  contactEmail: "hello@aiadaptiv.ai",
+  contactEmail: "kacper@aiadaptiv.com",
+  supportEmail: "help@aiadaptiv.com",
 } as const;
 
 export type SiteConfig = typeof siteConfig;

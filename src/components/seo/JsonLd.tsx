@@ -30,6 +30,18 @@ export function OrganizationJsonLd() {
         logo: `${siteUrl}/icon.svg`,
         description: siteConfig.description,
         email: siteConfig.contactEmail,
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            contactType: "sales",
+            email: siteConfig.contactEmail,
+          },
+          {
+            "@type": "ContactPoint",
+            contactType: "customer support",
+            email: siteConfig.supportEmail,
+          },
+        ],
         sameAs: siteConfig.organization.sameAs,
       }}
     />
