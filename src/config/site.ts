@@ -24,6 +24,13 @@ export const tallyFormId =
 
 export const tallyUrl = `https://tally.so/r/${tallyFormId}`;
 
+/** Google Search Console verification token — the `content` value from the
+ * `google-site-verification` meta tag Google gives you in the "HTML tag"
+ * verification method. Set GOOGLE_SITE_VERIFICATION to emit the tag; empty
+ * means no tag is rendered. */
+export const googleSiteVerification =
+  process.env.GOOGLE_SITE_VERIFICATION ?? "";
+
 export const siteConfig = {
   name: "aiAdaptiv",
   shortName: "aiAdaptiv",

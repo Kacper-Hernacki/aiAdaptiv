@@ -10,7 +10,8 @@ import {
   type Locale,
 } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { siteConfig, siteUrl } from "@/config/site";
+import { siteConfig, siteUrl, googleSiteVerification } from "@/config/site";
+import { Analytics } from "@vercel/analytics/next";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -91,6 +92,9 @@ export async function generateMetadata({
       site: siteConfig.twitter,
       creator: siteConfig.twitter,
     },
+    verification: googleSiteVerification
+      ? { google: googleSiteVerification }
+      : undefined,
     robots: {
       index: true,
       follow: true,
@@ -132,6 +136,14 @@ export default async function RootLayout({
           src="https://tally.so/widgets/embed.js"
           strategy="afterInteractive"
         />
+        {/* Leadsy.ai visitor-identification pixel. */}
+        <Script
+          id="vtag-ai-js"
+          src="https://r2.leadsy.ai/tag.js"
+          data-pid="1avdjXH59Tn2VO6Om"
+          data-version="062024"
+          strategy="afterInteractive"
+        />
         {/* Persistent scroll-morphing constellation behind all content. */}
         <CosmicField />
         <ScrollReveal />
@@ -141,6 +153,8 @@ export default async function RootLayout({
         <SiteFooter lang={lang} dict={dict} />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
+        {/* Cookieless, GDPR-friendly visitor + conversion analytics. */}
+        <Analytics />
       </body>
     </html>
   );
