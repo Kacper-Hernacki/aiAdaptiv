@@ -24,6 +24,11 @@ export const tallyFormId =
 
 export const tallyUrl = `https://tally.so/r/${tallyFormId}`;
 
+/** Google Analytics 4 measurement ID (looks like `G-XXXXXXXXXX`). Must be
+ * public because the gtag script runs client-side. Empty means GA is not
+ * mounted. Set NEXT_PUBLIC_GA_ID to enable. */
+export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_ID ?? "";
+
 /** Google Search Console verification token — the `content` value from the
  * `google-site-verification` meta tag Google gives you in the "HTML tag"
  * verification method. Set GOOGLE_SITE_VERIFICATION to emit the tag; empty

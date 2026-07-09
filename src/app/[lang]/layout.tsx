@@ -10,8 +10,14 @@ import {
   type Locale,
 } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { siteConfig, siteUrl, googleSiteVerification } from "@/config/site";
+import {
+  siteConfig,
+  siteUrl,
+  googleSiteVerification,
+  gaMeasurementId,
+} from "@/config/site";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -155,6 +161,8 @@ export default async function RootLayout({
         <WebSiteJsonLd />
         {/* Cookieless, GDPR-friendly visitor + conversion analytics. */}
         <Analytics />
+        {/* Google Analytics 4 — only mounted when NEXT_PUBLIC_GA_ID is set. */}
+        {gaMeasurementId && <GoogleAnalytics gaId={gaMeasurementId} />}
       </body>
     </html>
   );
