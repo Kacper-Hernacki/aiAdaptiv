@@ -4,9 +4,10 @@ seed.py — Provision the aiAdaptiv private-AI showcase into a FRESH Open WebUI.
 
 Creates (idempotency: intended for a fresh instance):
   - admin + members
-  - 3 knowledge bases: Deal Room (demo), aiAdaptiv Company & Product, aiAdaptiv Platform Docs
-  - 4 assistants: Deal Room Analyst, Contract Reviewer, Client Comms Drafter, aiAdaptiv Assistant
-  - 4 prompt slash-commands, 1 tool, 1 skill, 1 function (activated), 1 note
+  - 3 knowledge bases: Sample Documents (demo), aiAdaptiv Company & Product, aiAdaptiv Platform Docs
+  - 5 assistants: Document Intelligence, Contract Reviewer, Client Comms Drafter, aiAdaptiv Assistant,
+    AI Audit & Stack Advisor (recommends model/GPU/serving/cost from client needs)
+  - 4 prompt slash-commands, 2 tools, 1 skill, 1 function (activated), 1 note
 
 Usage:
     OWUI_URL=http://localhost:3000 python3 seed.py
@@ -117,9 +118,9 @@ def main():
         if st == 200: member_creds.append((m["email"], pw))
 
     print("\nKnowledge bases:")
-    kb_deal = create_kb(token, "Project Meridian — Deal Room",
-        "Confidential M&A deal documents (demo).",
-        sorted(str(p) for p in (SEED_DIR/"kb"/"deal-room").glob("*.md")))
+    kb_samples = create_kb(token, "Sample Documents",
+        "Example business documents (a services agreement + an NDA) for demoing document intelligence.",
+        sorted(str(p) for p in (SEED_DIR/"kb"/"sample-docs").glob("*.md")))
     kb_prod = create_kb(token, "aiAdaptiv — Company & Product",
         "What aiAdaptiv is, pricing, how it works, FAQ.",
         sorted(str(p) for p in (SEED_DIR/"kb"/"aiadaptiv").glob("*.md")))
@@ -135,15 +136,26 @@ def main():
         "ONLY the provided documents, citing them as [n]. Do NOT describe your process, do NOT say you "
         "are searching, and do NOT mention knowledge bases, files, or tools. State the answer immediately. "
         "If the answer is not in the documents, say so plainly in one sentence and do not speculate.")
+    DOCINTEL = ("You are aiAdaptiv's document-intelligence assistant. From the provided business documents, "
+        "extract key terms, flag risky or unusual clauses, produce summaries, and compare provisions on "
+        "request. Answer ONLY from the provided documents and cite them as [n]. Do NOT describe your process "
+        "or mention tools/knowledge bases. If something is not in the documents, say so in one sentence.")
+    ADVISOR_SYS = ("You are aiAdaptiv's AI audit advisor. Your job is to recommend a private-AI stack for a "
+        "prospective client. Collect these inputs: number of users; primary use cases; data sensitivity "
+        "(public / internal / confidential / regulated); desired quality (basic / balanced / high / top); "
+        "whether EU hosting is required; and budget. Ask for anything missing BEFORE recommending. Once you "
+        "have the inputs, call the recommend_stack tool, then present its recommendation clearly and add a "
+        "one-line compliance note. Be concise and practical.")
 
     print("\nAssistants (models):")
     MODELS = [
-      {"id":"deal-room-analyst","name":"⚖️ Deal Room Analyst","base_model_id":BASE_MODEL,
-       "meta":{"description":"Grounded Q&A over the confidential deal documents, with citations. Never invents facts.",
-               "capabilities":{"citations":True},"knowledge":[kbref(kb_deal)] if kb_deal else [],
-               "suggestion_prompts":[{"content":"Enterprise value and exclusivity deadline in Project Meridian?"},
-                                     {"content":"Rank the principal diligence risks by severity."}]},
-       "params":{"system":GROUNDED,"temperature":0.2}},
+      {"id":"document-intelligence","name":"📄 Document Intelligence","base_model_id":BASE_MODEL,
+       "meta":{"description":"Reads your business documents — extracts key terms, flags risks and unusual clauses, summarizes, and compares — always with citations.",
+               "capabilities":{"citations":True},"knowledge":[kbref(kb_samples)] if kb_samples else [],
+               "suggestion_prompts":[{"content":"What are the riskiest clauses in the services agreement?"},
+                                     {"content":"Summarize the NDA in 5 bullet points."},
+                                     {"content":"Compare each party's termination rights."}]},
+       "params":{"system":DOCINTEL,"temperature":0.2}},
       {"id":"contract-reviewer","name":"📝 Contract Reviewer","base_model_id":BASE_MODEL,
        "meta":{"description":"Flags risky clauses, missing protections, and ambiguities."},
        "params":{"system":"You are a senior contracts lawyer. For any clause or contract provided, output a "
@@ -160,6 +172,12 @@ def main():
                                      {"content":"How much does it cost and how long does setup take?"},
                                      {"content":"How do I deploy Open WebUI on Koyeb?"}]},
        "params":{"system":GROUNDED,"temperature":0.3}},
+      {"id":"stack-advisor","name":"🔍 AI Audit & Stack Advisor","base_model_id":BASE_MODEL,
+       "meta":{"description":"Interviews you about a client's needs, then recommends the private-AI stack — model, GPU, serving, hosting, and cost.",
+               "toolIds":["stack_advisor"],
+               "suggestion_prompts":[{"content":"Recommend a stack for a 30-user law firm handling confidential documents."},
+                                     {"content":"80 users, need high quality, regulated data — what infrastructure?"}]},
+       "params":{"system":ADVISOR_SYS,"function_calling":"native","temperature":0.2}},
     ]
     for m in MODELS:
         st, _ = api("POST", "/api/v1/models/create", token, m); ok(m["name"], st)
@@ -206,20 +224,103 @@ class Tools:
     st,_=api("POST","/api/v1/tools/create",token,{"id":"deadline_tools","name":"Deadline Tools",
         "content":TOOL,"meta":{"description":"Compute days remaining until a deadline."}}); ok("tool deadline_tools",st)
 
-    SKILL="""# Due Diligence Review
+    ADVISOR='''"""
+title: Stack Advisor
+author: aiAdaptiv
+version: 0.1.0
+description: Recommend a private-AI stack (model, GPU, serving, cost) from a client's needs.
+"""
+import math
 
-When asked to review deal or contract documents for due diligence, follow this procedure:
+class Tools:
+    def __init__(self):
+        pass
 
-1. **Parties & structure** — identify parties, structure, and headline value.
-2. **Key dates** — extract every deadline; flag anything under 30 days away.
-3. **Red flags** — tax disputes, litigation, change-of-control clauses, key-person risk, consents required.
-4. **Missing items** — note any standard diligence item absent from the documents.
-5. **Output** — a one-page summary: Parties · Value · Key Dates · Top 3 Risks (ranked) · Open Questions.
+    def recommend_stack(self, num_users: int, quality: str = "balanced", data_sensitivity: str = "confidential", peak_concurrency_pct: float = 6.0, eu_hosting_required: bool = True) -> str:
+        """
+        Recommend a private-AI infrastructure stack from a client's needs.
+        :param num_users: total number of users (seats).
+        :param quality: model quality - one of basic, balanced, high, top.
+        :param data_sensitivity: one of public, internal, confidential, regulated.
+        :param peak_concurrency_pct: percent of users generating at peak (default 6).
+        :param eu_hosting_required: whether data must stay in the EU.
+        :return: a formatted stack recommendation.
+        """
+        table = {
+            "basic":    ("Qwen 7B",   "RTX A6000 48GB",   0.75, 30),
+            "balanced": ("Qwen 14B",  "RTX A6000 48GB",   0.75, 20),
+            "high":     ("Qwen 32B",  "A100 80GB",        1.60, 15),
+            "top":      ("Qwen 72B",  "A100 80GB / H100", 2.50, 8),
+        }
+        q = (quality or "balanced").lower().strip()
+        if q not in table:
+            q = "balanced"
+        model, gpu, gpu_hr, cap = table[q]
+        try:
+            n = max(1, int(num_users))
+        except Exception:
+            n = 1
+        pct = peak_concurrency_pct if (peak_concurrency_pct and peak_concurrency_pct > 0) else 6.0
+        concurrency = max(1, round(n * pct / 100.0))
+        serving = "Ollama" if (n <= 10 and concurrency <= 2) else "vLLM (continuous batching)"
+        replicas = max(1, math.ceil(concurrency / cap))
+        gpu_month = round(gpu_hr * 730) * replicas
+        sens = (data_sensitivity or "confidential").lower().strip()
+        strict = sens in ("confidential", "regulated")
+        eu = eu_hosting_required or strict
+        hosting = "client's own EU cloud account" if eu else "any region"
+        controls = ["SSO + groups & per-KB RBAC", "audit log + admin oversight"]
+        if eu:
+            controls.insert(0, "EU hosting / data residency")
+        if sens == "regulated":
+            controls += ["documented retention & deletion", "EU AI Act risk assessment"]
+        total = gpu_month + 21 + 249
+        out = []
+        out.append("aiAdaptiv Stack Recommendation")
+        out.append("")
+        out.append("INPUTS: " + str(n) + " users | quality=" + q + " | data=" + sens + " | EU hosting=" + ("yes" if eu else "optional"))
+        out.append("")
+        out.append("RECOMMENDED STACK")
+        out.append("- Model: " + model)
+        out.append("- GPU: " + gpu + " x" + str(replicas) + " replica(s)")
+        out.append("- Serving: " + serving)
+        out.append("- Hosting: " + hosting)
+        out.append("- Vector store: pgvector (Postgres) for production; ChromaDB fine for a pilot")
+        out.append("")
+        out.append("CAPACITY")
+        out.append("- Est. peak concurrent generations: ~" + str(concurrency) + " (at " + str(int(pct)) + "% of " + str(n) + " users)")
+        out.append("- " + str(replicas) + " replica(s) to serve that comfortably")
+        out.append("")
+        out.append("COMPLIANCE")
+        for c in controls:
+            out.append("- " + c)
+        out.append("")
+        out.append("COST (rough, always-on; on-demand is cheaper)")
+        out.append("- GPU: ~EUR " + str(gpu_month) + "/mo (" + str(gpu_hr) + "/hr x" + str(replicas) + ")")
+        out.append("- Frontend CPU: ~EUR 21/mo")
+        out.append("- aiAdaptiv: EUR 1,999 setup + EUR 249/mo")
+        out.append("- Approx infra total: ~EUR " + str(total) + "/mo + setup")
+        out.append("")
+        out.append("Note: sizing assumes knowledge-worker usage; verify with a load test.")
+        return "\\n".join(out)
+'''
+    st,_=api("POST","/api/v1/tools/create",token,{"id":"stack_advisor","name":"Stack Advisor",
+        "content":ADVISOR,"meta":{"description":"Recommend a private-AI stack from a client's needs."}}); ok("tool stack_advisor",st)
+
+    SKILL="""# Document Review
+
+When asked to review a contract or business document, follow this procedure:
+
+1. **Parties & purpose** — identify the parties and what the document is for.
+2. **Key terms** — extract fees, term, renewal, payment terms, and any headline figures.
+3. **Key dates & deadlines** — extract every date and notice period; flag anything time-sensitive.
+4. **Risks & unusual clauses** — flag uncapped liability, auto-renewal, one-sided termination, missing protections, and anything unusual.
+5. **Output** — a one-page summary: Parties · Key Terms · Key Dates · Top 3 Risks (ranked) · Open Questions.
 
 Always cite the source document for each fact. Never state a fact not in the provided documents.
 """
-    st,_=api("POST","/api/v1/skills/create",token,{"id":"due-diligence-review","name":"Due Diligence Review",
-        "content":SKILL,"meta":{"description":"Structured procedure for reviewing deal documents."}}); ok("skill due-diligence-review",st)
+    st,_=api("POST","/api/v1/skills/create",token,{"id":"document-review","name":"Document Review",
+        "content":SKILL,"meta":{"description":"Structured procedure for reviewing contracts and business documents."}}); ok("skill document-review",st)
 
     FUNC=r'''"""
 title: Confidentiality Check
@@ -257,15 +358,15 @@ class Action:
         "type":"action","content":FUNC,"meta":{"description":"Flags emails, IBANs and monetary amounts."}}); ok("function confidentiality_check",st)
     st,_=api("POST","/api/v1/functions/id/confidentiality_check/toggle",token); ok("  activate function",st)
 
-    note_md=("## Project Meridian — Kickoff Call (5 June 2026)\n\n"
-      "Attendees: Managing Partner, Northwind deal lead, target CFO (Baltica).\n\n"
-      "- Sign by end of September; exclusivity to 15 Aug.\n"
-      "- PLN 2.1M VAT dispute — ring-fence in SPA.\n"
-      "- DHL change-of-control consent clause — confirm timeline.\n"
-      "- Two Gdansk ops leads = retention risk; earn-out/bonus.\n"
-      "- Follow-ups: confidentiality side letter, 3yr audited accounts, book data room.\n")
-    st,_=api("POST","/api/v1/notes/create",token,{"title":"Project Meridian — Kickoff Call Notes",
-        "data":{"content":{"md":note_md,"html":"<pre>"+note_md+"</pre>"}},"meta":{"tags":["deal","meridian"]}}); ok("note kickoff",st)
+    note_md=("## Services Agreement — Review Notes\n\n"
+      "Reviewing the Northstar / Meridian Retail master services agreement.\n\n"
+      "- Fees EUR 12,000/mo, net 30 — fine.\n"
+      "- ⚠️ Auto-renews for 12-month terms; 90 days notice required — easy to miss, calendar it.\n"
+      "- ⚠️ Provider liability is UNLIMITED — push for a cap (e.g. 12 months' fees).\n"
+      "- ⚠️ Termination is one-sided: Provider can exit for convenience, Client only for cause.\n"
+      "- Follow-ups: request a liability cap, add mutual termination-for-convenience, confirm renewal date.\n")
+    st,_=api("POST","/api/v1/notes/create",token,{"title":"Services Agreement — Review Notes",
+        "data":{"content":{"md":note_md,"html":"<pre>"+note_md+"</pre>"}},"meta":{"tags":["contract","review"]}}); ok("note review",st)
 
     print("\n" + "="*56)
     print("SEED COMPLETE")

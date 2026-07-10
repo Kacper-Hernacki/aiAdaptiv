@@ -6,13 +6,15 @@ Run it against any new deployment to recreate everything in ~1 minute.
 ## What it creates
 - **Admin** (`kacper@aiadaptiv.com`) + **members** (`hernackikacper@gmail.com`, `kacper@tryaiadaptiv.com`)
 - **3 knowledge bases**
-  - *Project Meridian — Deal Room* — confidential M&A demo docs (`kb/deal-room/`)
+  - *Sample Documents* — neutral demo docs: a services agreement + an NDA (`kb/sample-docs/`)
   - *aiAdaptiv — Company & Product* — real product info from the landing page (`kb/aiadaptiv/`)
   - *aiAdaptiv — Platform Docs* — the teaching docs in `../` (README + 01–10)
-- **4 assistants** — ⚖️ Deal Room Analyst (KB-grounded), 📝 Contract Reviewer, ✉️ Client Comms Drafter,
-  🧠 aiAdaptiv Assistant (grounded in the product + platform-docs KBs)
-- **4 prompts** (`/risks /summary /redline /plain`), **1 tool** (Deadline Tools),
-  **1 skill** (Due Diligence Review), **1 function** (Confidentiality Check, activated), **1 note**
+- **5 assistants** — 📄 Document Intelligence (KB-grounded: extract risks / summarize / compare),
+  📝 Contract Reviewer, ✉️ Client Comms Drafter, 🧠 aiAdaptiv Assistant (grounded in the product +
+  platform-docs KBs), 🔍 **AI Audit & Stack Advisor** (interviews for client needs → recommends
+  model / GPU / serving / hosting / cost via the `recommend_stack` tool)
+- **4 prompts** (`/risks /summary /redline /plain`), **2 tools** (Deadline Tools, Stack Advisor),
+  **1 skill** (Document Review), **1 function** (Confidentiality Check, activated), **1 note**
 
 ## Run it
 ```bash
@@ -43,6 +45,6 @@ Member passwords are generated and **printed at the end** — hand them out; cha
 ## Files
 ```
 seed.py                     the provisioning script
-kb/deal-room/*.md           confidential M&A demo documents
+kb/sample-docs/*.md         demo docs: a services agreement + an NDA
 kb/aiadaptiv/*.md           aiAdaptiv company & product (from the landing page)
 ```
