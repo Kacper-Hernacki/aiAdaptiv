@@ -28,7 +28,7 @@ export function SiteHeader({
           />
         </svg>
         <strong className={styles.brandName}>{siteConfig.name}</strong>
-        <span className={styles.brandLabel}>// {dict.header.programLabel}</span>
+        <span className={styles.brandLabel}>{dict.header.programLabel}</span>
       </Link>
       <TallyButton className={styles.cta}>{dict.header.cta}</TallyButton>
     </header>
