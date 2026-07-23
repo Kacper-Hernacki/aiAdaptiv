@@ -14,18 +14,27 @@ type Choice = "granted" | "denied";
  * gtag.js finishes loading — the queued command is processed on init. */
 function updateConsent(choice: Choice) {
   const value = choice === "granted" ? "granted" : "denied";
-  const w = window as unknown as { dataLayer?: unknown[] };
-  w.dataLayer = w.dataLayer || [];
-  w.dataLayer.push([
-    "consent",
-    "update",
-    {
-      ad_storage: value,
-      analytics_storage: value,
-      ad_user_data: value,
-      ad_personalization: value,
-    },
-  ]);
+  const w = window as unknown as {
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
+  };
+  const params = {
+    ad_storage: value,
+    analytics_storage: value,
+    ad_user_data: value,
+    ad_personalization: value,
+  };
+  // gtag.js only processes consent commands pushed as an `arguments` object
+  // via the global gtag() (defined by the Consent Mode script in the layout),
+  // NOT a plain array. Ensure that global exists, then send through it.
+  if (typeof w.gtag !== "function") {
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params
+      (w.dataLayer as unknown[]).push(arguments);
+    };
+  }
+  w.gtag("consent", "update", params);
 }
 
 /** Inject the Leadsy visitor-identification pixel once, only after consent. */
