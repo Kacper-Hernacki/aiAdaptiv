@@ -21,6 +21,21 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "en";
 
+/**
+ * Locales that have their own dictionary file. The rest are routable but serve
+ * English copy (see the `// TODO: translate` entries in dictionaries.ts), so
+ * they must NOT self-canonicalize or appear in hreflang/sitemap — that would
+ * publish 8 duplicate English pages competing with /en. They canonicalize to
+ * the default locale instead. Move a locale here the moment its dictionary
+ * lands, and it starts being indexed in its own right.
+ */
+export const translatedLocales = ["en", "pl"] as const satisfies readonly Locale[];
+
+/** True when `locale` has real translated copy rather than the English fallback. */
+export function isTranslated(locale: Locale): boolean {
+  return (translatedLocales as readonly Locale[]).includes(locale);
+}
+
 /** Native language names — used for the language switcher. */
 export const localeNames: Record<Locale, string> = {
   en: "English",

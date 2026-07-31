@@ -1,5 +1,5 @@
 import { siteConfig, siteUrl } from "@/config/site";
-import { locales, localeNames, defaultLocale } from "@/i18n/config";
+import { translatedLocales, localeNames, defaultLocale } from "@/i18n/config";
 
 /**
  * /llms.txt — an emerging convention (llmstxt.org) that gives LLMs and AI
@@ -25,7 +25,7 @@ understand the site and cite it accurately.
 
 ## Languages
 
-${locales.map((l) => `- ${localeNames[l]}: ${siteUrl}/${l}`).join("\n")}
+${translatedLocales.map((l) => `- ${localeNames[l]}: ${siteUrl}/${l}`).join("\n")}
 
 ## Resources
 

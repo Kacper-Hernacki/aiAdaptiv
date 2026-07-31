@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { locales, defaultLocale, isLocale } from "@/i18n/config";
+import {
+  translatedLocales,
+  defaultLocale,
+  isLocale,
+  isTranslated,
+} from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { siteUrl } from "@/config/site";
 import s from "./Terms.module.css";
@@ -16,8 +21,10 @@ export async function generateMetadata({
 
   const dict = await getDictionary(lang);
 
+  // Same rule as the landing page: only translated locales are their own
+  // indexable version; the rest canonicalize to English. See i18n/config.ts.
   const languages: Record<string, string> = Object.fromEntries(
-    locales.map((l) => [l, `/${l}/terms`]),
+    translatedLocales.map((l) => [l, `/${l}/terms`]),
   );
   languages["x-default"] = `/${defaultLocale}/terms`;
 
@@ -26,7 +33,9 @@ export async function generateMetadata({
     title: { absolute: dict.terms.metaTitle },
     description: dict.terms.metaDescription,
     alternates: {
-      canonical: `/${lang}/terms`,
+      canonical: isTranslated(lang)
+        ? `/${lang}/terms`
+        : `/${defaultLocale}/terms`,
       languages,
     },
   };

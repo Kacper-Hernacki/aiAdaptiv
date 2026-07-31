@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import {
   locales,
+  translatedLocales,
   defaultLocale,
   ogLocales,
   isLocale,
+  isTranslated,
   type Locale,
 } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -64,11 +66,17 @@ export async function generateMetadata({
 
   const dict = await getDictionary(lang);
 
-  // hreflang map: every locale + x-default → English.
+  // hreflang map: only translated locales + x-default → English. Untranslated
+  // locales serve English copy, so listing them here would claim 8 distinct
+  // language versions of the same page.
   const languages: Record<string, string> = Object.fromEntries(
-    locales.map((l) => [l, `/${l}`]),
+    translatedLocales.map((l) => [l, `/${l}`]),
   );
   languages["x-default"] = `/${defaultLocale}`;
+
+  // Untranslated locales consolidate their ranking signal into /en rather than
+  // competing with it as duplicates.
+  const canonical = isTranslated(lang) ? `/${lang}` : `/${defaultLocale}`;
 
   return {
     metadataBase: new URL(siteUrl),
@@ -80,14 +88,16 @@ export async function generateMetadata({
     creator: siteConfig.name,
     publisher: siteConfig.name,
     alternates: {
-      canonical: `/${lang}`,
+      canonical,
       languages,
     },
     openGraph: {
       type: "website",
       locale: ogLocales[lang],
-      alternateLocale: locales.filter((l) => l !== lang).map((l) => ogLocales[l]),
-      url: `/${lang}`,
+      alternateLocale: translatedLocales
+        .filter((l) => l !== lang)
+        .map((l) => ogLocales[l]),
+      url: canonical,
       siteName: siteConfig.name,
       title: dict.meta.title,
       description: dict.meta.description,
