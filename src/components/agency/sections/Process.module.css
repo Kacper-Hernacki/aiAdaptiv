@@ -1,37 +1,50 @@
 .steps {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-24);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5em;
+  margin-top: 3em;
+  width: 100%;
 }
 
 .step {
-  border-top: 1px solid var(--hairline);
-  padding-top: var(--space-18);
+  padding: 1.5em;
+  border-radius: var(--radius);
+  background: var(--card);
 }
 
-.number {
-  display: block;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  color: var(--color-plum);
+.num {
+  margin-bottom: 1em;
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
 }
 
 .title {
-  margin: var(--space-12) 0;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.021em;
-  color: var(--color-bone);
+  margin-bottom: 0.75em;
+  font-size: 1.25em;
+  font-weight: 500;
+  color: var(--fg);
 }
 
 .body {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--color-ash);
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  font-size: 0.95em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+@media screen and (max-width: 991px) {
+  .steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
 }

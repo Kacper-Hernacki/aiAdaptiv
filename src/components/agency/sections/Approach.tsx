@@ -1,6 +1,7 @@
 import type { Dictionary } from "@/i18n/dictionaries";
 import s from "../Agency.module.css";
 
+/** The one always-dark band in the middle of the light page. */
 export function Approach({
   approach,
 }: {
@@ -10,24 +11,28 @@ export function Approach({
     <section
       id="approach"
       aria-labelledby="approach-heading"
-      className={s.section}
+      className={`${s.section} ${s.bandDark}`}
     >
-      <h2 id="approach-heading" className={s.h2} data-reveal>
-        {approach.h2}
-      </h2>
-      <ul className={`${s.grid} ${s.gridTwo}`}>
-        {approach.items.map((item, i) => (
-          <li
-            key={item.title}
-            className={s.card}
-            data-reveal
-            style={{ "--rd": `${80 + i * 80}ms` } as React.CSSProperties}
-          >
-            <h3 className={s.cardTitle}>{item.title}</h3>
-            <p className={s.cardBody}>{item.body}</p>
-          </li>
-        ))}
-      </ul>
+      <div className={s.inner}>
+        <div className={s.titleWrap}>
+          <h2 id="approach-heading" className={s.h2} data-reveal>
+            {approach.h2}
+          </h2>
+        </div>
+        <ul className={s.cardGrid}>
+          {approach.items.map((item, i) => (
+            <li
+              key={item.title}
+              className={s.card}
+              data-reveal
+              style={{ "--rd": `${80 + i * 80}ms` } as React.CSSProperties}
+            >
+              <h3 className={s.cardTitle}>{item.title}</h3>
+              <p className={s.cardBody}>{item.body}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

@@ -90,7 +90,14 @@ export type Dictionary = {
    */
   agency: {
     meta: { title: string; description: string };
-    header: { tagline: string; cta: string; nav: { label: string; href: string }[] };
+    header: {
+      cta: string;
+      /** Accessible name for the mobile hamburger button. */
+      menuLabel: string;
+      nav: { label: string; href: string }[];
+    };
+    /** Accessible label for the light/dark toggle. */
+    theme: { toggle: string };
     hero: {
       eyebrow: string;
       /** Rendered as one `<h1>`; `accent` parts get emphasis styling. */
@@ -109,6 +116,8 @@ export type Dictionary = {
       h2: string;
       body: string[];
       cta: string;
+      /** Caption on the image slot, so an unfilled slot still reads clearly. */
+      mediaLabel: string;
     };
     work: {
       h2: string;
@@ -126,6 +135,7 @@ export type Dictionary = {
       lead: string;
       points: string[];
       cta: string;
+      mediaLabel: string;
     };
     team: {
       h2: string;
@@ -152,7 +162,9 @@ export type Dictionary = {
       cta: string;
     };
     footer: {
-      blurb: string;
+      heading: string;
+      lead: string;
+      cta: string;
       groups: { label: string; links: { label: string; href: string }[] }[];
       rights: string;
     };

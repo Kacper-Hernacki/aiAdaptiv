@@ -253,8 +253,8 @@
       "description": "We design, build and run production AI systems for European companies — private LLM platforms, AI agents and workflow automation, deployed on infrastructure you own. Book a 30-minute call."
     },
     "header": {
-      "tagline": "AI systems, built and run",
       "cta": "Book a call",
+      "menuLabel": "Open menu",
       "nav": [
         {
           "label": "What we build",
@@ -273,6 +273,9 @@
           "href": "#contact"
         }
       ]
+    },
+    "theme": {
+      "toggle": "Toggle light or dark theme"
     },
     "hero": {
       "eyebrow": "AI delivery partner · European mid-market",
@@ -366,7 +369,8 @@
         "TODO(copy): second paragraph. What makes the delivery different: fixed scope, fixed price, weekly demos, and a system that runs after we leave.",
         "Every engagement ends the same way: a working system, documentation your team can act on, and a handover — or a retainer, if you would rather we kept running it."
       ],
-      "cta": "Book a 30-minute call"
+      "cta": "Book a 30-minute call",
+      "mediaLabel": "Photo slot"
     },
     "work": {
       "h2": "Selected work",
@@ -409,7 +413,8 @@
         "GDPR and EU AI Act aligned by architecture, not by policy document.",
         "Fixed setup fee plus a monthly management fee. No per-seat token surprises."
       ],
-      "cta": "See the platform"
+      "cta": "See the platform",
+      "mediaLabel": "Product screenshot"
     },
     "team": {
       "h2": "Who you actually work with",
@@ -515,7 +520,9 @@
       "cta": "Book a 30-minute call"
     },
     "footer": {
-      "blurb": "AI systems designed, built and operated for European companies. Based in the EU, deployed in your cloud.",
+      "heading": "Work with us",
+      "lead": "Start with a free, thirty-minute mapping call.",
+      "cta": "Let's talk",
       "groups": [
         {
           "label": "Company",

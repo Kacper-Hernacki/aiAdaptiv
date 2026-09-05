@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { notFound } from "next/navigation";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import {
   locales,
   translatedLocales,
@@ -23,10 +23,11 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { AgencyHeader } from "@/components/agency/AgencyHeader";
 import { AgencyFooter } from "@/components/agency/AgencyFooter";
-import { CosmicField } from "@/components/CosmicField";
+import { ThemeToggle } from "@/components/agency/ThemeToggle";
+import { themeInitScript } from "@/components/agency/theme";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CookieConsent } from "@/components/CookieConsent";
-import "../../globals.css";
+import "../../agency.css";
 
 /**
  * Root layout for the agency site on the apex domain. The product site has its
@@ -35,42 +36,12 @@ import "../../globals.css";
  * only exists inside the [lang] segment.
  */
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "700"],
   display: "swap",
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const acronym = Inter({
-  variable: "--font-acronym",
-  subsets: ["latin"],
-  weight: ["200", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-/**
- * Scroll anchors for the constellation, in page order. Must be a module
- * constant: CosmicField re-runs its whole WebGL setup whenever this array
- * identity changes, so an inline literal would tear the canvas down on every
- * render.
- */
-const AGENCY_SECTIONS = [
-  "capabilities",
-  "proof",
-  "work",
-  "product",
-  "team",
-  "approach",
-  "process",
-  "faq",
-  "contact",
-];
 
 // Only the listed locales are valid routes; anything else 404s.
 export const dynamicParams = false;
@@ -150,7 +121,12 @@ export async function generateMetadata({
 }
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  // Matches the page background in each theme, so the mobile browser chrome
+  // doesn't sit in the wrong palette.
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f7f8" },
+    { media: "(prefers-color-scheme: dark)", color: "#111113" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -165,10 +141,12 @@ export default async function AgencyRootLayout({
   const dict = await getDictionary(lang as Locale);
 
   return (
-    <html
-      lang={lang}
-      className={`${geistSans.variable} ${geistMono.variable} ${acronym.variable}`}
-    >
+    <html lang={lang} className={dmSans.variable} suppressHydrationWarning>
+      <head>
+        {/* Applies the stored theme before first paint — no flash of the
+            wrong palette. See components/agency/theme.ts. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         {/* Google Consent Mode v2 — deny all storage by default until the
             visitor accepts via the cookie banner (see CookieConsent). Must run
@@ -176,8 +154,6 @@ export default async function AgencyRootLayout({
         <Script id="consent-default" strategy="beforeInteractive">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});`}
         </Script>
-        {/* Persistent scroll-morphing constellation behind all content. */}
-        <CosmicField sections={AGENCY_SECTIONS} />
         <ScrollReveal />
         <a href="#main">{dict.skipToContent}</a>
         <AgencyHeader lang={lang} header={dict.agency.header} />
@@ -194,7 +170,8 @@ export default async function AgencyRootLayout({
         {/* Google Analytics 4 — only mounted when NEXT_PUBLIC_GA_ID is set. */}
         {gaMeasurementId && <GoogleAnalytics gaId={gaMeasurementId} />}
         {/* Cookie consent banner — gates GA4 + Leadsy behind opt-in. */}
-        <CookieConsent lang={lang} dict={dict.cookies} />
+        <CookieConsent lang={lang} dict={dict.cookies} variant="light" />
+        <ThemeToggle label={dict.agency.theme.toggle} />
       </body>
     </html>
   );

@@ -1,61 +1,51 @@
 import type { Dictionary } from "@/i18n/dictionaries";
 import { bookingUrl } from "@/config/site";
-import { ScrollExit } from "@/components/ScrollExit";
-import styles from "./AgencyHero.module.css";
+import { PillButton } from "../PillButton";
+import s from "../Agency.module.css";
+import h from "./AgencyHero.module.css";
 
 export function AgencyHero({ hero }: { hero: Dictionary["agency"]["hero"] }) {
   return (
-    <section id="hero" aria-labelledby="hero-heading" className={styles.hero}>
-      <div className={styles.inner}>
-        <ScrollExit>
-          <div className={styles.content}>
-            <p className={styles.eyebrow} data-reveal>
-              {hero.eyebrow}
-            </p>
-            <h1
-              id="hero-heading"
-              className={styles.headline}
+    <section id="hero" aria-labelledby="hero-heading" className={h.hero}>
+      <div className={h.inner}>
+        <p className={s.super} data-reveal>
+          {hero.eyebrow}
+        </p>
+        <h1
+          id="hero-heading"
+          className={`${s.h1} ${h.title}`}
+          data-reveal
+          style={{ "--rd": "80ms" } as React.CSSProperties}
+        >
+          {hero.headline.map((part) => part.text).join(" ")}
+        </h1>
+        <p
+          className={h.sub}
+          data-reveal
+          style={{ "--rd": "160ms" } as React.CSSProperties}
+        >
+          {hero.subhead}
+        </p>
+        <ul className={h.stats}>
+          {hero.stats.map((stat, i) => (
+            <li
+              key={stat.label}
+              className={h.stat}
               data-reveal
-              style={{ "--rd": "80ms" } as React.CSSProperties}
+              style={{ "--rd": `${220 + i * 60}ms` } as React.CSSProperties}
             >
-              {hero.headline.map((part, i) => (
-                <span key={i} className={part.accent ? styles.accent : undefined}>
-                  {part.text}
-                </span>
-              ))}
-            </h1>
-            <p
-              className={styles.subhead}
-              data-reveal
-              style={{ "--rd": "160ms" } as React.CSSProperties}
-            >
-              {hero.subhead}
-            </p>
-            <div data-reveal style={{ "--rd": "240ms" } as React.CSSProperties}>
-              <a
-                href={bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.cta}
-              >
-                {hero.cta}
-              </a>
-            </div>
-            <ul className={styles.stats}>
-              {hero.stats.map((stat, i) => (
-                <li
-                  key={stat.label}
-                  className={styles.stat}
-                  data-reveal
-                  style={{ "--rd": `${320 + i * 70}ms` } as React.CSSProperties}
-                >
-                  <span className={styles.statValue}>{stat.value}</span>
-                  <span className={styles.statLabel}>{stat.label}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </ScrollExit>
+              <span className={h.statNum}>{stat.value}</span>
+              <span className={h.statLabel}>{stat.label}</span>
+            </li>
+          ))}
+        </ul>
+        <div
+          className={h.ctaWrap}
+          data-reveal
+          style={{ "--rd": "460ms" } as React.CSSProperties}
+        >
+          <PillButton href={bookingUrl}>{hero.cta}</PillButton>
+        </div>
       </div>
     </section>
   );

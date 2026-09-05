@@ -1,272 +1,447 @@
 /*
- * Shared section primitives for the agency site (apex domain).
- *
- * Deliberately a sibling of sections/Section.module.css rather than an import
- * of it: that file hardcodes the product page's footer height and a scrim tuned
- * to its particle choreography, so sharing it would couple every agency tweak
- * to the product page. Both files draw from the same globals.css tokens, which
- * is what actually keeps the two sites looking like one brand.
+ * Component styles for the agency site. Tokens and the em scale come from
+ * app/agency.css; every size here is in em so the whole page scales with the
+ * fluid root font-size, the way the reference does.
  */
 
+/* ── Section shells ────────────────────────────────────────── */
 .section {
   position: relative;
   width: 100%;
-  max-width: var(--page-max);
-  margin: 0 auto;
-  min-height: 100svh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(60px, 9vw, 120px) clamp(24px, 3vw, 48px);
+  flex-flow: column;
+  align-items: center;
+  padding: var(--band-pad) 0;
 }
 
-/* Bands that carry a lot of rows (work, team, faq) grow past one viewport
-   rather than compressing their content into it. */
-.tall {
-  min-height: auto;
-  padding-top: clamp(80px, 11vw, 160px);
-  padding-bottom: clamp(80px, 11vw, 160px);
+/* Alternating band, one shade down from the page. */
+.bandAlt {
+  background-color: var(--bg-alt);
 }
 
-.center {
+/* Always-dark band, in both themes. */
+.bandDark {
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    #141420 0%,
+    var(--band-dark) 70%
+  );
+  color: var(--on-dark);
+}
+
+.inner {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 10;
+}
+
+.centered {
   text-align: center;
 }
 
-@media (max-width: 900px) {
-  /* Mobile: content sits below the clear upper zone where the particle shape
-     rides, mirroring the product page's composition. */
-  .section {
-    justify-content: flex-start;
-    padding-top: 34svh;
-  }
-
-  .tall {
-    padding-top: clamp(80px, 11vw, 160px);
-  }
-
-  /* Legibility scrim — invisible over the black canvas; it only dims the
-     particle field across the band where the copy sits. */
-  .section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0) 24%,
-      rgba(0, 0, 0, 0.78) 34%,
-      rgba(0, 0, 0, 0.78) 82%,
-      rgba(0, 0, 0, 0.2) 96%,
-      rgba(0, 0, 0, 0) 100%
-    );
-  }
-
-  .tall::before {
-    background: rgba(0, 0, 0, 0.72);
-  }
-
-  .section > * {
-    position: relative;
-    z-index: 1;
-  }
+/* ── Type ──────────────────────────────────────────────────── */
+.super {
+  display: inline-flex;
+  margin-bottom: 0.25em;
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
 }
 
-/* ── Type ──────────────────────────────────────────────────── */
-.eyebrow {
-  margin: 0 0 var(--space-18);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-plum);
+.bandDark .super {
+  color: var(--on-dark-faint);
+}
+
+.h1 {
+  font-size: 3.75em;
+  font-weight: 500;
+  line-height: 105%;
+  letter-spacing: -0.027em;
+  color: var(--fg);
 }
 
 .h2 {
-  margin: 0 0 var(--space-24);
-  max-width: 18ch;
+  max-width: 20em;
+  font-size: 2.5em;
   font-weight: 500;
-  font-size: clamp(34px, 5.4vw, 78px);
-  line-height: 1;
-  letter-spacing: -0.035em;
-  color: var(--color-bone);
-  text-shadow:
-    0 2px 14px rgba(0, 0, 0, 0.95),
-    0 0 6px rgba(0, 0, 0, 0.9);
+  line-height: 105%;
+  letter-spacing: -0.027em;
+  color: var(--fg);
 }
 
-.center .h2 {
-  max-width: none;
+.centered .h2 {
   margin-left: auto;
   margin-right: auto;
+}
+
+.bandDark .h2,
+.bandDark .h3 {
+  color: var(--on-dark);
+}
+
+.h3 {
+  font-size: 1.75em;
+  font-weight: 500;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+  color: var(--fg);
 }
 
 .lead {
-  max-width: 60ch;
-  margin: 0 0 var(--space-36);
-  font-size: clamp(16px, 1.5vw, 20px);
-  line-height: 1.45;
-  letter-spacing: 0.021em;
-  color: var(--color-ash);
-  text-shadow:
-    0 2px 14px rgba(0, 0, 0, 0.95),
-    0 0 6px rgba(0, 0, 0, 0.9);
+  max-width: 40em;
+  font-size: 1.1em;
+  line-height: 155%;
+  color: var(--fg-muted);
 }
 
-.center .lead {
+.centered .lead {
   margin-left: auto;
   margin-right: auto;
 }
 
-.body {
-  max-width: 62ch;
-  margin: 0 0 var(--space-18);
-  font-size: clamp(15px, 1.2vw, 18px);
-  line-height: 1.6;
-  letter-spacing: 0.025em;
-  color: var(--color-ash);
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+.bandDark .lead {
+  color: var(--on-dark-muted);
 }
 
-.accent {
-  color: var(--color-plum);
+.p {
+  font-size: 1em;
+  line-height: 155%;
+  color: var(--fg);
 }
 
-/* ── Cards / grid ──────────────────────────────────────────── */
-.grid {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-18);
-}
-
-.gridTwo {
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-}
-
-.card {
-  height: 100%;
+/* Heading + lead stack. */
+.titleWrap {
   display: flex;
-  flex-direction: column;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius);
-  padding: var(--space-24);
-  background: rgba(0, 0, 0, 0.66);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
+  flex-flow: column;
+  gap: 0.75em;
+  width: 100%;
 }
 
-.cardTitle {
-  margin: 0 0 var(--space-12);
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.021em;
-  color: var(--color-bone);
-}
-
-.cardBody {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--color-ash);
-}
-
-/* ── Tag chips ─────────────────────────────────────────────── */
-.tags {
-  list-style: none;
-  padding: 0;
-  margin: var(--space-18) 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tag {
-  border: 1px solid var(--hairline-strong);
-  border-radius: var(--radius);
-  padding: 6px 14px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-smoke);
-}
-
-/* ── Hairline statement list ───────────────────────────────── */
-.points {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-width: 70ch;
-}
-
-.point {
-  display: flex;
-  gap: 16px;
-  padding: var(--space-18) 0;
-  border-top: 1px solid var(--hairline);
-  font-size: clamp(15px, 1.5vw, 19px);
-  line-height: 1.45;
-  color: var(--color-bone);
-  text-shadow:
-    0 2px 14px rgba(0, 0, 0, 0.95),
-    0 0 6px rgba(0, 0, 0, 0.9);
-}
-
-.point::before {
-  content: "—";
-  color: var(--color-plum);
-  flex: none;
-}
-
-/* ── Buttons ───────────────────────────────────────────────── */
-.btnPrimary {
-  display: inline-block;
-  background: var(--color-plum);
-  color: var(--color-bone);
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 14px 22px;
-  border-radius: var(--radius);
-  text-decoration: none;
+/* ── Pill button ───────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.2em 0.25em 0.2em 1em;
+  border: none;
+  border-radius: var(--pill);
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 130%;
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
 
-.btnGhost {
-  display: inline-block;
-  background: transparent;
-  border: 1px solid var(--hairline-strong);
-  color: var(--color-bone);
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 13px 21px;
-  border-radius: var(--radius);
-  text-decoration: none;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
+.btn:hover {
+  opacity: 0.85;
 }
 
 .btnLarge {
-  font-size: 14px;
-  padding: 16px 30px;
+  font-size: 1.1em;
 }
 
-.btnPrimary:hover,
-.btnGhost:hover {
-  opacity: 0.9;
+/* On always-dark bands the button inverts regardless of theme. */
+.bandDark .btn,
+.ctaSection .btn {
+  background-color: var(--on-dark);
+  color: #111113;
 }
 
-.ctaWrap {
-  margin-top: var(--space-36);
+/* The label slides up on hover while a duplicate slides in from below. */
+.btnLabel {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.btnLabelHover {
+  position: absolute;
+  transform: translate3d(0, 100%, 0);
+}
+
+.btn:hover .btnLabelHover {
+  transform: translateZ(0);
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .btnLabelBase {
+  transform: translate3d(0, -100%, 0);
+}
+
+.btnLabelBase,
+.btnLabelHover {
+  transition: transform 0.3s ease;
+}
+
+.btnIconBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.25em;
+  height: 2.25em;
+  overflow: hidden;
+  border-radius: 100%;
+  background-color: var(--btn-icon-bg);
+  color: var(--btn-icon-fg);
+}
+
+.bandDark .btnIconBox,
+.ctaSection .btnIconBox {
+  background-color: #111113;
+  color: var(--on-dark);
+}
+
+.btnIcon {
+  width: 1em;
+}
+
+.btnIconHover {
+  position: absolute;
+  width: 1em;
+  transform: translateX(-200%);
+}
+
+.btn:hover .btnIconHover {
+  transform: translateX(0);
+}
+
+.btnIcon,
+.btnIconHover {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .btnIconBase {
+  transform: translateX(200%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btnLabelBase,
+  .btnLabelHover,
+  .btnIcon,
+  .btnIconHover {
+    transition: none;
+  }
+}
+
+/* ── Chips ─────────────────────────────────────────────────── */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-flow: wrap;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+.tag {
+  padding: 0.4em 0.85em;
+  border-radius: 6.5em;
+  background-color: var(--chip);
+  font-size: 0.8em;
+  color: inherit;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+/* ── Generic card grid ─────────────────────────────────────── */
+.cardGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5em;
+  margin-top: 3em;
+  width: 100%;
+}
+
+.cardGridThree {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  display: flex;
+  flex-flow: column;
+  padding: 1.5em;
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.bandDark .card {
+  background: var(--on-dark-card);
+}
+
+.cardTitle {
+  margin-bottom: 0.75em;
+  font-size: 1.25em;
+  font-weight: 500;
+  line-height: 120%;
+  color: var(--fg);
+}
+
+.bandDark .cardTitle {
+  color: var(--on-dark);
+}
+
+.cardBody {
+  font-size: 0.95em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.bandDark .cardBody {
+  color: var(--on-dark-muted);
+}
+
+/* ── Two-column text + media ───────────────────────────────── */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  align-items: center;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.splitText {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 1em;
+}
+
+.splitMedia {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ── Hairline list ─────────────────────────────────────────── */
+.points {
+  list-style: none;
+  width: 100%;
+  max-width: 46em;
+  margin-top: 2em;
+}
+
+.point {
+  padding: 0.85em 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 1.0625em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.bandDark .point {
+  border-bottom-color: var(--on-dark-hairline);
+  color: var(--on-dark-muted);
+}
+
+.point:last-child {
+  border-bottom: none;
+}
+
+/* ── Always-dark CTA band ──────────────────────────────────── */
+.ctaSection {
+  background: var(--cta-bg);
+  overflow: hidden;
+}
+
+.ctaGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 40%,
+    #1a1a2e 0%,
+    transparent 70%
+  );
+}
+
+.ctaInner {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1.25em;
+  text-align: center;
+}
+
+.ctaSection .h2 {
+  max-width: none;
+  color: var(--on-dark);
+}
+
+.ctaSub {
+  max-width: 32em;
+  font-size: 1.1em;
+  line-height: 155%;
+  color: var(--on-dark-muted);
+}
+
+.ctaNote {
+  font-size: 0.9em;
+  color: var(--on-dark-faint);
+}
+
+.ctaBtnWrap {
+  margin-top: 0.75em;
+  font-size: 1.1em;
+}
+
+/* ── Mobile ────────────────────────────────────────────────── */
+@media screen and (max-width: 991px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+
+  .h1,
+  .h2 {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .h3 {
+    font-size: 28px;
+  }
+
+  .lead {
+    font-size: 20px;
+    max-width: 100%;
+  }
+
+  .cardGrid,
+  .cardGridThree {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+
+  .btnLarge,
+  .ctaBtnWrap {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

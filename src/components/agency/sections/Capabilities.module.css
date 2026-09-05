@@ -1,0 +1,140 @@
+/* Full-bleed square cards: artwork behind, an overlay that fades away on
+   hover, and the copy inverting to white as it does. */
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 4.2em;
+  width: 100%;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  padding: 3em;
+  overflow: hidden;
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.artDim {
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  opacity: 0.4;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: hsla(0, 0%, 97%, 0.88);
+  transition: opacity 0.4s ease;
+}
+
+:global(:root[data-theme="dark"]) .overlay {
+  background-color: rgba(0, 0, 0, 0.78);
+}
+
+.card:hover .overlay {
+  opacity: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-bottom: 1em;
+  text-align: center;
+  transition: color 0.4s ease;
+}
+
+.title {
+  font-size: 1.35em;
+  font-weight: 500;
+  line-height: 115%;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  transition: color 0.4s ease;
+}
+
+.body {
+  margin-top: 0.6em;
+  font-size: 0.95em;
+  line-height: 155%;
+  color: var(--fg-muted);
+  transition: color 0.4s ease;
+}
+
+.card:hover .title,
+.card:hover .body {
+  color: #ffffff;
+}
+
+.tags {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  gap: 0.5em;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.tag {
+  padding: 0.4em 0.85em;
+  border-radius: 6.5em;
+  background-color: var(--chip);
+  font-size: 0.8em;
+  color: var(--fg);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+.card:hover .tag {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Touch devices have no hover: show the "hovered" state permanently rather
+   than leaving the artwork hidden behind a dimmed overlay forever. */
+@media (hover: none), screen and (max-width: 991px) {
+  .grid {
+    grid-template-columns: 1fr;
+    margin-top: 32px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+
+  .overlay {
+    opacity: 0;
+  }
+
+  .title,
+  .body {
+    color: #ffffff;
+  }
+
+  .tag {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1400px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

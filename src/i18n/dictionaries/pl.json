@@ -253,8 +253,8 @@
       "description": "Projektujemy, budujemy i utrzymujemy produkcyjne systemy AI dla europejskich firm — prywatne platformy LLM, agentów i automatyzację procesów, na infrastrukturze, którą posiadasz. Umów 30-minutową rozmowę."
     },
     "header": {
-      "tagline": "Systemy AI — zbudowane i utrzymywane",
       "cta": "Umów rozmowę",
+      "menuLabel": "Otwórz menu",
       "nav": [
         {
           "label": "Co budujemy",
@@ -273,6 +273,9 @@
           "href": "#contact"
         }
       ]
+    },
+    "theme": {
+      "toggle": "Przełącz jasny lub ciemny motyw"
     },
     "hero": {
       "eyebrow": "Partner wdrożeniowy AI · europejski średni biznes",
@@ -366,7 +369,8 @@
         "TODO(copy): second paragraph (PL). Co wyróżnia realizację: ustalony zakres, stała cena, cotygodniowe demo i system, który działa po naszym wyjściu.",
         "Każde wdrożenie kończy się tak samo: działającym systemem, dokumentacją, z której zespół realnie korzysta, i przekazaniem — albo abonamentem, jeśli wolisz, żebyśmy prowadzili go dalej."
       ],
-      "cta": "Umów 30-minutową rozmowę"
+      "cta": "Umów 30-minutową rozmowę",
+      "mediaLabel": "Miejsce na zdjęcie"
     },
     "work": {
       "h2": "Wybrane realizacje",
@@ -409,7 +413,8 @@
         "Zgodność z RODO i AI Act wynika z architektury, nie z dokumentu polityki.",
         "Stała opłata wdrożeniowa plus miesięczne zarządzanie. Bez niespodzianek za tokeny i licencje na użytkownika."
       ],
-      "cta": "Zobacz platformę"
+      "cta": "Zobacz platformę",
+      "mediaLabel": "Zrzut ekranu produktu"
     },
     "team": {
       "h2": "Z kim faktycznie pracujesz",
@@ -515,7 +520,9 @@
       "cta": "Umów 30-minutową rozmowę"
     },
     "footer": {
-      "blurb": "Systemy AI projektowane, budowane i utrzymywane dla europejskich firm. Siedziba w UE, wdrożenie w Twojej chmurze.",
+      "heading": "Współpraca",
+      "lead": "Zacznij od bezpłatnej, 30-minutowej rozmowy.",
+      "cta": "Porozmawiajmy",
       "groups": [
         {
           "label": "Firma",

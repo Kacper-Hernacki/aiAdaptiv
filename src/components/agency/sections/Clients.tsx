@@ -17,14 +17,14 @@ export function Clients({
               copy is decorative and hidden from assistive tech. */}
           <ul className={styles.row}>
             {clients.names.map((name, i) => (
-              <li key={i} className={styles.name}>
+              <li key={i} className={styles.item}>
                 {name}
               </li>
             ))}
           </ul>
           <ul className={styles.row} aria-hidden="true">
             {clients.names.map((name, i) => (
-              <li key={i} className={styles.name}>
+              <li key={i} className={styles.item}>
                 {name}
               </li>
             ))}
