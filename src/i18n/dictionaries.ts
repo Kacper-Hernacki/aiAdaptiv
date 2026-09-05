@@ -106,7 +106,9 @@ export type Dictionary = {
       cta: string;
       stats: { value: string; label: string }[];
     };
-    clients: { label: string; names: string[] };
+    /** Label for the tech-stack marquee; the brands themselves are in
+     *  components/agency/techLogos.ts. */
+    tech: { label: string };
     capabilities: {
       h2: string;
       lead: string;

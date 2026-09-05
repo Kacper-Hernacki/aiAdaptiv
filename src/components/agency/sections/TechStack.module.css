@@ -41,7 +41,7 @@
 .track {
   display: flex;
   width: max-content;
-  animation: marqueeScroll 25s linear infinite;
+  animation: marqueeScroll 55s linear infinite;
 }
 
 .band:hover .track {
@@ -52,16 +52,36 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 3em;
-  padding-right: 3em;
+  gap: 2.6em;
+  padding-right: 2.6em;
 }
 
+/* Each entry is a mark plus its wordmark. Six of the tools have no licensed
+   mark available, so they show the wordmark alone — which sits fine in the
+   rhythm because every other entry carries its name too. */
 .item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  white-space: nowrap;
+  color: var(--fg-muted);
+  transition: color 0.2s ease;
+}
+
+.item:hover {
+  color: var(--fg);
+}
+
+.mark {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+
+.name {
   font-size: 0.88em;
   font-weight: 500;
   letter-spacing: -0.01em;
-  white-space: nowrap;
-  color: var(--fg-muted);
 }
 
 @keyframes marqueeScroll {

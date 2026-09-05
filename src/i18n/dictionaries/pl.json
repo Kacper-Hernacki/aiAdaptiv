@@ -309,16 +309,8 @@
         }
       ]
     },
-    "clients": {
-      "label": "Zespoły, dla których budowaliśmy",
-      "names": [
-        "TODO(copy): client",
-        "TODO(copy): client",
-        "TODO(copy): client",
-        "TODO(copy): client",
-        "TODO(copy): client",
-        "TODO(copy): client"
-      ]
+    "tech": {
+      "label": "Na czym budujemy"
     },
     "capabilities": {
       "h2": "Co budujemy",

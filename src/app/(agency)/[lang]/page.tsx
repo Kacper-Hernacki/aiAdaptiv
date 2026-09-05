@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { AgencyHero } from "@/components/agency/sections/AgencyHero";
-import { Clients } from "@/components/agency/sections/Clients";
+import { TechStack } from "@/components/agency/sections/TechStack";
 import { Capabilities } from "@/components/agency/sections/Capabilities";
 import { Proof } from "@/components/agency/sections/Proof";
 import { Work } from "@/components/agency/sections/Work";
@@ -16,10 +16,8 @@ import { Contact } from "@/components/agency/sections/Contact";
 type PageParams = { params: Promise<{ lang: string }> };
 
 /**
- * Section order matches AGENCY_SECTIONS in the layout — that list drives the
- * constellation's scroll choreography, so keep the two in sync when adding or
- * reordering sections. `clients` is a thin band, not a scroll beat, so it is
- * deliberately absent from that list.
+ * The tech strip is a thin band between the hero and the first real section,
+ * not a full-height section of its own.
  */
 export default async function AgencyHome({ params }: PageParams) {
   const { lang } = await params;
@@ -30,7 +28,7 @@ export default async function AgencyHome({ params }: PageParams) {
   return (
     <main id="main">
       <AgencyHero hero={agency.hero} />
-      <Clients clients={agency.clients} />
+      <TechStack tech={agency.tech} />
       <Capabilities capabilities={agency.capabilities} />
       <Proof proof={agency.proof} />
       <Work work={agency.work} />
