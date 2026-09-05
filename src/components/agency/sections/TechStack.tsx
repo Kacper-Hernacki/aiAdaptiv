@@ -15,7 +15,7 @@ function Row({ hidden }: { hidden?: boolean }) {
           {logo.path ? (
             <svg
               className={styles.mark}
-              viewBox="0 0 24 24"
+              viewBox={logo.viewBox ?? "0 0 24 24"}
               aria-hidden="true"
               focusable="false"
             >
