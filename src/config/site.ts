@@ -31,9 +31,15 @@ export const openllmHost = new URL(openllmUrl).host;
 export const calendlyUrl =
   process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/d/dzz5-bt2-xyk";
 
-/** Booking link for the agency site — every primary CTA on aiadaptiv.com opens
- * this directly (no eligibility form in front of it, unlike the product site). */
-export const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL ?? calendlyUrl;
+/**
+ * Booking link for the agency site — every primary CTA on aiadaptiv.com opens
+ * this directly (no eligibility form in front of it, unlike the product site).
+ * Points at the "AI mapping call" Cal.com event type (30 min, Cal Video).
+ * Override with NEXT_PUBLIC_BOOKING_URL to swap it without a deploy.
+ */
+export const bookingUrl =
+  process.env.NEXT_PUBLIC_BOOKING_URL ??
+  "https://cal.com/kacper-hernacki/ai-mapping-call";
 
 /** Tally eligibility form. Every primary CTA opens this as a popup. */
 export const tallyFormId =
