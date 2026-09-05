@@ -249,8 +249,8 @@
   },
   "agency": {
     "meta": {
-      "title": "aiAdaptiv — AI systems that ship, for European companies",
-      "description": "We design, build and run production AI systems for European companies — private LLM platforms, AI agents and workflow automation, deployed on infrastructure you own. Book a 30-minute call."
+      "title": "aiAdaptiv — Custom AI solutions: SaaS, mobile apps, automations",
+      "description": "We design, build and ship custom AI solutions — AI SaaS products, mobile apps, automations, pilots, marketing systems and private open-source LLM platforms. Book a 30-minute call."
     },
     "header": {
       "cta": "Book a call",
@@ -278,17 +278,17 @@
       "toggle": "Toggle light or dark theme"
     },
     "hero": {
-      "eyebrow": "AI delivery partner · European mid-market",
+      "eyebrow": "Custom AI solutions · Designed, built, shipped",
       "headline": [
         {
-          "text": "The AI partner for European companies that"
+          "text": "Custom AI, built and shipped —"
         },
         {
-          "text": "need it working, not demoed.",
+          "text": "not demoed.",
           "accent": true
         }
       ],
-      "subhead": "We design, build and operate production AI systems — private LLM platforms, document intelligence, agents and workflow automation — on infrastructure you own, inside EU jurisdiction.",
+      "subhead": "AI SaaS products, mobile apps, automations, pilots, marketing systems and private LLM platforms. We design them, build them, and keep them running.",
       "cta": "Book a 30-minute call",
       "stats": [
         {
@@ -322,42 +322,60 @@
     },
     "capabilities": {
       "h2": "What we build",
-      "lead": "Four things, done properly, on your infrastructure. Not a deck — a system your team logs into on Monday.",
+      "lead": "Six practices, one senior team. Every one of them has been shipped into production for a paying client — none of it is a capability slide.",
       "items": [
         {
-          "title": "Private AI platforms",
-          "body": "A white-labeled chat and document-intelligence platform running open-source models inside your own EU cloud account. Your keys, your data, your tenancy.",
+          "title": "AI SaaS products",
+          "body": "We design and ship complete AI products: architecture, the model layer, auth, billing and the interface your customers actually use. From an empty repo to paying users.",
           "tags": [
-            "Open-source LLMs",
-            "EU hosting",
-            "SSO & audit"
+            "Full-stack build",
+            "LLM architecture",
+            "Launch"
           ]
         },
         {
-          "title": "Document intelligence",
-          "body": "Contract review, due diligence, tender analysis and knowledge retrieval over your own archive — with citations back to the source page, so a professional can verify every answer.",
+          "title": "Mobile apps",
+          "body": "Native and cross-platform apps with AI at the centre — on-device where privacy or latency demands it, cloud where it doesn't. Shipped to the App Store and Play Store, not parked in TestFlight.",
           "tags": [
-            "RAG",
-            "Citations",
-            "Bulk ingest"
+            "iOS & Android",
+            "On-device AI",
+            "Store launch"
           ]
         },
         {
-          "title": "AI agents & automation",
-          "body": "Agents that do the work rather than describe it: intake triage, research, drafting, data entry, and the integrations that move the output into the systems you already run.",
+          "title": "AI automations",
+          "body": "Agents and workflows that do the work rather than describe it: intake triage, research, drafting, data entry — plus the integrations that push the output into the systems you already run.",
           "tags": [
-            "Tool use",
+            "Agents",
             "Integrations",
             "Human-in-the-loop"
           ]
         },
         {
-          "title": "Audits & enablement",
-          "body": "A clear-eyed read of where AI actually pays back in your operation, what it costs to run, and what the EU AI Act obliges you to document — plus training so your team owns it.",
+          "title": "AI pilots & case studies",
+          "body": "A scoped pilot that answers one question: does AI actually pay back here? You get a working proof of concept, real numbers on cost and quality, and a written case for or against building further.",
           "tags": [
-            "AI audit",
+            "Proof of concept",
             "Cost modelling",
-            "Team training"
+            "Written verdict"
+          ]
+        },
+        {
+          "title": "AI marketing",
+          "body": "Growth systems run by AI: lead sourcing and enrichment, personalised outbound that survives a reply, content engines, and the reporting that shows which part actually worked.",
+          "tags": [
+            "Outbound systems",
+            "Content engines",
+            "Attribution"
+          ]
+        },
+        {
+          "title": "AI app factory",
+          "body": "A production line for internal tools — shared stack, shared components, one repeatable process — so the fifth app costs a fraction of the first. For teams that need ten things built, not one.",
+          "tags": [
+            "Repeatable stack",
+            "Internal tools",
+            "Volume delivery"
           ]
         }
       ]
@@ -406,8 +424,8 @@
       ]
     },
     "product": {
-      "h2": "Our own product, running in production",
-      "lead": "We do not only advise on private AI — we sell and operate it. openllm.aiadaptiv.com is our packaged private-AI platform: open-source models, deployed inside your own EU cloud account, managed by us.",
+      "h2": "Private open-source AI — one of the things we build",
+      "lead": "Some work cannot touch a public API. For that we have a packaged offer: open-source models deployed inside your own EU cloud account, white-labeled and managed by us. It lives on its own site, and it is one card in the six above — not the whole company.",
       "points": [
         "Fully white-labeled, deployed in your cloud tenancy — you own the infrastructure, keys and data.",
         "GDPR and EU AI Act aligned by architecture, not by policy document.",
@@ -497,7 +515,7 @@
         },
         {
           "q": "Where does our data live?",
-          "a": "In your own cloud tenancy, in an EU region you choose. We deploy under your account and your keys; nothing is routed through us, and no client data reaches a third-party model provider unless you explicitly ask for it."
+          "a": "For anything we host for you, in your own cloud tenancy in an EU region you choose — we deploy under your account and your keys. For products we build for your customers, you own the infrastructure and we design the data path with you before a line is written."
         },
         {
           "q": "Do we have to use open-source models?",

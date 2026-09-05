@@ -3,7 +3,7 @@
 .grid {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 4.2em;
   width: 100%;
 }
@@ -35,7 +35,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: hsla(0, 0%, 97%, 0.88);
+  background-color: hsla(0, 0%, 97%, 0.82);
   transition: opacity 0.4s ease;
 }
 
@@ -133,7 +133,7 @@
   }
 }
 
-@media screen and (min-width: 992px) and (max-width: 1400px) {
+@media screen and (min-width: 992px) and (max-width: 1200px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }

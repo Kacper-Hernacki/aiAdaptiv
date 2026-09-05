@@ -249,8 +249,8 @@
   },
   "agency": {
     "meta": {
-      "title": "aiAdaptiv — systemy AI, które działają w produkcji",
-      "description": "Projektujemy, budujemy i utrzymujemy produkcyjne systemy AI dla europejskich firm — prywatne platformy LLM, agentów i automatyzację procesów, na infrastrukturze, którą posiadasz. Umów 30-minutową rozmowę."
+      "title": "aiAdaptiv — rozwiązania AI na zamówienie: SaaS, mobile, automatyzacje",
+      "description": "Projektujemy, budujemy i wdrażamy rozwiązania AI na zamówienie — produkty AI SaaS, aplikacje mobilne, automatyzacje, pilotaże, systemy marketingowe i prywatne platformy LLM open source. Umów 30-minutową rozmowę."
     },
     "header": {
       "cta": "Umów rozmowę",
@@ -278,17 +278,17 @@
       "toggle": "Przełącz jasny lub ciemny motyw"
     },
     "hero": {
-      "eyebrow": "Partner wdrożeniowy AI · europejski średni biznes",
+      "eyebrow": "Rozwiązania AI na zamówienie · Projekt, budowa, wdrożenie",
       "headline": [
         {
-          "text": "Partner AI dla firm, które potrzebują"
+          "text": "AI na zamówienie — zbudowane i wdrożone,"
         },
         {
-          "text": "działającego systemu, nie demo.",
+          "text": "nie pokazane na demo.",
           "accent": true
         }
       ],
-      "subhead": "Projektujemy, budujemy i utrzymujemy produkcyjne systemy AI — prywatne platformy LLM, analizę dokumentów, agentów i automatyzację procesów — na infrastrukturze, którą posiadasz, w jurysdykcji UE.",
+      "subhead": "Produkty AI SaaS, aplikacje mobilne, automatyzacje, pilotaże, systemy marketingowe i prywatne platformy LLM. Projektujemy je, budujemy i utrzymujemy w ruchu.",
       "cta": "Umów 30-minutową rozmowę",
       "stats": [
         {
@@ -322,42 +322,60 @@
     },
     "capabilities": {
       "h2": "Co budujemy",
-      "lead": "Cztery rzeczy, zrobione porządnie, na Twojej infrastrukturze. Nie prezentacja — system, do którego zespół loguje się w poniedziałek.",
+      "lead": "Sześć obszarów, jeden doświadczony zespół. Każdy z nich trafił u klienta na produkcję — to nie jest slajd z kompetencjami.",
       "items": [
         {
-          "title": "Prywatne platformy AI",
-          "body": "W pełni white-label platforma czatu i analizy dokumentów oparta na modelach open-source, uruchomiona w Twoim koncie chmurowym w UE. Twoje klucze, Twoje dane, Twoja infrastruktura.",
+          "title": "Produkty AI SaaS",
+          "body": "Projektujemy i dowozimy kompletne produkty AI: architekturę, warstwę modeli, logowanie, płatności i interfejs, z którego realnie korzystają klienci. Od pustego repozytorium do płacących użytkowników.",
           "tags": [
-            "Modele open-source",
-            "Hosting w UE",
-            "SSO i audyt"
+            "Pełny stack",
+            "Architektura LLM",
+            "Wdrożenie"
           ]
         },
         {
-          "title": "Analiza dokumentów",
-          "body": "Przegląd umów, due diligence, analiza przetargów i wyszukiwanie wiedzy w Twoim archiwum — z odnośnikami do konkretnej strony źródłowej, żeby specjalista mógł zweryfikować każdą odpowiedź.",
+          "title": "Aplikacje mobilne",
+          "body": "Aplikacje natywne i cross-platform z AI w centrum — na urządzeniu tam, gdzie wymaga tego prywatność albo czas odpowiedzi, w chmurze tam, gdzie nie. Wypuszczone do App Store i Google Play, nie zostawione w TestFlight.",
           "tags": [
-            "RAG",
-            "Cytowania",
-            "Import masowy"
+            "iOS i Android",
+            "AI na urządzeniu",
+            "Publikacja"
           ]
         },
         {
-          "title": "Agenci AI i automatyzacja",
-          "body": "Agenci, którzy wykonują pracę, a nie ją opisują: kwalifikacja zgłoszeń, research, redagowanie, wprowadzanie danych — wraz z integracjami, które przenoszą wynik do systemów, z których już korzystasz.",
+          "title": "Automatyzacje AI",
+          "body": "Agenci i procesy, które wykonują pracę, a nie ją opisują: kwalifikacja zgłoszeń, research, redagowanie, wprowadzanie danych — plus integracje, które przenoszą wynik do systemów, z których już korzystasz.",
           "tags": [
-            "Narzędzia",
+            "Agenci",
             "Integracje",
             "Kontrola człowieka"
           ]
         },
         {
-          "title": "Audyty i szkolenia",
-          "body": "Trzeźwa ocena, gdzie AI faktycznie się zwraca w Twojej organizacji, ile kosztuje utrzymanie i co AI Act każe udokumentować — plus szkolenie, żeby zespół sam to prowadził.",
+          "title": "Pilotaże i studia przypadku AI",
+          "body": "Zamknięty pilotaż, który odpowiada na jedno pytanie: czy AI faktycznie się tu zwraca? Dostajesz działający proof of concept, twarde liczby o koszcie i jakości oraz pisemną rekomendację — za albo przeciw dalszej budowie.",
           "tags": [
-            "Audyt AI",
+            "Proof of concept",
             "Model kosztów",
-            "Szkolenia"
+            "Pisemna rekomendacja"
+          ]
+        },
+        {
+          "title": "Marketing AI",
+          "body": "Systemy wzrostu prowadzone przez AI: pozyskiwanie i wzbogacanie leadów, spersonalizowany outbound, który wytrzymuje odpowiedź, silniki treści i raportowanie pokazujące, co realnie zadziałało.",
+          "tags": [
+            "Systemy outbound",
+            "Silniki treści",
+            "Atrybucja"
+          ]
+        },
+        {
+          "title": "Fabryka aplikacji AI",
+          "body": "Linia produkcyjna narzędzi wewnętrznych — wspólny stack, wspólne komponenty, jeden powtarzalny proces — dzięki czemu piąta aplikacja kosztuje ułamek pierwszej. Dla zespołów, które potrzebują dziesięciu rzeczy, nie jednej.",
+          "tags": [
+            "Powtarzalny stack",
+            "Narzędzia wewnętrzne",
+            "Dostawa seryjna"
           ]
         }
       ]
@@ -406,8 +424,8 @@
       ]
     },
     "product": {
-      "h2": "Nasz własny produkt, działający w produkcji",
-      "lead": "Nie tylko doradzamy w temacie prywatnego AI — sprzedajemy je i utrzymujemy. openllm.aiadaptiv.com to nasza gotowa platforma prywatnego AI: modele open-source wdrożone w Twoim koncie chmurowym w UE, zarządzane przez nas.",
+      "h2": "Prywatne AI open source — jedna z rzeczy, które budujemy",
+      "lead": "Część pracy nie może dotknąć publicznego API. Na to mamy gotową ofertę: modele open source wdrożone w Twoim koncie chmurowym w UE, white-label, zarządzane przez nas. Ma własną stronę i jest jedną z sześciu kart powyżej — nie całą firmą.",
       "points": [
         "W pełni white-label, wdrożone w Twojej chmurze — to Ty posiadasz infrastrukturę, klucze i dane.",
         "Zgodność z RODO i AI Act wynika z architektury, nie z dokumentu polityki.",
@@ -497,7 +515,7 @@
         },
         {
           "q": "Gdzie znajdują się nasze dane?",
-          "a": "W Twoim koncie chmurowym, w wybranym regionie UE. Wdrażamy na Twoim koncie i Twoich kluczach; nic nie przechodzi przez nas, a dane klientów nie trafiają do zewnętrznego dostawcy modeli, chyba że wyraźnie o to poprosisz."
+          "a": "Dla wszystkiego, co hostujemy dla Ciebie — w Twoim koncie chmurowym, w wybranym regionie UE; wdrażamy na Twoim koncie i Twoich kluczach. Dla produktów, które budujemy dla Twoich klientów, infrastruktura należy do Ciebie, a ścieżkę danych projektujemy wspólnie, zanim powstanie pierwsza linia kodu."
         },
         {
           "q": "Czy musimy używać modeli open-source?",
