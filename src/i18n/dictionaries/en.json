@@ -432,17 +432,17 @@
       "members": [
         {
           "name": "Kacper Hernacki",
-          "role": "Founder",
+          "role": "Founder & CTO",
           "body": [
-            "TODO(copy): bio paragraph — background, what you have shipped, why a client should trust you with a production system.",
-            "TODO(copy): second paragraph — public track record, talks, open-source, or notable clients."
+            "Over a decade of full-stack engineering since 2014, now spent turning complex problems into intelligent, scalable systems — web apps, mobile apps and automation workflows delivered for clients worldwide.",
+            "Holds multiple certifications in AI development, and scopes every engagement personally: the person who writes your proposal is the person who architects the build."
           ]
         },
         {
-          "name": "TODO(copy): name",
-          "role": "TODO(copy): role",
+          "name": "Julia Hernacka",
+          "role": "Co-founder & AI marketing engineer",
           "body": [
-            "TODO(copy): bio paragraph. Remove this whole entry if the team is one person today — an honest one-person team reads better than an invented second."
+            "TODO(copy): Julia's bio — background, what she has built, and why a client should trust her with their growth systems. One or two paragraphs, same length as the one above."
           ]
         }
       ]

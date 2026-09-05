@@ -52,6 +52,11 @@ export function OrganizationJsonLd({ baseUrl = siteUrl }: { baseUrl?: string }) 
             email: config.supportEmail,
           },
         ],
+        founder: config.founders.map((f) => ({
+          "@type": "Person",
+          name: f.name,
+          jobTitle: f.jobTitle,
+        })),
         sameAs: config.organization.sameAs,
       }}
     />

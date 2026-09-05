@@ -432,17 +432,17 @@
       "members": [
         {
           "name": "Kacper Hernacki",
-          "role": "Założyciel",
+          "role": "Założyciel i CTO",
           "body": [
-            "TODO(copy): bio paragraph (PL) — doświadczenie, co dowiozłeś, dlaczego klient ma powierzyć Ci system produkcyjny.",
-            "TODO(copy): second paragraph (PL) — publiczne dokonania, wystąpienia, open source, znani klienci."
+            "Ponad dekada inżynierii full-stack od 2014 roku, dziś poświęcona zamienianiu złożonych problemów w inteligentne, skalowalne systemy — aplikacje webowe, mobilne i automatyzacje dowożone klientom na całym świecie.",
+            "Ma kilka certyfikacji z obszaru rozwoju AI i osobiście ustala zakres każdego wdrożenia: osoba, która pisze ofertę, jest tą samą, która projektuje architekturę."
           ]
         },
         {
-          "name": "TODO(copy): name",
-          "role": "TODO(copy): role",
+          "name": "Julia Hernacka",
+          "role": "Współzałożycielka i inżynierka AI marketingu",
           "body": [
-            "TODO(copy): bio paragraph (PL). Usuń cały wpis, jeśli dziś zespół to jedna osoba — uczciwy jednoosobowy zespół czyta się lepiej niż wymyślony drugi."
+            "TODO(copy): bio Julii (PL) — doświadczenie, co zbudowała i dlaczego klient ma powierzyć jej swoje systemy wzrostu. Jeden lub dwa akapity, tej samej długości co powyżej."
           ]
         }
       ]

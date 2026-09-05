@@ -64,6 +64,11 @@ const brand = {
   name: "aiAdaptiv",
   shortName: "aiAdaptiv",
   twitter: "@aiadaptiv",
+  /** Emitted as schema.org Person entries under the Organization. */
+  founders: [
+    { name: "Kacper Hernacki", jobTitle: "Founder & CTO" },
+    { name: "Julia Hernacka", jobTitle: "Co-founder & AI marketing engineer" },
+  ],
   organization: {
     legalName: "aiAdaptiv",
     sameAs: [
