@@ -15,17 +15,16 @@ import styles from "./AgencyFooter.module.css";
 function resolveHref(href: string, lang: string): string {
   if (href === "@openllm") return openllmUrl;
   if (href === "@terms") return `/${lang}/terms`;
+  if (href === "@privacy") return `/${lang}/privacy`;
   return href;
 }
 
 export function AgencyFooter({
   lang,
   agency,
-  disclaimer,
 }: {
   lang: string;
   agency: Dictionary["agency"];
-  disclaimer: string;
 }) {
   const year = new Date().getFullYear();
   const { footer } = agency;
@@ -85,7 +84,7 @@ export function AgencyFooter({
         </div>
 
         <p id="legal" className={styles.disclaimer}>
-          {disclaimer}
+          {agency.legal.disclaimer}
         </p>
       </div>
     </footer>

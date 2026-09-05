@@ -158,11 +158,7 @@ export default async function AgencyRootLayout({
         <a href="#main">{dict.skipToContent}</a>
         <AgencyHeader lang={lang} header={dict.agency.header} />
         {children}
-        <AgencyFooter
-          lang={lang}
-          agency={dict.agency}
-          disclaimer={dict.footer.disclaimer}
-        />
+        <AgencyFooter lang={lang} agency={dict.agency} />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
         {/* Cookieless, GDPR-friendly visitor + conversion analytics. */}
@@ -170,7 +166,12 @@ export default async function AgencyRootLayout({
         {/* Google Analytics 4 — only mounted when NEXT_PUBLIC_GA_ID is set. */}
         {gaMeasurementId && <GoogleAnalytics gaId={gaMeasurementId} />}
         {/* Cookie consent banner — gates GA4 + Leadsy behind opt-in. */}
-        <CookieConsent lang={lang} dict={dict.cookies} variant="light" />
+        <CookieConsent
+          lang={lang}
+          dict={dict.cookies}
+          variant="light"
+          learnMoreHref={`/${lang}/privacy`}
+        />
         <ThemeToggle label={dict.agency.theme.toggle} />
       </body>
     </html>

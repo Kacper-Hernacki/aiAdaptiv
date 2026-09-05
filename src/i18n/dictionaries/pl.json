@@ -557,6 +557,10 @@
             {
               "label": "Regulamin",
               "href": "@terms"
+            },
+            {
+              "label": "Prywatność",
+              "href": "@privacy"
             }
           ]
         },
@@ -600,6 +604,225 @@
         }
       ],
       "rights": "Wszelkie prawa zastrzeżone."
+    },
+    "legal": {
+      "disclaimer": "aiAdaptiv świadczy usługi tworzenia oprogramowania i systemów AI na zamówienie, na podstawie pisemnej oferty uzgodnionej z każdym klientem. Prawa do rezultatów przechodzą na klienta po pełnej zapłacie. Systemy AI generują wyniki probabilistyczne i są dostarczane bez gwarancji określonych rezultatów biznesowych. Nic na tej stronie nie stanowi oferty w rozumieniu Kodeksu cywilnego, wyceny ani porady prawnej.",
+      "terms": {
+        "metaTitle": "Regulamin — aiAdaptiv",
+        "metaDescription": "Zasady, na jakich aiAdaptiv świadczy usługi tworzenia systemów AI i oprogramowania na zamówienie: oferty, wynagrodzenie, prawa autorskie, poufność, ochrona danych i odpowiedzialność.",
+        "h1": "Regulamin",
+        "updated": "Ostatnia aktualizacja: 5 września 2026",
+        "intro": "Ten regulamin określa zasady świadczenia usług przez aiAdaptiv („my”) na rzecz klienta („Ty”). Obowiązuje razem z pisemną ofertą dotyczącą Twojego wdrożenia; w razie rozbieżności pierwszeństwo ma oferta. Samego korzystania ze strony dotyczy wyłącznie punkt 1.",
+        "sections": [
+          {
+            "h": "1. Ta strona",
+            "body": [
+              "Strona opisuje, czym się zajmujemy. Nic na niej nie stanowi oferty w rozumieniu Kodeksu cywilnego, wyceny ani zobowiązania do realizacji w podanej cenie lub terminie — współpraca zaczyna się dopiero po obustronnym podpisaniu pisemnej oferty.",
+              "Liczby, terminy i studia przypadku opisują wcześniejsze prace w ich własnych warunkach i nie są prognozą Twoich rezultatów."
+            ]
+          },
+          {
+            "h": "2. Co robimy",
+            "body": [
+              "Projektujemy, budujemy, wdrażamy i — jeśli tak uzgodnimy — utrzymujemy oprogramowanie i systemy AI na zamówienie. Typowe prace to produkty AI SaaS, aplikacje mobilne, automatyzacje i agenci, zamknięte pilotaże, systemy marketingowe oraz prywatne platformy LLM wdrażane w infrastrukturze, którą kontrolujesz.",
+              "Zakres wdrożenia wyznacza wyłącznie podpisana oferta. Prace poza nim są zmianą zakresu zgodnie z punktem 4."
+            ]
+          },
+          {
+            "h": "3. Oferta, zakres i wynagrodzenie",
+            "body": [
+              "Każde wdrożenie ma pisemną ofertę określającą zakres, rezultaty, harmonogram i stałą cenę. Cena obowiązuje dla tego zakresu.",
+              "Jeśli oferta nie stanowi inaczej, faktury są płatne w terminie 14 dni. Opóźnienie uprawnia nas do odsetek ustawowych i do wstrzymania prac do czasu uregulowania należności.",
+              "Ceny nie zawierają VAT ani kosztów zewnętrznych — hostingu w chmurze, użycia API modeli, opłat sklepów z aplikacjami, licencji — które opłacasz bezpośrednio u dostawców, chyba że pisemnie ustalimy inaczej."
+            ]
+          },
+          {
+            "h": "4. Zmiany zakresu",
+            "body": [
+              "Każda ze stron może zaproponować zmianę zakresu. Zmiana wchodzi w życie dopiero po pisemnym uzgodnieniu jej wpływu na cenę i harmonogram.",
+              "Harmonogramy zakładają, że zapewnisz dostępy, treści, decyzje i akceptacje w potrzebnym czasie. Opóźnienia po Twojej stronie przesuwają terminy."
+            ]
+          },
+          {
+            "h": "5. Twoje obowiązki",
+            "body": [
+              "Zapewniasz terminowy dostęp do systemów, kont, danych i osób niezbędnych do prac oraz dbasz o bezpieczeństwo własnych kont i danych uwierzytelniających.",
+              "Potwierdzasz, że masz prawo przekazać nam dane, treści i dostępy, które nam udostępniasz, oraz że uzgodnione ich wykorzystanie nie narusza praw osób trzecich ani Twoich zobowiązań.",
+              "Odpowiadasz za sposób, w jaki korzystasz z tego, co zbudujemy, w tym za decyzje podejmowane na podstawie wyników systemu."
+            ]
+          },
+          {
+            "h": "6. Usługi zewnętrzne i modele AI",
+            "body": [
+              "Nasze prace integrują usługi zewnętrzne — dostawców modeli, platformy chmurowe, sklepy z aplikacjami, narzędzia SaaS. Ich własne regulaminy i cenniki regulują te usługi, dostawcy mogą je zmieniać, a my nie odpowiadamy za ich dostępność, wyniki ani działania.",
+              "Systemy AI są probabilistyczne. Mogą generować wyniki błędne, obarczone uprzedzeniami lub nieodpowiednie do danego celu, a to samo zapytanie nie musi dać dwa razy tego samego rezultatu. Ewaluację i weryfikację przez człowieka wbudowujemy tam, gdzie przewiduje to oferta, ale nie gwarantujemy poprawności, kompletności ani przydatności wyników AI do określonego celu.",
+              "Jeżeli system podlega unijnemu AI Act, poinformujemy Cię, jak rozumiemy jego klasyfikację w kontekście budowy. Ocena i wypełnienie Twoich własnych obowiązków jako podmiotu stosującego pozostaje po Twojej stronie."
+            ]
+          },
+          {
+            "h": "7. Prawa własności intelektualnej",
+            "body": [
+              "Po zapłacie całości wynagrodzenia przenosimy na Ciebie prawa własności intelektualnej do rezultatów wykonanych specjalnie dla Ciebie w ramach oferty, w zakresie, w jakim prawa te są zbywalne.",
+              "Zachowujemy prawa do tego, co wnosimy: istniejącego wcześniej kodu, narzędzi, bibliotek, szablonów i know-how, a także do rozwiązań ogólnych, niespecyficznych dla Ciebie. Otrzymujesz bezterminową, niewyłączną i zbywalną licencję na korzystanie z tych elementów wbudowanych w Twoje rezultaty.",
+              "Twoje dane, treści i znaki towarowe pozostają Twoje. Komponenty zewnętrzne i open source pozostają na własnych licencjach, które wskażemy na życzenie.",
+              "Jeśli nie zastrzeżesz inaczej na piśmie, możemy podawać Cię jako klienta i ogólnie opisywać wykonane prace."
+            ]
+          },
+          {
+            "h": "8. Poufność",
+            "body": [
+              "Każda ze stron zachowa w poufności niepubliczne informacje drugiej strony, wykorzysta je wyłącznie na potrzeby współpracy i zabezpieczy co najmniej z należytą starannością. Obowiązek trwa trzy lata po zakończeniu współpracy, a bezterminowo w odniesieniu do tajemnicy przedsiębiorstwa.",
+              "Nie dotyczy informacji publicznych nie z winy odbiorcy, posiadanych wcześniej zgodnie z prawem, opracowanych niezależnie lub podlegających ujawnieniu na podstawie przepisów — o czym uprzedzimy Cię, o ile wolno nam to zrobić."
+            ]
+          },
+          {
+            "h": "9. Ochrona danych osobowych",
+            "body": [
+              "Jeżeli przetwarzamy dane osobowe w Twoim imieniu, Ty jesteś administratorem, a my podmiotem przetwarzającym; przed rozpoczęciem takiego przetwarzania zawrzemy umowę powierzenia określającą przedmiot, czas, cel i zabezpieczenia.",
+              "Wdrażamy w infrastrukturze, którą kontrolujesz, wszędzie tam, gdzie przewiduje to oferta, tak aby Twoje dane osobowe pozostały na Twoim koncie i Twoich kluczach.",
+              "Sposób, w jaki postępujemy z danymi przekazanymi nam bezpośrednio — zapytanie, rezerwacja rozmowy — opisuje nasza Polityka prywatności."
+            ]
+          },
+          {
+            "h": "10. Odbiór i wady",
+            "body": [
+              "Rezultaty uznaje się za odebrane po upływie okresu weryfikacji wskazanego w ofercie, a w jego braku po 14 dniach, jeżeli nie zgłosisz pisemnie istotnej wady.",
+              "Wady zgłoszone w ciągu 30 dni od odbioru, które uniemożliwiają działanie rezultatu zgodnie z ofertą, usuwamy bezpłatnie. Poza tym okresem wsparcie obejmuje wyłącznie odrębna umowa abonamentowa."
+            ]
+          },
+          {
+            "h": "11. Gwarancje i ich wyłączenie",
+            "body": [
+              "Zapewniamy, że wykonamy prace z należytą starannością, przez odpowiednio wykwalifikowane osoby, i że mamy prawo zawrzeć tę umowę.",
+              "Poza tym, w zakresie dopuszczalnym przez prawo, usługi i rezultaty dostarczamy w stanie „jak jest”: nie gwarantujemy nieprzerwanego ani bezbłędnego działania, rezultatów usług zewnętrznych ani osiągnięcia określonych efektów handlowych, przychodowych czy wydajnościowych."
+            ]
+          },
+          {
+            "h": "12. Ograniczenie odpowiedzialności",
+            "body": [
+              "Żadna ze stron nie ogranicza odpowiedzialności za śmierć lub szkodę na osobie wskutek niedbalstwa, za działanie umyślne ani za cokolwiek, czego prawo nie pozwala ograniczyć.",
+              "Poza tym żadna ze stron nie odpowiada za utracone korzyści, utracone przychody, utratę lub uszkodzenie danych ani za szkody pośrednie; a nasza łączna odpowiedzialność z tytułu wdrożenia jest ograniczona do wynagrodzenia zapłaconego nam w ramach tego wdrożenia w ciągu dwunastu miesięcy poprzedzających roszczenie.",
+              "Za wykonywanie własnych kopii zapasowych danych odpowiadasz Ty."
+            ]
+          },
+          {
+            "h": "13. Czas trwania i zakończenie",
+            "body": [
+              "Każda ze stron może zakończyć współpracę z zachowaniem 30-dniowego pisemnego wypowiedzenia, a ze skutkiem natychmiastowym w razie istotnego naruszenia nieusuniętego w ciągu 14 dni od pisemnego wezwania.",
+              "Po zakończeniu płacisz za prace wykonane i zobowiązania zewnętrzne zaciągnięte do tego dnia. Postanowienia o prawach własności intelektualnej, poufności, odpowiedzialności i prawie właściwym pozostają w mocy.",
+              "Abonament miesięczny trwa z miesiąca na miesiąc; każda ze stron może go wypowiedzieć z 30-dniowym wyprzedzeniem ze skutkiem na koniec okresu rozliczeniowego."
+            ]
+          },
+          {
+            "h": "14. Prawo właściwe",
+            "body": [
+              "TODO(legal): prawo właściwe i sąd właściwy — zwykle prawo polskie i sąd właściwy dla siedziby spółki. Potwierdź z prawnikiem.",
+              "Nieważność jednego postanowienia nie wpływa na pozostałe."
+            ]
+          },
+          {
+            "h": "15. Zmiany regulaminu",
+            "body": [
+              "Możemy aktualizować regulamin na potrzeby przyszłych wdrożeń. Twojego wdrożenia dotyczy wersja obowiązująca w dniu podpisania oferty."
+            ]
+          },
+          {
+            "h": "16. Kim jesteśmy",
+            "body": [
+              "TODO(legal): pełna nazwa firmy, forma prawna, adres siedziby oraz numery rejestrowe (KRS lub CEIDG, NIP, REGON).",
+              "Kontakt: kacper@aiadaptiv.com"
+            ]
+          }
+        ],
+        "backHome": "← Powrót na stronę główną"
+      },
+      "privacy": {
+        "metaTitle": "Polityka prywatności — aiAdaptiv",
+        "metaDescription": "Jak aiAdaptiv zbiera i wykorzystuje dane osobowe na tej stronie: analityka, pliki cookie, rezerwacje, zapytania, podstawy prawne, podmioty przetwarzające, retencja i Twoje prawa z RODO.",
+        "h1": "Polityka prywatności",
+        "updated": "Ostatnia aktualizacja: 5 września 2026",
+        "intro": "Ta polityka dotyczy danych osobowych zbieranych przez tę stronę oraz przez zapytania i rezerwacje z niej wysłane. Danych osobowych przetwarzanych w imieniu klienta, wewnątrz systemu zbudowanego dla niego, dotyczy polityka tego klienta i nasza umowa powierzenia z nim — nie ta polityka.",
+        "sections": [
+          {
+            "h": "1. Kto odpowiada za dane",
+            "body": [
+              "Administratorem danych opisanych poniżej jest aiAdaptiv.",
+              "TODO(legal): pełna nazwa firmy, adres siedziby i numery rejestrowe.",
+              "Pytania oraz wnioski z punktu 8: kacper@aiadaptiv.com"
+            ]
+          },
+          {
+            "h": "2. Jakie dane zbieramy",
+            "body": [
+              "Gdy się z nami kontaktujesz — to, co sam przekażesz: imię i nazwisko, adres e-mail, firmę i treść wiadomości.",
+              "Gdy rezerwujesz rozmowę — imię i nazwisko, adres e-mail i odpowiedzi podane w formularzu rezerwacji oraz wybrany termin. Rezerwacje obsługuje Cal.com, a sama rozmowa może odbywać się przez Cal Video.",
+              "Jeśli wyrazisz zgodę na analitykę — dane o wizycie: odwiedzone podstrony, przybliżoną lokalizację z adresu IP, typ urządzenia i przeglądarki oraz stronę odsyłającą.",
+              "Podstawowe dane żądań rejestruje nasz dostawca hostingu na potrzeby bezpieczeństwa i niezawodności, w tym adres IP."
+            ]
+          },
+          {
+            "h": "3. Pliki cookie i analityka",
+            "body": [
+              "Do momentu akceptacji w banerze nie zapisujemy żadnych plików analitycznych ani reklamowych. Korzystamy z Google Consent Mode, który domyślnie odmawia tych rodzajów zapisu i włącza je dopiero po akceptacji; odmowa pozostawia je wyłączone.",
+              "Za zgodą korzystamy z Google Analytics 4, aby rozumieć sposób korzystania ze strony. Używamy też Vercel Analytics, które działa bez plików cookie i nie śledzi użytkowników między stronami.",
+              "Twój wybór zapisujemy w przeglądarce, żeby nie pytać ponownie. Wyczyszczenie danych przeglądarki resetuje go."
+            ]
+          },
+          {
+            "h": "4. Cele i podstawy prawne",
+            "body": [
+              "Odpowiadanie na zapytania i obsługa rezerwacji — podjęcie działań na Twoje żądanie przed zawarciem umowy oraz nasz prawnie uzasadniony interes w odpowiadaniu osobom, które się z nami kontaktują.",
+              "Utrzymanie bezpieczeństwa i działania strony — nasz prawnie uzasadniony interes.",
+              "Pomiar ruchu za pomocą analityki — Twoja zgoda, którą możesz w każdej chwili wycofać.",
+              "Obowiązki księgowe, podatkowe i inne wynikające z przepisów — obowiązek prawny."
+            ]
+          },
+          {
+            "h": "5. Komu udostępniamy dane",
+            "body": [
+              "Korzystamy z dostawców przetwarzających dane w naszym imieniu na podstawie umów: Vercel (hosting i analityka), Google (Analytics), Cal.com (rezerwacje i wideo) oraz dostawca poczty do korespondencji.",
+              "Nie sprzedajemy danych osobowych i nie udostępniamy ich do celów reklamowych.",
+              "Możemy ujawnić dane, gdy wymaga tego prawo, albo w celu ustalenia lub obrony roszczeń."
+            ]
+          },
+          {
+            "h": "6. Przekazywanie poza EOG",
+            "body": [
+              "Część dostawców ma siedzibę poza Europejskim Obszarem Gospodarczym lub korzysta z podprzetwarzających spoza EOG. Przekazywanie danych poza EOG odbywa się na podstawie standardowych klauzul umownych Komisji Europejskiej lub innego zgodnego z prawem mechanizmu. Na życzenie wskażemy, którego."
+            ]
+          },
+          {
+            "h": "7. Jak długo przechowujemy dane",
+            "body": [
+              "Zapytania i rezerwacje: do 24 miesięcy od ostatniego kontaktu, chyba że umowa wymaga dłużej.",
+              "Dokumentacja umowna, fakturowa i księgowa: przez okres wymagany przepisami podatkowymi.",
+              "Dane analityczne: przez okres retencji ustawiony w Google Analytics, obecnie 14 miesięcy.",
+              "Logi serwera: przez krótki, kroczący okres ustalony przez dostawcę hostingu."
+            ]
+          },
+          {
+            "h": "8. Twoje prawa",
+            "body": [
+              "Masz prawo żądać kopii swoich danych, ich sprostowania, usunięcia, ograniczenia lub sprzeciwu wobec przetwarzania oraz przeniesienia danych. Zgodę możesz wycofać w każdej chwili, bez wpływu na zgodność z prawem wcześniejszego przetwarzania.",
+              "Napisz na kacper@aiadaptiv.com — odpowiemy w ciągu miesiąca.",
+              "TODO(legal): potwierdź organ nadzorczy — dla firmy z siedzibą w Polsce jest to Prezes Urzędu Ochrony Danych Osobowych (UODO), do którego możesz wnieść skargę."
+            ]
+          },
+          {
+            "h": "9. Dzieci",
+            "body": [
+              "Strona jest skierowana do firm. Świadomie nie zbieramy danych osobowych dzieci."
+            ]
+          },
+          {
+            "h": "10. Zmiany",
+            "body": [
+              "Możemy aktualizować tę politykę. Data u góry wskazuje ostatnią zmianę; o istotnych zmianach poinformujemy na tej stronie."
+            ]
+          }
+        ],
+        "backHome": "← Powrót na stronę główną"
+      }
     }
   }
 }

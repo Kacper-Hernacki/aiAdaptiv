@@ -13,12 +13,12 @@ export async function generateMetadata({
   const { lang } = await params;
   if (!isLocale(lang)) return {};
   const dict = await getDictionary(lang);
-  return legalMetadata(dict.agency.legal.terms, lang, "terms");
+  return legalMetadata(dict.agency.legal.privacy, lang, "privacy");
 }
 
-export default async function TermsPage({ params }: PageParams) {
+export default async function PrivacyPage({ params }: PageParams) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const dict = await getDictionary(lang);
-  return <LegalPage doc={dict.agency.legal.terms} lang={lang} />;
+  return <LegalPage doc={dict.agency.legal.privacy} lang={lang} />;
 }

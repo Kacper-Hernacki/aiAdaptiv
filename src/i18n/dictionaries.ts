@@ -172,7 +172,30 @@ export type Dictionary = {
       groups: { label: string; links: { label: string; href: string }[] }[];
       rights: string;
     };
+    /**
+     * Legal copy for the agency. Separate from the top-level `terms` tree,
+     * which covers the open-LLM product's setup fee and monthly maintenance —
+     * wrong for custom development work. Strings marked `TODO(legal):` need the
+     * registered company details and a lawyer's confirmation.
+     */
+    legal: {
+      /** Small print in the agency footer. */
+      disclaimer: string;
+      terms: LegalDocument;
+      privacy: LegalDocument;
+    };
   };
+};
+
+/** Shape shared by the agency's Terms and Privacy pages. */
+export type LegalDocument = {
+  metaTitle: string;
+  metaDescription: string;
+  h1: string;
+  updated: string;
+  intro: string;
+  sections: { h: string; body: string[] }[];
+  backHome: string;
 };
 
 /**

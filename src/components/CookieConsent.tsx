@@ -58,9 +58,12 @@ export function CookieConsent({
   lang,
   dict,
   variant = "dark",
+  learnMoreHref,
 }: {
   lang: string;
   dict: Dictionary["cookies"];
+  /** Where "learn more" points. Defaults to this locale's terms page. */
+  learnMoreHref?: string;
   /** "dark" is the product site's glass pill; "light" is the agency palette,
    *  which follows that site's light/dark theme attribute. */
   variant?: "dark" | "light";
@@ -108,7 +111,7 @@ export function CookieConsent({
     >
       <p id="cookie-msg" className={styles.text}>
         {dict.message}{" "}
-        <Link href={`/${lang}/terms`} className={styles.link}>
+        <Link href={learnMoreHref ?? `/${lang}/terms`} className={styles.link}>
           {dict.learnMore}
         </Link>
       </p>

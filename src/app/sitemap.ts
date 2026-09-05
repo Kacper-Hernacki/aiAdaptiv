@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const termsLanguages = Object.fromEntries(
     translatedLocales.map((l) => [l, `${siteUrl}/${l}/terms`]),
   );
+  const privacyLanguages = Object.fromEntries(
+    translatedLocales.map((l) => [l, `${siteUrl}/${l}/privacy`]),
+  );
 
   return [
     ...translatedLocales.map(
@@ -35,6 +38,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "monthly",
         priority: 0.3,
         alternates: { languages: termsLanguages },
+      }),
+    ),
+    ...translatedLocales.map(
+      (lang): MetadataRoute.Sitemap[number] => ({
+        url: `${siteUrl}/${lang}/privacy`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.3,
+        alternates: { languages: privacyLanguages },
       }),
     ),
   ];
