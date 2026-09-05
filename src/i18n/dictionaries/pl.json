@@ -278,17 +278,18 @@
       "toggle": "Przełącz jasny lub ciemny motyw"
     },
     "hero": {
-      "eyebrow": "Rozwiązania AI na zamówienie · Projekt, budowa, wdrożenie",
+      "eyebrow": "Brzmi znajomo?",
+      "questions": [
+        "Kupiliście narzędzia AI. Nikt nie wie, co z nimi zrobić.",
+        "Zespół dalej traci godziny tygodniowo na tej samej powtarzalnej robocie.",
+        "Próbowaliście budować z AI sami — a efekty wyglądały słabo."
+      ],
       "headline": [
         {
-          "text": "AI na zamówienie — zbudowane i wdrożone,"
-        },
-        {
-          "text": "nie pokazane na demo.",
-          "accent": true
+          "text": "Zatrudnij fachowców."
         }
       ],
-      "subhead": "Produkty AI SaaS, aplikacje mobilne, automatyzacje, pilotaże, systemy marketingowe i prywatne platformy LLM. Projektujemy je, budujemy i utrzymujemy w ruchu.",
+      "subhead": "Stała cena, bez niespodzianek. Zaprojektowane, zbudowane i dowiezione od początku do końca — i aktualizowane, gdy modele idą do przodu.",
       "cta": "Umów 30-minutową rozmowę",
       "stats": [
         {

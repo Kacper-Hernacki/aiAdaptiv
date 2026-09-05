@@ -100,6 +100,8 @@ export type Dictionary = {
     theme: { toggle: string };
     hero: {
       eyebrow: string;
+      /** The hook: symptoms the reader recognises, stacked above the headline. */
+      questions: string[];
       /** Rendered as one `<h1>`; `accent` parts get emphasis styling. */
       headline: { text: string; accent?: boolean }[];
       subhead: string;

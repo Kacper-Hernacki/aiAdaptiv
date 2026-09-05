@@ -278,17 +278,18 @@
       "toggle": "Toggle light or dark theme"
     },
     "hero": {
-      "eyebrow": "Custom AI solutions · Designed, built, shipped",
+      "eyebrow": "Sound familiar?",
+      "questions": [
+        "You bought the AI tools. Nobody knows what to do with them.",
+        "Your team still burns hours a week on the same repetitive work.",
+        "You tried building with AI yourself — and the results looked terrible."
+      ],
       "headline": [
         {
-          "text": "Custom AI, built and shipped —"
-        },
-        {
-          "text": "not demoed.",
-          "accent": true
+          "text": "Hire pros."
         }
       ],
-      "subhead": "AI SaaS products, mobile apps, automations, pilots, marketing systems and private LLM platforms. We design them, build them, and keep them running.",
+      "subhead": "Fixed price, no surprises. Designed, built and delivered end to end — then kept updated as the models move.",
       "cta": "Book a 30-minute call",
       "stats": [
         {

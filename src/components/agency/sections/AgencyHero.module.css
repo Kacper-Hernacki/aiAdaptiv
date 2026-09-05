@@ -27,6 +27,14 @@
   margin-bottom: 0.6em;
 }
 
+/* The headline is now the two-word answer to the hook above it, so it carries
+   more weight than the reference's sentence-length h1. */
+.title.punch {
+  font-size: 5em;
+  max-width: 9.6em;
+  margin-bottom: 0.45em;
+}
+
 .sub {
   max-width: 30em;
   margin: 0 auto 1.5em;
@@ -87,5 +95,44 @@
 
   .ctaWrap {
     font-size: 16px;
+  }
+}
+
+/*
+ * The hook: three symptoms the reader should recognise, stacked above the
+ * headline. Set below the h1 in size so the eye still lands on the answer
+ * first, but large enough to actually be read rather than skimmed.
+ */
+.questions {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  /* Wide enough that each symptom holds one line — a wrapped question orphans
+     its last word and kills the rhythm of the stack. */
+  max-width: 41em;
+  margin: 0.4em auto 0.75em;
+}
+
+.question {
+  font-size: 1.15em;
+  line-height: 150%;
+  color: var(--fg-muted);
+}
+
+@media screen and (max-width: 991px) {
+  .questions {
+    max-width: 100%;
+    gap: 0.5em;
+    margin-bottom: 20px;
+  }
+
+  .question {
+    font-size: 17px;
+  }
+
+  .title.punch {
+    font-size: 44px;
+    max-width: 100%;
   }
 }
