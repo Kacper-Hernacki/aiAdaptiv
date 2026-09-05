@@ -246,5 +246,342 @@
     "accept": "Akceptuję",
     "decline": "Odrzuć",
     "learnMore": "Dowiedz się więcej"
+  },
+  "agency": {
+    "meta": {
+      "title": "aiAdaptiv — systemy AI, które działają w produkcji",
+      "description": "Projektujemy, budujemy i utrzymujemy produkcyjne systemy AI dla europejskich firm — prywatne platformy LLM, agentów i automatyzację procesów, na infrastrukturze, którą posiadasz. Umów 30-minutową rozmowę."
+    },
+    "header": {
+      "tagline": "Systemy AI — zbudowane i utrzymywane",
+      "cta": "Umów rozmowę",
+      "nav": [
+        {
+          "label": "Co budujemy",
+          "href": "#capabilities"
+        },
+        {
+          "label": "Realizacje",
+          "href": "#work"
+        },
+        {
+          "label": "Podejście",
+          "href": "#approach"
+        },
+        {
+          "label": "Kontakt",
+          "href": "#contact"
+        }
+      ]
+    },
+    "hero": {
+      "eyebrow": "Partner wdrożeniowy AI · europejski średni biznes",
+      "headline": [
+        {
+          "text": "Partner AI dla firm, które potrzebują"
+        },
+        {
+          "text": "działającego systemu, nie demo.",
+          "accent": true
+        }
+      ],
+      "subhead": "Projektujemy, budujemy i utrzymujemy produkcyjne systemy AI — prywatne platformy LLM, analizę dokumentów, agentów i automatyzację procesów — na infrastrukturze, którą posiadasz, w jurysdykcji UE.",
+      "cta": "Umów 30-minutową rozmowę",
+      "stats": [
+        {
+          "value": "TODO(copy): metric",
+          "label": "systemów w produkcji"
+        },
+        {
+          "value": "TODO(copy): metric",
+          "label": "godzin/mies. zautomatyzowanych"
+        },
+        {
+          "value": "TODO(copy): metric",
+          "label": "obsłużonych branż"
+        },
+        {
+          "value": "TODO(copy): metric",
+          "label": "lat pracy z LLM-ami"
+        }
+      ]
+    },
+    "clients": {
+      "label": "Zespoły, dla których budowaliśmy",
+      "names": [
+        "TODO(copy): client",
+        "TODO(copy): client",
+        "TODO(copy): client",
+        "TODO(copy): client",
+        "TODO(copy): client",
+        "TODO(copy): client"
+      ]
+    },
+    "capabilities": {
+      "h2": "Co budujemy",
+      "lead": "Cztery rzeczy, zrobione porządnie, na Twojej infrastrukturze. Nie prezentacja — system, do którego zespół loguje się w poniedziałek.",
+      "items": [
+        {
+          "title": "Prywatne platformy AI",
+          "body": "W pełni white-label platforma czatu i analizy dokumentów oparta na modelach open-source, uruchomiona w Twoim koncie chmurowym w UE. Twoje klucze, Twoje dane, Twoja infrastruktura.",
+          "tags": [
+            "Modele open-source",
+            "Hosting w UE",
+            "SSO i audyt"
+          ]
+        },
+        {
+          "title": "Analiza dokumentów",
+          "body": "Przegląd umów, due diligence, analiza przetargów i wyszukiwanie wiedzy w Twoim archiwum — z odnośnikami do konkretnej strony źródłowej, żeby specjalista mógł zweryfikować każdą odpowiedź.",
+          "tags": [
+            "RAG",
+            "Cytowania",
+            "Import masowy"
+          ]
+        },
+        {
+          "title": "Agenci AI i automatyzacja",
+          "body": "Agenci, którzy wykonują pracę, a nie ją opisują: kwalifikacja zgłoszeń, research, redagowanie, wprowadzanie danych — wraz z integracjami, które przenoszą wynik do systemów, z których już korzystasz.",
+          "tags": [
+            "Narzędzia",
+            "Integracje",
+            "Kontrola człowieka"
+          ]
+        },
+        {
+          "title": "Audyty i szkolenia",
+          "body": "Trzeźwa ocena, gdzie AI faktycznie się zwraca w Twojej organizacji, ile kosztuje utrzymanie i co AI Act każe udokumentować — plus szkolenie, żeby zespół sam to prowadził.",
+          "tags": [
+            "Audyt AI",
+            "Model kosztów",
+            "Szkolenia"
+          ]
+        }
+      ]
+    },
+    "proof": {
+      "h2": "Dowozimy systemy, nie prezentacje",
+      "body": [
+        "TODO(copy): the results narrative (PL). Dwa–trzy akapity: konkretne wdrożenia, co było zepsute, co zbudowaliśmy i mierzalny efekt.",
+        "TODO(copy): second paragraph (PL). Co wyróżnia realizację: ustalony zakres, stała cena, cotygodniowe demo i system, który działa po naszym wyjściu.",
+        "Każde wdrożenie kończy się tak samo: działającym systemem, dokumentacją, z której zespół realnie korzysta, i przekazaniem — albo abonamentem, jeśli wolisz, żebyśmy prowadzili go dalej."
+      ],
+      "cta": "Umów 30-minutową rozmowę"
+    },
+    "work": {
+      "h2": "Wybrane realizacje",
+      "lead": "Zbudowane, wdrożone i utrzymywane przez nas. Liczby pochodzą od klientów, nie z prognoz.",
+      "cases": [
+        {
+          "name": "TODO(copy): client name",
+          "result": "TODO(copy): headline outcome",
+          "body": "TODO(copy): jeden akapit — sytuacja, co zbudowaliśmy i mierzalny efekt.",
+          "tags": [
+            "TODO(copy): tag",
+            "TODO(copy): tag"
+          ]
+        },
+        {
+          "name": "TODO(copy): client name",
+          "result": "TODO(copy): headline outcome",
+          "body": "TODO(copy): jeden akapit — sytuacja, co zbudowaliśmy i mierzalny efekt.",
+          "tags": [
+            "TODO(copy): tag",
+            "TODO(copy): tag"
+          ]
+        },
+        {
+          "name": "TODO(copy): client name",
+          "result": "TODO(copy): headline outcome",
+          "body": "TODO(copy): jeden akapit — sytuacja, co zbudowaliśmy i mierzalny efekt.",
+          "tags": [
+            "TODO(copy): tag",
+            "TODO(copy): tag"
+          ]
+        }
+      ]
+    },
+    "product": {
+      "h2": "Nasz własny produkt, działający w produkcji",
+      "lead": "Nie tylko doradzamy w temacie prywatnego AI — sprzedajemy je i utrzymujemy. openllm.aiadaptiv.com to nasza gotowa platforma prywatnego AI: modele open-source wdrożone w Twoim koncie chmurowym w UE, zarządzane przez nas.",
+      "points": [
+        "W pełni white-label, wdrożone w Twojej chmurze — to Ty posiadasz infrastrukturę, klucze i dane.",
+        "Zgodność z RODO i AI Act wynika z architektury, nie z dokumentu polityki.",
+        "Stała opłata wdrożeniowa plus miesięczne zarządzanie. Bez niespodzianek za tokeny i licencje na użytkownika."
+      ],
+      "cta": "Zobacz platformę"
+    },
+    "team": {
+      "h2": "Z kim faktycznie pracujesz",
+      "lead": "Mały i doświadczony zespół. Osoby, które ustalają zakres, budują też system — między Tobą a inżynierem nie ma warstwy pośredniej.",
+      "members": [
+        {
+          "name": "Kacper Hernacki",
+          "role": "Założyciel",
+          "body": [
+            "TODO(copy): bio paragraph (PL) — doświadczenie, co dowiozłeś, dlaczego klient ma powierzyć Ci system produkcyjny.",
+            "TODO(copy): second paragraph (PL) — publiczne dokonania, wystąpienia, open source, znani klienci."
+          ]
+        },
+        {
+          "name": "TODO(copy): name",
+          "role": "TODO(copy): role",
+          "body": [
+            "TODO(copy): bio paragraph (PL). Usuń cały wpis, jeśli dziś zespół to jedna osoba — uczciwy jednoosobowy zespół czyta się lepiej niż wymyślony drugi."
+          ]
+        }
+      ]
+    },
+    "approach": {
+      "h2": "Czym się różnimy",
+      "items": [
+        {
+          "title": "Ustalony zakres, stała cena",
+          "body": "Każde wdrożenie ma spisany zakres, harmonogram i stałą cenę jeszcze przed startem. Bez rozliczeń godzinowych, bez rozrastania się zakresu, bez faktur, których się nie spodziewałeś."
+        },
+        {
+          "title": "Zawsze Twoja infrastruktura",
+          "body": "Wdrażamy w Twoim koncie chmurowym, na Twoich kluczach. Po zakończeniu współpracy zostaje Ci działający system, a nie zależność od nas."
+        },
+        {
+          "title": "Europejskie standardy od początku",
+          "body": "Lokalizacja danych, RODO i AI Act to punkt wyjścia, a nie audyt doklejony na końcu. Dlatego architektura wygląda tak, jak wygląda."
+        },
+        {
+          "title": "Sami używamy tego, co sprzedajemy",
+          "body": "Nasza własna platforma prywatnego AI działa na tym samym stacku, który wdrażamy u klientów. Jeśli coś pada o 2 w nocy, pada najpierw u nas."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Od pierwszej rozmowy do działającego systemu",
+      "lead": "Cztery kroki. Cenę i zakres znasz przed trzecim.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Rozmowa mapująca",
+          "body": "Bezpłatne 30 minut. Mapujemy, gdzie zespół traci godziny, co z tego AI realnie przejmie i jakie są ograniczenia zgodności."
+        },
+        {
+          "step": "02",
+          "title": "Zakres i stała cena",
+          "body": "Spisany zakres, szkic architektury, harmonogram i jedna stała cena. Jeśli budowa się nie opłaca, powiemy to zamiast wyceniać."
+        },
+        {
+          "step": "03",
+          "title": "Budowa i wdrożenie",
+          "body": "Budujemy w Twoim koncie chmurowym, z cotygodniowym demo działającego oprogramowania. Widzisz system, zanim będzie skończony — nie raport o nim."
+        },
+        {
+          "step": "04",
+          "title": "Utrzymanie albo przekazanie",
+          "body": "Dokumentacja i szkolenie, żeby zespół przejął system — albo opcjonalny abonament, w którym monitorujemy, aktualizujemy i rozwijamy go dalej."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Najczęstsze pytania",
+      "items": [
+        {
+          "q": "Ile kosztuje wdrożenie?",
+          "a": "TODO(copy): realny próg wejścia i typowy przedział (PL). Podaj to na stronie — odfiltrujesz nietrafione rozmowy, zanim trafią do kalendarza."
+        },
+        {
+          "q": "Ile trwa pierwszy system?",
+          "a": "TODO(copy): uczciwy typowy czas od podpisu do produkcji (PL)."
+        },
+        {
+          "q": "Gdzie znajdują się nasze dane?",
+          "a": "W Twoim koncie chmurowym, w wybranym regionie UE. Wdrażamy na Twoim koncie i Twoich kluczach; nic nie przechodzi przez nas, a dane klientów nie trafiają do zewnętrznego dostawcy modeli, chyba że wyraźnie o to poprosisz."
+        },
+        {
+          "q": "Czy musimy używać modeli open-source?",
+          "a": "Nie. Modele open-source na własnej infrastrukturze są domyślne, bo trzymają dane i koszty pod Twoją kontrolą, ale integrujemy komercyjne API tam, gdzie realnie wygrywają — i powiemy, których części systemu to dotyczy."
+        },
+        {
+          "q": "Co się dzieje po zakończeniu projektu?",
+          "a": "Zostaje u Ciebie wszystko: infrastruktura, kod, dokumentacja i działający system. Abonament jest opcjonalny, nigdy nie jest warunkiem budowy."
+        },
+        {
+          "q": "Czy pracujecie poza UE?",
+          "a": "TODO(copy): tak/nie i ewentualne warunki (PL)."
+        }
+      ]
+    },
+    "contact": {
+      "h2": "Sprawdźmy, gdzie AI się zwraca",
+      "body": "Umów bezpłatną 30-minutową rozmowę. Przejdziemy przez Wasz proces, wskażemy dwa–trzy miejsca, w których warto wdrożyć AI, i powiemy, czego wymaga ich zbudowanie.",
+      "note": "TODO(copy): kotwica cenowa (PL), np. „Wdrożenia zaczynają się od X €.” Usuń tę linię, zamiast zostawiać ją ogólnikową.",
+      "cta": "Umów 30-minutową rozmowę"
+    },
+    "footer": {
+      "blurb": "Systemy AI projektowane, budowane i utrzymywane dla europejskich firm. Siedziba w UE, wdrożenie w Twojej chmurze.",
+      "groups": [
+        {
+          "label": "Firma",
+          "links": [
+            {
+              "label": "Co budujemy",
+              "href": "#capabilities"
+            },
+            {
+              "label": "Realizacje",
+              "href": "#work"
+            },
+            {
+              "label": "Podejście",
+              "href": "#approach"
+            },
+            {
+              "label": "Zespół",
+              "href": "#team"
+            },
+            {
+              "label": "Regulamin",
+              "href": "@terms"
+            }
+          ]
+        },
+        {
+          "label": "Produkt",
+          "links": [
+            {
+              "label": "Platforma prywatnego AI",
+              "href": "@openllm"
+            },
+            {
+              "label": "Jak to działa",
+              "href": "#process"
+            },
+            {
+              "label": "FAQ",
+              "href": "#faq"
+            }
+          ]
+        },
+        {
+          "label": "Kontakt",
+          "links": [
+            {
+              "label": "LinkedIn",
+              "href": "https://www.linkedin.com/company/aiadaptiv"
+            },
+            {
+              "label": "X / Twitter",
+              "href": "https://x.com/aiadaptiv"
+            },
+            {
+              "label": "GitHub",
+              "href": "https://github.com/aiadaptiv"
+            },
+            {
+              "label": "E-mail",
+              "href": "mailto:kacper@aiadaptiv.com"
+            }
+          ]
+        }
+      ],
+      "rights": "Wszelkie prawa zastrzeżone."
+    }
   }
 }

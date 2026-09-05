@@ -1,4 +1,4 @@
-import { siteConfig, siteUrl } from "@/config/site";
+import { siteConfig, siteUrl, openllmConfig, openllmUrl } from "@/config/site";
 
 /**
  * Renders a JSON-LD <script>. Schema.org structured data helps search engines
@@ -17,48 +17,59 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-export function OrganizationJsonLd() {
+/**
+ * The site (root agency vs. openllm product) is chosen by `baseUrl`: both hosts
+ * describe the same Organization but must not claim the same @id or URL, or
+ * they compete as duplicate entities. Defaults to the root agency site.
+ */
+function configFor(baseUrl: string) {
+  return baseUrl === openllmUrl ? openllmConfig : siteConfig;
+}
+
+export function OrganizationJsonLd({ baseUrl = siteUrl }: { baseUrl?: string }) {
+  const config = configFor(baseUrl);
   return (
     <JsonLd
       data={{
         "@context": "https://schema.org",
         "@type": "Organization",
-        "@id": `${siteUrl}/#organization`,
-        name: siteConfig.name,
-        legalName: siteConfig.organization.legalName,
-        url: siteUrl,
-        logo: `${siteUrl}/icon.svg`,
-        description: siteConfig.description,
-        email: siteConfig.contactEmail,
+        "@id": `${baseUrl}/#organization`,
+        name: config.name,
+        legalName: config.organization.legalName,
+        url: baseUrl,
+        logo: `${baseUrl}/icon.svg`,
+        description: config.description,
+        email: config.contactEmail,
         contactPoint: [
           {
             "@type": "ContactPoint",
             contactType: "sales",
-            email: siteConfig.contactEmail,
+            email: config.contactEmail,
           },
           {
             "@type": "ContactPoint",
             contactType: "customer support",
-            email: siteConfig.supportEmail,
+            email: config.supportEmail,
           },
         ],
-        sameAs: siteConfig.organization.sameAs,
+        sameAs: config.organization.sameAs,
       }}
     />
   );
 }
 
-export function WebSiteJsonLd() {
+export function WebSiteJsonLd({ baseUrl = siteUrl }: { baseUrl?: string }) {
+  const config = configFor(baseUrl);
   return (
     <JsonLd
       data={{
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "@id": `${siteUrl}/#website`,
-        name: siteConfig.name,
-        url: siteUrl,
-        description: siteConfig.description,
-        publisher: { "@id": `${siteUrl}/#organization` },
+        "@id": `${baseUrl}/#website`,
+        name: config.name,
+        url: baseUrl,
+        description: config.description,
+        publisher: { "@id": `${baseUrl}/#organization` },
         inLanguage: "en",
       }}
     />

@@ -328,7 +328,30 @@ function parseBrainPoints(buf: ArrayBuffer): BrainPoints | null {
   return { pos, nrm, pick, bright };
 }
 
-export function CosmicField() {
+/**
+ * Scroll anchors of the open-LLM landing page, in order. The choreography is
+ * driven by these: each one is a phase, and the phase tables below map phase →
+ * glyph, position and scale. A page that passes its own list gets the same
+ * ten-beat sequence anchored to its own sections; a page with fewer sections
+ * simply never reaches the later beats.
+ */
+const OPENLLM_SECTIONS = [
+  "problem",
+  "solution",
+  "pricing",
+  "how-it-works",
+  "client-roadmap",
+  "visual-summary",
+  "founder",
+  "faq",
+  "qualify",
+];
+
+export function CosmicField({
+  sections = OPENLLM_SECTIONS,
+}: {
+  sections?: string[];
+} = {}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   // Re-evaluate on client-side navigation: the layout (and this canvas)
   // persists across routes, but the choreography only exists on the landing
@@ -342,7 +365,7 @@ export function CosmicField() {
     // The constellation is choreographed against the landing sections. On
     // any other route (e.g. /terms) there is nothing to anchor to — hide the
     // canvas and skip all GL work.
-    if (!document.getElementById("problem")) {
+    if (!document.getElementById(sections[0])) {
       canvas.style.display = "none";
       return;
     }
@@ -1162,7 +1185,7 @@ export function CosmicField() {
       anchors = [0];
       // "qualify" (the last section) gets its own beat so the scatter can
       // fade out completely before the closing CTA + footer screen.
-      for (const id of ["problem", "solution", "pricing", "how-it-works", "client-roadmap", "visual-summary", "founder", "faq", "qualify"]) {
+      for (const id of sections) {
         const el = document.getElementById(id);
         if (el) {
           const top = el.getBoundingClientRect().top + window.scrollY;
@@ -1537,7 +1560,7 @@ export function CosmicField() {
       cancelled = true;
       cleanup?.();
     };
-  }, [pathname]);
+  }, [pathname, sections]);
 
   return (
     <canvas

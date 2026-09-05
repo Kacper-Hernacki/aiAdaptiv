@@ -1,0 +1,106 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--hairline);
+  margin-top: var(--space-60);
+  /* Scrim over the particle field so the small print stays readable. */
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--space-60) clamp(24px, 3vw, 48px) var(--space-36);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.4fr) repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-36);
+  align-items: start;
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--color-bone);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.021em;
+}
+
+.brandMark {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: #fff;
+}
+
+.blurb {
+  max-width: 42ch;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 0.021em;
+  color: var(--color-smoke);
+}
+
+.groupLabel {
+  margin: 0 0 var(--space-12);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-smoke);
+}
+
+.group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navLink {
+  font-size: 14px;
+  letter-spacing: 0.021em;
+  color: var(--color-ash);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--color-bone);
+}
+
+.bottom {
+  margin-top: var(--space-60);
+  padding-top: var(--space-24);
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+}
+
+.rights,
+.disclaimer {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.021em;
+  color: var(--color-smoke);
+}
+
+.disclaimer {
+  max-width: 70ch;
+}

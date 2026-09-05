@@ -1,0 +1,91 @@
+/*
+ * Thin logo band between the hero and the first real section. Deliberately not
+ * a full-height .section and deliberately not one of the CosmicField anchors —
+ * it is a strip, not a beat in the scroll choreography.
+ */
+.band {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-36) 0;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background: rgba(0, 0, 0, 0.72);
+  overflow: hidden;
+}
+
+.label {
+  max-width: var(--page-max);
+  margin: 0 auto var(--space-24);
+  padding: 0 clamp(24px, 3vw, 48px);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-smoke);
+}
+
+/* Mask the ends so names fade in and out instead of hitting a hard edge. */
+.viewport {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 42s linear infinite;
+}
+
+.band:hover .track {
+  animation-play-state: paused;
+}
+
+/* The list is rendered twice; each copy is exactly half the track, so the
+   translate wraps seamlessly. */
+.row {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: clamp(36px, 5vw, 72px);
+  margin: 0;
+  padding: 0 clamp(18px, 2.5vw, 36px);
+}
+
+.name {
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 500;
+  letter-spacing: 0.021em;
+  white-space: nowrap;
+  color: var(--color-smoke);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .viewport {
+    overflow-x: auto;
+  }
+}

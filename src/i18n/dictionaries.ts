@@ -82,6 +82,81 @@ export type Dictionary = {
     decline: string;
     learnMore: string;
   };
+  /**
+   * Copy for the agency site on the apex domain (app/(agency)/). Kept as one
+   * subtree so the product-site keys above stay untouched. Any string still
+   * reading `TODO(copy):` is a placeholder waiting on real company data — grep
+   * for it before launch.
+   */
+  agency: {
+    meta: { title: string; description: string };
+    header: { tagline: string; cta: string; nav: { label: string; href: string }[] };
+    hero: {
+      eyebrow: string;
+      /** Rendered as one `<h1>`; `accent` parts get emphasis styling. */
+      headline: { text: string; accent?: boolean }[];
+      subhead: string;
+      cta: string;
+      stats: { value: string; label: string }[];
+    };
+    clients: { label: string; names: string[] };
+    capabilities: {
+      h2: string;
+      lead: string;
+      items: { title: string; body: string; tags: string[] }[];
+    };
+    proof: {
+      h2: string;
+      body: string[];
+      cta: string;
+    };
+    work: {
+      h2: string;
+      lead: string;
+      cases: {
+        name: string;
+        result: string;
+        body: string;
+        tags: string[];
+      }[];
+    };
+    /** Cross-link band pointing at the open-LLM product on its subdomain. */
+    product: {
+      h2: string;
+      lead: string;
+      points: string[];
+      cta: string;
+    };
+    team: {
+      h2: string;
+      lead: string;
+      members: { name: string; role: string; body: string[] }[];
+    };
+    approach: {
+      h2: string;
+      items: { title: string; body: string }[];
+    };
+    process: {
+      h2: string;
+      lead: string;
+      steps: { step: string; title: string; body: string }[];
+    };
+    faq: {
+      h2: string;
+      items: { q: string; a: string }[];
+    };
+    contact: {
+      h2: string;
+      body: string;
+      note: string;
+      cta: string;
+    };
+    footer: {
+      blurb: string;
+      groups: { label: string; links: { label: string; href: string }[] }[];
+      rights: string;
+    };
+  };
 };
 
 /**

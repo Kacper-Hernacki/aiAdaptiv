@@ -13,8 +13,8 @@ import {
 } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import {
-  siteConfig,
-  siteUrl,
+  openllmConfig,
+  openllmUrl,
   googleSiteVerification,
   gaMeasurementId,
 } from "@/config/site";
@@ -26,7 +26,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { CosmicField } from "@/components/CosmicField";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CookieConsent } from "@/components/CookieConsent";
-import "../globals.css";
+import "../../../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,14 +79,14 @@ export async function generateMetadata({
   const canonical = isTranslated(lang) ? `/${lang}` : `/${defaultLocale}`;
 
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(openllmUrl),
     title: { absolute: dict.meta.title },
     description: dict.meta.description,
-    keywords: [...siteConfig.keywords],
-    applicationName: siteConfig.name,
-    authors: [{ name: siteConfig.name, url: siteUrl }],
-    creator: siteConfig.name,
-    publisher: siteConfig.name,
+    keywords: [...openllmConfig.keywords],
+    applicationName: openllmConfig.name,
+    authors: [{ name: openllmConfig.name, url: openllmUrl }],
+    creator: openllmConfig.name,
+    publisher: openllmConfig.name,
     alternates: {
       canonical,
       languages,
@@ -98,7 +98,7 @@ export async function generateMetadata({
         .filter((l) => l !== lang)
         .map((l) => ogLocales[l]),
       url: canonical,
-      siteName: siteConfig.name,
+      siteName: openllmConfig.name,
       title: dict.meta.title,
       description: dict.meta.description,
     },
@@ -106,8 +106,8 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: dict.meta.title,
       description: dict.meta.description,
-      site: siteConfig.twitter,
-      creator: siteConfig.twitter,
+      site: openllmConfig.twitter,
+      creator: openllmConfig.twitter,
     },
     verification: googleSiteVerification
       ? { google: googleSiteVerification }
@@ -167,8 +167,8 @@ export default async function RootLayout({
         <SiteHeader lang={lang} dict={dict} />
         {children}
         <SiteFooter lang={lang} dict={dict} />
-        <OrganizationJsonLd />
-        <WebSiteJsonLd />
+        <OrganizationJsonLd baseUrl={openllmUrl} />
+        <WebSiteJsonLd baseUrl={openllmUrl} />
         {/* Cookieless, GDPR-friendly visitor + conversion analytics. */}
         <Analytics />
         {/* Google Analytics 4 — only mounted when NEXT_PUBLIC_GA_ID is set. */}

@@ -1,0 +1,28 @@
+.list {
+  margin: 0;
+  max-width: 80ch;
+}
+
+.item {
+  padding: var(--space-24) 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.q {
+  margin: 0 0 var(--space-12);
+  font-size: clamp(16px, 1.6vw, 18px);
+  font-weight: 600;
+  letter-spacing: 0.021em;
+  color: var(--color-bone);
+}
+
+.a {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-ash);
+}

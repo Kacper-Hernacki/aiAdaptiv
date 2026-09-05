@@ -1,0 +1,272 @@
+/*
+ * Shared section primitives for the agency site (apex domain).
+ *
+ * Deliberately a sibling of sections/Section.module.css rather than an import
+ * of it: that file hardcodes the product page's footer height and a scrim tuned
+ * to its particle choreography, so sharing it would couple every agency tweak
+ * to the product page. Both files draw from the same globals.css tokens, which
+ * is what actually keeps the two sites looking like one brand.
+ */
+
+.section {
+  position: relative;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(60px, 9vw, 120px) clamp(24px, 3vw, 48px);
+}
+
+/* Bands that carry a lot of rows (work, team, faq) grow past one viewport
+   rather than compressing their content into it. */
+.tall {
+  min-height: auto;
+  padding-top: clamp(80px, 11vw, 160px);
+  padding-bottom: clamp(80px, 11vw, 160px);
+}
+
+.center {
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  /* Mobile: content sits below the clear upper zone where the particle shape
+     rides, mirroring the product page's composition. */
+  .section {
+    justify-content: flex-start;
+    padding-top: 34svh;
+  }
+
+  .tall {
+    padding-top: clamp(80px, 11vw, 160px);
+  }
+
+  /* Legibility scrim — invisible over the black canvas; it only dims the
+     particle field across the band where the copy sits. */
+  .section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 24%,
+      rgba(0, 0, 0, 0.78) 34%,
+      rgba(0, 0, 0, 0.78) 82%,
+      rgba(0, 0, 0, 0.2) 96%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  .tall::before {
+    background: rgba(0, 0, 0, 0.72);
+  }
+
+  .section > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* ── Type ──────────────────────────────────────────────────── */
+.eyebrow {
+  margin: 0 0 var(--space-18);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-plum);
+}
+
+.h2 {
+  margin: 0 0 var(--space-24);
+  max-width: 18ch;
+  font-weight: 500;
+  font-size: clamp(34px, 5.4vw, 78px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--color-bone);
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.95),
+    0 0 6px rgba(0, 0, 0, 0.9);
+}
+
+.center .h2 {
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lead {
+  max-width: 60ch;
+  margin: 0 0 var(--space-36);
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.45;
+  letter-spacing: 0.021em;
+  color: var(--color-ash);
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.95),
+    0 0 6px rgba(0, 0, 0, 0.9);
+}
+
+.center .lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.body {
+  max-width: 62ch;
+  margin: 0 0 var(--space-18);
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.6;
+  letter-spacing: 0.025em;
+  color: var(--color-ash);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+.accent {
+  color: var(--color-plum);
+}
+
+/* ── Cards / grid ──────────────────────────────────────────── */
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-18);
+}
+
+.gridTwo {
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: var(--space-24);
+  background: rgba(0, 0, 0, 0.66);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.cardTitle {
+  margin: 0 0 var(--space-12);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.021em;
+  color: var(--color-bone);
+}
+
+.cardBody {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-ash);
+}
+
+/* ── Tag chips ─────────────────────────────────────────────── */
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-18) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-smoke);
+}
+
+/* ── Hairline statement list ───────────────────────────────── */
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 70ch;
+}
+
+.point {
+  display: flex;
+  gap: 16px;
+  padding: var(--space-18) 0;
+  border-top: 1px solid var(--hairline);
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.45;
+  color: var(--color-bone);
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, 0.95),
+    0 0 6px rgba(0, 0, 0, 0.9);
+}
+
+.point::before {
+  content: "—";
+  color: var(--color-plum);
+  flex: none;
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btnPrimary {
+  display: inline-block;
+  background: var(--color-plum);
+  color: var(--color-bone);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btnGhost {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--hairline-strong);
+  color: var(--color-bone);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 13px 21px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btnLarge {
+  font-size: 14px;
+  padding: 16px 30px;
+}
+
+.btnPrimary:hover,
+.btnGhost:hover {
+  opacity: 0.9;
+}
+
+.ctaWrap {
+  margin-top: var(--space-36);
+}

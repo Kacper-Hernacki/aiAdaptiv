@@ -246,5 +246,342 @@
     "accept": "Accept",
     "decline": "Decline",
     "learnMore": "Learn more"
+  },
+  "agency": {
+    "meta": {
+      "title": "aiAdaptiv — AI systems that ship, for European companies",
+      "description": "We design, build and run production AI systems for European companies — private LLM platforms, AI agents and workflow automation, deployed on infrastructure you own. Book a 30-minute call."
+    },
+    "header": {
+      "tagline": "AI systems, built and run",
+      "cta": "Book a call",
+      "nav": [
+        {
+          "label": "What we build",
+          "href": "#capabilities"
+        },
+        {
+          "label": "Work",
+          "href": "#work"
+        },
+        {
+          "label": "Approach",
+          "href": "#approach"
+        },
+        {
+          "label": "Contact",
+          "href": "#contact"
+        }
+      ]
+    },
+    "hero": {
+      "eyebrow": "AI delivery partner · European mid-market",
+      "headline": [
+        {
+          "text": "The AI partner for European companies that"
+        },
+        {
+          "text": "need it working, not demoed.",
+          "accent": true
+        }
+      ],
+      "subhead": "We design, build and operate production AI systems — private LLM platforms, document intelligence, agents and workflow automation — on infrastructure you own, inside EU jurisdiction.",
+      "cta": "Book a 30-minute call",
+      "stats": [
+        {
+          "value": "TODO(copy): metric",
+          "label": "systems in production"
+        },
+        {
+          "value": "TODO(copy): metric",
+          "label": "hours/month automated"
+        },
+        {
+          "value": "TODO(copy): metric",
+          "label": "industries served"
+        },
+        {
+          "value": "TODO(copy): metric",
+          "label": "years building with LLMs"
+        }
+      ]
+    },
+    "clients": {
+      "label": "Teams we have built for",
+      "names": [
+        "TODO(copy): client",
+        "TODO(copy): client",
+        "TODO(copy): client",
+        "TODO(copy): client",
+        "TODO(copy): client",
+        "TODO(copy): client"
+      ]
+    },
+    "capabilities": {
+      "h2": "What we build",
+      "lead": "Four things, done properly, on your infrastructure. Not a deck — a system your team logs into on Monday.",
+      "items": [
+        {
+          "title": "Private AI platforms",
+          "body": "A white-labeled chat and document-intelligence platform running open-source models inside your own EU cloud account. Your keys, your data, your tenancy.",
+          "tags": [
+            "Open-source LLMs",
+            "EU hosting",
+            "SSO & audit"
+          ]
+        },
+        {
+          "title": "Document intelligence",
+          "body": "Contract review, due diligence, tender analysis and knowledge retrieval over your own archive — with citations back to the source page, so a professional can verify every answer.",
+          "tags": [
+            "RAG",
+            "Citations",
+            "Bulk ingest"
+          ]
+        },
+        {
+          "title": "AI agents & automation",
+          "body": "Agents that do the work rather than describe it: intake triage, research, drafting, data entry, and the integrations that move the output into the systems you already run.",
+          "tags": [
+            "Tool use",
+            "Integrations",
+            "Human-in-the-loop"
+          ]
+        },
+        {
+          "title": "Audits & enablement",
+          "body": "A clear-eyed read of where AI actually pays back in your operation, what it costs to run, and what the EU AI Act obliges you to document — plus training so your team owns it.",
+          "tags": [
+            "AI audit",
+            "Cost modelling",
+            "Team training"
+          ]
+        }
+      ]
+    },
+    "proof": {
+      "h2": "We ship systems, not slide decks",
+      "body": [
+        "TODO(copy): the results narrative. Two or three paragraphs naming real engagements, what was broken, what we built, and the measurable outcome. This is the single most load-bearing block on the page — keep it concrete and specific.",
+        "TODO(copy): second paragraph. What makes the delivery different: fixed scope, fixed price, weekly demos, and a system that runs after we leave.",
+        "Every engagement ends the same way: a working system, documentation your team can act on, and a handover — or a retainer, if you would rather we kept running it."
+      ],
+      "cta": "Book a 30-minute call"
+    },
+    "work": {
+      "h2": "Selected work",
+      "lead": "Built, deployed and operated by us. Numbers are the client's, not projections.",
+      "cases": [
+        {
+          "name": "TODO(copy): client name",
+          "result": "TODO(copy): headline outcome",
+          "body": "TODO(copy): one paragraph — the situation, what we built, and the measurable result.",
+          "tags": [
+            "TODO(copy): tag",
+            "TODO(copy): tag"
+          ]
+        },
+        {
+          "name": "TODO(copy): client name",
+          "result": "TODO(copy): headline outcome",
+          "body": "TODO(copy): one paragraph — the situation, what we built, and the measurable result.",
+          "tags": [
+            "TODO(copy): tag",
+            "TODO(copy): tag"
+          ]
+        },
+        {
+          "name": "TODO(copy): client name",
+          "result": "TODO(copy): headline outcome",
+          "body": "TODO(copy): one paragraph — the situation, what we built, and the measurable result.",
+          "tags": [
+            "TODO(copy): tag",
+            "TODO(copy): tag"
+          ]
+        }
+      ]
+    },
+    "product": {
+      "h2": "Our own product, running in production",
+      "lead": "We do not only advise on private AI — we sell and operate it. openllm.aiadaptiv.com is our packaged private-AI platform: open-source models, deployed inside your own EU cloud account, managed by us.",
+      "points": [
+        "Fully white-labeled, deployed in your cloud tenancy — you own the infrastructure, keys and data.",
+        "GDPR and EU AI Act aligned by architecture, not by policy document.",
+        "Fixed setup fee plus a monthly management fee. No per-seat token surprises."
+      ],
+      "cta": "See the platform"
+    },
+    "team": {
+      "h2": "Who you actually work with",
+      "lead": "Small and senior. The people who scope the work are the people who build it — there is no delivery layer between you and the engineer.",
+      "members": [
+        {
+          "name": "Kacper Hernacki",
+          "role": "Founder",
+          "body": [
+            "TODO(copy): bio paragraph — background, what you have shipped, why a client should trust you with a production system.",
+            "TODO(copy): second paragraph — public track record, talks, open-source, or notable clients."
+          ]
+        },
+        {
+          "name": "TODO(copy): name",
+          "role": "TODO(copy): role",
+          "body": [
+            "TODO(copy): bio paragraph. Remove this whole entry if the team is one person today — an honest one-person team reads better than an invented second."
+          ]
+        }
+      ]
+    },
+    "approach": {
+      "h2": "How we are different",
+      "items": [
+        {
+          "title": "Fixed scope, fixed price",
+          "body": "Every engagement gets a written scope, a timeline and a fixed price before anything starts. No hourly billing, no scope creep, no invoice you did not see coming."
+        },
+        {
+          "title": "Your infrastructure, always",
+          "body": "We deploy inside your cloud account under your keys. When the engagement ends you keep a running system, not a dependency on us."
+        },
+        {
+          "title": "EU-native by default",
+          "body": "Data residency, GDPR and the EU AI Act are the starting constraints, not a compliance review bolted on at the end. That is why the architecture looks the way it does."
+        },
+        {
+          "title": "We run what we sell",
+          "body": "Our own private-AI platform runs on the same stack we deploy for clients. When something breaks at 2am, it breaks for us first."
+        }
+      ]
+    },
+    "process": {
+      "h2": "From first call to running system",
+      "lead": "Four steps. You know the price and the scope before step three.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Mapping call",
+          "body": "A free 30-minute session. We map where your team loses hours, which of it AI can actually take, and what the compliance constraints are."
+        },
+        {
+          "step": "02",
+          "title": "Scope & fixed price",
+          "body": "A written scope, an architecture sketch, a timeline and one fixed price. If it is not worth building, we will tell you that instead."
+        },
+        {
+          "step": "03",
+          "title": "Build & deploy",
+          "body": "We build in your cloud account with weekly demos of working software. You see the system before it is finished, not a status report about it."
+        },
+        {
+          "step": "04",
+          "title": "Run or hand over",
+          "body": "Documentation and training so your team owns it — or an optional retainer where we monitor, update and keep improving it."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Questions we get asked",
+      "items": [
+        {
+          "q": "How much does an engagement cost?",
+          "a": "TODO(copy): your real engagement floor and typical range, e.g. 'Projects start at €X. Most land between €X and €Y.' Say it on the page — it filters out the wrong calls before they reach your calendar."
+        },
+        {
+          "q": "How long does a first system take?",
+          "a": "TODO(copy): your honest typical timeline from signature to a system in production."
+        },
+        {
+          "q": "Where does our data live?",
+          "a": "In your own cloud tenancy, in an EU region you choose. We deploy under your account and your keys; nothing is routed through us, and no client data reaches a third-party model provider unless you explicitly ask for it."
+        },
+        {
+          "q": "Do we have to use open-source models?",
+          "a": "No. Open-source models on your own infrastructure are the default because they keep data and cost under your control, but we integrate commercial APIs where they genuinely win — and we will tell you which parts of a system that applies to."
+        },
+        {
+          "q": "What happens when the project ends?",
+          "a": "You keep everything: the infrastructure, the code, the documentation and the running system. A retainer is optional, never a condition of the build."
+        },
+        {
+          "q": "Do you work outside the EU?",
+          "a": "TODO(copy): yes/no and any conditions."
+        }
+      ]
+    },
+    "contact": {
+      "h2": "Let's map where AI pays back",
+      "body": "Book a free 30-minute call. We will walk through your workflow, name the two or three places AI is worth deploying, and tell you what it would take to build them.",
+      "note": "TODO(copy): price anchor, e.g. 'Engagements typically start at €X.' Remove this line rather than leave it vague.",
+      "cta": "Book a 30-minute call"
+    },
+    "footer": {
+      "blurb": "AI systems designed, built and operated for European companies. Based in the EU, deployed in your cloud.",
+      "groups": [
+        {
+          "label": "Company",
+          "links": [
+            {
+              "label": "What we build",
+              "href": "#capabilities"
+            },
+            {
+              "label": "Work",
+              "href": "#work"
+            },
+            {
+              "label": "Approach",
+              "href": "#approach"
+            },
+            {
+              "label": "Team",
+              "href": "#team"
+            },
+            {
+              "label": "Terms",
+              "href": "@terms"
+            }
+          ]
+        },
+        {
+          "label": "Product",
+          "links": [
+            {
+              "label": "Private AI platform",
+              "href": "@openllm"
+            },
+            {
+              "label": "How it works",
+              "href": "#process"
+            },
+            {
+              "label": "FAQ",
+              "href": "#faq"
+            }
+          ]
+        },
+        {
+          "label": "Connect",
+          "links": [
+            {
+              "label": "LinkedIn",
+              "href": "https://www.linkedin.com/company/aiadaptiv"
+            },
+            {
+              "label": "X / Twitter",
+              "href": "https://x.com/aiadaptiv"
+            },
+            {
+              "label": "GitHub",
+              "href": "https://github.com/aiadaptiv"
+            },
+            {
+              "label": "Email",
+              "href": "mailto:kacper@aiadaptiv.com"
+            }
+          ]
+        }
+      ],
+      "rights": "All rights reserved."
+    }
   }
 }
