@@ -515,8 +515,12 @@
           "a": "Four steps. A free 30-minute mapping call where we find where AI pays back; a written scope, architecture sketch and one fixed price; the build in your cloud account with weekly demos of working software; then documentation and handover, or an optional retainer if you would rather we kept running it."
         },
         {
+          "q": "Who is Kacper Hernacki?",
+          "a": "Kacper Hernacki is the founder and CTO of aiAdaptiv. He has been building software since 2014 — twelve years of full-stack engineering across web applications, mobile apps and automation workflows for clients worldwide — and holds multiple certifications in AI development. He has spent the last four years building with large language models, and leads the architecture on every aiAdaptiv engagement personally. Reach him at kacper@aiadaptiv.com."
+        },
+        {
           "q": "Who runs aiAdaptiv?",
-          "a": "Kacper Hernacki, Founder and CTO, who has been building software since 2014 and holds multiple certifications in AI development. Julia Hernacka, co-founder and AI marketing engineer. Both work on every engagement directly — the person who writes your proposal is the person who architects the build."
+          "a": "Two founders, both hands-on. Kacper Hernacki is founder and CTO; Julia Hernacka is co-founder and AI marketing engineer. There is no account-management layer between you and the people building your system — the person who writes your proposal is the person who architects the build."
         },
         {
           "q": "Where is aiAdaptiv located, and who do you work with?",

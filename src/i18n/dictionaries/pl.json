@@ -515,8 +515,12 @@
           "a": "Cztery kroki. Bezpłatna 30-minutowa rozmowa, na której znajdujemy miejsca, gdzie AI się zwraca; spisany zakres, szkic architektury i jedna stała cena; budowa w Twoim koncie chmurowym z cotygodniowym demo działającego oprogramowania; na koniec dokumentacja i przekazanie albo opcjonalny abonament, jeśli wolisz, żebyśmy prowadzili system dalej."
         },
         {
+          "q": "Kim jest Kacper Hernacki?",
+          "a": "Kacper Hernacki jest założycielem i CTO aiAdaptiv. Tworzy oprogramowanie od 2014 roku — dwanaście lat inżynierii full-stack: aplikacje webowe, mobilne i automatyzacje dla klientów na całym świecie — i ma kilka certyfikacji z obszaru rozwoju AI. Od czterech lat buduje z dużymi modelami językowymi i osobiście prowadzi architekturę każdego wdrożenia aiAdaptiv. Kontakt: kacper@aiadaptiv.com."
+        },
+        {
           "q": "Kto prowadzi aiAdaptiv?",
-          "a": "Kacper Hernacki, założyciel i CTO, tworzy oprogramowanie od 2014 roku i ma kilka certyfikacji z obszaru rozwoju AI. Julia Hernacka, współzałożycielka i inżynierka AI marketingu. Oboje pracują bezpośrednio przy każdym wdrożeniu — osoba, która pisze ofertę, jest tą samą, która projektuje architekturę."
+          "a": "Dwoje założycieli, oboje pracujących bezpośrednio przy projektach. Kacper Hernacki — założyciel i CTO; Julia Hernacka — współzałożycielka i inżynierka AI marketingu. Między Tobą a osobami budującymi system nie ma warstwy account managerów — osoba, która pisze ofertę, jest tą samą, która projektuje architekturę."
         },
         {
           "q": "Gdzie działa aiAdaptiv i z kim pracujecie?",
