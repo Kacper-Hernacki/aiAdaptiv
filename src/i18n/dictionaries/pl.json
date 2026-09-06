@@ -410,14 +410,29 @@
     },
     "product": {
       "h2": "Prywatne AI open source — jedna z rzeczy, które budujemy",
-      "lead": "Część pracy nie może dotknąć publicznego API. Na to mamy gotową ofertę: modele open source wdrożone w Twoim koncie chmurowym w UE, white-label, zarządzane przez nas. Ma własną stronę i jest jedną z sześciu kart powyżej — nie całą firmą.",
-      "points": [
-        "W pełni white-label, wdrożone w Twojej chmurze — to Ty posiadasz infrastrukturę, klucze i dane.",
-        "Zgodność z RODO i AI Act wynika z architektury, nie z dokumentu polityki.",
-        "Stała opłata wdrożeniowa plus miesięczne zarządzanie. Bez niespodzianek za tokeny i licencje na użytkownika."
+      "headline": "Twój prywatny mózg firmy. Na własność, nie w wynajmie.",
+      "lead": "Wdrażamy w pełni white-label platformę AI bezpośrednio w Twoim własnym, bezpiecznym koncie chmurowym w UE. Ty jesteś właścicielem infrastruktury, kluczy i danych. Całą ciężką pracę bierzemy na siebie.",
+      "why": "Publiczne AI to ryzyko: kary do 4% obrotu z RODO i 7% z AI Act, a umowy i dane klientów mogą trafić do treningu cudzego modelu.",
+      "pillars": [
+        {
+          "title": "Bezpieczna analiza dokumentów",
+          "body": "Wgrywaj 200-stronicowe umowy lub dokumenty due diligence. Bezpiecznie wychwytuj ryzyka, porównuj wersje i otrzymuj podsumowania — bez wycieku danych."
+        },
+        {
+          "title": "100% White-Label",
+          "body": "ai.twojafirma.pl z Twoim brandingiem. Realne aktywo wewnętrzne."
+        },
+        {
+          "title": "Twoje własne konto chmurowe",
+          "body": "Wdrożone w Twoim własnym koncie chmurowym. Ty kontrolujesz wszystko."
+        },
+        {
+          "title": "Zero narzutu",
+          "body": "My zajmujemy się aktualizacjami modeli, bezpieczeństwem i utrzymaniem."
+        }
       ],
       "cta": "Zobacz platformę",
-      "mediaLabel": "Zrzut ekranu produktu"
+      "imageAlt": "Strona platformy prywatnego AI aiAdaptiv: „Twój prywatny mózg firmy. Na własność, nie w wynajmie.”"
     },
     "team": {
       "h2": "Z kim faktycznie pracujesz",

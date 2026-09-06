@@ -1,0 +1,71 @@
+/* The product's own pitch, transplanted: image left, pitch right, then the
+   four pillars as a full-width row beneath — the split column is too narrow
+   to hold a grid without cramping it. */
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.headline {
+  font-size: 2.5em;
+  font-weight: 500;
+  line-height: 105%;
+  letter-spacing: -0.027em;
+  color: var(--fg);
+}
+
+.why {
+  font-size: 0.95em;
+  line-height: 155%;
+  color: var(--fg-faint);
+}
+
+.pillars {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5em;
+  width: 100%;
+  margin-top: 3em;
+}
+
+.pillar {
+  padding: 1.5em;
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.pillarTitle {
+  margin-bottom: 0.6em;
+  font-size: 1.125em;
+  font-weight: 500;
+  line-height: 120%;
+  color: var(--fg);
+}
+
+.pillarBody {
+  font-size: 0.95em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+@media screen and (max-width: 991px) {
+  .headline {
+    font-size: 30px;
+    letter-spacing: -1px;
+  }
+
+  .pillars {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+}

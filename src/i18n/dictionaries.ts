@@ -133,13 +133,21 @@ export type Dictionary = {
         tags: string[];
       }[];
     };
-    /** Cross-link band pointing at the open-LLM product on its subdomain. */
+    /**
+     * Cross-link band pointing at the open-LLM product on its subdomain,
+     * carrying the product's own pitch — headline, subhead and pillars —
+     * rather than a summary of it.
+     */
     product: {
+      /** Section label above the pitch. */
       h2: string;
+      headline: string;
       lead: string;
-      points: string[];
+      /** The liability angle: why a private platform, in one sentence. */
+      why: string;
+      pillars: { title: string; body: string }[];
       cta: string;
-      mediaLabel: string;
+      imageAlt: string;
     };
     team: {
       h2: string;

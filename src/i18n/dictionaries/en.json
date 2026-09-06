@@ -410,14 +410,29 @@
     },
     "product": {
       "h2": "Private open-source AI — one of the things we build",
-      "lead": "Some work cannot touch a public API. For that we have a packaged offer: open-source models deployed inside your own EU cloud account, white-labeled and managed by us. It lives on its own site, and it is one card in the six above — not the whole company.",
-      "points": [
-        "Fully white-labeled, deployed in your cloud tenancy — you own the infrastructure, keys and data.",
-        "GDPR and EU AI Act aligned by architecture, not by policy document.",
-        "Fixed setup fee plus a monthly management fee. No per-seat token surprises."
+      "headline": "Your Private Company Brain. Owned, Not Rented.",
+      "lead": "We deploy a fully white-labeled AI platform directly inside your own secure EU cloud account. You own the infrastructure, keys, and data. We do the heavy lifting.",
+      "why": "Public AI is a liability: fines of up to 4% of turnover under GDPR and 7% under the EU AI Act, and contracts or client data that can end up training someone else's model.",
+      "pillars": [
+        {
+          "title": "Secure Document Intelligence",
+          "body": "Upload 200-page contracts or due diligence files. Safely extract risks, compare versions, and get summaries — with zero data leaks."
+        },
+        {
+          "title": "100% White-Labeled",
+          "body": "ai.yourfirm.com with your branding. A real internal asset."
+        },
+        {
+          "title": "Your Own Cloud Account",
+          "body": "Deployed in your own cloud account. You control everything."
+        },
+        {
+          "title": "Zero Overhead",
+          "body": "We handle model updates, security, and maintenance."
+        }
       ],
       "cta": "See the platform",
-      "mediaLabel": "Product screenshot"
+      "imageAlt": "The aiAdaptiv private AI platform landing page: \"Your Private Company Brain. Owned, Not Rented.\""
     },
     "team": {
       "h2": "Who you actually work with",
