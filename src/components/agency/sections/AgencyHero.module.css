@@ -32,7 +32,7 @@
 .title.punch {
   font-size: 5em;
   max-width: 9.6em;
-  margin-bottom: 0.45em;
+  margin-bottom: 0.22em;
 }
 
 .sub {
@@ -108,7 +108,7 @@
   /* Wide enough that each symptom holds one line — a wrapped question orphans
      its last word and kills the rhythm of the stack. */
   max-width: 41em;
-  margin: 0.4em auto 0.75em;
+  margin: 0.2em auto 1.6em;
 }
 
 .question {

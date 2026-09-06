@@ -8,7 +8,19 @@ export function AgencyHero({ hero }: { hero: Dictionary["agency"]["hero"] }) {
   return (
     <section id="hero" aria-labelledby="hero-heading" className={h.hero}>
       <div className={h.inner}>
-        <p className={s.super} data-reveal>
+        <h1
+          id="hero-heading"
+          className={`${s.h1} ${h.title} ${h.punch}`}
+          data-reveal
+          style={{ "--rd": "0ms" } as React.CSSProperties}
+        >
+          {hero.headline.map((part) => part.text).join(" ")}
+        </h1>
+        <p
+          className={s.super}
+          data-reveal
+          style={{ "--rd": "180ms" } as React.CSSProperties}
+        >
           {hero.eyebrow}
         </p>
         <ul className={h.questions}>
@@ -17,20 +29,12 @@ export function AgencyHero({ hero }: { hero: Dictionary["agency"]["hero"] }) {
               key={i}
               className={h.question}
               data-reveal
-              style={{ "--rd": `${40 + i * 90}ms` } as React.CSSProperties}
+              style={{ "--rd": `${260 + i * 90}ms` } as React.CSSProperties}
             >
               {q}
             </li>
           ))}
         </ul>
-        <h1
-          id="hero-heading"
-          className={`${s.h1} ${h.title} ${h.punch}`}
-          data-reveal
-          style={{ "--rd": "320ms" } as React.CSSProperties}
-        >
-          {hero.headline.map((part) => part.text).join(" ")}
-        </h1>
         <p
           className={h.sub}
           data-reveal
