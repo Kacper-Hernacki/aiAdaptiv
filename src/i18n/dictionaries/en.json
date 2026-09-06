@@ -519,7 +519,7 @@
         },
         {
           "q": "How much does aiAdaptiv cost?",
-          "a": "TODO(copy): your real numbers. Keep the shape: \"We work on fixed-price projects. Engagements typically start at €X, and most land between €X and €Y, with an optional monthly retainer.\" Every engagement starts with a free 30-minute mapping call."
+          "a": "Every project is quoted as one fixed price, set after the free 30-minute mapping call once we know the scope. No hourly billing, no rate card, and no invoice you did not see coming — the number in the proposal is the number you pay. Ongoing management, where you want it, is a flat monthly retainer."
         },
         {
           "q": "How does aiAdaptiv work?",
@@ -535,11 +535,11 @@
         },
         {
           "q": "Where is aiAdaptiv located, and who do you work with?",
-          "a": "TODO(copy): where the company is based, whether you work remote-first, and the countries or regions you serve. Say it plainly — buyers and AI search both look for it."
+          "a": "We are a remote-first team based in Poland, working with clients all around the world. Delivery is remote by default, with calls in your timezone where they are needed, and systems deployed in the cloud region you choose."
         },
         {
           "q": "How long does a first system take?",
-          "a": "TODO(copy): your honest typical timeline from signature to something running in production, and what makes it faster or slower."
+          "a": "It depends on what we are building, and the proposal states the date. A scoped pilot or a single automation is measured in weeks; a full product in months. Beyond scope, what moves the date most is how quickly access, decisions and approvals arrive from your side."
         },
         {
           "q": "Where does our data live?",
@@ -562,7 +562,7 @@
     "contact": {
       "h2": "Let's map where AI pays back",
       "body": "Book a free 30-minute call. We will walk through your workflow, name the two or three places AI is worth deploying, and tell you what it would take to build them.",
-      "note": "TODO(copy): price anchor, e.g. 'Engagements typically start at €X.' Remove this line rather than leave it vague.",
+      "note": "Every engagement is priced on the call — one fixed number, agreed before any work starts.",
       "cta": "Book a 30-minute call"
     },
     "footer": {

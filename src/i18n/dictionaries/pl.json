@@ -519,7 +519,7 @@
         },
         {
           "q": "Ile kosztuje współpraca z aiAdaptiv?",
-          "a": "TODO(copy): realne liczby (PL). Zachowaj strukturę: „Pracujemy w modelu stałej ceny. Wdrożenia zaczynają się od X €, a większość mieści się w przedziale X–Y €, z opcjonalnym abonamentem miesięcznym”. Każde wdrożenie zaczyna się od bezpłatnej 30-minutowej rozmowy."
+          "a": "Każdy projekt wyceniamy jako jedną stałą cenę, ustalaną po bezpłatnej 30-minutowej rozmowie, gdy znamy zakres. Bez rozliczeń godzinowych, bez cennika stawek i bez faktury, której się nie spodziewałeś — kwota z oferty to kwota, którą płacisz. Bieżące utrzymanie, jeśli go chcesz, to stały abonament miesięczny."
         },
         {
           "q": "Jak wygląda współpraca?",
@@ -535,11 +535,11 @@
         },
         {
           "q": "Gdzie działa aiAdaptiv i z kim pracujecie?",
-          "a": "TODO(copy): gdzie firma ma siedzibę, czy pracujecie zdalnie i jakie kraje lub regiony obsługujecie (PL). Napisz to wprost — szukają tego zarówno kupujący, jak i wyszukiwarki AI."
+          "a": "Jesteśmy zespołem zdalnym z siedzibą w Polsce i pracujemy z klientami na całym świecie. Realizacja jest domyślnie zdalna, rozmowy prowadzimy w Twojej strefie czasowej, a systemy wdrażamy w regionie chmury, który wybierzesz."
         },
         {
           "q": "Ile trwa pierwszy system?",
-          "a": "TODO(copy): uczciwy typowy czas od podpisu do działania na produkcji i co go przyspiesza lub wydłuża (PL)."
+          "a": "To zależy od tego, co budujemy — termin określa oferta. Zamknięty pilotaż albo pojedyncza automatyzacja to kwestia tygodni; pełny produkt to miesiące. Poza zakresem na termin najbardziej wpływa to, jak szybko z Twojej strony pojawiają się dostępy, decyzje i akceptacje."
         },
         {
           "q": "Gdzie znajdują się nasze dane?",
@@ -562,7 +562,7 @@
     "contact": {
       "h2": "Sprawdźmy, gdzie AI się zwraca",
       "body": "Umów bezpłatną 30-minutową rozmowę. Przejdziemy przez Wasz proces, wskażemy dwa–trzy miejsca, w których warto wdrożyć AI, i powiemy, czego wymaga ich zbudowanie.",
-      "note": "TODO(copy): kotwica cenowa (PL), np. „Wdrożenia zaczynają się od X €.” Usuń tę linię, zamiast zostawiać ją ogólnikową.",
+      "note": "Każde wdrożenie wyceniamy na rozmowie — jedna stała kwota, uzgodniona przed rozpoczęciem prac.",
       "cta": "Umów 30-minutową rozmowę"
     },
     "footer": {
