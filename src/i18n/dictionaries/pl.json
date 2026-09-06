@@ -282,8 +282,15 @@
       "questions": [],
       "headline": [
         {
-          "text": "Rozwiązania AI, które oszczędzają dziesiątki godzin i zwiększają przychody."
+          "text": "Rozwiązania AI, które"
         }
+      ],
+      "rotating": [
+        "oszczędzają dziesiątki godzin.",
+        "automatyzują żmudną pracę.",
+        "zwiększają przychody.",
+        "obniżają koszty ręcznej pracy.",
+        "nie przegapią żadnego leada."
       ],
       "subhead": "Automatyzacje, produkty AI, aplikacje mobilne i systemy marketingowe — zbudowane pod to, jak naprawdę działa Twoja firma. Stała cena, dowiezione od początku do końca, aktualizowane, gdy modele idą do przodu.",
       "cta": "Umów 30-minutową rozmowę",

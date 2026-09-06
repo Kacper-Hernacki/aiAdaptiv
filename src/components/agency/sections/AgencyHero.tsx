@@ -1,6 +1,7 @@
 import type { Dictionary } from "@/i18n/dictionaries";
 import { bookingUrl } from "@/config/site";
 import { PillButton } from "../PillButton";
+import { RotatingText } from "../RotatingText";
 import s from "../Agency.module.css";
 import h from "./AgencyHero.module.css";
 
@@ -17,7 +18,8 @@ export function AgencyHero({ hero }: { hero: Dictionary["agency"]["hero"] }) {
           data-reveal
           style={{ "--rd": "80ms" } as React.CSSProperties}
         >
-          {hero.headline.map((part) => part.text).join(" ")}
+          {hero.headline.map((part) => part.text).join(" ")}{" "}
+          <RotatingText phrases={hero.rotating} className={h.rotating} />
         </h1>
         {hero.questions.length > 0 && (
           <ul className={h.questions}>

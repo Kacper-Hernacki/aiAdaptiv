@@ -104,6 +104,13 @@ export type Dictionary = {
       questions: string[];
       /** Rendered as one `<h1>`; `accent` parts get emphasis styling. */
       headline: { text: string; accent?: boolean }[];
+      /**
+       * Endings that complete the headline, cycled every few seconds on the
+       * client. The first one is what the server renders and what crawlers
+       * read, so it must make the best complete sentence. Each should hold one
+       * line on a phone.
+       */
+      rotating: string[];
       subhead: string;
       cta: string;
       stats: { value: string; label: string }[];

@@ -282,8 +282,15 @@
       "questions": [],
       "headline": [
         {
-          "text": "Custom AI solutions that save tens of hours and increase revenue."
+          "text": "Custom AI solutions that"
         }
+      ],
+      "rotating": [
+        "save tens of hours.",
+        "automate busywork.",
+        "increase revenue.",
+        "cut manual costs.",
+        "never miss a lead."
       ],
       "subhead": "Automations, AI products, mobile apps and marketing systems — built for how your business actually works. Fixed price, delivered end to end, then kept updated as the models move.",
       "cta": "Book a 30-minute call",
