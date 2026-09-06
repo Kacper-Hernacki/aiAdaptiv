@@ -249,7 +249,7 @@
   },
   "agency": {
     "meta": {
-      "title": "aiAdaptiv — rozwiązania AI na zamówienie: SaaS, mobile, automatyzacje",
+      "title": "aiAdaptiv — rozwiązania AI, które oszczędzają godziny i zwiększają przychody",
       "description": "Projektujemy, budujemy i wdrażamy rozwiązania AI na zamówienie — produkty AI SaaS, aplikacje mobilne, automatyzacje, pilotaże, systemy marketingowe i prywatne platformy LLM open source. Umów 30-minutową rozmowę."
     },
     "header": {
@@ -278,18 +278,14 @@
       "toggle": "Przełącz jasny lub ciemny motyw"
     },
     "hero": {
-      "eyebrow": "Brzmi znajomo?",
-      "questions": [
-        "Kupiliście narzędzia AI. Nikt nie wie, co z nimi zrobić.",
-        "Zespół dalej traci godziny tygodniowo na tej samej powtarzalnej robocie.",
-        "Próbowaliście budować z AI sami — a efekty wyglądały słabo."
-      ],
+      "eyebrow": "AI na zamówienie · Stała cena · Od początku do końca",
+      "questions": [],
       "headline": [
         {
-          "text": "Zatrudnij fachowców."
+          "text": "Rozwiązania AI, które oszczędzają dziesiątki godzin i zwiększają przychody."
         }
       ],
-      "subhead": "Stała cena, bez niespodzianek. Zaprojektowane, zbudowane i dowiezione od początku do końca — i aktualizowane, gdy modele idą do przodu.",
+      "subhead": "Automatyzacje, produkty AI, aplikacje mobilne i systemy marketingowe — zbudowane pod to, jak naprawdę działa Twoja firma. Stała cena, dowiezione od początku do końca, aktualizowane, gdy modele idą do przodu.",
       "cta": "Umów 30-minutową rozmowę",
       "stats": [
         {

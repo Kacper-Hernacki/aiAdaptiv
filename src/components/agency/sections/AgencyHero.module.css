@@ -27,13 +27,6 @@
   margin-bottom: 0.6em;
 }
 
-/* The headline is now the two-word answer to the hook above it, so it carries
-   more weight than the reference's sentence-length h1. */
-.title.punch {
-  font-size: 5em;
-  max-width: 9.6em;
-  margin-bottom: 0.22em;
-}
 
 .sub {
   max-width: 30em;
@@ -128,8 +121,4 @@
     font-size: 17px;
   }
 
-  .title.punch {
-    font-size: 44px;
-    max-width: 100%;
-  }
 }

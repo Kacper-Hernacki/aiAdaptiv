@@ -249,7 +249,7 @@
   },
   "agency": {
     "meta": {
-      "title": "aiAdaptiv — Custom AI solutions: SaaS, mobile apps, automations",
+      "title": "aiAdaptiv — Custom AI solutions that save hours and increase revenue",
       "description": "We design, build and ship custom AI solutions — AI SaaS products, mobile apps, automations, pilots, marketing systems and private open-source LLM platforms. Book a 30-minute call."
     },
     "header": {
@@ -278,18 +278,14 @@
       "toggle": "Toggle light or dark theme"
     },
     "hero": {
-      "eyebrow": "Sound familiar?",
-      "questions": [
-        "You bought the AI tools. Nobody knows what to do with them.",
-        "Your team still burns hours a week on the same repetitive work.",
-        "You tried building with AI yourself — and the results looked terrible."
-      ],
+      "eyebrow": "Custom AI · Fixed price · Delivered end to end",
+      "questions": [],
       "headline": [
         {
-          "text": "Hire pros."
+          "text": "Custom AI solutions that save tens of hours and increase revenue."
         }
       ],
-      "subhead": "Fixed price, no surprises. Designed, built and delivered end to end — then kept updated as the models move.",
+      "subhead": "Automations, AI products, mobile apps and marketing systems — built for how your business actually works. Fixed price, delivered end to end, then kept updated as the models move.",
       "cta": "Book a 30-minute call",
       "stats": [
         {
