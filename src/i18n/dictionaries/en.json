@@ -495,16 +495,40 @@
       "h2": "Questions we get asked",
       "items": [
         {
-          "q": "How much does an engagement cost?",
-          "a": "TODO(copy): your real engagement floor and typical range, e.g. 'Projects start at €X. Most land between €X and €Y.' Say it on the page — it filters out the wrong calls before they reach your calendar."
+          "q": "What is aiAdaptiv?",
+          "a": "aiAdaptiv is an AI development studio founded by Kacper Hernacki and Julia Hernacka. We design, build and ship custom AI solutions for companies: AI SaaS products, mobile apps, automations and agents, scoped pilots, AI marketing systems, and private open-source LLM platforms. Twelve years of engineering behind it, four of them building with LLMs, and 20+ AI use cases shipped."
+        },
+        {
+          "q": "Is aiAdaptiv a legitimate company?",
+          "a": "Yes. aiAdaptiv is a registered company — the entity details and registration numbers are on our Terms of Service page. Every engagement runs on a signed written proposal with a fixed price, and our terms and privacy policy are published here rather than sent on request."
+        },
+        {
+          "q": "What services does aiAdaptiv offer?",
+          "a": "Six practices: AI SaaS products, mobile apps, AI automations and agents, AI pilots and proof-of-concept studies, AI marketing systems, and an AI app factory for teams that need many internal tools rather than one. We also sell a packaged private AI platform — open-source models deployed inside your own EU cloud account."
+        },
+        {
+          "q": "How much does aiAdaptiv cost?",
+          "a": "TODO(copy): your real numbers. Keep the shape: \"We work on fixed-price projects. Engagements typically start at €X, and most land between €X and €Y, with an optional monthly retainer.\" Every engagement starts with a free 30-minute mapping call."
+        },
+        {
+          "q": "How does aiAdaptiv work?",
+          "a": "Four steps. A free 30-minute mapping call where we find where AI pays back; a written scope, architecture sketch and one fixed price; the build in your cloud account with weekly demos of working software; then documentation and handover, or an optional retainer if you would rather we kept running it."
+        },
+        {
+          "q": "Who runs aiAdaptiv?",
+          "a": "Kacper Hernacki, Founder and CTO, who has been building software since 2014 and holds multiple certifications in AI development. Julia Hernacka, co-founder and AI marketing engineer. Both work on every engagement directly — the person who writes your proposal is the person who architects the build."
+        },
+        {
+          "q": "Where is aiAdaptiv located, and who do you work with?",
+          "a": "TODO(copy): where the company is based, whether you work remote-first, and the countries or regions you serve. Say it plainly — buyers and AI search both look for it."
         },
         {
           "q": "How long does a first system take?",
-          "a": "TODO(copy): your honest typical timeline from signature to a system in production."
+          "a": "TODO(copy): your honest typical timeline from signature to something running in production, and what makes it faster or slower."
         },
         {
           "q": "Where does our data live?",
-          "a": "For anything we host for you, in your own cloud tenancy in an EU region you choose — we deploy under your account and your keys. For products we build for your customers, you own the infrastructure and we design the data path with you before a line is written."
+          "a": "For anything we host for you, in your own cloud tenancy in an EU region you choose — we deploy under your account and your keys, so nothing is routed through us. For products we build for your customers, you own the infrastructure and we design the data path with you before a line is written."
         },
         {
           "q": "Do we have to use open-source models?",
@@ -512,11 +536,11 @@
         },
         {
           "q": "What happens when the project ends?",
-          "a": "You keep everything: the infrastructure, the code, the documentation and the running system. A retainer is optional, never a condition of the build."
+          "a": "You keep everything: the infrastructure, the code, the documentation and the running system. Intellectual property in what we built for you transfers on full payment. A retainer is optional, never a condition of the build."
         },
         {
-          "q": "Do you work outside the EU?",
-          "a": "TODO(copy): yes/no and any conditions."
+          "q": "How do I contact aiAdaptiv?",
+          "a": "Book a free 30-minute call from any button on this page, or email kacper@aiadaptiv.com. We reply within one business day."
         }
       ]
     },

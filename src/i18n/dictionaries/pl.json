@@ -495,28 +495,52 @@
       "h2": "Najczęstsze pytania",
       "items": [
         {
-          "q": "Ile kosztuje wdrożenie?",
-          "a": "TODO(copy): realny próg wejścia i typowy przedział (PL). Podaj to na stronie — odfiltrujesz nietrafione rozmowy, zanim trafią do kalendarza."
+          "q": "Czym jest aiAdaptiv?",
+          "a": "aiAdaptiv to studio rozwoju AI założone przez Kacpra Hernackiego i Julię Hernacką. Projektujemy, budujemy i wdrażamy rozwiązania AI na zamówienie: produkty AI SaaS, aplikacje mobilne, automatyzacje i agentów, zamknięte pilotaże, systemy marketingowe oraz prywatne platformy LLM open source. Za tym stoi dwanaście lat inżynierii, w tym cztery lata pracy z LLM-ami, i ponad 20 wdrożonych zastosowań AI."
+        },
+        {
+          "q": "Czy aiAdaptiv to wiarygodna firma?",
+          "a": "Tak. aiAdaptiv jest zarejestrowaną firmą — dane rejestrowe znajdziesz na stronie Regulaminu. Każde wdrożenie opiera się na podpisanej pisemnej ofercie ze stałą ceną, a regulamin i politykę prywatności publikujemy tutaj, zamiast wysyłać je na życzenie."
+        },
+        {
+          "q": "Jakie usługi oferuje aiAdaptiv?",
+          "a": "Sześć obszarów: produkty AI SaaS, aplikacje mobilne, automatyzacje i agenci AI, pilotaże i studia przypadku AI, systemy marketingowe oparte na AI oraz fabryka aplikacji dla zespołów, które potrzebują wielu narzędzi wewnętrznych, a nie jednego. Sprzedajemy też gotową platformę prywatnego AI — modele open source wdrożone w Twoim koncie chmurowym w UE."
+        },
+        {
+          "q": "Ile kosztuje współpraca z aiAdaptiv?",
+          "a": "TODO(copy): realne liczby (PL). Zachowaj strukturę: „Pracujemy w modelu stałej ceny. Wdrożenia zaczynają się od X €, a większość mieści się w przedziale X–Y €, z opcjonalnym abonamentem miesięcznym”. Każde wdrożenie zaczyna się od bezpłatnej 30-minutowej rozmowy."
+        },
+        {
+          "q": "Jak wygląda współpraca?",
+          "a": "Cztery kroki. Bezpłatna 30-minutowa rozmowa, na której znajdujemy miejsca, gdzie AI się zwraca; spisany zakres, szkic architektury i jedna stała cena; budowa w Twoim koncie chmurowym z cotygodniowym demo działającego oprogramowania; na koniec dokumentacja i przekazanie albo opcjonalny abonament, jeśli wolisz, żebyśmy prowadzili system dalej."
+        },
+        {
+          "q": "Kto prowadzi aiAdaptiv?",
+          "a": "Kacper Hernacki, założyciel i CTO, tworzy oprogramowanie od 2014 roku i ma kilka certyfikacji z obszaru rozwoju AI. Julia Hernacka, współzałożycielka i inżynierka AI marketingu. Oboje pracują bezpośrednio przy każdym wdrożeniu — osoba, która pisze ofertę, jest tą samą, która projektuje architekturę."
+        },
+        {
+          "q": "Gdzie działa aiAdaptiv i z kim pracujecie?",
+          "a": "TODO(copy): gdzie firma ma siedzibę, czy pracujecie zdalnie i jakie kraje lub regiony obsługujecie (PL). Napisz to wprost — szukają tego zarówno kupujący, jak i wyszukiwarki AI."
         },
         {
           "q": "Ile trwa pierwszy system?",
-          "a": "TODO(copy): uczciwy typowy czas od podpisu do produkcji (PL)."
+          "a": "TODO(copy): uczciwy typowy czas od podpisu do działania na produkcji i co go przyspiesza lub wydłuża (PL)."
         },
         {
           "q": "Gdzie znajdują się nasze dane?",
-          "a": "Dla wszystkiego, co hostujemy dla Ciebie — w Twoim koncie chmurowym, w wybranym regionie UE; wdrażamy na Twoim koncie i Twoich kluczach. Dla produktów, które budujemy dla Twoich klientów, infrastruktura należy do Ciebie, a ścieżkę danych projektujemy wspólnie, zanim powstanie pierwsza linia kodu."
+          "a": "Dla wszystkiego, co hostujemy dla Ciebie — w Twoim koncie chmurowym, w wybranym regionie UE; wdrażamy na Twoim koncie i Twoich kluczach, więc nic nie przechodzi przez nas. Dla produktów budowanych dla Twoich klientów infrastruktura należy do Ciebie, a ścieżkę danych projektujemy wspólnie, zanim powstanie pierwsza linia kodu."
         },
         {
-          "q": "Czy musimy używać modeli open-source?",
-          "a": "Nie. Modele open-source na własnej infrastrukturze są domyślne, bo trzymają dane i koszty pod Twoją kontrolą, ale integrujemy komercyjne API tam, gdzie realnie wygrywają — i powiemy, których części systemu to dotyczy."
+          "q": "Czy musimy używać modeli open source?",
+          "a": "Nie. Modele open source na własnej infrastrukturze są domyślne, bo trzymają dane i koszty pod Twoją kontrolą, ale integrujemy komercyjne API tam, gdzie realnie wygrywają — i powiemy, których części systemu to dotyczy."
         },
         {
           "q": "Co się dzieje po zakończeniu projektu?",
-          "a": "Zostaje u Ciebie wszystko: infrastruktura, kod, dokumentacja i działający system. Abonament jest opcjonalny, nigdy nie jest warunkiem budowy."
+          "a": "Zostaje u Ciebie wszystko: infrastruktura, kod, dokumentacja i działający system. Prawa własności intelektualnej do tego, co dla Ciebie zbudowaliśmy, przechodzą po pełnej zapłacie. Abonament jest opcjonalny, nigdy nie jest warunkiem budowy."
         },
         {
-          "q": "Czy pracujecie poza UE?",
-          "a": "TODO(copy): tak/nie i ewentualne warunki (PL)."
+          "q": "Jak się z Wami skontaktować?",
+          "a": "Umów bezpłatną 30-minutową rozmowę dowolnym przyciskiem na tej stronie albo napisz na kacper@aiadaptiv.com. Odpowiadamy w ciągu jednego dnia roboczego."
         }
       ]
     },

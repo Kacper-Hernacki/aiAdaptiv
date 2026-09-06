@@ -80,3 +80,35 @@ export function WebSiteJsonLd({ baseUrl = siteUrl }: { baseUrl?: string }) {
     />
   );
 }
+
+/**
+ * FAQPage schema for the agency FAQ. Google restricted FAQ rich results to a
+ * narrow set of sites in 2023, so this is not about star-ratings in search —
+ * it is a machine-readable statement of who we are and what we charge, which
+ * is what an LLM answering "what is aiAdaptiv?" reads.
+ *
+ * Entries whose answer is still a TODO placeholder are excluded: publishing a
+ * placeholder into structured data feeds it straight to the crawlers.
+ */
+export function FaqJsonLd({
+  items,
+}: {
+  items: { q: string; a: string }[];
+}) {
+  const answered = items.filter((i) => !i.a.includes("TODO(copy)"));
+  if (answered.length === 0) return null;
+
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: answered.map((i) => ({
+          "@type": "Question",
+          name: i.q,
+          acceptedAnswer: { "@type": "Answer", text: i.a },
+        })),
+      }}
+    />
+  );
+}

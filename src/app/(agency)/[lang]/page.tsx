@@ -12,6 +12,7 @@ import { Approach } from "@/components/agency/sections/Approach";
 import { Process } from "@/components/agency/sections/Process";
 import { AgencyFaq } from "@/components/agency/sections/AgencyFaq";
 import { Contact } from "@/components/agency/sections/Contact";
+import { FaqJsonLd } from "@/components/seo/JsonLd";
 
 type PageParams = { params: Promise<{ lang: string }> };
 
@@ -38,6 +39,7 @@ export default async function AgencyHome({ params }: PageParams) {
       <Process process={agency.process} />
       <AgencyFaq faq={agency.faq} />
       <Contact contact={agency.contact} />
+      <FaqJsonLd items={agency.faq.items} />
     </main>
   );
 }
