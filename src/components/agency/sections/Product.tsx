@@ -1,24 +1,24 @@
-import Image from "next/image";
+import Link from "next/link";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { openllmUrl } from "@/config/site";
 import { PillButton } from "../PillButton";
-import productHero from "../assets/product-hero.jpg";
+import { Placeholder } from "../Placeholder";
 import s from "../Agency.module.css";
 import p from "./Product.module.css";
 
 /**
- * The open-LLM product's own pitch, on the agency homepage. It is the only
- * crawlable path from the apex domain to openllm.aiadaptiv.com, so the link is
- * a plain, followed anchor — and `external` is off because it is our own site.
- *
- * The image is a capture of the product site's hero (its own landing page),
- * imported statically so next/image serves it sized and in a modern format.
+ * The private open-source-LLM offer on the homepage, linking to its own page
+ * at /[lang]/private-ai. The image slot is a placeholder until product art
+ * lands; both it and the button go to the page.
  */
 export function Product({
   product,
+  lang,
 }: {
   product: Dictionary["agency"]["product"];
+  lang: string;
 }) {
+  const href = `/${lang}/private-ai`;
+
   return (
     <section
       id="product"
@@ -27,19 +27,15 @@ export function Product({
     >
       <div className={s.inner}>
         <div className={s.split}>
-          <div
-            className={s.splitMedia}
+          <Link
+            href={href}
+            className={`${s.splitMedia} ${p.imageLink}`}
+            aria-label={product.cta}
             data-reveal
             style={{ "--rd": "120ms" } as React.CSSProperties}
           >
-            <Image
-              src={productHero}
-              alt={product.imageAlt}
-              className={p.image}
-              sizes="(max-width: 991px) 100vw, 45vw"
-              placeholder="blur"
-            />
-          </div>
+            <Placeholder ratio="16:9" seed={2} label={product.imageAlt} />
+          </Link>
           <div className={s.splitText}>
             <p id="product-heading" className={s.super} data-reveal>
               {product.h2}
@@ -66,7 +62,7 @@ export function Product({
               {product.why}
             </p>
             <div data-reveal style={{ "--rd": "300ms" } as React.CSSProperties}>
-              <PillButton href={openllmUrl} large external={false}>
+              <PillButton href={href} large external={false}>
                 {product.cta}
               </PillButton>
             </div>

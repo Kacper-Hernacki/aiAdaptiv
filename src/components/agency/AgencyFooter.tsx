@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig, openllmUrl, bookingUrl } from "@/config/site";
+import { siteConfig, bookingUrl } from "@/config/site";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { BrandMark } from "./BrandMark";
 import { PillButton } from "./PillButton";
@@ -7,13 +7,13 @@ import styles from "./AgencyFooter.module.css";
 
 /**
  * Footer links are authored in the dictionaries, so they cannot hardcode a
- * runtime-configurable URL or a locale-prefixed route. Two `@` tokens stand in
- * for those: `@openllm` → the product subdomain, `@terms` → this locale's terms
- * page. Everything else is used verbatim (in-page `#anchor`, `mailto:`, or an
+ * locale-prefixed route. `@` tokens stand in for those: `@privateAi` → the
+ * private AI platform page, `@terms` / `@privacy` → this locale's legal pages.
+ * Everything else is used verbatim (in-page `#anchor`, `mailto:`, or an
  * absolute URL).
  */
 function resolveHref(href: string, lang: string): string {
-  if (href === "@openllm") return openllmUrl;
+  if (href === "@privateAi") return `/${lang}/private-ai`;
   if (href === "@terms") return `/${lang}/terms`;
   if (href === "@privacy") return `/${lang}/privacy`;
   return href;

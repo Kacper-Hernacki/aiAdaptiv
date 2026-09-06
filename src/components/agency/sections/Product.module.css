@@ -1,11 +1,13 @@
 /* The product's own pitch, transplanted: image left, pitch right, then the
    four pillars as a full-width row beneath — the split column is too narrow
    to hold a grid without cramping it. */
-.image {
+.imageLink {
   display: block;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
+  transition: transform 0.4s ease;
+}
+
+.imageLink:hover {
+  transform: scale(1.02);
 }
 
 .headline {

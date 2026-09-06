@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { siteUrl } from "@/config/site";
 import { translatedLocales, defaultLocale, isTranslated } from "@/i18n/config";
-import type { LegalDocument } from "@/i18n/dictionaries";
 
 /**
- * Canonical + hreflang for a legal route, following the same rule as every
- * other page: only translated locales are their own indexable version, the
- * rest canonicalize to English (see i18n/config.ts).
+ * Canonical + hreflang for a sub-route, following the same rule as every other
+ * page: only translated locales are their own indexable version, the rest
+ * canonicalize to English (see i18n/config.ts). Used by the legal pages and
+ * the private AI page.
  */
 export function legalMetadata(
-  doc: LegalDocument,
+  doc: { metaTitle: string; metaDescription: string },
   lang: string,
   route: string,
 ): Metadata {

@@ -20,6 +20,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const privacyLanguages = Object.fromEntries(
     translatedLocales.map((l) => [l, `${siteUrl}/${l}/privacy`]),
   );
+  const privateAiLanguages = Object.fromEntries(
+    translatedLocales.map((l) => [l, `${siteUrl}/${l}/private-ai`]),
+  );
 
   return [
     ...translatedLocales.map(
@@ -29,6 +32,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "weekly",
         priority: lang === defaultLocale ? 1 : 0.8,
         alternates: { languages },
+      }),
+    ),
+    ...translatedLocales.map(
+      (lang): MetadataRoute.Sitemap[number] => ({
+        url: `${siteUrl}/${lang}/private-ai`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.8,
+        alternates: { languages: privateAiLanguages },
       }),
     ),
     ...translatedLocales.map(

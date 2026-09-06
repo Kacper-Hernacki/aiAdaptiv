@@ -1,4 +1,4 @@
-import { siteConfig, siteUrl, openllmConfig, openllmUrl } from "@/config/site";
+import { siteConfig, siteUrl } from "@/config/site";
 
 /**
  * Renders a JSON-LD <script>. Schema.org structured data helps search engines
@@ -17,64 +17,53 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-/**
- * The site (root agency vs. openllm product) is chosen by `baseUrl`: both hosts
- * describe the same Organization but must not claim the same @id or URL, or
- * they compete as duplicate entities. Defaults to the root agency site.
- */
-function configFor(baseUrl: string) {
-  return baseUrl === openllmUrl ? openllmConfig : siteConfig;
-}
-
-export function OrganizationJsonLd({ baseUrl = siteUrl }: { baseUrl?: string }) {
-  const config = configFor(baseUrl);
+export function OrganizationJsonLd() {
   return (
     <JsonLd
       data={{
         "@context": "https://schema.org",
         "@type": "Organization",
-        "@id": `${baseUrl}/#organization`,
-        name: config.name,
-        legalName: config.organization.legalName,
-        url: baseUrl,
-        logo: `${baseUrl}/icon.svg`,
-        description: config.description,
-        email: config.contactEmail,
+        "@id": `${siteUrl}/#organization`,
+        name: siteConfig.name,
+        legalName: siteConfig.organization.legalName,
+        url: siteUrl,
+        logo: `${siteUrl}/icon.svg`,
+        description: siteConfig.description,
+        email: siteConfig.contactEmail,
         contactPoint: [
           {
             "@type": "ContactPoint",
             contactType: "sales",
-            email: config.contactEmail,
+            email: siteConfig.contactEmail,
           },
           {
             "@type": "ContactPoint",
             contactType: "customer support",
-            email: config.supportEmail,
+            email: siteConfig.supportEmail,
           },
         ],
-        founder: config.founders.map((f) => ({
+        founder: siteConfig.founders.map((f) => ({
           "@type": "Person",
           name: f.name,
           jobTitle: f.jobTitle,
         })),
-        sameAs: config.organization.sameAs,
+        sameAs: siteConfig.organization.sameAs,
       }}
     />
   );
 }
 
-export function WebSiteJsonLd({ baseUrl = siteUrl }: { baseUrl?: string }) {
-  const config = configFor(baseUrl);
+export function WebSiteJsonLd() {
   return (
     <JsonLd
       data={{
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "@id": `${baseUrl}/#website`,
-        name: config.name,
-        url: baseUrl,
-        description: config.description,
-        publisher: { "@id": `${baseUrl}/#organization` },
+        "@id": `${siteUrl}/#website`,
+        name: siteConfig.name,
+        url: siteUrl,
+        description: siteConfig.description,
+        publisher: { "@id": `${siteUrl}/#organization` },
         inLanguage: "en",
       }}
     />

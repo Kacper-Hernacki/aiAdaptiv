@@ -1,246 +1,5 @@
 {
-  "meta": {
-    "title": "aiAdaptiv — Your Private Company Brain. Owned, Not Rented.",
-    "description": "A fully white-labeled, document-intelligence AI platform deployed inside your own secure EU cloud account. You own the infrastructure, keys, and data. GDPR & EU AI Act safe. Strictly 6 founding partners."
-  },
   "skipToContent": "Skip to main content",
-  "header": {
-    "programLabel": "Private AI for your company",
-    "cta": "Apply →"
-  },
-  "hero": {
-    "badge": "Strictly 6 Founding Design Partners This Quarter",
-    "headline": [
-      {
-        "text": "Your Private Company Brain."
-      },
-      {
-        "text": "Owned, Not Rented.",
-        "accent": true
-      }
-    ],
-    "subhead": "We deploy a fully white-labeled AI platform directly inside your own secure EU cloud account. You own the infrastructure, keys, and data. We do the heavy lifting.",
-    "tagline": "No more pasting sensitive client data into public tools.",
-    "cta": "Run 60-Second Eligibility Check →"
-  },
-  "problem": {
-    "h2": "Public AI is a Massive Liability",
-    "points": [
-      "Fines up to 4% (GDPR) or 7% (EU AI Act) of turnover.",
-      "Your contracts and client data can train public models and leak to competitors.",
-      "Small teams can't keep up with infrastructure and updates."
-    ]
-  },
-  "solution": {
-    "h2": "We Deploy It. You Own It.",
-    "pillars": [
-      {
-        "title": "Secure Document Intelligence",
-        "body": "Upload 200-page contracts or due diligence files. Safely extract risks, compare versions, and get summaries — with zero data leaks."
-      },
-      {
-        "title": "100% White-Labeled",
-        "body": "ai.yourfirm.com with your branding. A real internal asset."
-      },
-      {
-        "title": "Your Own Cloud Account",
-        "body": "Deployed in your own cloud account. You control everything."
-      },
-      {
-        "title": "Zero Overhead",
-        "body": "We handle model updates, security, and maintenance."
-      }
-    ]
-  },
-  "pricing": {
-    "h2": "Founding Partner Pricing",
-    "plans": [
-      {
-        "label": "One-time Setup & Deployment",
-        "price": "€1,999"
-      },
-      {
-        "label": "Monthly Maintenance & Support",
-        "price": "€249"
-      }
-    ],
-    "note": "We are flexible with serious design partners — if your team has specific open-source model preferences or specialized workflow needs, we will tailor the deployment during setup.",
-    "trust": [
-      "EU Hosted",
-      "Open Source Models",
-      "GDPR Ready"
-    ]
-  },
-  "howItWorks": {
-    "h2": "How It Works",
-    "intro": "We make private AI simple by deploying everything inside your own cloud account.",
-    "steps": [
-      {
-        "title": "1. You Create Your Account (or we create it for you)",
-        "body": "Sign up for an EU-region cloud account. You control billing."
-      },
-      {
-        "title": "2. We Build & Brand It",
-        "body": "We deploy Open WebUI + optimized models, apply your logo, and map ai.yourfirm.com."
-      },
-      {
-        "title": "3. You Get Full Access",
-        "body": "Your team logs in and starts using it."
-      },
-      {
-        "title": "4. We Handle Maintenance",
-        "body": "Monthly updates and support."
-      }
-    ],
-    "timeline": "Typical timeline: 3–7 business days from payment to live.",
-    "roadmap": {
-      "label": "Client Roadmap",
-      "days": [
-        {
-          "label": "Day 1–2",
-          "body": "You create (or we create) the cloud account and grant access."
-        },
-        {
-          "label": "Day 3–5",
-          "body": "We deploy, brand, and optimize the platform for your workflows."
-        },
-        {
-          "label": "Day 6–7",
-          "body": "Handover training + your team goes live."
-        }
-      ],
-      "resultLabel": "Result",
-      "result": "A fully branded, secure private AI platform running inside your own environment in under a week."
-    },
-    "flowLabel": "Visual Summary (Simple 4-Step Flow)",
-    "flow": "Your Own Cloud Account (EU)\n↓\nWe Deploy Open WebUI + Models\n↓\nWhite-Labeled at ai.yourfirm.com\n↓\nYour Team Uses It Securely\n(We Maintain Monthly)",
-    "outro": "You own the account. You own the data. We do the technical work."
-  },
-  "behindTheArchitecture": {
-    "h2": "Behind the Architecture",
-    "lead": "Hi, I'm the founder of aiAdaptiv.",
-    "body": [
-      "I built this because boutique firms need powerful AI for contracts and client work — but public tools create serious risks. I only work with 6 partners at a time so I can give each one dedicated attention."
-    ]
-  },
-  "faq": {
-    "h2": "Frequently Asked Questions",
-    "items": [
-      {
-        "q": "Why deploy inside my own cloud account?",
-        "a": "True ownership. You control the account, billing, and keys. If you ever stop working with us, the entire platform stays yours — no vendor lock-in."
-      },
-      {
-        "q": "Do you see our sensitive data?",
-        "a": "No. All processing happens inside your secure environment. We never have access to your prompts or documents."
-      },
-      {
-        "q": "What are the GPU compute costs?",
-        "a": "You pay the cloud provider directly — never us. We stay elastic and can use different GPU providers, choosing and re-optimizing the right size for your usage. GPU compute typically runs a few hundred euros per month depending on how heavily you use it."
-      },
-      {
-        "q": "How long does setup take?",
-        "a": "Usually 3–7 business days from payment to live, once you complete the onboarding checklist."
-      },
-      {
-        "q": "Can I cancel?",
-        "a": "Yes. The monthly maintenance is cancelable with 30 days notice. You keep the platform you own."
-      }
-    ]
-  },
-  "qualifier": {
-    "h2": "Is This a Fit?",
-    "yesLabel": "Yes if",
-    "yes": "you work with sensitive legal, financial, or client documents daily.",
-    "noLabel": "No if",
-    "no": "you just need a cheap general AI tool.",
-    "cta": "Run 60-Second Eligibility Check →"
-  },
-  "footer": {
-    "rights": "All rights reserved.",
-    "languageLabel": "Language",
-    "disclaimer": "Legal Disclaimer: aiAdaptiv provides custom configuration and maintenance services inside the Client's own cloud environment. The Client owns the account and is solely responsible for data inputs and regulatory compliance (GDPR / EU AI Act). Service provided \"as-is\". Liability limited to fees paid.",
-    "nav": {
-      "eligibility": "Eligibility Check",
-      "howItWorks": "How It Works",
-      "terms": "Terms"
-    }
-  },
-  "terms": {
-    "metaTitle": "Terms of Service — aiAdaptiv",
-    "metaDescription": "The terms governing aiAdaptiv's setup and maintenance services: ownership, fees, data handling, cancellation, and liability.",
-    "h1": "Terms of Service",
-    "updated": "Last updated: July 5, 2026",
-    "intro": "These terms govern the services aiAdaptiv (\"we\", \"us\") provides to the client (\"Client\", \"you\"). By ordering the setup service or paying the monthly maintenance fee, you agree to these terms.",
-    "sections": [
-      {
-        "h": "1. What we provide",
-        "body": [
-          "aiAdaptiv provides custom configuration and maintenance services inside the Client's own cloud environment. We deploy an open-source AI platform (Open WebUI plus selected open-source models) into the Client's own EU-region cloud account, white-label it under the Client's domain (e.g. ai.yourfirm.com), and provide ongoing maintenance: model updates, security patches, and support.",
-          "We are flexible with serious design partners — specific open-source model preferences or specialized workflow needs are tailored during setup."
-        ]
-      },
-      {
-        "h": "2. Ownership",
-        "body": [
-          "The Client owns the cloud account, the infrastructure, the keys, and the data. The platform is deployed inside the Client's own account, and it remains the Client's if the engagement ends. There is no vendor lock-in: if you stop working with us, the entire platform stays yours."
-        ]
-      },
-      {
-        "h": "3. Fees",
-        "body": [
-          "One-time Setup & Deployment: €1,999, due before deployment begins.",
-          "Monthly Maintenance & Support: €249 per month, billed monthly.",
-          "GPU and cloud infrastructure costs are paid by the Client directly to the cloud provider(s) and are not part of our fees. We remain provider-agnostic and help choose and optimize the right instance size for the Client's usage."
-        ]
-      },
-      {
-        "h": "4. Data and confidentiality",
-        "body": [
-          "All processing happens inside the Client's secure environment. We do not have access to the Client's prompts or documents in the running platform. Any access credentials granted to us for deployment or maintenance are used solely to provide the services and are treated as confidential."
-        ]
-      },
-      {
-        "h": "5. Client responsibilities",
-        "body": [
-          "The Client is solely responsible for data inputs and for regulatory compliance applicable to the Client's use of the platform, including GDPR and the EU AI Act.",
-          "The Client is responsible for the cloud account itself, including billing with the cloud provider, and for completing the onboarding checklist needed to go live."
-        ]
-      },
-      {
-        "h": "6. Timeline",
-        "body": [
-          "Typical deployment takes 3–7 business days from payment to live, once the onboarding checklist is complete. Timelines are estimates, not guarantees."
-        ]
-      },
-      {
-        "h": "7. Term and cancellation",
-        "body": [
-          "The monthly maintenance service is cancelable by either party with 30 days' notice. After cancellation the Client keeps the platform, the account, and the data; ongoing updates and support end with the notice period.",
-          "The one-time setup fee is non-refundable once deployment has been completed."
-        ]
-      },
-      {
-        "h": "8. Warranty disclaimer",
-        "body": [
-          "The service is provided \"as-is\", without warranties of any kind, express or implied, including fitness for a particular purpose. AI model outputs are probabilistic; the Client is responsible for reviewing outputs before relying on them."
-        ]
-      },
-      {
-        "h": "9. Limitation of liability",
-        "body": [
-          "To the maximum extent permitted by law, our total aggregate liability arising out of or related to the services is limited to the fees the Client has paid to us. We are not liable for indirect, incidental, or consequential damages, or for costs charged by third-party providers."
-        ]
-      },
-      {
-        "h": "10. Changes to these terms",
-        "body": [
-          "We may update these terms from time to time. The current version is always published on this page; material changes will be communicated to active clients. Continued use of the maintenance service after a change constitutes acceptance."
-        ]
-      }
-    ],
-    "backHome": "← Back to home"
-  },
   "cookies": {
     "message": "We use cookies to measure traffic and improve your experience. You decide what we may store.",
     "accept": "Accept",
@@ -439,11 +198,11 @@
         }
       ],
       "cta": "See the platform",
-      "imageAlt": "The aiAdaptiv private AI platform landing page: \"Your Private Company Brain. Owned, Not Rented.\""
+      "imageAlt": "Product image"
     },
     "team": {
       "h2": "Who you actually work with",
-      "lead": "Small and senior. The people who scope the work are the people who build it — there is no delivery layer between you and the engineer.",
+      "lead": "Small and senior. The person who scopes the work is the person who builds it — there is no delivery layer between you and the engineer.",
       "members": [
         {
           "name": "Kacper Hernacki",
@@ -451,13 +210,6 @@
           "body": [
             "Over a decade of full-stack engineering since 2014, now spent turning complex problems into intelligent, scalable systems — web apps, mobile apps and automation workflows delivered for clients worldwide.",
             "Holds multiple certifications in AI development, and scopes every engagement personally: the person who writes your proposal is the person who architects the build."
-          ]
-        },
-        {
-          "name": "Julia Hernacka",
-          "role": "Co-founder & AI marketing engineer",
-          "body": [
-            "TODO(copy): Julia's bio — background, what she has built, and why a client should trust her with their growth systems. One or two paragraphs, same length as the one above."
           ]
         }
       ]
@@ -514,7 +266,7 @@
       "items": [
         {
           "q": "What is aiAdaptiv?",
-          "a": "aiAdaptiv is an AI development studio founded by Kacper Hernacki and Julia Hernacka. We design, build and ship custom AI solutions for companies: AI SaaS products, mobile apps, automations and agents, scoped pilots, AI marketing systems, and private open-source LLM platforms. Twelve years of engineering behind it, four of them building with LLMs, and 20+ AI use cases shipped."
+          "a": "aiAdaptiv is an AI development studio founded by Kacper Hernacki. We design, build and ship custom AI solutions for companies: AI SaaS products, mobile apps, automations and agents, scoped pilots, AI marketing systems, and private open-source LLM platforms. Twelve years of engineering behind it, four of them building with LLMs, and 20+ AI use cases shipped."
         },
         {
           "q": "Is aiAdaptiv a legitimate company?",
@@ -538,7 +290,7 @@
         },
         {
           "q": "Who runs aiAdaptiv?",
-          "a": "Two founders, both hands-on. Kacper Hernacki is founder and CTO; Julia Hernacka is co-founder and AI marketing engineer. There is no account-management layer between you and the people building your system — the person who writes your proposal is the person who architects the build."
+          "a": "Kacper Hernacki, founder and CTO, hands-on in every engagement. There is no account-management layer between you and the person building your system — the person who writes your proposal is the person who architects the build."
         },
         {
           "q": "Where is aiAdaptiv located, and who do you work with?",
@@ -611,7 +363,7 @@
           "links": [
             {
               "label": "Private AI platform",
-              "href": "@openllm"
+              "href": "@privateAi"
             },
             {
               "label": "How it works",
@@ -866,5 +618,168 @@
         "backHome": "← Back to home"
       }
     }
+  },
+  "privateAi": {
+    "meta": {
+      "title": "Private AI platform — your own open-source LLM, in your cloud | aiAdaptiv",
+      "description": "A white-labeled, open-source-LLM platform deployed inside your own EU cloud account. You own the infrastructure, keys and data; we deploy, maintain and update it. GDPR and EU AI Act aligned by architecture."
+    },
+    "tags": [
+      "Open-source LLMs",
+      "Your EU cloud",
+      "White-label",
+      "GDPR & AI Act"
+    ],
+    "cta": "Book a 30-minute call",
+    "imageLabel": "Product image",
+    "hero": {
+      "badge": "Strictly 6 Founding Design Partners This Quarter",
+      "headline": [
+        {
+          "text": "Your Private Company Brain."
+        },
+        {
+          "text": "Owned, Not Rented.",
+          "accent": true
+        }
+      ],
+      "subhead": "We deploy a fully white-labeled AI platform directly inside your own secure EU cloud account. You own the infrastructure, keys, and data. We do the heavy lifting.",
+      "tagline": "No more pasting sensitive client data into public tools.",
+      "cta": "Run 60-Second Eligibility Check →"
+    },
+    "problem": {
+      "h2": "Public AI is a Massive Liability",
+      "points": [
+        "Fines up to 4% (GDPR) or 7% (EU AI Act) of turnover.",
+        "Your contracts and client data can train public models and leak to competitors.",
+        "Small teams can't keep up with infrastructure and updates."
+      ]
+    },
+    "solution": {
+      "h2": "We Deploy It. You Own It.",
+      "pillars": [
+        {
+          "title": "Secure Document Intelligence",
+          "body": "Upload 200-page contracts or due diligence files. Safely extract risks, compare versions, and get summaries — with zero data leaks."
+        },
+        {
+          "title": "100% White-Labeled",
+          "body": "ai.yourfirm.com with your branding. A real internal asset."
+        },
+        {
+          "title": "Your Own Cloud Account",
+          "body": "Deployed in your own cloud account. You control everything."
+        },
+        {
+          "title": "Zero Overhead",
+          "body": "We handle model updates, security, and maintenance."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Founding Partner Pricing",
+      "plans": [
+        {
+          "label": "One-time Setup & Deployment",
+          "price": "€1,999"
+        },
+        {
+          "label": "Monthly Maintenance & Support",
+          "price": "€249"
+        }
+      ],
+      "note": "We are flexible with serious design partners — if your team has specific open-source model preferences or specialized workflow needs, we will tailor the deployment during setup.",
+      "trust": [
+        "EU Hosted",
+        "Open Source Models",
+        "GDPR Ready"
+      ]
+    },
+    "howItWorks": {
+      "h2": "How It Works",
+      "intro": "We make private AI simple by deploying everything inside your own cloud account.",
+      "steps": [
+        {
+          "title": "1. You Create Your Account (or we create it for you)",
+          "body": "Sign up for an EU-region cloud account. You control billing."
+        },
+        {
+          "title": "2. We Build & Brand It",
+          "body": "We deploy Open WebUI + optimized models, apply your logo, and map ai.yourfirm.com."
+        },
+        {
+          "title": "3. You Get Full Access",
+          "body": "Your team logs in and starts using it."
+        },
+        {
+          "title": "4. We Handle Maintenance",
+          "body": "Monthly updates and support."
+        }
+      ],
+      "timeline": "Typical timeline: 3–7 business days from payment to live.",
+      "roadmap": {
+        "label": "Client Roadmap",
+        "days": [
+          {
+            "label": "Day 1–2",
+            "body": "You create (or we create) the cloud account and grant access."
+          },
+          {
+            "label": "Day 3–5",
+            "body": "We deploy, brand, and optimize the platform for your workflows."
+          },
+          {
+            "label": "Day 6–7",
+            "body": "Handover training + your team goes live."
+          }
+        ],
+        "resultLabel": "Result",
+        "result": "A fully branded, secure private AI platform running inside your own environment in under a week."
+      },
+      "flowLabel": "Visual Summary (Simple 4-Step Flow)",
+      "flow": "Your Own Cloud Account (EU)\n↓\nWe Deploy Open WebUI + Models\n↓\nWhite-Labeled at ai.yourfirm.com\n↓\nYour Team Uses It Securely\n(We Maintain Monthly)",
+      "outro": "You own the account. You own the data. We do the technical work."
+    },
+    "behindTheArchitecture": {
+      "h2": "Behind the Architecture",
+      "lead": "Hi, I'm the founder of aiAdaptiv.",
+      "body": [
+        "I built this because boutique firms need powerful AI for contracts and client work — but public tools create serious risks. I only work with 6 partners at a time so I can give each one dedicated attention."
+      ]
+    },
+    "faq": {
+      "h2": "Frequently Asked Questions",
+      "items": [
+        {
+          "q": "Why deploy inside my own cloud account?",
+          "a": "True ownership. You control the account, billing, and keys. If you ever stop working with us, the entire platform stays yours — no vendor lock-in."
+        },
+        {
+          "q": "Do you see our sensitive data?",
+          "a": "No. All processing happens inside your secure environment. We never have access to your prompts or documents."
+        },
+        {
+          "q": "What are the GPU compute costs?",
+          "a": "You pay the cloud provider directly — never us. We stay elastic and can use different GPU providers, choosing and re-optimizing the right size for your usage. GPU compute typically runs a few hundred euros per month depending on how heavily you use it."
+        },
+        {
+          "q": "How long does setup take?",
+          "a": "Usually 3–7 business days from payment to live, once you complete the onboarding checklist."
+        },
+        {
+          "q": "Can I cancel?",
+          "a": "Yes. The monthly maintenance is cancelable with 30 days notice. You keep the platform you own."
+        }
+      ]
+    },
+    "qualifier": {
+      "h2": "Is This a Fit?",
+      "yesLabel": "Yes if",
+      "yes": "you work with sensitive legal, financial, or client documents daily.",
+      "noLabel": "No if",
+      "no": "you just need a cheap general AI tool.",
+      "cta": "Run 60-Second Eligibility Check →"
+    },
+    "backHome": "← Back to home"
   }
 }

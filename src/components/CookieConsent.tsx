@@ -102,16 +102,10 @@ export function CookieConsent({
   if (!visible) return null;
 
   return (
-    <aside
-      className={
-        variant === "light" ? `${styles.banner} ${styles.light}` : styles.banner
-      }
-      role="region"
-      aria-labelledby="cookie-msg"
-    >
+    <aside className={styles.banner} role="region" aria-labelledby="cookie-msg">
       <p id="cookie-msg" className={styles.text}>
         {dict.message}{" "}
-        <Link href={learnMoreHref ?? `/${lang}/terms`} className={styles.link}>
+        <Link href={learnMoreHref ?? `/${lang}/privacy`} className={styles.link}>
           {dict.learnMore}
         </Link>
       </p>

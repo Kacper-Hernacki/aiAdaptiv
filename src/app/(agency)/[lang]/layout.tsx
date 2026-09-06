@@ -30,10 +30,8 @@ import { CookieConsent } from "@/components/CookieConsent";
 import "../../agency.css";
 
 /**
- * Root layout for the agency site on the apex domain. The product site has its
- * own root layout under app/(openllm)/ — Next allows several as long as there
- * is no app/layout.tsx, and each needs its own <html>/<body> because `lang`
- * only exists inside the [lang] segment.
+ * Root layout. Lives inside the [lang] segment rather than at app/layout.tsx
+ * because <html lang> needs the locale, which only exists here.
  */
 
 const dmSans = DM_Sans({
@@ -166,12 +164,7 @@ export default async function AgencyRootLayout({
         {/* Google Analytics 4 — only mounted when NEXT_PUBLIC_GA_ID is set. */}
         {gaMeasurementId && <GoogleAnalytics gaId={gaMeasurementId} />}
         {/* Cookie consent banner — gates GA4 + Leadsy behind opt-in. */}
-        <CookieConsent
-          lang={lang}
-          dict={dict.cookies}
-          variant="light"
-          learnMoreHref={`/${lang}/privacy`}
-        />
+        <CookieConsent lang={lang} dict={dict.cookies} />
         <ThemeToggle label={dict.agency.theme.toggle} />
       </body>
     </html>
