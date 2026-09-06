@@ -134,8 +134,8 @@
     "proof": {
       "h2": "Dowozimy systemy, nie prezentacje",
       "body": [
-        "TODO(copy): the results narrative (PL). Dwa–trzy akapity: konkretne wdrożenia, co było zepsute, co zbudowaliśmy i mierzalny efekt.",
-        "TODO(copy): second paragraph (PL). Co wyróżnia realizację: ustalony zakres, stała cena, cotygodniowe demo i system, który działa po naszym wyjściu.",
+        "W ciągu ostatnich czterech lat wdrożyliśmy na produkcję ponad 20 zastosowań AI: automatyzacje, które na dobre zdjęły proces z biurka zespołu, produkty, do których klienci się logują i za które płacą, oraz prywatne platformy AI działające w chmurze klienta. Każde z nich powstało według spisanego zakresu i stałej ceny, uzgodnionych przed pierwszą linią kodu.",
+        "Pod tym leży dwanaście lat inżynierii — full-stack od 2014 roku, z czego cztery lata pracy z dużymi modelami językowymi, odkąd stały się wystarczająco dobre, by powierzyć im prawdziwą pracę. Dlatego te systemy trafiają na produkcję: AI to zawsze tylko ostatnie dziesięć procent działającego produktu.",
         "Każde wdrożenie kończy się tak samo: działającym systemem, dokumentacją, z której zespół realnie korzysta, i przekazaniem — albo abonamentem, jeśli wolisz, żebyśmy prowadzili go dalej."
       ],
       "cta": "Umów 30-minutową rozmowę",
@@ -510,7 +510,7 @@
           {
             "h": "14. Prawo właściwe",
             "body": [
-              "TODO(legal): prawo właściwe i sąd właściwy — zwykle prawo polskie i sąd właściwy dla siedziby spółki. Potwierdź z prawnikiem.",
+              "Regulamin podlega prawu polskiemu. Spory rozstrzyga sąd właściwy dla siedziby firmy.",
               "Nieważność jednego postanowienia nie wpływa na pozostałe."
             ]
           },
@@ -523,7 +523,7 @@
           {
             "h": "16. Kim jesteśmy",
             "body": [
-              "TODO(legal): pełna nazwa firmy, forma prawna, adres siedziby oraz numery rejestrowe (KRS lub CEIDG, NIP, REGON).",
+              "aiAdaptiv jest firmą zarejestrowaną w Polsce.",
               "Kontakt: kacper@aiadaptiv.com"
             ]
           }
@@ -540,8 +540,7 @@
           {
             "h": "1. Kto odpowiada za dane",
             "body": [
-              "Administratorem danych opisanych poniżej jest aiAdaptiv.",
-              "TODO(legal): pełna nazwa firmy, adres siedziby i numery rejestrowe.",
+              "Administratorem danych opisanych poniżej jest aiAdaptiv, firma zarejestrowana w Polsce.",
               "Pytania oraz wnioski z punktu 8: kacper@aiadaptiv.com"
             ]
           },
@@ -599,7 +598,7 @@
             "body": [
               "Masz prawo żądać kopii swoich danych, ich sprostowania, usunięcia, ograniczenia lub sprzeciwu wobec przetwarzania oraz przeniesienia danych. Zgodę możesz wycofać w każdej chwili, bez wpływu na zgodność z prawem wcześniejszego przetwarzania.",
               "Napisz na kacper@aiadaptiv.com — odpowiemy w ciągu miesiąca.",
-              "TODO(legal): potwierdź organ nadzorczy — dla firmy z siedzibą w Polsce jest to Prezes Urzędu Ochrony Danych Osobowych (UODO), do którego możesz wnieść skargę."
+              "Masz też prawo wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych (UODO), polskiego organu nadzorczego."
             ]
           },
           {
@@ -674,25 +673,6 @@
           "title": "Zero narzutu",
           "body": "My zajmujemy się aktualizacjami modeli, bezpieczeństwem i utrzymaniem."
         }
-      ]
-    },
-    "pricing": {
-      "h2": "Cennik",
-      "plans": [
-        {
-          "label": "Jednorazowe wdrożenie i konfiguracja",
-          "price": "€1 999"
-        },
-        {
-          "label": "Miesięczne utrzymanie i wsparcie",
-          "price": "€249"
-        }
-      ],
-      "note": "Jeśli Twój zespół ma konkretne preferencje co do modeli open source lub specjalistyczne potrzeby w zakresie procesów, dostosujemy wdrożenie podczas konfiguracji.",
-      "trust": [
-        "Hosting w UE",
-        "Modele open-source",
-        "Zgodność z RODO"
       ]
     },
     "howItWorks": {

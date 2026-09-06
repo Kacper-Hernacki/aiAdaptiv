@@ -146,12 +146,6 @@ export type Dictionary = {
     };
     problem: { h2: string; points: string[] };
     solution: { h2: string; pillars: { title: string; body: string }[] };
-    pricing: {
-      h2: string;
-      plans: { label: string; price: string }[];
-      note: string;
-      trust: string[];
-    };
     howItWorks: {
       h2: string;
       intro: string;

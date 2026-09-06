@@ -23,7 +23,6 @@ export function PrivateAiPage({
     hero,
     problem,
     solution,
-    pricing,
     howItWorks,
     behindTheArchitecture,
     faq,
@@ -182,37 +181,6 @@ export function PrivateAiPage({
         </div>
       </section>
 
-      {/* Pricing */}
-      <section aria-labelledby="pai-pricing" className={s.section}>
-        <div className={s.inner}>
-          <h2 id="pai-pricing" className={s.h2} data-reveal>
-            {pricing.h2}
-          </h2>
-          <ul className={c.plans}>
-            {pricing.plans.map((plan, i) => (
-              <li
-                key={plan.label}
-                className={c.plan}
-                data-reveal
-                style={{ "--rd": `${80 + i * 80}ms` } as React.CSSProperties}
-              >
-                <span className={c.planLabel}>{plan.label}</span>
-                <span className={c.planPrice}>{plan.price}</span>
-              </li>
-            ))}
-          </ul>
-          <p className={c.note} data-reveal>
-            {pricing.note}
-          </p>
-          <ul className={s.tags} data-reveal>
-            {pricing.trust.map((item) => (
-              <li key={item} className={s.tag}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
 
       {/* Behind the architecture */}
       <section

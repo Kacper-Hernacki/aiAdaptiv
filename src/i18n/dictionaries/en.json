@@ -134,8 +134,8 @@
     "proof": {
       "h2": "We ship systems, not slide decks",
       "body": [
-        "TODO(copy): the results narrative. Two or three paragraphs naming real engagements, what was broken, what we built, and the measurable outcome. This is the single most load-bearing block on the page — keep it concrete and specific.",
-        "TODO(copy): second paragraph. What makes the delivery different: fixed scope, fixed price, weekly demos, and a system that runs after we leave.",
+        "Over the last four years we have shipped 20+ AI use cases into production: automations that took a workflow off a team's desk for good, products that customers log into and pay for, and private AI platforms running inside a client's own cloud account. Each one was built to a written scope and a fixed price, agreed before the first line of code.",
+        "Twelve years of engineering sit underneath that — full-stack since 2014, and four of those years building with large language models as they became good enough to trust with real work. That is why the systems ship: the AI is only ever the last ten percent of a working product.",
         "Every engagement ends the same way: a working system, documentation your team can act on, and a handover — or a retainer, if you would rather we kept running it."
       ],
       "cta": "Book a 30-minute call",
@@ -510,7 +510,7 @@
           {
             "h": "14. Governing law",
             "body": [
-              "TODO(legal): governing law and the courts with jurisdiction — normally Polish law and the court for the seat of the company. Confirm with your lawyer.",
+              "These terms are governed by Polish law. Any dispute goes to the court with jurisdiction over the company's registered seat.",
               "If a provision is unenforceable, the rest stands."
             ]
           },
@@ -523,7 +523,7 @@
           {
             "h": "16. Who we are",
             "body": [
-              "TODO(legal): registered company name, legal form, registered address, and registration numbers (KRS or CEIDG, NIP, REGON).",
+              "aiAdaptiv is a company registered in Poland.",
               "Contact: kacper@aiadaptiv.com"
             ]
           }
@@ -540,8 +540,7 @@
           {
             "h": "1. Who is responsible",
             "body": [
-              "aiAdaptiv is the controller for the personal data described here.",
-              "TODO(legal): registered company name, registered address and registration numbers.",
+              "aiAdaptiv, a company registered in Poland, is the controller for the personal data described here.",
               "Questions, or any request under section 8: kacper@aiadaptiv.com"
             ]
           },
@@ -599,7 +598,7 @@
             "body": [
               "You may ask us for a copy of your personal data, to correct it, to delete it, to restrict or object to how we use it, and to receive it in a portable form. Where we rely on consent, you may withdraw it at any time without affecting what came before.",
               "Write to kacper@aiadaptiv.com and we will respond within one month.",
-              "TODO(legal): confirm the supervisory authority to name — for a company established in Poland this is the President of the Personal Data Protection Office (UODO), and you may lodge a complaint with them."
+              "You may also lodge a complaint with the President of the Personal Data Protection Office (UODO), the Polish supervisory authority."
             ]
           },
           {
@@ -674,25 +673,6 @@
           "title": "Zero Overhead",
           "body": "We handle model updates, security, and maintenance."
         }
-      ]
-    },
-    "pricing": {
-      "h2": "Pricing",
-      "plans": [
-        {
-          "label": "One-time Setup & Deployment",
-          "price": "€1,999"
-        },
-        {
-          "label": "Monthly Maintenance & Support",
-          "price": "€249"
-        }
-      ],
-      "note": "If your team has specific open-source model preferences or specialised workflow needs, we tailor the deployment during setup.",
-      "trust": [
-        "EU Hosted",
-        "Open Source Models",
-        "GDPR Ready"
       ]
     },
     "howItWorks": {
