@@ -293,20 +293,16 @@
       "cta": "Book a 30-minute call",
       "stats": [
         {
-          "value": "TODO(copy): metric",
-          "label": "systems in production"
+          "value": "12 yrs",
+          "label": "engineering, since 2014"
         },
         {
-          "value": "TODO(copy): metric",
-          "label": "hours/month automated"
+          "value": "4 yrs",
+          "label": "building with LLMs"
         },
         {
-          "value": "TODO(copy): metric",
-          "label": "industries served"
-        },
-        {
-          "value": "TODO(copy): metric",
-          "label": "years building with LLMs"
+          "value": "20+",
+          "label": "AI use cases shipped"
         }
       ]
     },

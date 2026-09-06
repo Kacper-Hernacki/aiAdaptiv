@@ -293,20 +293,16 @@
       "cta": "Umów 30-minutową rozmowę",
       "stats": [
         {
-          "value": "TODO(copy): metric",
-          "label": "systemów w produkcji"
+          "value": "12 lat",
+          "label": "inżynierii, od 2014"
         },
         {
-          "value": "TODO(copy): metric",
-          "label": "godzin/mies. zautomatyzowanych"
+          "value": "4 lata",
+          "label": "pracy z LLM-ami"
         },
         {
-          "value": "TODO(copy): metric",
-          "label": "obsłużonych branż"
-        },
-        {
-          "value": "TODO(copy): metric",
-          "label": "lat pracy z LLM-ami"
+          "value": "20+",
+          "label": "wdrożonych zastosowań AI"
         }
       ]
     },

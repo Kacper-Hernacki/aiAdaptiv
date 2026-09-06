@@ -84,13 +84,10 @@
     padding: 0 20px;
   }
 
-  /* Four stacked stats push the CTA off-screen; two columns keeps the whole
-     hero, CTA included, inside the first viewport. */
+  /* Three stats wrap centred on their own; the two-column grid that four
+     needed left the last one stranded in a half-empty row. */
   .stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5em;
-    width: 100%;
+    gap: 1.25em 2em;
   }
 
   .ctaWrap {
