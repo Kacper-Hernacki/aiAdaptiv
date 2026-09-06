@@ -633,7 +633,7 @@
     "cta": "Umów 30-minutową rozmowę",
     "imageLabel": "Obraz produktu",
     "hero": {
-      "badge": "Tylko 6 partnerów założycielskich w tym kwartale",
+      "badge": "Platforma prywatnego AI · Modele open source w Twojej chmurze",
       "headline": [
         {
           "text": "Twój prywatny mózg firmy."
@@ -677,7 +677,7 @@
       ]
     },
     "pricing": {
-      "h2": "Cennik dla partnerów założycielskich",
+      "h2": "Cennik",
       "plans": [
         {
           "label": "Jednorazowe wdrożenie i konfiguracja",
@@ -688,7 +688,7 @@
           "price": "€249"
         }
       ],
-      "note": "Jesteśmy elastyczni wobec poważnych partnerów wdrożeniowych — jeśli Twój zespół ma konkretne preferencje co do modeli open-source lub specjalistyczne potrzeby w zakresie procesów, dostosujemy wdrożenie podczas konfiguracji.",
+      "note": "Jeśli Twój zespół ma konkretne preferencje co do modeli open source lub specjalistyczne potrzeby w zakresie procesów, dostosujemy wdrożenie podczas konfiguracji.",
       "trust": [
         "Hosting w UE",
         "Modele open-source",
@@ -744,7 +744,7 @@
       "h2": "Za architekturą",
       "lead": "Cześć, jestem założycielem aiAdaptiv.",
       "body": [
-        "Zbudowałem to, ponieważ butikowe firmy potrzebują potężnego AI do umów i pracy z klientami — ale publiczne narzędzia rodzą poważne ryzyko. Pracuję jednocześnie tylko z 6 partnerami, aby każdemu poświęcić pełną uwagę."
+        "Zbudowałem to, ponieważ butikowe firmy potrzebują potężnego AI do umów i pracy z klientami — ale publiczne narzędzia rodzą poważne ryzyko. Każde wdrożenie prowadzi osobiście osoba, która zbudowała platformę."
       ]
     },
     "faq": {

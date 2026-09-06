@@ -633,7 +633,7 @@
     "cta": "Book a 30-minute call",
     "imageLabel": "Product image",
     "hero": {
-      "badge": "Strictly 6 Founding Design Partners This Quarter",
+      "badge": "Private AI platform · Open-source LLMs in your own cloud",
       "headline": [
         {
           "text": "Your Private Company Brain."
@@ -677,7 +677,7 @@
       ]
     },
     "pricing": {
-      "h2": "Founding Partner Pricing",
+      "h2": "Pricing",
       "plans": [
         {
           "label": "One-time Setup & Deployment",
@@ -688,7 +688,7 @@
           "price": "€249"
         }
       ],
-      "note": "We are flexible with serious design partners — if your team has specific open-source model preferences or specialized workflow needs, we will tailor the deployment during setup.",
+      "note": "If your team has specific open-source model preferences or specialised workflow needs, we tailor the deployment during setup.",
       "trust": [
         "EU Hosted",
         "Open Source Models",
@@ -744,7 +744,7 @@
       "h2": "Behind the Architecture",
       "lead": "Hi, I'm the founder of aiAdaptiv.",
       "body": [
-        "I built this because boutique firms need powerful AI for contracts and client work — but public tools create serious risks. I only work with 6 partners at a time so I can give each one dedicated attention."
+        "I built this because boutique firms need powerful AI for contracts and client work — but public tools create serious risks. Every deployment gets direct, hands-on attention from the person who built the platform."
       ]
     },
     "faq": {
