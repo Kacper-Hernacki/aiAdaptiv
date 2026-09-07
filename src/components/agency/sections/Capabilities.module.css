@@ -25,6 +25,10 @@
   height: 100%;
 }
 
+.artImage {
+  object-fit: cover;
+}
+
 .artDim {
   position: absolute;
   inset: 0;

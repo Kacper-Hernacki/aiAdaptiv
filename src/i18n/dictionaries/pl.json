@@ -76,6 +76,7 @@
       "lead": "Sześć obszarów, jeden doświadczony zespół. Każdy z nich trafił u klienta na produkcję — to nie jest slajd z kompetencjami.",
       "items": [
         {
+          "id": "ai-saas",
           "title": "Produkty AI SaaS",
           "body": "Projektujemy i dowozimy kompletne produkty AI: architekturę, warstwę modeli, logowanie, płatności i interfejs, z którego realnie korzystają klienci. Od pustego repozytorium do płacących użytkowników.",
           "tags": [
@@ -85,6 +86,7 @@
           ]
         },
         {
+          "id": "mobile-apps",
           "title": "Aplikacje mobilne",
           "body": "Aplikacje natywne i cross-platform z AI w centrum — na urządzeniu tam, gdzie wymaga tego prywatność albo czas odpowiedzi, w chmurze tam, gdzie nie. Wypuszczone do App Store i Google Play, nie zostawione w TestFlight.",
           "tags": [
@@ -94,6 +96,7 @@
           ]
         },
         {
+          "id": "ai-automations",
           "title": "Automatyzacje AI",
           "body": "Agenci i procesy, które wykonują pracę, a nie ją opisują: kwalifikacja zgłoszeń, research, redagowanie, wprowadzanie danych — plus integracje, które przenoszą wynik do systemów, z których już korzystasz.",
           "tags": [
@@ -103,6 +106,7 @@
           ]
         },
         {
+          "id": "ai-pilots",
           "title": "Pilotaże i studia przypadku AI",
           "body": "Zamknięty pilotaż, który odpowiada na jedno pytanie: czy AI faktycznie się tu zwraca? Dostajesz działający proof of concept, twarde liczby o koszcie i jakości oraz pisemną rekomendację — za albo przeciw dalszej budowie.",
           "tags": [
@@ -112,6 +116,7 @@
           ]
         },
         {
+          "id": "ai-marketing",
           "title": "Marketing AI",
           "body": "Systemy wzrostu prowadzone przez AI: pozyskiwanie i wzbogacanie leadów, spersonalizowany outbound, który wytrzymuje odpowiedź, silniki treści i raportowanie pokazujące, co realnie zadziałało.",
           "tags": [
@@ -121,6 +126,7 @@
           ]
         },
         {
+          "id": "app-factory",
           "title": "Fabryka aplikacji AI",
           "body": "Linia produkcyjna narzędzi wewnętrznych — wspólny stack, wspólne komponenty, jeden powtarzalny proces — dzięki czemu piąta aplikacja kosztuje ułamek pierwszej. Dla zespołów, które potrzebują dziesięciu rzeczy, nie jednej.",
           "tags": [
@@ -139,7 +145,7 @@
         "Każde wdrożenie kończy się tak samo: działającym systemem, dokumentacją, z której zespół realnie korzysta, i przekazaniem — albo abonamentem, jeśli wolisz, żebyśmy prowadzili go dalej."
       ],
       "cta": "Umów 30-minutową rozmowę",
-      "mediaLabel": "Miejsce na zdjęcie"
+      "mediaLabel": "Szkic ołówkiem zamkniętego kartonu wysyłkowego na jasnym papierze."
     },
     "work": {
       "h2": "Wybrane realizacje",
@@ -277,6 +283,7 @@
       "lead": "Mały i doświadczony zespół. Osoba, która ustala zakres, buduje też system — między Tobą a inżynierem nie ma warstwy pośredniej.",
       "members": [
         {
+          "id": "kacper",
           "name": "Kacper Hernacki",
           "role": "Założyciel i CTO",
           "body": [

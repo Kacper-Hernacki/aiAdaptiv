@@ -76,6 +76,7 @@
       "lead": "Six practices, one senior team. Every one of them has been shipped into production for a paying client — none of it is a capability slide.",
       "items": [
         {
+          "id": "ai-saas",
           "title": "AI SaaS products",
           "body": "We design and ship complete AI products: architecture, the model layer, auth, billing and the interface your customers actually use. From an empty repo to paying users.",
           "tags": [
@@ -85,6 +86,7 @@
           ]
         },
         {
+          "id": "mobile-apps",
           "title": "Mobile apps",
           "body": "Native and cross-platform apps with AI at the centre — on-device where privacy or latency demands it, cloud where it doesn't. Shipped to the App Store and Play Store, not parked in TestFlight.",
           "tags": [
@@ -94,6 +96,7 @@
           ]
         },
         {
+          "id": "ai-automations",
           "title": "AI automations",
           "body": "Agents and workflows that do the work rather than describe it: intake triage, research, drafting, data entry — plus the integrations that push the output into the systems you already run.",
           "tags": [
@@ -103,6 +106,7 @@
           ]
         },
         {
+          "id": "ai-pilots",
           "title": "AI pilots & case studies",
           "body": "A scoped pilot that answers one question: does AI actually pay back here? You get a working proof of concept, real numbers on cost and quality, and a written case for or against building further.",
           "tags": [
@@ -112,6 +116,7 @@
           ]
         },
         {
+          "id": "ai-marketing",
           "title": "AI marketing",
           "body": "Growth systems run by AI: lead sourcing and enrichment, personalised outbound that survives a reply, content engines, and the reporting that shows which part actually worked.",
           "tags": [
@@ -121,6 +126,7 @@
           ]
         },
         {
+          "id": "app-factory",
           "title": "AI app factory",
           "body": "A production line for internal tools — shared stack, shared components, one repeatable process — so the fifth app costs a fraction of the first. For teams that need ten things built, not one.",
           "tags": [
@@ -139,7 +145,7 @@
         "Every engagement ends the same way: a working system, documentation your team can act on, and a handover — or a retainer, if you would rather we kept running it."
       ],
       "cta": "Book a 30-minute call",
-      "mediaLabel": "Photo slot"
+      "mediaLabel": "Pencil sketch of a closed shipping box on light paper."
     },
     "work": {
       "h2": "Selected work",
@@ -277,6 +283,7 @@
       "lead": "Small and senior. The person who scopes the work is the person who builds it — there is no delivery layer between you and the engineer.",
       "members": [
         {
+          "id": "kacper",
           "name": "Kacper Hernacki",
           "role": "Founder & CTO",
           "body": [

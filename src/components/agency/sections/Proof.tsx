@@ -1,8 +1,10 @@
 import type { Dictionary } from "@/i18n/dictionaries";
 import { bookingUrl } from "@/config/site";
 import { PillButton } from "../PillButton";
-import { Placeholder } from "../Placeholder";
+import Image from "next/image";
+import proofImage from "../assets/proof-shipped.jpg";
 import s from "../Agency.module.css";
+import p from "./Product.module.css";
 
 export function Proof({ proof }: { proof: Dictionary["agency"]["proof"] }) {
   return (
@@ -37,7 +39,13 @@ export function Proof({ proof }: { proof: Dictionary["agency"]["proof"] }) {
             data-reveal
             style={{ "--rd": "160ms" } as React.CSSProperties}
           >
-            <Placeholder ratio="4:3" seed={5} label={proof.mediaLabel} />
+            <Image
+              src={proofImage}
+              alt={proof.mediaLabel}
+              className={p.image}
+              sizes="(max-width: 991px) 100vw, 45vw"
+              placeholder="blur"
+            />
           </div>
         </div>
       </div>

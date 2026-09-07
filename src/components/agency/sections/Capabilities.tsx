@@ -1,5 +1,7 @@
 import type { Dictionary } from "@/i18n/dictionaries";
+import Image from "next/image";
 import { Placeholder } from "../Placeholder";
+import { capabilityImages } from "../capabilityImages";
 import s from "../Agency.module.css";
 import c from "./Capabilities.module.css";
 
@@ -38,7 +40,17 @@ export function Capabilities({
             style={{ "--rd": `${i * 80}ms` } as React.CSSProperties}
           >
             <div className={c.art}>
-              <Placeholder fill seed={i + 1} />
+              {capabilityImages[item.id] ? (
+                <Image
+                  src={capabilityImages[item.id]}
+                  alt=""
+                  fill
+                  sizes="(max-width: 991px) 100vw, 33vw"
+                  className={c.artImage}
+                />
+              ) : (
+                <Placeholder fill seed={i + 1} />
+              )}
               <span className={c.artDim} />
             </div>
             <span className={c.overlay} />

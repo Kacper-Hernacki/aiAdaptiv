@@ -47,13 +47,19 @@ export type Dictionary = {
     capabilities: {
       h2: string;
       lead: string;
-      items: { title: string; body: string; tags: string[] }[];
+      items: {
+        /** Stable, untranslated key; picks the card's artwork in capabilityImages.ts. */
+        id: string;
+        title: string;
+        body: string;
+        tags: string[];
+      }[];
     };
     proof: {
       h2: string;
       body: string[];
       cta: string;
-      /** Caption on the image slot, so an unfilled slot still reads clearly. */
+      /** Alt text for the section image. */
       mediaLabel: string;
     };
     work: {
@@ -87,7 +93,13 @@ export type Dictionary = {
     team: {
       h2: string;
       lead: string;
-      members: { name: string; role: string; body: string[] }[];
+      members: {
+        /** Stable key; picks the photo in teamImages.ts. */
+        id: string;
+        name: string;
+        role: string;
+        body: string[];
+      }[];
     };
     approach: {
       h2: string;

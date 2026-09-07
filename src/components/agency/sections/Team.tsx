@@ -1,5 +1,7 @@
 import type { Dictionary } from "@/i18n/dictionaries";
+import Image from "next/image";
 import { Placeholder } from "../Placeholder";
+import { teamImages } from "../teamImages";
 import s from "../Agency.module.css";
 import t from "./Team.module.css";
 
@@ -28,7 +30,17 @@ export function Team({ team }: { team: Dictionary["agency"]["team"] }) {
               style={{ "--rd": `${160 + i * 90}ms` } as React.CSSProperties}
             >
               <div className={t.thumb}>
-                <Placeholder ratio="1:1" seed={i + 4} />
+                {teamImages[member.id] ? (
+                  <Image
+                    src={teamImages[member.id]}
+                    alt={member.name}
+                    className={t.photo}
+                    sizes="(max-width: 991px) 8em, 30vw"
+                    placeholder="blur"
+                  />
+                ) : (
+                  <Placeholder ratio="1:1" seed={i + 4} />
+                )}
               </div>
               <div className={t.content}>
                 <h3 className={t.name}>{member.name}</h3>

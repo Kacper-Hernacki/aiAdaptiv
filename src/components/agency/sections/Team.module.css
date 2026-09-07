@@ -17,6 +17,23 @@
 
 .thumb {
   width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+/* Square, with the face kept toward the top of the frame — the reference's
+   team photos use the same object-position. */
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+:global(:root[data-theme="dark"]) .photo {
+  filter: brightness(0.9);
 }
 
 .content {
