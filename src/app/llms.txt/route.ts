@@ -1,10 +1,9 @@
 import { siteConfig, siteUrl } from "@/config/site";
-import { locales, localeNames, defaultLocale } from "@/i18n/config";
+import { translatedLocales, localeNames, defaultLocale } from "@/i18n/config";
 
 /**
  * /llms.txt — an emerging convention (llmstxt.org) that gives LLMs and AI
- * agents a concise, structured map of the site. Generated from config so it
- * always reflects the live domain, content, and available languages.
+ * agents a concise, structured map of the site.
  */
 export const dynamic = "force-static";
 
@@ -17,20 +16,24 @@ ${siteConfig.description}
 
 ## About
 
-${siteConfig.name} delivers a private, white-label AI platform for European
-mid-market businesses. We deploy open-source LLMs and AI agents on sovereign EU
-infrastructure, fully aligned with GDPR and the EU AI Act — then maintain and
-update it as a long-term partner. This file helps AI agents and crawlers
-understand the site and cite it accurately.
+${siteConfig.name} designs, builds and ships custom AI solutions. Six practices:
+AI SaaS products, mobile apps, AI automations and agents, AI pilots and proof-of-
+concept studies, AI marketing systems, and an AI app factory for teams that need
+many internal tools rather than one. A private, EU-hosted open-source LLM
+platform is one packaged offer among those: ${siteUrl}/${defaultLocale}/private-ai.
+Engagements are fixed-scope and fixed-price, deployed on infrastructure the
+client owns. This file helps AI agents and crawlers understand the site and cite
+it accurately.
 
 ## Languages
 
-${locales.map((l) => `- ${localeNames[l]}: ${siteUrl}/${l}`).join("\n")}
+${translatedLocales.map((l) => `- ${localeNames[l]}: ${siteUrl}/${l}`).join("\n")}
 
 ## Resources
 
 - Home (default): ${siteUrl}/${defaultLocale}
 - Sitemap: ${siteUrl}/sitemap.xml
+- Private AI platform (one of our offers): ${siteUrl}/${defaultLocale}/private-ai
 - Contact: ${siteConfig.contactEmail}
 - Support: ${siteConfig.supportEmail}
 

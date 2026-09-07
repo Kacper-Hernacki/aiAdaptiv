@@ -1,0 +1,111 @@
+.band {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  padding: 1.5em 0;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background-color: var(--bg-alt);
+  overflow: hidden;
+}
+
+.label {
+  flex-shrink: 0;
+  width: auto;
+  padding-left: var(--gutter);
+  padding-right: 2em;
+  font-size: 0.55em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--fg-muted);
+}
+
+.viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 55s linear infinite;
+}
+
+.band:hover .track {
+  animation-play-state: paused;
+}
+
+.row {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2.6em;
+  padding-right: 2.6em;
+}
+
+/* Each entry is a mark plus its wordmark. Six of the tools have no licensed
+   mark available, so they show the wordmark alone — which sits fine in the
+   rhythm because every other entry carries its name too. */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  white-space: nowrap;
+  color: var(--fg-muted);
+  transition: color 0.2s ease;
+}
+
+.item:hover {
+  color: var(--fg);
+}
+
+.mark {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+
+.name {
+  font-size: 0.88em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .viewport {
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .label {
+    padding-left: 20px;
+    font-size: 11px;
+  }
+}

@@ -1,250 +1,873 @@
 {
-  "meta": {
-    "title": "aiAdaptiv — Twój prywatny mózg firmy. Na własność, nie w wynajmie.",
-    "description": "W pełni white-label platforma AI do analizy dokumentów, wdrożona w Twoim własnym, bezpiecznym koncie chmurowym w UE. Ty jesteś właścicielem infrastruktury, kluczy i danych. Bezpieczna wobec RODO i EU AI Act. Tylko 6 partnerów założycielskich."
-  },
   "skipToContent": "Przejdź do treści głównej",
-  "header": {
-    "programLabel": "Prywatne AI dla Twojej firmy",
-    "cta": "Aplikuj →"
-  },
-  "hero": {
-    "badge": "Tylko 6 partnerów założycielskich w tym kwartale",
-    "headline": [
-      {
-        "text": "Twój prywatny mózg firmy."
-      },
-      {
-        "text": "Na własność, nie w wynajmie.",
-        "accent": true
-      }
-    ],
-    "subhead": "Wdrażamy w pełni white-label platformę AI bezpośrednio w Twoim własnym, bezpiecznym koncie chmurowym w UE. Ty jesteś właścicielem infrastruktury, kluczy i danych. Całą ciężką pracę bierzemy na siebie.",
-    "tagline": "Koniec z wklejaniem wrażliwych danych klientów do publicznych narzędzi.",
-    "cta": "Uruchom 60-sekundowy test kwalifikacji →"
-  },
-  "problem": {
-    "h2": "Publiczne AI to ogromne ryzyko",
-    "points": [
-      "Kary do 4% (RODO) lub 7% (EU AI Act) obrotu.",
-      "Twoje umowy i dane klientów mogą trenować publiczne modele i wyciec do konkurencji.",
-      "Małe zespoły nie nadążają za infrastrukturą i aktualizacjami."
-    ]
-  },
-  "solution": {
-    "h2": "My wdrażamy. Ty jesteś właścicielem.",
-    "pillars": [
-      {
-        "title": "Bezpieczna analiza dokumentów",
-        "body": "Wgrywaj 200-stronicowe umowy lub dokumenty due diligence. Bezpiecznie wychwytuj ryzyka, porównuj wersje i otrzymuj podsumowania — bez wycieku danych."
-      },
-      {
-        "title": "100% White-Label",
-        "body": "ai.twojafirma.pl z Twoim brandingiem. Realne aktywo wewnętrzne."
-      },
-      {
-        "title": "Twoje własne konto chmurowe",
-        "body": "Wdrożone w Twoim własnym koncie chmurowym. Ty kontrolujesz wszystko."
-      },
-      {
-        "title": "Zero narzutu",
-        "body": "My zajmujemy się aktualizacjami modeli, bezpieczeństwem i utrzymaniem."
-      }
-    ]
-  },
-  "pricing": {
-    "h2": "Cennik dla partnerów założycielskich",
-    "plans": [
-      {
-        "label": "Jednorazowe wdrożenie i konfiguracja",
-        "price": "€1 999"
-      },
-      {
-        "label": "Miesięczne utrzymanie i wsparcie",
-        "price": "€249"
-      }
-    ],
-    "note": "Jesteśmy elastyczni wobec poważnych partnerów wdrożeniowych — jeśli Twój zespół ma konkretne preferencje co do modeli open-source lub specjalistyczne potrzeby w zakresie procesów, dostosujemy wdrożenie podczas konfiguracji.",
-    "trust": [
-      "Hosting w UE",
-      "Modele open-source",
-      "Zgodność z RODO"
-    ]
-  },
-  "howItWorks": {
-    "h2": "Jak to działa",
-    "intro": "Upraszczamy prywatne AI, wdrażając wszystko w obrębie Twojego własnego konta chmurowego.",
-    "steps": [
-      {
-        "title": "1. Zakładasz konto (lub zakładamy je za Ciebie)",
-        "body": "Rejestrujesz konto chmurowe (region UE). Kontrolujesz rozliczenia."
-      },
-      {
-        "title": "2. Budujemy i brandujemy",
-        "body": "Wdrażamy Open WebUI + zoptymalizowane modele, nakładamy Twoje logo i podpinamy ai.twojafirma.pl."
-      },
-      {
-        "title": "3. Otrzymujesz pełny dostęp",
-        "body": "Twój zespół loguje się i zaczyna korzystać."
-      },
-      {
-        "title": "4. My zajmujemy się utrzymaniem",
-        "body": "Comiesięczne aktualizacje i wsparcie."
-      }
-    ],
-    "timeline": "Typowy czas: 3–7 dni roboczych od płatności do uruchomienia.",
-    "roadmap": {
-      "label": "Harmonogram",
-      "days": [
-        {
-          "label": "Dzień 1–2",
-          "body": "Zakładasz (lub zakładamy) konto chmurowe i nadajesz dostęp."
-        },
-        {
-          "label": "Dzień 3–5",
-          "body": "Wdrażamy, brandujemy i optymalizujemy platformę pod Twoje procesy."
-        },
-        {
-          "label": "Dzień 6–7",
-          "body": "Szkolenie wdrożeniowe + Twój zespół rusza na żywo."
-        }
-      ],
-      "resultLabel": "Efekt",
-      "result": "W pełni brandowana, bezpieczna prywatna platforma AI działająca w Twoim własnym środowisku w niecały tydzień."
-    },
-    "flowLabel": "Podsumowanie wizualne (prosty 4-etapowy przepływ)",
-    "flow": "Twoje własne konto chmurowe (UE)\n↓\nWdrażamy Open WebUI + modele\n↓\nWhite-label na ai.twojafirma.pl\n↓\nTwój zespół korzysta bezpiecznie\n(My utrzymujemy co miesiąc)",
-    "outro": "Ty jesteś właścicielem konta. Ty jesteś właścicielem danych. My wykonujemy pracę techniczną."
-  },
-  "behindTheArchitecture": {
-    "h2": "Za architekturą",
-    "lead": "Cześć, jestem założycielem aiAdaptiv.",
-    "body": [
-      "Zbudowałem to, ponieważ butikowe firmy potrzebują potężnego AI do umów i pracy z klientami — ale publiczne narzędzia rodzą poważne ryzyko. Pracuję jednocześnie tylko z 6 partnerami, aby każdemu poświęcić pełną uwagę."
-    ]
-  },
-  "faq": {
-    "h2": "Najczęściej zadawane pytania",
-    "items": [
-      {
-        "q": "Dlaczego wdrożenie w moim własnym koncie chmurowym?",
-        "a": "Prawdziwa własność. Kontrolujesz konto, rozliczenia i klucze. Jeśli kiedykolwiek przestaniesz z nami współpracować, cała platforma pozostaje Twoja — bez uzależnienia od dostawcy."
-      },
-      {
-        "q": "Czy widzicie nasze wrażliwe dane?",
-        "a": "Nie. Całe przetwarzanie odbywa się w obrębie Twojego bezpiecznego środowiska. Nigdy nie mamy dostępu do Twoich zapytań ani dokumentów."
-      },
-      {
-        "q": "Jakie są koszty GPU?",
-        "a": "Płacisz dostawcy chmury bezpośrednio — nigdy nam. Pozostajemy elastyczni i możemy korzystać z różnych dostawców GPU, dobierając i optymalizując odpowiedni rozmiar pod Twoje użycie. Moc GPU to zwykle kilkaset euro miesięcznie, w zależności od intensywności korzystania."
-      },
-      {
-        "q": "Ile trwa wdrożenie?",
-        "a": "Zazwyczaj 3–7 dni roboczych od płatności do uruchomienia, po wypełnieniu listy onboardingowej."
-      },
-      {
-        "q": "Czy mogę zrezygnować?",
-        "a": "Tak. Miesięczne utrzymanie można wypowiedzieć z 30-dniowym wyprzedzeniem. Zachowujesz platformę, której jesteś właścicielem."
-      }
-    ]
-  },
-  "qualifier": {
-    "h2": "Czy to dopasowanie?",
-    "yesLabel": "Tak, jeśli",
-    "yes": "codziennie pracujesz z wrażliwymi dokumentami prawnymi, finansowymi lub klientów.",
-    "noLabel": "Nie, jeśli",
-    "no": "potrzebujesz po prostu taniego, ogólnego narzędzia AI.",
-    "cta": "Uruchom 60-sekundowy test kwalifikacji →"
-  },
-  "footer": {
-    "rights": "Wszelkie prawa zastrzeżone.",
-    "languageLabel": "Język",
-    "disclaimer": "Zastrzeżenie prawne: aiAdaptiv świadczy usługi indywidualnej konfiguracji i utrzymania w obrębie własnego środowiska chmurowego Klienta. Klient jest właścicielem konta i ponosi wyłączną odpowiedzialność za wprowadzane dane oraz zgodność z przepisami (RODO / EU AI Act). Usługa świadczona „w stanie, w jakim jest” (as-is). Odpowiedzialność ograniczona do wysokości uiszczonych opłat.",
-    "nav": {
-      "eligibility": "Test kwalifikacji",
-      "howItWorks": "Jak to działa",
-      "terms": "Regulamin"
-    }
-  },
-  "terms": {
-    "metaTitle": "Regulamin — aiAdaptiv",
-    "metaDescription": "Warunki świadczenia usług aiAdaptiv: własność, opłaty, dane, rezygnacja i odpowiedzialność.",
-    "h1": "Regulamin",
-    "updated": "Ostatnia aktualizacja: 5 lipca 2026",
-    "intro": "Niniejszy regulamin określa zasady świadczenia usług przez aiAdaptiv (\"my\") na rzecz klienta (\"Klient\"). Zamawiając usługę wdrożenia lub opłacając miesięczny abonament utrzymaniowy, akceptujesz te warunki.",
-    "sections": [
-      {
-        "h": "1. Co zapewniamy",
-        "body": [
-          "aiAdaptiv świadczy usługi konfiguracji i utrzymania wewnątrz własnego środowiska chmurowego Klienta. Wdrażamy open-source'ową platformę AI (Open WebUI wraz z wybranymi modelami open-source) na własnym koncie chmurowym Klienta w regionie UE, oznaczamy ją marką Klienta pod jego domeną (np. ai.twojafirma.com) i zapewniamy bieżące utrzymanie: aktualizacje modeli, poprawki bezpieczeństwa i wsparcie.",
-          "Dla poważnych partnerów jesteśmy elastyczni — preferencje dotyczące konkretnych modeli open-source lub wyspecjalizowanych przepływów pracy uwzględniamy podczas wdrożenia."
-        ]
-      },
-      {
-        "h": "2. Własność",
-        "body": [
-          "Klient jest właścicielem konta chmurowego, infrastruktury, kluczy i danych. Platforma jest wdrażana na koncie Klienta i pozostaje jego własnością po zakończeniu współpracy. Brak vendor lock-inu: jeśli zakończysz współpracę, cała platforma pozostaje Twoja."
-        ]
-      },
-      {
-        "h": "3. Opłaty",
-        "body": [
-          "Jednorazowe wdrożenie: 1 999 €, płatne przed rozpoczęciem wdrożenia.",
-          "Miesięczne utrzymanie i wsparcie: 249 € miesięcznie.",
-          "Koszty GPU i infrastruktury chmurowej Klient opłaca bezpośrednio u dostawcy (dostawców) chmury; nie są one częścią naszych opłat. Pozostajemy niezależni od dostawcy i pomagamy dobrać oraz zoptymalizować odpowiedni rozmiar instancji pod użycie Klienta."
-        ]
-      },
-      {
-        "h": "4. Dane i poufność",
-        "body": [
-          "Całość przetwarzania odbywa się w bezpiecznym środowisku Klienta. Nie mamy dostępu do promptów ani dokumentów Klienta w działającej platformie. Dane dostępowe przekazane nam na potrzeby wdrożenia lub utrzymania służą wyłącznie realizacji usług i są traktowane jako poufne."
-        ]
-      },
-      {
-        "h": "5. Obowiązki Klienta",
-        "body": [
-          "Klient ponosi wyłączną odpowiedzialność za wprowadzane dane oraz za zgodność z przepisami mającymi zastosowanie do korzystania z platformy, w tym RODO i unijnym aktem o AI (EU AI Act).",
-          "Klient odpowiada za konto chmurowe, w tym rozliczenia z dostawcą chmury, oraz za wypełnienie checklisty onboardingowej niezbędnej do uruchomienia."
-        ]
-      },
-      {
-        "h": "6. Harmonogram",
-        "body": [
-          "Typowe wdrożenie trwa 3–7 dni roboczych od płatności do uruchomienia, po skompletowaniu checklisty onboardingowej. Terminy mają charakter szacunkowy."
-        ]
-      },
-      {
-        "h": "7. Okres obowiązywania i rezygnacja",
-        "body": [
-          "Usługę miesięcznego utrzymania każda ze stron może wypowiedzieć z 30-dniowym okresem wypowiedzenia. Po rezygnacji Klient zachowuje platformę, konto i dane; aktualizacje i wsparcie kończą się wraz z okresem wypowiedzenia.",
-          "Jednorazowa opłata wdrożeniowa nie podlega zwrotowi po zakończonym wdrożeniu."
-        ]
-      },
-      {
-        "h": "8. Wyłączenie gwarancji",
-        "body": [
-          "Usługa świadczona jest w formule \"as-is\", bez jakichkolwiek gwarancji, wyraźnych lub dorozumianych, w tym przydatności do określonego celu. Wyniki modeli AI mają charakter probabilistyczny; Klient odpowiada za weryfikację wyników przed ich wykorzystaniem."
-        ]
-      },
-      {
-        "h": "9. Ograniczenie odpowiedzialności",
-        "body": [
-          "W maksymalnym zakresie dozwolonym przez prawo nasza łączna odpowiedzialność związana z usługami ograniczona jest do wysokości opłat zapłaconych nam przez Klienta. Nie odpowiadamy za szkody pośrednie, uboczne ani następcze, ani za koszty naliczane przez zewnętrznych dostawców."
-        ]
-      },
-      {
-        "h": "10. Zmiany regulaminu",
-        "body": [
-          "Regulamin może być okresowo aktualizowany. Aktualna wersja jest zawsze opublikowana na tej stronie; o istotnych zmianach informujemy aktywnych klientów. Dalsze korzystanie z usługi utrzymania po zmianie oznacza jej akceptację."
-        ]
-      }
-    ],
-    "backHome": "← Wróć na stronę główną"
-  },
   "cookies": {
     "message": "Używamy plików cookie, aby mierzyć ruch i ulepszać Twoje doświadczenia. To Ty decydujesz, co możemy przechowywać.",
     "accept": "Akceptuję",
     "decline": "Odrzuć",
     "learnMore": "Dowiedz się więcej"
+  },
+  "agency": {
+    "meta": {
+      "title": "aiAdaptiv — rozwiązania AI, które oszczędzają godziny i zwiększają przychody",
+      "description": "Projektujemy, budujemy i wdrażamy rozwiązania AI na zamówienie — produkty AI SaaS, aplikacje mobilne, automatyzacje, pilotaże, systemy marketingowe i prywatne platformy LLM open source. Umów 30-minutową rozmowę."
+    },
+    "header": {
+      "cta": "Umów rozmowę",
+      "menuLabel": "Otwórz menu",
+      "nav": [
+        {
+          "label": "Co budujemy",
+          "href": "#capabilities"
+        },
+        {
+          "label": "Realizacje",
+          "href": "#work"
+        },
+        {
+          "label": "Podejście",
+          "href": "#approach"
+        },
+        {
+          "label": "Kontakt",
+          "href": "#contact"
+        }
+      ]
+    },
+    "theme": {
+      "toggle": "Przełącz jasny lub ciemny motyw"
+    },
+    "hero": {
+      "eyebrow": "AI na zamówienie · Stała cena · Od początku do końca",
+      "questions": [],
+      "headline": [
+        {
+          "text": "Rozwiązania AI, które"
+        }
+      ],
+      "rotating": [
+        "oszczędzają dziesiątki godzin.",
+        "automatyzują żmudną pracę.",
+        "zwiększają przychody.",
+        "obniżają koszty ręcznej pracy.",
+        "nie przegapią żadnego leada."
+      ],
+      "subhead": "Automatyzacje, produkty AI, aplikacje mobilne i systemy marketingowe — zbudowane pod to, jak naprawdę działa Twoja firma. Stała cena, dowiezione od początku do końca, aktualizowane, gdy modele idą do przodu.",
+      "cta": "Umów 30-minutową rozmowę",
+      "stats": [
+        {
+          "value": "12 lat",
+          "label": "inżynierii, od 2014"
+        },
+        {
+          "value": "4 lata",
+          "label": "pracy z LLM-ami"
+        },
+        {
+          "value": "20+",
+          "label": "wdrożonych zastosowań AI"
+        }
+      ]
+    },
+    "tech": {
+      "label": "Na czym budujemy"
+    },
+    "capabilities": {
+      "h2": "Co budujemy",
+      "lead": "Sześć obszarów, jeden doświadczony zespół. Każdy z nich trafił u klienta na produkcję — to nie jest slajd z kompetencjami.",
+      "items": [
+        {
+          "id": "ai-saas",
+          "title": "Produkty AI SaaS",
+          "body": "Projektujemy i dowozimy kompletne produkty AI: architekturę, warstwę modeli, logowanie, płatności i interfejs, z którego realnie korzystają klienci. Od pustego repozytorium do płacących użytkowników.",
+          "tags": [
+            "Pełny stack",
+            "Architektura LLM",
+            "Wdrożenie"
+          ]
+        },
+        {
+          "id": "mobile-apps",
+          "title": "Aplikacje mobilne",
+          "body": "Aplikacje natywne i cross-platform z AI w centrum — na urządzeniu tam, gdzie wymaga tego prywatność albo czas odpowiedzi, w chmurze tam, gdzie nie. Wypuszczone do App Store i Google Play, nie zostawione w TestFlight.",
+          "tags": [
+            "iOS i Android",
+            "AI na urządzeniu",
+            "Publikacja"
+          ]
+        },
+        {
+          "id": "ai-automations",
+          "title": "Automatyzacje AI",
+          "body": "Agenci i procesy, które wykonują pracę, a nie ją opisują: kwalifikacja zgłoszeń, research, redagowanie, wprowadzanie danych — plus integracje, które przenoszą wynik do systemów, z których już korzystasz.",
+          "tags": [
+            "Agenci",
+            "Integracje",
+            "Kontrola człowieka"
+          ]
+        },
+        {
+          "id": "ai-pilots",
+          "title": "Pilotaże i studia przypadku AI",
+          "body": "Zamknięty pilotaż, który odpowiada na jedno pytanie: czy AI faktycznie się tu zwraca? Dostajesz działający proof of concept, twarde liczby o koszcie i jakości oraz pisemną rekomendację — za albo przeciw dalszej budowie.",
+          "tags": [
+            "Proof of concept",
+            "Model kosztów",
+            "Pisemna rekomendacja"
+          ]
+        },
+        {
+          "id": "ai-marketing",
+          "title": "Marketing AI",
+          "body": "Systemy wzrostu prowadzone przez AI: pozyskiwanie i wzbogacanie leadów, spersonalizowany outbound, który wytrzymuje odpowiedź, silniki treści i raportowanie pokazujące, co realnie zadziałało.",
+          "tags": [
+            "Systemy outbound",
+            "Silniki treści",
+            "Atrybucja"
+          ]
+        },
+        {
+          "id": "app-factory",
+          "title": "Fabryka aplikacji AI",
+          "body": "Linia produkcyjna narzędzi wewnętrznych — wspólny stack, wspólne komponenty, jeden powtarzalny proces — dzięki czemu piąta aplikacja kosztuje ułamek pierwszej. Dla zespołów, które potrzebują dziesięciu rzeczy, nie jednej.",
+          "tags": [
+            "Powtarzalny stack",
+            "Narzędzia wewnętrzne",
+            "Dostawa seryjna"
+          ]
+        }
+      ]
+    },
+    "proof": {
+      "h2": "Dowozimy systemy, nie prezentacje",
+      "body": [
+        "W ciągu ostatnich czterech lat wdrożyliśmy na produkcję ponad 20 zastosowań AI: automatyzacje, które na dobre zdjęły proces z biurka zespołu, produkty, do których klienci się logują i za które płacą, oraz prywatne platformy AI działające w chmurze klienta. Każde z nich powstało według spisanego zakresu i stałej ceny, uzgodnionych przed pierwszą linią kodu.",
+        "Pod tym leży dwanaście lat inżynierii — full-stack od 2014 roku, z czego cztery lata pracy z dużymi modelami językowymi, odkąd stały się wystarczająco dobre, by powierzyć im prawdziwą pracę. Dlatego te systemy trafiają na produkcję: AI to zawsze tylko ostatnie dziesięć procent działającego produktu.",
+        "Każde wdrożenie kończy się tak samo: działającym systemem, dokumentacją, z której zespół realnie korzysta, i przekazaniem — albo abonamentem, jeśli wolisz, żebyśmy prowadzili go dalej."
+      ],
+      "cta": "Umów 30-minutową rozmowę",
+      "mediaLabel": "Szkic ołówkiem zamkniętego kartonu wysyłkowego na jasnym papierze."
+    },
+    "work": {
+      "h2": "Wybrane realizacje",
+      "lead": "Dziewięć rodzajów systemów, które wdrożyliśmy — zbudowane, uruchomione i utrzymywane przez nas.",
+      "cases": [
+        {
+          "id": "private-ai",
+          "name": "Prywatne AI dla danych wrażliwych",
+          "result": "Modele open source w Twojej chmurze w UE. Nic jej nie opuszcza.",
+          "body": "Dla zespołów pracujących z dokumentacją medyczną, aktami prawnymi lub innymi wrażliwymi danymi publiczne narzędzie AI nie wchodzi w grę. Wdrażamy modele open source w koncie chmurowym klienta w UE — white-label, z analizą dokumentów nad jego własnym archiwum — tak, że platforma należy do niego, a RODO i AI Act są spełnione przez architekturę, nie przez politykę.",
+          "tags": [
+            "Modele open source",
+            "AI Act",
+            "Dane medyczne i prawne"
+          ]
+        },
+        {
+          "id": "messaging-bots",
+          "name": "Boty natychmiastowych odpowiedzi na WhatsApp i Messengerze",
+          "result": "Każda wiadomość z odpowiedzią w sekundy, całą dobę.",
+          "body": "Klienci piszą na WhatsAppie i Messengerze o 23:00 i oczekują odpowiedzi. Budujemy boty, które odpowiadają na pytania o produkt, przyjmują rezerwacje i kwalifikują leady od razu, przekazują rozmowę człowiekowi, gdy to ważne, i zapisują wszystko w systemach, z których zespół już korzysta.",
+          "tags": [
+            "WhatsApp",
+            "Messenger",
+            "Automatyzacja wsparcia"
+          ]
+        },
+        {
+          "id": "website-support",
+          "name": "Wsparcie AI na Twojej stronie",
+          "result": "Chatbot, który zna Twoją firmę, bo nauczył się z Twoich własnych treści.",
+          "body": "Asystent na stronie osadzony na własnych podstronach, dokumentach, cenniku i politykach klienta. Odpowiada na pytania odwiedzających precyzyjnie, wyłapuje te warte kontaktu i sam umawia rozmowę — bez ogólnego skryptu chatbota, a każda odpowiedź prowadzi do czegoś, co klient naprawdę napisał.",
+          "tags": [
+            "Chatbot na stronie",
+            "RAG",
+            "Pozyskiwanie leadów"
+          ]
+        },
+        {
+          "id": "ad-creative",
+          "name": "Kreacje reklamowe tworzone z AI",
+          "result": "Dziesiątki wariantów reklam w spójnym stylu do testów — zamiast jednej kosztownej sesji.",
+          "body": "Reklamy wideo i graficzne produkowane narzędziami generatywnymi — Claude do konceptów, hooków i tekstów, Higgsfield do wizualizacji i ruchu — tak, że kampania dostaje pełny zestaw wariantów do testowania, a nie jedną kreację. Zbudowane jako powtarzalny proces, który zespół marketingu prowadzi sam, nie jako jednorazowa dostawa.",
+          "tags": [
+            "Claude",
+            "Higgsfield",
+            "Kreacje reklamowe"
+          ]
+        },
+        {
+          "id": "premium-websites",
+          "name": "Strony premium",
+          "result": "Zaprojektowane, napisane i wdrożone jako jeden system — w dni, nie miesiące.",
+          "body": "Strony nastawione na konwersję z treścią, strukturą i SEO wbudowanymi od pierwszego commita: wielojęzyczne, poprawnie indeksowane, z danymi strukturalnymi, dzięki którym wyszukiwarki AI odpowiadają na pytania o firmę, i ze ścieżką do rezerwacji na końcu każdej sekcji. Budowane z narzędziami AI od początku do końca — ta strona jest jedną z nich.",
+          "tags": [
+            "Next.js",
+            "SEO",
+            "Wyszukiwanie AI"
+          ]
+        },
+        {
+          "id": "booking-systems",
+          "name": "Systemy rezerwacji na zamówienie",
+          "result": "Każda rezerwacja trafia do kalendarza, CRM i skrzynki — bez nikogo pomiędzy.",
+          "body": "Harmonogramowanie zbudowane pod to, jak firma naprawdę przyjmuje wizyty: reguły dostępności, zaliczki lub płatność przy rezerwacji, przypomnienia ograniczające nieobecności i każda rezerwacja zapisywana automatycznie w kalendarzu i CRM. Zintegrowane z narzędziami już używanymi, zamiast ich zastępowania.",
+          "tags": [
+            "Harmonogramowanie",
+            "Płatności",
+            "Integracja z CRM"
+          ]
+        },
+        {
+          "id": "second-brain",
+          "name": "Cyfrowy drugi mózg",
+          "result": "Wszystko, co wie Twoja firma — przeszukiwalne i nigdy nie zapomniane.",
+          "body": "Notatki ze spotkań, maile, dokumenty, decyzje: zapisane raz, połączone i dostępne w zwykłym języku miesiące później. Budujemy systemy wiedzy, które przyjmują to, co zespół i tak wytwarza, i zamieniają to w asystenta pamiętającego to, o czym wszyscy inni zapomnieli.",
+          "tags": [
+            "Baza wiedzy",
+            "Wyszukiwanie",
+            "Pamięć"
+          ]
+        },
+        {
+          "id": "mvp-team",
+          "name": "Zespół inżynierów AI do szybkich MVP",
+          "result": "Od pomysłu do działającego produktu w tygodnie, nie kwartały.",
+          "body": "Doświadczony zespół AI na żądanie dla założycieli i firm, które potrzebują dowiezionej pierwszej wersji: architektura, warstwa modeli, logowanie, płatności i interfejs, budowane z narzędziami AI od początku do końca — tak, że pierwszy działający produkt powstaje w tygodnie i jest na tyle solidny, by na nim rosnąć.",
+          "tags": [
+            "MVP",
+            "AI SaaS",
+            "Fabryka aplikacji"
+          ]
+        },
+        {
+          "id": "automations",
+          "name": "Automatyzacje back-office",
+          "result": "Powtarzalna praca oddana oprogramowaniu, na dobre.",
+          "body": "Kwalifikacja zgłoszeń, wprowadzanie danych, raportowanie, follow-upy — powtarzalne zadania, które po cichu zjadają tydzień zespołu. Mapujemy je, automatyzujemy te, które się zwracają, zostawiamy człowieka przy decyzjach, które go wymagają, i podpinamy wynik do narzędzi, na których firma już działa.",
+          "tags": [
+            "Automatyzacja",
+            "Agenci",
+            "Integracje"
+          ]
+        }
+      ]
+    },
+    "product": {
+      "h2": "Prywatne AI open source — jedna z rzeczy, które budujemy",
+      "headline": "Twój prywatny mózg firmy. Na własność, nie w wynajmie.",
+      "lead": "Wdrażamy w pełni white-label platformę AI bezpośrednio w Twoim własnym, bezpiecznym koncie chmurowym w UE. Ty jesteś właścicielem infrastruktury, kluczy i danych. Całą ciężką pracę bierzemy na siebie.",
+      "why": "Publiczne AI to ryzyko: kary do 4% obrotu z RODO i 7% z AI Act, a umowy i dane klientów mogą trafić do treningu cudzego modelu.",
+      "pillars": [
+        {
+          "title": "Bezpieczna analiza dokumentów",
+          "body": "Wgrywaj 200-stronicowe umowy lub dokumenty due diligence. Bezpiecznie wychwytuj ryzyka, porównuj wersje i otrzymuj podsumowania — bez wycieku danych."
+        },
+        {
+          "title": "100% White-Label",
+          "body": "ai.twojafirma.pl z Twoim brandingiem. Realne aktywo wewnętrzne."
+        },
+        {
+          "title": "Twoje własne konto chmurowe",
+          "body": "Wdrożone w Twoim własnym koncie chmurowym. Ty kontrolujesz wszystko."
+        },
+        {
+          "title": "Zero narzutu",
+          "body": "My zajmujemy się aktualizacjami modeli, bezpieczeństwem i utrzymaniem."
+        }
+      ],
+      "cta": "Zobacz platformę",
+      "imageAlt": "Szkic ołówkiem kłódki na jasnym papierze — platforma prywatnego AI aiAdaptiv."
+    },
+    "team": {
+      "h2": "Z kim faktycznie pracujesz",
+      "lead": "Mały i doświadczony zespół. Osoba, która ustala zakres, buduje też system — między Tobą a inżynierem nie ma warstwy pośredniej.",
+      "licensesLabel": "Certyfikaty",
+      "members": [
+        {
+          "id": "kacper",
+          "name": "Kacper Hernacki",
+          "role": "Założyciel i CTO",
+          "body": [
+            "Ponad dekada inżynierii full-stack od 2014 roku, dziś poświęcona zamienianiu złożonych problemów w inteligentne, skalowalne systemy — aplikacje webowe, mobilne i automatyzacje dowożone klientom na całym świecie.",
+            "Ma kilka certyfikacji z obszaru rozwoju AI i osobiście ustala zakres każdego wdrożenia: osoba, która pisze ofertę, jest tą samą, która projektuje architekturę."
+          ],
+          "licenses": [
+            {
+              "name": "AI_devs 3 · Agents",
+              "issuer": "AI_devs",
+              "year": "2025",
+              "url": "https://credsverse.com/credentials/3fc027b2-7899-4a52-8e60-ca177c4f7ad0"
+            },
+            {
+              "name": "AI_devs 2 · GPT-4 in applications and automation",
+              "issuer": "AI_devs",
+              "year": "2024",
+              "url": "https://credsverse.com/credentials/e34b5af4-8a00-4c60-ae6e-f32658be0926"
+            },
+            {
+              "name": "AI_devs · AI Developer",
+              "issuer": "AI_devs",
+              "year": "2023",
+              "url": "https://verified.sertifier.com/en/verify/50831241179182/"
+            }
+          ],
+          "profile": {
+            "label": "Profil na LinkedIn",
+            "url": "https://www.linkedin.com/in/kacper-hernacki-965161203/"
+          }
+        }
+      ]
+    },
+    "approach": {
+      "h2": "Czym się różnimy",
+      "items": [
+        {
+          "title": "Ustalony zakres, stała cena",
+          "body": "Każde wdrożenie ma spisany zakres, harmonogram i stałą cenę jeszcze przed startem. Bez rozliczeń godzinowych, bez rozrastania się zakresu, bez faktur, których się nie spodziewałeś."
+        },
+        {
+          "title": "Zawsze Twoja infrastruktura",
+          "body": "Wdrażamy w Twoim koncie chmurowym, na Twoich kluczach. Po zakończeniu współpracy zostaje Ci działający system, a nie zależność od nas."
+        },
+        {
+          "title": "Europejskie standardy od początku",
+          "body": "Lokalizacja danych, RODO i AI Act to punkt wyjścia, a nie audyt doklejony na końcu. Dlatego architektura wygląda tak, jak wygląda."
+        },
+        {
+          "title": "Sami używamy tego, co sprzedajemy",
+          "body": "Nasza własna platforma prywatnego AI działa na tym samym stacku, który wdrażamy u klientów. Jeśli coś pada o 2 w nocy, pada najpierw u nas."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Od pierwszej rozmowy do działającego systemu",
+      "lead": "Cztery kroki. Cenę i zakres znasz przed trzecim.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Rozmowa mapująca",
+          "body": "Bezpłatne 30 minut. Mapujemy, gdzie zespół traci godziny, co z tego AI realnie przejmie i jakie są ograniczenia zgodności."
+        },
+        {
+          "step": "02",
+          "title": "Zakres i stała cena",
+          "body": "Spisany zakres, szkic architektury, harmonogram i jedna stała cena. Jeśli budowa się nie opłaca, powiemy to zamiast wyceniać."
+        },
+        {
+          "step": "03",
+          "title": "Budowa i wdrożenie",
+          "body": "Budujemy w Twoim koncie chmurowym, z cotygodniowym demo działającego oprogramowania. Widzisz system, zanim będzie skończony — nie raport o nim."
+        },
+        {
+          "step": "04",
+          "title": "Utrzymanie albo przekazanie",
+          "body": "Dokumentacja i szkolenie, żeby zespół przejął system — albo opcjonalny abonament, w którym monitorujemy, aktualizujemy i rozwijamy go dalej."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Najczęstsze pytania",
+      "items": [
+        {
+          "q": "Czym jest aiAdaptiv?",
+          "a": "aiAdaptiv to studio rozwoju AI założone przez Kacpra Hernackiego. Projektujemy, budujemy i wdrażamy rozwiązania AI na zamówienie: produkty AI SaaS, aplikacje mobilne, automatyzacje i agentów, zamknięte pilotaże, systemy marketingowe oraz prywatne platformy LLM open source. Za tym stoi dwanaście lat inżynierii, w tym cztery lata pracy z LLM-ami, i ponad 20 wdrożonych zastosowań AI."
+        },
+        {
+          "q": "Czy aiAdaptiv to wiarygodna firma?",
+          "a": "Tak. aiAdaptiv to firma zarejestrowana w Polsce, prowadzona przez założyciela, którego możesz sprawdzić samodzielnie: certyfikaty AI Kacpra Hernackiego prowadzą do publicznych stron weryfikacyjnych ich wystawców, a jego profil na LinkedIn jest podlinkowany na tej stronie. Każde wdrożenie opiera się na podpisanej pisemnej ofercie ze stałą ceną, a regulamin i politykę prywatności publikujemy tutaj, zamiast wysyłać je na życzenie."
+        },
+        {
+          "q": "Jakie usługi oferuje aiAdaptiv?",
+          "a": "Sześć obszarów: produkty AI SaaS, aplikacje mobilne, automatyzacje i agenci AI, pilotaże i studia przypadku AI, systemy marketingowe oparte na AI oraz fabryka aplikacji dla zespołów, które potrzebują wielu narzędzi wewnętrznych, a nie jednego. Sprzedajemy też gotową platformę prywatnego AI — modele open source wdrożone w Twoim koncie chmurowym w UE."
+        },
+        {
+          "q": "Ile kosztuje współpraca z aiAdaptiv?",
+          "a": "Każdy projekt wyceniamy jako jedną stałą cenę, ustalaną po bezpłatnej 30-minutowej rozmowie, gdy znamy zakres. Bez rozliczeń godzinowych, bez cennika stawek i bez faktury, której się nie spodziewałeś — kwota z oferty to kwota, którą płacisz. Bieżące utrzymanie, jeśli go chcesz, to stały abonament miesięczny."
+        },
+        {
+          "q": "Jak wygląda współpraca?",
+          "a": "Cztery kroki. Bezpłatna 30-minutowa rozmowa, na której znajdujemy miejsca, gdzie AI się zwraca; spisany zakres, szkic architektury i jedna stała cena; budowa w Twoim koncie chmurowym z cotygodniowym demo działającego oprogramowania; na koniec dokumentacja i przekazanie albo opcjonalny abonament, jeśli wolisz, żebyśmy prowadzili system dalej."
+        },
+        {
+          "q": "Kim jest Kacper Hernacki?",
+          "a": "Kacper Hernacki jest założycielem i CTO aiAdaptiv. Tworzy oprogramowanie od 2014 roku — dwanaście lat inżynierii full-stack: aplikacje webowe, mobilne i automatyzacje dla klientów na całym świecie — i ma kilka certyfikacji z obszaru rozwoju AI. Od czterech lat buduje z dużymi modelami językowymi i osobiście prowadzi architekturę każdego wdrożenia aiAdaptiv. Kontakt: kacper@aiadaptiv.com."
+        },
+        {
+          "q": "Kto prowadzi aiAdaptiv?",
+          "a": "Kacper Hernacki, założyciel i CTO, pracujący bezpośrednio przy każdym wdrożeniu. Między Tobą a osobą budującą system nie ma warstwy account managerów — osoba, która pisze ofertę, jest tą samą, która projektuje architekturę."
+        },
+        {
+          "q": "Gdzie działa aiAdaptiv i z kim pracujecie?",
+          "a": "Jesteśmy zespołem zdalnym z siedzibą w Polsce i pracujemy z klientami na całym świecie. Realizacja jest domyślnie zdalna, rozmowy prowadzimy w Twojej strefie czasowej, a systemy wdrażamy w regionie chmury, który wybierzesz."
+        },
+        {
+          "q": "Ile trwa pierwszy system?",
+          "a": "To zależy od tego, co budujemy — termin określa oferta. Zamknięty pilotaż albo pojedyncza automatyzacja to kwestia tygodni; pełny produkt to miesiące. Poza zakresem na termin najbardziej wpływa to, jak szybko z Twojej strony pojawiają się dostępy, decyzje i akceptacje."
+        },
+        {
+          "q": "Gdzie znajdują się nasze dane?",
+          "a": "Dla wszystkiego, co hostujemy dla Ciebie — w Twoim koncie chmurowym, w wybranym regionie UE; wdrażamy na Twoim koncie i Twoich kluczach, więc nic nie przechodzi przez nas. Dla produktów budowanych dla Twoich klientów infrastruktura należy do Ciebie, a ścieżkę danych projektujemy wspólnie, zanim powstanie pierwsza linia kodu."
+        },
+        {
+          "q": "Czy musimy używać modeli open source?",
+          "a": "Nie. Modele open source na własnej infrastrukturze są domyślne, bo trzymają dane i koszty pod Twoją kontrolą, ale integrujemy komercyjne API tam, gdzie realnie wygrywają — i powiemy, których części systemu to dotyczy."
+        },
+        {
+          "q": "Co się dzieje po zakończeniu projektu?",
+          "a": "Zostaje u Ciebie wszystko: infrastruktura, kod, dokumentacja i działający system. Prawa własności intelektualnej do tego, co dla Ciebie zbudowaliśmy, przechodzą po pełnej zapłacie. Abonament jest opcjonalny, nigdy nie jest warunkiem budowy."
+        },
+        {
+          "q": "Jak się z Wami skontaktować?",
+          "a": "Umów bezpłatną 30-minutową rozmowę dowolnym przyciskiem na tej stronie albo napisz na kacper@aiadaptiv.com. Odpowiadamy w ciągu jednego dnia roboczego."
+        }
+      ]
+    },
+    "contact": {
+      "h2": "Sprawdźmy, gdzie AI się zwraca",
+      "body": "Umów bezpłatną 30-minutową rozmowę. Przejdziemy przez Wasz proces, wskażemy dwa–trzy miejsca, w których warto wdrożyć AI, i powiemy, czego wymaga ich zbudowanie.",
+      "note": "Każde wdrożenie wyceniamy na rozmowie — jedna stała kwota, uzgodniona przed rozpoczęciem prac.",
+      "cta": "Umów 30-minutową rozmowę"
+    },
+    "footer": {
+      "heading": "Współpraca",
+      "lead": "Zacznij od bezpłatnej, 30-minutowej rozmowy.",
+      "cta": "Porozmawiajmy",
+      "groups": [
+        {
+          "label": "Firma",
+          "links": [
+            {
+              "label": "Co budujemy",
+              "href": "#capabilities"
+            },
+            {
+              "label": "Realizacje",
+              "href": "#work"
+            },
+            {
+              "label": "Podejście",
+              "href": "#approach"
+            },
+            {
+              "label": "Zespół",
+              "href": "#team"
+            },
+            {
+              "label": "Regulamin",
+              "href": "@terms"
+            },
+            {
+              "label": "Prywatność",
+              "href": "@privacy"
+            }
+          ]
+        },
+        {
+          "label": "Produkt",
+          "links": [
+            {
+              "label": "Platforma prywatnego AI",
+              "href": "@privateAi"
+            },
+            {
+              "label": "Jak to działa",
+              "href": "#process"
+            },
+            {
+              "label": "FAQ",
+              "href": "#faq"
+            }
+          ]
+        },
+        {
+          "label": "Kontakt",
+          "links": [
+            {
+              "label": "LinkedIn",
+              "href": "https://www.linkedin.com/company/aiadaptiv"
+            },
+            {
+              "label": "X / Twitter",
+              "href": "https://x.com/aiadaptiv"
+            },
+            {
+              "label": "E-mail",
+              "href": "mailto:kacper@aiadaptiv.com"
+            }
+          ]
+        }
+      ],
+      "rights": "Wszelkie prawa zastrzeżone."
+    },
+    "legal": {
+      "disclaimer": "aiAdaptiv świadczy usługi tworzenia oprogramowania i systemów AI na zamówienie, na podstawie pisemnej oferty uzgodnionej z każdym klientem. Prawa do rezultatów przechodzą na klienta po pełnej zapłacie. Systemy AI generują wyniki probabilistyczne i są dostarczane bez gwarancji określonych rezultatów biznesowych. Nic na tej stronie nie stanowi oferty w rozumieniu Kodeksu cywilnego, wyceny ani porady prawnej.",
+      "terms": {
+        "metaTitle": "Regulamin — aiAdaptiv",
+        "metaDescription": "Zasady, na jakich aiAdaptiv świadczy usługi tworzenia systemów AI i oprogramowania na zamówienie: oferty, wynagrodzenie, prawa autorskie, poufność, ochrona danych i odpowiedzialność.",
+        "h1": "Regulamin",
+        "updated": "Ostatnia aktualizacja: 5 września 2026",
+        "intro": "Ten regulamin określa zasady świadczenia usług przez aiAdaptiv („my”) na rzecz klienta („Ty”). Obowiązuje razem z pisemną ofertą dotyczącą Twojego wdrożenia; w razie rozbieżności pierwszeństwo ma oferta. Samego korzystania ze strony dotyczy wyłącznie punkt 1.",
+        "sections": [
+          {
+            "h": "1. Ta strona",
+            "body": [
+              "Strona opisuje, czym się zajmujemy. Nic na niej nie stanowi oferty w rozumieniu Kodeksu cywilnego, wyceny ani zobowiązania do realizacji w podanej cenie lub terminie — współpraca zaczyna się dopiero po obustronnym podpisaniu pisemnej oferty.",
+              "Liczby, terminy i studia przypadku opisują wcześniejsze prace w ich własnych warunkach i nie są prognozą Twoich rezultatów."
+            ]
+          },
+          {
+            "h": "2. Co robimy",
+            "body": [
+              "Projektujemy, budujemy, wdrażamy i — jeśli tak uzgodnimy — utrzymujemy oprogramowanie i systemy AI na zamówienie. Typowe prace to produkty AI SaaS, aplikacje mobilne, automatyzacje i agenci, zamknięte pilotaże, systemy marketingowe oraz prywatne platformy LLM wdrażane w infrastrukturze, którą kontrolujesz.",
+              "Zakres wdrożenia wyznacza wyłącznie podpisana oferta. Prace poza nim są zmianą zakresu zgodnie z punktem 4."
+            ]
+          },
+          {
+            "h": "3. Oferta, zakres i wynagrodzenie",
+            "body": [
+              "Każde wdrożenie ma pisemną ofertę określającą zakres, rezultaty, harmonogram i stałą cenę. Cena obowiązuje dla tego zakresu.",
+              "Jeśli oferta nie stanowi inaczej, faktury są płatne w terminie 14 dni. Opóźnienie uprawnia nas do odsetek ustawowych i do wstrzymania prac do czasu uregulowania należności.",
+              "Ceny nie zawierają VAT ani kosztów zewnętrznych — hostingu w chmurze, użycia API modeli, opłat sklepów z aplikacjami, licencji — które opłacasz bezpośrednio u dostawców, chyba że pisemnie ustalimy inaczej."
+            ]
+          },
+          {
+            "h": "4. Zmiany zakresu",
+            "body": [
+              "Każda ze stron może zaproponować zmianę zakresu. Zmiana wchodzi w życie dopiero po pisemnym uzgodnieniu jej wpływu na cenę i harmonogram.",
+              "Harmonogramy zakładają, że zapewnisz dostępy, treści, decyzje i akceptacje w potrzebnym czasie. Opóźnienia po Twojej stronie przesuwają terminy."
+            ]
+          },
+          {
+            "h": "5. Twoje obowiązki",
+            "body": [
+              "Zapewniasz terminowy dostęp do systemów, kont, danych i osób niezbędnych do prac oraz dbasz o bezpieczeństwo własnych kont i danych uwierzytelniających.",
+              "Potwierdzasz, że masz prawo przekazać nam dane, treści i dostępy, które nam udostępniasz, oraz że uzgodnione ich wykorzystanie nie narusza praw osób trzecich ani Twoich zobowiązań.",
+              "Odpowiadasz za sposób, w jaki korzystasz z tego, co zbudujemy, w tym za decyzje podejmowane na podstawie wyników systemu."
+            ]
+          },
+          {
+            "h": "6. Usługi zewnętrzne i modele AI",
+            "body": [
+              "Nasze prace integrują usługi zewnętrzne — dostawców modeli, platformy chmurowe, sklepy z aplikacjami, narzędzia SaaS. Ich własne regulaminy i cenniki regulują te usługi, dostawcy mogą je zmieniać, a my nie odpowiadamy za ich dostępność, wyniki ani działania.",
+              "Systemy AI są probabilistyczne. Mogą generować wyniki błędne, obarczone uprzedzeniami lub nieodpowiednie do danego celu, a to samo zapytanie nie musi dać dwa razy tego samego rezultatu. Ewaluację i weryfikację przez człowieka wbudowujemy tam, gdzie przewiduje to oferta, ale nie gwarantujemy poprawności, kompletności ani przydatności wyników AI do określonego celu.",
+              "Jeżeli system podlega unijnemu AI Act, poinformujemy Cię, jak rozumiemy jego klasyfikację w kontekście budowy. Ocena i wypełnienie Twoich własnych obowiązków jako podmiotu stosującego pozostaje po Twojej stronie."
+            ]
+          },
+          {
+            "h": "7. Prawa własności intelektualnej",
+            "body": [
+              "Po zapłacie całości wynagrodzenia przenosimy na Ciebie prawa własności intelektualnej do rezultatów wykonanych specjalnie dla Ciebie w ramach oferty, w zakresie, w jakim prawa te są zbywalne.",
+              "Zachowujemy prawa do tego, co wnosimy: istniejącego wcześniej kodu, narzędzi, bibliotek, szablonów i know-how, a także do rozwiązań ogólnych, niespecyficznych dla Ciebie. Otrzymujesz bezterminową, niewyłączną i zbywalną licencję na korzystanie z tych elementów wbudowanych w Twoje rezultaty.",
+              "Twoje dane, treści i znaki towarowe pozostają Twoje. Komponenty zewnętrzne i open source pozostają na własnych licencjach, które wskażemy na życzenie.",
+              "Jeśli nie zastrzeżesz inaczej na piśmie, możemy podawać Cię jako klienta i ogólnie opisywać wykonane prace."
+            ]
+          },
+          {
+            "h": "8. Poufność",
+            "body": [
+              "Każda ze stron zachowa w poufności niepubliczne informacje drugiej strony, wykorzysta je wyłącznie na potrzeby współpracy i zabezpieczy co najmniej z należytą starannością. Obowiązek trwa trzy lata po zakończeniu współpracy, a bezterminowo w odniesieniu do tajemnicy przedsiębiorstwa.",
+              "Nie dotyczy informacji publicznych nie z winy odbiorcy, posiadanych wcześniej zgodnie z prawem, opracowanych niezależnie lub podlegających ujawnieniu na podstawie przepisów — o czym uprzedzimy Cię, o ile wolno nam to zrobić."
+            ]
+          },
+          {
+            "h": "9. Ochrona danych osobowych",
+            "body": [
+              "Jeżeli przetwarzamy dane osobowe w Twoim imieniu, Ty jesteś administratorem, a my podmiotem przetwarzającym; przed rozpoczęciem takiego przetwarzania zawrzemy umowę powierzenia określającą przedmiot, czas, cel i zabezpieczenia.",
+              "Wdrażamy w infrastrukturze, którą kontrolujesz, wszędzie tam, gdzie przewiduje to oferta, tak aby Twoje dane osobowe pozostały na Twoim koncie i Twoich kluczach.",
+              "Sposób, w jaki postępujemy z danymi przekazanymi nam bezpośrednio — zapytanie, rezerwacja rozmowy — opisuje nasza Polityka prywatności."
+            ]
+          },
+          {
+            "h": "10. Odbiór i wady",
+            "body": [
+              "Rezultaty uznaje się za odebrane po upływie okresu weryfikacji wskazanego w ofercie, a w jego braku po 14 dniach, jeżeli nie zgłosisz pisemnie istotnej wady.",
+              "Wady zgłoszone w ciągu 30 dni od odbioru, które uniemożliwiają działanie rezultatu zgodnie z ofertą, usuwamy bezpłatnie. Poza tym okresem wsparcie obejmuje wyłącznie odrębna umowa abonamentowa."
+            ]
+          },
+          {
+            "h": "11. Gwarancje i ich wyłączenie",
+            "body": [
+              "Zapewniamy, że wykonamy prace z należytą starannością, przez odpowiednio wykwalifikowane osoby, i że mamy prawo zawrzeć tę umowę.",
+              "Poza tym, w zakresie dopuszczalnym przez prawo, usługi i rezultaty dostarczamy w stanie „jak jest”: nie gwarantujemy nieprzerwanego ani bezbłędnego działania, rezultatów usług zewnętrznych ani osiągnięcia określonych efektów handlowych, przychodowych czy wydajnościowych."
+            ]
+          },
+          {
+            "h": "12. Ograniczenie odpowiedzialności",
+            "body": [
+              "Żadna ze stron nie ogranicza odpowiedzialności za śmierć lub szkodę na osobie wskutek niedbalstwa, za działanie umyślne ani za cokolwiek, czego prawo nie pozwala ograniczyć.",
+              "Poza tym żadna ze stron nie odpowiada za utracone korzyści, utracone przychody, utratę lub uszkodzenie danych ani za szkody pośrednie; a nasza łączna odpowiedzialność z tytułu wdrożenia jest ograniczona do wynagrodzenia zapłaconego nam w ramach tego wdrożenia w ciągu dwunastu miesięcy poprzedzających roszczenie.",
+              "Za wykonywanie własnych kopii zapasowych danych odpowiadasz Ty."
+            ]
+          },
+          {
+            "h": "13. Czas trwania i zakończenie",
+            "body": [
+              "Każda ze stron może zakończyć współpracę z zachowaniem 30-dniowego pisemnego wypowiedzenia, a ze skutkiem natychmiastowym w razie istotnego naruszenia nieusuniętego w ciągu 14 dni od pisemnego wezwania.",
+              "Po zakończeniu płacisz za prace wykonane i zobowiązania zewnętrzne zaciągnięte do tego dnia. Postanowienia o prawach własności intelektualnej, poufności, odpowiedzialności i prawie właściwym pozostają w mocy.",
+              "Abonament miesięczny trwa z miesiąca na miesiąc; każda ze stron może go wypowiedzieć z 30-dniowym wyprzedzeniem ze skutkiem na koniec okresu rozliczeniowego."
+            ]
+          },
+          {
+            "h": "14. Prawo właściwe",
+            "body": [
+              "Regulamin podlega prawu polskiemu. Spory rozstrzyga sąd właściwy dla siedziby firmy.",
+              "Nieważność jednego postanowienia nie wpływa na pozostałe."
+            ]
+          },
+          {
+            "h": "15. Zmiany regulaminu",
+            "body": [
+              "Możemy aktualizować regulamin na potrzeby przyszłych wdrożeń. Twojego wdrożenia dotyczy wersja obowiązująca w dniu podpisania oferty."
+            ]
+          },
+          {
+            "h": "16. Kim jesteśmy",
+            "body": [
+              "aiAdaptiv jest firmą zarejestrowaną w Polsce.",
+              "Kontakt: kacper@aiadaptiv.com"
+            ]
+          }
+        ],
+        "backHome": "← Powrót na stronę główną"
+      },
+      "privacy": {
+        "metaTitle": "Polityka prywatności — aiAdaptiv",
+        "metaDescription": "Jak aiAdaptiv zbiera i wykorzystuje dane osobowe na tej stronie: analityka, pliki cookie, rezerwacje, zapytania, podstawy prawne, podmioty przetwarzające, retencja i Twoje prawa z RODO.",
+        "h1": "Polityka prywatności",
+        "updated": "Ostatnia aktualizacja: 5 września 2026",
+        "intro": "Ta polityka dotyczy danych osobowych zbieranych przez tę stronę oraz przez zapytania i rezerwacje z niej wysłane. Danych osobowych przetwarzanych w imieniu klienta, wewnątrz systemu zbudowanego dla niego, dotyczy polityka tego klienta i nasza umowa powierzenia z nim — nie ta polityka.",
+        "sections": [
+          {
+            "h": "1. Kto odpowiada za dane",
+            "body": [
+              "Administratorem danych opisanych poniżej jest aiAdaptiv, firma zarejestrowana w Polsce.",
+              "Pytania oraz wnioski z punktu 8: kacper@aiadaptiv.com"
+            ]
+          },
+          {
+            "h": "2. Jakie dane zbieramy",
+            "body": [
+              "Gdy się z nami kontaktujesz — to, co sam przekażesz: imię i nazwisko, adres e-mail, firmę i treść wiadomości.",
+              "Gdy rezerwujesz rozmowę — imię i nazwisko, adres e-mail i odpowiedzi podane w formularzu rezerwacji oraz wybrany termin. Rezerwacje obsługuje Cal.com, a sama rozmowa może odbywać się przez Cal Video.",
+              "Jeśli wyrazisz zgodę na analitykę — dane o wizycie: odwiedzone podstrony, przybliżoną lokalizację z adresu IP, typ urządzenia i przeglądarki oraz stronę odsyłającą.",
+              "Podstawowe dane żądań rejestruje nasz dostawca hostingu na potrzeby bezpieczeństwa i niezawodności, w tym adres IP."
+            ]
+          },
+          {
+            "h": "3. Pliki cookie i analityka",
+            "body": [
+              "Do momentu akceptacji w banerze nie zapisujemy żadnych plików analitycznych ani reklamowych. Korzystamy z Google Consent Mode, który domyślnie odmawia tych rodzajów zapisu i włącza je dopiero po akceptacji; odmowa pozostawia je wyłączone.",
+              "Za zgodą korzystamy z Google Analytics 4, aby rozumieć sposób korzystania ze strony. Używamy też Vercel Analytics, które działa bez plików cookie i nie śledzi użytkowników między stronami.",
+              "Twój wybór zapisujemy w przeglądarce, żeby nie pytać ponownie. Wyczyszczenie danych przeglądarki resetuje go."
+            ]
+          },
+          {
+            "h": "4. Cele i podstawy prawne",
+            "body": [
+              "Odpowiadanie na zapytania i obsługa rezerwacji — podjęcie działań na Twoje żądanie przed zawarciem umowy oraz nasz prawnie uzasadniony interes w odpowiadaniu osobom, które się z nami kontaktują.",
+              "Utrzymanie bezpieczeństwa i działania strony — nasz prawnie uzasadniony interes.",
+              "Pomiar ruchu za pomocą analityki — Twoja zgoda, którą możesz w każdej chwili wycofać.",
+              "Obowiązki księgowe, podatkowe i inne wynikające z przepisów — obowiązek prawny."
+            ]
+          },
+          {
+            "h": "5. Komu udostępniamy dane",
+            "body": [
+              "Korzystamy z dostawców przetwarzających dane w naszym imieniu na podstawie umów: Vercel (hosting i analityka), Google (Analytics), Cal.com (rezerwacje i wideo) oraz dostawca poczty do korespondencji.",
+              "Nie sprzedajemy danych osobowych i nie udostępniamy ich do celów reklamowych.",
+              "Możemy ujawnić dane, gdy wymaga tego prawo, albo w celu ustalenia lub obrony roszczeń."
+            ]
+          },
+          {
+            "h": "6. Przekazywanie poza EOG",
+            "body": [
+              "Część dostawców ma siedzibę poza Europejskim Obszarem Gospodarczym lub korzysta z podprzetwarzających spoza EOG. Przekazywanie danych poza EOG odbywa się na podstawie standardowych klauzul umownych Komisji Europejskiej lub innego zgodnego z prawem mechanizmu. Na życzenie wskażemy, którego."
+            ]
+          },
+          {
+            "h": "7. Jak długo przechowujemy dane",
+            "body": [
+              "Zapytania i rezerwacje: do 24 miesięcy od ostatniego kontaktu, chyba że umowa wymaga dłużej.",
+              "Dokumentacja umowna, fakturowa i księgowa: przez okres wymagany przepisami podatkowymi.",
+              "Dane analityczne: przez okres retencji ustawiony w Google Analytics, obecnie 14 miesięcy.",
+              "Logi serwera: przez krótki, kroczący okres ustalony przez dostawcę hostingu."
+            ]
+          },
+          {
+            "h": "8. Twoje prawa",
+            "body": [
+              "Masz prawo żądać kopii swoich danych, ich sprostowania, usunięcia, ograniczenia lub sprzeciwu wobec przetwarzania oraz przeniesienia danych. Zgodę możesz wycofać w każdej chwili, bez wpływu na zgodność z prawem wcześniejszego przetwarzania.",
+              "Napisz na kacper@aiadaptiv.com — odpowiemy w ciągu miesiąca.",
+              "Masz też prawo wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych (UODO), polskiego organu nadzorczego."
+            ]
+          },
+          {
+            "h": "9. Dzieci",
+            "body": [
+              "Strona jest skierowana do firm. Świadomie nie zbieramy danych osobowych dzieci."
+            ]
+          },
+          {
+            "h": "10. Zmiany",
+            "body": [
+              "Możemy aktualizować tę politykę. Data u góry wskazuje ostatnią zmianę; o istotnych zmianach poinformujemy na tej stronie."
+            ]
+          }
+        ],
+        "backHome": "← Powrót na stronę główną"
+      }
+    }
+  },
+  "privateAi": {
+    "meta": {
+      "title": "Platforma prywatnego AI — własny LLM open source w Twojej chmurze | aiAdaptiv",
+      "description": "Platforma AI white-label oparta na modelach open source, wdrożona w Twoim koncie chmurowym w UE. Infrastruktura, klucze i dane należą do Ciebie; my wdrażamy, utrzymujemy i aktualizujemy. Zgodność z RODO i AI Act wynika z architektury."
+    },
+    "tags": [
+      "Modele open source",
+      "Twoja chmura w UE",
+      "White-label",
+      "RODO i AI Act"
+    ],
+    "cta": "Umów 30-minutową rozmowę",
+    "imageLabel": "Szkic ołówkiem kłódki na jasnym papierze — platforma prywatnego AI aiAdaptiv.",
+    "flowAlt": "Szkic ołówkiem: Twoje konto chmurowe w UE, potem wdrożona platforma, potem interfejs w przeglądarce pod Twoją marką, a na końcu Twój zespół, który z niego korzysta.",
+    "video": {
+      "label": "Zobacz, jak działa",
+      "title": "Umowa wchodzi. Ryzyka i podsumowanie wychodzą — wewnątrz prywatnego, brandowanego środowiska.",
+      "duration": "4:32",
+      "cta": "Odtwórz nagranie",
+      "note": "Wczytuje się dopiero po kliknięciu — do tego czasu nic nie jest pobierane z Loom."
+    },
+    "hero": {
+      "badge": "Platforma prywatnego AI · Modele open source w Twojej chmurze",
+      "headline": [
+        {
+          "text": "Twój prywatny mózg firmy."
+        },
+        {
+          "text": "Na własność, nie w wynajmie.",
+          "accent": true
+        }
+      ],
+      "subhead": "Wdrażamy w pełni white-label platformę AI bezpośrednio w Twoim własnym, bezpiecznym koncie chmurowym w UE. Ty jesteś właścicielem infrastruktury, kluczy i danych. Całą ciężką pracę bierzemy na siebie.",
+      "tagline": "Koniec z wklejaniem wrażliwych danych klientów do publicznych narzędzi.",
+      "cta": "Uruchom 60-sekundowy test kwalifikacji →"
+    },
+    "problem": {
+      "h2": "Publiczne AI to ogromne ryzyko",
+      "points": [
+        "Kary do 4% (RODO) lub 7% (EU AI Act) obrotu.",
+        "Twoje umowy i dane klientów mogą trenować publiczne modele i wyciec do konkurencji.",
+        "Małe zespoły nie nadążają za infrastrukturą i aktualizacjami."
+      ]
+    },
+    "solution": {
+      "h2": "My wdrażamy. Ty jesteś właścicielem.",
+      "pillars": [
+        {
+          "title": "Bezpieczna analiza dokumentów",
+          "body": "Wgrywaj 200-stronicowe umowy lub dokumenty due diligence. Bezpiecznie wychwytuj ryzyka, porównuj wersje i otrzymuj podsumowania — bez wycieku danych."
+        },
+        {
+          "title": "100% White-Label",
+          "body": "ai.twojafirma.pl z Twoim brandingiem. Realne aktywo wewnętrzne."
+        },
+        {
+          "title": "Twoje własne konto chmurowe",
+          "body": "Wdrożone w Twoim własnym koncie chmurowym. Ty kontrolujesz wszystko."
+        },
+        {
+          "title": "Zero narzutu",
+          "body": "My zajmujemy się aktualizacjami modeli, bezpieczeństwem i utrzymaniem."
+        }
+      ]
+    },
+    "howItWorks": {
+      "h2": "Jak to działa",
+      "intro": "Upraszczamy prywatne AI, wdrażając wszystko w obrębie Twojego własnego konta chmurowego.",
+      "steps": [
+        {
+          "title": "1. Zakładasz konto (lub zakładamy je za Ciebie)",
+          "body": "Rejestrujesz konto chmurowe (region UE). Kontrolujesz rozliczenia."
+        },
+        {
+          "title": "2. Budujemy i brandujemy",
+          "body": "Wdrażamy Open WebUI + zoptymalizowane modele, nakładamy Twoje logo i podpinamy ai.twojafirma.pl."
+        },
+        {
+          "title": "3. Otrzymujesz pełny dostęp",
+          "body": "Twój zespół loguje się i zaczyna korzystać."
+        },
+        {
+          "title": "4. My zajmujemy się utrzymaniem",
+          "body": "Comiesięczne aktualizacje i wsparcie."
+        }
+      ],
+      "timeline": "Typowy czas: 3–7 dni roboczych od płatności do uruchomienia.",
+      "roadmap": {
+        "label": "Harmonogram",
+        "days": [
+          {
+            "label": "Dzień 1–2",
+            "body": "Zakładasz (lub zakładamy) konto chmurowe i nadajesz dostęp."
+          },
+          {
+            "label": "Dzień 3–5",
+            "body": "Wdrażamy, brandujemy i optymalizujemy platformę pod Twoje procesy."
+          },
+          {
+            "label": "Dzień 6–7",
+            "body": "Szkolenie wdrożeniowe + Twój zespół rusza na żywo."
+          }
+        ],
+        "resultLabel": "Efekt",
+        "result": "W pełni brandowana, bezpieczna prywatna platforma AI działająca w Twoim własnym środowisku w niecały tydzień."
+      },
+      "flowLabel": "Podsumowanie wizualne (prosty 4-etapowy przepływ)",
+      "flow": "Twoje własne konto chmurowe (UE)\n↓\nWdrażamy Open WebUI + modele\n↓\nWhite-label na ai.twojafirma.pl\n↓\nTwój zespół korzysta bezpiecznie\n(My utrzymujemy co miesiąc)",
+      "outro": "Ty jesteś właścicielem konta. Ty jesteś właścicielem danych. My wykonujemy pracę techniczną."
+    },
+    "behindTheArchitecture": {
+      "h2": "Za architekturą",
+      "lead": "Cześć, jestem założycielem aiAdaptiv.",
+      "body": [
+        "Zbudowałem to, ponieważ butikowe firmy potrzebują potężnego AI do umów i pracy z klientami — ale publiczne narzędzia rodzą poważne ryzyko. Każde wdrożenie prowadzi osobiście osoba, która zbudowała platformę."
+      ]
+    },
+    "faq": {
+      "h2": "Najczęściej zadawane pytania",
+      "items": [
+        {
+          "q": "Dlaczego wdrożenie w moim własnym koncie chmurowym?",
+          "a": "Prawdziwa własność. Kontrolujesz konto, rozliczenia i klucze. Jeśli kiedykolwiek przestaniesz z nami współpracować, cała platforma pozostaje Twoja — bez uzależnienia od dostawcy."
+        },
+        {
+          "q": "Czy widzicie nasze wrażliwe dane?",
+          "a": "Nie. Całe przetwarzanie odbywa się w obrębie Twojego bezpiecznego środowiska. Nigdy nie mamy dostępu do Twoich zapytań ani dokumentów."
+        },
+        {
+          "q": "Jakie są koszty GPU?",
+          "a": "Płacisz dostawcy chmury bezpośrednio — nigdy nam. Pozostajemy elastyczni i możemy korzystać z różnych dostawców GPU, dobierając i optymalizując odpowiedni rozmiar pod Twoje użycie. Moc GPU to zwykle kilkaset euro miesięcznie, w zależności od intensywności korzystania."
+        },
+        {
+          "q": "Ile trwa wdrożenie?",
+          "a": "Zazwyczaj 3–7 dni roboczych od płatności do uruchomienia, po wypełnieniu listy onboardingowej."
+        },
+        {
+          "q": "Czy mogę zrezygnować?",
+          "a": "Tak. Miesięczne utrzymanie można wypowiedzieć z 30-dniowym wyprzedzeniem. Zachowujesz platformę, której jesteś właścicielem."
+        }
+      ]
+    },
+    "qualifier": {
+      "h2": "Czy to dopasowanie?",
+      "yesLabel": "Tak, jeśli",
+      "yes": "codziennie pracujesz z wrażliwymi dokumentami prawnymi, finansowymi lub klientów.",
+      "noLabel": "Nie, jeśli",
+      "no": "potrzebujesz po prostu taniego, ogólnego narzędzia AI.",
+      "cta": "Uruchom 60-sekundowy test kwalifikacji →"
+    },
+    "backHome": "← Wróć na stronę główną"
   }
 }

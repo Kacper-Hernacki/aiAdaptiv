@@ -1,0 +1,132 @@
+/* Centred hero, matching the reference: super-headline, large title, sub, a
+   stat row, then the CTA. Height is content-led (min 80svh minus the header)
+   rather than a locked 100svh. */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(80svh - 5em);
+  padding: 6em 0 4em;
+}
+
+.inner {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0 var(--gutter);
+}
+
+.title {
+  width: 100%;
+  /* The reference caps the hero title at 48 root-em. This element is itself
+     3.75em, so the equivalent cap is 48 / 3.75. */
+  max-width: 12.8em;
+  margin-bottom: 0.6em;
+}
+
+
+.sub {
+  max-width: 30em;
+  margin: 0 auto 1.5em;
+  font-size: 1.05em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.stats {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5em;
+  margin-bottom: 2em;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statNum {
+  display: block;
+  font-size: 1.5em;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+}
+
+.statLabel {
+  display: block;
+  font-size: 0.7em;
+  color: var(--fg-faint);
+}
+
+.ctaWrap {
+  font-size: 1.1em;
+}
+
+@media screen and (max-width: 991px) {
+  .hero {
+    min-height: auto;
+    padding: 48px 0 32px;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+
+  /* Three stats wrap centred on their own; the two-column grid that four
+     needed left the last one stranded in a half-empty row. */
+  .stats {
+    gap: 1.25em 2em;
+  }
+
+  .ctaWrap {
+    font-size: 16px;
+  }
+}
+
+/*
+ * The hook: three symptoms the reader should recognise, stacked above the
+ * headline. Set below the h1 in size so the eye still lands on the answer
+ * first, but large enough to actually be read rather than skimmed.
+ */
+.questions {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  /* Wide enough that each symptom holds one line — a wrapped question orphans
+     its last word and kills the rhythm of the stack. */
+  max-width: 41em;
+  margin: 0.2em auto 1.6em;
+}
+
+.question {
+  font-size: 1.15em;
+  line-height: 150%;
+  color: var(--fg-muted);
+}
+
+@media screen and (max-width: 991px) {
+  .questions {
+    max-width: 100%;
+    gap: 0.5em;
+    margin-bottom: 20px;
+  }
+
+  .question {
+    font-size: 17px;
+  }
+
+}
+
+/* The cycling ending sits on its own line beneath the static opener, and
+   holds one line on a phone — the phrases are chosen to be short enough. */
+.rotating {
+  display: grid;
+  width: 100%;
+  justify-items: center;
+}

@@ -1,23 +1,31 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/config/site";
-import { locales, defaultLocale } from "@/i18n/config";
+import { translatedLocales, defaultLocale } from "@/i18n/config";
 
 /**
- * Sitemap with hreflang alternates for every locale. As real routes are added
- * (e.g. /[lang]/blog), map them across locales the same way.
+ * Sitemap with hreflang alternates. Lists only canonical URLs, which means only
+ * translated locales — untranslated ones serve English copy and canonicalize to
+ * /en (see i18n/config.ts), so including them would just burn crawl budget on
+ * duplicates. As real routes are added (e.g. /[lang]/blog), map them the same way.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   const languages = Object.fromEntries(
-    locales.map((l) => [l, `${siteUrl}/${l}`]),
+    translatedLocales.map((l) => [l, `${siteUrl}/${l}`]),
   );
   const termsLanguages = Object.fromEntries(
-    locales.map((l) => [l, `${siteUrl}/${l}/terms`]),
+    translatedLocales.map((l) => [l, `${siteUrl}/${l}/terms`]),
+  );
+  const privacyLanguages = Object.fromEntries(
+    translatedLocales.map((l) => [l, `${siteUrl}/${l}/privacy`]),
+  );
+  const privateAiLanguages = Object.fromEntries(
+    translatedLocales.map((l) => [l, `${siteUrl}/${l}/private-ai`]),
   );
 
   return [
-    ...locales.map(
+    ...translatedLocales.map(
       (lang): MetadataRoute.Sitemap[number] => ({
         url: `${siteUrl}/${lang}`,
         lastModified,
@@ -26,13 +34,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
         alternates: { languages },
       }),
     ),
-    ...locales.map(
+    ...translatedLocales.map(
+      (lang): MetadataRoute.Sitemap[number] => ({
+        url: `${siteUrl}/${lang}/private-ai`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.8,
+        alternates: { languages: privateAiLanguages },
+      }),
+    ),
+    ...translatedLocales.map(
       (lang): MetadataRoute.Sitemap[number] => ({
         url: `${siteUrl}/${lang}/terms`,
         lastModified,
         changeFrequency: "monthly",
         priority: 0.3,
         alternates: { languages: termsLanguages },
+      }),
+    ),
+    ...translatedLocales.map(
+      (lang): MetadataRoute.Sitemap[number] => ({
+        url: `${siteUrl}/${lang}/privacy`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.3,
+        alternates: { languages: privacyLanguages },
       }),
     ),
   ];

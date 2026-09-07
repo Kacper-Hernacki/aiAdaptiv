@@ -3,7 +3,7 @@
  * Localized copy (titles, descriptions, section text) lives in the i18n
  * dictionaries under src/i18n/. Locale routing config lives in src/i18n/config.ts.
  *
- * Set NEXT_PUBLIC_SITE_URL and NEXT_PUBLIC_CALENDLY_URL in the environment
+ * Set NEXT_PUBLIC_SITE_URL and NEXT_PUBLIC_BOOKING_URL in the environment
  * (see .env.example) to point at the real domain / booking link.
  */
 
@@ -13,16 +13,14 @@ export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ?? PLACEHOLDER_URL
 ).replace(/\/$/, "");
 
-/** Calendly (or any booking) link. Now reached via the Tally form's ending
- * screen, so it's no longer triggered directly from the page. */
-export const calendlyUrl =
-  process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/d/dzz5-bt2-xyk";
-
-/** Tally eligibility form. Every primary CTA opens this as a popup. */
-export const tallyFormId =
-  process.env.NEXT_PUBLIC_TALLY_FORM_ID ?? "0Ql1X9";
-
-export const tallyUrl = `https://tally.so/r/${tallyFormId}`;
+/**
+ * Booking link behind every primary CTA. Points at the "AI mapping call"
+ * Cal.com event type (30 min, Cal Video). Override with NEXT_PUBLIC_BOOKING_URL
+ * to swap it without a deploy.
+ */
+export const bookingUrl =
+  process.env.NEXT_PUBLIC_BOOKING_URL ??
+  "https://cal.com/kacper-hernacki/ai-mapping-call";
 
 /** Google Analytics 4 measurement ID (looks like `G-XXXXXXXXXX`). Must be
  * public because the gtag script runs client-side. Empty means GA is not
@@ -36,37 +34,69 @@ export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_ID ?? "";
 export const googleSiteVerification =
   process.env.GOOGLE_SITE_VERIFICATION ?? "";
 
-export const siteConfig = {
+/** Brand identity. */
+const brand = {
   name: "aiAdaptiv",
   shortName: "aiAdaptiv",
-  url: siteUrl,
-  // English fallback metadata (per-locale values come from the dictionaries).
-  title: "aiAdaptiv — Private, GDPR-Compliant AI Platform for Your Business",
-  description:
-    "Launch a private, EU-hosted AI platform powered by open-source models. Fully GDPR and EU AI Act compliant. We deploy, manage, and update it for you. Book a call.",
-  tagline: "Private, sovereign AI for European businesses.",
   twitter: "@aiadaptiv",
-  keywords: [
-    "private AI platform",
-    "GDPR compliant AI",
-    "EU AI Act",
-    "sovereign AI",
-    "self-hosted LLM",
-    "open source LLM",
-    "AI agents",
-    "whitelabel AI",
-    "aiAdaptiv",
+  /** Emitted as schema.org Person entries under the Organization. */
+  founders: [
+    {
+      name: "Kacper Hernacki",
+      jobTitle: "Founder & CTO",
+      /** Public profiles, emitted as the Person's schema.org `sameAs`. */
+      profiles: ["https://www.linkedin.com/in/kacper-hernacki-965161203/"],
+      credentials: [
+        {
+          name: "AI_devs 3 · Agents",
+          url: "https://credsverse.com/credentials/3fc027b2-7899-4a52-8e60-ca177c4f7ad0",
+        },
+        {
+          name: "AI_devs 2 · GPT-4 in applications and automation",
+          url: "https://credsverse.com/credentials/e34b5af4-8a00-4c60-ae6e-f32658be0926",
+        },
+        {
+          name: "AI_devs · AI Developer",
+          url: "https://verified.sertifier.com/en/verify/50831241179182/",
+        },
+      ],
+    },
   ],
   organization: {
     legalName: "aiAdaptiv",
     sameAs: [
       "https://x.com/aiadaptiv",
       "https://www.linkedin.com/company/aiadaptiv",
-      "https://github.com/aiadaptiv",
     ],
   },
   contactEmail: "kacper@aiadaptiv.com",
   supportEmail: "help@aiadaptiv.com",
 } as const;
+
+/**
+ * English fallback metadata only; per-locale values come from the `agency.meta`
+ * tree in the dictionaries.
+ */
+export const siteConfig = {
+  ...brand,
+  url: siteUrl,
+  title: "aiAdaptiv — Custom AI solutions: SaaS, mobile apps, automations",
+  description:
+    "aiAdaptiv designs, builds and ships custom AI solutions — AI SaaS products, mobile apps, automations, pilots, marketing systems and private open-source LLM platforms. Book a call.",
+  tagline: "Custom AI, built and shipped — not demoed.",
+  keywords: [
+    "custom AI development",
+    "AI SaaS development",
+    "AI mobile app development",
+    "AI automation",
+    "AI agents",
+    "AI proof of concept",
+    "AI marketing systems",
+    "AI implementation partner",
+    "private LLM platform",
+    "aiAdaptiv",
+  ],
+} as const;
+
 
 export type SiteConfig = typeof siteConfig;

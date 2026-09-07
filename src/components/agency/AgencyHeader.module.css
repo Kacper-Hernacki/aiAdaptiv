@@ -1,0 +1,171 @@
+/* Static, like the reference — it scrolls away rather than sticking. A fixed
+   light bar would cut across the dark approach/CTA/footer bands, and the CTA
+   repeats in every section anyway. */
+.header {
+  position: relative;
+  z-index: 1001;
+  width: 100%;
+  padding: 0.85em 0;
+  background-color: var(--bg);
+  transition: background-color 0.3s ease;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
+  width: 100%;
+  padding: 0 var(--gutter);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--fg);
+  min-width: 0;
+}
+
+.brandMark {
+  width: 1.6em;
+  height: 1.6em;
+  flex: none;
+  color: var(--fg);
+}
+
+.brandName {
+  font-size: 1.15em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5em;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.navLink {
+  font-size: 0.7em;
+  color: var(--fg);
+  transition: opacity 0.2s;
+}
+
+.navLink:hover {
+  opacity: 0.6;
+}
+
+.headerBtn {
+  display: flex;
+  font-size: 0.8em;
+}
+
+/* ── Mobile menu ───────────────────────────────────────────── */
+.menuBtn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 48px;
+  height: 48px;
+  padding: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.menuBar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  background-color: var(--fg);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.menuBtn[aria-expanded="true"] .menuBar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menuBtn[aria-expanded="true"] .menuBar:nth-child(2) {
+  opacity: 0;
+}
+
+.menuBtn[aria-expanded="true"] .menuBar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobileMenu[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+  list-style: none;
+}
+
+.mobileLink {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--fg);
+  transition: opacity 0.2s;
+}
+
+.mobileLink:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 991px) {
+  .nav,
+  .headerBtn {
+    display: none;
+  }
+
+  .menuBtn {
+    display: flex;
+  }
+
+  .header {
+    padding: 20px 0;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+
+  .brandName {
+    font-size: 18px;
+  }
+
+  .brandMark {
+    width: 24px;
+    height: 24px;
+  }
+}

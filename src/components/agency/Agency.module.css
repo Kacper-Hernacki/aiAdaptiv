@@ -1,0 +1,447 @@
+/*
+ * Component styles for the agency site. Tokens and the em scale come from
+ * app/agency.css; every size here is in em so the whole page scales with the
+ * fluid root font-size, the way the reference does.
+ */
+
+/* ── Section shells ────────────────────────────────────────── */
+.section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: var(--band-pad) 0;
+}
+
+/* Alternating band, one shade down from the page. */
+.bandAlt {
+  background-color: var(--bg-alt);
+}
+
+/* Always-dark band, in both themes. */
+.bandDark {
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    #141420 0%,
+    var(--band-dark) 70%
+  );
+  color: var(--on-dark);
+}
+
+.inner {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 10;
+}
+
+.centered {
+  text-align: center;
+}
+
+/* ── Type ──────────────────────────────────────────────────── */
+.super {
+  display: inline-flex;
+  margin-bottom: 0.25em;
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+.bandDark .super {
+  color: var(--on-dark-faint);
+}
+
+.h1 {
+  font-size: 3.75em;
+  font-weight: 500;
+  line-height: 105%;
+  letter-spacing: -0.027em;
+  color: var(--fg);
+}
+
+.h2 {
+  max-width: 20em;
+  font-size: 2.5em;
+  font-weight: 500;
+  line-height: 105%;
+  letter-spacing: -0.027em;
+  color: var(--fg);
+}
+
+.centered .h2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bandDark .h2,
+.bandDark .h3 {
+  color: var(--on-dark);
+}
+
+.h3 {
+  font-size: 1.75em;
+  font-weight: 500;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+.lead {
+  max-width: 40em;
+  font-size: 1.1em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.centered .lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bandDark .lead {
+  color: var(--on-dark-muted);
+}
+
+.p {
+  font-size: 1em;
+  line-height: 155%;
+  color: var(--fg);
+}
+
+/* Heading + lead stack. */
+.titleWrap {
+  display: flex;
+  flex-flow: column;
+  gap: 0.75em;
+  width: 100%;
+}
+
+/* ── Pill button ───────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.2em 0.25em 0.2em 1em;
+  border: none;
+  border-radius: var(--pill);
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 130%;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btnLarge {
+  font-size: 1.1em;
+}
+
+/* On always-dark bands the button inverts regardless of theme. */
+.bandDark .btn,
+.ctaSection .btn {
+  background-color: var(--on-dark);
+  color: #111113;
+}
+
+/* The label slides up on hover while a duplicate slides in from below. */
+.btnLabel {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.btnLabelHover {
+  position: absolute;
+  transform: translate3d(0, 100%, 0);
+}
+
+.btn:hover .btnLabelHover {
+  transform: translateZ(0);
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .btnLabelBase {
+  transform: translate3d(0, -100%, 0);
+}
+
+.btnLabelBase,
+.btnLabelHover {
+  transition: transform 0.3s ease;
+}
+
+.btnIconBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.25em;
+  height: 2.25em;
+  overflow: hidden;
+  border-radius: 100%;
+  background-color: var(--btn-icon-bg);
+  color: var(--btn-icon-fg);
+}
+
+.bandDark .btnIconBox,
+.ctaSection .btnIconBox {
+  background-color: #111113;
+  color: var(--on-dark);
+}
+
+.btnIcon {
+  width: 1em;
+}
+
+.btnIconHover {
+  position: absolute;
+  width: 1em;
+  transform: translateX(-200%);
+}
+
+.btn:hover .btnIconHover {
+  transform: translateX(0);
+}
+
+.btnIcon,
+.btnIconHover {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .btnIconBase {
+  transform: translateX(200%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btnLabelBase,
+  .btnLabelHover,
+  .btnIcon,
+  .btnIconHover {
+    transition: none;
+  }
+}
+
+/* ── Chips ─────────────────────────────────────────────────── */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-flow: wrap;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+.tag {
+  padding: 0.4em 0.85em;
+  border-radius: 6.5em;
+  background-color: var(--chip);
+  font-size: 0.8em;
+  color: inherit;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+/* ── Generic card grid ─────────────────────────────────────── */
+.cardGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5em;
+  margin-top: 3em;
+  width: 100%;
+}
+
+.cardGridThree {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  display: flex;
+  flex-flow: column;
+  padding: 1.5em;
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.bandDark .card {
+  background: var(--on-dark-card);
+}
+
+.cardTitle {
+  margin-bottom: 0.75em;
+  font-size: 1.25em;
+  font-weight: 500;
+  line-height: 120%;
+  color: var(--fg);
+}
+
+.bandDark .cardTitle {
+  color: var(--on-dark);
+}
+
+.cardBody {
+  font-size: 0.95em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.bandDark .cardBody {
+  color: var(--on-dark-muted);
+}
+
+/* ── Two-column text + media ───────────────────────────────── */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  align-items: center;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.splitText {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 1em;
+}
+
+.splitMedia {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ── Hairline list ─────────────────────────────────────────── */
+.points {
+  list-style: none;
+  width: 100%;
+  max-width: 46em;
+  margin-top: 0.5em;
+}
+
+.point {
+  padding: 0.85em 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 1.0625em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.bandDark .point {
+  border-bottom-color: var(--on-dark-hairline);
+  color: var(--on-dark-muted);
+}
+
+.point:last-child {
+  border-bottom: none;
+}
+
+/* ── Always-dark CTA band ──────────────────────────────────── */
+.ctaSection {
+  background: var(--cta-bg);
+  overflow: hidden;
+}
+
+.ctaGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 40%,
+    #1a1a2e 0%,
+    transparent 70%
+  );
+}
+
+.ctaInner {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1.25em;
+  text-align: center;
+}
+
+.ctaSection .h2 {
+  max-width: none;
+  color: var(--on-dark);
+}
+
+.ctaSub {
+  max-width: 32em;
+  font-size: 1.1em;
+  line-height: 155%;
+  color: var(--on-dark-muted);
+}
+
+.ctaNote {
+  font-size: 0.9em;
+  color: var(--on-dark-faint);
+}
+
+.ctaBtnWrap {
+  margin-top: 0.75em;
+  font-size: 1.1em;
+}
+
+/* ── Mobile ────────────────────────────────────────────────── */
+@media screen and (max-width: 991px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+
+  .h1,
+  .h2 {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .h3 {
+    font-size: 28px;
+  }
+
+  .lead {
+    font-size: 20px;
+    max-width: 100%;
+  }
+
+  .cardGrid,
+  .cardGridThree {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+
+  .btnLarge,
+  .ctaBtnWrap {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,236 @@
+/* Case-study-style page for the private AI offer. Follows the reference's
+   case-study layout: a text card beside the hero image, then detail bands. */
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 2em;
+  font-size: 0.9em;
+  color: var(--fg-muted);
+  transition: color 0.2s;
+}
+
+.back:hover {
+  color: var(--fg);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 1em;
+  align-items: stretch;
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+:global(:root[data-theme="dark"]) .heroImage {
+  filter: brightness(0.88);
+}
+
+.heroCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5em;
+  padding: 1.5em;
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.h1 {
+  font-size: 2.5em;
+  font-weight: 500;
+  line-height: 105%;
+  letter-spacing: -0.027em;
+  color: var(--fg);
+}
+
+.h1 span {
+  display: block;
+}
+
+.h1 .accent {
+  color: var(--fg-muted);
+}
+
+.sub {
+  font-size: 1em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.tagline {
+  font-size: 0.95em;
+  line-height: 150%;
+  color: var(--fg);
+}
+
+/* Plans as hairline rows, price right-aligned. */
+.plans {
+  list-style: none;
+  width: 100%;
+  max-width: 40em;
+}
+
+.plan {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5em;
+  padding: 1em 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.plan:first-child {
+  border-top: 1px solid var(--hairline);
+}
+
+.planLabel {
+  font-size: 1.05em;
+  color: var(--fg-muted);
+}
+
+.planPrice {
+  font-size: 1.75em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--fg);
+}
+
+.note {
+  max-width: 40em;
+  margin-top: 1.5em;
+  font-size: 0.95em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+/* Roadmap days as a hairline list with a fixed label column. */
+.roadmap {
+  list-style: none;
+  width: 100%;
+  max-width: 46em;
+  margin-top: 1.5em;
+}
+
+.day {
+  display: flex;
+  gap: 1.5em;
+  padding: 0.85em 0;
+  border-top: 1px solid var(--hairline);
+  font-size: 1em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.dayLabel {
+  flex: none;
+  min-width: 6em;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.result {
+  padding-top: 1em;
+  font-size: 1.05em;
+  color: var(--fg);
+}
+
+/* The deployment flow diagram is pre-formatted text; give it a card and a
+   mono face, and let it scroll sideways rather than wrap. */
+.flowLabel {
+  margin: 2.5em 0 0.75em;
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+.flow {
+  width: 100%;
+  max-width: 46em;
+  padding: 1.5em;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  background: var(--card);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8em;
+  line-height: 150%;
+  color: var(--fg);
+  white-space: pre;
+}
+
+.flowImage {
+  display: block;
+  width: 100%;
+  max-width: 34em;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+:global(:root[data-theme="dark"]) .flowImage {
+  filter: brightness(0.88);
+}
+
+.outro {
+  max-width: 46em;
+  margin-top: 1.5em;
+  font-size: 1em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+/* Qualifier: two labelled statements before the closing CTA. */
+.fit {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5em;
+  width: 100%;
+  max-width: 52em;
+  margin: 0 auto 2em;
+  text-align: left;
+}
+
+.fitItem {
+  padding: 1.5em;
+  border-radius: var(--radius);
+  background: var(--on-dark-card);
+  color: var(--on-dark-muted);
+  font-size: 1em;
+  line-height: 155%;
+}
+
+.fitLabel {
+  display: block;
+  margin-bottom: 0.4em;
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-dark);
+}
+
+@media screen and (max-width: 991px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .h1 {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
+
+  .fit {
+    grid-template-columns: 1fr;
+  }
+}

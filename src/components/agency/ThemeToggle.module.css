@@ -1,0 +1,64 @@
+.toggle {
+  position: fixed;
+  right: 1.5em;
+  bottom: 1.5em;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75em;
+  height: 2.75em;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--fg);
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.toggle:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+:global(:root[data-theme="dark"]) .toggle {
+  background: #111113;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global(:root[data-theme="dark"]) .toggle:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+  width: 1.125em;
+  height: 1.125em;
+}
+
+/* The cookie banner sits bottom-centre; on narrow screens lift the toggle so
+   the two don't overlap. */
+@media (max-width: 640px) {
+  .toggle {
+    bottom: 1em;
+    right: 1em;
+  }
+}
+
+/* Which icon shows is driven by the same attribute the theme itself is: no
+   React state, so server and client markup match exactly. */
+.sun {
+  display: none;
+}
+
+:global(:root[data-theme="dark"]) .sun {
+  display: block;
+}
+
+:global(:root[data-theme="dark"]) .moon {
+  display: none;
+}

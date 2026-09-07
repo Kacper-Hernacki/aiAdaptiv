@@ -1,0 +1,41 @@
+/*
+ * All phrases occupy the same grid cell, so the container is always as wide
+ * as the widest and as tall as the tallest — the headline never reflows as
+ * the words change. Only the active phrase is visible; the rest are laid out
+ * but hidden, and hidden from assistive tech.
+ */
+.stack {
+  display: inline-grid;
+  justify-items: center;
+  vertical-align: top;
+}
+
+.phrase {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(0.35em);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* The outgoing phrase lifts away as the incoming one rises in. */
+.leaving {
+  opacity: 0;
+  transform: translateY(-0.35em);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phrase {
+    transition: none;
+    transform: none;
+  }
+}

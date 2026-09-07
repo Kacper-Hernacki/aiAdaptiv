@@ -1,20 +1,21 @@
-/* Floating glass pill — same treatment as SiteHeader, anchored to the bottom. */
+/* Floating pill anchored to the bottom, in the site's light/dark palette. */
 .banner {
   position: fixed;
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 60; /* above the header (50) */
+  z-index: 60;
   width: calc(100% - 36px);
-  max-width: var(--page-max);
+  max-width: 68em;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
   padding: 14px 14px 14px 22px;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius);
-  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1em;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(12px) saturate(140%);
   -webkit-backdrop-filter: blur(12px) saturate(140%);
   animation: rise 0.4s ease both;
@@ -35,17 +36,14 @@
   min-width: 0;
   font-size: 13px;
   line-height: 1.5;
-  color: var(--color-ash);
+  color: rgba(0, 0, 0, 0.65);
 }
 
 .link {
-  color: var(--color-plum);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.link:hover {
+  color: #000;
   text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
 }
 
 .actions {
@@ -55,11 +53,10 @@
   gap: 10px;
 }
 
-/* Primary — matches the header CTA. */
 .accept {
   flex: none;
-  background: var(--color-plum);
-  color: var(--color-bone);
+  background: #000;
+  color: #fff;
   font-weight: 600;
   font-size: 12px;
   line-height: 1;
@@ -67,35 +64,65 @@
   text-transform: uppercase;
   padding: 13px 18px;
   border: none;
-  border-radius: var(--radius);
+  border-radius: 2em;
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
 
 .accept:hover {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
-/* Secondary — quiet ghost button. */
 .decline {
   flex: none;
   background: transparent;
-  color: var(--color-smoke);
+  color: rgba(0, 0, 0, 0.6);
   font-weight: 600;
   font-size: 12px;
   line-height: 1;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 13px 16px;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 2em;
   cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .decline:hover {
-  color: var(--color-bone);
-  border-color: var(--hairline-strong);
+  color: #000;
+  border-color: rgba(0, 0, 0, 0.35);
+}
+
+:global(:root[data-theme="dark"]) .banner {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(20, 20, 24, 0.94);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+}
+
+:global(:root[data-theme="dark"]) .text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+:global(:root[data-theme="dark"]) .link {
+  color: #f0f0f2;
+}
+
+:global(:root[data-theme="dark"]) .accept {
+  background: #f0f0f2;
+  color: #111113;
+}
+
+:global(:root[data-theme="dark"]) .decline {
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+:global(:root[data-theme="dark"]) .decline:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 @media (max-width: 640px) {

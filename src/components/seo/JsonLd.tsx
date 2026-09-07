@@ -42,6 +42,21 @@ export function OrganizationJsonLd() {
             email: siteConfig.supportEmail,
           },
         ],
+        founder: siteConfig.founders.map((f) => ({
+          "@type": "Person",
+          name: f.name,
+          jobTitle: f.jobTitle,
+          sameAs: f.profiles,
+          // Verifiable credentials, each pointing at its public check page —
+          // the thing that turns "multiple certifications" into a claim a
+          // machine can follow.
+          hasCredential: f.credentials.map((c) => ({
+            "@type": "EducationalOccupationalCredential",
+            name: c.name,
+            url: c.url,
+            credentialCategory: "certificate",
+          })),
+        })),
         sameAs: siteConfig.organization.sameAs,
       }}
     />
@@ -60,6 +75,38 @@ export function WebSiteJsonLd() {
         description: siteConfig.description,
         publisher: { "@id": `${siteUrl}/#organization` },
         inLanguage: "en",
+      }}
+    />
+  );
+}
+
+/**
+ * FAQPage schema for the agency FAQ. Google restricted FAQ rich results to a
+ * narrow set of sites in 2023, so this is not about star-ratings in search —
+ * it is a machine-readable statement of who we are and what we charge, which
+ * is what an LLM answering "what is aiAdaptiv?" reads.
+ *
+ * Entries whose answer is still a TODO placeholder are excluded: publishing a
+ * placeholder into structured data feeds it straight to the crawlers.
+ */
+export function FaqJsonLd({
+  items,
+}: {
+  items: { q: string; a: string }[];
+}) {
+  const answered = items.filter((i) => !i.a.includes("TODO(copy)"));
+  if (answered.length === 0) return null;
+
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: answered.map((i) => ({
+          "@type": "Question",
+          name: i.q,
+          acceptedAnswer: { "@type": "Answer", text: i.a },
+        })),
       }}
     />
   );

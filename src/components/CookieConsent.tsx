@@ -57,9 +57,16 @@ function loadLeadsy() {
 export function CookieConsent({
   lang,
   dict,
+  variant = "dark",
+  learnMoreHref,
 }: {
   lang: string;
   dict: Dictionary["cookies"];
+  /** Where "learn more" points. Defaults to this locale's terms page. */
+  learnMoreHref?: string;
+  /** "dark" is the product site's glass pill; "light" is the agency palette,
+   *  which follows that site's light/dark theme attribute. */
+  variant?: "dark" | "light";
 }) {
   // Starts null so the server renders nothing and there's no hydration
   // mismatch; the effect decides whether to show the banner on the client.
@@ -98,7 +105,7 @@ export function CookieConsent({
     <aside className={styles.banner} role="region" aria-labelledby="cookie-msg">
       <p id="cookie-msg" className={styles.text}>
         {dict.message}{" "}
-        <Link href={`/${lang}/terms`} className={styles.link}>
+        <Link href={learnMoreHref ?? `/${lang}/privacy`} className={styles.link}>
           {dict.learnMore}
         </Link>
       </p>

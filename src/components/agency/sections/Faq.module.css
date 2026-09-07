@@ -1,0 +1,33 @@
+.list {
+  width: 100%;
+  max-width: 46em;
+  margin-top: 3em;
+}
+
+.item {
+  padding: 1.5em 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.item:first-child {
+  border-top: 1px solid var(--hairline);
+}
+
+.q {
+  margin-bottom: 0.5em;
+  font-size: 1.25em;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.a {
+  font-size: 1.0625em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+@media screen and (max-width: 991px) {
+  .list {
+    margin-top: 32px;
+  }
+}
