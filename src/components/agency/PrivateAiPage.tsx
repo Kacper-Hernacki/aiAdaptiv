@@ -7,7 +7,7 @@ import { LoomEmbed } from "./LoomEmbed";
 import productHero from "./assets/product-hero.jpg";
 import flowImage from "./assets/private-ai-flow.jpg";
 import s from "./Agency.module.css";
-import f from "./sections/Faq.module.css";
+import { FaqAccordion } from "./FaqAccordion";
 import c from "./PrivateAiPage.module.css";
 
 /**
@@ -252,19 +252,7 @@ export function PrivateAiPage({
           <h2 id="pai-faq" className={s.h2} data-reveal>
             {faq.h2}
           </h2>
-          <dl className={f.list}>
-            {faq.items.map((item, i) => (
-              <div
-                key={item.q}
-                className={f.item}
-                data-reveal
-                style={{ "--rd": `${60 + i * 50}ms` } as React.CSSProperties}
-              >
-                <dt className={f.q}>{item.q}</dt>
-                <dd className={f.a}>{item.a}</dd>
-              </div>
-            ))}
-          </dl>
+          <FaqAccordion items={faq.items} />
         </div>
       </section>
 

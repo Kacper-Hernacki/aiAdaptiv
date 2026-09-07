@@ -1,6 +1,6 @@
 import type { Dictionary } from "@/i18n/dictionaries";
+import { FaqAccordion } from "../FaqAccordion";
 import s from "../Agency.module.css";
-import f from "./Faq.module.css";
 
 export function AgencyFaq({ faq }: { faq: Dictionary["agency"]["faq"] }) {
   return (
@@ -11,19 +11,7 @@ export function AgencyFaq({ faq }: { faq: Dictionary["agency"]["faq"] }) {
             {faq.h2}
           </h2>
         </div>
-        <dl className={f.list}>
-          {faq.items.map((item, i) => (
-            <div
-              key={item.q}
-              className={f.item}
-              data-reveal
-              style={{ "--rd": `${60 + i * 50}ms` } as React.CSSProperties}
-            >
-              <dt className={f.q}>{item.q}</dt>
-              <dd className={f.a}>{item.a}</dd>
-            </div>
-          ))}
-        </dl>
+        <FaqAccordion items={faq.items} />
       </div>
     </section>
   );

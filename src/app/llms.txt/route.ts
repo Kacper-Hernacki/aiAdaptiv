@@ -1,5 +1,6 @@
 import { siteConfig, siteUrl } from "@/config/site";
 import { translatedLocales, localeNames, defaultLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
 /**
  * /llms.txt — an emerging convention (llmstxt.org) that gives LLMs and AI
@@ -7,7 +8,9 @@ import { translatedLocales, localeNames, defaultLocale } from "@/i18n/config";
  */
 export const dynamic = "force-static";
 
-export function GET() {
+export async function GET() {
+  const { agency } = await getDictionary(defaultLocale);
+
   const body = `# ${siteConfig.name}
 
 > ${siteConfig.tagline}
@@ -40,6 +43,14 @@ ${translatedLocales.map((l) => `- ${localeNames[l]}: ${siteUrl}/${l}`).join("\n"
 ## Topics
 
 ${siteConfig.keywords.map((k) => `- ${k}`).join("\n")}
+
+## FAQ
+
+The canonical answers to the questions we are actually asked. Each is also
+linkable on the page itself as ${siteUrl}/${defaultLocale}#faq-<slug>, and
+published as FAQPage structured data.
+
+${agency.faq.items.map((item) => `### ${item.q}\n\n${item.a}`).join("\n\n")}
 `;
 
   return new Response(body, {
