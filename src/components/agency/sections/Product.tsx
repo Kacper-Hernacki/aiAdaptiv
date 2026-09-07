@@ -1,14 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { PillButton } from "../PillButton";
-import { Placeholder } from "../Placeholder";
+import productHero from "../assets/product-hero.jpg";
 import s from "../Agency.module.css";
 import p from "./Product.module.css";
 
 /**
  * The private open-source-LLM offer on the homepage, linking to its own page
- * at /[lang]/private-ai. The image slot is a placeholder until product art
- * lands; both it and the button go to the page.
+ * at /[lang]/private-ai. Both the image and the button go to the page.
  */
 export function Product({
   product,
@@ -34,7 +34,13 @@ export function Product({
             data-reveal
             style={{ "--rd": "120ms" } as React.CSSProperties}
           >
-            <Placeholder ratio="16:9" seed={2} label={product.imageAlt} />
+            <Image
+              src={productHero}
+              alt={product.imageAlt}
+              className={p.image}
+              sizes="(max-width: 991px) 100vw, 45vw"
+              placeholder="blur"
+            />
           </Link>
           <div className={s.splitText}>
             <p id="product-heading" className={s.super} data-reveal>

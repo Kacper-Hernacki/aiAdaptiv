@@ -3,7 +3,21 @@
    to hold a grid without cramping it. */
 .imageLink {
   display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
   transition: transform 0.4s ease;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* A light-grey render on the dark theme is a bright rectangle; the reference
+   dims its photography the same way. */
+:global(:root[data-theme="dark"]) .image {
+  filter: brightness(0.88);
 }
 
 .imageLink:hover {

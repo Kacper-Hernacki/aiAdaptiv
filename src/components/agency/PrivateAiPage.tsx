@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { bookingUrl } from "@/config/site";
 import { PillButton } from "./PillButton";
-import { Placeholder } from "./Placeholder";
+import productHero from "./assets/product-hero.jpg";
 import s from "./Agency.module.css";
 import f from "./sections/Faq.module.css";
 import c from "./PrivateAiPage.module.css";
@@ -64,7 +65,14 @@ export function PrivateAiPage({
                 <PillButton href={bookingUrl}>{doc.cta}</PillButton>
               </div>
             </div>
-            <Placeholder ratio="16:9" seed={2} label={doc.imageLabel} />
+            <Image
+              src={productHero}
+              alt={doc.imageLabel}
+              className={c.heroImage}
+              sizes="(max-width: 991px) 100vw, 55vw"
+              placeholder="blur"
+              priority
+            />
           </div>
         </div>
       </section>
