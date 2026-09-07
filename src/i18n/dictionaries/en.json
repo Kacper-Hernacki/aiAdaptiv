@@ -310,7 +310,11 @@
               "year": "2023",
               "url": "https://verified.sertifier.com/en/verify/50831241179182/"
             }
-          ]
+          ],
+          "profile": {
+            "label": "LinkedIn profile",
+            "url": "https://www.linkedin.com/in/kacper-hernacki-965161203/"
+          }
         }
       ]
     },
@@ -370,7 +374,7 @@
         },
         {
           "q": "Is aiAdaptiv a legitimate company?",
-          "a": "Yes. aiAdaptiv is a registered company — the entity details and registration numbers are on our Terms of Service page. Every engagement runs on a signed written proposal with a fixed price, and our terms and privacy policy are published here rather than sent on request."
+          "a": "Yes. aiAdaptiv is a company registered in Poland, run under a named founder you can check for yourself: Kacper Hernacki's AI certifications each link to their issuer's public verification page, and his LinkedIn profile is linked from this site. Every engagement runs on a signed written proposal with a fixed price, and our terms and privacy policy are published here rather than sent on request."
         },
         {
           "q": "What services does aiAdaptiv offer?",
@@ -485,10 +489,6 @@
             {
               "label": "X / Twitter",
               "href": "https://x.com/aiadaptiv"
-            },
-            {
-              "label": "GitHub",
-              "href": "https://github.com/aiadaptiv"
             },
             {
               "label": "Email",

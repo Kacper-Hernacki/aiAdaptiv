@@ -50,6 +50,18 @@ export function Team({ team }: { team: Dictionary["agency"]["team"] }) {
                     {paragraph}
                   </p>
                 ))}
+                {member.profile && (
+                  <p className={t.profile}>
+                    <a
+                      href={member.profile.url}
+                      className={t.profileLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {member.profile.label}
+                    </a>
+                  </p>
+                )}
                 {member.licenses.length > 0 && (
                   <>
                     <p className={t.licensesLabel}>{team.licensesLabel}</p>

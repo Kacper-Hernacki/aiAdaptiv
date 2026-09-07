@@ -44,6 +44,8 @@ const brand = {
     {
       name: "Kacper Hernacki",
       jobTitle: "Founder & CTO",
+      /** Public profiles, emitted as the Person's schema.org `sameAs`. */
+      profiles: ["https://www.linkedin.com/in/kacper-hernacki-965161203/"],
       credentials: [
         {
           name: "AI_devs 3 · Agents",
@@ -65,7 +67,6 @@ const brand = {
     sameAs: [
       "https://x.com/aiadaptiv",
       "https://www.linkedin.com/company/aiadaptiv",
-      "https://github.com/aiadaptiv",
     ],
   },
   contactEmail: "kacper@aiadaptiv.com",

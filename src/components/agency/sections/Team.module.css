@@ -83,6 +83,25 @@
   }
 }
 
+/* Founder's public profile — the human counterpart to the certifications
+   below it, so the schema.org `sameAs` claim is visible on the page too. */
+.profile {
+  margin-top: 1em;
+  font-size: 0.95em;
+}
+
+.profileLink {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--hairline);
+  transition: opacity 0.2s ease;
+}
+
+.profileLink:hover {
+  opacity: 0.65;
+}
+
 /* ── Verifiable certifications ─────────────────────────────── */
 .licensesLabel {
   margin: 1.5em 0 0.75em;

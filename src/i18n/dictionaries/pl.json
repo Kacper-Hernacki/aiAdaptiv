@@ -310,7 +310,11 @@
               "year": "2023",
               "url": "https://verified.sertifier.com/en/verify/50831241179182/"
             }
-          ]
+          ],
+          "profile": {
+            "label": "Profil na LinkedIn",
+            "url": "https://www.linkedin.com/in/kacper-hernacki-965161203/"
+          }
         }
       ]
     },
@@ -370,7 +374,7 @@
         },
         {
           "q": "Czy aiAdaptiv to wiarygodna firma?",
-          "a": "Tak. aiAdaptiv jest zarejestrowaną firmą — dane rejestrowe znajdziesz na stronie Regulaminu. Każde wdrożenie opiera się na podpisanej pisemnej ofercie ze stałą ceną, a regulamin i politykę prywatności publikujemy tutaj, zamiast wysyłać je na życzenie."
+          "a": "Tak. aiAdaptiv to firma zarejestrowana w Polsce, prowadzona przez założyciela, którego możesz sprawdzić samodzielnie: certyfikaty AI Kacpra Hernackiego prowadzą do publicznych stron weryfikacyjnych ich wystawców, a jego profil na LinkedIn jest podlinkowany na tej stronie. Każde wdrożenie opiera się na podpisanej pisemnej ofercie ze stałą ceną, a regulamin i politykę prywatności publikujemy tutaj, zamiast wysyłać je na życzenie."
         },
         {
           "q": "Jakie usługi oferuje aiAdaptiv?",
@@ -485,10 +489,6 @@
             {
               "label": "X / Twitter",
               "href": "https://x.com/aiadaptiv"
-            },
-            {
-              "label": "GitHub",
-              "href": "https://github.com/aiadaptiv"
             },
             {
               "label": "E-mail",

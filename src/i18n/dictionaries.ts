@@ -103,6 +103,8 @@ export type Dictionary = {
         body: string[];
         /** Each links to its public verification page. */
         licenses: { name: string; issuer: string; year: string; url: string }[];
+        /** Public profile link (LinkedIn); omitted when there isn't one. */
+        profile?: { label: string; url: string };
       }[];
     };
     approach: {

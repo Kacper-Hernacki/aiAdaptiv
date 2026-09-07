@@ -46,6 +46,7 @@ export function OrganizationJsonLd() {
           "@type": "Person",
           name: f.name,
           jobTitle: f.jobTitle,
+          sameAs: f.profiles,
           // Verifiable credentials, each pointing at its public check page —
           // the thing that turns "multiple certifications" into a claim a
           // machine can follow.
