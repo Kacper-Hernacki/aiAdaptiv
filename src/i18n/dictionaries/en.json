@@ -143,7 +143,7 @@
     },
     "work": {
       "h2": "Selected work",
-      "lead": "Six kinds of system we have shipped — built, deployed and operated by us.",
+      "lead": "Nine kinds of system we have shipped — built, deployed and operated by us.",
       "cases": [
         {
           "name": "Private AI for regulated data",
@@ -173,6 +173,36 @@
             "Website chatbot",
             "RAG",
             "Lead capture"
+          ]
+        },
+        {
+          "name": "AI-made ad creative",
+          "result": "Dozens of on-brand ad variants to test, instead of one expensive shoot.",
+          "body": "Video and image ads produced with generative tooling — Claude for the concepts, hooks and copy, Higgsfield for the visuals and motion — so a campaign gets a full set of variants to test rather than a single creative. Built as a repeatable pipeline the marketing team runs themselves, not a one-off deliverable.",
+          "tags": [
+            "Claude",
+            "Higgsfield",
+            "Ad creative"
+          ]
+        },
+        {
+          "name": "Premium websites",
+          "result": "Designed, written and shipped as one system, in days rather than months.",
+          "body": "Conversion-focused sites with the copy, structure and SEO built in from the first commit: multilingual, indexed properly, structured data so AI search can answer questions about the business, and a booking flow at the end of every path. Built with AI tooling end to end — this site is one.",
+          "tags": [
+            "Next.js",
+            "SEO",
+            "AI search"
+          ]
+        },
+        {
+          "name": "Custom booking systems",
+          "result": "Every booking lands in the calendar, the CRM and the inbox — with no one in between.",
+          "body": "Scheduling built around how the business actually takes appointments: availability rules, deposits or payment on booking, reminders that cut no-shows, and each booking written into the calendar and CRM automatically. Integrated with the tools already in use rather than replacing them.",
+          "tags": [
+            "Scheduling",
+            "Payments",
+            "CRM integration"
           ]
         },
         {

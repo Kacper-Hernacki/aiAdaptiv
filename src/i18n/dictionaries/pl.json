@@ -143,7 +143,7 @@
     },
     "work": {
       "h2": "Wybrane realizacje",
-      "lead": "Sześć rodzajów systemów, które wdrożyliśmy — zbudowane, uruchomione i utrzymywane przez nas.",
+      "lead": "Dziewięć rodzajów systemów, które wdrożyliśmy — zbudowane, uruchomione i utrzymywane przez nas.",
       "cases": [
         {
           "name": "Prywatne AI dla danych wrażliwych",
@@ -173,6 +173,36 @@
             "Chatbot na stronie",
             "RAG",
             "Pozyskiwanie leadów"
+          ]
+        },
+        {
+          "name": "Kreacje reklamowe tworzone z AI",
+          "result": "Dziesiątki wariantów reklam w spójnym stylu do testów — zamiast jednej kosztownej sesji.",
+          "body": "Reklamy wideo i graficzne produkowane narzędziami generatywnymi — Claude do konceptów, hooków i tekstów, Higgsfield do wizualizacji i ruchu — tak, że kampania dostaje pełny zestaw wariantów do testowania, a nie jedną kreację. Zbudowane jako powtarzalny proces, który zespół marketingu prowadzi sam, nie jako jednorazowa dostawa.",
+          "tags": [
+            "Claude",
+            "Higgsfield",
+            "Kreacje reklamowe"
+          ]
+        },
+        {
+          "name": "Strony premium",
+          "result": "Zaprojektowane, napisane i wdrożone jako jeden system — w dni, nie miesiące.",
+          "body": "Strony nastawione na konwersję z treścią, strukturą i SEO wbudowanymi od pierwszego commita: wielojęzyczne, poprawnie indeksowane, z danymi strukturalnymi, dzięki którym wyszukiwarki AI odpowiadają na pytania o firmę, i ze ścieżką do rezerwacji na końcu każdej sekcji. Budowane z narzędziami AI od początku do końca — ta strona jest jedną z nich.",
+          "tags": [
+            "Next.js",
+            "SEO",
+            "Wyszukiwanie AI"
+          ]
+        },
+        {
+          "name": "Systemy rezerwacji na zamówienie",
+          "result": "Każda rezerwacja trafia do kalendarza, CRM i skrzynki — bez nikogo pomiędzy.",
+          "body": "Harmonogramowanie zbudowane pod to, jak firma naprawdę przyjmuje wizyty: reguły dostępności, zaliczki lub płatność przy rezerwacji, przypomnienia ograniczające nieobecności i każda rezerwacja zapisywana automatycznie w kalendarzu i CRM. Zintegrowane z narzędziami już używanymi, zamiast ich zastępowania.",
+          "tags": [
+            "Harmonogramowanie",
+            "Płatności",
+            "Integracja z CRM"
           ]
         },
         {
