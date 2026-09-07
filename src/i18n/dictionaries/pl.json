@@ -143,33 +143,66 @@
     },
     "work": {
       "h2": "Wybrane realizacje",
-      "lead": "Zbudowane, wdrożone i utrzymywane przez nas. Liczby pochodzą od klientów, nie z prognoz.",
+      "lead": "Sześć rodzajów systemów, które wdrożyliśmy — zbudowane, uruchomione i utrzymywane przez nas.",
       "cases": [
         {
-          "name": "TODO(copy): client name",
-          "result": "TODO(copy): headline outcome",
-          "body": "TODO(copy): jeden akapit — sytuacja, co zbudowaliśmy i mierzalny efekt.",
+          "name": "Prywatne AI dla danych wrażliwych",
+          "result": "Modele open source w Twojej chmurze w UE. Nic jej nie opuszcza.",
+          "body": "Dla zespołów pracujących z dokumentacją medyczną, aktami prawnymi lub innymi wrażliwymi danymi publiczne narzędzie AI nie wchodzi w grę. Wdrażamy modele open source w koncie chmurowym klienta w UE — white-label, z analizą dokumentów nad jego własnym archiwum — tak, że platforma należy do niego, a RODO i AI Act są spełnione przez architekturę, nie przez politykę.",
           "tags": [
-            "TODO(copy): tag",
-            "TODO(copy): tag"
+            "Modele open source",
+            "AI Act",
+            "Dane medyczne i prawne"
           ]
         },
         {
-          "name": "TODO(copy): client name",
-          "result": "TODO(copy): headline outcome",
-          "body": "TODO(copy): jeden akapit — sytuacja, co zbudowaliśmy i mierzalny efekt.",
+          "name": "Boty natychmiastowych odpowiedzi na WhatsApp i Messengerze",
+          "result": "Każda wiadomość z odpowiedzią w sekundy, całą dobę.",
+          "body": "Klienci piszą na WhatsAppie i Messengerze o 23:00 i oczekują odpowiedzi. Budujemy boty, które odpowiadają na pytania o produkt, przyjmują rezerwacje i kwalifikują leady od razu, przekazują rozmowę człowiekowi, gdy to ważne, i zapisują wszystko w systemach, z których zespół już korzysta.",
           "tags": [
-            "TODO(copy): tag",
-            "TODO(copy): tag"
+            "WhatsApp",
+            "Messenger",
+            "Automatyzacja wsparcia"
           ]
         },
         {
-          "name": "TODO(copy): client name",
-          "result": "TODO(copy): headline outcome",
-          "body": "TODO(copy): jeden akapit — sytuacja, co zbudowaliśmy i mierzalny efekt.",
+          "name": "Wsparcie AI na Twojej stronie",
+          "result": "Chatbot, który zna Twoją firmę, bo nauczył się z Twoich własnych treści.",
+          "body": "Asystent na stronie osadzony na własnych podstronach, dokumentach, cenniku i politykach klienta. Odpowiada na pytania odwiedzających precyzyjnie, wyłapuje te warte kontaktu i sam umawia rozmowę — bez ogólnego skryptu chatbota, a każda odpowiedź prowadzi do czegoś, co klient naprawdę napisał.",
           "tags": [
-            "TODO(copy): tag",
-            "TODO(copy): tag"
+            "Chatbot na stronie",
+            "RAG",
+            "Pozyskiwanie leadów"
+          ]
+        },
+        {
+          "name": "Cyfrowy drugi mózg",
+          "result": "Wszystko, co wie Twoja firma — przeszukiwalne i nigdy nie zapomniane.",
+          "body": "Notatki ze spotkań, maile, dokumenty, decyzje: zapisane raz, połączone i dostępne w zwykłym języku miesiące później. Budujemy systemy wiedzy, które przyjmują to, co zespół i tak wytwarza, i zamieniają to w asystenta pamiętającego to, o czym wszyscy inni zapomnieli.",
+          "tags": [
+            "Baza wiedzy",
+            "Wyszukiwanie",
+            "Pamięć"
+          ]
+        },
+        {
+          "name": "Zespół inżynierów AI do szybkich MVP",
+          "result": "Od pomysłu do działającego produktu w tygodnie, nie kwartały.",
+          "body": "Doświadczony zespół AI na żądanie dla założycieli i firm, które potrzebują dowiezionej pierwszej wersji: architektura, warstwa modeli, logowanie, płatności i interfejs, budowane z narzędziami AI od początku do końca — tak, że pierwszy działający produkt powstaje w tygodnie i jest na tyle solidny, by na nim rosnąć.",
+          "tags": [
+            "MVP",
+            "AI SaaS",
+            "Fabryka aplikacji"
+          ]
+        },
+        {
+          "name": "Automatyzacje back-office",
+          "result": "Powtarzalna praca oddana oprogramowaniu, na dobre.",
+          "body": "Kwalifikacja zgłoszeń, wprowadzanie danych, raportowanie, follow-upy — powtarzalne zadania, które po cichu zjadają tydzień zespołu. Mapujemy je, automatyzujemy te, które się zwracają, zostawiamy człowieka przy decyzjach, które go wymagają, i podpinamy wynik do narzędzi, na których firma już działa.",
+          "tags": [
+            "Automatyzacja",
+            "Agenci",
+            "Integracje"
           ]
         }
       ]

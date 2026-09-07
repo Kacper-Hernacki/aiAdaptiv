@@ -143,33 +143,66 @@
     },
     "work": {
       "h2": "Selected work",
-      "lead": "Built, deployed and operated by us. Numbers are the client's, not projections.",
+      "lead": "Six kinds of system we have shipped — built, deployed and operated by us.",
       "cases": [
         {
-          "name": "TODO(copy): client name",
-          "result": "TODO(copy): headline outcome",
-          "body": "TODO(copy): one paragraph — the situation, what we built, and the measurable result.",
+          "name": "Private AI for regulated data",
+          "result": "Open-source LLMs inside your own EU cloud. Nothing leaves it.",
+          "body": "For teams handling medical records, legal files or other sensitive data, a public AI tool is off the table. We deploy open-source models inside the client's own EU cloud account — white-labelled, with document intelligence over their own archive — so the platform is theirs, and GDPR and the EU AI Act are met by architecture rather than by policy.",
           "tags": [
-            "TODO(copy): tag",
-            "TODO(copy): tag"
+            "Open-source LLMs",
+            "EU AI Act",
+            "Medical & legal data"
           ]
         },
         {
-          "name": "TODO(copy): client name",
-          "result": "TODO(copy): headline outcome",
-          "body": "TODO(copy): one paragraph — the situation, what we built, and the measurable result.",
+          "name": "Instant-reply bots for WhatsApp and Messenger",
+          "result": "Every message answered in seconds, around the clock.",
+          "body": "Customers ask on WhatsApp and Messenger at 11pm and expect an answer. We build bots that answer product questions, take bookings and qualify leads on the spot, hand over to a human when it matters, and log everything into the systems the team already uses.",
           "tags": [
-            "TODO(copy): tag",
-            "TODO(copy): tag"
+            "WhatsApp",
+            "Messenger",
+            "Support automation"
           ]
         },
         {
-          "name": "TODO(copy): client name",
-          "result": "TODO(copy): headline outcome",
-          "body": "TODO(copy): one paragraph — the situation, what we built, and the measurable result.",
+          "name": "AI support on your website",
+          "result": "A chatbot that knows your business, because it learned from your own content.",
+          "body": "A landing-page assistant grounded in the client's own pages, docs, pricing and policies. It answers visitor questions accurately, captures the ones worth a follow-up, and books the call itself — no generic chatbot script, and every answer traces back to something the client actually wrote.",
           "tags": [
-            "TODO(copy): tag",
-            "TODO(copy): tag"
+            "Website chatbot",
+            "RAG",
+            "Lead capture"
+          ]
+        },
+        {
+          "name": "A digital second brain",
+          "result": "Everything your company knows — searchable, and never forgotten.",
+          "body": "Meeting notes, emails, documents, decisions: captured once, connected, and retrievable in plain language months later. We build knowledge systems that ingest what a team already produces and turn it into an assistant that remembers what everyone else forgot.",
+          "tags": [
+            "Knowledge base",
+            "Retrieval",
+            "Memory"
+          ]
+        },
+        {
+          "name": "An AI engineering team for fast MVPs",
+          "result": "From idea to a working product in weeks, not quarters.",
+          "body": "A senior AI-native team, on demand, for founders and companies that need a first version shipped: architecture, model layer, auth, billing and interface, built with AI tooling end to end — so the first working product arrives in weeks and is solid enough to grow on.",
+          "tags": [
+            "MVP",
+            "AI SaaS",
+            "App factory"
+          ]
+        },
+        {
+          "name": "Back-office automations",
+          "result": "Repetitive work handed to software, for good.",
+          "body": "Intake triage, data entry, reporting, follow-ups — the recurring tasks that quietly eat a team's week. We map them, automate the ones that pay back, keep a human on the decisions that need one, and wire the output into the tools the business already runs on.",
+          "tags": [
+            "Automation",
+            "Agents",
+            "Integrations"
           ]
         }
       ]
