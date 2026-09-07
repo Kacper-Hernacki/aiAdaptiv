@@ -281,6 +281,7 @@
     "team": {
       "h2": "Who you actually work with",
       "lead": "Small and senior. The person who scopes the work is the person who builds it — there is no delivery layer between you and the engineer.",
+      "licensesLabel": "Certifications",
       "members": [
         {
           "id": "kacper",
@@ -289,6 +290,26 @@
           "body": [
             "Over a decade of full-stack engineering since 2014, now spent turning complex problems into intelligent, scalable systems — web apps, mobile apps and automation workflows delivered for clients worldwide.",
             "Holds multiple certifications in AI development, and scopes every engagement personally: the person who writes your proposal is the person who architects the build."
+          ],
+          "licenses": [
+            {
+              "name": "AI_devs 3 · Agents",
+              "issuer": "AI_devs",
+              "year": "2025",
+              "url": "https://credsverse.com/credentials/3fc027b2-7899-4a52-8e60-ca177c4f7ad0"
+            },
+            {
+              "name": "AI_devs 2 · GPT-4 in applications and automation",
+              "issuer": "AI_devs",
+              "year": "2024",
+              "url": "https://credsverse.com/credentials/e34b5af4-8a00-4c60-ae6e-f32658be0926"
+            },
+            {
+              "name": "AI_devs · AI Developer",
+              "issuer": "AI_devs",
+              "year": "2023",
+              "url": "https://verified.sertifier.com/en/verify/50831241179182/"
+            }
           ]
         }
       ]
@@ -710,6 +731,14 @@
     ],
     "cta": "Book a 30-minute call",
     "imageLabel": "Pencil sketch of a padlock on light paper — the aiAdaptiv private AI platform.",
+    "flowAlt": "Pencil sketch: your own EU cloud account, then the deployed platform, then a white-labeled browser interface, then your team using it.",
+    "video": {
+      "label": "See it working",
+      "title": "A contract goes in. Risks and a summary come out — inside a private, branded environment.",
+      "duration": "4:32",
+      "cta": "Play the walkthrough",
+      "note": "Loads only when you press play, so nothing is requested from Loom until then."
+    },
     "hero": {
       "badge": "Private AI platform · Open-source LLMs in your own cloud",
       "headline": [

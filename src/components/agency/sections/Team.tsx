@@ -50,6 +50,28 @@ export function Team({ team }: { team: Dictionary["agency"]["team"] }) {
                     {paragraph}
                   </p>
                 ))}
+                {member.licenses.length > 0 && (
+                  <>
+                    <p className={t.licensesLabel}>{team.licensesLabel}</p>
+                    <ul className={t.licenses}>
+                      {member.licenses.map((licence) => (
+                        <li key={licence.url}>
+                          <a
+                            href={licence.url}
+                            className={t.licence}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span className={t.licenceName}>{licence.name}</span>
+                            <span className={t.licenceMeta}>
+                              {licence.issuer} · {licence.year}
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
               </div>
             </li>
           ))}

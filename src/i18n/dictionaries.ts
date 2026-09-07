@@ -93,12 +93,16 @@ export type Dictionary = {
     team: {
       h2: string;
       lead: string;
+      /** Heading above a member's verifiable certifications. */
+      licensesLabel: string;
       members: {
         /** Stable key; picks the photo in teamImages.ts. */
         id: string;
         name: string;
         role: string;
         body: string[];
+        /** Each links to its public verification page. */
+        licenses: { name: string; issuer: string; year: string; url: string }[];
       }[];
     };
     approach: {
@@ -149,8 +153,18 @@ export type Dictionary = {
     meta: { title: string; description: string };
     tags: string[];
     cta: string;
-    /** Caption on the image slot until real product art lands. */
+    /** Alt text for the hero image. */
     imageLabel: string;
+    /** Alt text for the deployment-flow sketch. */
+    flowAlt: string;
+    /** Loom walkthrough, loaded only when the visitor presses play. */
+    video: {
+      label: string;
+      title: string;
+      duration: string;
+      cta: string;
+      note: string;
+    };
     hero: {
       badge: string;
       headline: { text: string; accent?: boolean }[];

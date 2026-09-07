@@ -46,6 +46,15 @@ export function OrganizationJsonLd() {
           "@type": "Person",
           name: f.name,
           jobTitle: f.jobTitle,
+          // Verifiable credentials, each pointing at its public check page —
+          // the thing that turns "multiple certifications" into a claim a
+          // machine can follow.
+          hasCredential: f.credentials.map((c) => ({
+            "@type": "EducationalOccupationalCredential",
+            name: c.name,
+            url: c.url,
+            credentialCategory: "certificate",
+          })),
         })),
         sameAs: siteConfig.organization.sameAs,
       }}

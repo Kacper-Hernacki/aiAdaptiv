@@ -169,6 +169,18 @@
   white-space: pre;
 }
 
+.flowImage {
+  display: block;
+  width: 100%;
+  max-width: 34em;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+:global(:root[data-theme="dark"]) .flowImage {
+  filter: brightness(0.88);
+}
+
 .outro {
   max-width: 46em;
   margin-top: 1.5em;

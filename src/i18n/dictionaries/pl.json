@@ -281,6 +281,7 @@
     "team": {
       "h2": "Z kim faktycznie pracujesz",
       "lead": "Mały i doświadczony zespół. Osoba, która ustala zakres, buduje też system — między Tobą a inżynierem nie ma warstwy pośredniej.",
+      "licensesLabel": "Certyfikaty",
       "members": [
         {
           "id": "kacper",
@@ -289,6 +290,26 @@
           "body": [
             "Ponad dekada inżynierii full-stack od 2014 roku, dziś poświęcona zamienianiu złożonych problemów w inteligentne, skalowalne systemy — aplikacje webowe, mobilne i automatyzacje dowożone klientom na całym świecie.",
             "Ma kilka certyfikacji z obszaru rozwoju AI i osobiście ustala zakres każdego wdrożenia: osoba, która pisze ofertę, jest tą samą, która projektuje architekturę."
+          ],
+          "licenses": [
+            {
+              "name": "AI_devs 3 · Agents",
+              "issuer": "AI_devs",
+              "year": "2025",
+              "url": "https://credsverse.com/credentials/3fc027b2-7899-4a52-8e60-ca177c4f7ad0"
+            },
+            {
+              "name": "AI_devs 2 · GPT-4 in applications and automation",
+              "issuer": "AI_devs",
+              "year": "2024",
+              "url": "https://credsverse.com/credentials/e34b5af4-8a00-4c60-ae6e-f32658be0926"
+            },
+            {
+              "name": "AI_devs · AI Developer",
+              "issuer": "AI_devs",
+              "year": "2023",
+              "url": "https://verified.sertifier.com/en/verify/50831241179182/"
+            }
           ]
         }
       ]
@@ -710,6 +731,14 @@
     ],
     "cta": "Umów 30-minutową rozmowę",
     "imageLabel": "Szkic ołówkiem kłódki na jasnym papierze — platforma prywatnego AI aiAdaptiv.",
+    "flowAlt": "Szkic ołówkiem: Twoje konto chmurowe w UE, potem wdrożona platforma, potem interfejs w przeglądarce pod Twoją marką, a na końcu Twój zespół, który z niego korzysta.",
+    "video": {
+      "label": "Zobacz, jak działa",
+      "title": "Umowa wchodzi. Ryzyka i podsumowanie wychodzą — wewnątrz prywatnego, brandowanego środowiska.",
+      "duration": "4:32",
+      "cta": "Odtwórz nagranie",
+      "note": "Wczytuje się dopiero po kliknięciu — do tego czasu nic nie jest pobierane z Loom."
+    },
     "hero": {
       "badge": "Platforma prywatnego AI · Modele open source w Twojej chmurze",
       "headline": [

@@ -3,7 +3,9 @@ import Image from "next/image";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { bookingUrl } from "@/config/site";
 import { PillButton } from "./PillButton";
+import { LoomEmbed } from "./LoomEmbed";
 import productHero from "./assets/product-hero.jpg";
+import flowImage from "./assets/private-ai-flow.jpg";
 import s from "./Agency.module.css";
 import f from "./sections/Faq.module.css";
 import c from "./PrivateAiPage.module.css";
@@ -13,6 +15,9 @@ import c from "./PrivateAiPage.module.css";
  * is the former standalone landing page's, under `dict.privateAi`, rendered
  * with the agency's components: a case-study hero, then one band per section.
  */
+/** The walkthrough sent in outreach: a contract in, risks and a summary out. */
+const LOOM_ID = "24062b57fb0c4abfb17678429fb2bacc";
+
 export function PrivateAiPage({
   doc,
   lang,
@@ -73,6 +78,21 @@ export function PrivateAiPage({
               placeholder="blur"
               priority
             />
+          </div>
+        </div>
+      </section>
+
+      {/* The walkthrough — proof before explanation */}
+      <section
+        aria-labelledby="pai-video"
+        className={`${s.section} ${s.bandAlt}`}
+      >
+        <div className={`${s.inner} ${s.centered}`}>
+          <h2 id="pai-video" className={s.h2} data-reveal>
+            {doc.video.label}
+          </h2>
+          <div data-reveal>
+            <LoomEmbed id={LOOM_ID} video={doc.video} />
           </div>
         </div>
       </section>
@@ -180,9 +200,14 @@ export function PrivateAiPage({
           <p className={c.flowLabel} data-reveal>
             {howItWorks.flowLabel}
           </p>
-          <pre className={c.flow} data-reveal>
-            {howItWorks.flow}
-          </pre>
+          <Image
+            src={flowImage}
+            alt={doc.flowAlt}
+            className={c.flowImage}
+            sizes="(max-width: 991px) 100vw, 46em"
+            placeholder="blur"
+            data-reveal
+          />
           <p className={c.outro} data-reveal>
             {howItWorks.outro}
           </p>
