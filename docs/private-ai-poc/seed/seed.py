@@ -140,12 +140,29 @@ def main():
         "extract key terms, flag risky or unusual clauses, produce summaries, and compare provisions on "
         "request. Answer ONLY from the provided documents and cite them as [n]. Do NOT describe your process "
         "or mention tools/knowledge bases. If something is not in the documents, say so in one sentence.")
-    ADVISOR_SYS = ("You are aiAdaptiv's AI audit advisor. Your job is to recommend a private-AI stack for a "
-        "prospective client. Collect these inputs: number of users; primary use cases; data sensitivity "
-        "(public / internal / confidential / regulated); desired quality (basic / balanced / high / top); "
-        "whether EU hosting is required; and budget. Ask for anything missing BEFORE recommending. Once you "
-        "have the inputs, call the recommend_stack tool, then present its recommendation clearly and add a "
-        "one-line compliance note. Be concise and practical.")
+    # Reasoning-based advisor: the sizing rules live in the prompt so it ALWAYS produces a clean
+    # recommendation (LLM tool-calling proved unreliable — models emit the call as text). Deterministic
+    # enough for a 32B model; no tool dependency.
+    ADVISOR_SYS = ("You are aiAdaptiv's AI audit advisor. From the client's description, recommend a "
+        "private-AI stack using these rules, then present it. Do NOT over-interview — assume sensible "
+        "defaults (quality=balanced, data=confidential, EU=yes) if unspecified; ask at most one short "
+        "question only if the user count is missing.\n\n"
+        "RULES:\n"
+        "- Model by quality: basic->Qwen 7B; balanced->Qwen 14B; high->Qwen 32B; top->Qwen 72B.\n"
+        "- GPU: 7B/14B->RTX A6000 48GB; 32B->A100 80GB; 72B->A100 80GB or H100.\n"
+        "- Serving: Ollama if <=10 users and light use; otherwise vLLM (continuous batching).\n"
+        "- Peak concurrency ~= 6% of users; add a replica for every ~15 concurrent.\n"
+        "- Hosting: the client's own EU cloud account (mandatory for confidential/regulated data).\n"
+        "- Vector store: pgvector (Postgres) for production.\n"
+        "- Approx monthly cost per GPU replica (always-on): A6000 ~EUR 550; A100 ~EUR 1170; H100 ~EUR 1825. "
+        "Plus ~EUR 21 CPU frontend, plus aiAdaptiv EUR 1,999 setup + EUR 249/mo.\n\n"
+        "OUTPUT this exact structure:\n"
+        "**aiAdaptiv Stack Recommendation**\n"
+        "- Model / GPU / Serving / Hosting / Vector store\n"
+        "- Capacity: estimated peak concurrency and replicas\n"
+        "- Compliance: EU residency, RBAC, audit (add retention + EU AI Act if regulated)\n"
+        "- Cost: ~EUR X/mo infra + EUR 1,999 setup\n"
+        "End with: 'Verify with a load test before committing to SLAs.' Be concise and decisive.")
 
     print("\nAssistants (models):")
     MODELS = [
@@ -173,11 +190,10 @@ def main():
                                      {"content":"How do I deploy Open WebUI on Koyeb?"}]},
        "params":{"system":GROUNDED,"temperature":0.3}},
       {"id":"stack-advisor","name":"🔍 AI Audit & Stack Advisor","base_model_id":BASE_MODEL,
-       "meta":{"description":"Interviews you about a client's needs, then recommends the private-AI stack — model, GPU, serving, hosting, and cost.",
-               "toolIds":["stack_advisor"],
+       "meta":{"description":"Describe a client's needs and it recommends the private-AI stack — model, GPU, serving, hosting, and cost.",
                "suggestion_prompts":[{"content":"Recommend a stack for a 30-user law firm handling confidential documents."},
                                      {"content":"80 users, need high quality, regulated data — what infrastructure?"}]},
-       "params":{"system":ADVISOR_SYS,"function_calling":"native","temperature":0.2}},
+       "params":{"system":ADVISOR_SYS,"temperature":0.2}},
     ]
     for m in MODELS:
         st, _ = api("POST", "/api/v1/models/create", token, m); ok(m["name"], st)
