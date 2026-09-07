@@ -139,7 +139,16 @@ export default async function AgencyRootLayout({
   const dict = await getDictionary(lang as Locale);
 
   return (
-    <html lang={lang} className={dmSans.variable} suppressHydrationWarning>
+    <html
+      lang={lang}
+      className={dmSans.variable}
+      // agency.css sets scroll-behavior: smooth. Without this attribute Next
+      // animates its scroll-to-top on route changes from wherever the previous
+      // page was, so a click deep in the homepage lands part-way down the next
+      // page. The attribute lets Next suspend smooth scrolling for the jump.
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
         {/* Applies the stored theme before first paint — no flash of the
             wrong palette. See components/agency/theme.ts. */}

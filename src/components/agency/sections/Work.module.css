@@ -18,6 +18,25 @@
 .thumb {
   position: relative;
   width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.03);
+}
+
+:global(:root[data-theme="dark"]) .image {
+  filter: brightness(0.88);
 }
 
 .info {

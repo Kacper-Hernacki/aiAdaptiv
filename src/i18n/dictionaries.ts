@@ -60,6 +60,8 @@ export type Dictionary = {
       h2: string;
       lead: string;
       cases: {
+        /** Stable, untranslated key; picks the card's image in workImages.ts. */
+        id: string;
         name: string;
         result: string;
         body: string;
