@@ -120,6 +120,59 @@ export type Dictionary = {
       h2: string;
       items: { q: string; a: string }[];
     };
+    /**
+     * Multi-step inbound enquiry form under the hero. Options carry a stable
+     * untranslated `value` (what gets stored and classified on) alongside the
+     * translated `label`, so a Polish submission triages identically.
+     */
+    leadForm: {
+      super: string;
+      h2: string;
+      lead: string;
+      /** Progress label; `{step}` and `{total}` are substituted. */
+      progress: string;
+      steps: { title: string; hint: string }[];
+      fields: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        company: string;
+        website: string;
+        role: string;
+        size: string;
+        budget: string;
+        message: string;
+      };
+      placeholders: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        company: string;
+        website: string;
+        role: string;
+        size: string;
+        message: string;
+      };
+      /** `optional` is appended to the label of fields that aren't required. */
+      optional: string;
+      roles: { value: string; label: string }[];
+      sizes: { value: string; label: string }[];
+      budgets: { value: string; label: string }[];
+      back: string;
+      next: string;
+      submit: string;
+      submitting: string;
+      /** Small print under the final button. */
+      note: string;
+      errors: {
+        required: string;
+        email: string;
+        url: string;
+        message: string;
+        submit: string;
+      };
+      success: { h: string; body: string; cta: string };
+    };
     contact: {
       h2: string;
       body: string;
