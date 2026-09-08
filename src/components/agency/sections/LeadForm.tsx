@@ -1,6 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { bookingUrl } from "@/config/site";
 import {
@@ -52,10 +60,44 @@ export function LeadForm({
   const mountedAt = useRef<number | null>(null);
   const honeypot = useRef<HTMLInputElement>(null);
   const headingRef = useRef<HTMLParagraphElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  /** Height of the outgoing panel, captured before React swaps the step in. */
+  const fromHeight = useRef<number | null>(null);
 
   useEffect(() => {
     mountedAt.current = Date.now();
   }, []);
+
+  /**
+   * Grows or shrinks the card to the new step's height instead of jumping.
+   * Written straight to the DOM rather than through state: the measurement
+   * has to happen between React's mutation and the browser's paint, and it
+   * isn't something the component needs to re-render for.
+   */
+  useLayoutEffect(() => {
+    const wrap = wrapRef.current;
+    const panel = panelRef.current;
+    const from = fromHeight.current;
+    if (!wrap || !panel || from === null) return;
+
+    fromHeight.current = null;
+    const to = panel.offsetHeight;
+    if (from === to) return;
+
+    wrap.style.height = `${from}px`;
+    void wrap.offsetHeight; // flush, so the next assignment transitions
+    wrap.style.height = `${to}px`;
+
+    // Back to auto once settled, so a growing textarea is never clipped.
+    const settle = (event: TransitionEvent) => {
+      if (event.propertyName !== "height") return;
+      wrap.style.height = "";
+      wrap.removeEventListener("transitionend", settle);
+    };
+    wrap.addEventListener("transitionend", settle);
+    return () => wrap.removeEventListener("transitionend", settle);
+  }, [step]);
 
   const fieldId = (name: string) => `${uid}-${name}`;
   const errorId = (name: string) => `${uid}-${name}-error`;
@@ -85,6 +127,7 @@ export function LeadForm({
     touched[name] && errors[name] ? copy.errors[errors[name]!] : null;
 
   const move = (to: number, dir: "forward" | "back") => {
+    fromHeight.current = wrapRef.current?.offsetHeight ?? null;
     setDirection(dir);
     setStep(to);
     // Focus the step title so a screen reader announces where it landed.
@@ -159,7 +202,26 @@ export function LeadForm({
         <div className={`${s.inner} ${s.centered}`}>
           <div className={f.card} data-state="sent">
             <div className={f.done} role="status">
-              <span className={f.doneMark} aria-hidden="true" />
+              <span className={f.doneMark} aria-hidden="true">
+                <svg viewBox="0 0 32 32" className={f.doneSvg}>
+                  <circle
+                    className={f.doneRing}
+                    cx="16"
+                    cy="16"
+                    r="15"
+                    fill="none"
+                    strokeWidth="2"
+                  />
+                  <path
+                    className={f.doneTick}
+                    d="M9.5 16.5l4.5 4.5 8.5-9"
+                    fill="none"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
               <h2 id={`${uid}-heading`} className={f.doneTitle}>
                 {copy.success.h}
               </h2>
@@ -217,7 +279,9 @@ export function LeadForm({
                     i < step ? "done" : i === step ? "current" : "todo"
                   }
                 >
-                  <span className={f.tickBar} />
+                  <span className={f.tickBar}>
+                    <span className={f.tickFill} />
+                  </span>
                   <span className={f.tickLabel}>{item.title}</span>
                 </li>
               ))}
@@ -227,7 +291,13 @@ export function LeadForm({
             </p>
           </div>
 
-          <div className={f.panel} key={step} data-direction={direction}>
+          <div className={f.panelWrap} ref={wrapRef}>
+            <div
+              className={f.panel}
+              key={step}
+              ref={panelRef}
+              data-direction={direction}
+            >
             <p className={f.stepTitle} ref={headingRef} tabIndex={-1}>
               {stepCopy.title}
               <span className={f.stepHint}>{stepCopy.hint}</span>
@@ -372,6 +442,7 @@ export function LeadForm({
                 />
               </div>
             )}
+            </div>
           </div>
 
           {/* Honeypot — off-screen, never focusable, ignored by autofill. */}
