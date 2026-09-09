@@ -422,6 +422,131 @@
         }
       ]
     },
+    "leadForm": {
+      "super": "Start here",
+      "h2": "Tell us what you're trying to build",
+      "lead": "Three short steps. You'll get a reply from Kacper — the person who would architect the build — usually within one working day.",
+      "progress": "Step {step} of {total}",
+      "steps": [
+        {
+          "title": "Who you are",
+          "hint": "So we know who we're replying to."
+        },
+        {
+          "title": "Your company",
+          "hint": "Helps us judge scale before the call."
+        },
+        {
+          "title": "Your project",
+          "hint": "The more specific, the more useful our first reply."
+        }
+      ],
+      "fields": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Work email",
+        "company": "Company",
+        "website": "Company website",
+        "role": "Your role",
+        "size": "Company size",
+        "budget": "Budget range",
+        "message": "What are you trying to build?"
+      },
+      "placeholders": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "you@company.com",
+        "company": "Your company",
+        "website": "https://yourcompany.com",
+        "role": "Select your role",
+        "size": "Number of employees",
+        "message": "What is the problem, what does it cost you today, and what would a good outcome look like?"
+      },
+      "optional": "optional",
+      "roles": [
+        {
+          "value": "founder",
+          "label": "Founder / CEO"
+        },
+        {
+          "value": "tech",
+          "label": "CTO / Head of engineering"
+        },
+        {
+          "value": "ops",
+          "label": "Operations / COO"
+        },
+        {
+          "value": "marketing",
+          "label": "Marketing"
+        },
+        {
+          "value": "product",
+          "label": "Product"
+        },
+        {
+          "value": "other",
+          "label": "Something else"
+        }
+      ],
+      "sizes": [
+        {
+          "value": "1-10",
+          "label": "1–10 people"
+        },
+        {
+          "value": "11-50",
+          "label": "11–50 people"
+        },
+        {
+          "value": "51-200",
+          "label": "51–200 people"
+        },
+        {
+          "value": "201-1000",
+          "label": "201–1,000 people"
+        },
+        {
+          "value": "1000+",
+          "label": "More than 1,000"
+        }
+      ],
+      "budgets": [
+        {
+          "value": "5-15k",
+          "label": "€5k – €15k"
+        },
+        {
+          "value": "15-50k",
+          "label": "€15k – €50k"
+        },
+        {
+          "value": "50k+",
+          "label": "€50k+"
+        },
+        {
+          "value": "unsure",
+          "label": "Not sure yet"
+        }
+      ],
+      "back": "Back",
+      "next": "Continue",
+      "submit": "Send it",
+      "submitting": "Sending…",
+      "note": "No newsletter, no sequence. We read it and reply ourselves.",
+      "errors": {
+        "required": "This one's needed.",
+        "email": "That email doesn't look right.",
+        "url": "That doesn't look like a web address.",
+        "message": "A sentence or two is enough — we just need something to react to.",
+        "submit": "That didn't send. Try again, or email kacper@aiadaptiv.com directly."
+      },
+      "success": {
+        "h": "Got it.",
+        "body": "It's in Kacper's inbox. You'll hear back within one working day — and if you'd rather not wait, book the 30-minute mapping call now.",
+        "cta": "Book the call"
+      }
+    },
     "contact": {
       "h2": "Let's map where AI pays back",
       "body": "Book a free 30-minute call. We will walk through your workflow, name the two or three places AI is worth deploying, and tell you what it would take to build them.",

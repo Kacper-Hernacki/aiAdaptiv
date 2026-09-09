@@ -3,6 +3,7 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { AgencyHero } from "@/components/agency/sections/AgencyHero";
 import { TechStack } from "@/components/agency/sections/TechStack";
+import { LeadForm } from "@/components/agency/sections/LeadForm";
 import { Capabilities } from "@/components/agency/sections/Capabilities";
 import { Proof } from "@/components/agency/sections/Proof";
 import { Work } from "@/components/agency/sections/Work";
@@ -29,6 +30,7 @@ export default async function AgencyHome({ params }: PageParams) {
   return (
     <main id="main">
       <AgencyHero hero={agency.hero} />
+      <LeadForm copy={agency.leadForm} lang={lang} />
       <TechStack tech={agency.tech} />
       <Capabilities capabilities={agency.capabilities} />
       <Proof proof={agency.proof} />

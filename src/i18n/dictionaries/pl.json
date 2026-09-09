@@ -422,6 +422,131 @@
         }
       ]
     },
+    "leadForm": {
+      "super": "Zacznij tutaj",
+      "h2": "Powiedz nam, co chcesz zbudować",
+      "lead": "Trzy krótkie kroki. Odpowie Kacper — ta sama osoba, która zaprojektuje architekturę — zwykle w ciągu jednego dnia roboczego.",
+      "progress": "Krok {step} z {total}",
+      "steps": [
+        {
+          "title": "Kim jesteś",
+          "hint": "Żebyśmy wiedzieli, komu odpowiadamy."
+        },
+        {
+          "title": "Twoja firma",
+          "hint": "Pomaga ocenić skalę jeszcze przed rozmową."
+        },
+        {
+          "title": "Twój projekt",
+          "hint": "Im konkretniej, tym bardziej przyda się nasza pierwsza odpowiedź."
+        }
+      ],
+      "fields": {
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "email": "E-mail służbowy",
+        "company": "Firma",
+        "website": "Strona firmy",
+        "role": "Twoja rola",
+        "size": "Wielkość firmy",
+        "budget": "Budżet",
+        "message": "Co chcesz zbudować?"
+      },
+      "placeholders": {
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "email": "ty@firma.com",
+        "company": "Twoja firma",
+        "website": "https://twojafirma.com",
+        "role": "Wybierz rolę",
+        "size": "Liczba pracowników",
+        "message": "Na czym polega problem, ile dziś kosztuje i jak wyglądałby dobry efekt?"
+      },
+      "optional": "opcjonalne",
+      "roles": [
+        {
+          "value": "founder",
+          "label": "Założyciel / CEO"
+        },
+        {
+          "value": "tech",
+          "label": "CTO / szef inżynierii"
+        },
+        {
+          "value": "ops",
+          "label": "Operacje / COO"
+        },
+        {
+          "value": "marketing",
+          "label": "Marketing"
+        },
+        {
+          "value": "product",
+          "label": "Produkt"
+        },
+        {
+          "value": "other",
+          "label": "Coś innego"
+        }
+      ],
+      "sizes": [
+        {
+          "value": "1-10",
+          "label": "1–10 osób"
+        },
+        {
+          "value": "11-50",
+          "label": "11–50 osób"
+        },
+        {
+          "value": "51-200",
+          "label": "51–200 osób"
+        },
+        {
+          "value": "201-1000",
+          "label": "201–1000 osób"
+        },
+        {
+          "value": "1000+",
+          "label": "Ponad 1000"
+        }
+      ],
+      "budgets": [
+        {
+          "value": "5-15k",
+          "label": "5–15 tys. €"
+        },
+        {
+          "value": "15-50k",
+          "label": "15–50 tys. €"
+        },
+        {
+          "value": "50k+",
+          "label": "Powyżej 50 tys. €"
+        },
+        {
+          "value": "unsure",
+          "label": "Jeszcze nie wiem"
+        }
+      ],
+      "back": "Wstecz",
+      "next": "Dalej",
+      "submit": "Wyślij",
+      "submitting": "Wysyłanie…",
+      "note": "Bez newslettera i bez sekwencji. Czytamy i odpisujemy osobiście.",
+      "errors": {
+        "required": "To pole jest potrzebne.",
+        "email": "Ten adres e-mail wygląda nieprawidłowo.",
+        "url": "To nie wygląda na adres strony.",
+        "message": "Wystarczy zdanie lub dwa — potrzebujemy czegoś, na co możemy odpowiedzieć.",
+        "submit": "Nie udało się wysłać. Spróbuj ponownie lub napisz na kacper@aiadaptiv.com."
+      },
+      "success": {
+        "h": "Mamy to.",
+        "body": "Wiadomość jest w skrzynce Kacpra. Odezwiemy się w ciągu jednego dnia roboczego — a jeśli nie chcesz czekać, umów 30-minutową rozmowę od razu.",
+        "cta": "Umów rozmowę"
+      }
+    },
     "contact": {
       "h2": "Sprawdźmy, gdzie AI się zwraca",
       "body": "Umów bezpłatną 30-minutową rozmowę. Przejdziemy przez Wasz proces, wskażemy dwa–trzy miejsca, w których warto wdrożyć AI, i powiemy, czego wymaga ich zbudowanie.",
