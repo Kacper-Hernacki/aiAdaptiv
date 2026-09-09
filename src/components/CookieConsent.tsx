@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { Dictionary } from "@/i18n/dictionaries";
+import { gaMeasurementId } from "@/config/site";
 import styles from "./CookieConsent.module.css";
 
 const STORAGE_KEY = "aiadaptiv-cookie-consent";
@@ -35,6 +36,27 @@ function updateConsent(choice: Choice) {
     };
   }
   w.gtag("consent", "update", params);
+}
+
+/**
+ * Nudge GA once consent flips from denied to granted, mid-visit.
+ *
+ * The page_view for this page has already gone out as a cookieless denied
+ * ping and is never resent. Queuing another one makes GA emit a consented hit
+ * for the session — in practice it coalesces this into its automatic
+ * user_engagement rather than a second page_view, which is fine: the session
+ * is then marked consented, and every later page load sends a proper
+ * page_view because the layout reads the stored choice before gtag configures.
+ */
+function sendPageView() {
+  if (!gaMeasurementId) return;
+  const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+  if (typeof w.gtag !== "function") return;
+  w.gtag("event", "page_view", {
+    send_to: gaMeasurementId,
+    page_location: window.location.href,
+    page_title: document.title,
+  });
 }
 
 /** Inject the Leadsy visitor-identification pixel once, only after consent. */
@@ -95,7 +117,13 @@ export function CookieConsent({
       // Ignore write failures — the banner still closes for this session.
     }
     updateConsent(choice);
-    if (choice === "granted") loadLeadsy();
+    if (choice === "granted") {
+      loadLeadsy();
+      // gtag's own page_view already went out under the denied default and is
+      // never resent, so a first-time visitor who accepts would otherwise
+      // produce no consented hit for the page they are actually on. Send one.
+      sendPageView();
+    }
     setVisible(false);
   }
 

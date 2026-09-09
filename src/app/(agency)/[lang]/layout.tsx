@@ -155,11 +155,14 @@ export default async function AgencyRootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body>
-        {/* Google Consent Mode v2 — deny all storage by default until the
-            visitor accepts via the cookie banner (see CookieConsent). Must run
-            before GA loads, hence beforeInteractive. */}
+        {/* Google Consent Mode v2. Denies all storage by default, but reads
+            the stored choice first: a returning visitor who already accepted
+            gets granted defaults, so gtag's own page_view goes out consented.
+            Without that the first hit of every visit is a cookieless denied
+            ping, and granting later never resends it. Must run before GA
+            loads, hence beforeInteractive. */}
         <Script id="consent-default" strategy="beforeInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});`}
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}var c='denied';try{if(localStorage.getItem('aiadaptiv-cookie-consent')==='granted')c='granted';}catch(e){}gtag('consent','default',{ad_storage:c,analytics_storage:c,ad_user_data:c,ad_personalization:c,wait_for_update:500});`}
         </Script>
         <ScrollReveal />
         <a href="#main">{dict.skipToContent}</a>
