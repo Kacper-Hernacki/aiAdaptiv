@@ -40,6 +40,18 @@ export const googleSiteVerification =
  * Set BING_SITE_VERIFICATION to emit the tag; empty renders nothing. */
 export const bingSiteVerification = process.env.BING_SITE_VERIFICATION ?? "";
 
+/**
+ * IndexNow key. IndexNow lets us notify Bing (and Yandex, Seznam, Naver) the
+ * moment a page changes, instead of waiting to be crawled — Google does not
+ * participate, but Bing is the index behind ChatGPT search, so this is the
+ * cheapest route to being current in an answer engine.
+ *
+ * Not a secret: ownership is proven by serving the same value at
+ * /{key}.txt, which is exactly what public/449e75b09916622a2c4f9285f5601bb0.txt does. Changing
+ * this constant means renaming that file too.
+ */
+export const indexNowKey = "449e75b09916622a2c4f9285f5601bb0";
+
 /** Brand identity. */
 const brand = {
   name: "aiAdaptiv",
