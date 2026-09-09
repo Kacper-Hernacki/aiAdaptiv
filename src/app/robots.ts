@@ -5,9 +5,11 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        // Search engines + AI crawlers are welcome. We block API/internal paths.
+        // Search engines and AI crawlers are equally welcome; only the API
+        // and Next's internals are off limits. /llms.txt is called out so a
+        // crawler that honours the convention finds it without guessing.
         userAgent: "*",
-        allow: "/",
+        allow: ["/", "/llms.txt"],
         disallow: ["/api/", "/_next/"],
       },
     ],

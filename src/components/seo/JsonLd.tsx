@@ -1,4 +1,5 @@
 import { siteConfig, siteUrl } from "@/config/site";
+import { translatedLocales } from "@/i18n/config";
 
 /**
  * Renders a JSON-LD <script>. Schema.org structured data helps search engines
@@ -18,8 +19,14 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
 }
 
 export function OrganizationJsonLd({
+  lang = "en",
+  description,
   services = [],
 }: {
+  /** Locale of the page this is rendered on. */
+  lang?: string;
+  /** This locale's description. Falls back to the English constant. */
+  description?: string;
   /** The capability cards, so the offer catalogue mirrors the page. */
   services?: { title: string; body: string; tags: string[] }[];
 } = {}) {
@@ -32,8 +39,16 @@ export function OrganizationJsonLd({
         name: siteConfig.name,
         legalName: siteConfig.organization.legalName,
         url: siteUrl,
-        logo: `${siteUrl}/icon.svg`,
-        description: siteConfig.description,
+        // An ImageObject rather than a bare URL: Google's logo guidance asks
+        // for dimensions, and a knowledge panel will not use one without them.
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/icon.svg`,
+          width: 64,
+          height: 64,
+          caption: `${siteConfig.name} logo`,
+        },
+        description: description ?? siteConfig.description,
         email: siteConfig.contactEmail,
         contactPoint: [
           {
@@ -49,6 +64,10 @@ export function OrganizationJsonLd({
         ],
         founder: siteConfig.founders.map((f) => ({
           "@type": "Person",
+          // A stable @id makes the founder an entity an answer engine can
+          // resolve and cite, rather than a name nested inside a company.
+          "@id": `${siteUrl}/#founder`,
+          url: `${siteUrl}/${lang}#team`,
           name: f.name,
           jobTitle: f.jobTitle,
           sameAs: f.profiles,
@@ -89,7 +108,7 @@ export function OrganizationJsonLd({
           : {}),
         areaServed: "Worldwide",
         slogan: siteConfig.tagline,
-        knowsLanguage: ["en", "pl"],
+        knowsLanguage: [...translatedLocales],
       }}
     />
   );
@@ -125,7 +144,10 @@ export function BreadcrumbJsonLd({
   );
 }
 
-export function WebSiteJsonLd() {
+export function WebSiteJsonLd({
+  lang = "en",
+  description,
+}: { lang?: string; description?: string } = {}) {
   return (
     <JsonLd
       data={{
@@ -134,9 +156,11 @@ export function WebSiteJsonLd() {
         "@id": `${siteUrl}/#website`,
         name: siteConfig.name,
         url: siteUrl,
-        description: siteConfig.description,
+        description: description ?? siteConfig.description,
         publisher: { "@id": `${siteUrl}/#organization` },
-        inLanguage: "en",
+        // Was hardcoded "en", so every non-English page declared itself
+        // English while rendering translated copy.
+        inLanguage: lang,
       }}
     />
   );

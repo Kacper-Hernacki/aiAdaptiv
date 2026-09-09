@@ -40,6 +40,16 @@ ${translatedLocales.map((l) => `- ${localeNames[l]}: ${siteUrl}/${l}`).join("\n"
 - Contact: ${siteConfig.contactEmail}
 - Support: ${siteConfig.supportEmail}
 
+## Services
+
+${agency.capabilities.items
+  .map((item) => `### ${item.title}\n\n${item.body}\n\nTags: ${item.tags.join(", ")}`)
+  .join("\n\n")}
+
+## Systems we have shipped
+
+${agency.work.cases.map((c) => `- **${c.name}** — ${c.result} ${c.body}`).join("\n")}
+
 ## Topics
 
 ${siteConfig.keywords.map((k) => `- ${k}`).join("\n")}

@@ -11,18 +11,19 @@ import { translatedLocales, defaultLocale } from "@/i18n/config";
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  const languages = Object.fromEntries(
-    translatedLocales.map((l) => [l, `${siteUrl}/${l}`]),
-  );
-  const termsLanguages = Object.fromEntries(
-    translatedLocales.map((l) => [l, `${siteUrl}/${l}/terms`]),
-  );
-  const privacyLanguages = Object.fromEntries(
-    translatedLocales.map((l) => [l, `${siteUrl}/${l}/privacy`]),
-  );
-  const privateAiLanguages = Object.fromEntries(
-    translatedLocales.map((l) => [l, `${siteUrl}/${l}/private-ai`]),
-  );
+  /** Alternates for one route, including the x-default Google expects
+   *  alongside the per-language entries. */
+  const alternatesFor = (path = "") => ({
+    ...Object.fromEntries(
+      translatedLocales.map((l) => [l, `${siteUrl}/${l}${path}`]),
+    ),
+    "x-default": `${siteUrl}/${defaultLocale}${path}`,
+  });
+
+  const languages = alternatesFor();
+  const termsLanguages = alternatesFor("/terms");
+  const privacyLanguages = alternatesFor("/privacy");
+  const privateAiLanguages = alternatesFor("/private-ai");
 
   return [
     ...translatedLocales.map(

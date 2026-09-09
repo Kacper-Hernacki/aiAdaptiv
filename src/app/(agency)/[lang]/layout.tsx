@@ -169,8 +169,12 @@ export default async function AgencyRootLayout({
         <AgencyHeader lang={lang} header={dict.agency.header} />
         {children}
         <AgencyFooter lang={lang} agency={dict.agency} />
-        <OrganizationJsonLd services={dict.agency.capabilities.items} />
-        <WebSiteJsonLd />
+        <OrganizationJsonLd
+          lang={lang}
+          description={dict.agency.meta.description}
+          services={dict.agency.capabilities.items}
+        />
+        <WebSiteJsonLd lang={lang} description={dict.agency.meta.description} />
         {/* Cookieless, GDPR-friendly visitor + conversion analytics. */}
         <Analytics />
         {/* Google Analytics 4 — only mounted when NEXT_PUBLIC_GA_ID is set. */}
