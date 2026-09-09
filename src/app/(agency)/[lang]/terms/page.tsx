@@ -4,6 +4,7 @@ import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { LegalPage } from "@/components/agency/LegalPage";
 import { legalMetadata } from "@/components/agency/legalMetadata";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 type PageParams = { params: Promise<{ lang: string }> };
 
@@ -20,5 +21,13 @@ export default async function TermsPage({ params }: PageParams) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const dict = await getDictionary(lang);
-  return <LegalPage doc={dict.agency.legal.terms} lang={lang} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        lang={lang}
+        trail={[{ name: dict.agency.legal.terms.h1, path: `/${lang}/terms` }]}
+      />
+      <LegalPage doc={dict.agency.legal.terms} lang={lang} />
+    </>
+  );
 }

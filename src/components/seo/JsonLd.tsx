@@ -17,7 +17,12 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
   );
 }
 
-export function OrganizationJsonLd() {
+export function OrganizationJsonLd({
+  services = [],
+}: {
+  /** The capability cards, so the offer catalogue mirrors the page. */
+  services?: { title: string; body: string; tags: string[] }[];
+} = {}) {
   return (
     <JsonLd
       data={{
@@ -58,6 +63,63 @@ export function OrganizationJsonLd() {
           })),
         })),
         sameAs: siteConfig.organization.sameAs,
+        // The six practices, as a catalogue a machine can enumerate. Built
+        // from the same dictionary the page renders, so the two cannot drift.
+        ...(services.length
+          ? {
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: `${siteConfig.name} services`,
+                itemListElement: services.map((service) => ({
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: service.title,
+                    description: service.body,
+                    provider: { "@id": `${siteUrl}/#organization` },
+                    areaServed: "Worldwide",
+                    serviceType: service.title,
+                  },
+                })),
+              },
+              // What this entity is about — the signal an answer engine reads
+              // when deciding whether we are relevant to a question.
+              knowsAbout: services.flatMap((service) => service.tags),
+            }
+          : {}),
+        areaServed: "Worldwide",
+        slogan: siteConfig.tagline,
+        knowsLanguage: ["en", "pl"],
+      }}
+    />
+  );
+}
+
+/**
+ * Breadcrumb trail for a subpage. Google uses it to replace the raw URL in a
+ * result with a readable path, and it tells a crawler how the page sits under
+ * the home page rather than floating free.
+ */
+export function BreadcrumbJsonLd({
+  lang,
+  trail,
+}: {
+  lang: string;
+  /** Ordered, excluding the home page — that is prepended here. */
+  trail: { name: string; path: string }[];
+}) {
+  const items = [{ name: siteConfig.name, path: `/${lang}` }, ...trail];
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: items.map((item, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: item.name,
+          item: `${siteUrl}${item.path}`,
+        })),
       }}
     />
   );

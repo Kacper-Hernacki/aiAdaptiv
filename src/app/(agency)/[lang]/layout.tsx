@@ -169,7 +169,7 @@ export default async function AgencyRootLayout({
         <AgencyHeader lang={lang} header={dict.agency.header} />
         {children}
         <AgencyFooter lang={lang} agency={dict.agency} />
-        <OrganizationJsonLd />
+        <OrganizationJsonLd services={dict.agency.capabilities.items} />
         <WebSiteJsonLd />
         {/* Cookieless, GDPR-friendly visitor + conversion analytics. */}
         <Analytics />
