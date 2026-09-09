@@ -282,10 +282,10 @@ const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
   en: () => import("./dictionaries/en.json").then((m) => m.default),
   pl: () => import("./dictionaries/pl.json").then((m) => m.default),
   // TODO: translate — currently served in English.
-  de: () => import("./dictionaries/en.json").then((m) => m.default),
+  de: () => import("./dictionaries/de.json").then((m) => m.default),
   no: () => import("./dictionaries/en.json").then((m) => m.default),
   it: () => import("./dictionaries/en.json").then((m) => m.default),
-  fr: () => import("./dictionaries/en.json").then((m) => m.default),
+  fr: () => import("./dictionaries/fr.json").then((m) => m.default),
   es: () => import("./dictionaries/en.json").then((m) => m.default),
   pt: () => import("./dictionaries/en.json").then((m) => m.default),
   cs: () => import("./dictionaries/en.json").then((m) => m.default),
