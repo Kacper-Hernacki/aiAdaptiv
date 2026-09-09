@@ -1,0 +1,1012 @@
+{
+  "skipToContent": "Gå til hovedinnholdet",
+  "cookies": {
+    "message": "Vi bruker informasjonskapsler for å måle trafikk og forbedre opplevelsen din. Du bestemmer hva vi får lagre.",
+    "accept": "Godta",
+    "decline": "Avslå",
+    "learnMore": "Les mer"
+  },
+  "agency": {
+    "meta": {
+      "title": "aiAdaptiv — Skreddersydde AI-løsninger som sparer timer og øker inntektene",
+      "description": "Vi designer, bygger og leverer skreddersydde AI-løsninger: AI-SaaS-produkter, mobilapper, automatisering, pilotprosjekter, markedsføringssystemer og private LLM-plattformer med åpen kildekode. Book en samtale på 30 minutter."
+    },
+    "header": {
+      "cta": "Book en samtale",
+      "menuLabel": "Åpne menyen",
+      "nav": [
+        {
+          "label": "Hva vi bygger",
+          "href": "#capabilities"
+        },
+        {
+          "label": "Prosjekter",
+          "href": "#work"
+        },
+        {
+          "label": "Tilnærming",
+          "href": "#approach"
+        },
+        {
+          "label": "Kontakt",
+          "href": "#contact"
+        }
+      ]
+    },
+    "theme": {
+      "toggle": "Bytt mellom lyst og mørkt tema"
+    },
+    "hero": {
+      "eyebrow": "Skreddersydd AI · Fast pris · Levert fra ende til ende",
+      "questions": [],
+      "headline": [
+        {
+          "text": "Skreddersydde AI-løsninger som"
+        }
+      ],
+      "rotating": [
+        "sparer titalls timer.",
+        "automatiserer rutinearbeid.",
+        "øker inntektene.",
+        "kutter manuelt arbeid.",
+        "aldri mister en henvendelse."
+      ],
+      "subhead": "Automatisering, AI-produkter, mobilapper og markedsføringssystemer — bygget for slik virksomheten din faktisk fungerer. Fast pris, levert fra ende til ende, og holdt oppdatert etter hvert som modellene utvikler seg.",
+      "cta": "Book en samtale på 30 minutter",
+      "stats": [
+        {
+          "value": "12 år",
+          "label": "med utvikling, siden 2014"
+        },
+        {
+          "value": "4 år",
+          "label": "med å bygge på LLM-er"
+        },
+        {
+          "value": "20+",
+          "label": "AI-løsninger levert"
+        }
+      ]
+    },
+    "tech": {
+      "label": "Teknologien vi bygger på"
+    },
+    "capabilities": {
+      "h2": "Hva vi bygger",
+      "lead": "Seks fagområder, ett erfarent team. Alle er allerede i produksjon hos en betalende kunde — ingen av dem er bare en presentasjonsside.",
+      "items": [
+        {
+          "id": "ai-saas",
+          "title": "AI-SaaS-produkter",
+          "body": "Vi designer og leverer komplette AI-produkter: arkitektur, modellaget, innlogging, fakturering og grensesnittet kundene dine faktisk bruker. Fra tomt kodelager til betalende brukere.",
+          "tags": [
+            "Full-stack-utvikling",
+            "LLM-arkitektur",
+            "Lansering"
+          ]
+        },
+        {
+          "id": "mobile-apps",
+          "title": "Mobilapper",
+          "body": "Native og kryssplattform-apper med AI i sentrum — på enheten der personvern eller responstid krever det, i skyen der det ikke gjør det. Publisert i App Store og Play Store, ikke parkert i TestFlight.",
+          "tags": [
+            "iOS og Android",
+            "AI på enheten",
+            "Lansering i butikkene"
+          ]
+        },
+        {
+          "id": "ai-automations",
+          "title": "AI-automatisering",
+          "body": "Agenter og arbeidsflyter som gjør jobben i stedet for å beskrive den: sortering av innkommende henvendelser, research, utkast, dataregistrering — samt integrasjonene som skriver resultatet inn i systemene dere allerede bruker.",
+          "tags": [
+            "Agenter",
+            "Integrasjoner",
+            "Menneske i loopen"
+          ]
+        },
+        {
+          "id": "ai-pilots",
+          "title": "AI-piloter og casestudier",
+          "body": "En avgrenset pilot som svarer på ett spørsmål: lønner AI seg egentlig her? Du får et fungerende konseptbevis, reelle tall på kostnad og kvalitet, og en skriftlig anbefaling for eller mot å bygge videre.",
+          "tags": [
+            "Konseptbevis",
+            "Kostnadsmodell",
+            "Skriftlig konklusjon"
+          ]
+        },
+        {
+          "id": "ai-marketing",
+          "title": "AI-markedsføring",
+          "body": "Vekstsystemer drevet av AI: å finne og berike kontakter, personlig utgående kontakt som fortjener svar, innholdsmotorer, og rapporteringen som viser hvilken del som faktisk virket.",
+          "tags": [
+            "Utgående systemer",
+            "Innholdsmotorer",
+            "Attribusjon"
+          ]
+        },
+        {
+          "id": "app-factory",
+          "title": "AI-appfabrikk",
+          "body": "En produksjonslinje for interne verktøy — felles teknologi, felles komponenter, én gjentakbar prosess — slik at den femte appen koster en brøkdel av den første. For team som trenger ti ting bygget, ikke én.",
+          "tags": [
+            "Gjentakbar teknologi",
+            "Interne verktøy",
+            "Levering i serie"
+          ]
+        }
+      ]
+    },
+    "proof": {
+      "h2": "Vi leverer systemer, ikke presentasjoner",
+      "lead": "Alle oppdrag går på samme måte.",
+      "points": [
+        {
+          "title": "Over 20 AI-løsninger i produksjon",
+          "body": "Automatisering, produkter kunder betaler for, og private AI-plattformer i kundens egen sky."
+        },
+        {
+          "title": "Én fast pris, avtalt først",
+          "body": "Skriftlig omfang før første kodelinje. Ingen timefakturering, ingen uventet faktura."
+        },
+        {
+          "title": "Tolv år med utvikling under",
+          "body": "Full-stack siden 2014, fire år med LLM-er. AI er de siste ti prosentene av et produkt som virker."
+        },
+        {
+          "title": "Det ender med en overlevering",
+          "body": "Et system som virker og dokumentasjon teamet ditt kan bruke. Eller en månedsavtale, om du heller vil at vi drifter det videre."
+        }
+      ],
+      "cta": "Book en samtale på 30 minutter",
+      "mediaLabel": "Blyantskisse av en lukket fraktkasse på lyst papir."
+    },
+    "work": {
+      "h2": "Utvalgte prosjekter",
+      "lead": "Ni typer systemer vi har levert — bygget, satt i drift og driftet av oss.",
+      "cases": [
+        {
+          "id": "private-ai",
+          "name": "Privat AI for regulerte data",
+          "result": "LLM-er med åpen kildekode i din egen EU-sky. Ingenting forlater den.",
+          "body": "For team som håndterer pasientjournaler, juridiske saksmapper eller andre sensitive data, er et offentlig AI-verktøy uaktuelt. Vi setter opp modeller med åpen kildekode i kundens egen EU-skykonto — med kundens merkevare og dokumentforståelse over deres eget arkiv — slik at plattformen er deres, og GDPR og EUs AI-forordning oppfylles av arkitekturen, ikke av en retningslinje.",
+          "tags": [
+            "LLM-er med åpen kildekode",
+            "EUs AI-forordning",
+            "Helse- og juridiske data"
+          ]
+        },
+        {
+          "id": "messaging-bots",
+          "name": "Boter for umiddelbare svar på WhatsApp og Messenger",
+          "result": "Hver melding besvart på sekunder, døgnet rundt.",
+          "body": "Kunder skriver på WhatsApp og Messenger klokken elleve om kvelden og forventer svar. Vi bygger boter som svarer på produktspørsmål, tar imot bestillinger og kvalifiserer henvendelser der og da, sender videre til et menneske når det trengs, og logger alt inn i systemene teamet allerede bruker.",
+          "tags": [
+            "WhatsApp",
+            "Messenger",
+            "Automatisert kundestøtte"
+          ]
+        },
+        {
+          "id": "website-support",
+          "name": "AI-støtte på nettsiden din",
+          "result": "En chatbot som kjenner virksomheten din, fordi den har lært av ditt eget innhold.",
+          "body": "En assistent på landingssiden forankret i kundens egne sider, dokumenter, priser og retningslinjer. Den svarer presist på besøkendes spørsmål, fanger opp dem som er verdt å følge opp, og booker samtalen selv — ingen generisk chatbot, og hvert svar kan spores tilbake til noe kunden faktisk har skrevet.",
+          "tags": [
+            "Chatbot på nettsiden",
+            "RAG",
+            "Innhenting av henvendelser"
+          ]
+        },
+        {
+          "id": "ad-creative",
+          "name": "Annonsemateriell laget med AI",
+          "result": "Titalls varianter i tråd med merkevaren å teste, i stedet for én dyr innspilling.",
+          "body": "Video- og bildeannonser produsert med generative verktøy — Claude til konsepter, kroker og tekst, Higgsfield til det visuelle og bevegelsen — slik at en kampanje får et fullt sett varianter å teste i stedet for én enkelt idé. Bygget som en gjentakbar prosess markedsteamet kjører selv, ikke som en engangsleveranse.",
+          "tags": [
+            "Claude",
+            "Higgsfield",
+            "Annonsemateriell"
+          ]
+        },
+        {
+          "id": "premium-websites",
+          "name": "Nettsider i toppklasse",
+          "result": "Designet, skrevet og publisert som ett system, på dager i stedet for måneder.",
+          "body": "Konverteringsdrevne nettsider der tekst, struktur og søkemotoroptimalisering er med fra første commit: flerspråklige, riktig indeksert, med strukturerte data slik at AI-søk kan svare på spørsmål om virksomheten, og en bookingflyt på slutten av hver vei. Bygget med AI-verktøy fra ende til ende — denne siden er én av dem.",
+          "tags": [
+            "Next.js",
+            "Søkemotoroptimalisering",
+            "AI-søk"
+          ]
+        },
+        {
+          "id": "booking-systems",
+          "name": "Skreddersydde bookingsystemer",
+          "result": "Hver booking havner i kalenderen, CRM-et og innboksen — uten noen imellom.",
+          "body": "Timebestilling bygget rundt hvordan virksomheten faktisk tar imot avtaler: tilgjengelighetsregler, depositum eller betaling ved booking, påminnelser som reduserer at folk ikke møter opp, og hver booking skrevet automatisk inn i kalender og CRM. Integrert med verktøyene som allerede er i bruk, i stedet for å erstatte dem.",
+          "tags": [
+            "Timebestilling",
+            "Betalinger",
+            "CRM"
+          ]
+        },
+        {
+          "id": "second-brain",
+          "name": "En digital andrehjerne",
+          "result": "Alt virksomheten din vet — søkbart, og aldri glemt.",
+          "body": "Kontrakter, tilbud, notater, referater og kunnskapen som bor i hodet på noen få, samlet ett sted og søkbart på vanlig språk. Svarene viser til kildedokumentet så du kan stole på dem, og nytt materiale kommer inn av seg selv i stedet for å vente på at noen arkiverer det.",
+          "tags": [
+            "Kunnskapsbase",
+            "Dokumentsøk",
+            "Hukommelse"
+          ]
+        },
+        {
+          "id": "mvp-team",
+          "name": "Et AI-utviklingsteam for raske MVP-er",
+          "result": "Fra idé til et produkt som virker på uker, ikke kvartaler.",
+          "body": "Et erfarent, AI-innfødt team på forespørsel, for gründere og selskaper som trenger en første versjon: arkitektur, modellag, innlogging, fakturering og grensesnitt, bygget med AI-verktøy fra ende til ende — slik at det første fungerende produktet kommer på uker og er solid nok til å bygge videre på.",
+          "tags": [
+            "MVP",
+            "AI-SaaS",
+            "Appfabrikk"
+          ]
+        },
+        {
+          "id": "automations",
+          "name": "Automatisering av backoffice",
+          "result": "Repetitivt arbeid overlatt til programvare, for godt.",
+          "body": "Sortering av henvendelser, dataregistrering, rapportering, oppfølging — de gjentakende oppgavene som stille spiser opp uken til et team. Vi kartlegger dem, automatiserer dem som lønner seg, beholder et menneske på beslutningene som trenger et, og kobler resultatet inn i verktøyene virksomheten allerede kjører på.",
+          "tags": [
+            "Automatisering",
+            "Agenter",
+            "Integrasjoner"
+          ]
+        }
+      ]
+    },
+    "product": {
+      "h2": "Privat AI med åpen kildekode — én av tingene vi bygger",
+      "headline": "Bedriftens private hjerne. Eid, ikke leid.",
+      "lead": "Vi setter opp en AI-plattform helt med din merkevare, direkte inne i din egen sikre EU-skykonto. Infrastrukturen, nøklene og dataene er dine. Vi tar den tunge jobben.",
+      "why": "Offentlig AI er en risiko: bøter på inntil 4 % av omsetningen etter GDPR og 7 % etter EUs AI-forordning, og kontrakter eller kundedata som kan ende opp med å trene andres modell.",
+      "pillars": [
+        {
+          "title": "Sikker dokumentforståelse",
+          "body": "Last opp kontrakter på 200 sider eller due diligence-mapper. Hent ut risiko trygt, sammenlign versjoner og få sammendrag — uten datalekkasje."
+        },
+        {
+          "title": "100 % med din merkevare",
+          "body": "ai.dittfirma.no i dine farger. En reell intern verdi."
+        },
+        {
+          "title": "Din egen skykonto",
+          "body": "Satt opp i din egen skykonto. Du styrer alt."
+        },
+        {
+          "title": "Null driftsbyrde",
+          "body": "Vi tar oss av modelloppdateringer, sikkerhet og vedlikehold."
+        }
+      ],
+      "cta": "Se plattformen",
+      "imageAlt": "Blyantskisse av en hengelås på lyst papir — aiAdaptivs private AI-plattform."
+    },
+    "team": {
+      "h2": "Hvem du faktisk jobber med",
+      "lead": "Lite og erfarent. Den som setter omfanget er den som bygger systemet — det finnes ingen mellomliggende leveranseorganisasjon mellom deg og utvikleren.",
+      "licensesLabel": "Sertifiseringer",
+      "members": [
+        {
+          "id": "kacper",
+          "name": "Kacper Hernacki",
+          "role": "Grunnlegger og teknisk direktør",
+          "body": [
+            "Over ti år med full-stack-utvikling siden 2014, i dag rettet mot å gjøre sammensatte problemer om til intelligente og skalerbare systemer — nettapplikasjoner, mobilapper og automatisering levert til kunder over hele verden.",
+            "Har flere sertifiseringer innen AI-utvikling og setter omfanget på hvert oppdrag personlig: den som skriver tilbudet ditt er den som tegner arkitekturen."
+          ],
+          "licenses": [
+            {
+              "name": "AI_devs 3 · Agents",
+              "issuer": "AI_devs",
+              "year": "2025",
+              "url": "https://credsverse.com/credentials/3fc027b2-7899-4a52-8e60-ca177c4f7ad0"
+            },
+            {
+              "name": "AI_devs 2 · GPT-4 in applications and automation",
+              "issuer": "AI_devs",
+              "year": "2024",
+              "url": "https://credsverse.com/credentials/e34b5af4-8a00-4c60-ae6e-f32658be0926"
+            },
+            {
+              "name": "AI_devs · AI Developer",
+              "issuer": "AI_devs",
+              "year": "2023",
+              "url": "https://verified.sertifier.com/en/verify/50831241179182/"
+            }
+          ],
+          "profile": {
+            "label": "LinkedIn-profil",
+            "url": "https://www.linkedin.com/in/kacper-hernacki-965161203/"
+          }
+        }
+      ]
+    },
+    "approach": {
+      "h2": "Hva som skiller oss",
+      "items": [
+        {
+          "title": "Fast omfang, fast pris",
+          "body": "Hvert oppdrag får et skriftlig omfang, en tidsplan og en fast pris før noe settes i gang. Ingen timefakturering, ingen utglidning av omfanget, ingen uventet faktura."
+        },
+        {
+          "title": "Alltid din infrastruktur",
+          "body": "Vi setter opp i din skykonto med dine nøkler. Når oppdraget er over sitter du igjen med et system i drift, ikke en avhengighet til oss."
+        },
+        {
+          "title": "Europeisk fra bunnen",
+          "body": "Datalagring, GDPR og EUs AI-forordning er utgangspunktet, ikke en etterlevelsessjekk lagt til på slutten. Det er derfor arkitekturen ser ut som den gjør."
+        },
+        {
+          "title": "Vi drifter det vi selger",
+          "body": "Vår egen private AI-plattform kjører på samme teknologi som vi setter opp for kunder. Når noe ryker klokken to om natten, ryker det først hos oss."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Fra første samtale til system i drift",
+      "lead": "Fire steg. Du kjenner pris og omfang før steg tre.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Kartleggingssamtale",
+          "body": "En gratis halvtime. Vi kartlegger hvor teamet ditt mister timer, hva av det AI faktisk kan overta, og hvilke krav til etterlevelse som gjelder."
+        },
+        {
+          "step": "02",
+          "title": "Omfang og fast pris",
+          "body": "Et skriftlig omfang, en arkitekturskisse, en tidsplan og én fast pris. Om det ikke er verdt å bygge, sier vi det i stedet."
+        },
+        {
+          "step": "03",
+          "title": "Bygging og oppsett",
+          "body": "Vi bygger i din skykonto, med ukentlige demoer av programvare som virker. Du ser systemet før det er ferdig, ikke en statusrapport om det."
+        },
+        {
+          "step": "04",
+          "title": "Drift eller overlevering",
+          "body": "Dokumentasjon og opplæring så teamet ditt eier det — eller en valgfri månedsavtale der vi overvåker, oppdaterer og fortsetter å forbedre."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Spørsmål vi får",
+      "items": [
+        {
+          "q": "Hva er aiAdaptiv?",
+          "a": "aiAdaptiv er et AI-utviklingsstudio grunnlagt av Kacper Hernacki. Vi designer, bygger og leverer skreddersydde AI-løsninger for selskaper: AI-SaaS-produkter, mobilapper, automatisering og agenter, avgrensede piloter, AI-markedsføringssystemer og private LLM-plattformer med åpen kildekode. Bak ligger tolv år med utvikling, fire av dem med LLM-er, og over 20 leverte AI-løsninger."
+        },
+        {
+          "q": "Er aiAdaptiv et seriøst selskap?",
+          "a": "Ja. aiAdaptiv er et selskap registrert i Polen, drevet av en navngitt grunnlegger du kan sjekke selv: AI-sertifiseringene til Kacper Hernacki lenker hver for seg til utstederens offentlige verifiseringsside, og LinkedIn-profilen hans er lenket fra denne siden. Hvert oppdrag hviler på et signert skriftlig tilbud med fast pris, og vilkårene og personvernerklæringen vår er publisert her i stedet for å sendes på forespørsel."
+        },
+        {
+          "q": "Hvilke tjenester tilbyr aiAdaptiv?",
+          "a": "Seks fagområder: AI-SaaS-produkter, mobilapper, AI-automatisering og agenter, AI-piloter og konseptbevis, AI-markedsføringssystemer, og en AI-appfabrikk for team som trenger mange interne verktøy heller enn ett. Vi selger også en ferdig pakket privat AI-plattform — modeller med åpen kildekode satt opp i din egen EU-skykonto."
+        },
+        {
+          "q": "Hva koster aiAdaptiv?",
+          "a": "Hvert prosjekt prises som én fast pris, satt etter den gratis kartleggingssamtalen på 30 minutter, når omfanget er kjent. Ingen timefakturering, ingen prisliste og ingen uventet faktura — tallet i tilbudet er tallet du betaler. Løpende drift, der du ønsker det, er en fast månedlig avtale."
+        },
+        {
+          "q": "Hvordan jobber aiAdaptiv?",
+          "a": "I fire steg. En gratis kartleggingssamtale på 30 minutter der vi finner hvor AI lønner seg; et skriftlig omfang, en arkitekturskisse og én fast pris; byggingen i din skykonto med ukentlige demoer av programvare som virker; deretter dokumentasjon og overlevering, eller en valgfri månedsavtale om du heller vil at vi drifter det videre."
+        },
+        {
+          "q": "Hvem er Kacper Hernacki?",
+          "a": "Kacper Hernacki er grunnlegger og teknisk direktør i aiAdaptiv. Han har bygget programvare siden 2014 — tolv år med full-stack-utvikling på tvers av nettapplikasjoner, mobilapper og automatisering for kunder over hele verden — og har flere sertifiseringer innen AI-utvikling. De siste fire årene har han bygget på store språkmodeller, og han leder arkitekturen på hvert aiAdaptiv-oppdrag personlig. Du når ham på kacper@aiadaptiv.com."
+        },
+        {
+          "q": "Hvem driver aiAdaptiv?",
+          "a": "Kacper Hernacki, grunnlegger og teknisk direktør, med hendene i hvert oppdrag. Det finnes ingen kundeansvarlig mellom deg og personen som bygger systemet ditt — den som skriver tilbudet ditt er den som tegner arkitekturen."
+        },
+        {
+          "q": "Hvor holder aiAdaptiv til, og hvem jobber dere med?",
+          "a": "Vi er et fjernarbeidende team med base i Polen, og jobber med kunder over hele verden. Leveransen skjer som hovedregel på avstand, med samtaler i din tidssone der det trengs, og systemer satt opp i skyregionen du velger."
+        },
+        {
+          "q": "Hvor lang tid tar et første system?",
+          "a": "Det kommer an på hva som bygges, og tilbudet oppgir datoen. En avgrenset pilot eller én enkelt automatisering måles i uker; et komplett produkt i måneder. Utover omfanget er det som flytter datoen mest hvor raskt tilganger, beslutninger og godkjenninger kommer fra din side."
+        },
+        {
+          "q": "Hvor ligger dataene våre?",
+          "a": "For alt vi drifter for deg: i din egen skykonto, i en EU-region du velger — vi setter opp under din konto og dine nøkler, så ingenting går gjennom oss. For produkter vi bygger for kundene dine eier du infrastrukturen, og vi tegner dataflyten sammen med deg før en linje er skrevet."
+        },
+        {
+          "q": "Må vi bruke modeller med åpen kildekode?",
+          "a": "Nei. Modeller med åpen kildekode på din egen infrastruktur er utgangspunktet, fordi de holder data og kostnad under din kontroll, men vi kobler inn kommersielle API-er der de faktisk er bedre — og vi sier hvilke deler av et system det gjelder."
+        },
+        {
+          "q": "Hva skjer når prosjektet er ferdig?",
+          "a": "Du beholder alt: infrastrukturen, koden, dokumentasjonen og systemet i drift. Rettighetene til det vi har bygget for deg går over ved full betaling. En månedsavtale er valgfri, aldri et vilkår."
+        },
+        {
+          "q": "Hvordan kontakter jeg aiAdaptiv?",
+          "a": "Book en gratis samtale på 30 minutter fra hvilken som helst knapp på denne siden, eller send e-post til kacper@aiadaptiv.com. Vi svarer innen én virkedag."
+        }
+      ]
+    },
+    "leadForm": {
+      "super": "Start her",
+      "h2": "Fortell oss hva du vil bygge",
+      "lead": "Tre korte steg. Svaret kommer fra Kacper — den som ville tegnet arkitekturen — vanligvis innen én virkedag.",
+      "progress": "Steg {step} av {total}",
+      "steps": [
+        {
+          "title": "Hvem du er",
+          "hint": "Så vi vet hvem vi svarer."
+        },
+        {
+          "title": "Selskapet ditt",
+          "hint": "Hjelper oss å vurdere omfanget før samtalen."
+        },
+        {
+          "title": "Prosjektet ditt",
+          "hint": "Jo mer konkret, jo nyttigere blir det første svaret vårt."
+        }
+      ],
+      "fields": {
+        "firstName": "Fornavn",
+        "lastName": "Etternavn",
+        "email": "Jobb-e-post",
+        "company": "Selskap",
+        "website": "Selskapets nettside",
+        "role": "Rollen din",
+        "size": "Størrelse på selskapet",
+        "budget": "Budsjett",
+        "message": "Hva vil du bygge?"
+      },
+      "placeholders": {
+        "firstName": "Fornavn",
+        "lastName": "Etternavn",
+        "email": "deg@selskap.no",
+        "company": "Selskapet ditt",
+        "website": "https://dittselskap.no",
+        "role": "Velg rolle",
+        "size": "Antall ansatte",
+        "message": "Hva er problemet, hva koster det i dag, og hvordan ville et godt resultat sett ut?"
+      },
+      "optional": "valgfritt",
+      "roles": [
+        {
+          "value": "founder",
+          "label": "Grunnlegger / daglig leder"
+        },
+        {
+          "value": "tech",
+          "label": "Teknisk direktør / utviklingssjef"
+        },
+        {
+          "value": "ops",
+          "label": "Drift / COO"
+        },
+        {
+          "value": "marketing",
+          "label": "Markedsføring"
+        },
+        {
+          "value": "product",
+          "label": "Produkt"
+        },
+        {
+          "value": "other",
+          "label": "Noe annet"
+        }
+      ],
+      "sizes": [
+        {
+          "value": "1-10",
+          "label": "1–10 personer"
+        },
+        {
+          "value": "11-50",
+          "label": "11–50 personer"
+        },
+        {
+          "value": "51-200",
+          "label": "51–200 personer"
+        },
+        {
+          "value": "201-1000",
+          "label": "201–1 000 personer"
+        },
+        {
+          "value": "1000+",
+          "label": "Mer enn 1 000"
+        }
+      ],
+      "budgets": [
+        {
+          "value": "5-15k",
+          "label": "5 000 € – 15 000 €"
+        },
+        {
+          "value": "15-50k",
+          "label": "15 000 € – 50 000 €"
+        },
+        {
+          "value": "50k+",
+          "label": "Over 50 000 €"
+        },
+        {
+          "value": "unsure",
+          "label": "Vet ikke ennå"
+        }
+      ],
+      "back": "Tilbake",
+      "next": "Fortsett",
+      "submit": "Send",
+      "submitting": "Sender …",
+      "note": "Ingen nyhetsbrev, ingen sekvens. Vi leser det og svarer selv.",
+      "errors": {
+        "required": "Denne trenger vi.",
+        "email": "Den e-postadressen ser ikke riktig ut.",
+        "url": "Det ser ikke ut som en nettadresse.",
+        "message": "En setning eller to holder — vi trenger bare noe å reagere på.",
+        "submit": "Det gikk ikke å sende. Prøv igjen, eller send e-post direkte til kacper@aiadaptiv.com."
+      },
+      "success": {
+        "h": "Mottatt.",
+        "body": "Det ligger i innboksen til Kacper. Du hører fra oss innen én virkedag — og vil du heller ikke vente, book kartleggingssamtalen på 30 minutter med én gang.",
+        "cta": "Book samtalen"
+      }
+    },
+    "contact": {
+      "h2": "La oss finne hvor AI lønner seg",
+      "body": "Book en gratis samtale på 30 minutter. Vi går gjennom arbeidsflyten deres, peker ut de to eller tre stedene der AI er verdt å ta i bruk, og sier hva det ville krevd å bygge dem.",
+      "note": "Hvert oppdrag prises i samtalen — ett fast tall, avtalt før arbeidet starter.",
+      "cta": "Book en samtale på 30 minutter"
+    },
+    "footer": {
+      "heading": "Jobb med oss",
+      "lead": "Start med en gratis kartleggingssamtale på tretti minutter.",
+      "cta": "La oss snakke",
+      "groups": [
+        {
+          "label": "Selskapet",
+          "links": [
+            {
+              "label": "Hva vi bygger",
+              "href": "#capabilities"
+            },
+            {
+              "label": "Prosjekter",
+              "href": "#work"
+            },
+            {
+              "label": "Tilnærming",
+              "href": "#approach"
+            },
+            {
+              "label": "Team",
+              "href": "#team"
+            },
+            {
+              "label": "Vilkår",
+              "href": "@terms"
+            },
+            {
+              "label": "Personvern",
+              "href": "@privacy"
+            }
+          ]
+        },
+        {
+          "label": "Produkt",
+          "links": [
+            {
+              "label": "Privat AI-plattform",
+              "href": "@privateAi"
+            },
+            {
+              "label": "Slik fungerer det",
+              "href": "#process"
+            },
+            {
+              "label": "Spørsmål og svar",
+              "href": "#faq"
+            }
+          ]
+        },
+        {
+          "label": "Kontakt",
+          "links": [
+            {
+              "label": "LinkedIn",
+              "href": "https://www.linkedin.com/company/aiadaptiv"
+            },
+            {
+              "label": "X / Twitter",
+              "href": "https://x.com/aiadaptiv"
+            },
+            {
+              "label": "E-post",
+              "href": "mailto:kacper@aiadaptiv.com"
+            }
+          ]
+        }
+      ],
+      "rights": "Alle rettigheter forbeholdt."
+    },
+    "legal": {
+      "disclaimer": "aiAdaptiv leverer skreddersydd programvare- og AI-utvikling etter et skriftlig tilbud avtalt med hver kunde. Leveransene går over til kunden ved full betaling. AI-systemer gir sannsynlighetsbaserte resultater og leveres uten garanti for bestemte forretningsresultater. Ingenting på denne nettsiden er et tilbud, et prisoverslag eller juridisk rådgivning.",
+      "terms": {
+        "metaTitle": "Terms of Service — aiAdaptiv",
+        "metaDescription": "The terms under which aiAdaptiv provides custom AI and software development services: proposals, fees, intellectual property, confidentiality, data protection and liability.",
+        "h1": "Terms of Service",
+        "updated": "Last updated: 5 September 2026",
+        "intro": "These terms govern the services aiAdaptiv (\"we\", \"us\") provides to a client (\"you\"). They apply alongside the written proposal for your engagement; where the two disagree, the proposal wins. Using this website is covered by section 1 alone.",
+        "sections": [
+          {
+            "h": "1. This website",
+            "body": [
+              "This site describes what we do. Nothing on it is an offer, a quote, or a commitment to deliver at a stated price or date — engagements begin only when we both sign a written proposal.",
+              "Figures, timelines and case studies describe past work under its own conditions and are not a prediction of your results."
+            ]
+          },
+          {
+            "h": "2. What we provide",
+            "body": [
+              "We design, build, deploy and — where agreed — operate custom software and AI systems. Typical work includes AI SaaS products, mobile applications, automations and agents, scoped pilots, marketing systems, and private LLM platforms deployed in infrastructure you control.",
+              "The scope of any engagement is whatever the signed proposal says, and nothing else. Work outside it is a change request under section 4."
+            ]
+          },
+          {
+            "h": "3. Proposals, scope and fees",
+            "body": [
+              "Each engagement gets a written proposal setting out scope, deliverables, timeline and a fixed price. The price holds for that scope.",
+              "Unless the proposal says otherwise, invoices are payable within 14 days. Late payment entitles us to statutory interest and to pause work until the account is settled.",
+              "Prices exclude VAT and exclude third-party costs — cloud hosting, model API usage, app-store fees, licences — which you pay directly to those providers unless we have agreed otherwise in writing."
+            ]
+          },
+          {
+            "h": "4. Changes",
+            "body": [
+              "Either of us may propose a change to scope. A change takes effect only when we have both agreed it in writing, including its effect on price and timeline.",
+              "Timelines assume you supply access, content, decisions and approvals when needed. Delays on your side move the dates."
+            ]
+          },
+          {
+            "h": "5. Your responsibilities",
+            "body": [
+              "You provide timely access to the systems, accounts, data and people the work needs, and you keep your own accounts and credentials secure.",
+              "You confirm you have the right to give us any data, content or credentials you supply, and that our agreed use of them does not breach a third party's rights or your own obligations.",
+              "You remain responsible for how you use what we build, including decisions taken on the basis of its output."
+            ]
+          },
+          {
+            "h": "6. Third-party services and AI models",
+            "body": [
+              "Our work integrates third-party services — model providers, cloud platforms, app stores, SaaS tools. Their own terms and prices govern their services, they may change them, and we are not responsible for their availability, output or acts.",
+              "AI systems are probabilistic. They can produce output that is wrong, biased, or unsuitable for a given purpose, and the same input may not give the same result twice. We build evaluation and human review into a system where the proposal says so, but we do not warrant that any AI output is accurate, complete or fit for a particular purpose.",
+              "Where a system falls within the EU AI Act, we will tell you what we understand its classification to imply for the build. Assessing your own obligations as deployer, and meeting them, remains yours."
+            ]
+          },
+          {
+            "h": "7. Intellectual property",
+            "body": [
+              "On payment in full, we assign to you the intellectual property rights in the deliverables built specifically for you under the proposal, to the extent those rights are assignable.",
+              "We keep ownership of everything we bring with us: pre-existing code, tools, libraries, templates and know-how, plus anything generic we develop that is not specific to you. You get a perpetual, non-exclusive, transferable licence to use those components as embedded in your deliverables.",
+              "Your data, content and trade marks stay yours throughout. Third-party and open-source components stay under their own licences, which we will identify on request.",
+              "Unless you tell us otherwise in writing, we may name you as a client and describe the work in general terms."
+            ]
+          },
+          {
+            "h": "8. Confidentiality",
+            "body": [
+              "Each of us will keep the other's non-public information confidential, use it only for the engagement, and protect it with at least reasonable care. This survives the engagement by three years, and indefinitely for anything that is a trade secret.",
+              "It does not cover information that is public through no fault of the receiver, was already lawfully held, is independently developed, or must be disclosed by law — in which case we will tell you first where we are permitted to."
+            ]
+          },
+          {
+            "h": "9. Data protection",
+            "body": [
+              "Where we process personal data on your behalf, you are the controller and we are the processor, and we will enter a data processing agreement setting out the subject matter, duration, purpose and safeguards before that processing starts.",
+              "We deploy inside infrastructure you control wherever the proposal provides for it, so that your personal data stays under your account and your keys.",
+              "How we handle personal data you give us directly — an enquiry, a booking — is described in our Privacy Policy."
+            ]
+          },
+          {
+            "h": "10. Acceptance and defects",
+            "body": [
+              "Deliverables are treated as accepted once you have had the review period stated in the proposal, or 14 days if it states none, and have not reported a material defect in writing.",
+              "We will fix defects reported within 30 days of acceptance that stop a deliverable doing what the proposal says it does, at no charge. Beyond that, support is whatever a separate retainer provides for."
+            ]
+          },
+          {
+            "h": "11. Warranties and disclaimer",
+            "body": [
+              "We warrant that we will perform with reasonable skill and care, by suitably competent people, and that we have the right to enter this agreement.",
+              "Beyond that, and to the extent the law allows, our services and deliverables are provided \"as is\": we do not warrant uninterrupted or error-free operation, results from a third-party service, or that any commercial, revenue or efficiency outcome will follow."
+            ]
+          },
+          {
+            "h": "12. Limitation of liability",
+            "body": [
+              "Neither of us limits liability for death or personal injury caused by negligence, for fraud, or for anything else the law does not permit to be limited.",
+              "Otherwise, neither of us is liable for lost profit, lost revenue, lost or corrupted data, or indirect or consequential loss; and our total liability arising from an engagement is capped at the fees you paid us under it in the twelve months before the claim.",
+              "You are responsible for keeping your own backups of your data."
+            ]
+          },
+          {
+            "h": "13. Term and termination",
+            "body": [
+              "Either of us may end an engagement on 30 days' written notice, or immediately if the other commits a material breach and has not fixed it within 14 days of being asked in writing.",
+              "On termination you pay for work performed and third-party costs committed up to that date. Sections on intellectual property, confidentiality, liability and governing law survive.",
+              "A monthly retainer runs month to month and either of us may end it on 30 days' notice, effective at the end of a billing period."
+            ]
+          },
+          {
+            "h": "14. Governing law",
+            "body": [
+              "These terms are governed by Polish law. Any dispute goes to the court with jurisdiction over the company's registered seat.",
+              "If a provision is unenforceable, the rest stands."
+            ]
+          },
+          {
+            "h": "15. Changes to these terms",
+            "body": [
+              "We may update these terms for future engagements. The version that applies to yours is the one in force when the proposal was signed."
+            ]
+          },
+          {
+            "h": "16. Who we are",
+            "body": [
+              "aiAdaptiv is a company registered in Poland.",
+              "Contact: kacper@aiadaptiv.com"
+            ]
+          }
+        ],
+        "backHome": "← Back to home"
+      },
+      "privacy": {
+        "metaTitle": "Privacy Policy — aiAdaptiv",
+        "metaDescription": "How aiAdaptiv collects and uses personal data on this website: analytics, cookies, bookings, enquiries, legal bases, processors, retention and your GDPR rights.",
+        "h1": "Privacy Policy",
+        "updated": "Last updated: 5 September 2026",
+        "intro": "This policy covers personal data we collect through this website and through enquiries and bookings made from it. Personal data we process on behalf of a client, inside a system we built for them, is governed by that client's own policy and our data processing agreement with them — not by this one.",
+        "sections": [
+          {
+            "h": "1. Who is responsible",
+            "body": [
+              "aiAdaptiv, a company registered in Poland, is the controller for the personal data described here.",
+              "Questions, or any request under section 8: kacper@aiadaptiv.com"
+            ]
+          },
+          {
+            "h": "2. What we collect",
+            "body": [
+              "If you contact us, whatever you choose to send: your name, email address, company, and the content of your message.",
+              "If you book a call, the name, email address and any answers you give in the booking form, plus the time you chose. Bookings are handled by Cal.com and the call itself may run on Cal Video.",
+              "If you consent to analytics, usage data about your visit: pages viewed, approximate location derived from IP, device and browser type, and referring site.",
+              "Basic request data is logged by our hosting provider for security and reliability, including IP address."
+            ]
+          },
+          {
+            "h": "3. Cookies and analytics",
+            "body": [
+              "No analytics or advertising storage is set until you accept it in the banner. We use Google Consent Mode, which denies those storage types by default and grants them only after you accept; declining leaves them denied.",
+              "With consent, we use Google Analytics 4 to understand how the site is used. We also use Vercel Analytics, which is cookieless and does not track visitors across sites.",
+              "Your choice is stored in your browser so we do not ask again. Clearing your browser storage resets it."
+            ]
+          },
+          {
+            "h": "4. Why we use it, and on what basis",
+            "body": [
+              "To answer enquiries and run bookings — because it is necessary to take steps at your request before entering a contract, and because we have a legitimate interest in responding to people who contact us.",
+              "To keep the site secure and working — our legitimate interest in operating it safely.",
+              "To measure traffic with analytics — your consent, which you may withdraw at any time.",
+              "To meet accounting, tax and other legal duties — our legal obligations."
+            ]
+          },
+          {
+            "h": "5. Who else sees it",
+            "body": [
+              "We use service providers who process data on our behalf under contract: Vercel (hosting and analytics), Google (Analytics), Cal.com (bookings and video), and our email provider for correspondence.",
+              "We do not sell personal data and we do not share it for advertising.",
+              "We may disclose data where the law requires it, or to establish or defend a legal claim."
+            ]
+          },
+          {
+            "h": "6. Transfers outside the EEA",
+            "body": [
+              "Some of those providers are established outside the European Economic Area, or use sub-processors that are. Where data is transferred outside the EEA, it is covered by the European Commission's standard contractual clauses or another lawful transfer mechanism. We will tell you which on request."
+            ]
+          },
+          {
+            "h": "7. How long we keep it",
+            "body": [
+              "Enquiries and booking records: up to 24 months from our last contact, unless a contract requires longer.",
+              "Contract, invoicing and accounting records: for the period tax law requires.",
+              "Analytics data: for the retention period configured in Google Analytics, currently 14 months.",
+              "Server logs: a short rolling period set by our hosting provider."
+            ]
+          },
+          {
+            "h": "8. Your rights",
+            "body": [
+              "You may ask us for a copy of your personal data, to correct it, to delete it, to restrict or object to how we use it, and to receive it in a portable form. Where we rely on consent, you may withdraw it at any time without affecting what came before.",
+              "Write to kacper@aiadaptiv.com and we will respond within one month.",
+              "You may also lodge a complaint with the President of the Personal Data Protection Office (UODO), the Polish supervisory authority."
+            ]
+          },
+          {
+            "h": "9. Children",
+            "body": [
+              "This site is aimed at businesses. We do not knowingly collect personal data from children."
+            ]
+          },
+          {
+            "h": "10. Changes",
+            "body": [
+              "We may update this policy. The date at the top shows when it last changed; material changes will be flagged on this page."
+            ]
+          }
+        ],
+        "backHome": "← Back to home"
+      }
+    }
+  },
+  "privateAi": {
+    "meta": {
+      "title": "Privat AI-plattform — din egen LLM med åpen kildekode, i din sky | aiAdaptiv",
+      "description": "En plattform med LLM med åpen kildekode og din merkevare, satt opp inne i din egen EU-skykonto. Infrastrukturen, nøklene og dataene er dine; vi setter opp, vedlikeholder og oppdaterer. I tråd med GDPR og EUs AI-forordning gjennom arkitekturen."
+    },
+    "tags": [
+      "LLM med åpen kildekode",
+      "Din EU-sky",
+      "Din merkevare",
+      "GDPR og AI-forordningen"
+    ],
+    "cta": "Book en samtale på 30 minutter",
+    "imageLabel": "Blyantskisse av en hengelås på lyst papir — aiAdaptivs private AI-plattform.",
+    "flowAlt": "Blyantskisse: din egen EU-skykonto, så plattformen satt opp, så et nettleser-grensesnitt med din merkevare, så teamet ditt som bruker den.",
+    "video": {
+      "label": "Se den i bruk",
+      "title": "En kontrakt går inn. Risiko og et sammendrag kommer ut — i et privat miljø med din merkevare.",
+      "duration": "4:32",
+      "cta": "Spill av gjennomgangen",
+      "note": "Lastes først når du trykker på avspilling, så ingenting hentes fra Loom før det."
+    },
+    "hero": {
+      "badge": "Privat AI-plattform · LLM-er med åpen kildekode i din egen sky",
+      "headline": [
+        {
+          "text": "Bedriftens private hjerne."
+        },
+        {
+          "text": "Eid, ikke leid.",
+          "accent": true
+        }
+      ],
+      "subhead": "Vi setter opp en AI-plattform helt med din merkevare, direkte inne i din egen sikre EU-skykonto. Infrastrukturen, nøklene og dataene er dine. Vi tar den tunge jobben.",
+      "tagline": "Slutt på å lime sensitive kundedata inn i offentlige verktøy.",
+      "cta": "Sjekk på 60 sekunder om det passer →"
+    },
+    "problem": {
+      "h2": "Offentlig AI er en betydelig risiko",
+      "points": [
+        "Bøter på inntil 4 % (GDPR) eller 7 % (EUs AI-forordning) av omsetningen.",
+        "Kontraktene og kundedataene deres kan trene offentlige modeller og havne hos konkurrenter.",
+        "Små team klarer ikke å holde tritt med infrastruktur og oppdateringer."
+      ]
+    },
+    "solution": {
+      "h2": "Vi setter den opp. Du eier den.",
+      "pillars": [
+        {
+          "title": "Sikker dokumentforståelse",
+          "body": "Last opp kontrakter på 200 sider eller due diligence-mapper. Hent ut risiko trygt, sammenlign versjoner og få sammendrag — uten datalekkasje."
+        },
+        {
+          "title": "100 % med din merkevare",
+          "body": "ai.dittfirma.no i dine farger. En reell intern verdi."
+        },
+        {
+          "title": "Din egen skykonto",
+          "body": "Satt opp i din egen skykonto. Du styrer alt."
+        },
+        {
+          "title": "Null driftsbyrde",
+          "body": "Vi tar oss av modelloppdateringer, sikkerhet og vedlikehold."
+        }
+      ]
+    },
+    "howItWorks": {
+      "h2": "Slik fungerer det",
+      "intro": "Vi gjør privat AI enkelt ved å sette opp alt inne i din egen skykonto.",
+      "steps": [
+        {
+          "title": "1. Du oppretter kontoen din (eller vi gjør det for deg)",
+          "body": "Opprett en skykonto i en EU-region. Du styrer faktureringen."
+        },
+        {
+          "title": "2. Vi bygger den og setter din merkevare på",
+          "body": "Vi setter opp Open WebUI og optimaliserte modeller, legger på logoen din og kobler opp ai.dittfirma.no."
+        },
+        {
+          "title": "3. Du får full tilgang",
+          "body": "Teamet ditt logger inn og tar den i bruk."
+        },
+        {
+          "title": "4. Vi tar vedlikeholdet",
+          "body": "Månedlige oppdateringer og støtte."
+        }
+      ],
+      "timeline": "Vanlig tidsbruk: 3–7 virkedager fra betaling til den er i drift.",
+      "roadmap": {
+        "label": "Kundens løp",
+        "days": [
+          {
+            "label": "Dag 1–2",
+            "body": "Du oppretter (eller vi oppretter) skykontoen og gir tilgang."
+          },
+          {
+            "label": "Dag 3–5",
+            "body": "Vi setter opp, legger på merkevaren og optimaliserer plattformen for arbeidsflytene deres."
+          },
+          {
+            "label": "Dag 6–7",
+            "body": "Overleveringsopplæring, og teamet ditt går i gang."
+          }
+        ],
+        "resultLabel": "Resultat",
+        "result": "En sikker privat AI-plattform, helt med din merkevare, i drift i ditt eget miljø på under en uke."
+      },
+      "flowLabel": "Visuelt sammendrag (fire enkle steg)",
+      "flow": "Din egen skykonto (EU)\n↓\nVi setter opp Open WebUI + modeller\n↓\nMed din merkevare på ai.dittfirma.no\n↓\nTeamet ditt bruker den trygt\n(månedlig vedlikehold fra oss)",
+      "outro": "Kontoen er din. Dataene er dine. Det tekniske arbeidet tar vi."
+    },
+    "behindTheArchitecture": {
+      "h2": "Bak arkitekturen",
+      "lead": "Hei, jeg er grunnleggeren av aiAdaptiv.",
+      "body": [
+        "Jeg bygget dette fordi mindre firmaer trenger kraftig AI til kontrakter og kundearbeid — men offentlige verktøy skaper reell risiko. Hvert oppsett får direkte oppmerksomhet fra personen som bygget plattformen."
+      ]
+    },
+    "faq": {
+      "h2": "Ofte stilte spørsmål",
+      "items": [
+        {
+          "q": "Hvorfor sette den opp i min egen skykonto?",
+          "a": "Reelt eierskap. Du styrer kontoen, faktureringen og nøklene. Skulle du en dag slutte å jobbe med oss, forblir hele plattformen din — ingen binding til en leverandør."
+        },
+        {
+          "q": "Ser dere de sensitive dataene våre?",
+          "a": "Nei. All behandling skjer inne i ditt sikre miljø. Vi har aldri tilgang til forespørslene eller dokumentene dine."
+        },
+        {
+          "q": "Hva koster GPU-kraften?",
+          "a": "Du betaler skyleverandøren direkte — aldri oss. Vi holder oss fleksible, kan bruke ulike GPU-leverandører og velge og justere riktig størrelse for din bruk. GPU-kraft ligger vanligvis på noen hundre euro i måneden, avhengig av hvor mye den brukes."
+        },
+        {
+          "q": "Hvor lang tid tar oppsettet?",
+          "a": "Vanligvis 3–7 virkedager fra betaling, når du har fullført sjekklisten for oppstart."
+        },
+        {
+          "q": "Kan jeg si opp?",
+          "a": "Ja. Det månedlige vedlikeholdet kan sies opp med 30 dagers varsel. Plattformen, som er din, beholder du."
+        }
+      ]
+    },
+    "qualifier": {
+      "h2": "Passer dette for deg?",
+      "yesLabel": "Ja hvis",
+      "yes": "du jobber daglig med sensitive juridiske, finansielle eller kunderelaterte dokumenter.",
+      "noLabel": "Nei hvis",
+      "no": "du bare trenger et billig, generelt AI-verktøy.",
+      "cta": "Sjekk på 60 sekunder om det passer →"
+    },
+    "backHome": "← Tilbake til forsiden"
+  }
+}

@@ -281,15 +281,14 @@ export type LegalDocument = {
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
   en: () => import("./dictionaries/en.json").then((m) => m.default),
   pl: () => import("./dictionaries/pl.json").then((m) => m.default),
-  // TODO: translate — currently served in English.
   de: () => import("./dictionaries/de.json").then((m) => m.default),
-  no: () => import("./dictionaries/en.json").then((m) => m.default),
+  no: () => import("./dictionaries/no.json").then((m) => m.default),
   it: () => import("./dictionaries/it.json").then((m) => m.default),
   fr: () => import("./dictionaries/fr.json").then((m) => m.default),
   es: () => import("./dictionaries/es.json").then((m) => m.default),
   pt: () => import("./dictionaries/pt.json").then((m) => m.default),
-  cs: () => import("./dictionaries/en.json").then((m) => m.default),
-  sk: () => import("./dictionaries/en.json").then((m) => m.default),
+  cs: () => import("./dictionaries/cs.json").then((m) => m.default),
+  sk: () => import("./dictionaries/sk.json").then((m) => m.default),
 };
 
 export const getDictionary = (locale: Locale): Promise<Dictionary> =>

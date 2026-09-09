@@ -1,0 +1,1012 @@
+{
+  "skipToContent": "Prejsť na hlavný obsah",
+  "cookies": {
+    "message": "Používame cookies na meranie návštevnosti a zlepšenie vášho zážitku. Vy rozhodujete, čo smieme ukladať.",
+    "accept": "Prijať",
+    "decline": "Odmietnuť",
+    "learnMore": "Viac informácií"
+  },
+  "agency": {
+    "meta": {
+      "title": "aiAdaptiv — AI riešenia na mieru, ktoré šetria hodiny a zvyšujú tržby",
+      "description": "Navrhujeme, staviame a dodávame AI riešenia na mieru: AI SaaS produkty, mobilné aplikácie, automatizácie, pilotné projekty, marketingové systémy a privátne open-source LLM platformy. Objednajte si 30-minútový hovor."
+    },
+    "header": {
+      "cta": "Objednať hovor",
+      "menuLabel": "Otvoriť menu",
+      "nav": [
+        {
+          "label": "Čo staviame",
+          "href": "#capabilities"
+        },
+        {
+          "label": "Projekty",
+          "href": "#work"
+        },
+        {
+          "label": "Prístup",
+          "href": "#approach"
+        },
+        {
+          "label": "Kontakt",
+          "href": "#contact"
+        }
+      ]
+    },
+    "theme": {
+      "toggle": "Prepnúť svetlý alebo tmavý motív"
+    },
+    "hero": {
+      "eyebrow": "AI na mieru · Pevná cena · Dodané od začiatku do konca",
+      "questions": [],
+      "headline": [
+        {
+          "text": "AI riešenia na mieru, ktoré"
+        }
+      ],
+      "rotating": [
+        "ušetria desiatky hodín.",
+        "zautomatizujú rutinu.",
+        "zvýšia tržby.",
+        "obmedzia ručnú prácu.",
+        "nezmeškajú žiadny dopyt."
+      ],
+      "subhead": "Automatizácie, AI produkty, mobilné aplikácie a marketingové systémy — postavené na tom, ako vaša firma naozaj funguje. Pevná cena, kompletná dodávka a priebežné aktualizácie, ako sa modely posúvajú.",
+      "cta": "Objednať 30-minútový hovor",
+      "stats": [
+        {
+          "value": "12 rokov",
+          "label": "vývoja, od roku 2014"
+        },
+        {
+          "value": "4 roky",
+          "label": "práce s LLM"
+        },
+        {
+          "value": "20+",
+          "label": "dodaných AI riešení"
+        }
+      ]
+    },
+    "tech": {
+      "label": "Technológie, na ktorých staviame"
+    },
+    "capabilities": {
+      "h2": "Čo staviame",
+      "lead": "Šesť oblastí, jeden seniorný tím. Každá z nich už beží v produkcii u platiaceho klienta — žiadna nie je len slajd.",
+      "items": [
+        {
+          "id": "ai-saas",
+          "title": "AI SaaS produkty",
+          "body": "Navrhujeme a dodávame kompletné AI produkty: architektúru, modelovú vrstvu, prihlasovanie, fakturáciu a rozhranie, ktoré vaši zákazníci naozaj používajú. Od prázdneho repozitára k platiacim používateľom.",
+          "tags": [
+            "Full-stack vývoj",
+            "Architektúra LLM",
+            "Spustenie"
+          ]
+        },
+        {
+          "id": "mobile-apps",
+          "title": "Mobilné aplikácie",
+          "body": "Natívne aj multiplatformové aplikácie s AI v jadre — priamo na zariadení, kde to vyžaduje súkromie alebo odozva, v cloude, kde nie. Vydané v App Store a Play Store, nie odložené v TestFlighte.",
+          "tags": [
+            "iOS a Android",
+            "AI na zariadení",
+            "Vydanie v obchodoch"
+          ]
+        },
+        {
+          "id": "ai-automations",
+          "title": "AI automatizácie",
+          "body": "Agenti a workflow, ktorí prácu robia, namiesto toho aby ju opisovali: triedenie prichádzajúcich požiadaviek, rešerše, príprava textov, zadávanie údajov — plus integrácie, ktoré výsledok zapíšu do systémov, ktoré už používate.",
+          "tags": [
+            "Agenti",
+            "Integrácie",
+            "Človek v procese"
+          ]
+        },
+        {
+          "id": "ai-pilots",
+          "title": "AI pilotné projekty a prípadové štúdie",
+          "body": "Ohraničený pilot, ktorý odpovie na jednu otázku: oplatí sa tu AI naozaj? Dostanete funkčný proof of concept, reálne čísla o nákladoch a kvalite a písomné odporúčanie za alebo proti ďalšiemu rozvoju.",
+          "tags": [
+            "Proof of concept",
+            "Model nákladov",
+            "Písomný záver"
+          ]
+        },
+        {
+          "id": "ai-marketing",
+          "title": "AI marketing",
+          "body": "Rastové systémy riadené AI: vyhľadávanie a obohacovanie kontaktov, personalizované oslovenie, ktoré si zaslúži odpoveď, obsahové systémy a reporting, ktorý ukáže, čo naozaj zabralo.",
+          "tags": [
+            "Systémy oslovenia",
+            "Obsahové systémy",
+            "Atribúcia"
+          ]
+        },
+        {
+          "id": "app-factory",
+          "title": "AI továreň na aplikácie",
+          "body": "Výrobná linka pre interné nástroje — spoločný stack, spoločné komponenty, jeden opakovateľný postup — takže piata aplikácia stojí zlomok tej prvej. Pre tímy, ktoré potrebujú postaviť desať vecí, nie jednu.",
+          "tags": [
+            "Opakovateľný stack",
+            "Interné nástroje",
+            "Sériová dodávka"
+          ]
+        }
+      ]
+    },
+    "proof": {
+      "h2": "Dodávame systémy, nie prezentácie",
+      "lead": "Každá zákazka prebieha rovnako.",
+      "points": [
+        {
+          "title": "Vyše 20 AI riešení v produkcii",
+          "body": "Automatizácie, produkty, za ktoré zákazníci platia, a privátne AI platformy v cloude klienta."
+        },
+        {
+          "title": "Jedna pevná cena, dohodnutá vopred",
+          "body": "Písomný rozsah pred prvým riadkom kódu. Žiadne hodinové sadzby, žiadna nečakaná faktúra."
+        },
+        {
+          "title": "Dvanásť rokov vývoja pod tým",
+          "body": "Full-stack od roku 2014, štyri roky s LLM. AI je posledných desať percent fungujúceho produktu."
+        },
+        {
+          "title": "Končí to odovzdaním",
+          "body": "Fungujúci systém a dokumentácia, s ktorou váš tím vie pracovať. Alebo paušál, ak chcete, aby sme ho prevádzkovali ďalej."
+        }
+      ],
+      "cta": "Objednať 30-minútový hovor",
+      "mediaLabel": "Ceruzková skica zatvorenej prepravnej krabice na svetlom papieri."
+    },
+    "work": {
+      "h2": "Vybrané projekty",
+      "lead": "Deväť typov systémov, ktoré sme dodali — postavené, nasadené a prevádzkované nami.",
+      "cases": [
+        {
+          "id": "private-ai",
+          "name": "Privátna AI pre regulované údaje",
+          "result": "Open-source LLM vo vašom vlastnom EU cloude. Nič z neho neodíde.",
+          "body": "Pre tímy, ktoré pracujú so zdravotnou dokumentáciou, právnymi spismi alebo inými citlivými údajmi, je verejný AI nástroj vylúčený. Nasadzujeme open-source modely do vlastného EU cloudového účtu klienta — pod jeho značkou a s dokumentovou inteligenciou nad jeho vlastným archívom — takže platforma patrí jemu a GDPR aj európske nariadenie o AI sú splnené architektúrou, nie smernicou.",
+          "tags": [
+            "Open-source LLM",
+            "Nariadenie EÚ o AI",
+            "Zdravotné a právne údaje"
+          ]
+        },
+        {
+          "id": "messaging-bots",
+          "name": "Boti na okamžité odpovede na WhatsApp a Messenger",
+          "result": "Každá správa zodpovedaná v priebehu sekúnd, vo dne v noci.",
+          "body": "Zákazníci píšu na WhatsApp a Messenger o jedenástej večer a čakajú odpoveď. Staviame botov, ktorí odpovedia na otázky k produktu, prijmú rezerváciu a rovno kvalifikujú dopyt, v dôležitej chvíli odovzdajú človeku a všetko zapíšu do systémov, ktoré tím už používa.",
+          "tags": [
+            "WhatsApp",
+            "Messenger",
+            "Automatizácia podpory"
+          ]
+        },
+        {
+          "id": "website-support",
+          "name": "AI podpora na vašom webe",
+          "result": "Chatbot, ktorý pozná vaše podnikanie, lebo sa učil z vášho vlastného obsahu.",
+          "body": "Asistent na stránke ukotvený vo vlastných stránkach, dokumentoch, cenníkoch a pravidlách klienta. Presne odpovedá na otázky návštevníkov, zachytí tie, ktoré stoja za ozvanie, a hovor si sám objedná — žiadny všeobecný skript, a každá odpoveď sa dá dohľadať k niečomu, čo klient naozaj napísal.",
+          "tags": [
+            "Chatbot na webe",
+            "RAG",
+            "Zber dopytov"
+          ]
+        },
+        {
+          "id": "ad-creative",
+          "name": "Reklamná kreatíva vytvorená AI",
+          "result": "Desiatky variantov v súlade so značkou na otestovanie namiesto jedného drahého natáčania.",
+          "body": "Video a obrazové reklamy vytvorené generatívnymi nástrojmi — Claude na koncepty, háčiky a texty, Higgsfield na vizuál a pohyb — takže kampaň dostane celú sadu variantov na testovanie namiesto jedinej kreatívy. Postavené ako opakovateľný proces, ktorý si marketingový tím riadi sám, nie ako jednorazová dodávka.",
+          "tags": [
+            "Claude",
+            "Higgsfield",
+            "Reklamná kreatíva"
+          ]
+        },
+        {
+          "id": "premium-websites",
+          "name": "Prémiové weby",
+          "result": "Navrhnuté, napísané a spustené ako jeden systém, v dňoch namiesto mesiacov.",
+          "body": "Weby zamerané na konverziu, kde sú texty, štruktúra aj SEO súčasťou od prvého commitu: viacjazyčné, správne indexované, so štruktúrovanými údajmi, aby AI vyhľadávanie vedelo odpovedať na otázky o firme, a s objednávkovým krokom na konci každej cesty. Postavené od začiatku do konca s AI nástrojmi — tento web je jedným z nich.",
+          "tags": [
+            "Next.js",
+            "SEO",
+            "AI vyhľadávanie"
+          ]
+        },
+        {
+          "id": "booking-systems",
+          "name": "Rezervačné systémy na mieru",
+          "result": "Každá rezervácia pristane v kalendári, v CRM aj v e-maile — bez nikoho medzi tým.",
+          "body": "Objednávkový systém postavený na tom, ako firma termíny naozaj prijíma: pravidlá dostupnosti, záloha alebo platba pri rezervácii, pripomienky, ktoré znižujú nedostavenie sa, a každá rezervácia automaticky zapísaná do kalendára aj CRM. Napojený na nástroje, ktoré sa už používajú, namiesto toho aby ich nahrádzal.",
+          "tags": [
+            "Objednávkový systém",
+            "Platby",
+            "CRM"
+          ]
+        },
+        {
+          "id": "second-brain",
+          "name": "Digitálny druhý mozog",
+          "result": "Všetko, čo vaša firma vie — vyhľadateľné a nikdy nezabudnuté.",
+          "body": "Zmluvy, ponuky, poznámky, zápisy a znalosti, ktoré žijú v hlavách niekoľkých ľudí, na jednom mieste a dopytovateľné bežným jazykom. Odpovede odkazujú na zdrojový dokument, aby sa im dalo veriť, a nový materiál sa dopĺňa sám, namiesto toho aby čakal, kým ho niekto založí.",
+          "tags": [
+            "Znalostná báza",
+            "Vyhľadávanie v dokumentoch",
+            "Pamäť"
+          ]
+        },
+        {
+          "id": "mvp-team",
+          "name": "AI vývojový tím pre rýchle MVP",
+          "result": "Od nápadu k fungujúcemu produktu za týždne, nie za štvrťroky.",
+          "body": "Seniorný tím natívne pracujúci s AI, na požiadanie, pre zakladateľov a firmy, ktoré potrebujú prvú verziu: architektúra, modelová vrstva, prihlasovanie, fakturácia a rozhranie, postavené od začiatku do konca s AI nástrojmi — takže prvý fungujúci produkt je hotový za týždne a je dosť pevný na to, aby sa na ňom dalo stavať.",
+          "tags": [
+            "MVP",
+            "AI SaaS",
+            "Továreň na aplikácie"
+          ]
+        },
+        {
+          "id": "automations",
+          "name": "Automatizácie back-office",
+          "result": "Opakovaná práca natrvalo odovzdaná softvéru.",
+          "body": "Triedenie požiadaviek, zadávanie údajov, reporting, urgencie — opakujúce sa úlohy, ktoré tímu nenápadne zjedia týždeň. Zmapujeme ich, zautomatizujeme tie, ktoré sa oplatia, pri rozhodnutiach, kde treba človeka, ho tam necháme, a výstup napojíme na nástroje, na ktorých firma už beží.",
+          "tags": [
+            "Automatizácia",
+            "Agenti",
+            "Integrácie"
+          ]
+        }
+      ]
+    },
+    "product": {
+      "h2": "Privátna open-source AI — jedna z vecí, ktoré staviame",
+      "headline": "Privátny mozog vašej firmy. Vo vlastníctve, nie v prenájme.",
+      "lead": "Nasadíme plne značkovú AI platformu priamo do vášho vlastného zabezpečeného EU cloudového účtu. Infraštruktúra, kľúče aj údaje patria vám. Ťažkú prácu urobíme my.",
+      "why": "Verejná AI je riziko: pokuty až 4 % obratu podľa GDPR a 7 % podľa európskeho nariadenia o AI, a zmluvy alebo klientske údaje, ktoré môžu skončiť trénovaním cudzieho modelu.",
+      "pillars": [
+        {
+          "title": "Bezpečná práca s dokumentmi",
+          "body": "Nahrajte dvestostranové zmluvy alebo podklady k due diligence. Bezpečne vytiahnite riziká, porovnajte verzie a získajte zhrnutia — bez akéhokoľvek úniku údajov."
+        },
+        {
+          "title": "100 % pod vašou značkou",
+          "body": "ai.vasakancelaria.sk vo vašich farbách. Skutočné interné aktívum."
+        },
+        {
+          "title": "Váš vlastný cloudový účet",
+          "body": "Nasadené vo vašom vlastnom cloudovom účte. Ovládate všetko."
+        },
+        {
+          "title": "Nulová prevádzková záťaž",
+          "body": "Aktualizácie modelov, bezpečnosť a údržbu riešime my."
+        }
+      ],
+      "cta": "Pozrieť platformu",
+      "imageAlt": "Ceruzková skica visiaceho zámku na svetlom papieri — privátna AI platforma aiAdaptiv."
+    },
+    "team": {
+      "h2": "S kým naozaj pracujete",
+      "lead": "Malý a seniorný tím. Kto určí rozsah, ten systém aj postaví — medzi vami a vývojárom nie je žiadna medzivrstva.",
+      "licensesLabel": "Certifikácie",
+      "members": [
+        {
+          "id": "kacper",
+          "name": "Kacper Hernacki",
+          "role": "Zakladateľ a CTO",
+          "body": [
+            "Vyše desať rokov full-stack vývoja od roku 2014, dnes zameraných na prevod zložitých problémov do inteligentných a škálovateľných systémov — webové aplikácie, mobilné aplikácie a automatizácie dodané klientom po celom svete.",
+            "Drží niekoľko certifikácií vo vývoji s AI a rozsah každej zákazky určuje osobne: kto píše vašu ponuku, ten navrhuje aj architektúru."
+          ],
+          "licenses": [
+            {
+              "name": "AI_devs 3 · Agents",
+              "issuer": "AI_devs",
+              "year": "2025",
+              "url": "https://credsverse.com/credentials/3fc027b2-7899-4a52-8e60-ca177c4f7ad0"
+            },
+            {
+              "name": "AI_devs 2 · GPT-4 in applications and automation",
+              "issuer": "AI_devs",
+              "year": "2024",
+              "url": "https://credsverse.com/credentials/e34b5af4-8a00-4c60-ae6e-f32658be0926"
+            },
+            {
+              "name": "AI_devs · AI Developer",
+              "issuer": "AI_devs",
+              "year": "2023",
+              "url": "https://verified.sertifier.com/en/verify/50831241179182/"
+            }
+          ],
+          "profile": {
+            "label": "Profil na LinkedIn",
+            "url": "https://www.linkedin.com/in/kacper-hernacki-965161203/"
+          }
+        }
+      ]
+    },
+    "approach": {
+      "h2": "Čím sa líšime",
+      "items": [
+        {
+          "title": "Pevný rozsah, pevná cena",
+          "body": "Každá zákazka dostane písomný rozsah, harmonogram a pevnú cenu ešte pred začiatkom. Žiadne hodinové sadzby, žiadne rozrastanie rozsahu, žiadna nečakaná faktúra."
+        },
+        {
+          "title": "Vždy vaša infraštruktúra",
+          "body": "Nasadzujeme do vášho cloudového účtu pod vašimi kľúčmi. Keď zákazka skončí, zostane vám fungujúci systém, nie závislosť na nás."
+        },
+        {
+          "title": "Európske od základu",
+          "body": "Umiestnenie údajov, GDPR a európske nariadenie o AI sú východiskové podmienky, nie kontrola súladu pridaná na konci. Preto architektúra vyzerá tak, ako vyzerá."
+        },
+        {
+          "title": "Prevádzkujeme, čo predávame",
+          "body": "Naša vlastná privátna AI platforma beží na rovnakom stacku, aký nasadzujeme klientom. Keď sa niečo o druhej v noci pokazí, pokazí sa to najprv nám."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Od prvého hovoru k bežiacemu systému",
+      "lead": "Štyri kroky. Cenu aj rozsah poznáte pred tretím.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Úvodný hovor",
+          "body": "Pol hodiny zadarmo. Zmapujeme, kde váš tím stráca hodiny, čo z toho AI reálne prevezme a aké sú obmedzenia súladu s predpismi."
+        },
+        {
+          "step": "02",
+          "title": "Rozsah a pevná cena",
+          "body": "Písomný rozsah, náčrt architektúry, harmonogram a jedna pevná cena. Ak sa to stavať neoplatí, povieme vám to."
+        },
+        {
+          "step": "03",
+          "title": "Vývoj a nasadenie",
+          "body": "Staviame vo vašom cloudovom účte, s týždennými ukážkami fungujúceho softvéru. Systém vidíte skôr, než je hotový — nie správu o jeho stave."
+        },
+        {
+          "step": "04",
+          "title": "Prevádzka alebo odovzdanie",
+          "body": "Dokumentácia a zaškolenie, aby systém patril vášmu tímu — alebo voliteľný paušál, v ktorom monitorujeme, aktualizujeme a ďalej zlepšujeme."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Časté otázky",
+      "items": [
+        {
+          "q": "Čo je aiAdaptiv?",
+          "a": "aiAdaptiv je vývojové štúdio zamerané na AI, ktoré založil Kacper Hernacki. Navrhujeme, staviame a dodávame AI riešenia na mieru pre firmy: AI SaaS produkty, mobilné aplikácie, automatizácie a agentov, ohraničené pilotné projekty, AI marketingové systémy a privátne open-source LLM platformy. Za tým stojí dvanásť rokov vývoja, z toho štyri roky s LLM, a vyše 20 dodaných AI riešení."
+        },
+        {
+          "q": "Je aiAdaptiv dôveryhodná firma?",
+          "a": "Áno. aiAdaptiv je spoločnosť registrovaná v Poľsku, ktorú vedie menovite uvedený zakladateľ, ktorého si viete sami overiť: certifikácie Kacpera Hernackého vždy odkazujú na verejnú overovaciu stránku vydavateľa a jeho profil na LinkedIn je z tohto webu prelinkovaný. Každá zákazka stojí na podpísanej písomnej ponuke s pevnou cenou a naše obchodné podmienky aj zásady ochrany osobných údajov sú zverejnené tu, nie posielané na požiadanie."
+        },
+        {
+          "q": "Aké služby aiAdaptiv ponúka?",
+          "a": "Šesť oblastí: AI SaaS produkty, mobilné aplikácie, AI automatizácie a agentov, pilotné projekty a proof of concept štúdie, AI marketingové systémy a AI továreň na aplikácie pre tímy, ktoré potrebujú veľa interných nástrojov namiesto jedného. Predávame aj hotovú privátnu AI platformu — open-source modely nasadené vo vašom vlastnom EU cloudovom účte."
+        },
+        {
+          "q": "Koľko aiAdaptiv stojí?",
+          "a": "Každý projekt má jednu pevnú cenu, stanovenú po bezplatnom 30-minútovom úvodnom hovore, keď poznáme rozsah. Žiadne hodinové sadzby, žiadny cenník a žiadna nečakaná faktúra — číslo v ponuke je číslo, ktoré zaplatíte. Priebežná správa, ak ju chcete, je pevný mesačný paušál."
+        },
+        {
+          "q": "Ako aiAdaptiv pracuje?",
+          "a": "V štyroch krokoch. Bezplatný 30-minútový úvodný hovor, v ktorom nájdeme, kde sa AI oplatí; písomný rozsah, náčrt architektúry a pevná cena; vývoj vo vašom cloudovom účte s týždennými ukážkami fungujúceho softvéru; potom dokumentácia a odovzdanie, alebo voliteľný paušál, ak chcete, aby sme systém prevádzkovali ďalej."
+        },
+        {
+          "q": "Kto je Kacper Hernacki?",
+          "a": "Kacper Hernacki je zakladateľ a CTO aiAdaptiv. Softvér vyvíja od roku 2014 — dvanásť rokov full-stack vývoja webových aplikácií, mobilných aplikácií a automatizácií pre klientov po celom svete — a drží niekoľko certifikácií vo vývoji s AI. Posledné štyri roky pracuje s veľkými jazykovými modelmi a architektúru každej zákazky aiAdaptiv vedie osobne. Napísať mu môžete na kacper@aiadaptiv.com."
+        },
+        {
+          "q": "Kto aiAdaptiv vedie?",
+          "a": "Kacper Hernacki, zakladateľ a CTO, osobne pri každej zákazke. Medzi vami a človekom, ktorý stavia váš systém, nie je žiadna vrstva account managementu — kto píše vašu ponuku, ten navrhuje aj architektúru."
+        },
+        {
+          "q": "Kde aiAdaptiv sídli a s kým pracujete?",
+          "a": "Sme remote-first tím so sídlom v Poľsku a pracujeme s klientmi po celom svete. Realizácia prebieha štandardne na diaľku, s hovormi vo vašom časovom pásme tam, kde je to potrebné, a so systémami nasadenými v cloudovom regióne, ktorý si vyberiete."
+        },
+        {
+          "q": "Ako dlho trvá prvý systém?",
+          "a": "Závisí od toho, čo sa stavia, a dátum je uvedený v ponuke. Ohraničený pilot alebo jedna automatizácia sa počítajú na týždne, celý produkt na mesiace. Okrem rozsahu dátum najviac posúva to, ako rýchlo prídu prístupy, rozhodnutia a schválenia z vašej strany."
+        },
+        {
+          "q": "Kde sú uložené naše údaje?",
+          "a": "Pri všetkom, čo pre vás prevádzkujeme, vo vašom vlastnom cloudovom účte v európskom regióne podľa vašej voľby — nasadzujeme pod vaším účtom a vašimi kľúčmi, takže cez nás nič netečie. Pri produktoch, ktoré staviame pre vašich zákazníkov, patrí infraštruktúra vám a cestu údajov navrhneme spoločne s vami ešte pred prvým riadkom."
+        },
+        {
+          "q": "Musíme používať open-source modely?",
+          "a": "Nie. Open-source modely na vašej vlastnej infraštruktúre sú východiskovou voľbou, pretože držia údaje aj náklady pod vašou kontrolou, ale komerčné API zapojíme tam, kde skutočne vyhrávajú — a povieme vám, na ktoré časti systému sa to vzťahuje."
+        },
+        {
+          "q": "Čo sa stane, keď projekt skončí?",
+          "a": "Zostane vám všetko: infraštruktúra, kód, dokumentácia aj bežiaci systém. Práva k tomu, čo sme pre vás postavili, na vás prechádzajú úplným zaplatením. Paušál je voliteľný, nikdy nie podmienka."
+        },
+        {
+          "q": "Ako vás kontaktujem?",
+          "a": "Objednajte si bezplatný 30-minútový hovor ktorýmkoľvek tlačidlom na tejto stránke, alebo napíšte na kacper@aiadaptiv.com. Odpovedáme do jedného pracovného dňa."
+        }
+      ]
+    },
+    "leadForm": {
+      "super": "Začnite tu",
+      "h2": "Napíšte nám, čo chcete postaviť",
+      "lead": "Tri krátke kroky. Odpovie vám Kacper — človek, ktorý by navrhoval architektúru — zvyčajne do jedného pracovného dňa.",
+      "progress": "Krok {step} z {total}",
+      "steps": [
+        {
+          "title": "Kto ste",
+          "hint": "Nech vieme, komu odpovedáme."
+        },
+        {
+          "title": "Vaša firma",
+          "hint": "Pomôže nám odhadnúť rozsah ešte pred hovorom."
+        },
+        {
+          "title": "Váš zámer",
+          "hint": "Čím konkrétnejšie, tým užitočnejšia bude naša prvá odpoveď."
+        }
+      ],
+      "fields": {
+        "firstName": "Meno",
+        "lastName": "Priezvisko",
+        "email": "Pracovný e-mail",
+        "company": "Firma",
+        "website": "Web firmy",
+        "role": "Vaša rola",
+        "size": "Veľkosť firmy",
+        "budget": "Rozpočet",
+        "message": "Čo chcete postaviť?"
+      },
+      "placeholders": {
+        "firstName": "Meno",
+        "lastName": "Priezvisko",
+        "email": "vy@firma.sk",
+        "company": "Vaša firma",
+        "website": "https://vasafirma.sk",
+        "role": "Vyberte rolu",
+        "size": "Počet zamestnancov",
+        "message": "V čom je problém, čo vás dnes stojí a ako by vyzeral dobrý výsledok?"
+      },
+      "optional": "nepovinné",
+      "roles": [
+        {
+          "value": "founder",
+          "label": "Zakladateľ / CEO"
+        },
+        {
+          "value": "tech",
+          "label": "CTO / vedúci vývoja"
+        },
+        {
+          "value": "ops",
+          "label": "Prevádzka / COO"
+        },
+        {
+          "value": "marketing",
+          "label": "Marketing"
+        },
+        {
+          "value": "product",
+          "label": "Produkt"
+        },
+        {
+          "value": "other",
+          "label": "Niečo iné"
+        }
+      ],
+      "sizes": [
+        {
+          "value": "1-10",
+          "label": "1–10 ľudí"
+        },
+        {
+          "value": "11-50",
+          "label": "11–50 ľudí"
+        },
+        {
+          "value": "51-200",
+          "label": "51–200 ľudí"
+        },
+        {
+          "value": "201-1000",
+          "label": "201–1 000 ľudí"
+        },
+        {
+          "value": "1000+",
+          "label": "Viac ako 1 000"
+        }
+      ],
+      "budgets": [
+        {
+          "value": "5-15k",
+          "label": "5 000 € – 15 000 €"
+        },
+        {
+          "value": "15-50k",
+          "label": "15 000 € – 50 000 €"
+        },
+        {
+          "value": "50k+",
+          "label": "Nad 50 000 €"
+        },
+        {
+          "value": "unsure",
+          "label": "Zatiaľ neviem"
+        }
+      ],
+      "back": "Späť",
+      "next": "Pokračovať",
+      "submit": "Odoslať",
+      "submitting": "Odosiela sa…",
+      "note": "Žiadny newsletter, žiadna sekvencia. Prečítame si to a odpovieme sami.",
+      "errors": {
+        "required": "Toto ešte potrebujeme.",
+        "email": "Tento e-mail nevyzerá správne.",
+        "url": "Toto nevyzerá ako webová adresa.",
+        "message": "Stačí veta alebo dve — potrebujeme len niečo, na čo môžeme reagovať.",
+        "submit": "Odoslanie sa nepodarilo. Skúste to znova, alebo napíšte priamo na kacper@aiadaptiv.com."
+      },
+      "success": {
+        "h": "Máme to.",
+        "body": "Je to v Kacperovej schránke. Ozveme sa do jedného pracovného dňa — a ak nechcete čakať, objednajte si 30-minútový úvodný hovor hneď teraz.",
+        "cta": "Objednať hovor"
+      }
+    },
+    "contact": {
+      "h2": "Nájdeme, kde sa AI oplatí",
+      "body": "Objednajte si bezplatný 30-minútový hovor. Prejdeme, ako pracujete, pomenujeme dve tri miesta, kde stojí za to AI nasadiť, a povieme vám, čo by ich postavenie obnášalo.",
+      "note": "Každá zákazka sa oceňuje na hovore — jedno pevné číslo, dohodnuté pred začiatkom práce.",
+      "cta": "Objednať 30-minútový hovor"
+    },
+    "footer": {
+      "heading": "Spolupracujme",
+      "lead": "Začnite bezplatným tridsaťminútovým úvodným hovorom.",
+      "cta": "Poďme sa porozprávať",
+      "groups": [
+        {
+          "label": "Firma",
+          "links": [
+            {
+              "label": "Čo staviame",
+              "href": "#capabilities"
+            },
+            {
+              "label": "Projekty",
+              "href": "#work"
+            },
+            {
+              "label": "Prístup",
+              "href": "#approach"
+            },
+            {
+              "label": "Tím",
+              "href": "#team"
+            },
+            {
+              "label": "Podmienky",
+              "href": "@terms"
+            },
+            {
+              "label": "Súkromie",
+              "href": "@privacy"
+            }
+          ]
+        },
+        {
+          "label": "Produkt",
+          "links": [
+            {
+              "label": "Privátna AI platforma",
+              "href": "@privateAi"
+            },
+            {
+              "label": "Ako to funguje",
+              "href": "#process"
+            },
+            {
+              "label": "Časté otázky",
+              "href": "#faq"
+            }
+          ]
+        },
+        {
+          "label": "Kontakt",
+          "links": [
+            {
+              "label": "LinkedIn",
+              "href": "https://www.linkedin.com/company/aiadaptiv"
+            },
+            {
+              "label": "X / Twitter",
+              "href": "https://x.com/aiadaptiv"
+            },
+            {
+              "label": "E-mail",
+              "href": "mailto:kacper@aiadaptiv.com"
+            }
+          ]
+        }
+      ],
+      "rights": "Všetky práva vyhradené."
+    },
+    "legal": {
+      "disclaimer": "aiAdaptiv poskytuje služby vývoja softvéru a AI na mieru na základe písomnej ponuky dohodnutej s každým klientom. Výsledky práce prechádzajú na klienta úplným zaplatením. Systémy AI produkujú pravdepodobnostné výstupy a dodávajú sa bez záruky konkrétnych obchodných výsledkov. Nič na tomto webe nie je ponukou, cenovou ponukou ani právnym poradenstvom.",
+      "terms": {
+        "metaTitle": "Terms of Service — aiAdaptiv",
+        "metaDescription": "The terms under which aiAdaptiv provides custom AI and software development services: proposals, fees, intellectual property, confidentiality, data protection and liability.",
+        "h1": "Terms of Service",
+        "updated": "Last updated: 5 September 2026",
+        "intro": "These terms govern the services aiAdaptiv (\"we\", \"us\") provides to a client (\"you\"). They apply alongside the written proposal for your engagement; where the two disagree, the proposal wins. Using this website is covered by section 1 alone.",
+        "sections": [
+          {
+            "h": "1. This website",
+            "body": [
+              "This site describes what we do. Nothing on it is an offer, a quote, or a commitment to deliver at a stated price or date — engagements begin only when we both sign a written proposal.",
+              "Figures, timelines and case studies describe past work under its own conditions and are not a prediction of your results."
+            ]
+          },
+          {
+            "h": "2. What we provide",
+            "body": [
+              "We design, build, deploy and — where agreed — operate custom software and AI systems. Typical work includes AI SaaS products, mobile applications, automations and agents, scoped pilots, marketing systems, and private LLM platforms deployed in infrastructure you control.",
+              "The scope of any engagement is whatever the signed proposal says, and nothing else. Work outside it is a change request under section 4."
+            ]
+          },
+          {
+            "h": "3. Proposals, scope and fees",
+            "body": [
+              "Each engagement gets a written proposal setting out scope, deliverables, timeline and a fixed price. The price holds for that scope.",
+              "Unless the proposal says otherwise, invoices are payable within 14 days. Late payment entitles us to statutory interest and to pause work until the account is settled.",
+              "Prices exclude VAT and exclude third-party costs — cloud hosting, model API usage, app-store fees, licences — which you pay directly to those providers unless we have agreed otherwise in writing."
+            ]
+          },
+          {
+            "h": "4. Changes",
+            "body": [
+              "Either of us may propose a change to scope. A change takes effect only when we have both agreed it in writing, including its effect on price and timeline.",
+              "Timelines assume you supply access, content, decisions and approvals when needed. Delays on your side move the dates."
+            ]
+          },
+          {
+            "h": "5. Your responsibilities",
+            "body": [
+              "You provide timely access to the systems, accounts, data and people the work needs, and you keep your own accounts and credentials secure.",
+              "You confirm you have the right to give us any data, content or credentials you supply, and that our agreed use of them does not breach a third party's rights or your own obligations.",
+              "You remain responsible for how you use what we build, including decisions taken on the basis of its output."
+            ]
+          },
+          {
+            "h": "6. Third-party services and AI models",
+            "body": [
+              "Our work integrates third-party services — model providers, cloud platforms, app stores, SaaS tools. Their own terms and prices govern their services, they may change them, and we are not responsible for their availability, output or acts.",
+              "AI systems are probabilistic. They can produce output that is wrong, biased, or unsuitable for a given purpose, and the same input may not give the same result twice. We build evaluation and human review into a system where the proposal says so, but we do not warrant that any AI output is accurate, complete or fit for a particular purpose.",
+              "Where a system falls within the EU AI Act, we will tell you what we understand its classification to imply for the build. Assessing your own obligations as deployer, and meeting them, remains yours."
+            ]
+          },
+          {
+            "h": "7. Intellectual property",
+            "body": [
+              "On payment in full, we assign to you the intellectual property rights in the deliverables built specifically for you under the proposal, to the extent those rights are assignable.",
+              "We keep ownership of everything we bring with us: pre-existing code, tools, libraries, templates and know-how, plus anything generic we develop that is not specific to you. You get a perpetual, non-exclusive, transferable licence to use those components as embedded in your deliverables.",
+              "Your data, content and trade marks stay yours throughout. Third-party and open-source components stay under their own licences, which we will identify on request.",
+              "Unless you tell us otherwise in writing, we may name you as a client and describe the work in general terms."
+            ]
+          },
+          {
+            "h": "8. Confidentiality",
+            "body": [
+              "Each of us will keep the other's non-public information confidential, use it only for the engagement, and protect it with at least reasonable care. This survives the engagement by three years, and indefinitely for anything that is a trade secret.",
+              "It does not cover information that is public through no fault of the receiver, was already lawfully held, is independently developed, or must be disclosed by law — in which case we will tell you first where we are permitted to."
+            ]
+          },
+          {
+            "h": "9. Data protection",
+            "body": [
+              "Where we process personal data on your behalf, you are the controller and we are the processor, and we will enter a data processing agreement setting out the subject matter, duration, purpose and safeguards before that processing starts.",
+              "We deploy inside infrastructure you control wherever the proposal provides for it, so that your personal data stays under your account and your keys.",
+              "How we handle personal data you give us directly — an enquiry, a booking — is described in our Privacy Policy."
+            ]
+          },
+          {
+            "h": "10. Acceptance and defects",
+            "body": [
+              "Deliverables are treated as accepted once you have had the review period stated in the proposal, or 14 days if it states none, and have not reported a material defect in writing.",
+              "We will fix defects reported within 30 days of acceptance that stop a deliverable doing what the proposal says it does, at no charge. Beyond that, support is whatever a separate retainer provides for."
+            ]
+          },
+          {
+            "h": "11. Warranties and disclaimer",
+            "body": [
+              "We warrant that we will perform with reasonable skill and care, by suitably competent people, and that we have the right to enter this agreement.",
+              "Beyond that, and to the extent the law allows, our services and deliverables are provided \"as is\": we do not warrant uninterrupted or error-free operation, results from a third-party service, or that any commercial, revenue or efficiency outcome will follow."
+            ]
+          },
+          {
+            "h": "12. Limitation of liability",
+            "body": [
+              "Neither of us limits liability for death or personal injury caused by negligence, for fraud, or for anything else the law does not permit to be limited.",
+              "Otherwise, neither of us is liable for lost profit, lost revenue, lost or corrupted data, or indirect or consequential loss; and our total liability arising from an engagement is capped at the fees you paid us under it in the twelve months before the claim.",
+              "You are responsible for keeping your own backups of your data."
+            ]
+          },
+          {
+            "h": "13. Term and termination",
+            "body": [
+              "Either of us may end an engagement on 30 days' written notice, or immediately if the other commits a material breach and has not fixed it within 14 days of being asked in writing.",
+              "On termination you pay for work performed and third-party costs committed up to that date. Sections on intellectual property, confidentiality, liability and governing law survive.",
+              "A monthly retainer runs month to month and either of us may end it on 30 days' notice, effective at the end of a billing period."
+            ]
+          },
+          {
+            "h": "14. Governing law",
+            "body": [
+              "These terms are governed by Polish law. Any dispute goes to the court with jurisdiction over the company's registered seat.",
+              "If a provision is unenforceable, the rest stands."
+            ]
+          },
+          {
+            "h": "15. Changes to these terms",
+            "body": [
+              "We may update these terms for future engagements. The version that applies to yours is the one in force when the proposal was signed."
+            ]
+          },
+          {
+            "h": "16. Who we are",
+            "body": [
+              "aiAdaptiv is a company registered in Poland.",
+              "Contact: kacper@aiadaptiv.com"
+            ]
+          }
+        ],
+        "backHome": "← Back to home"
+      },
+      "privacy": {
+        "metaTitle": "Privacy Policy — aiAdaptiv",
+        "metaDescription": "How aiAdaptiv collects and uses personal data on this website: analytics, cookies, bookings, enquiries, legal bases, processors, retention and your GDPR rights.",
+        "h1": "Privacy Policy",
+        "updated": "Last updated: 5 September 2026",
+        "intro": "This policy covers personal data we collect through this website and through enquiries and bookings made from it. Personal data we process on behalf of a client, inside a system we built for them, is governed by that client's own policy and our data processing agreement with them — not by this one.",
+        "sections": [
+          {
+            "h": "1. Who is responsible",
+            "body": [
+              "aiAdaptiv, a company registered in Poland, is the controller for the personal data described here.",
+              "Questions, or any request under section 8: kacper@aiadaptiv.com"
+            ]
+          },
+          {
+            "h": "2. What we collect",
+            "body": [
+              "If you contact us, whatever you choose to send: your name, email address, company, and the content of your message.",
+              "If you book a call, the name, email address and any answers you give in the booking form, plus the time you chose. Bookings are handled by Cal.com and the call itself may run on Cal Video.",
+              "If you consent to analytics, usage data about your visit: pages viewed, approximate location derived from IP, device and browser type, and referring site.",
+              "Basic request data is logged by our hosting provider for security and reliability, including IP address."
+            ]
+          },
+          {
+            "h": "3. Cookies and analytics",
+            "body": [
+              "No analytics or advertising storage is set until you accept it in the banner. We use Google Consent Mode, which denies those storage types by default and grants them only after you accept; declining leaves them denied.",
+              "With consent, we use Google Analytics 4 to understand how the site is used. We also use Vercel Analytics, which is cookieless and does not track visitors across sites.",
+              "Your choice is stored in your browser so we do not ask again. Clearing your browser storage resets it."
+            ]
+          },
+          {
+            "h": "4. Why we use it, and on what basis",
+            "body": [
+              "To answer enquiries and run bookings — because it is necessary to take steps at your request before entering a contract, and because we have a legitimate interest in responding to people who contact us.",
+              "To keep the site secure and working — our legitimate interest in operating it safely.",
+              "To measure traffic with analytics — your consent, which you may withdraw at any time.",
+              "To meet accounting, tax and other legal duties — our legal obligations."
+            ]
+          },
+          {
+            "h": "5. Who else sees it",
+            "body": [
+              "We use service providers who process data on our behalf under contract: Vercel (hosting and analytics), Google (Analytics), Cal.com (bookings and video), and our email provider for correspondence.",
+              "We do not sell personal data and we do not share it for advertising.",
+              "We may disclose data where the law requires it, or to establish or defend a legal claim."
+            ]
+          },
+          {
+            "h": "6. Transfers outside the EEA",
+            "body": [
+              "Some of those providers are established outside the European Economic Area, or use sub-processors that are. Where data is transferred outside the EEA, it is covered by the European Commission's standard contractual clauses or another lawful transfer mechanism. We will tell you which on request."
+            ]
+          },
+          {
+            "h": "7. How long we keep it",
+            "body": [
+              "Enquiries and booking records: up to 24 months from our last contact, unless a contract requires longer.",
+              "Contract, invoicing and accounting records: for the period tax law requires.",
+              "Analytics data: for the retention period configured in Google Analytics, currently 14 months.",
+              "Server logs: a short rolling period set by our hosting provider."
+            ]
+          },
+          {
+            "h": "8. Your rights",
+            "body": [
+              "You may ask us for a copy of your personal data, to correct it, to delete it, to restrict or object to how we use it, and to receive it in a portable form. Where we rely on consent, you may withdraw it at any time without affecting what came before.",
+              "Write to kacper@aiadaptiv.com and we will respond within one month.",
+              "You may also lodge a complaint with the President of the Personal Data Protection Office (UODO), the Polish supervisory authority."
+            ]
+          },
+          {
+            "h": "9. Children",
+            "body": [
+              "This site is aimed at businesses. We do not knowingly collect personal data from children."
+            ]
+          },
+          {
+            "h": "10. Changes",
+            "body": [
+              "We may update this policy. The date at the top shows when it last changed; material changes will be flagged on this page."
+            ]
+          }
+        ],
+        "backHome": "← Back to home"
+      }
+    }
+  },
+  "privateAi": {
+    "meta": {
+      "title": "Privátna AI platforma — vlastný open-source LLM vo vašom cloude | aiAdaptiv",
+      "description": "Platforma s open-source LLM pod vašou značkou, nasadená vo vašom vlastnom EU cloudovom účte. Infraštruktúra, kľúče aj údaje patria vám; my nasadíme, udržiavame a aktualizujeme. V súlade s GDPR a európskym nariadením o AI vďaka architektúre."
+    },
+    "tags": [
+      "Open-source LLM",
+      "Váš EU cloud",
+      "Pod vašou značkou",
+      "GDPR a nariadenie o AI"
+    ],
+    "cta": "Objednať 30-minútový hovor",
+    "imageLabel": "Ceruzková skica visiaceho zámku na svetlom papieri — privátna AI platforma aiAdaptiv.",
+    "flowAlt": "Ceruzková skica: váš vlastný EU cloudový účet, potom nasadená platforma, potom rozhranie v prehliadači pod vašou značkou, potom váš tím, ktorý ho používa.",
+    "video": {
+      "label": "Pozrite sa, ako to funguje",
+      "title": "Dnu ide zmluva. Von idú riziká a zhrnutie — v privátnom prostredí pod vašou značkou.",
+      "duration": "4:32",
+      "cta": "Prehrať ukážku",
+      "note": "Načíta sa, až keď stlačíte prehrať — dovtedy sa na Loom nič neposiela."
+    },
+    "hero": {
+      "badge": "Privátna AI platforma · Open-source LLM vo vašom vlastnom cloude",
+      "headline": [
+        {
+          "text": "Privátny mozog vašej firmy."
+        },
+        {
+          "text": "Vo vlastníctve, nie v prenájme.",
+          "accent": true
+        }
+      ],
+      "subhead": "Nasadíme plne značkovú AI platformu priamo do vášho vlastného zabezpečeného EU cloudového účtu. Infraštruktúra, kľúče aj údaje patria vám. Ťažkú prácu urobíme my.",
+      "tagline": "Koniec vkladaniu citlivých klientskych údajov do verejných nástrojov.",
+      "cta": "Zistiť za 60 sekúnd, či to sedí →"
+    },
+    "problem": {
+      "h2": "Verejná AI je obrovské riziko",
+      "points": [
+        "Pokuty až 4 % (GDPR) alebo 7 % (nariadenie EÚ o AI) obratu.",
+        "Vaše zmluvy a klientske údaje môžu trénovať verejné modely a dostať sa ku konkurencii.",
+        "Malé tímy nestíhajú infraštruktúru ani aktualizácie."
+      ]
+    },
+    "solution": {
+      "h2": "Nasadíme ju. Patrí vám.",
+      "pillars": [
+        {
+          "title": "Bezpečná práca s dokumentmi",
+          "body": "Nahrajte dvestostranové zmluvy alebo podklady k due diligence. Bezpečne vytiahnite riziká, porovnajte verzie a získajte zhrnutia — bez akéhokoľvek úniku údajov."
+        },
+        {
+          "title": "100 % pod vašou značkou",
+          "body": "ai.vasakancelaria.sk vo vašich farbách. Skutočné interné aktívum."
+        },
+        {
+          "title": "Váš vlastný cloudový účet",
+          "body": "Nasadené vo vašom vlastnom cloudovom účte. Ovládate všetko."
+        },
+        {
+          "title": "Nulová prevádzková záťaž",
+          "body": "Aktualizácie modelov, bezpečnosť a údržbu riešime my."
+        }
+      ]
+    },
+    "howItWorks": {
+      "h2": "Ako to funguje",
+      "intro": "Privátnu AI zjednodušujeme tým, že všetko nasadíme do vášho vlastného cloudového účtu.",
+      "steps": [
+        {
+          "title": "1. Založíte si účet (alebo ho založíme my)",
+          "body": "Zriaďte si cloudový účet v európskom regióne. Fakturáciu máte pod kontrolou vy."
+        },
+        {
+          "title": "2. Postavíme a obrandujeme",
+          "body": "Nasadíme Open WebUI a optimalizované modely, doplníme vaše logo a nastavíme ai.vasakancelaria.sk."
+        },
+        {
+          "title": "3. Dostanete plný prístup",
+          "body": "Váš tím sa prihlási a začne pracovať."
+        },
+        {
+          "title": "4. Postaráme sa o údržbu",
+          "body": "Mesačné aktualizácie a podpora."
+        }
+      ],
+      "timeline": "Obvyklý priebeh: 3–7 pracovných dní od platby do spustenia.",
+      "roadmap": {
+        "label": "Postup pre klienta",
+        "days": [
+          {
+            "label": "Deň 1–2",
+            "body": "Založíte (alebo založíme) cloudový účet a udelíte prístup."
+          },
+          {
+            "label": "Deň 3–5",
+            "body": "Nasadíme, obrandujeme a optimalizujeme platformu pre vaše procesy."
+          },
+          {
+            "label": "Deň 6–7",
+            "body": "Odovzdávacie školenie a váš tím začína pracovať."
+          }
+        ],
+        "resultLabel": "Výsledok",
+        "result": "Plne obrandovaná, zabezpečená privátna AI platforma bežiaca vo vašom vlastnom prostredí za menej ako týždeň."
+      },
+      "flowLabel": "Vizuálne zhrnutie (štyri jednoduché kroky)",
+      "flow": "Váš vlastný cloudový účet (EÚ)\n↓\nNasadíme Open WebUI + modely\n↓\nPod vašou značkou na ai.vasakancelaria.sk\n↓\nVáš tím to bezpečne používa\n(mesačná údržba na nás)",
+      "outro": "Účet patrí vám. Údaje patria vám. Technickú prácu robíme my."
+    },
+    "behindTheArchitecture": {
+      "h2": "Za architektúrou",
+      "lead": "Dobrý deň, som zakladateľ aiAdaptiv.",
+      "body": [
+        "Postavil som to preto, že menšie kancelárie a poradenské firmy potrebujú silnú AI na zmluvy a klientsku prácu — ale verejné nástroje vytvárajú vážne riziká. Každé nasadenie dostane priamu pozornosť človeka, ktorý platformu postavil."
+      ]
+    },
+    "faq": {
+      "h2": "Časté otázky",
+      "items": [
+        {
+          "q": "Prečo nasadzovať do môjho vlastného cloudového účtu?",
+          "a": "Skutočné vlastníctvo. Ovládate účet, fakturáciu aj kľúče. Ak s nami niekedy prestanete spolupracovať, celá platforma zostane vaša — žiadna závislosť od dodávateľa."
+        },
+        {
+          "q": "Vidíte naše citlivé údaje?",
+          "a": "Nie. Všetko spracovanie prebieha vo vašom zabezpečenom prostredí. K vašim otázkam ani dokumentom nemáme prístup."
+        },
+        {
+          "q": "Koľko stojí výpočtový výkon GPU?",
+          "a": "Platíte priamo poskytovateľovi cloudu — nikdy nám. Zostávame pružní, môžeme používať rôznych poskytovateľov GPU a vybrať aj doladiť veľkosť podľa vášho využitia. Výkon GPU zvyčajne vyjde na niekoľko sto eur mesačne podľa intenzity používania."
+        },
+        {
+          "q": "Ako dlho trvá sprevádzkovanie?",
+          "a": "Zvyčajne 3–7 pracovných dní od platby, keď prejdete úvodným kontrolným zoznamom."
+        },
+        {
+          "q": "Môžem to zrušiť?",
+          "a": "Áno. Mesačnú údržbu možno zrušiť s 30-dňovou výpovednou lehotou. Platforma, ktorá patrí vám, vám zostane."
+        }
+      ]
+    },
+    "qualifier": {
+      "h2": "Sedí to na vás?",
+      "yesLabel": "Áno, ak",
+      "yes": "denne pracujete s citlivými právnymi, finančnými alebo klientskymi dokumentmi.",
+      "noLabel": "Nie, ak",
+      "no": "hľadáte len lacný všeobecný AI nástroj.",
+      "cta": "Zistiť za 60 sekúnd, či to sedí →"
+    },
+    "backHome": "← Späť na úvod"
+  }
+}
