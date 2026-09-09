@@ -139,10 +139,24 @@
     },
     "proof": {
       "h2": "Dowozimy systemy, nie prezentacje",
-      "body": [
-        "W ciągu ostatnich czterech lat wdrożyliśmy na produkcję ponad 20 zastosowań AI: automatyzacje, które na dobre zdjęły proces z biurka zespołu, produkty, do których klienci się logują i za które płacą, oraz prywatne platformy AI działające w chmurze klienta. Każde z nich powstało według spisanego zakresu i stałej ceny, uzgodnionych przed pierwszą linią kodu.",
-        "Pod tym leży dwanaście lat inżynierii — full-stack od 2014 roku, z czego cztery lata pracy z dużymi modelami językowymi, odkąd stały się wystarczająco dobre, by powierzyć im prawdziwą pracę. Dlatego te systemy trafiają na produkcję: AI to zawsze tylko ostatnie dziesięć procent działającego produktu.",
-        "Każde wdrożenie kończy się tak samo: działającym systemem, dokumentacją, z której zespół realnie korzysta, i przekazaniem — albo abonamentem, jeśli wolisz, żebyśmy prowadzili go dalej."
+      "lead": "Każde wdrożenie wygląda tak samo.",
+      "points": [
+        {
+          "title": "Ponad 20 wdrożeń AI na produkcji",
+          "body": "Automatyzacje, produkty, za które klienci płacą, i prywatne platformy AI w chmurze klienta."
+        },
+        {
+          "title": "Jedna stała cena, ustalona na starcie",
+          "body": "Pisemny zakres przed pierwszą linią kodu. Bez rozliczeń godzinowych i bez niespodzianek na fakturze."
+        },
+        {
+          "title": "Dwanaście lat inżynierii pod spodem",
+          "body": "Full-stack od 2014 roku, cztery lata z LLM-ami. AI to ostatnie dziesięć procent działającego produktu."
+        },
+        {
+          "title": "Kończy się przekazaniem",
+          "body": "Działający system i dokumentacja, z której zespół korzysta. Albo abonament, jeśli wolisz, żebyśmy go prowadzili."
+        }
       ],
       "cta": "Umów 30-minutową rozmowę",
       "mediaLabel": "Szkic ołówkiem zamkniętego kartonu wysyłkowego na jasnym papierze."

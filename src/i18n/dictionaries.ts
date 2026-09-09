@@ -57,7 +57,10 @@ export type Dictionary = {
     };
     proof: {
       h2: string;
-      body: string[];
+      /** One sentence setting up the points; deliberately short. */
+      lead: string;
+      /** Scannable claims, each a bold label plus one clause. */
+      points: { title: string; body: string }[];
       cta: string;
       /** Alt text for the section image. */
       mediaLabel: string;

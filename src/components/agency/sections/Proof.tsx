@@ -15,19 +15,29 @@ export function Proof({ proof }: { proof: Dictionary["agency"]["proof"] }) {
             <h2 id="proof-heading" className={s.h2} data-reveal>
               {proof.h2}
             </h2>
-            {proof.body.map((paragraph, i) => (
-              <p
-                key={i}
-                className={s.lead}
-                data-reveal
-                style={{ "--rd": `${80 + i * 70}ms` } as React.CSSProperties}
-              >
-                {paragraph}
-              </p>
-            ))}
+            <p
+              className={s.lead}
+              data-reveal
+              style={{ "--rd": "80ms" } as React.CSSProperties}
+            >
+              {proof.lead}
+            </p>
+            <ul className={s.points}>
+              {proof.points.map((point, i) => (
+                <li
+                  key={point.title}
+                  className={s.point}
+                  data-reveal
+                  style={{ "--rd": `${140 + i * 70}ms` } as React.CSSProperties}
+                >
+                  <strong className={s.pointTitle}>{point.title}</strong>
+                  {point.body}
+                </li>
+              ))}
+            </ul>
             <div
               data-reveal
-              style={{ "--rd": "320ms" } as React.CSSProperties}
+              style={{ "--rd": "440ms" } as React.CSSProperties}
             >
               <PillButton href={bookingUrl} large>
                 {proof.cta}

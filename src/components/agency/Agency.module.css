@@ -350,6 +350,20 @@
   border-bottom: none;
 }
 
+/* A point that carries a label: the claim reads on its own, the clause
+   underneath qualifies it. Scannable in one pass down the left edge. */
+.pointTitle {
+  display: block;
+  margin-bottom: 0.15em;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.bandDark .pointTitle {
+  color: var(--on-dark);
+}
+
 /* ── Always-dark CTA band ──────────────────────────────────── */
 .ctaSection {
   background: var(--cta-bg);

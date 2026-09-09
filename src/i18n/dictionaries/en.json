@@ -139,10 +139,24 @@
     },
     "proof": {
       "h2": "We ship systems, not slide decks",
-      "body": [
-        "Over the last four years we have shipped 20+ AI use cases into production: automations that took a workflow off a team's desk for good, products that customers log into and pay for, and private AI platforms running inside a client's own cloud account. Each one was built to a written scope and a fixed price, agreed before the first line of code.",
-        "Twelve years of engineering sit underneath that — full-stack since 2014, and four of those years building with large language models as they became good enough to trust with real work. That is why the systems ship: the AI is only ever the last ten percent of a working product.",
-        "Every engagement ends the same way: a working system, documentation your team can act on, and a handover — or a retainer, if you would rather we kept running it."
+      "lead": "Every engagement runs the same way.",
+      "points": [
+        {
+          "title": "20+ AI use cases in production",
+          "body": "Automations, products customers pay for, and private AI platforms inside a client's own cloud."
+        },
+        {
+          "title": "One fixed price, agreed first",
+          "body": "Written scope before the first line of code. No hourly billing, no surprise invoice."
+        },
+        {
+          "title": "Twelve years of engineering underneath",
+          "body": "Full-stack since 2014, four years with LLMs. The AI is the last ten percent of a working product."
+        },
+        {
+          "title": "It ends with a handover",
+          "body": "A working system and documentation your team can use. Or a retainer, if you'd rather we ran it."
+        }
       ],
       "cta": "Book a 30-minute call",
       "mediaLabel": "Pencil sketch of a closed shipping box on light paper."
