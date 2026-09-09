@@ -80,15 +80,14 @@ export async function POST(request: NextRequest) {
 
   // The row is the lead. Store it first, and fail loudly if that fails, so a
   // visitor who sees "sent" can trust that it was.
+  let stored = false;
   if (storeConfigured) {
     try {
       await storeLead(lead);
+      stored = true;
     } catch (error) {
       console.error("[lead] store failed", lead.id, error);
-      // Email is the fallback record; only give up if that is gone too.
-      if (!notifyConfigured) {
-        return NextResponse.json({ error: "store-failed" }, { status: 500 });
-      }
+      // Not fatal on its own — email may still carry it.
     }
   }
 
@@ -106,12 +105,15 @@ export async function POST(request: NextRequest) {
       console.error("[lead] delivery failed", lead.id, result.reason);
     }
   }
+  const delivered = results.some((result) => result.status === "fulfilled");
 
-  // Nothing configured and nothing stored — the submission went nowhere.
-  if (!storeConfigured && !notifyConfigured) {
-    console.error("[lead] no delivery configured; dropped", lead.id);
-    return NextResponse.json({ error: "not-configured" }, { status: 500 });
+  // The visitor is only told "sent" if something actually took the lead. A
+  // dead database and a revoked API key together must not read as success —
+  // the error screen offers a mailto they can fall back to.
+  if (!stored && !delivered) {
+    console.error("[lead] nothing accepted the lead; dropped", lead.id, lead.email);
+    return NextResponse.json({ error: "delivery-failed" }, { status: 500 });
   }
 
-  return NextResponse.json({ ok: true, id: lead.id });
+  return NextResponse.json({ ok: true, id: lead.id, stored, delivered });
 }

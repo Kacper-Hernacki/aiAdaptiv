@@ -73,13 +73,16 @@ export async function sendNotification(lead: LeadRecord) {
       <p style="font-size:12px;color:#999;margin-top:24px">Ref ${lead.id} · ${lead.createdAt}</p>
     </div>`;
 
-  return resend.emails.send({
+  const { error } = await resend.emails.send({
     from,
     to,
     replyTo: lead.email,
     subject: `${name} · ${lead.company} · ${label(lead.budget)}`,
     html,
   });
+  // The SDK resolves with an { error } object rather than throwing, so an
+  // unverified sender or a revoked key would otherwise read as a success.
+  if (error) throw new Error(`Resend: ${error.name} — ${error.message}`);
 }
 
 /** Sent to them: confirms it arrived and offers the call for the impatient. */
@@ -124,11 +127,12 @@ export async function sendConfirmation(lead: LeadRecord) {
       </p>
     </div>`;
 
-  return resend.emails.send({
+  const { error } = await resend.emails.send({
     from,
     to: lead.email,
     replyTo: siteConfig.contactEmail,
     subject,
     html,
   });
+  if (error) throw new Error(`Resend: ${error.name} — ${error.message}`);
 }
