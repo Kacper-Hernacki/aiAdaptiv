@@ -83,8 +83,9 @@ const brand = {
   organization: {
     legalName: "aiAdaptiv",
     sameAs: [
-      "https://x.com/aiadaptiv",
       "https://www.linkedin.com/company/aiadaptiv",
+      "https://www.instagram.com/aiadaptiv/",
+      "https://x.com/aiadaptiv",
     ],
   },
   contactEmail: "kacper@aiadaptiv.com",
