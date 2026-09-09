@@ -16,6 +16,7 @@ import {
   siteConfig,
   siteUrl,
   googleSiteVerification,
+  bingSiteVerification,
   gaMeasurementId,
 } from "@/config/site";
 import { Analytics } from "@vercel/analytics/next";
@@ -100,9 +101,19 @@ export async function generateMetadata({
       site: siteConfig.twitter,
       creator: siteConfig.twitter,
     },
-    verification: googleSiteVerification
-      ? { google: googleSiteVerification }
-      : undefined,
+    // Each tag is emitted only once its token is set, so an unverified
+    // property never renders an empty meta tag.
+    verification:
+      googleSiteVerification || bingSiteVerification
+        ? {
+            ...(googleSiteVerification
+              ? { google: googleSiteVerification }
+              : {}),
+            ...(bingSiteVerification
+              ? { other: { "msvalidate.01": bingSiteVerification } }
+              : {}),
+          }
+        : undefined,
     robots: {
       index: true,
       follow: true,

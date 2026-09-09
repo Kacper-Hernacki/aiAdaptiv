@@ -34,6 +34,12 @@ export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_ID ?? "";
 export const googleSiteVerification =
   process.env.GOOGLE_SITE_VERIFICATION ?? "";
 
+/** Bing Webmaster Tools verification token — the `content` value from the
+ * `msvalidate.01` meta tag Bing gives you under the "HTML Meta Tag" option.
+ * Worth having beyond Bing itself: it is the index behind ChatGPT search.
+ * Set BING_SITE_VERIFICATION to emit the tag; empty renders nothing. */
+export const bingSiteVerification = process.env.BING_SITE_VERIFICATION ?? "";
+
 /** Brand identity. */
 const brand = {
   name: "aiAdaptiv",
