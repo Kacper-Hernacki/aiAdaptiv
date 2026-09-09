@@ -1,0 +1,1012 @@
+{
+  "skipToContent": "Vai al contenuto principale",
+  "cookies": {
+    "message": "Usiamo i cookie per misurare il traffico e migliorare la tua esperienza. Decidi tu cosa possiamo conservare.",
+    "accept": "Accetta",
+    "decline": "Rifiuta",
+    "learnMore": "Scopri di più"
+  },
+  "agency": {
+    "meta": {
+      "title": "aiAdaptiv — Soluzioni IA su misura che fanno risparmiare ore e aumentano il fatturato",
+      "description": "Progettiamo, costruiamo e consegniamo soluzioni IA su misura: prodotti SaaS con IA, app mobili, automazioni, progetti pilota, sistemi di marketing e piattaforme LLM private open source. Prenota una call di 30 minuti."
+    },
+    "header": {
+      "cta": "Prenota una call",
+      "menuLabel": "Apri il menu",
+      "nav": [
+        {
+          "label": "Cosa costruiamo",
+          "href": "#capabilities"
+        },
+        {
+          "label": "Progetti",
+          "href": "#work"
+        },
+        {
+          "label": "Approccio",
+          "href": "#approach"
+        },
+        {
+          "label": "Contatti",
+          "href": "#contact"
+        }
+      ]
+    },
+    "theme": {
+      "toggle": "Passa dal tema chiaro a quello scuro"
+    },
+    "hero": {
+      "eyebrow": "IA su misura · Prezzo fisso · Consegnata dall'inizio alla fine",
+      "questions": [],
+      "headline": [
+        {
+          "text": "Soluzioni IA su misura che"
+        }
+      ],
+      "rotating": [
+        "fanno risparmiare decine di ore.",
+        "automatizzano il lavoro ripetitivo.",
+        "aumentano il fatturato.",
+        "riducono il lavoro manuale.",
+        "non perdono un contatto."
+      ],
+      "subhead": "Automazioni, prodotti IA, app mobili e sistemi di marketing, costruiti su come lavora davvero la tua azienda. Prezzo fisso, consegna completa e aggiornamenti continui man mano che i modelli avanzano.",
+      "cta": "Prenota una call di 30 minuti",
+      "stats": [
+        {
+          "value": "12 anni",
+          "label": "di ingegneria, dal 2014"
+        },
+        {
+          "value": "4 anni",
+          "label": "di lavoro con gli LLM"
+        },
+        {
+          "value": "20+",
+          "label": "casi d'uso IA consegnati"
+        }
+      ]
+    },
+    "tech": {
+      "label": "Lo stack su cui costruiamo"
+    },
+    "capabilities": {
+      "h2": "Cosa costruiamo",
+      "lead": "Sei aree, un team senior. Ognuna è già in produzione per un cliente che paga: nessuna è una slide.",
+      "items": [
+        {
+          "id": "ai-saas",
+          "title": "Prodotti SaaS con IA",
+          "body": "Progettiamo e consegniamo prodotti IA completi: architettura, livello modello, autenticazione, fatturazione e l'interfaccia che i tuoi clienti usano davvero. Dal repository vuoto agli utenti paganti.",
+          "tags": [
+            "Sviluppo full-stack",
+            "Architettura LLM",
+            "Lancio"
+          ]
+        },
+        {
+          "id": "mobile-apps",
+          "title": "App mobili",
+          "body": "App native e multipiattaforma con l'IA al centro: sul dispositivo quando privacy o latenza lo richiedono, in cloud quando no. Pubblicate su App Store e Play Store, non parcheggiate su TestFlight.",
+          "tags": [
+            "iOS e Android",
+            "IA sul dispositivo",
+            "Pubblicazione sugli store"
+          ]
+        },
+        {
+          "id": "ai-automations",
+          "title": "Automazioni con IA",
+          "body": "Agenti e flussi che il lavoro lo fanno invece di descriverlo: smistamento delle richieste, ricerca, stesura di testi, inserimento dati, più le integrazioni che portano il risultato nei sistemi che già usi.",
+          "tags": [
+            "Agenti",
+            "Integrazioni",
+            "Persona nel processo"
+          ]
+        },
+        {
+          "id": "ai-pilots",
+          "title": "Progetti pilota e casi studio",
+          "body": "Un pilota circoscritto che risponde a una domanda: qui l'IA si ripaga davvero? Ricevi una prova di concetto funzionante, numeri reali su costo e qualità e un parere scritto a favore o contro il proseguimento.",
+          "tags": [
+            "Prova di concetto",
+            "Modello dei costi",
+            "Parere scritto"
+          ]
+        },
+        {
+          "id": "ai-marketing",
+          "title": "Marketing con IA",
+          "body": "Sistemi di crescita governati dall'IA: individuazione e arricchimento dei contatti, contatto a freddo personalizzato che merita una risposta, motori di contenuti e la reportistica che mostra quale parte ha funzionato davvero.",
+          "tags": [
+            "Sistemi di contatto",
+            "Motori di contenuti",
+            "Attribuzione"
+          ]
+        },
+        {
+          "id": "app-factory",
+          "title": "Fabbrica di app IA",
+          "body": "Una linea di produzione per gli strumenti interni: stack condiviso, componenti condivisi, un processo ripetibile, così la quinta app costa una frazione della prima. Per team che devono costruire dieci cose, non una.",
+          "tags": [
+            "Stack ripetibile",
+            "Strumenti interni",
+            "Consegna in serie"
+          ]
+        }
+      ]
+    },
+    "proof": {
+      "h2": "Consegniamo sistemi, non presentazioni",
+      "lead": "Ogni progetto funziona allo stesso modo.",
+      "points": [
+        {
+          "title": "Oltre 20 casi d'uso IA in produzione",
+          "body": "Automazioni, prodotti per cui i clienti pagano e piattaforme IA private nel cloud del cliente."
+        },
+        {
+          "title": "Un prezzo fisso, concordato prima",
+          "body": "Perimetro scritto prima della prima riga di codice. Niente fatturazione a ore, nessuna fattura a sorpresa."
+        },
+        {
+          "title": "Dodici anni di ingegneria sotto",
+          "body": "Full-stack dal 2014, quattro anni con gli LLM. L'IA è l'ultimo dieci per cento di un prodotto che funziona."
+        },
+        {
+          "title": "Finisce con una consegna",
+          "body": "Un sistema funzionante e una documentazione utilizzabile dal tuo team. Oppure un canone mensile, se preferisci che continuiamo a gestirlo."
+        }
+      ],
+      "cta": "Prenota una call di 30 minuti",
+      "mediaLabel": "Schizzo a matita di uno scatolone chiuso su carta chiara."
+    },
+    "work": {
+      "h2": "Progetti selezionati",
+      "lead": "Nove tipi di sistema che abbiamo consegnato: progettati, messi in produzione e gestiti da noi.",
+      "cases": [
+        {
+          "id": "private-ai",
+          "name": "IA privata per dati regolamentati",
+          "result": "LLM open source nel tuo cloud europeo. Da lì non esce nulla.",
+          "body": "Per i team che trattano cartelle cliniche, fascicoli legali o altri dati sensibili, uno strumento di IA pubblico è escluso. Mettiamo in produzione modelli open source nell'account cloud europeo del cliente, con il suo marchio e con analisi documentale sul suo archivio, così la piattaforma è sua e il GDPR e il Regolamento europeo sull'IA sono rispettati per architettura, non per policy.",
+          "tags": [
+            "LLM open source",
+            "Regolamento europeo sull'IA",
+            "Dati medici e legali"
+          ]
+        },
+        {
+          "id": "messaging-bots",
+          "name": "Bot di risposta immediata per WhatsApp e Messenger",
+          "result": "Ogni messaggio con risposta in pochi secondi, a qualsiasi ora.",
+          "body": "I clienti scrivono su WhatsApp e Messenger alle undici di sera e si aspettano una risposta. Costruiamo bot che rispondono alle domande sui prodotti, prendono prenotazioni e qualificano i contatti sul momento, passano la mano a una persona quando serve e registrano tutto nei sistemi che il team già usa.",
+          "tags": [
+            "WhatsApp",
+            "Messenger",
+            "Automazione dell'assistenza"
+          ]
+        },
+        {
+          "id": "website-support",
+          "name": "Assistenza IA sul tuo sito",
+          "result": "Un chatbot che conosce la tua attività, perché ha imparato dai tuoi contenuti.",
+          "body": "Un assistente di pagina ancorato alle pagine, ai documenti, ai prezzi e alle policy del cliente. Risponde con precisione alle domande dei visitatori, raccoglie quelle che meritano un seguito e prenota la call da solo: nessuno script generico, e ogni risposta risale a qualcosa che il cliente ha scritto davvero.",
+          "tags": [
+            "Chatbot per siti",
+            "RAG",
+            "Raccolta contatti"
+          ]
+        },
+        {
+          "id": "ad-creative",
+          "name": "Creatività pubblicitarie generate con IA",
+          "result": "Decine di varianti coerenti col marchio da testare, invece di uno shooting costoso.",
+          "body": "Annunci video e immagine prodotti con strumenti generativi — Claude per concept, ganci e testi, Higgsfield per visual e movimento — così una campagna ha un set completo di varianti da testare invece di una sola creatività. Costruito come processo ripetibile che il team marketing gestisce da sé, non come consegna una tantum.",
+          "tags": [
+            "Claude",
+            "Higgsfield",
+            "Creatività pubblicitarie"
+          ]
+        },
+        {
+          "id": "premium-websites",
+          "name": "Siti web premium",
+          "result": "Progettati, scritti e pubblicati come un unico sistema, in giorni invece che in mesi.",
+          "body": "Siti orientati alla conversione con testi, struttura e SEO pensati dal primo commit: multilingua, indicizzati correttamente, con dati strutturati perché la ricerca con IA possa rispondere alle domande sull'azienda, e un percorso di prenotazione alla fine di ogni strada. Costruiti dall'inizio alla fine con strumenti IA: questo sito è uno di quelli.",
+          "tags": [
+            "Next.js",
+            "SEO",
+            "Ricerca con IA"
+          ]
+        },
+        {
+          "id": "booking-systems",
+          "name": "Sistemi di prenotazione su misura",
+          "result": "Ogni prenotazione arriva in calendario, nel CRM e in posta, senza nessuno in mezzo.",
+          "body": "Agenda costruita su come l'azienda accetta davvero gli appuntamenti: regole di disponibilità, caparra o pagamento alla prenotazione, promemoria che riducono le mancate presenze, e ogni prenotazione scritta automaticamente in calendario e nel CRM. Integrata con gli strumenti già in uso invece di sostituirli.",
+          "tags": [
+            "Agenda",
+            "Pagamenti",
+            "CRM"
+          ]
+        },
+        {
+          "id": "second-brain",
+          "name": "Un secondo cervello digitale",
+          "result": "Tutto quello che l'azienda sa, consultabile e mai dimenticato.",
+          "body": "Contratti, proposte, appunti, verbali e il sapere che vive nella testa di poche persone, in un unico posto e interrogabile in linguaggio naturale. Le risposte citano il documento di origine perché ci si possa fidare, e il materiale nuovo entra da solo invece di aspettare che qualcuno lo archivi.",
+          "tags": [
+            "Base di conoscenza",
+            "Recupero documenti",
+            "Memoria"
+          ]
+        },
+        {
+          "id": "mvp-team",
+          "name": "Un team di ingegneria IA per MVP rapidi",
+          "result": "Dall'idea a un prodotto funzionante in settimane, non in trimestri.",
+          "body": "Un team senior, nativo IA, su richiesta, per fondatori e aziende che hanno bisogno di una prima versione: architettura, livello modello, autenticazione, fatturazione e interfaccia, costruiti dall'inizio alla fine con strumenti IA, così il primo prodotto funzionante arriva in settimane ed è abbastanza solido da crescerci sopra.",
+          "tags": [
+            "MVP",
+            "SaaS con IA",
+            "Fabbrica di app"
+          ]
+        },
+        {
+          "id": "automations",
+          "name": "Automazioni di back-office",
+          "result": "Il lavoro ripetitivo affidato al software, per sempre.",
+          "body": "Smistamento delle richieste, inserimento dati, reportistica, solleciti: le attività ricorrenti che si mangiano in silenzio la settimana di un team. Le mappiamo, automatizziamo quelle che si ripagano, teniamo una persona sulle decisioni che ne hanno bisogno e colleghiamo il risultato agli strumenti su cui l'azienda già gira.",
+          "tags": [
+            "Automazione",
+            "Agenti",
+            "Integrazioni"
+          ]
+        }
+      ]
+    },
+    "product": {
+      "h2": "IA privata open source: una delle cose che costruiamo",
+      "headline": "Il cervello privato della tua azienda. Di proprietà, non in affitto.",
+      "lead": "Mettiamo in produzione una piattaforma IA completamente col tuo marchio direttamente dentro il tuo account cloud europeo sicuro. Infrastruttura, chiavi e dati sono tuoi. Il lavoro pesante lo facciamo noi.",
+      "why": "L'IA pubblica è una responsabilità: sanzioni fino al 4 % del fatturato con il GDPR e al 7 % con il Regolamento europeo sull'IA, e contratti o dati dei clienti che possono finire ad addestrare il modello di qualcun altro.",
+      "pillars": [
+        {
+          "title": "Analisi documentale sicura",
+          "body": "Carica contratti da 200 pagine o fascicoli di due diligence. Estrai i rischi in sicurezza, confronta le versioni e ottieni sintesi, senza alcuna fuga di dati."
+        },
+        {
+          "title": "100 % col tuo marchio",
+          "body": "ai.tuostudio.it con la tua identità. Un vero asset interno."
+        },
+        {
+          "title": "Il tuo account cloud",
+          "body": "Installata nel tuo account cloud. Controlli tutto tu."
+        },
+        {
+          "title": "Zero carico operativo",
+          "body": "Aggiornamenti dei modelli, sicurezza e manutenzione li gestiamo noi."
+        }
+      ],
+      "cta": "Guarda la piattaforma",
+      "imageAlt": "Schizzo a matita di un lucchetto su carta chiara: la piattaforma IA privata di aiAdaptiv."
+    },
+    "team": {
+      "h2": "Con chi lavori davvero",
+      "lead": "Piccolo e senior. Chi definisce il perimetro è chi costruisce il sistema: tra te e chi sviluppa non c'è nessun livello intermedio.",
+      "licensesLabel": "Certificazioni",
+      "members": [
+        {
+          "id": "kacper",
+          "name": "Kacper Hernacki",
+          "role": "Fondatore e CTO",
+          "body": [
+            "Oltre un decennio di ingegneria full-stack dal 2014, oggi dedicato a trasformare problemi complessi in sistemi intelligenti e scalabili: applicazioni web, app mobili e automazioni consegnate a clienti in tutto il mondo.",
+            "Ha diverse certificazioni nello sviluppo con IA e definisce personalmente ogni progetto: chi scrive la tua proposta è chi progetta l'architettura."
+          ],
+          "licenses": [
+            {
+              "name": "AI_devs 3 · Agents",
+              "issuer": "AI_devs",
+              "year": "2025",
+              "url": "https://credsverse.com/credentials/3fc027b2-7899-4a52-8e60-ca177c4f7ad0"
+            },
+            {
+              "name": "AI_devs 2 · GPT-4 in applications and automation",
+              "issuer": "AI_devs",
+              "year": "2024",
+              "url": "https://credsverse.com/credentials/e34b5af4-8a00-4c60-ae6e-f32658be0926"
+            },
+            {
+              "name": "AI_devs · AI Developer",
+              "issuer": "AI_devs",
+              "year": "2023",
+              "url": "https://verified.sertifier.com/en/verify/50831241179182/"
+            }
+          ],
+          "profile": {
+            "label": "Profilo LinkedIn",
+            "url": "https://www.linkedin.com/in/kacper-hernacki-965161203/"
+          }
+        }
+      ]
+    },
+    "approach": {
+      "h2": "Cosa ci distingue",
+      "items": [
+        {
+          "title": "Perimetro fisso, prezzo fisso",
+          "body": "Ogni progetto riceve un perimetro scritto, un calendario e un prezzo fisso prima di iniziare. Niente fatturazione a ore, niente perimetro che si allarga, nessuna fattura a sorpresa."
+        },
+        {
+          "title": "Sempre la tua infrastruttura",
+          "body": "Installiamo nel tuo account cloud con le tue chiavi. Quando il progetto finisce, ti resta un sistema funzionante, non una dipendenza da noi."
+        },
+        {
+          "title": "Europeo per costruzione",
+          "body": "Residenza dei dati, GDPR e Regolamento europeo sull'IA sono i vincoli di partenza, non una verifica di conformità aggiunta alla fine. Per questo l'architettura è come è."
+        },
+        {
+          "title": "Usiamo quello che vendiamo",
+          "body": "La nostra piattaforma IA privata gira sullo stesso stack che installiamo per i clienti. Quando qualcosa si rompe alle due di notte, si rompe prima da noi."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Dalla prima call al sistema in funzione",
+      "lead": "Quattro passi. Prezzo e perimetro li conosci prima del terzo.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Call di analisi",
+          "body": "Mezz'ora gratuita. Mappiamo dove il tuo team perde ore, quale parte l'IA può davvero prendere in carico e quali sono i vincoli di conformità."
+        },
+        {
+          "step": "02",
+          "title": "Perimetro e prezzo fisso",
+          "body": "Un perimetro scritto, uno schema di architettura, un calendario e un prezzo fisso. Se non vale la pena costruirlo, te lo diciamo."
+        },
+        {
+          "step": "03",
+          "title": "Sviluppo e messa in produzione",
+          "body": "Costruiamo nel tuo account cloud, con demo settimanali di software funzionante. Vedi il sistema prima che sia finito, non un rapporto sullo stato."
+        },
+        {
+          "step": "04",
+          "title": "Gestione o consegna",
+          "body": "Documentazione e formazione perché il team lo faccia proprio, oppure un canone mensile opzionale con cui monitoriamo, aggiorniamo e continuiamo a migliorarlo."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Domande che ci fanno",
+      "items": [
+        {
+          "q": "Che cos'è aiAdaptiv?",
+          "a": "aiAdaptiv è uno studio di sviluppo IA fondato da Kacper Hernacki. Progettiamo, costruiamo e consegniamo soluzioni IA su misura per le aziende: prodotti SaaS con IA, app mobili, automazioni e agenti, progetti pilota circoscritti, sistemi di marketing con IA e piattaforme LLM private open source. Dietro ci sono dodici anni di ingegneria, quattro dei quali con gli LLM, e oltre 20 casi d'uso IA consegnati."
+        },
+        {
+          "q": "aiAdaptiv è un'azienda affidabile?",
+          "a": "Sì. aiAdaptiv è una società registrata in Polonia, guidata da un fondatore con nome e cognome che puoi verificare tu stesso: le certificazioni IA di Kacper Hernacki rimandano ciascuna alla pagina pubblica di verifica dell'ente che le ha rilasciate, e il suo profilo LinkedIn è collegato da questo sito. Ogni progetto si basa su una proposta scritta firmata a prezzo fisso, e le nostre condizioni e l'informativa privacy sono pubblicate qui invece di essere inviate su richiesta."
+        },
+        {
+          "q": "Quali servizi offre aiAdaptiv?",
+          "a": "Sei aree: prodotti SaaS con IA, app mobili, automazioni e agenti IA, progetti pilota e prove di concetto, sistemi di marketing con IA e una fabbrica di app IA per team che hanno bisogno di molti strumenti interni invece di uno solo. Vendiamo anche una piattaforma IA privata pronta all'uso: modelli open source installati nel tuo account cloud europeo."
+        },
+        {
+          "q": "Quanto costa aiAdaptiv?",
+          "a": "Ogni progetto è quotato a prezzo fisso, definito dopo la call gratuita di analisi di 30 minuti, una volta chiaro il perimetro. Niente fatturazione a ore, nessun listino e nessuna fattura a sorpresa: il numero nella proposta è quello che paghi. La gestione continuativa, dove la vuoi, è un canone mensile fisso."
+        },
+        {
+          "q": "Come lavora aiAdaptiv?",
+          "a": "In quattro passi. Una call gratuita di analisi di 30 minuti in cui troviamo dove l'IA si ripaga; un perimetro scritto, uno schema di architettura e un prezzo fisso; lo sviluppo nel tuo account cloud con demo settimanali di software funzionante; poi documentazione e consegna, oppure un canone mensile opzionale se preferisci che continuiamo a gestirlo."
+        },
+        {
+          "q": "Chi è Kacper Hernacki?",
+          "a": "Kacper Hernacki è fondatore e CTO di aiAdaptiv. Sviluppa software dal 2014 — dodici anni di ingegneria full-stack tra applicazioni web, app mobili e automazioni per clienti di tutto il mondo — e ha diverse certificazioni nello sviluppo con IA. Ha passato gli ultimi quattro anni a lavorare con i grandi modelli linguistici e segue personalmente l'architettura di ogni progetto aiAdaptiv. Puoi scrivergli a kacper@aiadaptiv.com."
+        },
+        {
+          "q": "Chi guida aiAdaptiv?",
+          "a": "Kacper Hernacki, fondatore e CTO, coinvolto in prima persona in ogni progetto. Tra te e chi costruisce il tuo sistema non c'è un livello di account management: chi scrive la tua proposta è chi progetta l'architettura."
+        },
+        {
+          "q": "Dove si trova aiAdaptiv e con chi lavorate?",
+          "a": "Siamo un team da remoto con sede in Polonia e lavoriamo con clienti in tutto il mondo. La realizzazione è da remoto per impostazione predefinita, con call nel tuo fuso orario dove servono, e sistemi installati nella regione cloud che scegli."
+        },
+        {
+          "q": "Quanto tempo richiede un primo sistema?",
+          "a": "Dipende da cosa si costruisce, e la proposta indica la data. Un pilota circoscritto o una singola automazione si misurano in settimane; un prodotto completo in mesi. Oltre al perimetro, ciò che sposta di più la data è la rapidità con cui arrivano accessi, decisioni e approvazioni dalla tua parte."
+        },
+        {
+          "q": "Dove risiedono i nostri dati?",
+          "a": "Per tutto ciò che ospitiamo per te, nel tuo account cloud, in una regione europea che scegli tu: installiamo sotto il tuo account e le tue chiavi, quindi nulla passa da noi. Per i prodotti che costruiamo per i tuoi clienti, l'infrastruttura è tua e progettiamo con te il percorso dei dati prima di scrivere una riga."
+        },
+        {
+          "q": "Dobbiamo usare modelli open source?",
+          "a": "No. I modelli open source sulla tua infrastruttura sono l'impostazione predefinita perché tengono dati e costi sotto il tuo controllo, ma integriamo API commerciali dove danno un vantaggio reale, e ti diremo a quali parti di un sistema si applica."
+        },
+        {
+          "q": "Cosa succede quando il progetto finisce?",
+          "a": "Ti resta tutto: l'infrastruttura, il codice, la documentazione e il sistema in funzione. La proprietà intellettuale di ciò che abbiamo costruito per te passa a te con il pagamento integrale. Il canone è opzionale, mai una condizione."
+        },
+        {
+          "q": "Come contatto aiAdaptiv?",
+          "a": "Prenota una call gratuita di 30 minuti da qualsiasi pulsante di questa pagina, oppure scrivi a kacper@aiadaptiv.com. Rispondiamo entro un giorno lavorativo."
+        }
+      ]
+    },
+    "leadForm": {
+      "super": "Si comincia qui",
+      "h2": "Raccontaci cosa vuoi costruire",
+      "lead": "Tre passaggi brevi. Risponde Kacper, la persona che progetterebbe l'architettura, di solito entro un giorno lavorativo.",
+      "progress": "Passo {step} di {total}",
+      "steps": [
+        {
+          "title": "Chi sei",
+          "hint": "Così sappiamo a chi stiamo rispondendo."
+        },
+        {
+          "title": "La tua azienda",
+          "hint": "Ci aiuta a valutare la scala prima della call."
+        },
+        {
+          "title": "Il tuo progetto",
+          "hint": "Più è concreto, più sarà utile la nostra prima risposta."
+        }
+      ],
+      "fields": {
+        "firstName": "Nome",
+        "lastName": "Cognome",
+        "email": "Email di lavoro",
+        "company": "Azienda",
+        "website": "Sito dell'azienda",
+        "role": "Il tuo ruolo",
+        "size": "Dimensione dell'azienda",
+        "budget": "Budget",
+        "message": "Cosa vuoi costruire?"
+      },
+      "placeholders": {
+        "firstName": "Nome",
+        "lastName": "Cognome",
+        "email": "tu@azienda.it",
+        "company": "La tua azienda",
+        "website": "https://latuaazienda.it",
+        "role": "Scegli il ruolo",
+        "size": "Numero di dipendenti",
+        "message": "Qual è il problema, quanto ti costa oggi e come sarebbe un buon risultato?"
+      },
+      "optional": "facoltativo",
+      "roles": [
+        {
+          "value": "founder",
+          "label": "Fondatore/Fondatrice o CEO"
+        },
+        {
+          "value": "tech",
+          "label": "CTO o responsabile sviluppo"
+        },
+        {
+          "value": "ops",
+          "label": "Operations / COO"
+        },
+        {
+          "value": "marketing",
+          "label": "Marketing"
+        },
+        {
+          "value": "product",
+          "label": "Prodotto"
+        },
+        {
+          "value": "other",
+          "label": "Altro"
+        }
+      ],
+      "sizes": [
+        {
+          "value": "1-10",
+          "label": "1–10 persone"
+        },
+        {
+          "value": "11-50",
+          "label": "11–50 persone"
+        },
+        {
+          "value": "51-200",
+          "label": "51–200 persone"
+        },
+        {
+          "value": "201-1000",
+          "label": "201–1.000 persone"
+        },
+        {
+          "value": "1000+",
+          "label": "Più di 1.000"
+        }
+      ],
+      "budgets": [
+        {
+          "value": "5-15k",
+          "label": "5.000 € – 15.000 €"
+        },
+        {
+          "value": "15-50k",
+          "label": "15.000 € – 50.000 €"
+        },
+        {
+          "value": "50k+",
+          "label": "Oltre 50.000 €"
+        },
+        {
+          "value": "unsure",
+          "label": "Non ancora chiaro"
+        }
+      ],
+      "back": "Indietro",
+      "next": "Continua",
+      "submit": "Invia",
+      "submitting": "Invio in corso…",
+      "note": "Niente newsletter, niente sequenze. Lo leggiamo e rispondiamo noi.",
+      "errors": {
+        "required": "Questo ci serve.",
+        "email": "Questa email non sembra corretta.",
+        "url": "Non sembra un indirizzo web.",
+        "message": "Bastano una o due frasi: ci serve solo qualcosa a cui reagire.",
+        "submit": "L'invio non è riuscito. Riprova, oppure scrivi direttamente a kacper@aiadaptiv.com."
+      },
+      "success": {
+        "h": "Ricevuto.",
+        "body": "È nella casella di Kacper. Avrai una risposta entro un giorno lavorativo, e se preferisci non aspettare prenota subito la call di analisi di 30 minuti.",
+        "cta": "Prenota la call"
+      }
+    },
+    "contact": {
+      "h2": "Vediamo dove l'IA si ripaga",
+      "body": "Prenota una call gratuita di 30 minuti. Ripercorriamo il vostro flusso di lavoro, indichiamo i due o tre punti in cui vale la pena mettere l'IA e ti diciamo cosa servirebbe per costruirli.",
+      "note": "Ogni progetto viene quotato durante la call: un numero fisso, concordato prima di iniziare.",
+      "cta": "Prenota una call di 30 minuti"
+    },
+    "footer": {
+      "heading": "Lavoriamo insieme",
+      "lead": "Inizia con una call di analisi gratuita di trenta minuti.",
+      "cta": "Parliamone",
+      "groups": [
+        {
+          "label": "Azienda",
+          "links": [
+            {
+              "label": "Cosa costruiamo",
+              "href": "#capabilities"
+            },
+            {
+              "label": "Progetti",
+              "href": "#work"
+            },
+            {
+              "label": "Approccio",
+              "href": "#approach"
+            },
+            {
+              "label": "Team",
+              "href": "#team"
+            },
+            {
+              "label": "Condizioni",
+              "href": "@terms"
+            },
+            {
+              "label": "Privacy",
+              "href": "@privacy"
+            }
+          ]
+        },
+        {
+          "label": "Prodotto",
+          "links": [
+            {
+              "label": "Piattaforma IA privata",
+              "href": "@privateAi"
+            },
+            {
+              "label": "Come funziona",
+              "href": "#process"
+            },
+            {
+              "label": "Domande frequenti",
+              "href": "#faq"
+            }
+          ]
+        },
+        {
+          "label": "Contatti",
+          "links": [
+            {
+              "label": "LinkedIn",
+              "href": "https://www.linkedin.com/company/aiadaptiv"
+            },
+            {
+              "label": "X / Twitter",
+              "href": "https://x.com/aiadaptiv"
+            },
+            {
+              "label": "Email",
+              "href": "mailto:kacper@aiadaptiv.com"
+            }
+          ]
+        }
+      ],
+      "rights": "Tutti i diritti riservati."
+    },
+    "legal": {
+      "disclaimer": "aiAdaptiv fornisce servizi di sviluppo software e IA su misura sulla base di una proposta scritta concordata con ciascun cliente. I risultati del lavoro passano al cliente con il pagamento integrale. I sistemi di IA producono output probabilistici e sono forniti senza garanzia di risultati commerciali specifici. Nulla in questo sito costituisce un'offerta, un preventivo o una consulenza legale.",
+      "terms": {
+        "metaTitle": "Terms of Service — aiAdaptiv",
+        "metaDescription": "The terms under which aiAdaptiv provides custom AI and software development services: proposals, fees, intellectual property, confidentiality, data protection and liability.",
+        "h1": "Terms of Service",
+        "updated": "Last updated: 5 September 2026",
+        "intro": "These terms govern the services aiAdaptiv (\"we\", \"us\") provides to a client (\"you\"). They apply alongside the written proposal for your engagement; where the two disagree, the proposal wins. Using this website is covered by section 1 alone.",
+        "sections": [
+          {
+            "h": "1. This website",
+            "body": [
+              "This site describes what we do. Nothing on it is an offer, a quote, or a commitment to deliver at a stated price or date — engagements begin only when we both sign a written proposal.",
+              "Figures, timelines and case studies describe past work under its own conditions and are not a prediction of your results."
+            ]
+          },
+          {
+            "h": "2. What we provide",
+            "body": [
+              "We design, build, deploy and — where agreed — operate custom software and AI systems. Typical work includes AI SaaS products, mobile applications, automations and agents, scoped pilots, marketing systems, and private LLM platforms deployed in infrastructure you control.",
+              "The scope of any engagement is whatever the signed proposal says, and nothing else. Work outside it is a change request under section 4."
+            ]
+          },
+          {
+            "h": "3. Proposals, scope and fees",
+            "body": [
+              "Each engagement gets a written proposal setting out scope, deliverables, timeline and a fixed price. The price holds for that scope.",
+              "Unless the proposal says otherwise, invoices are payable within 14 days. Late payment entitles us to statutory interest and to pause work until the account is settled.",
+              "Prices exclude VAT and exclude third-party costs — cloud hosting, model API usage, app-store fees, licences — which you pay directly to those providers unless we have agreed otherwise in writing."
+            ]
+          },
+          {
+            "h": "4. Changes",
+            "body": [
+              "Either of us may propose a change to scope. A change takes effect only when we have both agreed it in writing, including its effect on price and timeline.",
+              "Timelines assume you supply access, content, decisions and approvals when needed. Delays on your side move the dates."
+            ]
+          },
+          {
+            "h": "5. Your responsibilities",
+            "body": [
+              "You provide timely access to the systems, accounts, data and people the work needs, and you keep your own accounts and credentials secure.",
+              "You confirm you have the right to give us any data, content or credentials you supply, and that our agreed use of them does not breach a third party's rights or your own obligations.",
+              "You remain responsible for how you use what we build, including decisions taken on the basis of its output."
+            ]
+          },
+          {
+            "h": "6. Third-party services and AI models",
+            "body": [
+              "Our work integrates third-party services — model providers, cloud platforms, app stores, SaaS tools. Their own terms and prices govern their services, they may change them, and we are not responsible for their availability, output or acts.",
+              "AI systems are probabilistic. They can produce output that is wrong, biased, or unsuitable for a given purpose, and the same input may not give the same result twice. We build evaluation and human review into a system where the proposal says so, but we do not warrant that any AI output is accurate, complete or fit for a particular purpose.",
+              "Where a system falls within the EU AI Act, we will tell you what we understand its classification to imply for the build. Assessing your own obligations as deployer, and meeting them, remains yours."
+            ]
+          },
+          {
+            "h": "7. Intellectual property",
+            "body": [
+              "On payment in full, we assign to you the intellectual property rights in the deliverables built specifically for you under the proposal, to the extent those rights are assignable.",
+              "We keep ownership of everything we bring with us: pre-existing code, tools, libraries, templates and know-how, plus anything generic we develop that is not specific to you. You get a perpetual, non-exclusive, transferable licence to use those components as embedded in your deliverables.",
+              "Your data, content and trade marks stay yours throughout. Third-party and open-source components stay under their own licences, which we will identify on request.",
+              "Unless you tell us otherwise in writing, we may name you as a client and describe the work in general terms."
+            ]
+          },
+          {
+            "h": "8. Confidentiality",
+            "body": [
+              "Each of us will keep the other's non-public information confidential, use it only for the engagement, and protect it with at least reasonable care. This survives the engagement by three years, and indefinitely for anything that is a trade secret.",
+              "It does not cover information that is public through no fault of the receiver, was already lawfully held, is independently developed, or must be disclosed by law — in which case we will tell you first where we are permitted to."
+            ]
+          },
+          {
+            "h": "9. Data protection",
+            "body": [
+              "Where we process personal data on your behalf, you are the controller and we are the processor, and we will enter a data processing agreement setting out the subject matter, duration, purpose and safeguards before that processing starts.",
+              "We deploy inside infrastructure you control wherever the proposal provides for it, so that your personal data stays under your account and your keys.",
+              "How we handle personal data you give us directly — an enquiry, a booking — is described in our Privacy Policy."
+            ]
+          },
+          {
+            "h": "10. Acceptance and defects",
+            "body": [
+              "Deliverables are treated as accepted once you have had the review period stated in the proposal, or 14 days if it states none, and have not reported a material defect in writing.",
+              "We will fix defects reported within 30 days of acceptance that stop a deliverable doing what the proposal says it does, at no charge. Beyond that, support is whatever a separate retainer provides for."
+            ]
+          },
+          {
+            "h": "11. Warranties and disclaimer",
+            "body": [
+              "We warrant that we will perform with reasonable skill and care, by suitably competent people, and that we have the right to enter this agreement.",
+              "Beyond that, and to the extent the law allows, our services and deliverables are provided \"as is\": we do not warrant uninterrupted or error-free operation, results from a third-party service, or that any commercial, revenue or efficiency outcome will follow."
+            ]
+          },
+          {
+            "h": "12. Limitation of liability",
+            "body": [
+              "Neither of us limits liability for death or personal injury caused by negligence, for fraud, or for anything else the law does not permit to be limited.",
+              "Otherwise, neither of us is liable for lost profit, lost revenue, lost or corrupted data, or indirect or consequential loss; and our total liability arising from an engagement is capped at the fees you paid us under it in the twelve months before the claim.",
+              "You are responsible for keeping your own backups of your data."
+            ]
+          },
+          {
+            "h": "13. Term and termination",
+            "body": [
+              "Either of us may end an engagement on 30 days' written notice, or immediately if the other commits a material breach and has not fixed it within 14 days of being asked in writing.",
+              "On termination you pay for work performed and third-party costs committed up to that date. Sections on intellectual property, confidentiality, liability and governing law survive.",
+              "A monthly retainer runs month to month and either of us may end it on 30 days' notice, effective at the end of a billing period."
+            ]
+          },
+          {
+            "h": "14. Governing law",
+            "body": [
+              "These terms are governed by Polish law. Any dispute goes to the court with jurisdiction over the company's registered seat.",
+              "If a provision is unenforceable, the rest stands."
+            ]
+          },
+          {
+            "h": "15. Changes to these terms",
+            "body": [
+              "We may update these terms for future engagements. The version that applies to yours is the one in force when the proposal was signed."
+            ]
+          },
+          {
+            "h": "16. Who we are",
+            "body": [
+              "aiAdaptiv is a company registered in Poland.",
+              "Contact: kacper@aiadaptiv.com"
+            ]
+          }
+        ],
+        "backHome": "← Back to home"
+      },
+      "privacy": {
+        "metaTitle": "Privacy Policy — aiAdaptiv",
+        "metaDescription": "How aiAdaptiv collects and uses personal data on this website: analytics, cookies, bookings, enquiries, legal bases, processors, retention and your GDPR rights.",
+        "h1": "Privacy Policy",
+        "updated": "Last updated: 5 September 2026",
+        "intro": "This policy covers personal data we collect through this website and through enquiries and bookings made from it. Personal data we process on behalf of a client, inside a system we built for them, is governed by that client's own policy and our data processing agreement with them — not by this one.",
+        "sections": [
+          {
+            "h": "1. Who is responsible",
+            "body": [
+              "aiAdaptiv, a company registered in Poland, is the controller for the personal data described here.",
+              "Questions, or any request under section 8: kacper@aiadaptiv.com"
+            ]
+          },
+          {
+            "h": "2. What we collect",
+            "body": [
+              "If you contact us, whatever you choose to send: your name, email address, company, and the content of your message.",
+              "If you book a call, the name, email address and any answers you give in the booking form, plus the time you chose. Bookings are handled by Cal.com and the call itself may run on Cal Video.",
+              "If you consent to analytics, usage data about your visit: pages viewed, approximate location derived from IP, device and browser type, and referring site.",
+              "Basic request data is logged by our hosting provider for security and reliability, including IP address."
+            ]
+          },
+          {
+            "h": "3. Cookies and analytics",
+            "body": [
+              "No analytics or advertising storage is set until you accept it in the banner. We use Google Consent Mode, which denies those storage types by default and grants them only after you accept; declining leaves them denied.",
+              "With consent, we use Google Analytics 4 to understand how the site is used. We also use Vercel Analytics, which is cookieless and does not track visitors across sites.",
+              "Your choice is stored in your browser so we do not ask again. Clearing your browser storage resets it."
+            ]
+          },
+          {
+            "h": "4. Why we use it, and on what basis",
+            "body": [
+              "To answer enquiries and run bookings — because it is necessary to take steps at your request before entering a contract, and because we have a legitimate interest in responding to people who contact us.",
+              "To keep the site secure and working — our legitimate interest in operating it safely.",
+              "To measure traffic with analytics — your consent, which you may withdraw at any time.",
+              "To meet accounting, tax and other legal duties — our legal obligations."
+            ]
+          },
+          {
+            "h": "5. Who else sees it",
+            "body": [
+              "We use service providers who process data on our behalf under contract: Vercel (hosting and analytics), Google (Analytics), Cal.com (bookings and video), and our email provider for correspondence.",
+              "We do not sell personal data and we do not share it for advertising.",
+              "We may disclose data where the law requires it, or to establish or defend a legal claim."
+            ]
+          },
+          {
+            "h": "6. Transfers outside the EEA",
+            "body": [
+              "Some of those providers are established outside the European Economic Area, or use sub-processors that are. Where data is transferred outside the EEA, it is covered by the European Commission's standard contractual clauses or another lawful transfer mechanism. We will tell you which on request."
+            ]
+          },
+          {
+            "h": "7. How long we keep it",
+            "body": [
+              "Enquiries and booking records: up to 24 months from our last contact, unless a contract requires longer.",
+              "Contract, invoicing and accounting records: for the period tax law requires.",
+              "Analytics data: for the retention period configured in Google Analytics, currently 14 months.",
+              "Server logs: a short rolling period set by our hosting provider."
+            ]
+          },
+          {
+            "h": "8. Your rights",
+            "body": [
+              "You may ask us for a copy of your personal data, to correct it, to delete it, to restrict or object to how we use it, and to receive it in a portable form. Where we rely on consent, you may withdraw it at any time without affecting what came before.",
+              "Write to kacper@aiadaptiv.com and we will respond within one month.",
+              "You may also lodge a complaint with the President of the Personal Data Protection Office (UODO), the Polish supervisory authority."
+            ]
+          },
+          {
+            "h": "9. Children",
+            "body": [
+              "This site is aimed at businesses. We do not knowingly collect personal data from children."
+            ]
+          },
+          {
+            "h": "10. Changes",
+            "body": [
+              "We may update this policy. The date at the top shows when it last changed; material changes will be flagged on this page."
+            ]
+          }
+        ],
+        "backHome": "← Back to home"
+      }
+    }
+  },
+  "privateAi": {
+    "meta": {
+      "title": "Piattaforma IA privata: il tuo LLM open source, nel tuo cloud | aiAdaptiv",
+      "description": "Una piattaforma con LLM open source e il tuo marchio, installata nel tuo account cloud europeo. Infrastruttura, chiavi e dati sono tuoi; noi installiamo, manteniamo e aggiorniamo. Allineata a GDPR e Regolamento europeo sull'IA per architettura."
+    },
+    "tags": [
+      "LLM open source",
+      "Il tuo cloud europeo",
+      "Col tuo marchio",
+      "GDPR e Regolamento IA"
+    ],
+    "cta": "Prenota una call di 30 minuti",
+    "imageLabel": "Schizzo a matita di un lucchetto su carta chiara: la piattaforma IA privata di aiAdaptiv.",
+    "flowAlt": "Schizzo a matita: il tuo account cloud europeo, poi la piattaforma installata, poi un'interfaccia browser col tuo marchio, poi il tuo team che la usa.",
+    "video": {
+      "label": "Guardala all'opera",
+      "title": "Entra un contratto. Escono i rischi e una sintesi, dentro un ambiente privato col tuo marchio.",
+      "duration": "4:32",
+      "cta": "Guarda la dimostrazione",
+      "note": "Si carica solo quando premi play: fino ad allora non viene richiesto nulla a Loom."
+    },
+    "hero": {
+      "badge": "Piattaforma IA privata · LLM open source nel tuo cloud",
+      "headline": [
+        {
+          "text": "Il cervello privato della tua azienda."
+        },
+        {
+          "text": "Di proprietà, non in affitto.",
+          "accent": true
+        }
+      ],
+      "subhead": "Mettiamo in produzione una piattaforma IA completamente col tuo marchio direttamente dentro il tuo account cloud europeo sicuro. Infrastruttura, chiavi e dati sono tuoi. Il lavoro pesante lo facciamo noi.",
+      "tagline": "Basta incollare dati sensibili dei clienti in strumenti pubblici.",
+      "cta": "Verifica in 60 secondi se fa per te →"
+    },
+    "problem": {
+      "h2": "L'IA pubblica è una responsabilità enorme",
+      "points": [
+        "Sanzioni fino al 4 % (GDPR) o al 7 % (Regolamento europeo sull'IA) del fatturato.",
+        "I tuoi contratti e i dati dei clienti possono addestrare modelli pubblici e arrivare ai concorrenti.",
+        "I team piccoli non riescono a stare dietro a infrastruttura e aggiornamenti."
+      ]
+    },
+    "solution": {
+      "h2": "La installiamo noi. È tua.",
+      "pillars": [
+        {
+          "title": "Analisi documentale sicura",
+          "body": "Carica contratti da 200 pagine o fascicoli di due diligence. Estrai i rischi in sicurezza, confronta le versioni e ottieni sintesi, senza alcuna fuga di dati."
+        },
+        {
+          "title": "100 % col tuo marchio",
+          "body": "ai.tuostudio.it con la tua identità. Un vero asset interno."
+        },
+        {
+          "title": "Il tuo account cloud",
+          "body": "Installata nel tuo account cloud. Controlli tutto tu."
+        },
+        {
+          "title": "Zero carico operativo",
+          "body": "Aggiornamenti dei modelli, sicurezza e manutenzione li gestiamo noi."
+        }
+      ]
+    },
+    "howItWorks": {
+      "h2": "Come funziona",
+      "intro": "Rendiamo semplice l'IA privata installando tutto nel tuo account cloud.",
+      "steps": [
+        {
+          "title": "1. Crei il tuo account (o lo creiamo noi)",
+          "body": "Apri un account cloud in una regione europea. La fatturazione la controlli tu."
+        },
+        {
+          "title": "2. La costruiamo e le diamo il tuo marchio",
+          "body": "Installiamo Open WebUI e modelli ottimizzati, applichiamo il tuo logo e configuriamo ai.tuostudio.it."
+        },
+        {
+          "title": "3. Hai accesso completo",
+          "body": "Il tuo team entra e comincia a usarla."
+        },
+        {
+          "title": "4. Pensiamo noi alla manutenzione",
+          "body": "Aggiornamenti mensili e assistenza."
+        }
+      ],
+      "timeline": "Tempi tipici: da 3 a 7 giorni lavorativi dal pagamento all'attivazione.",
+      "roadmap": {
+        "label": "Percorso del cliente",
+        "days": [
+          {
+            "label": "Giorni 1–2",
+            "body": "Crei (o creiamo) l'account cloud e concedi l'accesso."
+          },
+          {
+            "label": "Giorni 3–5",
+            "body": "Installiamo, applichiamo il marchio e ottimizziamo la piattaforma per i vostri flussi."
+          },
+          {
+            "label": "Giorni 6–7",
+            "body": "Formazione di consegna e il tuo team parte."
+          }
+        ],
+        "resultLabel": "Risultato",
+        "result": "Una piattaforma IA privata, sicura e completamente col tuo marchio, in funzione nel tuo ambiente in meno di una settimana."
+      },
+      "flowLabel": "Sintesi visiva (quattro passaggi semplici)",
+      "flow": "Il tuo account cloud (UE)\n↓\nInstalliamo Open WebUI + modelli\n↓\nCol tuo marchio su ai.tuostudio.it\n↓\nIl tuo team la usa in sicurezza\n(manutenzione mensile a nostro carico)",
+      "outro": "L'account è tuo. I dati sono tuoi. Il lavoro tecnico lo facciamo noi."
+    },
+    "behindTheArchitecture": {
+      "h2": "Dietro l'architettura",
+      "lead": "Ciao, sono il fondatore di aiAdaptiv.",
+      "body": [
+        "L'ho costruita perché studi e società di consulenza di medie dimensioni hanno bisogno di IA potente per contratti e lavoro con i clienti, ma gli strumenti pubblici creano rischi seri. Ogni installazione riceve l'attenzione diretta della persona che ha costruito la piattaforma."
+      ]
+    },
+    "faq": {
+      "h2": "Domande frequenti",
+      "items": [
+        {
+          "q": "Perché installare nel mio account cloud?",
+          "a": "Proprietà vera. Controlli account, fatturazione e chiavi. Se un giorno smetti di lavorare con noi, l'intera piattaforma resta tua: nessun vincolo col fornitore."
+        },
+        {
+          "q": "Vedete i nostri dati sensibili?",
+          "a": "No. Tutta l'elaborazione avviene nel tuo ambiente sicuro. Non abbiamo mai accesso alle tue richieste né ai tuoi documenti."
+        },
+        {
+          "q": "Quanto costa la potenza di calcolo GPU?",
+          "a": "Paghi direttamente il fornitore cloud, mai noi. Restiamo flessibili, possiamo usare fornitori di GPU diversi e scegliere e ricalibrare la dimensione giusta per il tuo utilizzo. Il calcolo GPU si aggira di solito su qualche centinaio di euro al mese a seconda dell'intensità d'uso."
+        },
+        {
+          "q": "Quanto tempo richiede l'attivazione?",
+          "a": "Di solito da 3 a 7 giorni lavorativi dal pagamento, una volta completata la checklist iniziale."
+        },
+        {
+          "q": "Posso disdire?",
+          "a": "Sì. La manutenzione mensile è disdicibile con 30 giorni di preavviso. La piattaforma, che è tua, resta tua."
+        }
+      ]
+    },
+    "qualifier": {
+      "h2": "Fa per te?",
+      "yesLabel": "Sì se",
+      "yes": "lavori ogni giorno con documenti legali, finanziari o dei clienti che sono sensibili.",
+      "noLabel": "No se",
+      "no": "ti serve soltanto uno strumento IA generico ed economico.",
+      "cta": "Verifica in 60 secondi se fa per te →"
+    },
+    "backHome": "← Torna alla home"
+  }
+}

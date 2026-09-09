@@ -29,7 +29,7 @@ export const defaultLocale: Locale = "en";
  * the default locale instead. Move a locale here the moment its dictionary
  * lands, and it starts being indexed in its own right.
  */
-export const translatedLocales = ["en", "pl", "de", "fr"] as const satisfies readonly Locale[];
+export const translatedLocales = ["en", "pl", "de", "fr", "es", "it", "pt"] as const satisfies readonly Locale[];
 
 /** True when `locale` has real translated copy rather than the English fallback. */
 export function isTranslated(locale: Locale): boolean {
