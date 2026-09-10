@@ -164,6 +164,13 @@ export default async function AgencyRootLayout({
         {/* Applies the stored theme before first paint — no flash of the
             wrong palette. See components/agency/theme.ts. */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* The reveal animation starts every marked element at opacity 0 and
+            waits for ScrollReveal to un-hide it. Without JS that never comes,
+            and a page whose whole body is marked — the case-study index, say —
+            renders blank. Show everything instead. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
       </head>
       <body>
         {/* Google Consent Mode v2. Denies all storage by default, but reads

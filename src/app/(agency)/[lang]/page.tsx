@@ -34,7 +34,7 @@ export default async function AgencyHome({ params }: PageParams) {
       <TechStack tech={agency.tech} />
       <Capabilities capabilities={agency.capabilities} />
       <Proof proof={agency.proof} />
-      <Work work={agency.work} lang={lang} />
+      <Work work={agency.work} />
       <Product product={agency.product} lang={lang} />
       <Team team={agency.team} />
       <Approach approach={agency.approach} />

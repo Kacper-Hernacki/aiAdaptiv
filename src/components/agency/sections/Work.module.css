@@ -71,19 +71,3 @@
     margin-top: 32px;
   }
 }
-
-/* Only on cards that have a case study behind them. */
-.caseLink {
-  display: inline-flex;
-  margin-top: 0.25em;
-  font-size: 0.95em;
-  font-weight: 500;
-  color: var(--fg);
-  border-bottom: 1px solid var(--fg-faint);
-  padding-bottom: 0.1em;
-  transition: border-color 0.2s;
-}
-
-.caseLink:hover {
-  border-bottom-color: var(--fg);
-}
