@@ -584,6 +584,10 @@
               "href": "#work"
             },
             {
+              "label": "Případové studie",
+              "href": "@caseStudies"
+            },
+            {
               "label": "Přístup",
               "href": "#approach"
             },

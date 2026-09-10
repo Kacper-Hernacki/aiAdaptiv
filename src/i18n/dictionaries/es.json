@@ -584,6 +584,10 @@
               "href": "#work"
             },
             {
+              "label": "Casos prácticos",
+              "href": "@caseStudies"
+            },
+            {
               "label": "Enfoque",
               "href": "#approach"
             },

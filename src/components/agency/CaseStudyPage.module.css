@@ -1,0 +1,278 @@
+/* One case study. Follows the agency's case-study layout: a title block, a
+   facts strip, a metrics row, then reading bands with the evidence in the
+   middle and the disclaimer immediately after it — the two belong together. */
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 2em;
+  font-size: 0.9em;
+  color: var(--fg-muted);
+  transition: color 0.2s;
+}
+
+.back:hover {
+  color: var(--fg);
+}
+
+.head {
+  max-width: 42em;
+}
+
+.h1 {
+  font-size: 2.9em;
+  font-weight: 500;
+  line-height: 104%;
+  letter-spacing: -0.02em;
+  margin-top: 0.4em;
+}
+
+.deck {
+  margin-top: 1em;
+  font-size: 1.15em;
+  line-height: 150%;
+  color: var(--fg-muted);
+}
+
+/* Facts strip — client, field, period, stack. */
+.facts {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5em;
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: 1px solid var(--hairline);
+}
+
+.factLabel {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-faint);
+}
+
+.factValue {
+  margin-top: 0.4em;
+  line-height: 140%;
+}
+
+/* Metrics. The point of the page, so they get the dark band. */
+.metrics {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5em;
+  margin-top: 3em;
+  width: 100%;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  padding: 1.5em;
+  border-radius: var(--radius);
+  background: var(--on-dark-card);
+  border: 1px solid var(--on-dark-hairline);
+}
+
+.metricValue {
+  font-size: 2.4em;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: var(--on-dark);
+}
+
+.metricLabel {
+  color: var(--on-dark);
+  line-height: 140%;
+}
+
+.metricNote {
+  font-size: 0.85em;
+  line-height: 140%;
+  color: var(--on-dark-muted);
+}
+
+/* Reading sections. */
+/* Measure only. The rhythm inside a block comes from the paragraphs, so this
+   must not add a flex gap — that would space the heading off its own text. */
+.body {
+  max-width: 44em;
+}
+
+.blockH {
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8em;
+}
+
+.para {
+  line-height: 165%;
+  color: var(--fg-muted);
+}
+
+.para + .para {
+  margin-top: 1em;
+}
+
+.bullets {
+  margin-top: 1.5em;
+  padding-left: 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+
+.bullet {
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+/* The pull quote doubles as the metrics band's heading, so it only needs a
+   measure — the type comes from the shared .h2. */
+.pull {
+  max-width: 18em;
+}
+
+/* Evidence. */
+.proofFigure {
+  margin: 0;
+  width: 100%;
+}
+
+.proofImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.caption {
+  margin-top: 1em;
+  font-size: 0.9em;
+  line-height: 150%;
+  color: var(--fg-muted);
+  max-width: 44em;
+}
+
+/* The "what this does not claim" block. Deliberately plain — it reads as a
+   note, not as another selling section. */
+.disclaimer {
+  max-width: 44em;
+  padding: 1.75em;
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  background: var(--card);
+}
+
+.disclaimerH {
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 0.6em;
+}
+
+.disclaimerBody {
+  line-height: 160%;
+  color: var(--fg-muted);
+}
+
+/* Index page. */
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  margin-top: 3em;
+  width: 100%;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2em;
+  align-items: center;
+  padding: 1.75em;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  transition: border-color 0.2s;
+}
+
+.item:hover {
+  border-color: var(--fg-faint);
+}
+
+.itemTitle {
+  font-size: 1.6em;
+  font-weight: 500;
+  line-height: 118%;
+  letter-spacing: -0.01em;
+  margin-top: 0.35em;
+}
+
+.itemDeck {
+  margin-top: 0.75em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.itemLink {
+  display: inline-flex;
+  margin-top: 1.25em;
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.1em;
+}
+
+.itemMetrics {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25em;
+}
+
+.itemMetricValue {
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 105%;
+  letter-spacing: -0.02em;
+}
+
+.itemMetricLabel {
+  margin-top: 0.3em;
+  font-size: 0.85em;
+  line-height: 140%;
+  color: var(--fg-muted);
+}
+
+@media screen and (max-width: 991px) {
+  .h1 {
+    font-size: 2.1em;
+  }
+
+  .facts,
+  .metrics,
+  .item {
+    grid-template-columns: 1fr;
+  }
+
+  .metricValue {
+    font-size: 2em;
+  }
+
+  .itemTitle {
+    font-size: 1.35em;
+  }
+}
+
+/* Story bands run tighter than a landing section: this is reading, not
+   scanning, so the vertical rhythm comes from the paragraphs. */
+.storyBand {
+  padding-block: 3.5em;
+}

@@ -584,6 +584,10 @@
               "href": "#work"
             },
             {
+              "label": "Case study",
+              "href": "@caseStudies"
+            },
+            {
               "label": "Approccio",
               "href": "#approach"
             },

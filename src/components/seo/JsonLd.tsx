@@ -197,3 +197,52 @@ export function FaqJsonLd({
     />
   );
 }
+
+/**
+ * A case study as an Article, authored and published by the organization.
+ * `creativeWorkStatus` is where a demo or an in-house build says so, so the
+ * structured data carries the same caveat the page states in words.
+ */
+export function CaseStudyJsonLd({
+  lang,
+  path,
+  headline,
+  description,
+  datePublished,
+  isDemonstration = false,
+  image,
+}: {
+  lang: string;
+  /** Path of the case, e.g. /en/case-studies/second-brain. */
+  path: string;
+  headline: string;
+  description: string;
+  /** ISO date the work finished. */
+  datePublished: string;
+  /** True when the case describes our own build rather than client work. */
+  isDemonstration?: boolean;
+  image?: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": `${siteUrl}${path}#article`,
+        headline,
+        description,
+        datePublished,
+        inLanguage: lang,
+        mainEntityOfPage: `${siteUrl}${path}`,
+        ...(image ? { image: `${siteUrl}${image}` } : {}),
+        author: { "@id": `${siteUrl}/#organization` },
+        publisher: { "@id": `${siteUrl}/#organization` },
+        // A demo is not a client outcome. Saying so in the markup keeps the
+        // structured data as honest as the page.
+        ...(isDemonstration
+          ? { creativeWorkStatus: "Demonstration / in-house build" }
+          : {}),
+      }}
+    />
+  );
+}

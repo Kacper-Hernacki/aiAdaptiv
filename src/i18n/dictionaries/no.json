@@ -584,6 +584,10 @@
               "href": "#work"
             },
             {
+              "label": "Case-studier",
+              "href": "@caseStudies"
+            },
+            {
               "label": "Tilnærming",
               "href": "#approach"
             },
