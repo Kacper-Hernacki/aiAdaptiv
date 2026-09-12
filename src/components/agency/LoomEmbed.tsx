@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image, { type StaticImageData } from "next/image";
 import type { Dictionary } from "@/i18n/dictionaries";
 import styles from "./LoomEmbed.module.css";
 
@@ -12,13 +13,20 @@ import styles from "./LoomEmbed.module.css";
  * usual: this page's whole argument is about not leaking data to third
  * parties, and an eagerly embedded video would contradict it before the
  * cookie banner has even been answered. It also keeps the page fast.
+ *
+ * `poster` is that promise's other half. The still is a frame of the video
+ * kept in our own assets, not Loom's CDN thumbnail — hotlinking the thumbnail
+ * would put a request to Loom on page load and make the note under the frame
+ * a lie.
  */
 export function LoomEmbed({
   id,
   video,
+  poster,
 }: {
   id: string;
   video: Dictionary["privateAi"]["video"];
+  poster?: StaticImageData;
 }) {
   const [playing, setPlaying] = useState(false);
 
@@ -34,21 +42,39 @@ export function LoomEmbed({
             allowFullScreen
           />
         ) : (
-          <button
-            type="button"
-            className={styles.poster}
-            onClick={() => setPlaying(true)}
-          >
-            <span className={styles.play}>
-              <svg className={styles.playIcon} viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </span>
-            <span className={styles.title}>{video.title}</span>
-            <span className={styles.meta}>
-              {video.cta} · {video.duration}
-            </span>
-          </button>
+          <>
+            {poster ? (
+              /* Decorative: the button below already announces the video. */
+              <Image
+                src={poster}
+                alt=""
+                aria-hidden="true"
+                className={styles.thumb}
+                sizes="(max-width: 991px) 100vw, 52em"
+                placeholder="blur"
+              />
+            ) : null}
+            <button
+              type="button"
+              className={styles.poster}
+              data-over-image={poster ? "" : undefined}
+              onClick={() => setPlaying(true)}
+            >
+              <span className={styles.play}>
+                <svg
+                  className={styles.playIcon}
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+              <span className={styles.title}>{video.title}</span>
+              <span className={styles.meta}>
+                {video.cta} · {video.duration}
+              </span>
+            </button>
+          </>
         )}
       </div>
       <p className={styles.note}>{video.note}</p>

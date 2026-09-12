@@ -4,6 +4,7 @@ import { bookingUrl } from "@/config/site";
 import type { CaseStudy, CaseStudyCopy } from "@/content/case-studies";
 import { PillButton } from "./PillButton";
 import { LoomEmbed } from "./LoomEmbed";
+import loomPoster from "./assets/loom-poster.jpg";
 import s from "./Agency.module.css";
 import c from "./CaseStudyPage.module.css";
 
@@ -114,7 +115,11 @@ export function CaseStudyPage({
           </h2>
           <figure className={c.proofFigure} data-reveal>
             {study.loomId && copy.proof.video ? (
-              <LoomEmbed id={study.loomId} video={copy.proof.video} />
+              <LoomEmbed
+                id={study.loomId}
+                video={copy.proof.video}
+                poster={loomPoster}
+              />
             ) : study.image ? (
               // A plain <img>: the graph is an SVG, so there is nothing for the
               // image optimizer to do but re-encode it.

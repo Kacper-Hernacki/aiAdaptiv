@@ -6,6 +6,7 @@ import { PillButton } from "./PillButton";
 import { LoomEmbed } from "./LoomEmbed";
 import productHero from "./assets/product-hero.jpg";
 import flowImage from "./assets/private-ai-flow.jpg";
+import loomPoster from "./assets/loom-poster.jpg";
 import s from "./Agency.module.css";
 import { FaqAccordion } from "./FaqAccordion";
 import c from "./PrivateAiPage.module.css";
@@ -49,7 +50,10 @@ export function PrivateAiPage({
                 <p className={s.super}>{hero.badge}</p>
                 <h1 id="pai-heading" className={c.h1}>
                   {hero.headline.map((part, i) => (
-                    <span key={i} className={part.accent ? c.accent : undefined}>
+                    <span
+                      key={i}
+                      className={part.accent ? c.accent : undefined}
+                    >
                       {part.text}
                     </span>
                   ))}
@@ -92,7 +96,7 @@ export function PrivateAiPage({
             {doc.video.label}
           </h2>
           <div data-reveal>
-            <LoomEmbed id={LOOM_ID} video={doc.video} />
+            <LoomEmbed id={LOOM_ID} video={doc.video} poster={loomPoster} />
           </div>
         </div>
       </section>
@@ -193,7 +197,9 @@ export function PrivateAiPage({
               </li>
             ))}
             <li className={`${c.day} ${c.result}`} data-reveal>
-              <span className={c.dayLabel}>{howItWorks.roadmap.resultLabel}</span>
+              <span className={c.dayLabel}>
+                {howItWorks.roadmap.resultLabel}
+              </span>
               <span>{howItWorks.roadmap.result}</span>
             </li>
           </ul>
@@ -213,7 +219,6 @@ export function PrivateAiPage({
           </p>
         </div>
       </section>
-
 
       {/* Behind the architecture */}
       <section

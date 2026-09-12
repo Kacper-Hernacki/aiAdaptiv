@@ -25,6 +25,15 @@
   border: 0;
 }
 
+/* A still from the video, served from our own assets. */
+.thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Facade: a button covering the whole frame, so the entire poster is the
    click target rather than just the play badge. */
 .poster {
@@ -67,6 +76,26 @@
   fill: currentColor;
 }
 
+/* Over the still the facade needs its own ground: the frame is dark in both
+   themes, so the text switches to the always-dark ink rather than the
+   theme's, and a scrim keeps it legible over whatever the frame happens to
+   show. */
+.poster[data-over-image] {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 55%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* The badge would otherwise take the theme's button colours — black on black
+   in light mode, over a dark frame. */
+.poster[data-over-image] .play {
+  background: var(--on-dark);
+  color: #111113;
+}
+
 .title {
   max-width: 30em;
   font-size: 1.05em;
@@ -74,9 +103,17 @@
   color: var(--fg);
 }
 
+.poster[data-over-image] .title {
+  color: var(--on-dark);
+}
+
 .meta {
   font-size: 0.8em;
   color: var(--fg-faint);
+}
+
+.poster[data-over-image] .meta {
+  color: var(--on-dark-muted);
 }
 
 .note {
