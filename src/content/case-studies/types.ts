@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import type { Locale } from "@/i18n/config";
 
 /**
@@ -54,7 +55,10 @@ export type CaseStudy = {
   /** URL segment, never translated. */
   slug: string;
   kind: CaseStudyKind;
-  /** Card image / proof image in `public/`. */
+  /** The case's own illustration — card thumbnail and page hero. Same series
+   *  as the Work cards: graphite sketch on light paper, one object. */
+  hero?: StaticImageData;
+  /** Proof image in `public/`, when the evidence is a picture. */
   image?: { src: string; width: number; height: number };
   /** Loom id, when the proof is a recorded walkthrough rather than an image. */
   loomId?: string;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Locale } from "@/i18n/config";
 import { bookingUrl } from "@/config/site";
 import type { CaseStudy, CaseStudyCopy } from "@/content/case-studies";
@@ -30,12 +31,27 @@ export function CaseStudyPage({
           <Link href={`/${lang}/case-studies`} className={c.back}>
             ← {copy.backLabel}
           </Link>
-          <div className={c.head}>
-            <p className={s.super}>{copy.kindLabel}</p>
-            <h1 id="case-heading" className={c.h1}>
-              {copy.title}
-            </h1>
-            <p className={c.deck}>{copy.deck}</p>
+          <div className={study.hero ? c.heroGrid : undefined}>
+            <div className={c.head}>
+              <p className={s.super}>{copy.kindLabel}</p>
+              <h1 id="case-heading" className={c.h1}>
+                {copy.title}
+              </h1>
+              <p className={c.deck}>{copy.deck}</p>
+            </div>
+            {study.hero ? (
+              /* Decorative: the sketch illustrates the case, it does not
+                 carry information the text leaves out. */
+              <Image
+                src={study.hero}
+                alt=""
+                aria-hidden="true"
+                className={c.heroImage}
+                sizes="(max-width: 991px) 100vw, 40vw"
+                placeholder="blur"
+                priority
+              />
+            ) : null}
           </div>
           <ul className={c.facts}>
             {copy.facts.map((fact) => (

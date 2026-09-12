@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Locale } from "@/i18n/config";
 import { caseStudies, getCaseCopy, getIndexCopy } from "@/content/case-studies";
 import s from "./Agency.module.css";
@@ -41,6 +42,16 @@ export function CaseStudiesIndex({ lang }: { lang: Locale }) {
                   data-reveal
                   style={{ "--rd": `${120 + i * 90}ms` } as React.CSSProperties}
                 >
+                  {study.hero ? (
+                    <Image
+                      src={study.hero}
+                      alt=""
+                      aria-hidden="true"
+                      className={c.itemThumb}
+                      sizes="(max-width: 991px) 100vw, 22vw"
+                      placeholder="blur"
+                    />
+                  ) : null}
                   <div>
                     <p className={s.super}>{cs.kindLabel}</p>
                     <h2 className={c.itemTitle}>

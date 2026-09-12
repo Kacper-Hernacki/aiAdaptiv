@@ -1,4 +1,5 @@
 import type { CaseStudy } from "./types";
+import hero from "@/components/agency/assets/case-second-brain.jpg";
 
 /**
  * Every figure here was counted in the vault itself on 2026-09-10 and can be
@@ -11,6 +12,7 @@ export const secondBrain: CaseStudy = {
   kind: "reference",
   workId: "second-brain",
   completed: "2026-06-29",
+  hero,
   image: {
     src: "/case-studies/second-brain-graph.svg",
     width: 1600,

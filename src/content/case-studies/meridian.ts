@@ -1,4 +1,5 @@
 import type { CaseStudy } from "./types";
+import hero from "@/components/agency/assets/case-deal-room.jpg";
 
 /**
  * The private-AI showcase. The deal room and its documents are SYNTHETIC —
@@ -11,6 +12,7 @@ export const meridian: CaseStudy = {
   kind: "reference",
   workId: "private-ai",
   completed: "2026-07-09",
+  hero,
   loomId: "24062b57fb0c4abfb17678429fb2bacc",
   copy: {
     en: {
