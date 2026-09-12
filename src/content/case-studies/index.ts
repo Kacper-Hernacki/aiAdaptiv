@@ -6,12 +6,14 @@ import { meridian } from "./meridian";
 import { oneRepo } from "./one-repo";
 import { pocketAgent } from "./pocket-agent";
 import { n8nTemplates } from "./n8n-templates";
+import { ownInfrastructure } from "./own-infrastructure";
 
 export type { CaseStudy, CaseStudyCopy } from "./types";
 
 /** Newest first — this is the order the index page renders. */
 export const caseStudies: CaseStudy[] = [
   oneRepo,
+  ownInfrastructure,
   n8nTemplates,
   pocketAgent,
   secondBrain,

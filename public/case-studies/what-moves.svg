@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 780" width="1400" height="780" role="img" aria-label="Two columns: tools priced per seat, where self-hosting pays back almost at once, and tools priced per usage or paid in on-call time, where it usually does not">
+  <rect width="1400" height="780" fill="#0B1220"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+
+    <!-- LEFT: worth moving -->
+    <rect x="60" y="60" width="620" height="560" rx="18" fill="#12203a" stroke="#3B81F6" stroke-opacity="0.45"/>
+    <text x="96" y="116" fill="#3B81F6" font-size="15" letter-spacing="1.6">PRICED PER SEAT</text>
+    <text x="96" y="164" fill="#E2E8F0" font-size="30" font-weight="500">Pays back almost at once</text>
+    <text x="96" y="200" fill="#94A3B8" font-size="17">The bill grows with headcount. One server does not.</text>
+
+    <g fill="#E2E8F0" font-size="19">
+      <text x="96" y="266">Git, issues and CI</text>
+      <text x="96" y="330">Airtable-style databases</text>
+      <text x="96" y="394">Docs, wiki and notes</text>
+      <text x="96" y="458">Automation and agents</text>
+      <text x="96" y="522">Status pages and uptime checks</text>
+    </g>
+    <g fill="#64748B" font-size="16">
+      <text x="96" y="292">Forgejo — one binary, idles near 100 MB</text>
+      <text x="96" y="356">NocoDB — over a Postgres you already run</text>
+      <text x="96" y="420">Outline, Docmost</text>
+      <text x="96" y="484">n8n — the workflows we publish run on this</text>
+      <text x="96" y="548">Uptime Kuma</text>
+    </g>
+    <text x="96" y="594" fill="#3B81F6" font-size="17">Cost moves from per-person to one line on a hosting bill.</text>
+
+    <!-- RIGHT: worth keeping -->
+    <rect x="720" y="60" width="620" height="560" rx="18" fill="#ffffff" fill-opacity="0.045" stroke="#ffffff" stroke-opacity="0.14"/>
+    <text x="756" y="116" fill="#94A3B8" font-size="15" letter-spacing="1.6">PRICED PER USAGE, PAID IN ON-CALL</text>
+    <text x="756" y="164" fill="#E2E8F0" font-size="30" font-weight="500">Usually does not</text>
+    <text x="756" y="200" fill="#94A3B8" font-size="17">The licence is free. The engineer running it is not.</text>
+
+    <g fill="#E2E8F0" font-size="19">
+      <text x="756" y="266">Metrics, logs and traces</text>
+      <text x="756" y="330">The production database</text>
+      <text x="756" y="394">Object storage with a CDN</text>
+      <text x="756" y="458">Anything that pages someone at 03:00</text>
+      <text x="756" y="522">Kubernetes, before you need two nodes</text>
+    </g>
+    <g fill="#64748B" font-size="16">
+      <text x="756" y="292">below roughly 50 hosts, hosted wins on published models</text>
+      <text x="756" y="356">managed Postgres is the thing worth paying for</text>
+      <text x="756" y="420">an S3 clone is easy; being its SLA is not</text>
+      <text x="756" y="484">if nobody is on call, do not own it</text>
+      <text x="756" y="548">one node and Compose carries further than people expect</text>
+    </g>
+    <text x="756" y="594" fill="#94A3B8" font-size="17">Savings here arrive around 200 hosts, not before.</text>
+
+    <!-- footer -->
+    <path d="M60 676 H1340" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="60" y="722" fill="#E2E8F0" font-size="19">The line between the two columns moves with your headcount and your volume.</text>
+    <text x="1340" y="722" fill="#64748B" font-size="16" text-anchor="end">list prices checked September 2026</text>
+  </g>
+</svg>
