@@ -10,10 +10,14 @@ import type { Locale } from "@/i18n/config";
 
 /**
  * `client` = built for a paying client, with their outcome.
- * `reference` = our own build. Labelled as such on the page, never dressed up
- * as client work — see the disclaimer block every entry must carry.
+ * `reference` = our own build.
+ * `method` = a way of building, proven on work we are not free to name. It
+ * claims the setup, never a result, and never describes the product it ran on.
+ *
+ * Whichever it is, the page says so above the title and the disclaimer block
+ * every entry carries spells out the limits.
  */
-export type CaseStudyKind = "client" | "reference";
+export type CaseStudyKind = "client" | "reference" | "method";
 
 export type CaseStudyCopy = {
   metaTitle: string;

@@ -2,16 +2,18 @@ import type { CaseStudy } from "./types";
 import hero from "@/components/agency/assets/case-one-repo.jpg";
 
 /**
- * The delivery case: web, iOS and Android from a single repository. Counted in
- * the client's repo on 2026-09-12 — 879 commits since 2026-07-10, 1,020
- * TypeScript files, 111 migrations, 37 pgTAP test files, 5 subagents.
+ * A METHOD case: the shape we build web + mobile products in, not an account
+ * of someone's product. The client asked not to be mentioned at all, so this
+ * describes the setup and nothing about what it runs — no name, no sector, no
+ * hosts, no store links, and no claim about what the product achieved.
  *
- * The client is deliberately not named here. Naming needs their written
- * consent; until it exists, the product is described, never identified.
+ * The volume figures were counted on 2026-09-12 in a production codebase
+ * running exactly this shape: 879 commits since 2026-07-10, 1,020 TypeScript
+ * files, 111 migrations, 37 pgTAP test files, 5 subagents.
  */
 export const oneRepo: CaseStudy = {
   slug: "one-repo-three-releases",
-  kind: "client",
+  kind: "method",
   completed: "2026-09-11",
   hero,
   image: {
@@ -22,21 +24,21 @@ export const oneRepo: CaseStudy = {
   copy: {
     en: {
       metaTitle:
-        "Web, iOS and Android from one repository — a delivery case | aiAdaptiv",
+        "Web, iOS and Android from one repository — how we build | aiAdaptiv",
       metaDescription:
-        "A coach console, two store apps and a database shipped out of a single monorepo. One push releases all three, preview and production are two git branches, and five subagents do the repetitive work.",
-      kindLabel: "Client build — product not named here",
+        "The setup we install for products that need a web app and a phone app: one monorepo, two branches, and a push that migrates the database, deploys the console and publishes both store apps at once.",
+      kindLabel: "How we build — web and mobile in one repository",
       title: "One repository, three releases",
       deck:
-        "A scheduling product with a web console, an iOS app, an Android app and a database underneath. Most teams would run that as four codebases and four release days. It is one repository, and a push to the main branch releases all of it at once.",
+        "A web console, an iOS app, an Android app and a database underneath. Most teams run that as four codebases and four release days. This is the setup we build instead — one repository, two branches, and a push that releases all of it at once. It is running in production right now, and it is the same shape we would set up for you.",
       facts: [
-        { label: "Client", value: "Named only with their consent" },
-        { label: "Field", value: "Sports club scheduling, web and mobile" },
-        { label: "Built", value: "July 2026 – ongoing" },
+        { label: "What this is", value: "A way of building, not a product" },
+        { label: "Fits", value: "Anything with a web app and a phone app" },
         {
-          label: "Runs on",
+          label: "Stack",
           value: "Next.js 16, Expo, Supabase, Turborepo monorepo",
         },
+        { label: "Status", value: "In production, shipped to both stores" },
       ],
       metrics: [
         {
@@ -50,14 +52,14 @@ export const oneRepo: CaseStudy = {
           note: "separate databases, separate hosts, separate apps on the phone",
         },
         {
-          value: "111",
-          label: "database migrations, each one reviewable",
-          note: "37 pgTAP test files run against the schema",
+          value: "1",
+          label: "typecheck across every workspace at once",
+          note: "a broken shared contract fails there, before anything builds",
         },
         {
           value: "5",
-          label: "specialist subagents inside the repo",
-          note: "migrations, engine, conformance, scenarios, verification",
+          label: "specialist subagents living in the repo",
+          note: "migrations, domain engine, conformance, scenarios, verification",
         },
       ],
       sections: [
@@ -69,15 +71,15 @@ export const oneRepo: CaseStudy = {
           ],
         },
         {
-          h: "What we built: one repository, four workspaces",
+          h: "The shape: one repository, four workspaces",
           paragraphs: [
-            "A Turborepo monorepo with the web console, the phone app, the scheduling engine and the shared API contract side by side. The engine is a pure TypeScript package with no build step: the console and the server compile the same source files, so a schedule computed in the browser and one computed on the server are provably the same code rather than two implementations that agree for now.",
+            "A Turborepo monorepo with the web console, the phone app, the domain engine and the shared API contract side by side. The engine is a pure TypeScript package with no build step: the console and the server compile the same source files, so a result computed in the browser and the same result computed on the server are provably the same code, rather than two implementations that agree for now.",
             "One typecheck runs across every workspace at once. A change to the shared contract that breaks the app fails there — before anything is built, deployed or installed on a phone.",
           ],
           bullets: [
             "Web console — Next.js 16 and React 19, App Router, with its own API routes",
             "Phone app — Expo, shipped to the App Store and Google Play from the same repo",
-            "Scheduling engine — pure TypeScript, deterministic, tested against a catalogue of scenarios",
+            "Domain engine — pure TypeScript, deterministic, tested against a catalogue of scenarios",
             "Shared contract package — the response shapes and enums both sides agree on",
           ],
         },
@@ -91,7 +93,8 @@ export const oneRepo: CaseStudy = {
         {
           h: "Where the speed actually comes from",
           paragraphs: [
-            "879 commits in nine weeks across 1,020 TypeScript files, with 111 database migrations behind them, is not typing faster. It comes from the repetitive, rule-bound work being handed to specialists: five subagents live in the repo, each with one job and the standards for it written down — one authors migrations and their tests, one implements the engine, one audits the engine against its spec, one writes test scenarios, one verifies a finished pass against the code rather than against a status line.",
+            "This is not a toy configuration. In the production codebase we counted it on, the setup carries 879 commits made in nine weeks across 1,020 TypeScript files, with 111 database migrations and 37 pgTAP test files behind them.",
+            "That pace is not typing faster. It comes from the repetitive, rule-bound work being handed to specialists: five subagents live in the repository, each with one job and the standard for it written down — one authors migrations and their tests, one implements the domain engine, one audits that engine against its spec, one writes test scenarios, one verifies a finished piece of work against the code rather than against a status line.",
             "The rule that keeps it honest is written into the repo guide: a tracker records what was built, so a claim is checked against the code and the tests, never against a line in a document that says it was done.",
           ],
         },
@@ -107,33 +110,36 @@ export const oneRepo: CaseStudy = {
       disclaimer: {
         h: "What this case does not claim",
         body:
-          "The client is not named, because naming them needs their written consent and we do not have it yet. The figures above describe the build — commits, files, migrations, environments — and were counted in the repository, not estimated. They are not business results: what the product did for its users is the client's to report, not ours, and you will not find an invented percentage here.",
+          "This is a description of a setup, not of somebody's product. The figures are structural — what the repository holds and what a push does — plus volume counted in a production codebase running exactly this shape. None of them is a business result: what a product built this way goes on to do for its users belongs to whoever owns it, not to us, so you will not find an invented percentage here.",
       },
       cta: {
-        h: "One product, every platform",
+        h: "We can set this up for your product",
         body:
-          "If you need a web app and a phone app that cannot drift apart, this is the shape we build it in. Thirty minutes is enough to say whether your product fits it.",
+          "Starting from scratch, or holding a web app and a phone app that have already drifted apart — this is the shape we put them in. Thirty minutes is enough to say whether yours fits it.",
         button: "Book a 30-minute call",
       },
       backLabel: "All case studies",
     },
     pl: {
       metaTitle:
-        "Web, iOS i Android z jednego repozytorium — case wdrożeniowy | aiAdaptiv",
+        "Web, iOS i Android z jednego repozytorium — jak budujemy | aiAdaptiv",
       metaDescription:
-        "Konsola webowa, dwie aplikacje ze sklepów i baza danych z jednego monorepo. Jeden push wydaje wszystkie trzy, preview i produkcja to dwie gałęzie gita, a powtarzalną robotę biorą subagenci.",
-      kindLabel: "Wdrożenie u klienta — produkt bez nazwy",
+        "Układ, który stawiamy produktom potrzebującym aplikacji webowej i mobilnej: jedno monorepo, dwie gałęzie i push, który migruje bazę, deployuje konsolę i publikuje obie aplikacje ze sklepów naraz.",
+      kindLabel: "Jak budujemy — web i mobile w jednym repozytorium",
       title: "Jedno repozytorium, trzy wydania",
       deck:
-        "Produkt do planowania z konsolą webową, aplikacją na iOS, aplikacją na Androida i bazą danych pod spodem. Większość zespołów prowadziłaby to jako cztery repozytoria i cztery dni wydaniowe. To jest jedno repozytorium, a push na główną gałąź wydaje wszystko naraz.",
+        "Konsola webowa, aplikacja na iOS, aplikacja na Androida i baza danych pod spodem. Większość zespołów prowadzi to jako cztery repozytoria i cztery dni wydaniowe. My budujemy to inaczej — jedno repozytorium, dwie gałęzie i push, który wydaje wszystko naraz. Ten układ stoi dziś na produkcji i to ten sam kształt, który postawilibyśmy Wam.",
       facts: [
-        { label: "Klient", value: "Nazwa tylko za jego zgodą" },
-        { label: "Obszar", value: "Planowanie w klubie sportowym, web i mobile" },
-        { label: "Budowa", value: "lipiec 2026 – trwa" },
+        { label: "Co to jest", value: "Sposób budowania, nie produkt" },
         {
-          label: "Działa na",
+          label: "Pasuje do",
+          value: "Wszystkiego z aplikacją webową i mobilną",
+        },
+        {
+          label: "Stack",
           value: "Next.js 16, Expo, Supabase, monorepo na Turborepo",
         },
+        { label: "Status", value: "Na produkcji, w obu sklepach" },
       ],
       metrics: [
         {
@@ -147,14 +153,14 @@ export const oneRepo: CaseStudy = {
           note: "osobne bazy, osobne hosty, osobne aplikacje na telefonie",
         },
         {
-          value: "111",
-          label: "migracji bazy, każda do przejrzenia",
-          note: "37 plików testów pgTAP puszczanych na schemat",
+          value: "1",
+          label: "typecheck obejmujący wszystkie workspace'y naraz",
+          note: "zepsuty wspólny kontrakt wywala się tam, zanim cokolwiek się zbuduje",
         },
         {
           value: "5",
-          label: "wyspecjalizowanych subagentów w repo",
-          note: "migracje, silnik, zgodność ze specyfikacją, scenariusze, weryfikacja",
+          label: "wyspecjalizowanych subagentów mieszkających w repo",
+          note: "migracje, silnik domenowy, zgodność ze specyfikacją, scenariusze, weryfikacja",
         },
       ],
       sections: [
@@ -166,15 +172,15 @@ export const oneRepo: CaseStudy = {
           ],
         },
         {
-          h: "Co zbudowaliśmy: jedno repozytorium, cztery workspace'y",
+          h: "Kształt: jedno repozytorium, cztery workspace'y",
           paragraphs: [
-            "Monorepo na Turborepo, w którym obok siebie leżą konsola webowa, aplikacja mobilna, silnik planujący i wspólny kontrakt API. Silnik to czysty pakiet TypeScriptu bez kroku budowania: konsola i serwer kompilują te same pliki źródłowe, więc grafik policzony w przeglądarce i policzony na serwerze to dowodliwie ten sam kod, a nie dwie implementacje, które na razie się zgadzają.",
+            "Monorepo na Turborepo, w którym obok siebie leżą konsola webowa, aplikacja mobilna, silnik domenowy i wspólny kontrakt API. Silnik to czysty pakiet TypeScriptu bez kroku budowania: konsola i serwer kompilują te same pliki źródłowe, więc wynik policzony w przeglądarce i ten sam wynik policzony na serwerze to dowodliwie ten sam kod, a nie dwie implementacje, które na razie się zgadzają.",
             "Typecheck idzie jednym przebiegiem przez wszystkie workspace'y. Zmiana we wspólnym kontrakcie, która psuje aplikację, wywala się właśnie tam — zanim cokolwiek zostanie zbudowane, wdrożone czy zainstalowane na telefonie.",
           ],
           bullets: [
             "Konsola webowa — Next.js 16 i React 19, App Router, z własnymi trasami API",
             "Aplikacja mobilna — Expo, wysyłana do App Store i Google Play z tego samego repo",
-            "Silnik planujący — czysty TypeScript, deterministyczny, testowany katalogiem scenariuszy",
+            "Silnik domenowy — czysty TypeScript, deterministyczny, testowany katalogiem scenariuszy",
             "Pakiet wspólnego kontraktu — kształty odpowiedzi i enumy, na które obie strony się godzą",
           ],
         },
@@ -188,7 +194,8 @@ export const oneRepo: CaseStudy = {
         {
           h: "Skąd naprawdę bierze się tempo",
           paragraphs: [
-            "879 commitów w dziewięć tygodni w 1 020 plikach TypeScriptu, z 111 migracjami bazy za nimi, to nie jest szybsze pisanie. To efekt oddania powtarzalnej, regułowej roboty specjalistom: w repo mieszka pięciu subagentów, każdy z jednym zadaniem i spisanym standardem — jeden pisze migracje i ich testy, jeden implementuje silnik, jeden audytuje silnik wobec specyfikacji, jeden pisze scenariusze testowe, jeden weryfikuje skończony etap wobec kodu, a nie wobec linijki w statusie.",
+            "To nie jest zabawkowa konfiguracja. W produkcyjnej bazie kodu, na której to policzyliśmy, układ niesie 879 commitów zrobionych w dziewięć tygodni w 1 020 plikach TypeScriptu, z 111 migracjami bazy i 37 plikami testów pgTAP za nimi.",
+            "To tempo to nie szybsze pisanie. To efekt oddania powtarzalnej, regułowej roboty specjalistom: w repozytorium mieszka pięciu subagentów, każdy z jednym zadaniem i spisanym standardem — jeden pisze migracje i ich testy, jeden implementuje silnik domenowy, jeden audytuje ten silnik wobec specyfikacji, jeden pisze scenariusze testowe, jeden weryfikuje skończony kawałek pracy wobec kodu, a nie wobec linijki w statusie.",
             "Regułą, która trzyma to w ryzach, jest zdanie wpisane do przewodnika po repo: tracker zapisuje, co zbudowano, więc twierdzenie sprawdza się w kodzie i testach, nigdy w dokumencie, który mówi, że zrobione.",
           ],
         },
@@ -204,12 +211,12 @@ export const oneRepo: CaseStudy = {
       disclaimer: {
         h: "Czego ten case nie twierdzi",
         body:
-          "Klient nie jest nazwany, bo nazwanie go wymaga jego pisemnej zgody, a tej nie mamy. Liczby wyżej opisują budowę — commity, pliki, migracje, środowiska — i zostały policzone w repozytorium, nie oszacowane. Nie są wynikiem biznesowym: to, co produkt zrobił dla swoich użytkowników, jest do zaraportowania przez klienta, nie przez nas, i nie znajdziesz tu wymyślonego procentu.",
+          "To jest opis układu, nie czyjegoś produktu. Liczby są strukturalne — co zawiera repozytorium i co robi push — plus objętość policzona w produkcyjnej bazie kodu chodzącej dokładnie w tym kształcie. Żadna z nich nie jest wynikiem biznesowym: to, co produkt zbudowany w ten sposób zrobi dla swoich użytkowników, należy do jego właściciela, nie do nas, więc nie znajdziesz tu wymyślonego procentu.",
       },
       cta: {
-        h: "Jeden produkt, każda platforma",
+        h: "Postawimy to samo u Was",
         body:
-          "Jeśli potrzebujesz aplikacji webowej i mobilnej, które nie mogą się rozjechać, budujemy to w tym kształcie. Trzydzieści minut wystarczy, żeby powiedzieć, czy Wasz produkt się w niego wpisuje.",
+          "Od zera albo z aplikacją webową i mobilną, które już zdążyły się rozjechać — w ten kształt je układamy. Trzydzieści minut wystarczy, żeby powiedzieć, czy Wasz produkt się w niego wpisuje.",
         button: "Umów 30-minutową rozmowę",
       },
       backLabel: "Wszystkie case studies",
