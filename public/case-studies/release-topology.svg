@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" width="1400" height="720" role="img" aria-label="Release topology: the preview branch feeds a preview database, web host and Preview app; the main branch feeds the production database, live site and store apps">
+  <rect width="1400" height="720" fill="#0B1220"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+    <!-- column headings -->
+    <g fill="#64748B" font-size="15" letter-spacing="1.6" text-anchor="middle">
+      <text x="560" y="70">DATABASE</text>
+      <text x="880" y="70">WEB CONSOLE</text>
+      <text x="1200" y="70">PHONE APP</text>
+    </g>
+
+    <!-- One bus per branch, running behind the boxes: the three targets are
+         parallel outputs of the same push, not a chain. -->
+    <g stroke="#3B81F6" stroke-width="1.5" fill="none">
+      <path d="M300 200 H1200" stroke-opacity="0.45"/>
+      <path d="M300 470 H1200" stroke-opacity="0.7"/>
+    </g>
+
+    <!-- branch pills -->
+    <g>
+      <rect x="60" y="160" width="240" height="80" rx="16" fill="#3B81F6" fill-opacity="0.14" stroke="#3B81F6" stroke-opacity="0.5"/>
+      <text x="180" y="196" fill="#94A3B8" font-size="14" text-anchor="middle" letter-spacing="1.2">BRANCH</text>
+      <text x="180" y="222" fill="#E2E8F0" font-size="21" font-weight="500" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">preview</text>
+
+      <rect x="60" y="430" width="240" height="80" rx="16" fill="#3B81F6" fill-opacity="0.22" stroke="#3B81F6" stroke-opacity="0.75"/>
+      <text x="180" y="466" fill="#94A3B8" font-size="14" text-anchor="middle" letter-spacing="1.2">BRANCH</text>
+      <text x="180" y="492" fill="#E2E8F0" font-size="21" font-weight="500" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">main</text>
+    </g>
+
+    <!-- preview row boxes -->
+    <g>
+      <rect x="430" y="150" width="260" height="100" rx="14" fill="#151d2e" stroke="#ffffff" stroke-opacity="0.12"/>
+      <text x="560" y="196" fill="#E2E8F0" font-size="19" text-anchor="middle">Preview database</text>
+      <text x="560" y="222" fill="#64748B" font-size="15" text-anchor="middle">migrates on push</text>
+
+      <rect x="750" y="150" width="260" height="100" rx="14" fill="#151d2e" stroke="#ffffff" stroke-opacity="0.12"/>
+      <text x="880" y="196" fill="#E2E8F0" font-size="19" text-anchor="middle">Preview web host</text>
+      <text x="880" y="222" fill="#64748B" font-size="15" text-anchor="middle">its own URL</text>
+
+      <rect x="1070" y="150" width="260" height="100" rx="14" fill="#151d2e" stroke="#ffffff" stroke-opacity="0.12"/>
+      <text x="1200" y="196" fill="#E2E8F0" font-size="19" text-anchor="middle">Preview app</text>
+      <text x="1200" y="222" fill="#64748B" font-size="15" text-anchor="middle">own icon, installed alongside</text>
+    </g>
+
+    <!-- promotion arrow -->
+    <g>
+      <path d="M180 250 V420" stroke="#3B81F6" stroke-opacity="0.55" stroke-width="1.5" fill="none" stroke-dasharray="5 5"/>
+      <path d="M174 408 l6 12 l6 -12" fill="none" stroke="#3B81F6" stroke-opacity="0.75" stroke-width="1.5"/>
+      <text x="200" y="342" fill="#64748B" font-size="15">sign-off, then promote</text>
+    </g>
+
+    <!-- production row boxes -->
+    <g>
+      <rect x="430" y="420" width="260" height="100" rx="14" fill="#18223a" stroke="#3B81F6" stroke-opacity="0.4"/>
+      <text x="560" y="466" fill="#E2E8F0" font-size="19" text-anchor="middle">Production database</text>
+      <text x="560" y="492" fill="#64748B" font-size="15" text-anchor="middle">same migrations, already proven</text>
+
+      <rect x="750" y="420" width="260" height="100" rx="14" fill="#18223a" stroke="#3B81F6" stroke-opacity="0.4"/>
+      <text x="880" y="466" fill="#E2E8F0" font-size="19" text-anchor="middle">Live site</text>
+      <text x="880" y="492" fill="#64748B" font-size="15" text-anchor="middle">deploys on push</text>
+
+      <rect x="1070" y="420" width="260" height="100" rx="14" fill="#18223a" stroke="#3B81F6" stroke-opacity="0.4"/>
+      <text x="1200" y="466" fill="#E2E8F0" font-size="19" text-anchor="middle">App Store + Play</text>
+      <text x="1200" y="492" fill="#64748B" font-size="15" text-anchor="middle">published on push</text>
+    </g>
+
+    <!-- footer note -->
+    <g>
+      <path d="M430 600 H1330" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+      <text x="430" y="646" fill="#94A3B8" font-size="18">One push to  main  moves all three at once — nothing else decides where a change lands.</text>
+      <text x="1330" y="646" fill="#64748B" font-size="15" text-anchor="end">environment = branch</text>
+    </g>
+  </g>
+</svg>

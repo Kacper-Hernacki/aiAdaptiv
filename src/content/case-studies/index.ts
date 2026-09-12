@@ -3,11 +3,12 @@ import { defaultLocale } from "@/i18n/config";
 import type { CaseStudy, CaseStudyCopy } from "./types";
 import { secondBrain } from "./second-brain";
 import { meridian } from "./meridian";
+import { oneRepo } from "./one-repo";
 
 export type { CaseStudy, CaseStudyCopy } from "./types";
 
 /** Newest first — this is the order the index page renders. */
-export const caseStudies: CaseStudy[] = [secondBrain, meridian];
+export const caseStudies: CaseStudy[] = [oneRepo, secondBrain, meridian];
 
 /**
  * Locales a case study is written in. Unlike the rest of the site, cases are
