@@ -78,10 +78,12 @@
 }
 
 /* Metrics. The point of the page, so they get the dark band. */
+/* auto-fit, not a fixed four: a case with three numbers should fill the row
+   rather than leave a hole where a fourth would have been. */
 .metrics {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
   gap: 1.5em;
   margin-top: 3em;
   width: 100%;
@@ -178,6 +180,15 @@
   line-height: 150%;
   color: var(--fg-muted);
   max-width: 44em;
+}
+
+/* Stands in for the evidence when there is nothing publishable to show. */
+.proofNote {
+  max-width: 44em;
+  margin-top: 1.5em;
+  font-size: 1.05em;
+  line-height: 165%;
+  color: var(--fg-muted);
 }
 
 /* The "what this does not claim" block. Deliberately plain — it reads as a

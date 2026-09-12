@@ -129,17 +129,20 @@ export function CaseStudyPage({
           <h2 id="case-proof" className={s.h2} data-reveal>
             {copy.proof.label}
           </h2>
-          <figure className={c.proofFigure} data-reveal>
-            {study.loomId && copy.proof.video ? (
+          {study.loomId && copy.proof.video ? (
+            <figure className={c.proofFigure} data-reveal>
               <LoomEmbed
                 id={study.loomId}
                 video={copy.proof.video}
                 poster={loomPoster}
               />
-            ) : study.image ? (
-              // A plain <img>: the graph is an SVG, so there is nothing for the
-              // image optimizer to do but re-encode it.
-              // eslint-disable-next-line @next/next/no-img-element
+              <figcaption className={c.caption}>{copy.proof.caption}</figcaption>
+            </figure>
+          ) : study.image ? (
+            <figure className={c.proofFigure} data-reveal>
+              {/* A plain <img>: the diagrams are SVG, so there is nothing for
+                  the image optimizer to do but re-encode them. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={study.image.src}
                 alt={copy.proof.alt ?? copy.proof.caption}
@@ -149,9 +152,17 @@ export function CaseStudyPage({
                 loading="lazy"
                 decoding="async"
               />
-            ) : null}
-            <figcaption className={c.caption}>{copy.proof.caption}</figcaption>
-          </figure>
+              <figcaption className={c.caption}>{copy.proof.caption}</figcaption>
+            </figure>
+          ) : (
+            /* Some cases cannot show a picture — publishing the screenshot
+               would publish something that is not ours. Then the caption is
+               the section, and it reads as prose rather than as a caption
+               orphaned under nothing. */
+            <p className={c.proofNote} data-reveal>
+              {copy.proof.caption}
+            </p>
+          )}
 
           <div
             className={c.disclaimer}
