@@ -164,6 +164,19 @@ export function CaseStudyPage({
             </p>
           )}
 
+          {copy.proof.link ? (
+            <p data-reveal>
+              <a
+                className={c.proofLink}
+                href={copy.proof.link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {copy.proof.link.label} →
+              </a>
+            </p>
+          ) : null}
+
           <div
             className={c.disclaimer}
             style={{ marginTop: "3em" }}

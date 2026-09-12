@@ -191,6 +191,23 @@
   color: var(--fg-muted);
 }
 
+/* Evidence the reader can go and open for themselves. */
+.proofLink {
+  display: inline-flex;
+  margin-top: 1.5em;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--fg);
+  border-bottom: 1px solid var(--fg-faint);
+  padding-bottom: 0.15em;
+  transition: border-color 0.2s;
+  overflow-wrap: anywhere;
+}
+
+.proofLink:hover {
+  border-bottom-color: var(--fg);
+}
+
 /* The "what this does not claim" block. Deliberately plain — it reads as a
    note, not as another selling section. */
 .disclaimer {

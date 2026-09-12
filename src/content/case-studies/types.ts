@@ -48,6 +48,8 @@ export type CaseStudyCopy = {
       cta: string;
       note: string;
     };
+    /** When the evidence is something the reader can go and open themselves. */
+    link?: { href: string; label: string };
   };
   /** What we deliberately do not claim. Non-negotiable on every case. */
   disclaimer: { h: string; body: string };
