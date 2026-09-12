@@ -7,9 +7,8 @@ import hero from "@/components/agency/assets/case-n8n.jpg";
  * calling a language model, 39 containing an agent, 24 using a vector store,
  * 19 third-party services wired.
  *
- * The repo carries no licence file, so the page says "public and free to
- * download" and stops there — it does not promise reuse rights we have not
- * actually granted.
+ * The repo is MIT licensed (added 2026-09-12 alongside the README), so the
+ * page can promise reuse rather than merely public readability.
  */
 export const n8nTemplates: CaseStudy = {
   slug: "n8n-automations",
@@ -29,7 +28,7 @@ export const n8nTemplates: CaseStudy = {
       facts: [
         { label: "Client", value: "None — our own collection" },
         { label: "Field", value: "Automations and agents, built in n8n" },
-        { label: "Published", value: "Public GitHub repository, free" },
+        { label: "Published", value: "Public GitHub repository, MIT" },
         { label: "Format", value: "76 importable workflow JSON files" },
       ],
       metrics: [
@@ -47,6 +46,11 @@ export const n8nTemplates: CaseStudy = {
           value: "19",
           label: "third-party services wired up",
           note: "Telegram, Gmail, Notion, Drive, Sheets, Postgres, Slack, Supabase, Calendar…",
+        },
+        {
+          value: "MIT",
+          label: "licensed, so you can actually use them",
+          note: "commercially too, inside your own product, no attribution required",
         },
       ],
       sections: [
@@ -84,7 +88,7 @@ export const n8nTemplates: CaseStudy = {
       proof: {
         label: "Go and look",
         caption:
-          "The whole collection is public. Every number on this page comes from parsing those files, so you can recount them yourself. They are a snapshot of our n8n instance rather than a maintained product — expect to update node versions and to bring your own credentials.",
+          "The whole collection is public and MIT licensed. The README indexes every workflow by name with the services it touches, because the file names are n8n's own ids. Every number on this page comes from parsing those files, so you can recount them yourself — they are a snapshot of our n8n instance rather than a maintained product, so expect to update node versions and to bring your own credentials.",
         link: {
           href: "https://github.com/Kacper-Hernacki/n8n-templates-backup",
           label: "github.com/Kacper-Hernacki/n8n-templates-backup",
@@ -115,7 +119,7 @@ export const n8nTemplates: CaseStudy = {
       facts: [
         { label: "Klient", value: "Brak — nasz własny zbiór" },
         { label: "Obszar", value: "Automatyzacje i agenci, zbudowane w n8n" },
-        { label: "Publikacja", value: "Publiczne repozytorium GitHub, za darmo" },
+        { label: "Publikacja", value: "Publiczne repozytorium GitHub, MIT" },
         { label: "Format", value: "76 plików JSON gotowych do importu" },
       ],
       metrics: [
@@ -133,6 +137,11 @@ export const n8nTemplates: CaseStudy = {
           value: "19",
           label: "podpiętych usług zewnętrznych",
           note: "Telegram, Gmail, Notion, Drive, Sheets, Postgres, Slack, Supabase, Kalendarz…",
+        },
+        {
+          value: "MIT",
+          label: "licencja, więc naprawdę wolno ich użyć",
+          note: "także komercyjnie, we własnym produkcie, bez obowiązku atrybucji",
         },
       ],
       sections: [
@@ -170,7 +179,7 @@ export const n8nTemplates: CaseStudy = {
       proof: {
         label: "Zobacz sam",
         caption:
-          "Cały zbiór jest publiczny. Każda liczba na tej stronie pochodzi z przeparsowania tych plików, więc możesz je przeliczyć samodzielnie. To zrzut naszej instancji n8n, a nie utrzymywany produkt — licz się z aktualizacją wersji węzłów i z podłączeniem własnych poświadczeń.",
+          "Cały zbiór jest publiczny i na licencji MIT. README indeksuje każdy workflow po nazwie razem z usługami, których dotyka, bo nazwy plików to wewnętrzne identyfikatory n8n. Każda liczba na tej stronie pochodzi z przeparsowania tych plików, więc możesz je przeliczyć samodzielnie — to zrzut naszej instancji n8n, a nie utrzymywany produkt, więc licz się z aktualizacją wersji węzłów i podłączeniem własnych poświadczeń.",
         link: {
           href: "https://github.com/Kacper-Hernacki/n8n-templates-backup",
           label: "github.com/Kacper-Hernacki/n8n-templates-backup",
