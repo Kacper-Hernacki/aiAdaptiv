@@ -28,13 +28,26 @@ export function legalMetadata(
       ? isTranslated(lang as never)
       : covered.includes(lang);
 
+  const url = self ? `/${lang}/${route}` : `/${defaultLocale}/${route}`;
+
   return {
     metadataBase: new URL(siteUrl),
     title: { absolute: doc.metaTitle },
     description: doc.metaDescription,
-    alternates: {
-      canonical: self ? `/${lang}/${route}` : `/${defaultLocale}/${route}`,
-      languages,
+    alternates: { canonical: url, languages },
+    // Without these, every sub-page inherits the LAYOUT's openGraph block —
+    // so a case study shared on LinkedIn showed the home page's headline.
+    // `title`/`description` above do not propagate to og: on their own.
+    openGraph: {
+      type: "article",
+      url,
+      title: doc.metaTitle,
+      description: doc.metaDescription,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: doc.metaTitle,
+      description: doc.metaDescription,
     },
   };
 }

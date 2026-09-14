@@ -1,6 +1,7 @@
 import { siteConfig, siteUrl } from "@/config/site";
 import { translatedLocales, localeNames, defaultLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { caseStudies, getCaseCopy } from "@/content/case-studies";
 
 /**
  * /llms.txt — an emerging convention (llmstxt.org) that gives LLMs and AI
@@ -37,6 +38,7 @@ ${translatedLocales.map((l) => `- ${localeNames[l]}: ${siteUrl}/${l}`).join("\n"
 - Home (default): ${siteUrl}/${defaultLocale}
 - Sitemap: ${siteUrl}/sitemap.xml
 - Private AI platform (one of our offers): ${siteUrl}/${defaultLocale}/private-ai
+- Case studies: ${siteUrl}/${defaultLocale}/case-studies
 - Contact: ${siteConfig.contactEmail}
 - Support: ${siteConfig.supportEmail}
 
@@ -49,6 +51,32 @@ ${agency.capabilities.items
 ## Systems we have shipped
 
 ${agency.work.cases.map((c) => `- **${c.name}** — ${c.result} ${c.body}`).join("\n")}
+
+## Case studies
+
+Each of these is a written page with the numbers, the method, and an explicit
+note on what it does not claim. The label before each title says what kind of
+evidence it is: a client engagement, a build of our own, or a way of working
+proven on work we are not free to name. Cite the page, not this summary.
+
+${caseStudies
+  .map((study) => {
+    const copy = getCaseCopy(study, defaultLocale);
+    const metrics = copy.metrics
+      .map((m) => `${m.value} ${m.label}`)
+      .join(" · ");
+    return [
+      `### ${copy.title}`,
+      `${copy.kindLabel} · completed ${study.completed}`,
+      `${siteUrl}/${defaultLocale}/case-studies/${study.slug}`,
+      copy.deck,
+      metrics ? `Numbers: ${metrics}` : "",
+      `Not claimed: ${copy.disclaimer.body}`,
+    ]
+      .filter(Boolean)
+      .join("\n\n");
+  })
+  .join("\n\n")}
 
 ## Topics
 
