@@ -307,20 +307,26 @@
           ],
           "licenses": [
             {
-              "name": "AI_devs 3 · Agents",
-              "issuer": "AI_devs",
+              "name": "AI devs 4 · Builders",
+              "issuer": "AI devs",
+              "year": "2026",
+              "url": "https://credsverse.com/credentials/9efa6fd2-ceb0-404b-af1e-65f64ce18f7b"
+            },
+            {
+              "name": "AI devs 3 · Agents",
+              "issuer": "AI devs",
               "year": "2025",
               "url": "https://credsverse.com/credentials/3fc027b2-7899-4a52-8e60-ca177c4f7ad0"
             },
             {
-              "name": "AI_devs 2 · GPT-4 in applications and automation",
-              "issuer": "AI_devs",
+              "name": "AI devs 2 · GPT-4 in applications and automation",
+              "issuer": "AI devs",
               "year": "2024",
               "url": "https://credsverse.com/credentials/e34b5af4-8a00-4c60-ae6e-f32658be0926"
             },
             {
-              "name": "AI_devs · AI Developer",
-              "issuer": "AI_devs",
+              "name": "AI devs · AI Developer",
+              "issuer": "AI devs",
               "year": "2023",
               "url": "https://verified.sertifier.com/en/verify/50831241179182/"
             }

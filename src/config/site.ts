@@ -66,15 +66,19 @@ const brand = {
       profiles: ["https://www.linkedin.com/in/kacper-hernacki-965161203/"],
       credentials: [
         {
-          name: "AI_devs 3 · Agents",
+          name: "AI devs 4 · Builders",
+          url: "https://credsverse.com/credentials/9efa6fd2-ceb0-404b-af1e-65f64ce18f7b",
+        },
+        {
+          name: "AI devs 3 · Agents",
           url: "https://credsverse.com/credentials/3fc027b2-7899-4a52-8e60-ca177c4f7ad0",
         },
         {
-          name: "AI_devs 2 · GPT-4 in applications and automation",
+          name: "AI devs 2 · GPT-4 in applications and automation",
           url: "https://credsverse.com/credentials/e34b5af4-8a00-4c60-ae6e-f32658be0926",
         },
         {
-          name: "AI_devs · AI Developer",
+          name: "AI devs · AI Developer",
           url: "https://verified.sertifier.com/en/verify/50831241179182/",
         },
       ],
