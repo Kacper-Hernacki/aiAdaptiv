@@ -93,6 +93,17 @@ export type Dictionary = {
       cta: string;
       imageAlt: string;
     };
+    /**
+     * Second Brain Pro product section — a compact card highlighting the SaaS
+     * product with a link to brain.aiadaptiv.com.
+     */
+    secondBrainPro: {
+      h2: string;
+      headline: string;
+      body: string;
+      cta: string;
+      url: string;
+    };
     team: {
       h2: string;
       lead: string;

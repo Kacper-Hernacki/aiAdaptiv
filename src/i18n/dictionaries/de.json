@@ -24,6 +24,10 @@
           "href": "#work"
         },
         {
+          "label": "Produkte",
+          "href": "#products"
+        },
+        {
           "label": "Ansatz",
           "href": "#approach"
         },
@@ -291,6 +295,13 @@
       ],
       "cta": "Plattform ansehen",
       "imageAlt": "Bleistiftskizze eines Vorhängeschlosses auf hellem Papier — die private KI-Plattform von aiAdaptiv."
+    },
+    "secondBrainPro": {
+      "h2": "Second Brain Pro",
+      "headline": "Geben Sie Claude, ChatGPT und Cursor ein Gedächtnis Ihres Unternehmens",
+      "body": "Verbinden Sie Ihre Wissensdatenbank, Notizen, Dokumente und Entscheidungen mit den KI-Tools, die Sie bereits verwenden. Wiederholen Sie sich nie. Verlieren Sie nie den Kontext. 1 € für eine 7-tägige Testversion.",
+      "cta": "Second Brain Pro testen",
+      "url": "https://brain.aiadaptiv.com"
     },
     "team": {
       "h2": "Mit wem Sie tatsächlich arbeiten",
@@ -612,11 +623,15 @@
           ]
         },
         {
-          "label": "Produkt",
+          "label": "Produkte",
           "links": [
             {
               "label": "Private KI-Plattform",
               "href": "@privateAi"
+            },
+            {
+              "label": "Second Brain Pro",
+              "href": "https://brain.aiadaptiv.com"
             },
             {
               "label": "So läuft es",

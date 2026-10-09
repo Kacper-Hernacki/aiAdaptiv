@@ -28,6 +28,10 @@
           "href": "@caseStudies"
         },
         {
+          "label": "Produkty",
+          "href": "#products"
+        },
+        {
           "label": "Podejście",
           "href": "#approach"
         },
@@ -295,6 +299,13 @@
       ],
       "cta": "Zobacz platformę",
       "imageAlt": "Szkic ołówkiem kłódki na jasnym papierze — platforma prywatnego AI aiAdaptiv."
+    },
+    "secondBrainPro": {
+      "h2": "Second Brain Pro",
+      "headline": "Daj Claude, ChatGPT i Cursor pamięć o Twojej firmie",
+      "body": "Połącz swoją bazę wiedzy, notatki, dokumenty i decyzje z narzędziami AI, których już używasz. Nigdy się nie powtarzaj. Nigdy nie trać kontekstu. 4 zł za 7-dniowy trial.",
+      "cta": "Wypróbuj Second Brain Pro",
+      "url": "https://brain.aiadaptiv.com"
     },
     "team": {
       "h2": "Z kim faktycznie pracujesz",
@@ -616,11 +627,15 @@
           ]
         },
         {
-          "label": "Produkt",
+          "label": "Produkty",
           "links": [
             {
               "label": "Platforma prywatnego AI",
               "href": "@privateAi"
+            },
+            {
+              "label": "Second Brain Pro",
+              "href": "https://brain.aiadaptiv.com"
             },
             {
               "label": "Jak to działa",
