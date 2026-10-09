@@ -24,6 +24,10 @@
           "href": "#work"
         },
         {
+          "label": "Produtos",
+          "href": "#products"
+        },
+        {
           "label": "Abordagem",
           "href": "#approach"
         },
@@ -612,11 +616,15 @@
           ]
         },
         {
-          "label": "Produto",
+          "label": "Produtos",
           "links": [
             {
               "label": "Plataforma de IA privada",
               "href": "@privateAi"
+            },
+            {
+              "label": "Second Brain Pro",
+              "href": "https://brain.aiadaptiv.com"
             },
             {
               "label": "Como funciona",
@@ -869,6 +877,13 @@
         ],
         "backHome": "← Back to home"
       }
+    },
+    "secondBrainPro": {
+      "h2": "Second Brain Pro",
+      "headline": "Give Claude, ChatGPT and Cursor a memory of your business",
+      "body": "Connect your knowledge base, notes, documents and decisions to the AI tools you already use. Never repeat yourself. Never lose context. $1 for a 7-day trial.",
+      "cta": "Try Second Brain Pro",
+      "url": "https://brain.aiadaptiv.com"
     }
   },
   "privateAi": {

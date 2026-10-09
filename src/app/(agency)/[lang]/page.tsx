@@ -8,6 +8,7 @@ import { Capabilities } from "@/components/agency/sections/Capabilities";
 import { Proof } from "@/components/agency/sections/Proof";
 import { Work } from "@/components/agency/sections/Work";
 import { Product } from "@/components/agency/sections/Product";
+import { SecondBrainPro } from "@/components/agency/sections/SecondBrainPro";
 import { Team } from "@/components/agency/sections/Team";
 import { Approach } from "@/components/agency/sections/Approach";
 import { Process } from "@/components/agency/sections/Process";
@@ -36,6 +37,7 @@ export default async function AgencyHome({ params }: PageParams) {
       <Proof proof={agency.proof} />
       <Work work={agency.work} />
       <Product product={agency.product} lang={lang} />
+      <SecondBrainPro secondBrainPro={agency.secondBrainPro} />
       <Team team={agency.team} />
       <Approach approach={agency.approach} />
       <Process process={agency.process} />
