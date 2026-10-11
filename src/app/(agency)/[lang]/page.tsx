@@ -9,6 +9,7 @@ import { Proof } from "@/components/agency/sections/Proof";
 import { Work } from "@/components/agency/sections/Work";
 import { Product } from "@/components/agency/sections/Product";
 import { SecondBrainPro } from "@/components/agency/sections/SecondBrainPro";
+import { AiAuditCard } from "@/components/agency/sections/AiAuditCard";
 import { Team } from "@/components/agency/sections/Team";
 import { Approach } from "@/components/agency/sections/Approach";
 import { Process } from "@/components/agency/sections/Process";
@@ -38,6 +39,7 @@ export default async function AgencyHome({ params }: PageParams) {
       <Work work={agency.work} />
       <Product product={agency.product} lang={lang} />
       <SecondBrainPro secondBrainPro={agency.secondBrainPro} />
+      <AiAuditCard aiAuditCard={agency.aiAuditCard} lang={lang} />
       <Team team={agency.team} />
       <Approach approach={agency.approach} />
       <Process process={agency.process} />

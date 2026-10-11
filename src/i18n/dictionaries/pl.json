@@ -32,6 +32,10 @@
           "href": "#products"
         },
         {
+          "label": "Audyt AI",
+          "href": "@aiAudit"
+        },
+        {
           "label": "Podejście",
           "href": "#approach"
         },
@@ -306,6 +310,12 @@
       "body": "Połącz swoją bazę wiedzy, notatki, dokumenty i decyzje z narzędziami AI, których już używasz. Nigdy się nie powtarzaj. Nigdy nie trać kontekstu. 4 zł za 7-dniowy trial.",
       "cta": "Wypróbuj Second Brain Pro",
       "url": "https://brain.aiadaptiv.com"
+    },
+    "aiAuditCard": {
+      "h2": "Audyt możliwości AI",
+      "headline": "Znajdź 20+ godzin tygodniowo, które Twój zespół może odzyskać dzięki AI",
+      "body": "Dwie 60-minutowe rozmowy, przegląd procesów i raport z 3–5 możliwościami AI wycenionymi w godzinach oszczędności, koszcie i zwrocie. 2 500 zł netto, w pełni zaliczane, jeśli budujesz z nami.",
+      "cta": "Dowiedz się więcej"
     },
     "team": {
       "h2": "Z kim faktycznie pracujesz",
@@ -889,6 +899,122 @@
         "backHome": "← Powrót na stronę główną"
       }
     }
+  },
+  "aiAudit": {
+    "meta": {
+      "title": "Audyt możliwości AI — odzyskaj 20+ godzin tygodniowo | aiAdaptiv",
+      "description": "Odkryj 3–5 możliwości AI, które oszczędzą Twojemu zespołowi 20+ godzin tygodniowo. Dwie 60-minutowe rozmowy, raport z ROI i plan wdrożenia. 2 500 zł netto, w pełni zaliczane na wdrożenie."
+    },
+    "hero": {
+      "badge": "Audyt możliwości AI",
+      "headline": "5 miejsc, gdzie AI odzyska 20+ godzin tygodniowo",
+      "subhead": "Dwie 60-minutowe rozmowy, przegląd procesów i narzędzi oraz raport pokazujący dokładnie, gdzie AI oszczędza czas, ile to kosztuje i jak to wdrożyć.",
+      "cta": "Zamów audyt — 2 500 zł netto",
+      "secondaryCta": "Zacznij od darmowej 20-min rozmowy"
+    },
+    "value": {
+      "h2": "Co otrzymujesz",
+      "lead": "Skupiony, praktyczny plan działania — nie ogólnikowa prezentacja.",
+      "items": [
+        {
+          "title": "Dwie 60-minutowe rozmowy odkrywcze",
+          "body": "Mapujemy przepływy pracy, narzędzia i wąskie gardła. Gdzie ręczna praca pochłania godziny? Co spowalnia Twój zespół?"
+        },
+        {
+          "title": "Przegląd procesów i narzędzi",
+          "body": "Analizujemy obecne systemy: CRM-y, arkusze kalkulacyjne, wątki mailowe, procesy wycen — wszystko, co napędza Twój biznes."
+        },
+        {
+          "title": "Dostawa w 5 dni roboczych",
+          "body": "Pisemny raport z 3–5 konkretnymi możliwościami AI, każda wyceniona w godzinach oszczędzonych tygodniowo, koszcie wdrożenia i okresie zwrotu."
+        },
+        {
+          "title": "Plan wdrożenia",
+          "body": "Szczegółowy plan: co budować najpierw, co integrować z Twoim stackiem i od czego zacząć, aby najszybciej osiągnąć zwrot z inwestycji."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Cena",
+      "price": "2 500 zł netto",
+      "credit": "W pełni zaliczane na poczet wdrożenia, jeśli zamówisz w ciągu 30 dni.",
+      "note": "Darmowy audyt, jeśli budujesz z nami.",
+      "cta": "Zamów audyt"
+    },
+    "examples": {
+      "h2": "Prawdziwe rezultaty",
+      "lead": "Przykłady z audytów, które przeprowadziliśmy:",
+      "cases": [
+        {
+          "title": "Firma logistyczna — system wycen AI",
+          "result": "3 godziny → 30 sekund na wycenę",
+          "body": "Ręczne generowanie wycen zajmowało 3 godziny wymiany maili. Zbudowaliśmy system AI, który pobiera dane, oblicza ceny i generuje wyceny w 30 sekund."
+        },
+        {
+          "title": "Kancelaria prawna — prywatna platforma LLM",
+          "result": "6+ godzin oszczędności tygodniowo na przeglądzie umów",
+          "body": "Wrażliwe dokumenty klientów nie mogły trafić do publicznego AI. Wdrożyliśmy prywatny LLM zgodny z RODO w ich chmurze UE — podsumowania umów i ekstrakcja ryzyk bez odpowiedzialności prawnej."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Jak to działa",
+      "lead": "Cztery kroki od audytu do działającego AI:",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Zamów audyt",
+          "body": "Zaplanuj pierwszą 60-minutową rozmowę odkrywczą. Wyślemy krótki kwestionariusz przygotowawczy, żeby od razu ruszyć pełną parą."
+        },
+        {
+          "step": "2",
+          "title": "Odkrywanie i przegląd",
+          "body": "Dwie rozmowy, by zmapować przepływy pracy, zidentyfikować wąskie gardła i przejrzeć narzędzia. Zagłębiamy się w to, co jest ręczne, co wolne i gdzie AI pasuje."
+        },
+        {
+          "step": "3",
+          "title": "Dostawa raportu",
+          "body": "W 5 dni robocze otrzymujesz pisemny raport: 3–5 możliwości AI z godzinami oszczędności, kosztem, okresem zwrotu i planem wdrożenia."
+        },
+        {
+          "step": "4",
+          "title": "Wdrożenie (opcjonalne)",
+          "body": "Jeśli zdecydujesz się budować z nami w ciągu 30 dni, opłata 2 500 zł za audyt zostaje w pełni zaliczona. Już zapłaciłeś za część wdrożenia."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Najczęściej zadawane pytania",
+      "items": [
+        {
+          "q": "Dla kogo jest ten audyt?",
+          "a": "Dla małych i średnich zespołów (5–50 osób), które wiedzą, że AI mogłoby pomóc, ale nie wiedzą, od czego zacząć. Firmy usługowe, agencje, kancelarie doradcze i firmy operacyjne uzyskują największą wartość."
+        },
+        {
+          "q": "Co, jeśli nie znajdziecie dobrych możliwości?",
+          "a": "Rzadkie, ale możliwe. Jeśli nie możemy zidentyfikować przynajmniej 3 realnych możliwości AI z jasnym ROI, zwracamy pełne 2 500 zł. Bez pytań."
+        },
+        {
+          "q": "Co z prywatnością danych i NDA?",
+          "a": "Podpisujemy NDA przed pierwszą rozmową. Wszystkie informacje udostępnione podczas audytu pozostają poufne. Jeśli później wdrożymy dla Ciebie AI, jest budowane z myślą o RODO i rezydencji danych — zwłaszcza dla zespołów z UE."
+        },
+        {
+          "q": "Czy muszę budować z wami po audycie?",
+          "a": "Nie. Raport jest Twój i możesz go wykorzystać, jak chcesz. Zbuduj to sam, zatrudnij inny zespół lub odłóż na półkę. Ale jeśli wybierzesz nas w ciągu 30 dni, 2 500 zł zostanie zaliczone na poczet wdrożenia."
+        },
+        {
+          "q": "Ile czasu zajmuje wdrożenie po audycie?",
+          "a": "Zależy od złożoności. Proste automatyzacje mogą ruszyć w 1–2 tygodnie. Pełne produkty AI lub prywatne platformy LLM zazwyczaj zajmują 3–8 tygodni. Raport z audytu zawiera szacowane terminy dla każdej możliwości."
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Gotowy znaleźć swoje AI wygrane?",
+      "body": "Dwie rozmowy, jeden raport i plan działania do 20+ godzin oszczędności tygodniowo. 2 500 zł netto, w pełni zaliczane, jeśli budujesz z nami.",
+      "primaryCta": "Zamów audyt — 2 500 zł netto",
+      "secondaryCta": "Zacznij od darmowej 20-min rozmowy"
+    },
+    "backHome": "← Powrót na stronę główną"
   },
   "privateAi": {
     "meta": {

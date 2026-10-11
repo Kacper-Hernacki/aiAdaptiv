@@ -104,6 +104,16 @@ export type Dictionary = {
       cta: string;
       url: string;
     };
+    /**
+     * AI Opportunity Audit card for the homepage — compact promo linking to the
+     * full /ai-audit page.
+     */
+    aiAuditCard: {
+      h2: string;
+      headline: string;
+      body: string;
+      cta: string;
+    };
     team: {
       h2: string;
       lead: string;
@@ -212,6 +222,53 @@ export type Dictionary = {
       terms: LegalDocument;
       privacy: LegalDocument;
     };
+  };
+  /**
+   * AI Opportunity Audit offer page — a consulting service to identify AI
+   * automation opportunities and quantify ROI.
+   */
+  aiAudit: {
+    meta: { title: string; description: string };
+    hero: {
+      badge: string;
+      headline: string;
+      subhead: string;
+      cta: string;
+      secondaryCta: string;
+    };
+    value: {
+      h2: string;
+      lead: string;
+      items: { title: string; body: string }[];
+    };
+    pricing: {
+      h2: string;
+      price: string;
+      credit: string;
+      note: string;
+      cta: string;
+    };
+    examples: {
+      h2: string;
+      lead: string;
+      cases: { title: string; result: string; body: string }[];
+    };
+    process: {
+      h2: string;
+      lead: string;
+      steps: { step: string; title: string; body: string }[];
+    };
+    faq: {
+      h2: string;
+      items: { q: string; a: string }[];
+    };
+    cta: {
+      h2: string;
+      body: string;
+      primaryCta: string;
+      secondaryCta: string;
+    };
+    backHome: string;
   };
   /**
    * The private open-source-LLM offer, served at /[lang]/private-ai inside the

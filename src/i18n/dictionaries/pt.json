@@ -28,6 +28,10 @@
           "href": "#products"
         },
         {
+          "label": "Auditoria IA",
+          "href": "@aiAudit"
+        },
+        {
           "label": "Abordagem",
           "href": "#approach"
         },
@@ -884,7 +888,129 @@
       "body": "Connect your knowledge base, notes, documents and decisions to the AI tools you already use. Never repeat yourself. Never lose context. $1 for a 7-day trial.",
       "cta": "Try Second Brain Pro",
       "url": "https://brain.aiadaptiv.com"
+    },
+    "aiAuditCard": {
+      "h2": "Auditoria de Oportunidades de IA",
+      "headline": "Encontre 20+ horas por semana que a sua equipa pode recuperar com IA",
+      "body": "Duas chamadas de 60 minutos, uma revisão de processos e um relatório com 3–5 oportunidades de IA avaliadas em horas poupadas, custo e retorno. $690, totalmente creditável se construir connosco.",
+      "cta": "Saber mais"
     }
+  },
+  "aiAudit": {
+    "meta": {
+      "title": "Auditoria de Oportunidades de IA — encontre 20+ horas por semana | aiAdaptiv",
+      "description": "Descubra 3–5 oportunidades de IA que poupam à sua equipa 20+ horas por semana. Duas chamadas de 60 minutos, um relatório com ROI e roteiro de implementação. $690, totalmente creditável se construir connosco."
+    },
+    "hero": {
+      "badge": "Auditoria de Oportunidades de IA",
+      "headline": "5 pontos onde a IA recupera 20+ horas por semana",
+      "subhead": "Duas chamadas de 60 minutos, uma revisão dos seus processos e ferramentas, e um relatório que mostra exatamente onde a IA poupa tempo, quanto custa e como implementá-la.",
+      "cta": "Marque a sua auditoria — $690",
+      "secondaryCta": "Comece com uma chamada gratuita de 20 min"
+    },
+    "value": {
+      "h2": "O que obtém",
+      "lead": "Um roteiro focado e prático — não uma apresentação genérica.",
+      "items": [
+        {
+          "title": "Duas chamadas de descoberta de 60 minutos",
+          "body": "Mapeamos os seus fluxos de trabalho, ferramentas e estrangulamentos. Onde o trabalho manual consome horas? O que atrasa a sua equipa?"
+        },
+        {
+          "title": "Revisão de processos e ferramentas",
+          "body": "Examinamos os seus sistemas atuais: CRMs, folhas de cálculo, threads de email, fluxos de orçamento — tudo o que impulsiona o seu negócio."
+        },
+        {
+          "title": "Entregue em 5 dias úteis",
+          "body": "Um relatório escrito com 3–5 oportunidades de IA específicas, cada uma avaliada em horas poupadas por semana, custo de implementação e período de retorno."
+        },
+        {
+          "title": "Roteiro de implementação",
+          "body": "Plano passo a passo: o que construir primeiro, o que se integra com a sua stack, e por onde começar para o ROI mais rápido."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Preços",
+      "price": "$690",
+      "credit": "Totalmente creditável para a implementação se encomendar dentro de 30 dias.",
+      "note": "Gratuito se construir connosco.",
+      "cta": "Marque a sua auditoria"
+    },
+    "examples": {
+      "h2": "Resultados reais",
+      "lead": "Exemplos de auditorias que completámos:",
+      "cases": [
+        {
+          "title": "Empresa logística — sistema de orçamentação IA",
+          "result": "3 horas → 30 segundos por orçamento",
+          "body": "A geração manual de orçamentos levava 3 horas de ida e volta. Construímos um sistema de IA que extrai dados, calcula preços e gera orçamentos em 30 segundos."
+        },
+        {
+          "title": "Escritório de advogados — plataforma LLM privada",
+          "result": "6+ horas poupadas semanalmente na revisão de contratos",
+          "body": "Documentos sensíveis de clientes não podiam tocar IA pública. Implementámos um LLM privado conforme o RGPD na sua nuvem EU — resumos de contratos e extração de riscos sem responsabilidade."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Como funciona",
+      "lead": "Quatro passos da auditoria à IA ao vivo:",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Marque a auditoria",
+          "body": "Agende a sua primeira chamada de descoberta de 60 minutos. Enviaremos um breve questionário de preparação para começarmos logo."
+        },
+        {
+          "step": "2",
+          "title": "Descoberta e revisão",
+          "body": "Duas chamadas para mapear fluxos de trabalho, identificar estrangulamentos e rever as suas ferramentas. Aprofundamos o que é manual, o que é lento e onde a IA se encaixa."
+        },
+        {
+          "step": "3",
+          "title": "Relatório entregue",
+          "body": "Em 5 dias úteis, recebe um relatório escrito: 3–5 oportunidades de IA com horas poupadas, custo, período de retorno e roteiro de implementação."
+        },
+        {
+          "step": "4",
+          "title": "Implementar (opcional)",
+          "body": "Se optar por construir connosco dentro de 30 dias, a taxa de auditoria de $690 é totalmente creditada. Já pagou parte da construção."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Perguntas frequentes",
+      "items": [
+        {
+          "q": "Para quem é isto?",
+          "a": "Equipas pequenas a médias (5–50 pessoas) que sabem que a IA poderia ajudar mas não sabem por onde começar. Empresas de serviços, agências, consultoras e empresas operacionais obtêm o maior valor."
+        },
+        {
+          "q": "E se não encontrarem boas oportunidades?",
+          "a": "Raro, mas possível. Se não conseguirmos identificar pelo menos 3 oportunidades de IA viáveis com ROI claro, reembolsamos os $690 completos. Sem perguntas."
+        },
+        {
+          "q": "E quanto à privacidade de dados e NDAs?",
+          "a": "Assinamos um NDA antes da primeira chamada. Toda a informação partilhada durante a auditoria permanece confidencial. Se implementarmos IA para si mais tarde, é construída com RGPD e residência de dados em mente — especialmente para equipas sediadas na UE."
+        },
+        {
+          "q": "Tenho de construir convosco depois da auditoria?",
+          "a": "Não. O relatório é seu para usar como quiser. Construa-o você mesmo, contrate outra equipa, ou arquive-o. Mas se nos escolher dentro de 30 dias, os $690 são creditados para a implementação."
+        },
+        {
+          "q": "Quanto tempo leva a implementação após a auditoria?",
+          "a": "Depende da complexidade. Automatizações simples podem estar ao vivo em 1–2 semanas. Produtos de IA completos ou plataformas LLM privadas tipicamente levam 3–8 semanas. O relatório de auditoria inclui cronogramas estimados para cada oportunidade."
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Pronto para encontrar as suas vitórias com IA?",
+      "body": "Duas chamadas, um relatório e um roteiro para 20+ horas poupadas por semana. $690, totalmente creditável se construir connosco.",
+      "primaryCta": "Marque a sua auditoria — $690",
+      "secondaryCta": "Comece com uma chamada gratuita de 20 min"
+    },
+    "backHome": "← Voltar ao início"
   },
   "privateAi": {
     "meta": {

@@ -199,6 +199,59 @@ export function FaqJsonLd({
 }
 
 /**
+ * Service page with an Offer. Used for consulting services like the AI Audit.
+ * Includes both the Service itself and the commercial Offer with pricing.
+ */
+export function ServiceJsonLd({
+  lang,
+  service,
+  offer,
+}: {
+  lang: string;
+  service: {
+    name: string;
+    description: string;
+    provider: string;
+    areaServed: string;
+    serviceType: string;
+  };
+  offer?: {
+    name: string;
+    description: string;
+    price: string;
+    priceCurrency: string;
+  };
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: service.name,
+        description: service.description,
+        provider: { "@id": `${siteUrl}/#organization` },
+        areaServed: service.areaServed,
+        serviceType: service.serviceType,
+        inLanguage: lang,
+        ...(offer
+          ? {
+              offers: {
+                "@type": "Offer",
+                name: offer.name,
+                description: offer.description,
+                price: offer.price,
+                priceCurrency: offer.priceCurrency,
+                availability: "https://schema.org/InStock",
+                seller: { "@id": `${siteUrl}/#organization` },
+              },
+            }
+          : {}),
+      }}
+    />
+  );
+}
+
+/**
  * A case study as an Article, authored and published by the organization.
  * `creativeWorkStatus` is where a demo or an in-house build says so, so the
  * structured data carries the same caveat the page states in words.

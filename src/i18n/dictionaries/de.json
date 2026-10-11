@@ -28,6 +28,10 @@
           "href": "#products"
         },
         {
+          "label": "KI-Audit",
+          "href": "@aiAudit"
+        },
+        {
           "label": "Ansatz",
           "href": "#approach"
         },
@@ -302,6 +306,12 @@
       "body": "Verbinden Sie Ihre Wissensdatenbank, Notizen, Dokumente und Entscheidungen mit den KI-Tools, die Sie bereits verwenden. Wiederholen Sie sich nie. Verlieren Sie nie den Kontext. 1 € für eine 7-tägige Testversion.",
       "cta": "Second Brain Pro testen",
       "url": "https://brain.aiadaptiv.com"
+    },
+    "aiAuditCard": {
+      "h2": "KI-Chancen-Audit",
+      "headline": "Finden Sie 20+ Stunden pro Woche, die Ihr Team mit KI zurückgewinnen kann",
+      "body": "Zwei 60-minütige Gespräche, eine Prozessüberprüfung und ein Bericht mit 3–5 KI-Chancen, bewertet in eingesparten Stunden, Kosten und Amortisation. 690 $, voll anrechenbar, wenn Sie mit uns bauen.",
+      "cta": "Mehr erfahren"
     },
     "team": {
       "h2": "Mit wem Sie tatsächlich arbeiten",
@@ -885,6 +895,122 @@
         "backHome": "← Back to home"
       }
     }
+  },
+  "aiAudit": {
+    "meta": {
+      "title": "KI-Chancen-Audit — Finden Sie 20+ Stunden pro Woche | aiAdaptiv",
+      "description": "Entdecken Sie 3–5 KI-Chancen, die Ihrem Team 20+ Stunden pro Woche sparen. Zwei 60-minütige Gespräche, ein Bericht mit ROI und Umsetzungsfahrplan. 690 $, voll anrechenbar bei Umsetzung."
+    },
+    "hero": {
+      "badge": "KI-Chancen-Audit",
+      "headline": "5 Stellen, wo KI 20+ Stunden pro Woche zurückgewinnt",
+      "subhead": "Zwei 60-minütige Gespräche, eine Überprüfung Ihrer Prozesse und Tools und ein Bericht, der genau zeigt, wo KI Zeit spart, was es kostet und wie man es umsetzt.",
+      "cta": "Audit buchen — 690 $",
+      "secondaryCta": "Beginnen Sie mit einem kostenlosen 20-Min-Gespräch"
+    },
+    "value": {
+      "h2": "Was Sie bekommen",
+      "lead": "Ein fokussierter, praktischer Fahrplan — keine generische Pitch-Präsentation.",
+      "items": [
+        {
+          "title": "Zwei 60-minütige Discovery-Gespräche",
+          "body": "Wir kartieren Ihre Workflows, Tools und Engpässe. Wo frisst manuelle Arbeit Stunden? Was bremst Ihr Team?"
+        },
+        {
+          "title": "Prozess- und Tool-Review",
+          "body": "Wir prüfen Ihre aktuellen Systeme: CRMs, Tabellen, E-Mail-Threads, Angebots-Workflows — was auch immer Ihr Geschäft antreibt."
+        },
+        {
+          "title": "Geliefert in 5 Werktagen",
+          "body": "Ein schriftlicher Bericht mit 3–5 spezifischen KI-Chancen, jeweils bewertet in eingesparten Stunden pro Woche, Umsetzungskosten und Amortisationszeit."
+        },
+        {
+          "title": "Umsetzungsfahrplan",
+          "body": "Schritt-für-Schritt-Plan: Was zuerst gebaut werden soll, was sich in Ihren Stack integriert und wo man für den schnellsten ROI beginnt."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Preisgestaltung",
+      "price": "690 $",
+      "credit": "Voll anrechenbar bei Umsetzung, wenn Sie innerhalb von 30 Tagen beauftragen.",
+      "note": "Kostenlos, wenn Sie mit uns bauen.",
+      "cta": "Audit buchen"
+    },
+    "examples": {
+      "h2": "Echte Ergebnisse",
+      "lead": "Beispiele aus Audits, die wir durchgeführt haben:",
+      "cases": [
+        {
+          "title": "Logistikunternehmen — KI-Angebotssystem",
+          "result": "3 Stunden → 30 Sekunden pro Angebot",
+          "body": "Manuelle Angebotserstellung nahm 3 Stunden Hin und Her in Anspruch. Wir bauten ein KI-System, das Daten abruft, Preise berechnet und Angebote in 30 Sekunden generiert."
+        },
+        {
+          "title": "Anwaltskanzlei — private LLM-Plattform",
+          "result": "6+ Stunden wöchentlich bei Vertragsüberprüfung gespart",
+          "body": "Sensible Kundendokumente durften keine öffentliche KI berühren. Wir deployten ein privates, DSGVO-konformes LLM in ihrer EU-Cloud — Vertragszusammenfassungen und Risikoextraktion ohne Haftung."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Wie es funktioniert",
+      "lead": "Vier Schritte vom Audit zur Live-KI:",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Audit buchen",
+          "body": "Vereinbaren Sie Ihr erstes 60-minütiges Discovery-Gespräch. Wir senden einen kurzen Vorbereitungsfragebogen, damit wir sofort durchstarten."
+        },
+        {
+          "step": "2",
+          "title": "Discovery und Review",
+          "body": "Zwei Gespräche, um Workflows zu kartieren, Engpässe zu identifizieren und Ihre Tools zu überprüfen. Wir graben tief, was manuell ist, was langsam ist und wo KI passt."
+        },
+        {
+          "step": "3",
+          "title": "Bericht geliefert",
+          "body": "In 5 Werktagen erhalten Sie einen schriftlichen Bericht: 3–5 KI-Chancen mit eingesparten Stunden, Kosten, Amortisationszeit und einem Umsetzungsfahrplan."
+        },
+        {
+          "step": "4",
+          "title": "Umsetzen (optional)",
+          "body": "Wenn Sie innerhalb von 30 Tagen mit uns bauen, wird die Auditgebühr von 690 $ voll angerechnet. Sie haben bereits für einen Teil des Builds bezahlt."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Häufig gestellte Fragen",
+      "items": [
+        {
+          "q": "Für wen ist das?",
+          "a": "Kleine bis mittelgroße Teams (5–50 Personen), die wissen, dass KI helfen könnte, aber nicht wissen, wo sie anfangen sollen. Dienstleistungsunternehmen, Agenturen, Beratungen und operationsintensive Firmen profitieren am meisten."
+        },
+        {
+          "q": "Was, wenn Sie keine guten Chancen finden?",
+          "a": "Selten, aber möglich. Wenn wir nicht mindestens 3 tragfähige KI-Chancen mit klarem ROI identifizieren können, erstatten wir die vollen 690 $. Keine Fragen gestellt."
+        },
+        {
+          "q": "Was ist mit Datenschutz und NDAs?",
+          "a": "Wir unterzeichnen eine NDA vor dem ersten Gespräch. Alle während des Audits geteilten Informationen bleiben vertraulich. Wenn wir später KI für Sie deployen, wird sie mit Blick auf DSGVO und Datenresidenz gebaut — besonders für EU-basierte Teams."
+        },
+        {
+          "q": "Muss ich nach dem Audit mit Ihnen bauen?",
+          "a": "Nein. Der Bericht gehört Ihnen und Sie können ihn verwenden, wie Sie möchten. Bauen Sie ihn selbst, beauftragen Sie ein anderes Team oder legen Sie ihn auf Eis. Aber wenn Sie uns innerhalb von 30 Tagen wählen, werden die 690 $ bei der Umsetzung angerechnet."
+        },
+        {
+          "q": "Wie lange dauert die Umsetzung nach dem Audit?",
+          "a": "Hängt von der Komplexität ab. Einfache Automatisierungen können in 1–2 Wochen live gehen. Vollständige KI-Produkte oder private LLM-Plattformen dauern typischerweise 3–8 Wochen. Der Auditbericht enthält geschätzte Zeitpläne für jede Chance."
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Bereit, Ihre KI-Gewinne zu finden?",
+      "body": "Zwei Gespräche, ein Bericht und ein Fahrplan zu 20+ gesparten Stunden pro Woche. 690 $, voll anrechenbar, wenn Sie mit uns bauen.",
+      "primaryCta": "Audit buchen — 690 $",
+      "secondaryCta": "Beginnen Sie mit einem kostenlosen 20-Min-Gespräch"
+    },
+    "backHome": "← Zurück zur Startseite"
   },
   "privateAi": {
     "meta": {

@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const termsLanguages = alternatesFor("/terms");
   const privacyLanguages = alternatesFor("/privacy");
   const privateAiLanguages = alternatesFor("/private-ai");
+  const aiAuditLanguages = alternatesFor("/ai-audit");
 
   return [
     ...translatedLocales.map(
@@ -52,6 +53,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "monthly",
         priority: 0.8,
         alternates: { languages: privateAiLanguages },
+      }),
+    ),
+    ...translatedLocales.map(
+      (lang): MetadataRoute.Sitemap[number] => ({
+        url: `${siteUrl}/${lang}/ai-audit`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.8,
+        alternates: { languages: aiAuditLanguages },
       }),
     ),
     ...caseStudyLocales.map(
