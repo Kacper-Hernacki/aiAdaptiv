@@ -28,6 +28,10 @@
           "href": "#products"
         },
         {
+          "label": "Audit IA",
+          "href": "@aiAudit"
+        },
+        {
           "label": "Approche",
           "href": "#approach"
         },
@@ -884,7 +888,129 @@
       "body": "Connect your knowledge base, notes, documents and decisions to the AI tools you already use. Never repeat yourself. Never lose context. $1 for a 7-day trial.",
       "cta": "Try Second Brain Pro",
       "url": "https://brain.aiadaptiv.com"
+    },
+    "aiAuditCard": {
+      "h2": "Audit d'opportunités IA",
+      "headline": "Trouvez 20+ heures par semaine que votre équipe peut récupérer avec l'IA",
+      "body": "Deux appels de 60 minutes, une revue des processus et un rapport avec 3 à 5 opportunités d'IA évaluées en heures économisées, coût et retour. 690 $, entièrement crédité si vous construisez avec nous.",
+      "cta": "En savoir plus"
     }
+  },
+  "aiAudit": {
+    "meta": {
+      "title": "Audit d'opportunités IA — trouvez 20+ heures par semaine | aiAdaptiv",
+      "description": "Découvrez 3 à 5 opportunités d'IA qui font économiser 20+ heures par semaine à votre équipe. Deux appels de 60 minutes, un rapport avec ROI et feuille de route d'implémentation. 690 $, entièrement crédité si vous construisez avec nous."
+    },
+    "hero": {
+      "badge": "Audit d'opportunités IA",
+      "headline": "5 endroits où l'IA récupère 20+ heures par semaine",
+      "subhead": "Deux appels de 60 minutes, une revue de vos processus et outils, et un rapport qui montre exactement où l'IA économise du temps, ce que ça coûte, et comment l'implémenter.",
+      "cta": "Réserver votre audit — 690 $",
+      "secondaryCta": "Commencer avec un appel gratuit de 20 min"
+    },
+    "value": {
+      "h2": "Ce que vous obtenez",
+      "lead": "Une feuille de route ciblée et pratique — pas un pitch deck générique.",
+      "items": [
+        {
+          "title": "Deux appels de découverte de 60 minutes",
+          "body": "Nous cartographions vos flux de travail, outils et goulots d'étranglement. Où le travail manuel mange-t-il des heures ? Qu'est-ce qui ralentit votre équipe ?"
+        },
+        {
+          "title": "Revue des processus et outils",
+          "body": "Nous examinons vos systèmes actuels : CRM, tableurs, fils d'emails, flux de devis — tout ce qui fait tourner votre entreprise."
+        },
+        {
+          "title": "Livré en 5 jours ouvrables",
+          "body": "Un rapport écrit avec 3 à 5 opportunités d'IA spécifiques, chacune évaluée en heures économisées par semaine, coût d'implémentation et période de retour sur investissement."
+        },
+        {
+          "title": "Feuille de route d'implémentation",
+          "body": "Plan étape par étape : quoi construire en premier, ce qui s'intègre avec votre stack, et par où commencer pour le ROI le plus rapide."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Tarification",
+      "price": "690 $",
+      "credit": "Entièrement crédité pour l'implémentation si vous commandez dans les 30 jours.",
+      "note": "Gratuit si vous construisez avec nous.",
+      "cta": "Réserver votre audit"
+    },
+    "examples": {
+      "h2": "Résultats réels",
+      "lead": "Exemples d'audits que nous avons réalisés :",
+      "cases": [
+        {
+          "title": "Entreprise logistique — système de devis IA",
+          "result": "3 heures → 30 secondes par devis",
+          "body": "La génération manuelle de devis prenait 3 heures d'allers-retours. Nous avons construit un système d'IA qui extrait les données, calcule les prix et génère des devis en 30 secondes."
+        },
+        {
+          "title": "Cabinet d'avocats — plateforme LLM privée",
+          "result": "6+ heures économisées par semaine sur la revue de contrats",
+          "body": "Les documents clients sensibles ne pouvaient pas toucher l'IA publique. Nous avons déployé un LLM privé conforme au RGPD dans leur cloud EU — résumés de contrats et extraction des risques sans responsabilité."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Comment ça marche",
+      "lead": "Quatre étapes de l'audit à l'IA en ligne :",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Réserver l'audit",
+          "body": "Planifiez votre premier appel de découverte de 60 minutes. Nous enverrons un court questionnaire de préparation pour démarrer efficacement."
+        },
+        {
+          "step": "2",
+          "title": "Découverte et revue",
+          "body": "Deux appels pour cartographier les flux de travail, identifier les goulots d'étranglement et examiner vos outils. Nous creusons ce qui est manuel, ce qui est lent, et où l'IA s'intègre."
+        },
+        {
+          "step": "3",
+          "title": "Rapport livré",
+          "body": "En 5 jours ouvrables, vous obtenez un rapport écrit : 3 à 5 opportunités d'IA avec heures économisées, coût, période de retour et feuille de route d'implémentation."
+        },
+        {
+          "step": "4",
+          "title": "Implémenter (optionnel)",
+          "body": "Si vous choisissez de construire avec nous dans les 30 jours, les frais d'audit de 690 $ sont entièrement crédités. Vous avez déjà payé une partie du build."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Questions fréquentes",
+      "items": [
+        {
+          "q": "Pour qui est-ce ?",
+          "a": "Petites et moyennes équipes (5 à 50 personnes) qui savent que l'IA pourrait aider mais ne savent pas par où commencer. Les entreprises de services, agences, cabinets de conseil et entreprises opérationnelles obtiennent le plus de valeur."
+        },
+        {
+          "q": "Et si vous ne trouvez pas de bonnes opportunités ?",
+          "a": "Rare, mais possible. Si nous ne pouvons pas identifier au moins 3 opportunités d'IA viables avec un ROI clair, nous remboursons intégralement les 690 $. Sans poser de questions."
+        },
+        {
+          "q": "Qu'en est-il de la confidentialité des données et des NDA ?",
+          "a": "Nous signons un NDA avant le premier appel. Toutes les informations partagées pendant l'audit restent confidentielles. Si nous déployons l'IA pour vous plus tard, elle est construite en tenant compte du RGPD et de la résidence des données — surtout pour les équipes basées dans l'UE."
+        },
+        {
+          "q": "Dois-je construire avec vous après l'audit ?",
+          "a": "Non. Le rapport est à vous et vous pouvez l'utiliser comme bon vous semble. Construisez-le vous-même, engagez une autre équipe, ou mettez-le de côté. Mais si vous nous choisissez dans les 30 jours, les 690 $ sont crédités pour l'implémentation."
+        },
+        {
+          "q": "Combien de temps prend l'implémentation après l'audit ?",
+          "a": "Cela dépend de la complexité. Les automatisations simples peuvent être en ligne en 1 à 2 semaines. Les produits d'IA complets ou plateformes LLM privées prennent généralement 3 à 8 semaines. Le rapport d'audit inclut des délais estimés pour chaque opportunité."
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Prêt à trouver vos gains IA ?",
+      "body": "Deux appels, un rapport et une feuille de route vers 20+ heures économisées par semaine. 690 $, entièrement crédité si vous construisez avec nous.",
+      "primaryCta": "Réserver votre audit — 690 $",
+      "secondaryCta": "Commencer avec un appel gratuit de 20 min"
+    },
+    "backHome": "← Retour à l'accueil"
   },
   "privateAi": {
     "meta": {

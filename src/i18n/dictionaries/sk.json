@@ -28,6 +28,10 @@
           "href": "#products"
         },
         {
+          "label": "AI Audit",
+          "href": "@aiAudit"
+        },
+        {
           "label": "Prístup",
           "href": "#approach"
         },
@@ -884,7 +888,129 @@
       "body": "Connect your knowledge base, notes, documents and decisions to the AI tools you already use. Never repeat yourself. Never lose context. $1 for a 7-day trial.",
       "cta": "Try Second Brain Pro",
       "url": "https://brain.aiadaptiv.com"
+    },
+    "aiAuditCard": {
+      "h2": "Audit AI príležitostí",
+      "headline": "Nájdite 20+ hodín týždenne, ktoré váš tím môže získať späť s AI",
+      "body": "Dva 60-minútové hovory, prehľad procesov a správa s 3–5 AI príležitosťami ocenenými v ušetrených hodinách, nákladoch a návratnosti. $690, plne započítateľné, ak staviate s nami.",
+      "cta": "Zistiť viac"
     }
+  },
+  "aiAudit": {
+    "meta": {
+      "title": "Audit AI príležitostí — nájdite 20+ hodín týždenne | aiAdaptiv",
+      "description": "Objavte 3–5 AI príležitostí, ktoré ušetria vášmu tímu 20+ hodín týždenne. Dva 60-minútové hovory, správa s ROI a implementačný plán. $690, plne započítateľné pri realizácii s nami."
+    },
+    "hero": {
+      "badge": "Audit AI príležitostí",
+      "headline": "5 miest, kde AI získa späť 20+ hodín týždenne",
+      "subhead": "Dva 60-minútové hovory, prehľad vašich procesov a nástrojov a správa, ktorá presne ukazuje, kde AI šetrí čas, čo to stojí a ako to implementovať.",
+      "cta": "Objednajte si audit — $690",
+      "secondaryCta": "Začnite s bezplatným 20min hovorom"
+    },
+    "value": {
+      "h2": "Čo získate",
+      "lead": "Zameraný, praktický plán — nie všeobecnú prezentáciu.",
+      "items": [
+        {
+          "title": "Dva 60-minútové objaviteľské hovory",
+          "body": "Mapujeme vaše pracovné postupy, nástroje a úzke miesta. Kde manuálna práca spotrebováva hodiny? Čo spomaľuje váš tím?"
+        },
+        {
+          "title": "Prehľad procesov a nástrojov",
+          "body": "Skúmame vaše súčasné systémy: CRM, tabuľky, e-mailové vlákna, ponukové toky — všetko, čo poháňa váš biznis."
+        },
+        {
+          "title": "Doručené do 5 pracovných dní",
+          "body": "Písomná správa s 3–5 konkrétnymi AI príležitosťami, každá ocenená v ušetrených hodinách týždenne, nákladoch na implementáciu a dobe návratnosti."
+        },
+        {
+          "title": "Implementačný plán",
+          "body": "Krok za krokom: čo stavať ako prvé, čo sa integruje s vaším stackom a kde začať pre najrýchlejšie ROI."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Cena",
+      "price": "$690",
+      "credit": "Plne započítateľné do implementácie, ak objednáte do 30 dní.",
+      "note": "Zadarmo, ak staviate s nami.",
+      "cta": "Objednajte si audit"
+    },
+    "examples": {
+      "h2": "Reálne výsledky",
+      "lead": "Príklady z auditov, ktoré sme dokončili:",
+      "cases": [
+        {
+          "title": "Logistická firma — AI systém ponúk",
+          "result": "3 hodiny → 30 sekúnd na ponuku",
+          "body": "Manuálna tvorba ponúk zaberala 3 hodiny sem a tam. Vytvorili sme AI systém, ktorý vytiahne dáta, vypočíta ceny a vygeneruje ponuky za 30 sekúnd."
+        },
+        {
+          "title": "Advokátska kancelária — privátna LLM platforma",
+          "result": "6+ hodín ušetrených týždenne pri kontrole zmlúv",
+          "body": "Citlivé klientske dokumenty nemohli používať verejnú AI. Nasadili sme privátny LLM v súlade s GDPR v ich EU cloude — zhrnutia zmlúv a extrakcia rizík bez zodpovednosti."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Ako to funguje",
+      "lead": "Štyri kroky od auditu k živej AI:",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Objednajte audit",
+          "body": "Naplánujte si prvý 60-minútový objaviteľský hovor. Pošleme vám krátky prípravný dotazník, aby ste hneď začali."
+        },
+        {
+          "step": "2",
+          "title": "Objavovanie a prehľad",
+          "body": "Dva hovory na mapovanie pracovných postupov, identifikáciu úzkych miest a prehľad vašich nástrojov. Pátranie, čo je manuálne, čo je pomalé a kde sa hodí AI."
+        },
+        {
+          "step": "3",
+          "title": "Dodanie správy",
+          "body": "Do 5 pracovných dní dostanete písomnú správu: 3–5 AI príležitostí s ušetrenými hodinami, nákladmi, dobou návratnosti a implementačným plánom."
+        },
+        {
+          "step": "4",
+          "title": "Implementovať (voliteľne)",
+          "body": "Ak sa rozhodnete stavať s nami do 30 dní, auditný poplatok $690 sa plne započíta. Už ste zaplatili časť stavby."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Často kladené otázky",
+      "items": [
+        {
+          "q": "Pre koho je to?",
+          "a": "Malé až stredné tímy (5–50 ľudí), ktoré vedia, že AI by mohla pomôcť, ale nevedia, kde začať. Servisné firmy, agentúry, poradenské spoločnosti a prevádzkovo náročné firmy získajú najväčšiu hodnotu."
+        },
+        {
+          "q": "Čo ak nenájdete dobré príležitosti?",
+          "a": "Vzácne, ale možné. Ak nedokážeme identifikovať aspoň 3 životaschopné AI príležitosti s jasným ROI, vrátime plných $690. Bez otázok."
+        },
+        {
+          "q": "Čo ochrana dát a NDA?",
+          "a": "Podpíšeme NDA pred prvým hovorom. Všetky informácie zdieľané počas auditu zostávajú dôverné. Ak neskôr nasadíme AI pre vás, je postavená s ohľadom na GDPR a rezidenciu dát — najmä pre tímy so sídlom v EÚ."
+        },
+        {
+          "q": "Musím s vami stavať po audite?",
+          "a": "Nie. Správa je vaša na použitie, ako chcete. Postavte si to sami, najmite iný tím alebo to odložte. Ale ak si nás vyberiete do 30 dní, $690 sa započíta do implementácie."
+        },
+        {
+          "q": "Ako dlho trvá implementácia po audite?",
+          "a": "Závisí na zložitosti. Jednoduché automatizácie môžu byť živé za 1–2 týždne. Kompletné AI produkty alebo privátne LLM platformy typicky zaberiú 3–8 týždňov. Auditná správa zahŕňa odhadované časové plány pre každú príležitosť."
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Pripravení nájsť svoje AI víťazstvá?",
+      "body": "Dva hovory, jedna správa a plán k 20+ ušetreným hodinám týždenne. $690, plne započítateľné, ak staviate s nami.",
+      "primaryCta": "Objednajte si audit — $690",
+      "secondaryCta": "Začnite s bezplatným 20min hovorom"
+    },
+    "backHome": "← Späť na domovskú stránku"
   },
   "privateAi": {
     "meta": {

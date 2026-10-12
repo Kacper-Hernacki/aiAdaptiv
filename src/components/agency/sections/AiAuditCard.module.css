@@ -1,0 +1,29 @@
+.container {
+  max-width: 50rem;
+  margin-inline: auto;
+  padding: 3rem;
+  border: 2px solid var(--accent);
+  border-radius: 1.5rem;
+  background: var(--bg-2);
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.headline {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 700;
+  max-width: 24ch;
+}
+
+@media (min-width: 768px) {
+  .headline {
+    font-size: 2.5rem;
+  }
+}

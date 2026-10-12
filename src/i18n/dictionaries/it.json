@@ -28,6 +28,10 @@
           "href": "#products"
         },
         {
+          "label": "Audit IA",
+          "href": "@aiAudit"
+        },
+        {
           "label": "Approccio",
           "href": "#approach"
         },
@@ -880,7 +884,129 @@
       "body": "Connect your knowledge base, notes, documents and decisions to the AI tools you already use. Never repeat yourself. Never lose context. $1 for a 7-day trial.",
       "cta": "Try Second Brain Pro",
       "url": "https://brain.aiadaptiv.com"
+    },
+    "aiAuditCard": {
+      "h2": "Audit delle Opportunità IA",
+      "headline": "Trova 20+ ore a settimana che il tuo team può recuperare con l'IA",
+      "body": "Due chiamate di 60 minuti, una revisione dei processi e un report con 3–5 opportunità IA valutate in ore risparmiate, costo e ritorno. $690, interamente accreditabili se costruisci con noi.",
+      "cta": "Scopri di più"
     }
+  },
+  "aiAudit": {
+    "meta": {
+      "title": "Audit delle Opportunità IA — trova 20+ ore a settimana | aiAdaptiv",
+      "description": "Scopri 3–5 opportunità IA che fanno risparmiare al tuo team 20+ ore a settimana. Due chiamate di 60 minuti, un report con ROI e roadmap di implementazione. $690, interamente accreditabili se costruisci con noi."
+    },
+    "hero": {
+      "badge": "Audit delle Opportunità IA",
+      "headline": "5 punti dove l'IA recupera 20+ ore a settimana",
+      "subhead": "Due chiamate di 60 minuti, una revisione dei tuoi processi e strumenti, e un report che mostra esattamente dove l'IA fa risparmiare tempo, quanto costa e come implementarla.",
+      "cta": "Prenota il tuo audit — $690",
+      "secondaryCta": "Inizia con una chiamata gratuita di 20 min"
+    },
+    "value": {
+      "h2": "Cosa ottieni",
+      "lead": "Una roadmap mirata e pratica — non una presentazione generica.",
+      "items": [
+        {
+          "title": "Due chiamate di scoperta di 60 minuti",
+          "body": "Mappiamo i tuoi flussi di lavoro, strumenti e colli di bottiglia. Dove il lavoro manuale consuma ore? Cosa rallenta il tuo team?"
+        },
+        {
+          "title": "Revisione di processi e strumenti",
+          "body": "Esaminiamo i tuoi sistemi attuali: CRM, fogli di calcolo, thread email, flussi di preventivazione — tutto ciò che fa girare il tuo business."
+        },
+        {
+          "title": "Consegnato in 5 giorni lavorativi",
+          "body": "Un report scritto con 3–5 opportunità IA specifiche, ciascuna valutata in ore risparmiate a settimana, costo di implementazione e periodo di ammortamento."
+        },
+        {
+          "title": "Roadmap di implementazione",
+          "body": "Piano passo dopo passo: cosa costruire per primo, cosa si integra con il tuo stack, e da dove iniziare per il ROI più veloce."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Prezzi",
+      "price": "$690",
+      "credit": "Interamente accreditabili per l'implementazione se ordini entro 30 giorni.",
+      "note": "Gratuito se costruisci con noi.",
+      "cta": "Prenota il tuo audit"
+    },
+    "examples": {
+      "h2": "Risultati reali",
+      "lead": "Esempi da audit che abbiamo completato:",
+      "cases": [
+        {
+          "title": "Azienda logistica — sistema di preventivazione IA",
+          "result": "3 ore → 30 secondi per preventivo",
+          "body": "La generazione manuale di preventivi richiedeva 3 ore di scambi. Abbiamo costruito un sistema IA che estrae i dati, calcola i prezzi e genera preventivi in 30 secondi."
+        },
+        {
+          "title": "Studio legale — piattaforma LLM privata",
+          "result": "6+ ore risparmiate settimanalmente sulla revisione contratti",
+          "body": "I documenti sensibili dei clienti non potevano toccare l'IA pubblica. Abbiamo implementato un LLM privato conforme al GDPR nel loro cloud EU — riepiloghi contrattuali ed estrazione rischi senza responsabilità."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Come funziona",
+      "lead": "Quattro passi dall'audit all'IA live:",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Prenota l'audit",
+          "body": "Programma la tua prima chiamata di scoperta di 60 minuti. Ti invieremo un breve questionario di preparazione per partire subito."
+        },
+        {
+          "step": "2",
+          "title": "Scoperta e revisione",
+          "body": "Due chiamate per mappare i flussi di lavoro, identificare colli di bottiglia e rivedere i tuoi strumenti. Approfondiamo cosa è manuale, cosa è lento e dove l'IA si inserisce."
+        },
+        {
+          "step": "3",
+          "title": "Report consegnato",
+          "body": "In 5 giorni lavorativi, ottieni un report scritto: 3–5 opportunità IA con ore risparmiate, costo, periodo di ammortamento e roadmap di implementazione."
+        },
+        {
+          "step": "4",
+          "title": "Implementare (opzionale)",
+          "body": "Se scegli di costruire con noi entro 30 giorni, la tariffa di audit di $690 viene interamente accreditata. Hai già pagato parte della costruzione."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Domande frequenti",
+      "items": [
+        {
+          "q": "Per chi è?",
+          "a": "Team piccoli o medi (5–50 persone) che sanno che l'IA potrebbe aiutare ma non sanno da dove iniziare. Aziende di servizi, agenzie, società di consulenza e aziende operative ottengono il massimo valore."
+        },
+        {
+          "q": "E se non trovate buone opportunità?",
+          "a": "Raro, ma possibile. Se non riusciamo a identificare almeno 3 opportunità IA valide con ROI chiaro, rimborsiamo completamente i $690. Senza domande."
+        },
+        {
+          "q": "E la privacy dei dati e gli NDA?",
+          "a": "Firmiamo un NDA prima della prima chiamata. Tutte le informazioni condivise durante l'audit rimangono confidenziali. Se implementiamo IA per te in seguito, viene costruita pensando a GDPR e residenza dei dati — specialmente per team basati in UE."
+        },
+        {
+          "q": "Devo costruire con voi dopo l'audit?",
+          "a": "No. Il report è tuo da usare come preferisci. Costruiscilo tu stesso, assumi un altro team, o mettilo da parte. Ma se ci scegli entro 30 giorni, i $690 vengono accreditati per l'implementazione."
+        },
+        {
+          "q": "Quanto tempo richiede l'implementazione dopo l'audit?",
+          "a": "Dipende dalla complessità. Automatizzazioni semplici possono andare live in 1–2 settimane. Prodotti IA completi o piattaforme LLM private tipicamente richiedono 3–8 settimane. Il report di audit include tempistiche stimate per ogni opportunità."
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Pronto a trovare le tue vittorie IA?",
+      "body": "Due chiamate, un report e una roadmap verso 20+ ore risparmiate a settimana. $690, interamente accreditabili se costruisci con noi.",
+      "primaryCta": "Prenota il tuo audit — $690",
+      "secondaryCta": "Inizia con una chiamata gratuita di 20 min"
+    },
+    "backHome": "← Torna alla home"
   },
   "privateAi": {
     "meta": {

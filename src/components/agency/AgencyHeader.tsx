@@ -10,8 +10,8 @@ import styles from "./AgencyHeader.module.css";
 
 /**
  * Nav entries are authored in the dictionaries, so a route cannot be written
- * with its locale prefix. `@caseStudies` stands in for it, matching the
- * footer's convention. Everything else stays an in-page anchor.
+ * with its locale prefix. `@caseStudies` and `@aiAudit` stand in for them,
+ * matching the footer's convention. Everything else stays an in-page anchor.
  *
  * Which locales offer the link is decided by which dictionaries carry the
  * entry — case studies are written in English and Polish only, and adding the
@@ -20,7 +20,9 @@ import styles from "./AgencyHeader.module.css";
  * client bundle of every page.
  */
 function resolveNav(href: string, lang: string): string {
-  return href === "@caseStudies" ? `/${lang}/case-studies` : href;
+  if (href === "@caseStudies") return `/${lang}/case-studies`;
+  if (href === "@aiAudit") return `/${lang}/ai-audit`;
+  return href;
 }
 
 export function AgencyHeader({

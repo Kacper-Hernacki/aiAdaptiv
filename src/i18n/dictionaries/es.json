@@ -28,6 +28,10 @@
           "href": "#products"
         },
         {
+          "label": "Auditoría IA",
+          "href": "@aiAudit"
+        },
+        {
           "label": "Enfoque",
           "href": "#approach"
         },
@@ -884,7 +888,129 @@
       "body": "Connect your knowledge base, notes, documents and decisions to the AI tools you already use. Never repeat yourself. Never lose context. $1 for a 7-day trial.",
       "cta": "Try Second Brain Pro",
       "url": "https://brain.aiadaptiv.com"
+    },
+    "aiAuditCard": {
+      "h2": "Auditoría de Oportunidades IA",
+      "headline": "Encuentra 20+ horas por semana que tu equipo puede recuperar con IA",
+      "body": "Dos llamadas de 60 minutos, una revisión de procesos y un informe con 3–5 oportunidades de IA valoradas en horas ahorradas, costo y retorno. $690, totalmente acreditable si construyes con nosotros.",
+      "cta": "Saber más"
     }
+  },
+  "aiAudit": {
+    "meta": {
+      "title": "Auditoría de Oportunidades IA — encuentra 20+ horas por semana | aiAdaptiv",
+      "description": "Descubre 3–5 oportunidades de IA que ahorran a tu equipo 20+ horas por semana. Dos llamadas de 60 minutos, un informe con ROI y hoja de ruta de implementación. $690, totalmente acreditable si construyes con nosotros."
+    },
+    "hero": {
+      "badge": "Auditoría de Oportunidades IA",
+      "headline": "5 lugares donde la IA recupera 20+ horas por semana",
+      "subhead": "Dos llamadas de 60 minutos, una revisión de tus procesos y herramientas, y un informe que muestra exactamente dónde la IA ahorra tiempo, qué cuesta, y cómo implementarlo.",
+      "cta": "Reserva tu auditoría — $690",
+      "secondaryCta": "Comienza con una llamada gratis de 20 min"
+    },
+    "value": {
+      "h2": "Qué obtienes",
+      "lead": "Una hoja de ruta enfocada y práctica — no una presentación genérica.",
+      "items": [
+        {
+          "title": "Dos llamadas de descubrimiento de 60 minutos",
+          "body": "Mapeamos tus flujos de trabajo, herramientas y cuellos de botella. ¿Dónde el trabajo manual consume horas? ¿Qué ralentiza a tu equipo?"
+        },
+        {
+          "title": "Revisión de procesos y herramientas",
+          "body": "Examinamos tus sistemas actuales: CRMs, hojas de cálculo, hilos de correo, flujos de cotización — lo que sea que impulse tu negocio."
+        },
+        {
+          "title": "Entregado en 5 días hábiles",
+          "body": "Un informe escrito con 3–5 oportunidades de IA específicas, cada una valorada en horas ahorradas por semana, costo de implementación y período de retorno."
+        },
+        {
+          "title": "Hoja de ruta de implementación",
+          "body": "Plan paso a paso: qué construir primero, qué se integra con tu stack, y por dónde empezar para el ROI más rápido."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Precios",
+      "price": "$690",
+      "credit": "Totalmente acreditable hacia la implementación si ordenas dentro de 30 días.",
+      "note": "Gratis si construyes con nosotros.",
+      "cta": "Reserva tu auditoría"
+    },
+    "examples": {
+      "h2": "Resultados reales",
+      "lead": "Ejemplos de auditorías que hemos completado:",
+      "cases": [
+        {
+          "title": "Empresa logística — sistema de cotización IA",
+          "result": "3 horas → 30 segundos por cotización",
+          "body": "La generación manual de cotizaciones tomaba 3 horas de ida y vuelta. Construimos un sistema de IA que extrae datos, calcula precios y genera cotizaciones en 30 segundos."
+        },
+        {
+          "title": "Bufete de abogados — plataforma LLM privada",
+          "result": "6+ horas ahorradas semanalmente en revisión de contratos",
+          "body": "Los documentos sensibles de clientes no podían tocar IA pública. Implementamos un LLM privado compatible con RGPD en su nube EU — resúmenes de contratos y extracción de riesgos sin responsabilidad."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Cómo funciona",
+      "lead": "Cuatro pasos desde la auditoría hasta la IA en vivo:",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Reserva la auditoría",
+          "body": "Programa tu primera llamada de descubrimiento de 60 minutos. Enviaremos un breve cuestionario de preparación para empezar con todo."
+        },
+        {
+          "step": "2",
+          "title": "Descubrimiento y revisión",
+          "body": "Dos llamadas para mapear flujos de trabajo, identificar cuellos de botella y revisar tus herramientas. Profundizamos en qué es manual, qué es lento y dónde encaja la IA."
+        },
+        {
+          "step": "3",
+          "title": "Informe entregado",
+          "body": "En 5 días hábiles, obtienes un informe escrito: 3–5 oportunidades de IA con horas ahorradas, costo, período de retorno y hoja de ruta de implementación."
+        },
+        {
+          "step": "4",
+          "title": "Implementar (opcional)",
+          "body": "Si eliges construir con nosotros dentro de 30 días, la tarifa de auditoría de $690 se acredita completamente. Ya has pagado parte de la construcción."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Preguntas frecuentes",
+      "items": [
+        {
+          "q": "¿Para quién es esto?",
+          "a": "Equipos pequeños a medianos (5–50 personas) que saben que la IA podría ayudar pero no saben por dónde empezar. Empresas de servicios, agencias, consultorías y empresas con operaciones intensivas obtienen el mayor valor."
+        },
+        {
+          "q": "¿Qué pasa si no encuentran buenas oportunidades?",
+          "a": "Raro, pero posible. Si no podemos identificar al menos 3 oportunidades de IA viables con ROI claro, reembolsamos los $690 completos. Sin preguntas."
+        },
+        {
+          "q": "¿Qué pasa con la privacidad de datos y los NDAs?",
+          "a": "Firmamos un NDA antes de la primera llamada. Toda la información compartida durante la auditoría permanece confidencial. Si implementamos IA para ti más tarde, se construye con RGPD y residencia de datos en mente — especialmente para equipos basados en la UE."
+        },
+        {
+          "q": "¿Tengo que construir con ustedes después de la auditoría?",
+          "a": "No. El informe es tuyo para usar como quieras. Constrúyelo tú mismo, contrata otro equipo, o archívalo. Pero si nos eliges dentro de 30 días, los $690 se acreditan hacia la implementación."
+        },
+        {
+          "q": "¿Cuánto tiempo toma la implementación después de la auditoría?",
+          "a": "Depende de la complejidad. Las automatizaciones simples pueden estar en vivo en 1–2 semanas. Los productos de IA completos o plataformas LLM privadas típicamente toman 3–8 semanas. El informe de auditoría incluye cronogramas estimados para cada oportunidad."
+        }
+      ]
+    },
+    "cta": {
+      "h2": "¿Listo para encontrar tus victorias con IA?",
+      "body": "Dos llamadas, un informe y una hoja de ruta hacia 20+ horas ahorradas por semana. $690, totalmente acreditable si construyes con nosotros.",
+      "primaryCta": "Reserva tu auditoría — $690",
+      "secondaryCta": "Comienza con una llamada gratis de 20 min"
+    },
+    "backHome": "← Volver al inicio"
   },
   "privateAi": {
     "meta": {

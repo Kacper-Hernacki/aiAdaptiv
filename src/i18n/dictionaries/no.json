@@ -28,6 +28,10 @@
           "href": "#products"
         },
         {
+          "label": "AI-Audit",
+          "href": "@aiAudit"
+        },
+        {
           "label": "Tilnærming",
           "href": "#approach"
         },
@@ -884,7 +888,129 @@
       "body": "Connect your knowledge base, notes, documents and decisions to the AI tools you already use. Never repeat yourself. Never lose context. $1 for a 7-day trial.",
       "cta": "Try Second Brain Pro",
       "url": "https://brain.aiadaptiv.com"
+    },
+    "aiAuditCard": {
+      "h2": "AI-Mulighetsanalyse",
+      "headline": "Finn 20+ timer i uken teamet ditt kan vinne tilbake med AI",
+      "body": "To 60-minutters samtaler, en prosessgjennomgang og en rapport med 3–5 AI-muligheter priset i timer spart, kostnad og nedbetaling. $690, fullt krediterbart hvis du bygger med oss.",
+      "cta": "Lær mer"
     }
+  },
+  "aiAudit": {
+    "meta": {
+      "title": "AI-Mulighetsanalyse — finn 20+ timer i uken | aiAdaptiv",
+      "description": "Oppdag 3–5 AI-muligheter som sparer teamet ditt 20+ timer i uken. To 60-minutters samtaler, en rapport med ROI og implementeringsplan. $690, fullt krediterbart ved implementering."
+    },
+    "hero": {
+      "badge": "AI-Mulighetsanalyse",
+      "headline": "5 steder hvor AI vinner tilbake 20+ timer i uken",
+      "subhead": "To 60-minutters samtaler, en gjennomgang av prosessene og verktøyene dine, og en rapport som viser nøyaktig hvor AI sparer tid, hva det koster, og hvordan implementere det.",
+      "cta": "Bestill analysen din — $690",
+      "secondaryCta": "Start med en gratis 20-min samtale"
+    },
+    "value": {
+      "h2": "Hva du får",
+      "lead": "En fokusert, praktisk veikart — ikke en generisk pitch-presentasjon.",
+      "items": [
+        {
+          "title": "To 60-minutters oppdagelsessamtaler",
+          "body": "Vi kartlegger arbeidsflytene, verktøyene og flaskehalsene dine. Hvor spiser manuelt arbeid timer? Hva bremser teamet ditt?"
+        },
+        {
+          "title": "Prosess- og verktøygjennomgang",
+          "body": "Vi undersøker de nåværende systemene dine: CRM-er, regneark, e-posttråder, tilbudsflyter — alt som driver virksomheten din."
+        },
+        {
+          "title": "Levert på 5 virkedager",
+          "body": "En skriftlig rapport med 3–5 spesifikke AI-muligheter, hver priset i timer spart per uke, implementeringskostnad og nedbetalingstid."
+        },
+        {
+          "title": "Implementeringsveikart",
+          "body": "Trinn-for-trinn-plan: hva du skal bygge først, hva som integreres med stacken din, og hvor du starter for raskest ROI."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Priser",
+      "price": "$690",
+      "credit": "Fullt krediterbart mot implementering hvis du bestiller innen 30 dager.",
+      "note": "Gratis hvis du bygger med oss.",
+      "cta": "Bestill analysen"
+    },
+    "examples": {
+      "h2": "Virkelige resultater",
+      "lead": "Eksempler fra analyser vi har gjennomført:",
+      "cases": [
+        {
+          "title": "Logistikkselskap — AI-tilbudssystem",
+          "result": "3 timer → 30 sekunder per tilbud",
+          "body": "Manuell tilbudsgenerering tok 3 timer fram og tilbake. Vi bygde et AI-system som henter data, beregner priser og genererer tilbud på 30 sekunder."
+        },
+        {
+          "title": "Advokatfirma — privat LLM-plattform",
+          "result": "6+ timer spart ukentlig på kontraktsgjennomgang",
+          "body": "Sensitive klientdokumenter kunne ikke røre offentlig AI. Vi satte opp en privat, GDPR-kompatibel LLM i deres EU-sky — kontraktssammendrag og risikouttrekk uten ansvar."
+        }
+      ]
+    },
+    "process": {
+      "h2": "Hvordan det fungerer",
+      "lead": "Fire trinn fra analyse til live AI:",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Bestill analysen",
+          "body": "Planlegg din første 60-minutters oppdagelsessamtale. Vi sender et kort forberedende spørreskjema slik at vi kommer i gang raskt."
+        },
+        {
+          "step": "2",
+          "title": "Oppdagelse og gjennomgang",
+          "body": "To samtaler for å kartlegge arbeidsflyter, identifisere flaskehalser og gjennomgå verktøyene dine. Vi graver i hva som er manuelt, hva som er tregt, og hvor AI passer."
+        },
+        {
+          "step": "3",
+          "title": "Rapport levert",
+          "body": "På 5 virkedager får du en skriftlig rapport: 3–5 AI-muligheter med timer spart, kostnad, nedbetalingstid og et implementeringsveikart."
+        },
+        {
+          "step": "4",
+          "title": "Implementer (valgfritt)",
+          "body": "Hvis du velger å bygge med oss innen 30 dager, krediteres analyseavgiften på $690 fullt ut. Du har allerede betalt for deler av byggingen."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Ofte stilte spørsmål",
+      "items": [
+        {
+          "q": "Hvem er dette for?",
+          "a": "Små til mellomstore team (5–50 personer) som vet at AI kunne hjelpe, men ikke vet hvor de skal starte. Tjenestevirksomheter, byråer, konsulentfirmaer og operasjonelle selskaper får mest verdi."
+        },
+        {
+          "q": "Hva hvis dere ikke finner gode muligheter?",
+          "a": "Sjeldent, men mulig. Hvis vi ikke kan identifisere minst 3 levedyktige AI-muligheter med klar ROI, refunderer vi hele $690. Ingen spørsmål stilt."
+        },
+        {
+          "q": "Hva med personvern og NDA-er?",
+          "a": "Vi signerer en NDA før første samtale. All informasjon delt under analysen forblir konfidensiell. Hvis vi setter opp AI for deg senere, bygges det med GDPR og dataresidensitet i tankene — spesielt for EU-baserte team."
+        },
+        {
+          "q": "Må jeg bygge med dere etter analysen?",
+          "a": "Nei. Rapporten er din å bruke som du vil. Bygg den selv, ansett et annet team, eller legg den på is. Men hvis du velger oss innen 30 dager, krediteres $690 mot implementering."
+        },
+        {
+          "q": "Hvor lang tid tar implementering etter analysen?",
+          "a": "Avhenger av kompleksiteten. Enkle automatiseringer kan gå live på 1–2 uker. Fullstendige AI-produkter eller private LLM-plattformer tar vanligvis 3–8 uker. Analyserapporten inkluderer estimerte tidslinjer for hver mulighet."
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Klar til å finne dine AI-gevinster?",
+      "body": "To samtaler, en rapport og et veikart til 20+ timer spart per uke. $690, fullt krediterbart hvis du bygger med oss.",
+      "primaryCta": "Bestill analysen din — $690",
+      "secondaryCta": "Start med en gratis 20-min samtale"
+    },
+    "backHome": "← Tilbake til hjemmesiden"
   },
   "privateAi": {
     "meta": {

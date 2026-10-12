@@ -32,6 +32,10 @@
           "href": "#products"
         },
         {
+          "label": "AI Audit",
+          "href": "@aiAudit"
+        },
+        {
           "label": "Approach",
           "href": "#approach"
         },
@@ -306,6 +310,12 @@
       "body": "Connect your knowledge base, notes, documents and decisions to the AI tools you already use. Never repeat yourself. Never lose context. $1 for a 7-day trial.",
       "cta": "Try Second Brain Pro",
       "url": "https://brain.aiadaptiv.com"
+    },
+    "aiAuditCard": {
+      "h2": "AI Opportunity Audit",
+      "headline": "Find 20+ hours a week your team can win back with AI",
+      "body": "Two 60-minute calls, a process review, and a report with 3–5 AI opportunities priced in hours saved, cost, and payback. $690, fully credited if you build with us.",
+      "cta": "Learn more"
     },
     "team": {
       "h2": "Who you actually work with",
@@ -889,6 +899,122 @@
         "backHome": "← Back to home"
       }
     }
+  },
+  "aiAudit": {
+    "meta": {
+      "title": "AI Opportunity Audit — find 20+ hours a week | aiAdaptiv",
+      "description": "Discover 3–5 AI opportunities that save your team 20+ hours a week. Two 60-minute calls, a report with ROI and implementation roadmap. $690, fully credited if you build with us."
+    },
+    "hero": {
+      "badge": "AI Opportunity Audit",
+      "headline": "5 places where AI wins back 20+ hours a week",
+      "subhead": "Two 60-minute calls, a review of your processes and tools, and a report that shows exactly where AI saves time, what it costs, and how to implement it.",
+      "cta": "Book your audit — $690",
+      "secondaryCta": "Start with a free 20-min call"
+    },
+    "value": {
+      "h2": "What You Get",
+      "lead": "A focused, practical roadmap — not a generic pitch deck.",
+      "items": [
+        {
+          "title": "Two 60-minute discovery calls",
+          "body": "We map your workflows, tools, and bottlenecks. Where does manual work eat hours? What slows your team down?"
+        },
+        {
+          "title": "Process and tool review",
+          "body": "We examine your current systems: CRMs, spreadsheets, email threads, quoting flows — whatever runs your business."
+        },
+        {
+          "title": "Delivered in 5 business days",
+          "body": "A written report with 3–5 specific AI opportunities, each priced in hours saved per week, implementation cost, and payback period."
+        },
+        {
+          "title": "Implementation roadmap",
+          "body": "Step-by-step plan: what to build first, what integrates with your stack, and where to start for the fastest ROI."
+        }
+      ]
+    },
+    "pricing": {
+      "h2": "Pricing",
+      "price": "$690",
+      "credit": "Fully credited toward implementation if you order within 30 days.",
+      "note": "Free if you build with us.",
+      "cta": "Book your audit"
+    },
+    "examples": {
+      "h2": "Real Results",
+      "lead": "Examples from audits we've completed:",
+      "cases": [
+        {
+          "title": "Logistics company — AI quoting system",
+          "result": "3 hours → 30 seconds per quote",
+          "body": "Manual quote generation took 3 hours of back-and-forth. We built an AI system that pulls data, calculates pricing, and generates quotes in 30 seconds."
+        },
+        {
+          "title": "Law firm — private LLM platform",
+          "result": "6+ hours saved weekly on contract review",
+          "body": "Sensitive client documents couldn't touch public AI. We deployed a private, GDPR-compliant LLM in their EU cloud — contract summaries and risk extraction without the liability."
+        }
+      ]
+    },
+    "process": {
+      "h2": "How It Works",
+      "lead": "Four steps from audit to live AI:",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Book the audit",
+          "body": "Schedule your first 60-minute discovery call. We'll send a short prep questionnaire so we hit the ground running."
+        },
+        {
+          "step": "2",
+          "title": "Discovery and review",
+          "body": "Two calls to map workflows, identify bottlenecks, and review your tools. We dig into what's manual, what's slow, and where AI fits."
+        },
+        {
+          "step": "3",
+          "title": "Report delivered",
+          "body": "In 5 business days, you get a written report: 3–5 AI opportunities with hours saved, cost, payback period, and an implementation roadmap."
+        },
+        {
+          "step": "4",
+          "title": "Implement (optional)",
+          "body": "If you choose to build with us within 30 days, the $690 audit fee is fully credited. You've already paid for part of the build."
+        }
+      ]
+    },
+    "faq": {
+      "h2": "Frequently Asked Questions",
+      "items": [
+        {
+          "q": "Who is this for?",
+          "a": "Small to mid-sized teams (5–50 people) who know AI could help but don't know where to start. Service businesses, agencies, consultancies, and operations-heavy companies get the most value."
+        },
+        {
+          "q": "What if you don't find good opportunities?",
+          "a": "Rare, but possible. If we can't identify at least 3 viable AI opportunities with clear ROI, we refund the full $690. No questions asked."
+        },
+        {
+          "q": "What about data privacy and NDAs?",
+          "a": "We sign an NDA before the first call. All information shared during the audit stays confidential. If we deploy AI for you later, it's built with GDPR and data residency in mind — especially for EU-based teams."
+        },
+        {
+          "q": "Do I have to build with you after the audit?",
+          "a": "No. The report is yours to use however you like. Build it yourself, hire another team, or shelf it. But if you do choose us within 30 days, the $690 is credited toward implementation."
+        },
+        {
+          "q": "How long does implementation take after the audit?",
+          "a": "Depends on the complexity. Simple automations can go live in 1–2 weeks. Full AI products or private LLM platforms typically take 3–8 weeks. The audit report includes estimated timelines for each opportunity."
+        }
+      ]
+    },
+    "cta": {
+      "h2": "Ready to Find Your AI Wins?",
+      "body": "Two calls, one report, and a roadmap to 20+ hours saved per week. $690, fully credited if you build with us.",
+      "primaryCta": "Book your audit — $690",
+      "secondaryCta": "Start with a free 20-min call"
+    },
+    "backHome": "← Back to home"
   },
   "privateAi": {
     "meta": {

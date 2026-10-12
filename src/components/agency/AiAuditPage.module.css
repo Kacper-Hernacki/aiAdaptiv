@@ -1,0 +1,182 @@
+.page {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.hero {
+  text-align: center;
+  padding-block-start: 6rem;
+}
+
+.headline {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 700;
+  max-width: 20ch;
+  margin-inline: auto;
+  margin-block: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .headline {
+    font-size: 4rem;
+  }
+}
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-block-start: 2rem;
+}
+
+.valueGrid {
+  display: grid;
+  gap: 2rem;
+  margin-block-start: 3rem;
+}
+
+@media (min-width: 768px) {
+  .valueGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.valueItem {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--bg-2);
+}
+
+.valueTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-block-end: 1rem;
+}
+
+.pricingCard {
+  max-width: 40rem;
+  margin-inline: auto;
+  margin-block-start: 3rem;
+  padding: 3rem;
+  border: 2px solid var(--accent);
+  border-radius: 1rem;
+  background: var(--bg-2);
+  text-align: center;
+}
+
+.price {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-block-end: 1rem;
+}
+
+.credit {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-block-end: 0.5rem;
+}
+
+.note {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  margin-block-end: 2rem;
+}
+
+.examplesGrid {
+  display: grid;
+  gap: 2rem;
+  margin-block-start: 3rem;
+}
+
+@media (min-width: 768px) {
+  .examplesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.exampleCard {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--bg-2);
+}
+
+.exampleTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-block-end: 0.75rem;
+}
+
+.exampleResult {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-block-end: 1rem;
+}
+
+.processSteps {
+  display: grid;
+  gap: 2rem;
+  margin-block-start: 3rem;
+}
+
+@media (min-width: 768px) {
+  .processSteps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.processStep {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--bg-2);
+}
+
+.stepNumber {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: 50%;
+  margin-block-end: 1rem;
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-block-end: 1rem;
+}
+
+.ctaBlock {
+  max-width: 50rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-block-start: 2rem;
+}
+
+.backLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
