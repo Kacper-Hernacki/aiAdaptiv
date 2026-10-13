@@ -937,19 +937,19 @@
       "note": "Kostenlos, wenn Sie mit uns bauen.",
       "cta": "Audit buchen"
     },
-    "examples": {
-      "h2": "Echte Ergebnisse",
-      "lead": "Beispiele aus Audits, die wir durchgeführt haben:",
+    "builds": {
+      "h2": "Was wir gebaut haben",
+      "lead": "Unsere eigenen KI-Systeme, die zeigen, was möglich ist:",
       "cases": [
         {
-          "title": "Logistikunternehmen — KI-Angebotssystem",
-          "result": "3 Stunden → 30 Sekunden pro Angebot",
-          "body": "Manuelle Angebotserstellung nahm 3 Stunden Hin und Her in Anspruch. Wir bauten ein KI-System, das Daten abruft, Preise berechnet und Angebote in 30 Sekunden generiert."
+          "title": "Second Brain Pro",
+          "link": "https://brain.aiadaptiv.com",
+          "body": "KI-gestütztes Second Brain SaaS mit Model Context Protocol (MCP) Integration für Claude. Persönliches Wissensmanagement, das sich direkt mit Ihrem KI-Assistenten verbindet."
         },
         {
-          "title": "Anwaltskanzlei — private LLM-Plattform",
-          "result": "6+ Stunden wöchentlich bei Vertragsüberprüfung gespart",
-          "body": "Sensible Kundendokumente durften keine öffentliche KI berühren. Wir deployten ein privates, DSGVO-konformes LLM in ihrer EU-Cloud — Vertragszusammenfassungen und Risikoextraktion ohne Haftung."
+          "title": "aiAdaptiv Interne Automatisierung",
+          "link": "",
+          "body": "Multi-Agenten-KI-System zur Verwaltung unserer Outreach-, Buchhaltungs- und Support-Abläufe. Autonome Assistenten, die echte Geschäftsprozesse von Anfang bis Ende abwickeln."
         }
       ]
     },

@@ -937,19 +937,19 @@
       "note": "Zdarma, pokud stavíte s námi.",
       "cta": "Objednejte si audit"
     },
-    "examples": {
-      "h2": "Reálné výsledky",
-      "lead": "Příklady z auditů, které jsme dokončili:",
+    "builds": {
+      "h2": "Co jsme postavili",
+      "lead": "Naše vlastní AI systémy, které ukazují, co je možné:",
       "cases": [
         {
-          "title": "Logistická firma — AI systém nabídek",
-          "result": "3 hodiny → 30 sekund na nabídku",
-          "body": "Manuální tvorba nabídek zabírala 3 hodiny sem a tam. Vytvořili jsme AI systém, který vytáhne data, vypočítá ceny a vygeneruje nabídky za 30 sekund."
+          "title": "Second Brain Pro",
+          "link": "https://brain.aiadaptiv.com",
+          "body": "SaaS druhého mozku poháněný AI s integrací Model Context Protocol (MCP) pro Claude. Správa osobních znalostí, která se přímo propojuje s vaším AI asistentem."
         },
         {
-          "title": "Advokátní kancelář — privátní LLM platforma",
-          "result": "6+ hodin ušetřeno týdně při kontrole smluv",
-          "body": "Citlivé klientské dokumenty nemohly používat veřejnou AI. Nasadili jsme privátní LLM v souladu s GDPR v jejich EU cloudu — souhrny smluv a extrakce rizik bez odpovědnosti."
+          "title": "Interní automatizace aiAdaptiv",
+          "link": "",
+          "body": "Multi-agentní AI systém spravující naše operace outreachu, účetnictví a podpory. Autonomní asistenti zvládající reálné obchodní procesy od začátku do konce."
         }
       ]
     },

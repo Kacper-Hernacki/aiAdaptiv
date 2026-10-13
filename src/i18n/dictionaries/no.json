@@ -937,19 +937,19 @@
       "note": "Gratis hvis du bygger med oss.",
       "cta": "Bestill analysen"
     },
-    "examples": {
-      "h2": "Virkelige resultater",
-      "lead": "Eksempler fra analyser vi har gjennomført:",
+    "builds": {
+      "h2": "Hva vi har bygget",
+      "lead": "Våre egne AI-systemer som viser hva som er mulig:",
       "cases": [
         {
-          "title": "Logistikkselskap — AI-tilbudssystem",
-          "result": "3 timer → 30 sekunder per tilbud",
-          "body": "Manuell tilbudsgenerering tok 3 timer fram og tilbake. Vi bygde et AI-system som henter data, beregner priser og genererer tilbud på 30 sekunder."
+          "title": "Second Brain Pro",
+          "link": "https://brain.aiadaptiv.com",
+          "body": "AI-drevet second brain SaaS med Model Context Protocol (MCP) integrasjon for Claude. Personlig kunnskapsstyring som kobler seg direkte til din AI-assistent."
         },
         {
-          "title": "Advokatfirma — privat LLM-plattform",
-          "result": "6+ timer spart ukentlig på kontraktsgjennomgang",
-          "body": "Sensitive klientdokumenter kunne ikke røre offentlig AI. Vi satte opp en privat, GDPR-kompatibel LLM i deres EU-sky — kontraktssammendrag og risikouttrekk uten ansvar."
+          "title": "aiAdaptiv Intern Automatisering",
+          "link": "",
+          "body": "Multi-agent AI-system som håndterer vår outreach, regnskap og supportoperasjoner. Autonome assistenter som håndterer reelle forretningsarbeidsflyter fra start til slutt."
         }
       ]
     },
