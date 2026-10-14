@@ -838,9 +838,12 @@
           {
             "h": "3. Pliki cookie i analityka",
             "body": [
-              "Do momentu akceptacji w banerze nie zapisujemy żadnych plików analitycznych ani reklamowych. Korzystamy z Google Consent Mode, który domyślnie odmawia tych rodzajów zapisu i włącza je dopiero po akceptacji; odmowa pozostawia je wyłączone.",
-              "Za zgodą korzystamy z Google Analytics 4, aby rozumieć sposób korzystania ze strony. Używamy też Vercel Analytics, które działa bez plików cookie i nie śledzi użytkowników między stronami.",
-              "Twój wybór zapisujemy w przeglądarce, żeby nie pytać ponownie. Wyczyszczenie danych przeglądarki resetuje go."
+              "Do momentu akceptacji w banerze nie zapisujemy żadnych plików analitycznych ani reklamowych. Korzystamy z Google Consent Mode v2, który domyślnie odmawia tych rodzajów zapisu i włącza je dopiero po akceptacji; odmowa pozostawia je wyłączone.",
+              "Za Twoją zgodą korzystamy z:",
+              "• Google Analytics 4 (dostarczane przez Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlandia) w celu zrozumienia sposobu korzystania ze strony: odwiedzone podstrony, przybliżona lokalizacja, typ urządzenia i czas trwania sesji. Google Analytics używa plików cookie (_ga, _gid) i może przetwarzać Twój adres IP. Podstawa prawna: Twoja zgoda (art. 6 ust. 1 lit. a RODO). Dane są przekazywane do Google LLC w USA na podstawie Tarczy Prywatności Danych UE-USA oraz standardowych klauzul umownych Komisji Europejskiej. Google przechowuje dane Analytics przez 14 miesięcy; możemy ustawić krótszy okres. Zgodę możesz wycofać w każdej chwili, odrzucając pliki cookie w banerze lub czyszcząc dane przeglądarki.",
+              "• Leadsy (r2.leadsy.ai/tag.js, dostarczane przez Leadsy sp. z o.o., Polska) w celu identyfikacji odwiedzających i firm, aby pomóc nam zrozumieć, które organizacje odwiedzają naszą stronę. Leadsy może przetwarzać adresy IP i informacje o domenie firmowej. Podstawa prawna: Twoja zgoda (art. 6 ust. 1 lit. a RODO). Dane są przetwarzane w EOG. Retencja: zgodnie z konfiguracją Leadsy, zwykle 24 miesiące. Zgodę możesz wycofać w każdej chwili.",
+              "Używamy również Vercel Analytics (dostarczane przez Vercel Inc.), które działa bez plików cookie i nie śledzi użytkowników między stronami. Nie wymaga zgody, ponieważ nie przetwarza danych osobowych, które Cię identyfikują.",
+              "Twój wybór dotyczący plików cookie zapisujemy w przeglądarce, żeby nie pytać ponownie. Odmowa lub wycofanie zgody usuwa wszystkie skrypty śledzące i usuwa związane pliki cookie. Wyczyszczenie danych przeglądarki resetuje Twój wybór."
             ]
           },
           {
@@ -863,16 +866,22 @@
           {
             "h": "6. Przekazywanie poza EOG",
             "body": [
-              "Część dostawców ma siedzibę poza Europejskim Obszarem Gospodarczym lub korzysta z podprzetwarzających spoza EOG. Przekazywanie danych poza EOG odbywa się na podstawie standardowych klauzul umownych Komisji Europejskiej lub innego zgodnego z prawem mechanizmu. Na życzenie wskażemy, którego."
+              "Część dostawców ma siedzibę poza Europejskim Obszarem Gospodarczym lub korzysta z podprzetwarzających spoza EOG. W przypadku przekazywania danych poza EOG obowiązują następujące zabezpieczenia:",
+              "• Google Analytics: Dane mogą być przekazywane do Google LLC w USA. Google LLC jest certyfikowany w ramach Tarczy Prywatności Danych UE-USA, a przekazywanie danych jest również chronione standardowymi klauzulami umownymi Komisji Europejskiej. Więcej informacji: https://privacy.google.com/businesses/compliance/",
+              "• Vercel (hosting i analityka): Dane mogą być przekazywane do Vercel Inc. w USA, chronione standardowymi klauzulami umownymi i certyfikacją Vercel w ramach Tarczy Prywatności Danych UE-USA.",
+              "• Cal.com (rezerwacje): Dane mogą być przekazywane poza EOG na podstawie standardowych klauzul umownych.",
+              "Na żądanie udostępnimy szczegółowe informacje o mechanizmach przekazywania."
             ]
           },
           {
             "h": "7. Jak długo przechowujemy dane",
             "body": [
               "Zapytania i rezerwacje: do 24 miesięcy od ostatniego kontaktu, chyba że umowa wymaga dłużej.",
-              "Dokumentacja umowna, fakturowa i księgowa: przez okres wymagany przepisami podatkowymi.",
-              "Dane analityczne: przez okres retencji ustawiony w Google Analytics, obecnie 14 miesięcy.",
-              "Logi serwera: przez krótki, kroczący okres ustalony przez dostawcę hostingu."
+              "Dokumentacja umowna, fakturowa i księgowa: 7 lat od zakończenia roku obrotowego, w którym zakończyła się umowa, zgodnie z polskimi przepisami podatkowymi.",
+              "Dane Google Analytics: 14 miesięcy od daty zbierania (konfigurowalne; możemy skrócić ten okres).",
+              "Dane identyfikacji odwiedzających Leadsy: do 24 miesięcy, zgodnie z konfiguracją u dostawcy.",
+              "Logi serwera (bezpieczeństwo i niezawodność): 30 dni, zgodnie z ustawieniem dostawcy hostingu.",
+              "Preferencje zgody na pliki cookie: przechowywane w przeglądarce do momentu wyczyszczenia danych przeglądarki lub zmiany wyboru."
             ]
           },
           {

@@ -8,6 +8,7 @@ import styles from "./CookieConsent.module.css";
 
 const STORAGE_KEY = "aiadaptiv-cookie-consent";
 const LEADSY_ID = "vtag-ai-js";
+const GTAG_SCRIPT_ID = "google-analytics-script";
 
 type Choice = "granted" | "denied";
 
@@ -59,6 +60,32 @@ function sendPageView() {
   });
 }
 
+/** Load Google Analytics gtag.js script after consent is granted. */
+function loadGoogleAnalytics() {
+  if (!gaMeasurementId || document.getElementById(GTAG_SCRIPT_ID)) return;
+  const script = document.createElement("script");
+  script.id = GTAG_SCRIPT_ID;
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`;
+  document.head.appendChild(script);
+  
+  script.onload = () => {
+    const w = window as unknown as {
+      dataLayer?: unknown[];
+      gtag?: (...args: unknown[]) => void;
+    };
+    w.dataLayer = w.dataLayer || [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    w.gtag = function gtag(...args: any[]) {
+      (w.dataLayer as unknown[]).push(args);
+    };
+    w.gtag("js", new Date());
+    w.gtag("config", gaMeasurementId, {
+      page_path: window.location.pathname,
+    });
+  };
+}
+
 /** Inject the Leadsy visitor-identification pixel once, only after consent. */
 function loadLeadsy() {
   if (document.getElementById(LEADSY_ID)) return;
@@ -71,6 +98,25 @@ function loadLeadsy() {
   document.body.appendChild(s);
 }
 
+/** Remove tracking scripts when consent is revoked. */
+function removeTrackingScripts() {
+  const gtagScript = document.getElementById(GTAG_SCRIPT_ID);
+  if (gtagScript) gtagScript.remove();
+  
+  const leadsyScript = document.getElementById(LEADSY_ID);
+  if (leadsyScript) leadsyScript.remove();
+  
+  // Clear GA cookies
+  document.cookie.split(";").forEach((c) => {
+    const cookie = c.trim();
+    if (cookie.startsWith("_ga") || cookie.startsWith("_gid")) {
+      const name = cookie.split("=")[0];
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    }
+  });
+}
+
 /**
  * GDPR consent banner. Defaults every tracker to "denied" (see the Consent
  * Mode default in the root layout) and only unlocks GA4 + Leadsy once the
@@ -79,20 +125,16 @@ function loadLeadsy() {
 export function CookieConsent({
   lang,
   dict,
-  variant = "dark",
   learnMoreHref,
 }: {
   lang: string;
   dict: Dictionary["cookies"];
   /** Where "learn more" points. Defaults to this locale's terms page. */
   learnMoreHref?: string;
-  /** "dark" is the product site's glass pill; "light" is the agency palette,
-   *  which follows that site's light/dark theme attribute. */
-  variant?: "dark" | "light";
 }) {
   // Starts null so the server renders nothing and there's no hydration
   // mismatch; the effect decides whether to show the banner on the client.
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState<boolean | null>(null);
 
   useEffect(() => {
     let stored: string | null = null;
@@ -102,11 +144,17 @@ export function CookieConsent({
       // localStorage may be unavailable (private mode); fall back to showing.
     }
 
+    // Defer all setState calls to avoid synchronous updates in effect
     if (stored === "granted") {
       updateConsent("granted");
+      loadGoogleAnalytics();
       loadLeadsy();
-    } else if (stored !== "denied") {
-      setVisible(true);
+    } else if (stored === "denied") {
+      // Ensure scripts are removed if user previously declined
+      removeTrackingScripts();
+    } else {
+      // No choice stored — show the banner
+      Promise.resolve().then(() => setVisible(true));
     }
   }, []);
 
@@ -118,16 +166,20 @@ export function CookieConsent({
     }
     updateConsent(choice);
     if (choice === "granted") {
+      loadGoogleAnalytics();
       loadLeadsy();
       // gtag's own page_view already went out under the denied default and is
       // never resent, so a first-time visitor who accepts would otherwise
       // produce no consented hit for the page they are actually on. Send one.
       sendPageView();
+    } else {
+      // User declined or revoked — remove all tracking scripts
+      removeTrackingScripts();
     }
     setVisible(false);
   }
 
-  if (!visible) return null;
+  if (visible !== true) return null;
 
   return (
     <aside className={styles.banner} role="region" aria-labelledby="cookie-msg">
