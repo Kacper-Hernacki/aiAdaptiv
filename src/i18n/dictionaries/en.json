@@ -941,19 +941,19 @@
       "note": "Free if you build with us.",
       "cta": "Book your audit"
     },
-    "examples": {
-      "h2": "Real Results",
-      "lead": "Examples from audits we've completed:",
+    "builds": {
+      "h2": "What We've Built",
+      "lead": "Our own AI systems that demonstrate what's possible:",
       "cases": [
         {
-          "title": "Logistics company — AI quoting system",
-          "result": "3 hours → 30 seconds per quote",
-          "body": "Manual quote generation took 3 hours of back-and-forth. We built an AI system that pulls data, calculates pricing, and generates quotes in 30 seconds."
+          "title": "Second Brain Pro",
+          "link": "https://brain.aiadaptiv.com",
+          "body": "AI-powered second brain SaaS with Model Context Protocol (MCP) integration for Claude. Personal knowledge management that connects directly to your AI assistant."
         },
         {
-          "title": "Law firm — private LLM platform",
-          "result": "6+ hours saved weekly on contract review",
-          "body": "Sensitive client documents couldn't touch public AI. We deployed a private, GDPR-compliant LLM in their EU cloud — contract summaries and risk extraction without the liability."
+          "title": "aiAdaptiv Internal Automation",
+          "link": "",
+          "body": "Multi-agent AI system managing our outreach, accounting, and support operations. Autonomous assistants handling real business workflows end-to-end."
         }
       ]
     },

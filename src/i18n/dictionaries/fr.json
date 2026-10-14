@@ -937,19 +937,19 @@
       "note": "Gratuit si vous construisez avec nous.",
       "cta": "Réserver votre audit"
     },
-    "examples": {
-      "h2": "Résultats réels",
-      "lead": "Exemples d'audits que nous avons réalisés :",
+    "builds": {
+      "h2": "Ce que nous avons construit",
+      "lead": "Nos propres systèmes d'IA qui démontrent ce qui est possible :",
       "cases": [
         {
-          "title": "Entreprise logistique — système de devis IA",
-          "result": "3 heures → 30 secondes par devis",
-          "body": "La génération manuelle de devis prenait 3 heures d'allers-retours. Nous avons construit un système d'IA qui extrait les données, calcule les prix et génère des devis en 30 secondes."
+          "title": "Second Brain Pro",
+          "link": "https://brain.aiadaptiv.com",
+          "body": "SaaS de second cerveau alimenté par l'IA avec intégration Model Context Protocol (MCP) pour Claude. Gestion des connaissances personnelles qui se connecte directement à votre assistant IA."
         },
         {
-          "title": "Cabinet d'avocats — plateforme LLM privée",
-          "result": "6+ heures économisées par semaine sur la revue de contrats",
-          "body": "Les documents clients sensibles ne pouvaient pas toucher l'IA publique. Nous avons déployé un LLM privé conforme au RGPD dans leur cloud EU — résumés de contrats et extraction des risques sans responsabilité."
+          "title": "Automatisation Interne aiAdaptiv",
+          "link": "",
+          "body": "Système d'IA multi-agent gérant nos opérations de prospection, de comptabilité et de support. Assistants autonomes gérant des flux de travail commerciaux réels de bout en bout."
         }
       ]
     },

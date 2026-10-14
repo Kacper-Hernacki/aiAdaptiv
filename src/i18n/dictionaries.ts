@@ -248,10 +248,10 @@ export type Dictionary = {
       note: string;
       cta: string;
     };
-    examples: {
+    builds: {
       h2: string;
       lead: string;
-      cases: { title: string; result: string; body: string }[];
+      cases: { title: string; link: string; body: string }[];
     };
     process: {
       h2: string;

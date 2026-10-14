@@ -941,19 +941,19 @@
       "note": "Darmowy audyt, jeśli budujesz z nami.",
       "cta": "Zamów audyt"
     },
-    "examples": {
-      "h2": "Prawdziwe rezultaty",
-      "lead": "Przykłady z audytów, które przeprowadziliśmy:",
+    "builds": {
+      "h2": "Co zbudowaliśmy",
+      "lead": "Nasze własne systemy AI, które pokazują, co jest możliwe:",
       "cases": [
         {
-          "title": "Firma logistyczna — system wycen AI",
-          "result": "3 godziny → 30 sekund na wycenę",
-          "body": "Ręczne generowanie wycen zajmowało 3 godziny wymiany maili. Zbudowaliśmy system AI, który pobiera dane, oblicza ceny i generuje wyceny w 30 sekund."
+          "title": "Second Brain Pro",
+          "link": "https://brain.aiadaptiv.com",
+          "body": "SaaS drugiego mózgu zasilany AI z integracją Model Context Protocol (MCP) dla Claude. Zarządzanie osobistą wiedzą, które łączy się bezpośrednio z Twoim asystentem AI."
         },
         {
-          "title": "Kancelaria prawna — prywatna platforma LLM",
-          "result": "6+ godzin oszczędności tygodniowo na przeglądzie umów",
-          "body": "Wrażliwe dokumenty klientów nie mogły trafić do publicznego AI. Wdrożyliśmy prywatny LLM zgodny z RODO w ich chmurze UE — podsumowania umów i ekstrakcja ryzyk bez odpowiedzialności prawnej."
+          "title": "Wewnętrzna automatyzacja aiAdaptiv",
+          "link": "",
+          "body": "Wieloagentowy system AI zarządzający naszym outreachem, księgowością i operacjami wsparcia. Autonomiczni asystenci obsługują rzeczywiste przepływy biznesowe od początku do końca."
         }
       ]
     },

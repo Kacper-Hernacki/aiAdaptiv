@@ -102,29 +102,36 @@ export function AiAuditPage({
         </div>
       </section>
 
-      {/* Real Results */}
-      <section className={s.section} aria-labelledby="examples-heading">
+      {/* What We've Built */}
+      <section className={s.section} aria-labelledby="builds-heading">
         <div className={s.inner}>
-          <h2 id="examples-heading" className={s.h2} data-reveal>
-            {doc.examples.h2}
+          <h2 id="builds-heading" className={s.h2} data-reveal>
+            {doc.builds.h2}
           </h2>
           <p
             className={s.lead}
             data-reveal
             style={{ "--rd": "80ms" } as React.CSSProperties}
           >
-            {doc.examples.lead}
+            {doc.builds.lead}
           </p>
           <div className={aia.examplesGrid}>
-            {doc.examples.cases.map((c, i) => (
+            {doc.builds.cases.map((c, i) => (
               <div
                 key={i}
                 className={aia.exampleCard}
                 data-reveal
                 style={{ "--rd": `${160 + i * 80}ms` } as React.CSSProperties}
               >
-                <h3 className={aia.exampleTitle}>{c.title}</h3>
-                <p className={aia.exampleResult}>{c.result}</p>
+                <h3 className={aia.exampleTitle}>
+                  {c.link ? (
+                    <a href={c.link} target="_blank" rel="noopener noreferrer">
+                      {c.title}
+                    </a>
+                  ) : (
+                    c.title
+                  )}
+                </h3>
                 <p>{c.body}</p>
               </div>
             ))}
