@@ -17,10 +17,8 @@ import {
   siteUrl,
   googleSiteVerification,
   bingSiteVerification,
-  gaMeasurementId,
 } from "@/config/site";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { AgencyHeader } from "@/components/agency/AgencyHeader";
 import { AgencyFooter } from "@/components/agency/AgencyFooter";
@@ -195,9 +193,8 @@ export default async function AgencyRootLayout({
         <WebSiteJsonLd lang={lang} description={dict.agency.meta.description} />
         {/* Cookieless, GDPR-friendly visitor + conversion analytics. */}
         <Analytics />
-        {/* Google Analytics 4 — only mounted when NEXT_PUBLIC_GA_ID is set. */}
-        {gaMeasurementId && <GoogleAnalytics gaId={gaMeasurementId} />}
-        {/* Cookie consent banner — gates GA4 + Leadsy behind opt-in. */}
+        {/* Cookie consent banner — gates GA4 + Leadsy behind opt-in.
+            Scripts are loaded dynamically only after user accepts. */}
         <CookieConsent lang={lang} dict={dict.cookies} />
         <ThemeToggle label={dict.agency.theme.toggle} />
       </body>

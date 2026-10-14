@@ -838,9 +838,12 @@
           {
             "h": "3. Cookies and analytics",
             "body": [
-              "No analytics or advertising storage is set until you accept it in the banner. We use Google Consent Mode, which denies those storage types by default and grants them only after you accept; declining leaves them denied.",
-              "With consent, we use Google Analytics 4 to understand how the site is used. We also use Vercel Analytics, which is cookieless and does not track visitors across sites.",
-              "Your choice is stored in your browser so we do not ask again. Clearing your browser storage resets it."
+              "No analytics or advertising storage is set until you accept it in the banner. We use Google Consent Mode v2, which denies those storage types by default and grants them only after you accept; declining leaves them denied.",
+              "With your consent, we use:",
+              "• Google Analytics 4 (provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to understand how the site is used: pages viewed, approximate location, device type, and session duration. Google Analytics uses cookies (_ga, _gid) and may process your IP address. Legal basis: your consent (Art. 6(1)(a) GDPR). Data is transferred to Google LLC in the USA under the EU-US Data Privacy Framework and the European Commission's Standard Contractual Clauses. Google retains Analytics data for 14 months; we may configure a shorter period. You may withdraw consent at any time by declining cookies in the banner or clearing your browser storage.",
+              "• Leadsy (r2.leadsy.ai/tag.js, provided by Leadsy sp. z o.o., Poland) for visitor and company identification to help us understand which organizations visit our site. Leadsy may process IP addresses and company domain information. Legal basis: your consent (Art. 6(1)(a) GDPR). Data is processed in the EEA. Retention: as configured with Leadsy, typically 24 months. You may withdraw consent at any time.",
+              "We also use Vercel Analytics (provided by Vercel Inc.), which is cookieless and does not track visitors across sites. This does not require consent as it does not process personal data that identifies you.",
+              "Your cookie choice is stored in your browser so we do not ask again. Declining or withdrawing consent removes all tracking scripts and deletes associated cookies. Clearing your browser storage resets your choice."
             ]
           },
           {
@@ -863,16 +866,22 @@
           {
             "h": "6. Transfers outside the EEA",
             "body": [
-              "Some of those providers are established outside the European Economic Area, or use sub-processors that are. Where data is transferred outside the EEA, it is covered by the European Commission's standard contractual clauses or another lawful transfer mechanism. We will tell you which on request."
+              "Some of those providers are established outside the European Economic Area, or use sub-processors that are. Where data is transferred outside the EEA, the following safeguards apply:",
+              "• Google Analytics: Data may be transferred to Google LLC in the USA. Google LLC is certified under the EU-US Data Privacy Framework, and data transfers are also protected by the European Commission's Standard Contractual Clauses. More information: https://privacy.google.com/businesses/compliance/",
+              "• Vercel (hosting and analytics): Data may be transferred to Vercel Inc. in the USA, protected by Standard Contractual Clauses and Vercel's EU-US Data Privacy Framework certification.",
+              "• Cal.com (bookings): Data may be transferred outside the EEA under Standard Contractual Clauses.",
+              "We will provide specific details of the transfer mechanisms on request."
             ]
           },
           {
             "h": "7. How long we keep it",
             "body": [
               "Enquiries and booking records: up to 24 months from our last contact, unless a contract requires longer.",
-              "Contract, invoicing and accounting records: for the period tax law requires.",
-              "Analytics data: for the retention period configured in Google Analytics, currently 14 months.",
-              "Server logs: a short rolling period set by our hosting provider."
+              "Contract, invoicing and accounting records: 7 years from the end of the financial year in which the contract ended, as required by Polish tax law.",
+              "Google Analytics data: 14 months from the date of collection (configurable; we may shorten this period).",
+              "Leadsy visitor identification data: up to 24 months, as configured with the provider.",
+              "Server logs (security and reliability): 30 days, as set by our hosting provider.",
+              "Cookie consent preferences: stored in your browser until you clear your browser storage or change your choice."
             ]
           },
           {
