@@ -17,7 +17,7 @@ export function AiAuditPage({
   doc: Dictionary["aiAudit"];
   lang: string;
 }) {
-  const freeCallUrl = bookingUrl.replace("/ai-mapping-call", "/quick-intro");
+  const freeCallUrl = bookingUrl;
 
   return (
     <main id="main" className={aia.page}>
