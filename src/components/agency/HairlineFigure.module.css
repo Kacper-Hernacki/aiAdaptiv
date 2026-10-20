@@ -28,20 +28,6 @@
   --hairline-plate: #ffffff;
 }
 
-.fill {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: auto;
-  background: var(--hairline-plate);
-}
-
-.fill > * {
-  width: 100%;
-}
-
 :global(:root[data-theme="dark"]) .figure {
   --hairline-hi: #f0f0f2;
   --hairline-edge: #a1a1aa;

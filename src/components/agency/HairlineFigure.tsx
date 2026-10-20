@@ -58,7 +58,6 @@ export function HairlineFigure({
   name,
   label,
   surface = "page",
-  fill = false,
   className,
 }: {
   name: HairlineFigureName;
@@ -66,20 +65,13 @@ export function HairlineFigure({
   label?: string;
   /** Plate colour must match the surface the figure sits on. */
   surface?: HairlineSurface;
-  /** Stretch over a parent that already sizes the slot (capability cards). */
-  fill?: boolean;
   className?: string;
 }) {
   const Figure = figures[name] as FigureComponent;
 
   return (
     <div
-      className={[
-        "hairline-figure",
-        styles.figure,
-        fill ? styles.fill : "",
-        className ?? "",
-      ]
+      className={["hairline-figure", styles.figure, className ?? ""]
         .filter(Boolean)
         .join(" ")}
       data-surface={surface}

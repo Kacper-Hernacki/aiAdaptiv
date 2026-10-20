@@ -1,6 +1,20 @@
-/* The product's own pitch, transplanted: image left, pitch right, then the
-   four pillars as a full-width row beneath — the split column is too narrow
-   to hold a grid without cramping it. */
+/* Text first, figure below — never a two-column overlap. The 5:4 box is
+   reserved on the figure itself so nothing shifts when it paints. */
+.stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+  align-items: start;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.figureSlot {
+  max-width: 36em;
+}
+
+/* The product's own pitch, transplanted: copy first, then the figure, then
+   the four pillars as a full-width row beneath. */
 .imageLink {
   display: block;
   overflow: hidden;

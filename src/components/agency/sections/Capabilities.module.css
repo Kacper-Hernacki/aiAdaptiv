@@ -1,5 +1,5 @@
-/* Full-bleed square cards: line figure behind, a wash that lifts on hover
-   so the drawing stays readable and the copy stays on the theme ink. */
+/* Cards stack copy first, then a reserved 5:4 figure — the drawing is its
+   own block, never a background behind the title or tags. */
 .grid {
   list-style: none;
   display: grid;
@@ -9,45 +9,15 @@
 }
 
 .card {
-  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1;
-  padding: 3em;
-  overflow: hidden;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 2.25em 2em 1.5em;
   background-color: var(--bg);
 }
 
-.art {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  /* Light enough that the figure stays the picture; heavy enough that the
-     copy still reads. The old 0.82 wash was for photography. */
-  background-color: hsla(0, 0%, 97%, 0.38);
-  transition: opacity 0.4s ease;
-}
-
-:global(:root[data-theme="dark"]) .overlay {
-  background-color: rgba(17, 17, 19, 0.42);
-}
-
-.card:hover .overlay {
-  opacity: 0.12;
-}
-
 .content {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  margin-bottom: 1em;
   text-align: center;
 }
 
@@ -57,7 +27,6 @@
   line-height: 115%;
   letter-spacing: -0.02em;
   color: var(--fg);
-  text-shadow: 0 0 12px var(--bg), 0 0 24px var(--bg);
 }
 
 .body {
@@ -68,8 +37,6 @@
 }
 
 .tags {
-  position: relative;
-  z-index: 1;
   list-style: none;
   display: flex;
   flex-flow: wrap;
@@ -87,26 +54,20 @@
   color: var(--fg);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .overlay {
-    transition: none;
-  }
+.art {
+  width: 100%;
+  margin-top: auto;
 }
 
-/* Touch devices have no hover: keep a lighter wash so the figure and the
-   copy are both visible, rather than hiding one behind the other. */
-@media (hover: none), screen and (max-width: 991px) {
+@media screen and (max-width: 991px) {
   .grid {
     grid-template-columns: 1fr;
     margin-top: 32px;
   }
 
   .card {
-    padding: 24px;
-  }
-
-  .overlay {
-    opacity: 0.22;
+    padding: 24px 20px 16px;
+    gap: 1.25em;
   }
 }
 

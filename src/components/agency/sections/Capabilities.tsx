@@ -38,17 +38,6 @@ export function Capabilities({
             data-reveal
             style={{ "--rd": `${i * 80}ms` } as React.CSSProperties}
           >
-            <div className={c.art}>
-              {capabilityFigures[item.id] ? (
-                <HairlineFigure
-                  name={capabilityFigures[item.id]}
-                  label={item.title}
-                  surface="page"
-                  fill
-                />
-              ) : null}
-            </div>
-            <span className={c.overlay} />
             <div className={c.content}>
               <h3 className={c.title}>{item.title}</h3>
               <p className={c.body}>{item.body}</p>
@@ -60,6 +49,15 @@ export function Capabilities({
                 ))}
               </ul>
             </div>
+            {capabilityFigures[item.id] ? (
+              <div className={c.art}>
+                <HairlineFigure
+                  name={capabilityFigures[item.id]}
+                  label={item.title}
+                  surface="page"
+                />
+              </div>
+            ) : null}
           </li>
         ))}
       </ul>

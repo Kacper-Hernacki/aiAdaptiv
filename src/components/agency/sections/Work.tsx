@@ -39,15 +39,6 @@ export function Work({ work }: { work: Dictionary["agency"]["work"] }) {
               data-reveal
               style={{ "--rd": `${160 + i * 90}ms` } as React.CSSProperties}
             >
-              <div className={w.thumb}>
-                {workFigures[item.id] ? (
-                  <HairlineFigure
-                    name={workFigures[item.id]}
-                    label={item.name}
-                    surface="alt"
-                  />
-                ) : null}
-              </div>
               <div className={w.info}>
                 <p className={w.name}>{item.name}</p>
                 <p className={w.outcome}>{item.result}</p>
@@ -59,6 +50,15 @@ export function Work({ work }: { work: Dictionary["agency"]["work"] }) {
                     </li>
                   ))}
                 </ul>
+              </div>
+              <div className={w.thumb}>
+                {workFigures[item.id] ? (
+                  <HairlineFigure
+                    name={workFigures[item.id]}
+                    label={item.name}
+                    surface="alt"
+                  />
+                ) : null}
               </div>
             </li>
           ))}
