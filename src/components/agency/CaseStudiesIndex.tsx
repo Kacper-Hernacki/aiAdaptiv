@@ -55,10 +55,21 @@ export function CaseStudiesIndex({ lang }: { lang: Locale }) {
                   <div>
                     <p className={s.super}>{cs.kindLabel}</p>
                     <h2 className={c.itemTitle}>
-                      <Link href={href}>{cs.title}</Link>
+                      <Link
+                        href={href}
+                        data-cta-id="case_study"
+                        data-location="case_studies_index"
+                      >
+                        {cs.title}
+                      </Link>
                     </h2>
                     <p className={c.itemDeck}>{cs.deck}</p>
-                    <Link href={href} className={c.itemLink}>
+                    <Link
+                      href={href}
+                      className={c.itemLink}
+                      data-cta-id="case_study"
+                      data-location="case_studies_index"
+                    >
                       {copy.readLabel} →
                     </Link>
                   </div>

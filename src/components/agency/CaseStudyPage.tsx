@@ -202,7 +202,13 @@ export function CaseStudyPage({
               {copy.cta.body}
             </p>
             <div className={s.ctaBtnWrap} data-reveal>
-              <PillButton href={bookingUrl}>{copy.cta.button}</PillButton>
+              <PillButton
+                href={bookingUrl}
+                ctaId="book_call"
+                location="case_study"
+              >
+                {copy.cta.button}
+              </PillButton>
             </div>
           </div>
         </div>

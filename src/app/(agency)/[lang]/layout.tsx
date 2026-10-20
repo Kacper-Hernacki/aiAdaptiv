@@ -26,6 +26,8 @@ import { ThemeToggle } from "@/components/agency/ThemeToggle";
 import { themeInitScript } from "@/components/agency/theme";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CookieConsent } from "@/components/CookieConsent";
+import { AnalyticsClient } from "@/components/analytics/AnalyticsClient";
+import { consentDefaultInlineScript } from "@/lib/consent";
 import "../../agency.css";
 
 /**
@@ -173,12 +175,12 @@ export default async function AgencyRootLayout({
       <body>
         {/* Google Consent Mode v2. Denies all storage by default, but reads
             the stored choice first: a returning visitor who already accepted
-            gets granted defaults, so gtag's own page_view goes out consented.
-            Without that the first hit of every visit is a cookieless denied
-            ping, and granting later never resends it. Must run before GA
-            loads, hence beforeInteractive. */}
+            gets granted defaults. gtag.js itself is injected only after
+            consent; AnalyticsClient then sends page_view (including on
+            client-side locale/route changes). Must run before GA, hence
+            beforeInteractive. */}
         <Script id="consent-default" strategy="beforeInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}var c='denied';try{if(localStorage.getItem('aiadaptiv-cookie-consent')==='granted')c='granted';}catch(e){}gtag('consent','default',{ad_storage:c,analytics_storage:c,ad_user_data:c,ad_personalization:c,wait_for_update:500});`}
+          {consentDefaultInlineScript}
         </Script>
         <ScrollReveal />
         <a href="#main">{dict.skipToContent}</a>
@@ -193,6 +195,8 @@ export default async function AgencyRootLayout({
         <WebSiteJsonLd lang={lang} description={dict.agency.meta.description} />
         {/* Cookieless, GDPR-friendly visitor + conversion analytics. */}
         <Analytics />
+        {/* Consented GA4 page views + CTA event delegation. */}
+        <AnalyticsClient />
         {/* Cookie consent banner — gates GA4 + Leadsy behind opt-in.
             Scripts are loaded dynamically only after user accepts. */}
         <CookieConsent lang={lang} dict={dict.cookies} />

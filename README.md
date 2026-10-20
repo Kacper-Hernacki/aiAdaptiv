@@ -39,6 +39,19 @@ Everything is driven from `src/config/site.ts` (the single source of truth):
 Set `NEXT_PUBLIC_SITE_URL` to the real domain so canonical URLs, the sitemap,
 and Open Graph tags resolve correctly.
 
+### Analytics (GA4 + Vercel)
+
+Set `NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX` on the Vercel project for **Production
+and Preview**. Empty means GA4 is not loaded. The cookie banner implements
+Consent Mode v2 (defaults denied → granted on accept); `gtag.js` is injected
+only after consent. Vercel Analytics is already mounted and is not gated.
+
+Custom events (`cta_click`, `generate_lead`, `language_switch`) go to both
+destinations via `src/lib/track.ts`. In GA4, mark `generate_lead` as a key
+event: Admin → Data display → Events → `generate_lead` → Mark as key event.
+
+Full event list and consent notes: [`docs/analytics.md`](docs/analytics.md).
+
 ## Project structure
 
 ```

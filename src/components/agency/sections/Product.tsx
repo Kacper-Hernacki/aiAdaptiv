@@ -30,6 +30,8 @@ export function Product({
             href={href}
             className={`${s.splitMedia} ${p.imageLink}`}
             aria-label={product.cta}
+            data-cta-id="private_ai"
+            data-location="home"
             data-reveal
             style={{ "--rd": "120ms" } as React.CSSProperties}
           >
@@ -66,7 +68,13 @@ export function Product({
               {product.why}
             </p>
             <div data-reveal style={{ "--rd": "300ms" } as React.CSSProperties}>
-              <PillButton href={href} large external={false}>
+              <PillButton
+                href={href}
+                large
+                external={false}
+                ctaId="private_ai"
+                location="home"
+              >
                 {product.cta}
               </PillButton>
             </div>

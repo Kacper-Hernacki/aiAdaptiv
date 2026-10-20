@@ -60,7 +60,9 @@ export function AgencyHero({ hero }: { hero: Dictionary["agency"]["hero"] }) {
           data-reveal
           style={{ "--rd": "460ms" } as React.CSSProperties}
         >
-          <PillButton href={bookingUrl}>{hero.cta}</PillButton>
+          <PillButton href={bookingUrl} ctaId="book_call" location="hero">
+            {hero.cta}
+          </PillButton>
         </div>
       </div>
     </section>

@@ -46,10 +46,20 @@ export function AiAuditPage({
             data-reveal
             style={{ "--rd": "240ms" } as React.CSSProperties}
           >
-            <PillButton href={bookingUrl} large>
+            <PillButton
+              href={bookingUrl}
+              large
+              ctaId="book_call"
+              location="ai_audit_hero"
+            >
               {doc.hero.cta}
             </PillButton>
-            <PillButton href={freeCallUrl} large>
+            <PillButton
+              href={freeCallUrl}
+              large
+              ctaId="book_call"
+              location="ai_audit_hero_secondary"
+            >
               {doc.hero.secondaryCta}
             </PillButton>
           </div>
@@ -95,7 +105,12 @@ export function AiAuditPage({
             <div className={aia.price}>{doc.pricing.price}</div>
             <p className={aia.credit}>{doc.pricing.credit}</p>
             <p className={aia.note}>{doc.pricing.note}</p>
-            <PillButton href={bookingUrl} large>
+            <PillButton
+              href={bookingUrl}
+              large
+              ctaId="book_call"
+              location="ai_audit_pricing"
+            >
               {doc.pricing.cta}
             </PillButton>
           </div>
@@ -198,10 +213,20 @@ export function AiAuditPage({
               data-reveal
               style={{ "--rd": "160ms" } as React.CSSProperties}
             >
-              <PillButton href={bookingUrl} large>
+              <PillButton
+                href={bookingUrl}
+                large
+                ctaId="book_call"
+                location="ai_audit_cta"
+              >
                 {doc.cta.primaryCta}
               </PillButton>
-              <PillButton href={freeCallUrl} large>
+              <PillButton
+                href={freeCallUrl}
+                large
+                ctaId="book_call"
+                location="ai_audit_cta_secondary"
+              >
                 {doc.cta.secondaryCta}
               </PillButton>
             </div>

@@ -39,7 +39,9 @@ export function Contact({
             data-reveal
             style={{ "--rd": "220ms" } as React.CSSProperties}
           >
-            <PillButton href={bookingUrl}>{contact.cta}</PillButton>
+            <PillButton href={bookingUrl} ctaId="book_call" location="contact">
+              {contact.cta}
+            </PillButton>
           </div>
         </div>
       </div>
