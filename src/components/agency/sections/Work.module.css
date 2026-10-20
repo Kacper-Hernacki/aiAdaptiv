@@ -1,57 +1,41 @@
+/*
+ * Subgrid: each card spans six parent rows (name, result, body, tags,
+ * figure, gutter) so a wrapping title does not push that column's tags
+ * or figure out of line with its neighbours. Parent row-gap stays 0 so
+ * the copy tracks sit tight; space between card-rows is the last track.
+ */
 .grid {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5em;
-  row-gap: 2.5em;
+  column-gap: 1.5em;
+  row-gap: 0;
   margin-top: 3em;
   width: 100%;
 }
 
 .card {
-  display: flex;
-  flex-flow: column;
-  gap: 1.25em;
-  position: relative;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 6;
+  align-items: start;
 }
 
-.thumb {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: var(--radius);
-}
-
-.image {
+.card::after {
+  content: "";
   display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.card:hover .image {
-  transform: scale(1.03);
-}
-
-:global(:root[data-theme="dark"]) .image {
-  filter: brightness(0.88);
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2em;
+  height: 2.5em;
 }
 
 .name {
   font-size: 1.125em;
   font-weight: 500;
+  line-height: 130%;
   color: var(--fg);
 }
 
 .outcome {
+  margin-top: 0.2em;
   font-size: 0.85em;
   color: var(--fg-faint);
 }
@@ -63,11 +47,57 @@
   color: var(--fg-muted);
 }
 
+.tags {
+  margin-top: 1em;
+  align-self: start;
+  align-content: start;
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  margin-top: 1.25em;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  background-color: var(--bg-alt);
+  align-self: stretch;
+  aspect-ratio: 5 / 4;
+}
+
+.thumb :global(.hairline-figure) {
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .thumb :global(.hairline-figure) {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb :global(.hairline-figure) {
+    transition: none;
+  }
+
+  .card:hover .thumb :global(.hairline-figure) {
+    transform: none;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media screen and (max-width: 991px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 24px;
-    row-gap: 32px;
+    column-gap: 24px;
     margin-top: 32px;
+  }
+
+  .card::after {
+    height: 32px;
   }
 }

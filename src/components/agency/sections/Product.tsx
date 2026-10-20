@@ -1,8 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { PillButton } from "../PillButton";
-import productHero from "../assets/product-hero.jpg";
+import { HairlineFigure } from "../HairlineFigure";
 import s from "../Agency.module.css";
 import p from "./Product.module.css";
 
@@ -34,12 +33,11 @@ export function Product({
             data-reveal
             style={{ "--rd": "120ms" } as React.CSSProperties}
           >
-            <Image
-              src={productHero}
-              alt={product.imageAlt}
+            <HairlineFigure
+              name="padlock"
+              label={product.imageAlt}
+              surface="page"
               className={p.image}
-              sizes="(max-width: 991px) 100vw, 45vw"
-              placeholder="blur"
             />
           </Link>
           <div className={s.splitText}>

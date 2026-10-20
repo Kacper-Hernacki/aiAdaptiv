@@ -1,7 +1,6 @@
-import Image from "next/image";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { workImages } from "../workImages";
-import { Placeholder } from "../Placeholder";
+import { HairlineFigure } from "../HairlineFigure";
+import { workFigures } from "../workFigures";
 import s from "../Agency.module.css";
 import w from "./Work.module.css";
 
@@ -11,6 +10,9 @@ import w from "./Work.module.css";
  * build; two cards sprouting a link and seven not made it read like a list of
  * things half-finished. The case studies are reached from the nav and the
  * footer instead.
+ *
+ * Children are flattened so the row can use CSS subgrid: name, result, body,
+ * tags, figure and gutter each occupy the same track across the row.
  */
 export function Work({ work }: { work: Dictionary["agency"]["work"] }) {
   return (
@@ -40,30 +42,24 @@ export function Work({ work }: { work: Dictionary["agency"]["work"] }) {
               data-reveal
               style={{ "--rd": `${160 + i * 90}ms` } as React.CSSProperties}
             >
+              <p className={w.name}>{item.name}</p>
+              <p className={w.outcome}>{item.result}</p>
+              <p className={w.body}>{item.body}</p>
+              <ul className={`${s.tags} ${w.tags}`}>
+                {item.tags.map((tag, t) => (
+                  <li key={t} className={s.tag}>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
               <div className={w.thumb}>
-                {workImages[item.id] ? (
-                  <Image
-                    src={workImages[item.id]}
-                    alt={item.name}
-                    className={w.image}
-                    sizes="(max-width: 991px) 100vw, 30vw"
-                    placeholder="blur"
+                {workFigures[item.id] ? (
+                  <HairlineFigure
+                    name={workFigures[item.id]}
+                    label={item.name}
+                    surface="alt"
                   />
-                ) : (
-                  <Placeholder ratio="4:3" seed={i} />
-                )}
-              </div>
-              <div className={w.info}>
-                <p className={w.name}>{item.name}</p>
-                <p className={w.outcome}>{item.result}</p>
-                <p className={w.body}>{item.body}</p>
-                <ul className={s.tags}>
-                  {item.tags.map((tag, t) => (
-                    <li key={t} className={s.tag}>
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
+                ) : null}
               </div>
             </li>
           ))}

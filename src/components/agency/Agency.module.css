@@ -323,6 +323,7 @@
   width: 100%;
   border-radius: var(--radius);
   overflow: hidden;
+  border: 1px solid var(--hairline);
 }
 
 /* ── Hairline list ─────────────────────────────────────────── */

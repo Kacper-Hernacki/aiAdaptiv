@@ -1,0 +1,48 @@
+/*
+ * Hairline figures reserve a 5:4 box on the server (empty) and paint into it
+ * after mount — the aspect lock is what prevents layout shift. Plate tokens
+ * must be the opaque colour behind the figure, not a translucent card fill.
+ */
+
+.figure {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  /* Slightly heavier than the library default so the figures read on the
+     page's off-white, not only on a pure white plate. */
+  --hairline-stroke: 1.15;
+  --hairline-hi: #111113;
+  --hairline-edge: #5c5c64;
+  --hairline-mid: #8a8a94;
+  --hairline-lo: #c4c4cc;
+}
+
+.figure[data-surface="page"] {
+  --hairline-plate: #f7f7f8;
+}
+
+.figure[data-surface="alt"] {
+  --hairline-plate: #f0f0f2;
+}
+
+.figure[data-surface="card"] {
+  --hairline-plate: #ffffff;
+}
+
+:global(:root[data-theme="dark"]) .figure {
+  --hairline-hi: #f0f0f2;
+  --hairline-edge: #a1a1aa;
+  --hairline-mid: #52525b;
+  --hairline-lo: #27272a;
+}
+
+:global(:root[data-theme="dark"]) .figure[data-surface="page"] {
+  --hairline-plate: #111113;
+}
+
+:global(:root[data-theme="dark"]) .figure[data-surface="alt"] {
+  --hairline-plate: #0a0a0c;
+}
+
+:global(:root[data-theme="dark"]) .figure[data-surface="card"] {
+  --hairline-plate: #111113;
+}

@@ -48,7 +48,7 @@ export type Dictionary = {
       h2: string;
       lead: string;
       items: {
-        /** Stable, untranslated key; picks the card's artwork in capabilityImages.ts. */
+        /** Stable, untranslated key; picks the card's Hairline figure in capabilityFigures.ts. */
         id: string;
         title: string;
         body: string;
@@ -69,7 +69,7 @@ export type Dictionary = {
       h2: string;
       lead: string;
       cases: {
-        /** Stable, untranslated key; picks the card's image in workImages.ts. */
+        /** Stable, untranslated key; picks the card's Hairline figure in workFigures.ts. */
         id: string;
         name: string;
         result: string;
