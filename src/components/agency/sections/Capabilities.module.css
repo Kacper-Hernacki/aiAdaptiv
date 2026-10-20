@@ -60,6 +60,7 @@
 
 .art {
   width: 100%;
+  min-width: 0;
   margin-top: 1.5em;
   align-self: stretch;
   aspect-ratio: 5 / 4;
