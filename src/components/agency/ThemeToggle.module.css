@@ -41,12 +41,21 @@
 }
 
 /* On a phone the cookie bar owns the bottom edge, so the toggle sits under
-   the header instead of covering Accept / Decline. */
+   the header instead of covering Accept / Decline. Crisp stays bottom-right
+   after consent (the bar is gone by then). */
 @media (max-width: 640px) {
   .toggle {
     top: 5.25em;
     bottom: auto;
     right: 1em;
+  }
+}
+
+/* Desktop: sit to the left of the Crisp bubble so the two circles don't
+   stack. `data-crisp` is stamped on <html> only while the widget is loaded. */
+@media (min-width: 641px) {
+  :global(html[data-crisp]) .toggle {
+    right: 5.75em;
   }
 }
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig, bookingUrl } from "@/config/site";
 import type { Dictionary } from "@/i18n/dictionaries";
+import type { CtaId } from "@/lib/track";
 import { isLocale } from "@/i18n/config";
 import { hasCaseStudyCopy } from "@/content/case-studies";
 import { BrandMark } from "./BrandMark";
@@ -32,7 +33,7 @@ function isVisible(href: string, lang: string): boolean {
   return isLocale(lang) && hasCaseStudyCopy(lang);
 }
 
-function footerCtaId(href: string): string | undefined {
+function footerCtaId(href: string): CtaId | undefined {
   if (href.startsWith("mailto:")) return "email";
   if (href.includes("brain.aiadaptiv")) return "second_brain_pro";
   if (href.includes("/case-studies")) return "case_study";

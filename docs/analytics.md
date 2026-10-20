@@ -1,4 +1,4 @@
-# Analytics (GA4 + Vercel)
+# Analytics (GA4 + Vercel + Crisp)
 
 Conversion and page-view tracking for the marketing site. Copy, prices, and
 layout are unchanged — this is instrumentation only.
@@ -22,6 +22,16 @@ Measurement ID (`G-…`).
 `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_BOOKING_URL` are documented in
 `.env.example`. Booking-link clicks are classified from `cal.com` or the
 configured booking URL.
+
+Set the Crisp website ID (same workspace as brain.aiadaptiv.com) on the
+Vercel project for **Production and Preview**:
+
+```
+NEXT_PUBLIC_CRISP_WEBSITE_ID=
+```
+
+Empty / unset: the chat widget is not rendered. No website id is hardcoded.
+The widget is injected only after optional-cookie consent (same grant as GA4).
 
 ## Consent Mode v2
 
@@ -73,9 +83,11 @@ defined.
 | `private_ai` | Homepage private-AI card (image + button), footer link |
 | `case_study` | Case-study index rows, header/footer case-study links |
 | `email` | Footer `mailto:` |
+| `chat` | Crisp live-chat bubble opened (`location` is `crisp`) |
 
 `location` is the explicit surface when set (`hero`, `header`, `contact`, …)
-or the nearest `section[id]` / `header` / `footer`.
+or the nearest `section[id]` / `header` / `footer`. Opening the Crisp chatbox
+fires `cta_click` with `cta_id: chat` and `location: crisp`.
 
 A booking CTA also emits `generate_lead` with `source: "booking"` so it can
 be marked as a key event independently of the click.
@@ -95,6 +107,8 @@ Realtime / DebugView: add `?debug` via the GA Debugger extension, or set
 ## Code
 
 - `src/lib/consent.ts` — storage key, Consent Mode default snippet
-- `src/lib/track.ts` — `track()`, gtag load/consent, CTA classification
+- `src/lib/track.ts` — `track()`, gtag load/consent, CTA classification (`CtaId`)
+- `src/lib/crisp.ts` — Crisp load/unload, locale, color mode, `chat:opened`
 - `src/components/analytics/AnalyticsClient.tsx` — page views + click listener
-- `src/components/CookieConsent.tsx` — banner; loads GA4 + Leadsy on accept
+- `src/components/CookieConsent.tsx` — banner; loads GA4 + Leadsy + Crisp on accept
+- `src/components/CrispChat.tsx` — locale/theme updates while the widget is loaded

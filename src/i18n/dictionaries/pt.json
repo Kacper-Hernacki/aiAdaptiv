@@ -1,7 +1,7 @@
 {
   "skipToContent": "Ir para o conteúdo principal",
   "cookies": {
-    "message": "Usamos cookies para medir o tráfego e melhorar a sua experiência. É você que decide o que podemos guardar.",
+    "message": "Usamos cookies para medir o tráfego, disponibilizar o chat ao vivo (Crisp) e melhorar a sua experiência. É você que decide o que podemos guardar.",
     "accept": "Aceitar",
     "decline": "Recusar",
     "learnMore": "Saber mais"
@@ -818,15 +818,17 @@
               "If you contact us, whatever you choose to send: your name, email address, company, and the content of your message.",
               "If you book a call, the name, email address and any answers you give in the booking form, plus the time you chose. Bookings are handled by Cal.com and the call itself may run on Cal Video.",
               "If you consent to analytics, usage data about your visit: pages viewed, approximate location derived from IP, device and browser type, and referring site.",
+              "If you use live chat (Crisp) after consenting, the messages you send and any name or email you share in the conversation.",
               "Basic request data is logged by our hosting provider for security and reliability, including IP address."
             ]
           },
           {
             "h": "3. Cookies and analytics",
             "body": [
-              "No analytics or advertising storage is set until you accept it in the banner. We use Google Consent Mode v2, which denies those storage types by default and grants them only after you accept; declining leaves them denied.",
+              "No analytics, advertising, or live-chat storage is set until you accept it in the banner. We use Google Consent Mode v2, which denies those storage types by default and grants them only after you accept; declining leaves them denied.",
               "With your consent, we use:",
               "• Google Analytics 4 (provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) to understand how the site is used: pages viewed, approximate location, device type, and session duration. Google Analytics uses cookies (_ga, _gid) and may process your IP address. Legal basis: your consent (Art. 6(1)(a) GDPR). Data is transferred to Google LLC in the USA under the EU-US Data Privacy Framework and the European Commission's Standard Contractual Clauses. Google retains Analytics data for 14 months; we may configure a shorter period. You may withdraw consent at any time by declining cookies in the banner or clearing your browser storage.",
+              "• Live chat (Crisp, provided by Crisp IM SAS, France) so you can message us from the site. Crisp uses cookies (crisp-client) and may process your IP address, device information, and the content of the conversation, including any name or email you choose to share. Legal basis: your consent (Art. 6(1)(a) GDPR). Data is processed in the EEA; some subprocessors may be outside the EEA under the European Commission's Standard Contractual Clauses. You may withdraw consent at any time by declining cookies in the banner or clearing your browser storage.",
               "• Leadsy (r2.leadsy.ai/tag.js, provided by Leadsy sp. z o.o., Poland) for visitor and company identification to help us understand which organizations visit our site. Leadsy may process IP addresses and company domain information. Legal basis: your consent (Art. 6(1)(a) GDPR). Data is processed in the EEA. Retention: as configured with Leadsy, typically 24 months. You may withdraw consent at any time.",
               "We also use Vercel Analytics (provided by Vercel Inc.), which is cookieless and does not track visitors across sites. This does not require consent as it does not process personal data that identifies you.",
               "Your cookie choice is stored in your browser so we do not ask again. Declining or withdrawing consent removes all tracking scripts and deletes associated cookies. Clearing your browser storage resets your choice."
@@ -844,7 +846,7 @@
           {
             "h": "5. Who else sees it",
             "body": [
-              "We use service providers who process data on our behalf under contract: Vercel (hosting and analytics), Google (Analytics), Cal.com (bookings and video), and our email provider for correspondence.",
+              "We use service providers who process data on our behalf under contract: Vercel (hosting and analytics), Google (Analytics), Crisp (live chat), Cal.com (bookings and video), and our email provider for correspondence.",
               "We do not sell personal data and we do not share it for advertising.",
               "We may disclose data where the law requires it, or to establish or defend a legal claim."
             ]

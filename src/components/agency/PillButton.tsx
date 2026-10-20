@@ -1,3 +1,4 @@
+import type { CtaId } from "@/lib/track";
 import s from "./Agency.module.css";
 
 function Arrow({ className }: { className: string }) {
@@ -38,7 +39,7 @@ export function PillButton({
   className?: string;
   external?: boolean;
   /** Conversion id, e.g. `book_call`. Used by AnalyticsClient. */
-  ctaId?: string;
+  ctaId?: CtaId;
   /** Where the button sits, e.g. `hero`. Used by AnalyticsClient. */
   location?: string;
 }) {

@@ -1,7 +1,7 @@
 {
   "skipToContent": "Przejdź do treści głównej",
   "cookies": {
-    "message": "Używamy plików cookie, aby mierzyć ruch i ulepszać Twoje doświadczenia. To Ty decydujesz, co możemy przechowywać.",
+    "message": "Używamy plików cookie, aby mierzyć ruch, prowadzić czat na żywo (Crisp) i ulepszać Twoje doświadczenia. To Ty decydujesz, co możemy przechowywać.",
     "accept": "Akceptuję",
     "decline": "Odrzuć",
     "learnMore": "Dowiedz się więcej"
@@ -835,15 +835,17 @@
               "Gdy się z nami kontaktujesz — to, co sam przekażesz: imię i nazwisko, adres e-mail, firmę i treść wiadomości.",
               "Gdy rezerwujesz rozmowę — imię i nazwisko, adres e-mail i odpowiedzi podane w formularzu rezerwacji oraz wybrany termin. Rezerwacje obsługuje Cal.com, a sama rozmowa może odbywać się przez Cal Video.",
               "Jeśli wyrazisz zgodę na analitykę — dane o wizycie: odwiedzone podstrony, przybliżoną lokalizację z adresu IP, typ urządzenia i przeglądarki oraz stronę odsyłającą.",
+              "Jeśli wyrazisz zgodę i skorzystasz z czatu na żywo (Crisp) — treść wiadomości oraz imię lub e-mail, które podasz w rozmowie.",
               "Podstawowe dane żądań rejestruje nasz dostawca hostingu na potrzeby bezpieczeństwa i niezawodności, w tym adres IP."
             ]
           },
           {
             "h": "3. Pliki cookie i analityka",
             "body": [
-              "Do momentu akceptacji w banerze nie zapisujemy żadnych plików analitycznych ani reklamowych. Korzystamy z Google Consent Mode v2, który domyślnie odmawia tych rodzajów zapisu i włącza je dopiero po akceptacji; odmowa pozostawia je wyłączone.",
+              "Do momentu akceptacji w banerze nie zapisujemy żadnych plików analitycznych, reklamowych ani czatu na żywo. Korzystamy z Google Consent Mode v2, który domyślnie odmawia tych rodzajów zapisu i włącza je dopiero po akceptacji; odmowa pozostawia je wyłączone.",
               "Za Twoją zgodą korzystamy z:",
               "• Google Analytics 4 (dostarczane przez Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlandia) w celu zrozumienia sposobu korzystania ze strony: odwiedzone podstrony, przybliżona lokalizacja, typ urządzenia i czas trwania sesji. Google Analytics używa plików cookie (_ga, _gid) i może przetwarzać Twój adres IP. Podstawa prawna: Twoja zgoda (art. 6 ust. 1 lit. a RODO). Dane są przekazywane do Google LLC w USA na podstawie Tarczy Prywatności Danych UE-USA oraz standardowych klauzul umownych Komisji Europejskiej. Google przechowuje dane Analytics przez 14 miesięcy; możemy ustawić krótszy okres. Zgodę możesz wycofać w każdej chwili, odrzucając pliki cookie w banerze lub czyszcząc dane przeglądarki.",
+              "• Czat na żywo (Crisp, dostarczane przez Crisp IM SAS, Francja), żebyś mógł pisać do nas ze strony. Crisp używa plików cookie (crisp-client) i może przetwarzać Twój adres IP, dane urządzenia oraz treść rozmowy, w tym imię lub e-mail, które zdecydujesz się podać. Podstawa prawna: Twoja zgoda (art. 6 ust. 1 lit. a RODO). Dane są przetwarzane w EOG; część podprzetwarzających może być poza EOG na podstawie standardowych klauzul umownych Komisji Europejskiej. Zgodę możesz wycofać w każdej chwili, odrzucając pliki cookie w banerze lub czyszcząc dane przeglądarki.",
               "• Leadsy (r2.leadsy.ai/tag.js, dostarczane przez Leadsy sp. z o.o., Polska) w celu identyfikacji odwiedzających i firm, aby pomóc nam zrozumieć, które organizacje odwiedzają naszą stronę. Leadsy może przetwarzać adresy IP i informacje o domenie firmowej. Podstawa prawna: Twoja zgoda (art. 6 ust. 1 lit. a RODO). Dane są przetwarzane w EOG. Retencja: zgodnie z konfiguracją Leadsy, zwykle 24 miesiące. Zgodę możesz wycofać w każdej chwili.",
               "Używamy również Vercel Analytics (dostarczane przez Vercel Inc.), które działa bez plików cookie i nie śledzi użytkowników między stronami. Nie wymaga zgody, ponieważ nie przetwarza danych osobowych, które Cię identyfikują.",
               "Twój wybór dotyczący plików cookie zapisujemy w przeglądarce, żeby nie pytać ponownie. Odmowa lub wycofanie zgody usuwa wszystkie skrypty śledzące i usuwa związane pliki cookie. Wyczyszczenie danych przeglądarki resetuje Twój wybór."
@@ -861,7 +863,7 @@
           {
             "h": "5. Komu udostępniamy dane",
             "body": [
-              "Korzystamy z dostawców przetwarzających dane w naszym imieniu na podstawie umów: Vercel (hosting i analityka), Google (Analytics), Cal.com (rezerwacje i wideo) oraz dostawca poczty do korespondencji.",
+              "Korzystamy z dostawców przetwarzających dane w naszym imieniu na podstawie umów: Vercel (hosting i analityka), Google (Analytics), Crisp (czat na żywo), Cal.com (rezerwacje i wideo) oraz dostawca poczty do korespondencji.",
               "Nie sprzedajemy danych osobowych i nie udostępniamy ich do celów reklamowych.",
               "Możemy ujawnić dane, gdy wymaga tego prawo, albo w celu ustalenia lub obrony roszczeń."
             ]

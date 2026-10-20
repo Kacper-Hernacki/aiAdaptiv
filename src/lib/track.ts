@@ -4,11 +4,28 @@ import { hasAnalyticsConsent } from "@/lib/consent";
 
 export const GTAG_SCRIPT_ID = "google-analytics-script";
 
+export const CTA_IDS = [
+  "book_call",
+  "ai_audit",
+  "second_brain_pro",
+  "private_ai",
+  "case_study",
+  "email",
+  "chat",
+  "cta",
+] as const;
+
+export type CtaId = (typeof CTA_IDS)[number];
+
+export function isCtaId(value: string): value is CtaId {
+  return (CTA_IDS as readonly string[]).includes(value);
+}
+
 export type TrackEventName = "cta_click" | "generate_lead" | "language_switch";
 
 export type TrackPayloads = {
   cta_click: {
-    cta_id: string;
+    cta_id: CtaId;
     location: string;
     lang: string;
   };
@@ -139,7 +156,7 @@ export function isBookingHref(href: string): boolean {
 }
 
 /** Infer a `cta_id` from the destination when the markup did not set one. */
-export function classifyCtaId(href: string): string | null {
+export function classifyCtaId(href: string): CtaId | null {
   const value = href.trim();
   if (value.startsWith("mailto:")) return "email";
   if (isBookingHref(value)) return "book_call";

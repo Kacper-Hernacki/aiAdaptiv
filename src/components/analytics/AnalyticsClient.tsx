@@ -9,6 +9,7 @@ import {
   currentLang,
   inferLocation,
   isBookingHref,
+  isCtaId,
   loadGoogleAnalytics,
   sendGaPageView,
   track,
@@ -72,8 +73,9 @@ function useCtaClicks() {
       if (anchor.dataset.track === "off") return;
 
       const href = anchor.getAttribute("href") ?? "";
+      const marked = anchor.dataset.ctaId;
       const ctaId =
-        anchor.dataset.ctaId ||
+        (marked && isCtaId(marked) ? marked : null) ||
         classifyCtaId(href) ||
         (anchor.dataset.track === "cta" ? "cta" : null);
       if (!ctaId) return;

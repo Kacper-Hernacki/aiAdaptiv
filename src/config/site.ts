@@ -27,6 +27,12 @@ export const bookingUrl =
  * mounted. Set NEXT_PUBLIC_GA_ID to enable. */
 export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_ID ?? "";
 
+/** Crisp live-chat website ID. Same workspace as brain.aiadaptiv.com.
+ * Public because the widget runs in the browser. Empty means the chatbox
+ * is not mounted — never fall back to a hardcoded id. Set
+ * NEXT_PUBLIC_CRISP_WEBSITE_ID to enable. */
+export const crispWebsiteId = process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID ?? "";
+
 /** Google Search Console verification token — the `content` value from the
  * `google-site-verification` meta tag Google gives you in the "HTML tag"
  * verification method. Set GOOGLE_SITE_VERIFICATION to emit the tag; empty
