@@ -9,6 +9,8 @@ import {
   writeConsent,
   type ConsentChoice,
 } from "@/lib/consent";
+import { crispWebsiteId } from "@/config/site";
+import { loadCrisp, removeCrisp } from "@/lib/crisp";
 import {
   loadGoogleAnalytics,
   unloadGoogleAnalytics,
@@ -38,8 +40,8 @@ function removeLeadsy() {
 
 /**
  * GDPR consent banner. Defaults every tracker to "denied" (see the Consent
- * Mode default in the root layout) and only unlocks GA4 + Leadsy once the
- * visitor accepts. The choice is remembered in localStorage.
+ * Mode default in the root layout) and only unlocks GA4 + Leadsy + Crisp once
+ * the visitor accepts. The choice is remembered in localStorage.
  */
 export function CookieConsent({
   lang,
@@ -62,13 +64,15 @@ export function CookieConsent({
       updateGoogleConsent(true);
       loadGoogleAnalytics();
       loadLeadsy();
+      if (crispWebsiteId) loadCrisp(crispWebsiteId, lang);
     } else if (stored === "denied") {
       removeLeadsy();
       unloadGoogleAnalytics();
+      removeCrisp();
     } else {
       Promise.resolve().then(() => setVisible(true));
     }
-  }, []);
+  }, [lang]);
 
   function choose(choice: Choice) {
     writeConsent(choice);
@@ -76,9 +80,11 @@ export function CookieConsent({
     if (choice === "granted") {
       loadGoogleAnalytics();
       loadLeadsy();
+      if (crispWebsiteId) loadCrisp(crispWebsiteId, lang);
     } else {
       removeLeadsy();
       unloadGoogleAnalytics();
+      removeCrisp();
     }
     notifyConsent(choice);
     setVisible(false);

@@ -17,6 +17,7 @@ import {
   siteUrl,
   googleSiteVerification,
   bingSiteVerification,
+  crispWebsiteId,
 } from "@/config/site";
 import { Analytics } from "@vercel/analytics/next";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
@@ -26,6 +27,7 @@ import { ThemeToggle } from "@/components/agency/ThemeToggle";
 import { themeInitScript } from "@/components/agency/theme";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CookieConsent } from "@/components/CookieConsent";
+import { CrispChat } from "@/components/CrispChat";
 import { AnalyticsClient } from "@/components/analytics/AnalyticsClient";
 import { consentDefaultInlineScript } from "@/lib/consent";
 import "../../agency.css";
@@ -197,9 +199,12 @@ export default async function AgencyRootLayout({
         <Analytics />
         {/* Consented GA4 page views + CTA event delegation. */}
         <AnalyticsClient />
-        {/* Cookie consent banner — gates GA4 + Leadsy behind opt-in.
+        {/* Cookie consent banner — gates GA4 + Leadsy + Crisp behind opt-in.
             Scripts are loaded dynamically only after user accepts. */}
         <CookieConsent lang={lang} dict={dict.cookies} />
+        {crispWebsiteId ? (
+          <CrispChat lang={lang} websiteId={crispWebsiteId} />
+        ) : null}
         <ThemeToggle label={dict.agency.theme.toggle} />
       </body>
     </html>
