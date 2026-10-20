@@ -40,11 +40,12 @@
   height: 1.125em;
 }
 
-/* The cookie banner sits bottom-centre; on narrow screens lift the toggle so
-   the two don't overlap. */
+/* On a phone the cookie bar owns the bottom edge, so the toggle sits under
+   the header instead of covering Accept / Decline. */
 @media (max-width: 640px) {
   .toggle {
-    bottom: 1em;
+    top: 5.25em;
+    bottom: auto;
     right: 1em;
   }
 }

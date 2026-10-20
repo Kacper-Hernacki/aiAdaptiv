@@ -176,10 +176,12 @@
     "work": {
       "h2": "Selected work",
       "lead": "Nine kinds of system we have shipped — built, deployed and operated by us.",
+      "indexCta": "Browse all case studies",
       "cases": [
         {
           "id": "private-ai",
           "name": "Private AI for regulated data",
+          "caseStudyCta": "Read the private deal room case study",
           "result": "Open-source LLMs inside your own EU cloud. Nothing leaves it.",
           "body": "For teams handling medical records, legal files or other sensitive data, a public AI tool is off the table. We deploy open-source models inside the client's own EU cloud account — white-labelled, with document intelligence over their own archive — so the platform is theirs, and GDPR and the EU AI Act are met by architecture rather than by policy.",
           "tags": [
@@ -246,6 +248,7 @@
         {
           "id": "second-brain",
           "name": "A digital second brain",
+          "caseStudyCta": "Read the Second Brain case study",
           "result": "Everything your company knows — searchable, and never forgotten.",
           "body": "Meeting notes, emails, documents, decisions: captured once, connected, and retrievable in plain language months later. We build knowledge systems that ingest what a team already produces and turn it into an assistant that remembers what everyone else forgot.",
           "tags": [

@@ -15,9 +15,10 @@
 }
 
 .card {
+  position: relative;
   display: grid;
   grid-template-rows: subgrid;
-  grid-row: span 6;
+  grid-row: span 7;
   align-items: start;
 }
 
@@ -51,6 +52,53 @@
   margin-top: 1em;
   align-self: start;
   align-content: start;
+}
+
+.indexCta {
+  margin-top: 1em;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.indexCta a {
+  color: var(--fg);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.1em;
+}
+
+.indexCta a:hover {
+  opacity: 0.75;
+}
+
+.caseLink {
+  display: inline-flex;
+  margin-top: 0.9em;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: var(--fg);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.1em;
+  align-self: start;
+  justify-self: start;
+  width: fit-content;
+}
+
+.caseLink:hover {
+  opacity: 0.75;
+}
+
+/* Stretched hit area: the descriptive CTA is the accessible name, the rest
+   of the card is clickable without nesting a second link. */
+.card:has(.caseLink) .caseLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.caseLinkSpacer {
+  display: block;
+  margin-top: 0.9em;
+  min-height: 1.35em;
 }
 
 .thumb {

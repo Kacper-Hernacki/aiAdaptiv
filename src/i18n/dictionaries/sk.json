@@ -172,10 +172,12 @@
     "work": {
       "h2": "Vybrané projekty",
       "lead": "Deväť typov systémov, ktoré sme dodali — postavené, nasadené a prevádzkované nami.",
+      "indexCta": "Zobraziť všetky case studies",
       "cases": [
         {
           "id": "private-ai",
           "name": "Privátna AI pre regulované údaje",
+          "caseStudyCta": "Prečítať case study súkromného deal roomu",
           "result": "Open-source LLM vo vašom vlastnom EU cloude. Nič z neho neodíde.",
           "body": "Pre tímy, ktoré pracujú so zdravotnou dokumentáciou, právnymi spismi alebo inými citlivými údajmi, je verejný AI nástroj vylúčený. Nasadzujeme open-source modely do vlastného EU cloudového účtu klienta — pod jeho značkou a s dokumentovou inteligenciou nad jeho vlastným archívom — takže platforma patrí jemu a GDPR aj európske nariadenie o AI sú splnené architektúrou, nie smernicou.",
           "tags": [
@@ -242,6 +244,7 @@
         {
           "id": "second-brain",
           "name": "Digitálny druhý mozog",
+          "caseStudyCta": "Prečítať case study Second Brain",
           "result": "Všetko, čo vaša firma vie — vyhľadateľné a nikdy nezabudnuté.",
           "body": "Zmluvy, ponuky, poznámky, zápisy a znalosti, ktoré žijú v hlavách niekoľkých ľudí, na jednom mieste a dopytovateľné bežným jazykom. Odpovede odkazujú na zdrojový dokument, aby sa im dalo veriť, a nový materiál sa dopĺňa sám, namiesto toho aby čakal, kým ho niekto založí.",
           "tags": [

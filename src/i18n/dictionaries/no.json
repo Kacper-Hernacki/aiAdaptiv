@@ -172,10 +172,12 @@
     "work": {
       "h2": "Utvalgte prosjekter",
       "lead": "Ni typer systemer vi har levert — bygget, satt i drift og driftet av oss.",
+      "indexCta": "Se alle case studies",
       "cases": [
         {
           "id": "private-ai",
           "name": "Privat AI for regulerte data",
+          "caseStudyCta": "Les case study om det private deal room",
           "result": "LLM-er med åpen kildekode i din egen EU-sky. Ingenting forlater den.",
           "body": "For team som håndterer pasientjournaler, juridiske saksmapper eller andre sensitive data, er et offentlig AI-verktøy uaktuelt. Vi setter opp modeller med åpen kildekode i kundens egen EU-skykonto — med kundens merkevare og dokumentforståelse over deres eget arkiv — slik at plattformen er deres, og GDPR og EUs AI-forordning oppfylles av arkitekturen, ikke av en retningslinje.",
           "tags": [
@@ -242,6 +244,7 @@
         {
           "id": "second-brain",
           "name": "En digital andrehjerne",
+          "caseStudyCta": "Les case study om Second Brain",
           "result": "Alt virksomheten din vet — søkbart, og aldri glemt.",
           "body": "Kontrakter, tilbud, notater, referater og kunnskapen som bor i hodet på noen få, samlet ett sted og søkbart på vanlig språk. Svarene viser til kildedokumentet så du kan stole på dem, og nytt materiale kommer inn av seg selv i stedet for å vente på at noen arkiverer det.",
           "tags": [
