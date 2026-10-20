@@ -7,11 +7,13 @@
 .figure {
   width: 100%;
   aspect-ratio: 5 / 4;
-  --hairline-stroke: 0.9;
-  --hairline-hi: #232327;
-  --hairline-edge: #a4a4ac;
-  --hairline-mid: #c3c3c9;
-  --hairline-lo: #e0e0e4;
+  /* Slightly heavier than the library default so the figures read on the
+     page's off-white, not only on a pure white plate. */
+  --hairline-stroke: 1.15;
+  --hairline-hi: #111113;
+  --hairline-edge: #5c5c64;
+  --hairline-mid: #8a8a94;
+  --hairline-lo: #c4c4cc;
 }
 
 .figure[data-surface="page"] {

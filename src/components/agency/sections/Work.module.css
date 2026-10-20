@@ -20,6 +20,7 @@
   width: 100%;
   overflow: hidden;
   border-radius: var(--radius);
+  border: 1px solid var(--hairline);
   background-color: var(--bg-alt);
   /* Keep the existing 4:3 slot so the card grid does not reflow; the
      5:4 figure is centered inside and letterboxed by the plate colour. */

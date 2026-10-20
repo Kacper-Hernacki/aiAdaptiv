@@ -5,6 +5,7 @@
   display: block;
   overflow: hidden;
   border-radius: var(--radius);
+  border: 1px solid var(--hairline);
   transition: transform 0.4s ease;
 }
 

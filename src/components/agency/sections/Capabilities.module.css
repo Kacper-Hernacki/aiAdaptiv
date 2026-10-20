@@ -29,16 +29,18 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: hsla(0, 0%, 97%, 0.72);
+  /* Light enough that the figure stays the picture; heavy enough that the
+     copy still reads. The old 0.82 wash was for photography. */
+  background-color: hsla(0, 0%, 97%, 0.38);
   transition: opacity 0.4s ease;
 }
 
 :global(:root[data-theme="dark"]) .overlay {
-  background-color: rgba(17, 17, 19, 0.72);
+  background-color: rgba(17, 17, 19, 0.42);
 }
 
 .card:hover .overlay {
-  opacity: 0.28;
+  opacity: 0.12;
 }
 
 .content {
@@ -55,6 +57,7 @@
   line-height: 115%;
   letter-spacing: -0.02em;
   color: var(--fg);
+  text-shadow: 0 0 12px var(--bg), 0 0 24px var(--bg);
 }
 
 .body {
@@ -103,7 +106,7 @@
   }
 
   .overlay {
-    opacity: 0.45;
+    opacity: 0.22;
   }
 }
 
