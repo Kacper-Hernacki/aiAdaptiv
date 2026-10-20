@@ -1,7 +1,6 @@
-import Image from "next/image";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { workImages } from "../workImages";
-import { Placeholder } from "../Placeholder";
+import { HairlineFigure } from "../HairlineFigure";
+import { workFigures } from "../workFigures";
 import s from "../Agency.module.css";
 import w from "./Work.module.css";
 
@@ -41,17 +40,13 @@ export function Work({ work }: { work: Dictionary["agency"]["work"] }) {
               style={{ "--rd": `${160 + i * 90}ms` } as React.CSSProperties}
             >
               <div className={w.thumb}>
-                {workImages[item.id] ? (
-                  <Image
-                    src={workImages[item.id]}
-                    alt={item.name}
-                    className={w.image}
-                    sizes="(max-width: 991px) 100vw, 30vw"
-                    placeholder="blur"
+                {workFigures[item.id] ? (
+                  <HairlineFigure
+                    name={workFigures[item.id]}
+                    label={item.name}
+                    surface="alt"
                   />
-                ) : (
-                  <Placeholder ratio="4:3" seed={i} />
-                )}
+                ) : null}
               </div>
               <div className={w.info}>
                 <p className={w.name}>{item.name}</p>

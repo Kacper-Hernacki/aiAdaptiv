@@ -29,11 +29,10 @@ export function Placeholder({
         ? styles.ratio169
         : styles.ratio43;
 
-  // Three fixed hues rotated by seed, kept low-saturation so the cards read as
-  // neutral placeholders rather than as brand colour.
-  const hue = [232, 258, 205][seed % 3];
-  const a = `hsl(${hue} 30% 62%)`;
-  const b = `hsl(${hue + 18} 24% 46%)`;
+  // Neutral greys only — the site is monochrome. Seed still varies the
+  // composition so neighbouring cards do not look identical.
+  const a = ["#c8c8ce", "#b4b4bc", "#9e9ea8"][seed % 3];
+  const b = ["#8a8a94", "#6e6e78", "#5a5a64"][seed % 3];
   const offset = (seed % 4) * 9;
 
   return (

@@ -70,7 +70,7 @@ export type CaseStudy = {
   loomId?: string;
   /** ISO date the work finished — feeds `datePublished` in JSON-LD. */
   completed: string;
-  /** Ties the case to a card id in `agency.work.cases` (workImages.ts). */
+  /** Ties the case to a card id in `agency.work.cases` (workFigures.ts). */
   workId?: string;
   copy: Partial<Record<Locale, CaseStudyCopy>>;
 };

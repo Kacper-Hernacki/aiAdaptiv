@@ -1,7 +1,6 @@
 import type { Dictionary } from "@/i18n/dictionaries";
-import Image from "next/image";
-import { Placeholder } from "../Placeholder";
-import { capabilityImages } from "../capabilityImages";
+import { HairlineFigure } from "../HairlineFigure";
+import { capabilityFigures } from "../capabilityFigures";
 import s from "../Agency.module.css";
 import c from "./Capabilities.module.css";
 
@@ -40,18 +39,14 @@ export function Capabilities({
             style={{ "--rd": `${i * 80}ms` } as React.CSSProperties}
           >
             <div className={c.art}>
-              {capabilityImages[item.id] ? (
-                <Image
-                  src={capabilityImages[item.id]}
-                  alt=""
+              {capabilityFigures[item.id] ? (
+                <HairlineFigure
+                  name={capabilityFigures[item.id]}
+                  label={item.title}
+                  surface="page"
                   fill
-                  sizes="(max-width: 991px) 100vw, 33vw"
-                  className={c.artImage}
                 />
-              ) : (
-                <Placeholder fill seed={i + 1} />
-              )}
-              <span className={c.artDim} />
+              ) : null}
             </div>
             <span className={c.overlay} />
             <div className={c.content}>

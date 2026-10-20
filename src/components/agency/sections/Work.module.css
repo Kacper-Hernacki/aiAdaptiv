@@ -20,23 +20,31 @@
   width: 100%;
   overflow: hidden;
   border-radius: var(--radius);
+  background-color: var(--bg-alt);
+  /* Keep the existing 4:3 slot so the card grid does not reflow; the
+     5:4 figure is centered inside and letterboxed by the plate colour. */
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
 }
 
-.image {
-  display: block;
+.thumb :global(.hairline-figure) {
   width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
   transition: transform 0.4s ease;
 }
 
-.card:hover .image {
+.card:hover .thumb :global(.hairline-figure) {
   transform: scale(1.03);
 }
 
-:global(:root[data-theme="dark"]) .image {
-  filter: brightness(0.88);
+@media (prefers-reduced-motion: reduce) {
+  .thumb :global(.hairline-figure) {
+    transition: none;
+  }
+
+  .card:hover .thumb :global(.hairline-figure) {
+    transform: none;
+  }
 }
 
 .info {

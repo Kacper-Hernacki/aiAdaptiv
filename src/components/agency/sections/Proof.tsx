@@ -1,8 +1,7 @@
 import type { Dictionary } from "@/i18n/dictionaries";
 import { bookingUrl } from "@/config/site";
 import { PillButton } from "../PillButton";
-import Image from "next/image";
-import proofImage from "../assets/proof-shipped.jpg";
+import { HairlineFigure } from "../HairlineFigure";
 import s from "../Agency.module.css";
 import p from "./Product.module.css";
 
@@ -49,12 +48,11 @@ export function Proof({ proof }: { proof: Dictionary["agency"]["proof"] }) {
             data-reveal
             style={{ "--rd": "160ms" } as React.CSSProperties}
           >
-            <Image
-              src={proofImage}
-              alt={proof.mediaLabel}
+            <HairlineFigure
+              name="slow"
+              label={proof.mediaLabel}
+              surface="page"
               className={p.image}
-              sizes="(max-width: 991px) 100vw, 45vw"
-              placeholder="blur"
             />
           </div>
         </div>

@@ -1,5 +1,5 @@
-/* Full-bleed square cards: artwork behind, an overlay that fades away on
-   hover, and the copy inverting to white as it does. */
+/* Full-bleed square cards: line figure behind, a wash that lifts on hover
+   so the drawing stays readable and the copy stays on the theme ink. */
 .grid {
   list-style: none;
   display: grid;
@@ -16,6 +16,7 @@
   aspect-ratio: 1;
   padding: 3em;
   overflow: hidden;
+  background-color: var(--bg);
 }
 
 .art {
@@ -25,30 +26,19 @@
   height: 100%;
 }
 
-.artImage {
-  object-fit: cover;
-}
-
-.artDim {
-  position: absolute;
-  inset: 0;
-  background-color: #000;
-  opacity: 0.4;
-}
-
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: hsla(0, 0%, 97%, 0.82);
+  background-color: hsla(0, 0%, 97%, 0.72);
   transition: opacity 0.4s ease;
 }
 
 :global(:root[data-theme="dark"]) .overlay {
-  background-color: rgba(0, 0, 0, 0.78);
+  background-color: rgba(17, 17, 19, 0.72);
 }
 
 .card:hover .overlay {
-  opacity: 0;
+  opacity: 0.28;
 }
 
 .content {
@@ -57,7 +47,6 @@
   width: 100%;
   margin-bottom: 1em;
   text-align: center;
-  transition: color 0.4s ease;
 }
 
 .title {
@@ -66,7 +55,6 @@
   line-height: 115%;
   letter-spacing: -0.02em;
   color: var(--fg);
-  transition: color 0.4s ease;
 }
 
 .body {
@@ -74,12 +62,6 @@
   font-size: 0.95em;
   line-height: 155%;
   color: var(--fg-muted);
-  transition: color 0.4s ease;
-}
-
-.card:hover .title,
-.card:hover .body {
-  color: #ffffff;
 }
 
 .tags {
@@ -100,18 +82,16 @@
   background-color: var(--chip);
   font-size: 0.8em;
   color: var(--fg);
-  transition:
-    background-color 0.4s ease,
-    color 0.4s ease;
 }
 
-.card:hover .tag {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    transition: none;
+  }
 }
 
-/* Touch devices have no hover: show the "hovered" state permanently rather
-   than leaving the artwork hidden behind a dimmed overlay forever. */
+/* Touch devices have no hover: keep a lighter wash so the figure and the
+   copy are both visible, rather than hiding one behind the other. */
 @media (hover: none), screen and (max-width: 991px) {
   .grid {
     grid-template-columns: 1fr;
@@ -123,17 +103,7 @@
   }
 
   .overlay {
-    opacity: 0;
-  }
-
-  .title,
-  .body {
-    color: #ffffff;
-  }
-
-  .tag {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    opacity: 0.45;
   }
 }
 
