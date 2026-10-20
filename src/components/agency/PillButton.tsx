@@ -29,12 +29,18 @@ export function PillButton({
   large,
   className,
   external = true,
+  ctaId,
+  location,
 }: {
   href: string;
   children: string;
   large?: boolean;
   className?: string;
   external?: boolean;
+  /** Conversion id, e.g. `book_call`. Used by AnalyticsClient. */
+  ctaId?: string;
+  /** Where the button sits, e.g. `hero`. Used by AnalyticsClient. */
+  location?: string;
 }) {
   return (
     <a
@@ -42,6 +48,9 @@ export function PillButton({
       className={[s.btn, large ? s.btnLarge : "", className ?? ""]
         .filter(Boolean)
         .join(" ")}
+      data-track="cta"
+      data-cta-id={ctaId}
+      data-location={location}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       <span className={s.btnLabel}>

@@ -41,7 +41,12 @@ export function AiAuditCard({
               {aiAuditCard.body}
             </p>
             <div data-reveal style={{ "--rd": "240ms" } as React.CSSProperties}>
-              <PillButton href={`/${lang}/ai-audit`} large>
+              <PillButton
+                href={`/${lang}/ai-audit`}
+                large
+                ctaId="ai_audit"
+                location="home"
+              >
                 {aiAuditCard.cta}
               </PillButton>
             </div>

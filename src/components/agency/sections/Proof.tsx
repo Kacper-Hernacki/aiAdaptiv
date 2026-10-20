@@ -38,7 +38,12 @@ export function Proof({ proof }: { proof: Dictionary["agency"]["proof"] }) {
               data-reveal
               style={{ "--rd": "440ms" } as React.CSSProperties}
             >
-              <PillButton href={bookingUrl} large>
+              <PillButton
+                href={bookingUrl}
+                large
+                ctaId="book_call"
+                location="proof"
+              >
                 {proof.cta}
               </PillButton>
             </div>

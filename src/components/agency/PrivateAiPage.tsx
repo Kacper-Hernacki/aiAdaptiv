@@ -71,7 +71,13 @@ export function PrivateAiPage({
                 </ul>
               </div>
               <div>
-                <PillButton href={bookingUrl}>{doc.cta}</PillButton>
+                <PillButton
+                  href={bookingUrl}
+                  ctaId="book_call"
+                  location="private_ai_hero"
+                >
+                  {doc.cta}
+                </PillButton>
               </div>
             </div>
             <Image
@@ -291,7 +297,13 @@ export function PrivateAiPage({
               data-reveal
               style={{ "--rd": "160ms" } as React.CSSProperties}
             >
-              <PillButton href={bookingUrl}>{doc.cta}</PillButton>
+              <PillButton
+                href={bookingUrl}
+                ctaId="book_call"
+                location="private_ai_cta"
+              >
+                {doc.cta}
+              </PillButton>
             </div>
           </div>
         </div>

@@ -81,7 +81,9 @@ export function AgencyHeader({
         </nav>
 
         <div className={styles.headerBtn}>
-          <PillButton href={bookingUrl}>{header.cta}</PillButton>
+          <PillButton href={bookingUrl} ctaId="book_call" location="header">
+            {header.cta}
+          </PillButton>
         </div>
 
         <button
@@ -128,7 +130,12 @@ export function AgencyHeader({
               );
             })}
             <li>
-              <PillButton href={bookingUrl} large>
+              <PillButton
+                href={bookingUrl}
+                large
+                ctaId="book_call"
+                location="header_mobile"
+              >
                 {header.cta}
               </PillButton>
             </li>

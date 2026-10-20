@@ -39,7 +39,13 @@ export function SecondBrainPro({
               {secondBrainPro.body}
             </p>
             <div data-reveal style={{ "--rd": "240ms" } as React.CSSProperties}>
-              <PillButton href={secondBrainPro.url} large external>
+              <PillButton
+                href={secondBrainPro.url}
+                large
+                external
+                ctaId="second_brain_pro"
+                location="home"
+              >
                 {secondBrainPro.cta}
               </PillButton>
             </div>

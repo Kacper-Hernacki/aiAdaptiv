@@ -32,6 +32,15 @@ function isVisible(href: string, lang: string): boolean {
   return isLocale(lang) && hasCaseStudyCopy(lang);
 }
 
+function footerCtaId(href: string): string | undefined {
+  if (href.startsWith("mailto:")) return "email";
+  if (href.includes("brain.aiadaptiv")) return "second_brain_pro";
+  if (href.includes("/case-studies")) return "case_study";
+  if (href.includes("/ai-audit")) return "ai_audit";
+  if (href.includes("/private-ai")) return "private_ai";
+  return undefined;
+}
+
 export function AgencyFooter({
   lang,
   agency,
@@ -50,7 +59,12 @@ export function AgencyFooter({
             <p className={styles.heading}>{footer.heading}</p>
             <p className={styles.lead}>{footer.lead}</p>
             <div className={styles.btnWrap}>
-              <PillButton href={bookingUrl} large>
+              <PillButton
+                href={bookingUrl}
+                large
+                ctaId="book_call"
+                location="footer"
+              >
                 {footer.cta}
               </PillButton>
             </div>
@@ -66,11 +80,18 @@ export function AgencyFooter({
                     .map((link) => {
                       const href = resolveHref(link.href, lang);
                       const external = href.startsWith("http");
+                      const ctaId = footerCtaId(href);
                       return (
                         <li key={link.href}>
                           <a
                             href={href}
                             className={styles.link}
+                            {...(ctaId
+                              ? {
+                                  "data-cta-id": ctaId,
+                                  "data-location": "footer",
+                                }
+                              : {})}
                             {...(external
                               ? { target: "_blank", rel: "noopener noreferrer" }
                               : {})}

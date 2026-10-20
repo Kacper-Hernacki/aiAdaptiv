@@ -11,6 +11,7 @@ import {
 } from "react";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { bookingUrl } from "@/config/site";
+import { track } from "@/lib/track";
 import {
   STEP_FIELDS,
   TOTAL_STEPS,
@@ -178,6 +179,11 @@ export function LeadForm({
         }),
       });
       if (!response.ok) throw new Error(String(response.status));
+      track("generate_lead", {
+        source: "lead_form",
+        lang,
+        location: "lead_form",
+      });
       setStatus("sent");
     } catch {
       setStatus("failed");
@@ -226,7 +232,13 @@ export function LeadForm({
                 {copy.success.h}
               </h2>
               <p className={f.doneBody}>{copy.success.body}</p>
-              <a className={f.doneCta} href={bookingUrl}>
+              <a
+                className={f.doneCta}
+                href={bookingUrl}
+                data-track="cta"
+                data-cta-id="book_call"
+                data-location="lead_form_success"
+              >
                 {copy.success.cta}
               </a>
             </div>
