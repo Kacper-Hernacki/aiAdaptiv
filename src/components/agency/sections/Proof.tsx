@@ -9,7 +9,7 @@ export function Proof({ proof }: { proof: Dictionary["agency"]["proof"] }) {
   return (
     <section id="proof" aria-labelledby="proof-heading" className={s.section}>
       <div className={s.inner}>
-        <div className={p.stack}>
+        <div className={s.split}>
           <div className={s.splitText}>
             <h2 id="proof-heading" className={s.h2} data-reveal>
               {proof.h2}
@@ -44,7 +44,7 @@ export function Proof({ proof }: { proof: Dictionary["agency"]["proof"] }) {
             </div>
           </div>
           <div
-            className={`${s.splitMedia} ${p.figureSlot}`}
+            className={s.splitMedia}
             data-reveal
             style={{ "--rd": "160ms" } as React.CSSProperties}
           >

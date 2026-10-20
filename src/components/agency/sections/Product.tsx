@@ -25,7 +25,21 @@ export function Product({
       className={s.section}
     >
       <div className={s.inner}>
-        <div className={p.stack}>
+        <div className={s.split}>
+          <Link
+            href={href}
+            className={`${s.splitMedia} ${p.imageLink}`}
+            aria-label={product.cta}
+            data-reveal
+            style={{ "--rd": "120ms" } as React.CSSProperties}
+          >
+            <HairlineFigure
+              name="padlock"
+              label={product.imageAlt}
+              surface="page"
+              className={p.image}
+            />
+          </Link>
           <div className={s.splitText}>
             <p id="product-heading" className={s.super} data-reveal>
               {product.h2}
@@ -57,20 +71,6 @@ export function Product({
               </PillButton>
             </div>
           </div>
-          <Link
-            href={href}
-            className={`${s.splitMedia} ${p.imageLink} ${p.figureSlot}`}
-            aria-label={product.cta}
-            data-reveal
-            style={{ "--rd": "120ms" } as React.CSSProperties}
-          >
-            <HairlineFigure
-              name="padlock"
-              label={product.imageAlt}
-              surface="page"
-              className={p.image}
-            />
-          </Link>
         </div>
         <ul className={p.pillars}>
           {product.pillars.map((pillar, i) => (

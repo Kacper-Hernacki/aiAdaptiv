@@ -10,6 +10,9 @@ import w from "./Work.module.css";
  * build; two cards sprouting a link and seven not made it read like a list of
  * things half-finished. The case studies are reached from the nav and the
  * footer instead.
+ *
+ * Children are flattened so the row can use CSS subgrid: name, result, body,
+ * tags, figure and gutter each occupy the same track across the row.
  */
 export function Work({ work }: { work: Dictionary["agency"]["work"] }) {
   return (
@@ -39,18 +42,16 @@ export function Work({ work }: { work: Dictionary["agency"]["work"] }) {
               data-reveal
               style={{ "--rd": `${160 + i * 90}ms` } as React.CSSProperties}
             >
-              <div className={w.info}>
-                <p className={w.name}>{item.name}</p>
-                <p className={w.outcome}>{item.result}</p>
-                <p className={w.body}>{item.body}</p>
-                <ul className={s.tags}>
-                  {item.tags.map((tag, t) => (
-                    <li key={t} className={s.tag}>
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className={w.name}>{item.name}</p>
+              <p className={w.outcome}>{item.result}</p>
+              <p className={w.body}>{item.body}</p>
+              <ul className={`${s.tags} ${w.tags}`}>
+                {item.tags.map((tag, t) => (
+                  <li key={t} className={s.tag}>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
               <div className={w.thumb}>
                 {workFigures[item.id] ? (
                   <HairlineFigure

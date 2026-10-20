@@ -1,27 +1,68 @@
+/*
+ * Subgrid: each card spans six parent rows (name, result, body, tags,
+ * figure, gutter) so a wrapping title does not push that column's tags
+ * or figure out of line with its neighbours. Parent row-gap stays 0 so
+ * the copy tracks sit tight; space between card-rows is the last track.
+ */
 .grid {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5em;
-  row-gap: 2.5em;
+  column-gap: 1.5em;
+  row-gap: 0;
   margin-top: 3em;
   width: 100%;
 }
 
 .card {
-  display: flex;
-  flex-flow: column;
-  gap: 1.25em;
-  position: relative;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 6;
+  align-items: start;
+}
+
+.card::after {
+  content: "";
+  display: block;
+  height: 2.5em;
+}
+
+.name {
+  font-size: 1.125em;
+  font-weight: 500;
+  line-height: 130%;
+  color: var(--fg);
+}
+
+.outcome {
+  margin-top: 0.2em;
+  font-size: 0.85em;
+  color: var(--fg-faint);
+}
+
+.body {
+  margin-top: 0.4em;
+  font-size: 0.95em;
+  line-height: 155%;
+  color: var(--fg-muted);
+}
+
+.tags {
+  margin-top: 1em;
+  align-self: start;
+  align-content: start;
 }
 
 .thumb {
   position: relative;
   width: 100%;
+  margin-top: 1.25em;
   overflow: hidden;
   border-radius: var(--radius);
   border: 1px solid var(--hairline);
   background-color: var(--bg-alt);
+  align-self: stretch;
+  aspect-ratio: 5 / 4;
 }
 
 .thumb :global(.hairline-figure) {
@@ -43,35 +84,20 @@
   }
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2em;
-}
-
-.name {
-  font-size: 1.125em;
-  font-weight: 500;
-  color: var(--fg);
-}
-
-.outcome {
-  font-size: 0.85em;
-  color: var(--fg-faint);
-}
-
-.body {
-  margin-top: 0.4em;
-  font-size: 0.95em;
-  line-height: 155%;
-  color: var(--fg-muted);
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media screen and (max-width: 991px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 24px;
-    row-gap: 32px;
+    column-gap: 24px;
     margin-top: 32px;
+  }
+
+  .card::after {
+    height: 32px;
   }
 }
