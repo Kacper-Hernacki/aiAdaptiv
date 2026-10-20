@@ -176,10 +176,12 @@
     "work": {
       "h2": "Wybrane realizacje",
       "lead": "Dziewięć rodzajów systemów, które wdrożyliśmy — zbudowane, uruchomione i utrzymywane przez nas.",
+      "indexCta": "Zobacz wszystkie case studies",
       "cases": [
         {
           "id": "private-ai",
           "name": "Prywatne AI dla danych wrażliwych",
+          "caseStudyCta": "Przeczytaj case study prywatnego deal roomu",
           "result": "Modele open source w Twojej chmurze w UE. Nic jej nie opuszcza.",
           "body": "Dla zespołów pracujących z dokumentacją medyczną, aktami prawnymi lub innymi wrażliwymi danymi publiczne narzędzie AI nie wchodzi w grę. Wdrażamy modele open source w koncie chmurowym klienta w UE — white-label, z analizą dokumentów nad jego własnym archiwum — tak, że platforma należy do niego, a RODO i AI Act są spełnione przez architekturę, nie przez politykę.",
           "tags": [
@@ -246,6 +248,7 @@
         {
           "id": "second-brain",
           "name": "Cyfrowy drugi mózg",
+          "caseStudyCta": "Przeczytaj case study Second Brain",
           "result": "Wszystko, co wie Twoja firma — przeszukiwalne i nigdy nie zapomniane.",
           "body": "Notatki ze spotkań, maile, dokumenty, decyzje: zapisane raz, połączone i dostępne w zwykłym języku miesiące później. Budujemy systemy wiedzy, które przyjmują to, co zespół i tak wytwarza, i zamieniają to w asystenta pamiętającego to, o czym wszyscy inni zapomnieli.",
           "tags": [

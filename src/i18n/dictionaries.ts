@@ -68,10 +68,17 @@ export type Dictionary = {
     work: {
       h2: string;
       lead: string;
+      /** Visible link from the home section to /[lang]/case-studies. */
+      indexCta: string;
       cases: {
         /** Stable, untranslated key; picks the card's Hairline figure in workFigures.ts. */
         id: string;
         name: string;
+        /**
+         * Descriptive CTA when this card maps to a real case study via
+         * `workId`. Omitted on cards that have no matching case.
+         */
+        caseStudyCta?: string;
         result: string;
         body: string;
         tags: string[];

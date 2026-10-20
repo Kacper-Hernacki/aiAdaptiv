@@ -1,36 +1,63 @@
 /*
  * All phrases occupy the same grid cell, so the container is always as wide
  * as the widest and as tall as the tallest — the headline never reflows as
- * the words change. Only the active phrase is visible; the rest are laid out
- * but hidden, and hidden from assistive tech.
+ * the words change. Only the active phrase is painted; the rest are laid out
+ * for sizing, then hidden from both sight and assistive tech.
  */
 .stack {
   display: inline-grid;
   justify-items: center;
+  align-items: start;
   vertical-align: top;
+  overflow: hidden;
 }
 
 .phrase {
   grid-area: 1 / 1;
   opacity: 0;
-  transform: translateY(0.35em);
+  visibility: hidden;
+  transform: none;
   transition:
-    opacity 0.45s ease,
-    transform 0.45s ease;
-  will-change: opacity, transform;
+    opacity 0.35s ease,
+    visibility 0.35s ease;
   pointer-events: none;
 }
 
 .active {
   opacity: 1;
-  transform: none;
+  visibility: visible;
   pointer-events: auto;
+  z-index: 1;
 }
 
-/* The outgoing phrase lifts away as the incoming one rises in. */
-.leaving {
-  opacity: 0;
-  transform: translateY(-0.35em);
+/* Instant swap on small screens — a cross-fade of two stacked phrases is
+   what read as overlapping type on a phone. */
+@media screen and (max-width: 991px) {
+  .phrase {
+    transition: none;
+  }
+}
+
+/* Cross-fade + lift is desktop-only. On a phone the outgoing and incoming
+   phrases stacked in one cell and read as overlapping type. */
+@media screen and (min-width: 992px) {
+  .phrase {
+    transform: translateY(0.35em);
+    transition:
+      opacity 0.45s ease,
+      transform 0.45s ease,
+      visibility 0.45s ease;
+  }
+
+  .active {
+    transform: none;
+  }
+
+  .leaving {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.35em);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

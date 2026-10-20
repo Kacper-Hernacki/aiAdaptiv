@@ -44,6 +44,11 @@ export function getCaseStudy(slug: string): CaseStudy | undefined {
   return caseStudies.find((c) => c.slug === slug);
 }
 
+/** Home "Selected work" card → case study. Only entries that set `workId`. */
+export function getCaseStudyByWorkId(workId: string): CaseStudy | undefined {
+  return caseStudies.find((c) => c.workId === workId);
+}
+
 /** Copy for a case in the closest available locale. English always exists. */
 export function getCaseCopy(study: CaseStudy, locale: Locale): CaseStudyCopy {
   return study.copy[caseStudyLocale(locale)] ?? study.copy[defaultLocale]!;

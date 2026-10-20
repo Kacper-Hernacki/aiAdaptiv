@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteUrl } from "@/config/site";
+import { siteConfig, siteUrl } from "@/config/site";
 import { translatedLocales, defaultLocale, isTranslated } from "@/i18n/config";
 
 /**
@@ -35,12 +35,15 @@ export function legalMetadata(
     title: { absolute: doc.metaTitle },
     description: doc.metaDescription,
     alternates: { canonical: url, languages },
-    // Without these, every sub-page inherits the LAYOUT's openGraph block —
-    // so a case study shared on LinkedIn showed the home page's headline.
-    // `title`/`description` above do not propagate to og: on their own.
+    // Title/description must be set here or a shared link shows the home
+    // headline. Do NOT set `images`: this object replaces the layout OG
+    // block, and an explicit `images` field (even a guessed `/opengraph-image`
+    // path) would hide the file-based 1200×630 PNG Next generates from
+    // `opengraph-image.tsx` on this route.
     openGraph: {
       type: "article",
       url,
+      siteName: siteConfig.name,
       title: doc.metaTitle,
       description: doc.metaDescription,
     },

@@ -172,10 +172,12 @@
     "work": {
       "h2": "Ausgewählte Projekte",
       "lead": "Neun Arten von System, die wir ausgeliefert haben — von uns gebaut, deployt und betrieben.",
+      "indexCta": "Alle Case Studies ansehen",
       "cases": [
         {
           "id": "private-ai",
           "name": "Private KI für regulierte Daten",
+          "caseStudyCta": "Case Study zum privaten Deal Room lesen",
           "result": "Open-Source-LLMs in Ihrer eigenen EU-Cloud. Nichts verlässt sie.",
           "body": "Für Teams, die mit Patientenakten, Anwaltsakten oder anderen sensiblen Daten arbeiten, kommt ein öffentliches KI-Tool nicht infrage. Wir deployen Open-Source-Modelle im EU-Cloud-Konto des Kunden — im eigenen Branding, mit Dokumentenintelligenz über das eigene Archiv — sodass die Plattform ihm gehört und DSGVO und EU-KI-Verordnung durch Architektur erfüllt werden, nicht durch Richtlinien.",
           "tags": [
@@ -242,6 +244,7 @@
         {
           "id": "second-brain",
           "name": "Ein digitales zweites Gehirn",
+          "caseStudyCta": "Case Study Second Brain lesen",
           "result": "Alles, was Ihr Unternehmen weiß — durchsuchbar und nie vergessen.",
           "body": "Verträge, Angebote, Notizen, Protokolle und Wissen aus den Köpfen einzelner Personen, an einem Ort und durchsuchbar in natürlicher Sprache. Antworten verweisen auf das Quelldokument, damit man ihnen trauen kann, und neues Material wird automatisch aufgenommen, statt auf jemanden zu warten, der es ablegt.",
           "tags": [

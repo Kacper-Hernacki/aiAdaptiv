@@ -172,10 +172,12 @@
     "work": {
       "h2": "Proyectos seleccionados",
       "lead": "Nueve tipos de sistema que hemos entregado: construidos, desplegados y operados por nosotros.",
+      "indexCta": "Ver todos los casos",
       "cases": [
         {
           "id": "private-ai",
           "name": "IA privada para datos regulados",
+          "caseStudyCta": "Leer el caso de la sala de datos privada",
           "result": "Modelos LLM de código abierto en tu propia nube europea. Nada sale de ahí.",
           "body": "Para equipos que manejan historiales médicos, expedientes jurídicos u otros datos sensibles, una herramienta de IA pública queda descartada. Desplegamos modelos de código abierto en la cuenta de nube europea del propio cliente, con su marca y con inteligencia documental sobre su propio archivo, de modo que la plataforma es suya y el RGPD y el Reglamento Europeo de IA se cumplen por arquitectura, no por política interna.",
           "tags": [
@@ -242,6 +244,7 @@
         {
           "id": "second-brain",
           "name": "Un segundo cerebro digital",
+          "caseStudyCta": "Leer el caso de Second Brain",
           "result": "Todo lo que tu empresa sabe, consultable y nunca olvidado.",
           "body": "Contratos, propuestas, notas, actas y el conocimiento que vive en la cabeza de unas pocas personas, en un mismo lugar y consultable en lenguaje natural. Las respuestas citan el documento de origen para que puedas fiarte, y el material nuevo se incorpora automáticamente en lugar de esperar a que alguien lo archive.",
           "tags": [

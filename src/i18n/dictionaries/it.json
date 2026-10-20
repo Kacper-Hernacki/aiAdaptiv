@@ -172,10 +172,12 @@
     "work": {
       "h2": "Progetti selezionati",
       "lead": "Nove tipi di sistema che abbiamo consegnato: progettati, messi in produzione e gestiti da noi.",
+      "indexCta": "Vedi tutti i case study",
       "cases": [
         {
           "id": "private-ai",
           "name": "IA privata per dati regolamentati",
+          "caseStudyCta": "Leggi il case study della deal room privata",
           "result": "LLM open source nel tuo cloud europeo. Da lì non esce nulla.",
           "body": "Per i team che trattano cartelle cliniche, fascicoli legali o altri dati sensibili, uno strumento di IA pubblico è escluso. Mettiamo in produzione modelli open source nell'account cloud europeo del cliente, con il suo marchio e con analisi documentale sul suo archivio, così la piattaforma è sua e il GDPR e il Regolamento europeo sull'IA sono rispettati per architettura, non per policy.",
           "tags": [
@@ -242,6 +244,7 @@
         {
           "id": "second-brain",
           "name": "Un secondo cervello digitale",
+          "caseStudyCta": "Leggi il case study di Second Brain",
           "result": "Tutto quello che l'azienda sa, consultabile e mai dimenticato.",
           "body": "Contratti, proposte, appunti, verbali e il sapere che vive nella testa di poche persone, in un unico posto e interrogabile in linguaggio naturale. Le risposte citano il documento di origine perché ci si possa fidare, e il materiale nuovo entra da solo invece di aspettare che qualcuno lo archivi.",
           "tags": [
