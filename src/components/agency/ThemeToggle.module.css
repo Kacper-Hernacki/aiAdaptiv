@@ -40,14 +40,20 @@
   height: 1.125em;
 }
 
-/* On a phone the cookie bar owns the bottom edge, so the toggle sits under
-   the header instead of covering Accept / Decline. Crisp stays bottom-right
-   after consent (the bar is gone by then). */
+/* Phones: bottom-right with safe-area, not under the header — the old
+   top-right pin sat on the first card's corner. Cookie bar is z-index 60
+   and full-width, so drop below it (Accept / Decline stay clickable).
+   Crisp loads in this same corner after consent; stack one bubble above. */
 @media (max-width: 640px) {
   .toggle {
-    top: 5.25em;
-    bottom: auto;
-    right: 1em;
+    top: auto;
+    z-index: 55;
+    right: calc(1em + env(safe-area-inset-right, 0px));
+    bottom: calc(1em + env(safe-area-inset-bottom, 0px));
+  }
+
+  :global(html[data-crisp]) .toggle {
+    bottom: calc(5.75em + env(safe-area-inset-bottom, 0px));
   }
 }
 
