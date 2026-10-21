@@ -30,4 +30,8 @@
 
 .container .body {
   color: rgba(255, 255, 255, 0.72);
+  /* .lead caps width at 40em without auto side margins, so the block
+     sat left of the centered headline on desktop. Mobile .lead is
+     max-width: 100%, so this is a no-op there. */
+  margin-inline: auto;
 }
