@@ -118,7 +118,7 @@ export type Dictionary = {
       }[];
       price: string;
       cta: string;
-      /** Secondary line under the CTA; links to the Second Brain Pro trial. */
+      /** Secondary line under the CTA; links to the Second Brain Pro beta. */
       secondary: string;
     };
     /**
