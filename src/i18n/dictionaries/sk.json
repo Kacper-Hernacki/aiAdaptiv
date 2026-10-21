@@ -16,6 +16,10 @@
       "menuLabel": "Otvoriť menu",
       "nav": [
         {
+          "label": "Company Brain",
+          "href": "#company-brain"
+        },
+        {
           "label": "Čo staviame",
           "href": "#capabilities"
         },
@@ -626,6 +630,10 @@
           "label": "Produkty",
           "links": [
             {
+              "label": "Company Brain",
+              "href": "#company-brain"
+            },
+            {
               "label": "Privátna AI platforma",
               "href": "@privateAi"
             },
@@ -895,6 +903,37 @@
         ],
         "backHome": "← Back to home"
       }
+    },
+    "companyBrain": {
+      "badge": "Novinka",
+      "h2": "Company Brain",
+      "headline": "Company Brain: zavedenie pre firmy",
+      "lead": "Hotový firemný second brain, nasadený na vašom vlastnom serveri v EÚ. Pripája sa cez MCP k AI nástrojom, ktoré tím už používa, a drží postupy, klientov a projekty ako poznámky, ktoré patria firme.",
+      "items": [
+        {
+          "id": "server",
+          "title": "Na vašom vlastnom serveri v EÚ",
+          "body": "Nasadenie na serveri, ktorý vlastníte, v Európskej únii."
+        },
+        {
+          "id": "mcp",
+          "title": "Pripojenie cez MCP",
+          "body": "Funguje s Claude, ChatGPT, Grok a Cursor — nástrojmi, ktoré tím už používa."
+        },
+        {
+          "id": "notes",
+          "title": "Poznámky, ktoré vlastníte",
+          "body": "Postupy, klienti a projekty ako poznámky, ktoré patria firme."
+        },
+        {
+          "id": "setup",
+          "title": "Zavedenie za vás",
+          "body": "Nasadíme to my. Neskladáte to sami."
+        }
+      ],
+      "price": "Cena po rozhovore",
+      "cta": "Objednať hovor",
+      "secondary": "Chcete to najprv vyskúšať sami? Second Brain Pro: bezplatná beta, bez karty"
     },
     "secondBrainPro": {
       "h2": "Second Brain Pro",

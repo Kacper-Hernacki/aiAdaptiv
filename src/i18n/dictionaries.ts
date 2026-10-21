@@ -101,6 +101,27 @@ export type Dictionary = {
       imageAlt: string;
     };
     /**
+     * Company Brain — the main paid offer: a done-for-you company second
+     * brain on the client's own EU server, connected via MCP.
+     */
+    companyBrain: {
+      /** Small "New" / "Nowość" badge on the section. */
+      badge: string;
+      h2: string;
+      headline: string;
+      lead: string;
+      items: {
+        /** Stable, untranslated key; picks the card icon. */
+        id: string;
+        title: string;
+        body: string;
+      }[];
+      price: string;
+      cta: string;
+      /** Secondary line under the CTA; links to the Second Brain Pro trial. */
+      secondary: string;
+    };
+    /**
      * Second Brain Pro product section — a compact card highlighting the SaaS
      * product with a link to brain.aiadaptiv.com.
      */

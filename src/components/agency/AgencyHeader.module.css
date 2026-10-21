@@ -43,18 +43,23 @@
 .nav {
   display: flex;
   gap: 1.5em;
+  min-width: 0;
 }
 
 .nav ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 1.5em;
+  min-width: 0;
 }
 
 .navLink {
   font-size: 0.7em;
   color: var(--fg);
+  white-space: nowrap;
   transition: opacity 0.2s;
 }
 
@@ -135,6 +140,8 @@
   font-size: 28px;
   font-weight: 500;
   color: var(--fg);
+  text-align: center;
+  overflow-wrap: anywhere;
   transition: opacity 0.2s;
 }
 

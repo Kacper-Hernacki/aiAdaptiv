@@ -16,6 +16,10 @@
       "menuLabel": "Abrir menú",
       "nav": [
         {
+          "label": "Company Brain",
+          "href": "#company-brain"
+        },
+        {
           "label": "Qué construimos",
           "href": "#capabilities"
         },
@@ -626,6 +630,10 @@
           "label": "Productos",
           "links": [
             {
+              "label": "Company Brain",
+              "href": "#company-brain"
+            },
+            {
               "label": "Plataforma de IA privada",
               "href": "@privateAi"
             },
@@ -895,6 +903,37 @@
         ],
         "backHome": "← Back to home"
       }
+    },
+    "companyBrain": {
+      "badge": "Nuevo",
+      "h2": "Company Brain",
+      "headline": "Company Brain: configuración para empresas",
+      "lead": "Un second brain de empresa instalado por nosotros en vuestro propio servidor en la UE. Se conecta por MCP a las herramientas de IA que el equipo ya usa y guarda procedimientos, clientes y proyectos como notas que pertenecen a la empresa.",
+      "items": [
+        {
+          "id": "server",
+          "title": "En vuestro propio servidor en la UE",
+          "body": "Instalado en un servidor que os pertenece, en la Unión Europea."
+        },
+        {
+          "id": "mcp",
+          "title": "Conectado por MCP",
+          "body": "Funciona con Claude, ChatGPT, Grok y Cursor — las herramientas que el equipo ya usa."
+        },
+        {
+          "id": "notes",
+          "title": "Notas que os pertenecen",
+          "body": "Procedimientos, clientes y proyectos como notas que pertenecen a la empresa."
+        },
+        {
+          "id": "setup",
+          "title": "Configuración hecha por nosotros",
+          "body": "Lo instalamos nosotros. No lo montáis vosotros."
+        }
+      ],
+      "price": "Precio después de una llamada",
+      "cta": "Reservar llamada",
+      "secondary": "¿Quieres probarlo tú primero? Second Brain Pro: beta gratuita, sin tarjeta"
     },
     "secondBrainPro": {
       "h2": "Second Brain Pro",

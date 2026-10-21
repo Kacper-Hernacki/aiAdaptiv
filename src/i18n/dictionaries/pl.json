@@ -16,6 +16,10 @@
       "menuLabel": "Otwórz menu",
       "nav": [
         {
+          "label": "Company Brain",
+          "href": "#company-brain"
+        },
+        {
           "label": "Co budujemy",
           "href": "#capabilities"
         },
@@ -306,6 +310,37 @@
       ],
       "cta": "Zobacz platformę",
       "imageAlt": "Szkic ołówkiem kłódki na jasnym papierze — platforma prywatnego AI aiAdaptiv."
+    },
+    "companyBrain": {
+      "badge": "Nowość",
+      "h2": "Company Brain",
+      "headline": "Company Brain: setup dla firm",
+      "lead": "Gotowy firmowy second brain, wdrażany na Twoim serwerze w UE. Łączy się przez MCP z narzędziami AI, których zespół już używa, i trzyma procedury, klientów i projekty jako notatki należące do firmy.",
+      "items": [
+        {
+          "id": "server",
+          "title": "Na Twoim serwerze w UE",
+          "body": "Wdrożenie na serwerze, który należy do Ciebie, w Unii Europejskiej."
+        },
+        {
+          "id": "mcp",
+          "title": "Połączenie przez MCP",
+          "body": "Działa z Claude, ChatGPT, Grok i Cursor — narzędziami, których zespół już używa."
+        },
+        {
+          "id": "notes",
+          "title": "Notatki, które należą do Ciebie",
+          "body": "Procedury, klienci i projekty jako notatki należące do firmy."
+        },
+        {
+          "id": "setup",
+          "title": "Wdrożenie done-for-you",
+          "body": "My stawiamy system. Nie składasz go samodzielnie."
+        }
+      ],
+      "price": "Wycena po rozmowie",
+      "cta": "Umów rozmowę",
+      "secondary": "Chcesz najpierw wypróbować sam? Second Brain Pro: darmowa beta, bez karty"
     },
     "secondBrainPro": {
       "h2": "Second Brain Pro",
@@ -642,6 +677,10 @@
         {
           "label": "Produkty",
           "links": [
+            {
+              "label": "Company Brain",
+              "href": "#company-brain"
+            },
             {
               "label": "Platforma prywatnego AI",
               "href": "@privateAi"
