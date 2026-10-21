@@ -2,13 +2,22 @@
   max-width: 56rem;
   margin: 0 auto;
   padding: 3rem 1.5rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  /* Always-dark promo card (same idea as .bandDark). Explicit ink so
+     inherited --fg / --fg-muted — which flip with data-theme — cannot
+     land dark text on this surface when the OS reports prefers-color-scheme:
+     dark but the page is in light theme. */
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   border-radius: 0.75rem;
-  border: 1px solid #dee2e6;
+  border: 1px solid #404040;
+  color: #ffffff;
 }
 
 .content {
   text-align: center;
+}
+
+.container .eyebrow {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .headline {
@@ -16,11 +25,9 @@
   font-weight: 700;
   line-height: 1.2;
   margin: 0.5rem 0 1rem;
+  color: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  .container {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    border-color: #404040;
-  }
+.container .body {
+  color: rgba(255, 255, 255, 0.72);
 }

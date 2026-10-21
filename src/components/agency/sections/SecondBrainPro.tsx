@@ -21,7 +21,11 @@ export function SecondBrainPro({
       <div className={s.inner}>
         <div className={sbp.container}>
           <div className={sbp.content}>
-            <p id="products-heading" className={s.super} data-reveal>
+            <p
+              id="products-heading"
+              className={`${s.super} ${sbp.eyebrow}`}
+              data-reveal
+            >
               {secondBrainPro.h2}
             </p>
             <h2
@@ -32,7 +36,7 @@ export function SecondBrainPro({
               {secondBrainPro.headline}
             </h2>
             <p
-              className={s.lead}
+              className={`${s.lead} ${sbp.body}`}
               data-reveal
               style={{ "--rd": "160ms" } as React.CSSProperties}
             >
