@@ -7,6 +7,7 @@ import { LeadForm } from "@/components/agency/sections/LeadForm";
 import { Capabilities } from "@/components/agency/sections/Capabilities";
 import { Proof } from "@/components/agency/sections/Proof";
 import { Work } from "@/components/agency/sections/Work";
+import { CompanyBrain } from "@/components/agency/sections/CompanyBrain";
 import { Product } from "@/components/agency/sections/Product";
 import { SecondBrainPro } from "@/components/agency/sections/SecondBrainPro";
 import { AiAuditCard } from "@/components/agency/sections/AiAuditCard";
@@ -34,6 +35,7 @@ export default async function AgencyHome({ params }: PageParams) {
       <AgencyHero hero={agency.hero} />
       <LeadForm copy={agency.leadForm} lang={lang} />
       <TechStack tech={agency.tech} />
+      <CompanyBrain companyBrain={agency.companyBrain} />
       <Capabilities capabilities={agency.capabilities} />
       <Proof proof={agency.proof} />
       <Work work={agency.work} lang={lang} />

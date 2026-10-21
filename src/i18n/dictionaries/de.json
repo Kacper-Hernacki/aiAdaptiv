@@ -16,6 +16,10 @@
       "menuLabel": "Menü öffnen",
       "nav": [
         {
+          "label": "Company Brain",
+          "href": "#company-brain"
+        },
+        {
           "label": "Was wir bauen",
           "href": "#capabilities"
         },
@@ -302,6 +306,37 @@
       ],
       "cta": "Plattform ansehen",
       "imageAlt": "Bleistiftskizze eines Vorhängeschlosses auf hellem Papier — die private KI-Plattform von aiAdaptiv."
+    },
+    "companyBrain": {
+      "badge": "Neu",
+      "h2": "Company Brain",
+      "headline": "Company Brain: Einrichtung für Unternehmen",
+      "lead": "Ein fertig eingerichtetes Second Brain für Ihr Unternehmen, auf Ihrem eigenen Server in der EU. Es verbindet sich per MCP mit den KI-Tools, die Ihr Team bereits nutzt, und hält Verfahren, Kunden und Projekte als Notizen, die dem Unternehmen gehören.",
+      "items": [
+        {
+          "id": "server",
+          "title": "Auf Ihrem eigenen EU-Server",
+          "body": "Einrichtung auf einem Server, der Ihnen gehört, in der Europäischen Union."
+        },
+        {
+          "id": "mcp",
+          "title": "Verbunden über MCP",
+          "body": "Funktioniert mit Claude, ChatGPT, Grok und Cursor — den Tools, die Ihr Team bereits nutzt."
+        },
+        {
+          "id": "notes",
+          "title": "Notizen, die Ihnen gehören",
+          "body": "Verfahren, Kunden und Projekte als Notizen, die dem Unternehmen gehören."
+        },
+        {
+          "id": "setup",
+          "title": "Einrichtung für Sie",
+          "body": "Wir richten es ein. Sie bauen es nicht selbst zusammen."
+        }
+      ],
+      "price": "Preis nach einem Gespräch",
+      "cta": "Gespräch buchen",
+      "secondary": "Möchten Sie es zuerst selbst ausprobieren? Second Brain Pro: kostenlose Beta, ohne Karte"
     },
     "secondBrainPro": {
       "h2": "Second Brain Pro",
@@ -638,6 +673,10 @@
         {
           "label": "Produkte",
           "links": [
+            {
+              "label": "Company Brain",
+              "href": "#company-brain"
+            },
             {
               "label": "Private KI-Plattform",
               "href": "@privateAi"

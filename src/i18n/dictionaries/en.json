@@ -16,6 +16,10 @@
       "menuLabel": "Open menu",
       "nav": [
         {
+          "label": "Company Brain",
+          "href": "#company-brain"
+        },
+        {
           "label": "What we build",
           "href": "#capabilities"
         },
@@ -306,6 +310,37 @@
       ],
       "cta": "See the platform",
       "imageAlt": "Pencil sketch of a padlock on light paper — the aiAdaptiv private AI platform."
+    },
+    "companyBrain": {
+      "badge": "New",
+      "h2": "Company Brain",
+      "headline": "Company Brain: setup for companies",
+      "lead": "A done-for-you company second brain, set up on your own server in the EU. It connects via MCP to the AI tools your team already uses, and holds procedures, clients and projects as notes the company owns.",
+      "items": [
+        {
+          "id": "server",
+          "title": "On your own EU server",
+          "body": "Set up on a server you own, in the European Union."
+        },
+        {
+          "id": "mcp",
+          "title": "Connected via MCP",
+          "body": "Works with Claude, ChatGPT, Grok and Cursor — the tools your team already uses."
+        },
+        {
+          "id": "notes",
+          "title": "Notes you own",
+          "body": "Procedures, clients and projects live as notes that belong to the company."
+        },
+        {
+          "id": "setup",
+          "title": "Done-for-you setup",
+          "body": "We set it up for you. You do not assemble it yourself."
+        }
+      ],
+      "price": "Pricing after a call",
+      "cta": "Book a call",
+      "secondary": "Want to try it yourself first? Second Brain Pro: free beta, no card required"
     },
     "secondBrainPro": {
       "h2": "Second Brain Pro",
@@ -642,6 +677,10 @@
         {
           "label": "Products",
           "links": [
+            {
+              "label": "Company Brain",
+              "href": "#company-brain"
+            },
             {
               "label": "Private AI platform",
               "href": "@privateAi"

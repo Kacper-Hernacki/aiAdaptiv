@@ -22,6 +22,17 @@ export const bookingUrl =
   process.env.NEXT_PUBLIC_BOOKING_URL ??
   "https://cal.com/kacper-hernacki/ai-mapping-call";
 
+/**
+ * Company Brain section booking link. Same Cal.com event as `bookingUrl`,
+ * with campaign UTMs so this offer's conversions can be isolated.
+ */
+export const companyBrainBookingUrl =
+  "https://cal.com/kacper-hernacki/ai-mapping-call?utm_source=aiadaptiv&utm_campaign=company-brain";
+
+/** Self-serve Second Brain Pro trial, tagged from the Company Brain section. */
+export const companyBrainTrialUrl =
+  "https://brain.aiadaptiv.com/?utm_source=aiadaptiv&utm_campaign=company-brain-section";
+
 /** Google Analytics 4 measurement ID (looks like `G-XXXXXXXXXX`). Must be
  * public because the gtag script runs client-side. Empty means GA is not
  * mounted. Set NEXT_PUBLIC_GA_ID to enable. */

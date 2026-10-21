@@ -16,6 +16,10 @@
       "menuLabel": "Ouvrir le menu",
       "nav": [
         {
+          "label": "Company Brain",
+          "href": "#company-brain"
+        },
+        {
           "label": "Ce que nous construisons",
           "href": "#capabilities"
         },
@@ -626,6 +630,10 @@
           "label": "Produits",
           "links": [
             {
+              "label": "Company Brain",
+              "href": "#company-brain"
+            },
+            {
               "label": "Plateforme IA privée",
               "href": "@privateAi"
             },
@@ -895,6 +903,37 @@
         ],
         "backHome": "← Back to home"
       }
+    },
+    "companyBrain": {
+      "badge": "Nouveau",
+      "h2": "Company Brain",
+      "headline": "Company Brain : mise en place pour les entreprises",
+      "lead": "Un second brain d’entreprise mis en place pour vous, sur votre propre serveur dans l’UE. Il se connecte via MCP aux outils d’IA que l’équipe utilise déjà, et conserve procédures, clients et projets sous forme de notes appartenant à l’entreprise.",
+      "items": [
+        {
+          "id": "server",
+          "title": "Sur votre propre serveur dans l’UE",
+          "body": "Installé sur un serveur qui vous appartient, dans l’Union européenne."
+        },
+        {
+          "id": "mcp",
+          "title": "Connecté via MCP",
+          "body": "Fonctionne avec Claude, ChatGPT, Grok et Cursor — les outils que votre équipe utilise déjà."
+        },
+        {
+          "id": "notes",
+          "title": "Des notes qui vous appartiennent",
+          "body": "Procédures, clients et projets sous forme de notes appartenant à l’entreprise."
+        },
+        {
+          "id": "setup",
+          "title": "Mise en place pour vous",
+          "body": "Nous l’installons. Vous ne l’assemblez pas vous-même."
+        }
+      ],
+      "price": "Tarif après un appel",
+      "cta": "Réserver un appel",
+      "secondary": "Vous voulez d’abord essayer seul ? Second Brain Pro : bêta gratuite, sans carte"
     },
     "secondBrainPro": {
       "h2": "Second Brain Pro",

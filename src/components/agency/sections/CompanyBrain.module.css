@@ -1,0 +1,137 @@
+/*
+ * Company Brain offer. Grid children use min-width: 0 so iOS Safari does
+ * not grow past the viewport the way aspect-ratio + grid did yesterday.
+ * No aspect-ratio here on purpose.
+ */
+
+.wrap {
+  min-width: 0;
+}
+
+.intro {
+  min-width: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-bottom: 0.5em;
+  padding: 0.25em 0.7em;
+  border: 1px solid var(--hairline);
+  border-radius: var(--pill);
+  background: var(--card);
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5em;
+  width: 100%;
+  min-width: 0;
+  margin-top: 3em;
+}
+
+.card {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 0.65em;
+  min-width: 0;
+  padding: 1.5em;
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.25em;
+  height: 2.25em;
+  border: 1px solid var(--hairline);
+  border-radius: 100%;
+  color: var(--fg);
+}
+
+.icon svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.cardTitle {
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  overflow-wrap: anywhere;
+}
+
+.cardBody {
+  font-size: 0.95em;
+  line-height: 155%;
+  color: var(--fg-muted);
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 0.85em;
+  width: 100%;
+  min-width: 0;
+  margin-top: 2.5em;
+}
+
+.price {
+  font-size: 0.95em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.secondary {
+  max-width: 36em;
+  min-width: 0;
+  font-size: 0.9em;
+  line-height: 150%;
+  color: var(--fg-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  overflow-wrap: anywhere;
+  transition: opacity 0.2s ease;
+}
+
+.secondary:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 991px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .card {
+    padding: 1.25em;
+  }
+
+  .actions {
+    margin-top: 32px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

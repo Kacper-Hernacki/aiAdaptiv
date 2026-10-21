@@ -16,6 +16,10 @@
       "menuLabel": "Apri il menu",
       "nav": [
         {
+          "label": "Company Brain",
+          "href": "#company-brain"
+        },
+        {
           "label": "Cosa costruiamo",
           "href": "#capabilities"
         },
@@ -626,6 +630,10 @@
           "label": "Prodotto",
           "links": [
             {
+              "label": "Company Brain",
+              "href": "#company-brain"
+            },
+            {
               "label": "Piattaforma IA privata",
               "href": "@privateAi"
             },
@@ -891,6 +899,37 @@
         ],
         "backHome": "← Back to home"
       }
+    },
+    "companyBrain": {
+      "badge": "Novità",
+      "h2": "Company Brain",
+      "headline": "Company Brain: setup per le aziende",
+      "lead": "Un second brain aziendale già pronto, installato sul vostro server nell’UE. Si collega via MCP agli strumenti di IA che il team usa già e conserva procedure, clienti e progetti come note di proprietà dell’azienda.",
+      "items": [
+        {
+          "id": "server",
+          "title": "Sul vostro server nell’UE",
+          "body": "Installato su un server di vostra proprietà, nell’Unione europea."
+        },
+        {
+          "id": "mcp",
+          "title": "Collegato via MCP",
+          "body": "Funziona con Claude, ChatGPT, Grok e Cursor — gli strumenti che il team usa già."
+        },
+        {
+          "id": "notes",
+          "title": "Note di vostra proprietà",
+          "body": "Procedure, clienti e progetti come note che appartengono all’azienda."
+        },
+        {
+          "id": "setup",
+          "title": "Setup fatto per voi",
+          "body": "Lo installiamo noi. Non lo montate da soli."
+        }
+      ],
+      "price": "Prezzo dopo una chiamata",
+      "cta": "Prenota una call",
+      "secondary": "Vuoi provarlo prima da solo? Second Brain Pro: beta gratuita, senza carta"
     },
     "secondBrainPro": {
       "h2": "Second Brain Pro",

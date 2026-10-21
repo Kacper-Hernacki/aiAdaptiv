@@ -16,6 +16,10 @@
       "menuLabel": "Åpne menyen",
       "nav": [
         {
+          "label": "Company Brain",
+          "href": "#company-brain"
+        },
+        {
           "label": "Hva vi bygger",
           "href": "#capabilities"
         },
@@ -626,6 +630,10 @@
           "label": "Produkter",
           "links": [
             {
+              "label": "Company Brain",
+              "href": "#company-brain"
+            },
+            {
               "label": "Privat AI-plattform",
               "href": "@privateAi"
             },
@@ -895,6 +903,37 @@
         ],
         "backHome": "← Back to home"
       }
+    },
+    "companyBrain": {
+      "badge": "Nytt",
+      "h2": "Company Brain",
+      "headline": "Company Brain: oppsett for bedrifter",
+      "lead": "Et ferdig satt opp second brain for bedriften, på din egen server i EU. Det kobles via MCP til AI-verktøyene teamet allerede bruker, og holder prosedyrer, kunder og prosjekter som notater bedriften eier.",
+      "items": [
+        {
+          "id": "server",
+          "title": "På din egen EU-server",
+          "body": "Satt opp på en server du eier, i Den europeiske union."
+        },
+        {
+          "id": "mcp",
+          "title": "Koblet via MCP",
+          "body": "Fungerer med Claude, ChatGPT, Grok og Cursor — verktøyene teamet allerede bruker."
+        },
+        {
+          "id": "notes",
+          "title": "Notater dere eier",
+          "body": "Prosedyrer, kunder og prosjekter som notater som tilhører bedriften."
+        },
+        {
+          "id": "setup",
+          "title": "Ferdig oppsett for dere",
+          "body": "Vi setter det opp. Dere setter det ikke sammen selv."
+        }
+      ],
+      "price": "Pris etter en samtale",
+      "cta": "Book en samtale",
+      "secondary": "Vil du prøve selv først? Second Brain Pro: gratis beta, uten kort"
     },
     "secondBrainPro": {
       "h2": "Second Brain Pro",
